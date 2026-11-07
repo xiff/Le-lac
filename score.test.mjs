@@ -43,3 +43,10 @@ test('verdict : orage, bise, paddle, terrasse', () => {
   assert.equal(verdict(calme).act, 'baignade');
   assert.equal(verdict({ ...calme, eau: 15, air: 12, vent: 4, rafales: 26, code: 63 }).sortir, true);
 });
+
+import { saison } from './score.js';
+test('saison de bain d’hiver', () => {
+  assert.equal(saison(new Date(2026, 10, 7)), '2026-2027');
+  assert.equal(saison(new Date(2027, 1, 14)), '2026-2027');
+  assert.equal(saison(new Date(2027, 8, 1)), '2027-2028');
+});

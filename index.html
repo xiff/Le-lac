@@ -86,6 +86,20 @@
   /* Activités */
   .act { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid var(--trait); }
   .act:first-child { border-top: 0; }
+  button.act { width: calc(100% + 16px); margin: 0 -8px; padding: 14px 8px; background: none; border: 0; border-top: 1px solid var(--trait); border-radius: 0; text-align: left; transition: transform 160ms var(--ease-out), background-color 150ms ease; }
+  button.act:first-child { border-top: 0; }
+  button.act[aria-pressed="true"] { background: var(--carte); border-radius: 16px; border-top-color: transparent; box-shadow: 0 1px 3px #10292f14; }
+  button.act[aria-pressed="true"] + .act { border-top-color: transparent; }
+  .h i { display: block; width: 8px; height: 8px; margin: 6px auto 0; border-radius: 50%; }
+  .h i.t0 { background: #d0533a; } .h i.t1 { background: #e3a82b; } .h i.t2 { background: #3b9b5d; } .h i.t3 { background: #1a8ba3; }
+  #h-heures span { color: var(--doux); }
+  .defi { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; margin-top: 18px; padding: 16px; border-radius: 20px; background: var(--carte); box-shadow: 0 1px 3px #10292f14; }
+  .defi div { flex: 1; min-width: 0; }
+  .defi .principal { flex-basis: 100%; justify-content: center; }
+  .defi b { font: 400 1.1rem/1.2 var(--display); display: block; }
+  .defi small { color: var(--doux); }
+  .compteur { font: 400 2.2rem/1 var(--display); color: var(--n3); min-width: 1.4ch; text-align: center; transition: transform 300ms var(--ease-out); }
+  .compteur.bump { transform: scale(1.25); transition-duration: 120ms; }
   .tuile { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; }
   .act div { flex: 1; min-width: 0; }
   .act b { font-weight: 600; }
@@ -136,7 +150,7 @@
   footer a { color: inherit; text-underline-offset: 2px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .panneau, .lieu-ent, .toast, .bienvenue { transform: none !important; }
+    .panneau, .lieu-ent, .toast, .bienvenue, .compteur { transform: none !important; }
     @starting-style { .panneau, .lieu-ent { transform: none; } }
     .onglets::before { transition-duration: 0ms; }
     .charge { animation: none; }
@@ -192,7 +206,12 @@
     <p class="alerte" id="alerte" hidden></p>
     <h2>Sur l’eau</h2>
     <div id="activites"></div>
-    <h2>Les 12 prochaines heures</h2>
+    <section class="defi" id="defi" hidden aria-labelledby="defi-titre">
+      <span class="compteur" id="compteur" aria-hidden="true">0</span>
+      <div><b id="defi-titre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
+      <button class="principal" id="jysuisalle">J’y suis allé</button>
+    </section>
+    <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" aria-label="Prévisions heure par heure"></div>
     <footer>
       Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau OFEV via <a href="https://api.existenz.ch">existenz.ch</a>, mesurée à Genève.<br>
@@ -221,7 +240,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict } from './score.js';
+import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison } from './score.js';
 import { LIEUX, lienCarte, plusProche } from './lieux.js';
 
 const SPOTS = [
@@ -326,7 +345,7 @@ async function charger() {
     const c = cond(m.current, null, eau);
     const heures = m.hourly.time.map((t, i) => ({ ...cond(m.hourly, i, eau), heure: t.slice(11, 13) + 'h' }));
     const v = verdict(c);
-    etat = { c, v, heure: m.current.time.slice(11, 16) };
+    etat = { ...etat, c, v, heure: m.current.time.slice(11, 16) };
 
     $('verdict').textContent = v.titre;
     $('releve').innerHTML = navigator.onLine ? `Relevé de ${etat.heure}` : `${icone('horsligne')}Hors ligne · dernières données de ${etat.heure}`;
@@ -340,11 +359,14 @@ async function charger() {
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
       const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-      return `<div class="act"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
+      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${a.nom} : ${LIBELLES[n]}. Afficher dans les prochaines heures"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
         <div><b>${a.nom}</b><small>${PHRASES[a.id][n]}${cr ? `<span class="cr">Meilleur moment ${cr.de}–${cr.a}</span>` : ''}</small></div>
-        <span class="badge t${n}">${LIBELLES[n]}</span></div>`;
+        <span class="badge t${n}">${LIBELLES[n]}</span></button>`;
     }).join('');
-    $('heures').innerHTML = heures.map((h) => `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}</div>`).join('');
+    etat.heures = heures;
+    if (!etat.choix || !ACTIVITES.some((a) => a.id === etat.choix)) etat.choix = v.act ?? 'paddle';
+    afficherHeures();
+    $('defi').hidden = !(eau != null && eau <= 14);
     $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
   } catch {
     $('verdict').textContent = 'Le lac ne répond pas.';
@@ -355,19 +377,50 @@ async function charger() {
 charger();
 addEventListener('online', charger);
 
+// Toucher une activité : la bande des heures montre sa note heure par heure.
+function afficherHeures() {
+  const a = ACTIVITES.find((x) => x.id === etat.choix);
+  $('activites').querySelectorAll('.act').forEach((b) => b.setAttribute('aria-pressed', b.dataset.act === a.id));
+  $('h-heures').innerHTML = `Les 12 prochaines heures <span>· ${a.nom.toLowerCase()}</span>`;
+  $('heures').innerHTML = etat.heures.map((h) => {
+    const n = a.note(h);
+    return `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${a.nom} : ${LIBELLES[n]}"></i></div>`;
+  }).join('');
+}
+$('activites').onclick = (e) => { const b = e.target.closest('.act'); if (b && etat?.heures) { etat.choix = b.dataset.act; afficherHeures(); } };
+
+// Défi bain d'hiver : compteur de la saison, sur cet appareil.
+const cleDefi = () => 'bains-' + saison(new Date());
+const lireBains = () => { try { return +localStorage.getItem(cleDefi()) || 0; } catch { return 0; } };
+function afficherDefi() {
+  const n = lireBains();
+  $('compteur').textContent = n;
+  $('defi-texte').textContent = n === 0 ? 'Aucun bain cette saison. Pour l’instant.' : n === 1 ? '1 bain cette saison. Le premier est le plus dur.' : `${n} bains cette saison. Les cygnes te respectent.`;
+}
+afficherDefi();
+$('jysuisalle').onclick = () => {
+  const n = lireBains() + 1;
+  try { localStorage.setItem(cleDefi(), n); } catch {}
+  afficherDefi();
+  const c = $('compteur'); c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 120);
+  const eau = etat?.c?.eau == null ? '' : `, eau à ${Math.round(etat.c.eau)}°`;
+  partager(`Bain d’hiver n°${n} de la saison à ${spot().nom}${eau}. Qui me suit la prochaine fois ?`, `Respect. Bain n°${n} noté.`);
+};
+
 let minuterie;
 function toast(t) { $('toast').textContent = t; $('toast').classList.add('on'); clearTimeout(minuterie); minuterie = setTimeout(() => $('toast').classList.remove('on'), 2200); }
-$('partager').onclick = async () => {
-  const texte = etat
-    ? `${etat.v.titre} ${spot().nom} : eau ${etat.c.eau == null ? '?' : Math.round(etat.c.eau) + '°'}, air ${Math.round(etat.c.air)}°, vent ${Math.round(etat.c.vent)} km/h.`
-    : 'Le Léman du jour en un coup d’œil.';
+async function partager(texte, merci) {
+  if (merci) toast(merci);
   const donnees = { title: 'Le Lac aujourd’hui', text: texte, url: location.origin + location.pathname };
   try {
     if (navigator.share) return await navigator.share(donnees);
     await navigator.clipboard.writeText(`${texte} ${donnees.url}`);
-    toast('Copié. Plus qu’à coller dans le groupe.');
+    toast(merci ? `${merci} Message copié.` : 'Copié. Plus qu’à coller dans le groupe.');
   } catch (e) { if (e.name !== 'AbortError') toast('Partage impossible ici.'); }
-};
+}
+$('partager').onclick = () => partager(etat
+  ? `${etat.v.titre} ${spot().nom} : eau ${etat.c.eau == null ? '?' : Math.round(etat.c.eau) + '°'}, air ${Math.round(etat.c.air)}°, vent ${Math.round(etat.c.vent)} km/h.`
+  : 'Le Léman du jour en un coup d’œil.');
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>

@@ -80,3 +80,6 @@ export function verdict(c) {
   };
   return { titre: titres[top.a.id], act: top.a.id };
 }
+
+// Saison de bain d'hiver : de septembre à août, ex. « 2026-2027 ».
+export const saison = (d) => { const a = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1; return `${a}-${a + 1}`; };
