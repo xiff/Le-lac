@@ -1,4 +1,5 @@
 // Bars et restos au bord de l'eau. zone = zone des plages (voir SPOTS dans index.html).
+// reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 // shortcut: liste écrite à la main, sans horaires ni prix ; passer à une base éditable quand les partenaires paieront pour y figurer.
 export const LIEUX = [
   { nom: 'Buvette des Bains des Pâquis', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Fondue l’hiver, plat du jour l’été, les pieds presque dans l’eau.' },
@@ -20,3 +21,10 @@ export const LIEUX = [
 ];
 
 export const lienCarte = (l) => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${l.nom} ${l.ville}`);
+
+// Plage la plus proche d'une position (distance à plat, suffisante à l'échelle du lac).
+export function plusProche(spots, lat, lon) {
+  const k = Math.cos((lat * Math.PI) / 180);
+  const d = (s) => (s.lat - lat) ** 2 + ((s.lon - lon) * k) ** 2;
+  return spots.reduce((best, s, i) => (d(s) < d(spots[best]) ? i : best), 0);
+}
