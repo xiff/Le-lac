@@ -55,3 +55,28 @@ export function meilleurCreneau(heures, noteFn) {
   });
   return best && { de: heures[best.debut].heure, a: heures[best.fin].heure };
 }
+
+// Phrases par activité et par note, avec un peu de caractère.
+export const PHRASES = {
+  baignade: ['Même les cygnes hésitent.', 'Pour les courageux.', 'Ça se baigne sans crier.', 'L’eau est bonne, promis.'],
+  paddle: ['Reste au bistrot.', 'Ça secoue un peu.', 'Quelques vaguelettes.', 'Lac d’huile.'],
+  voile: ['Pas un souffle, ou bien trop.', 'Petit temps.', 'De quoi s’amuser.', 'Ça souffle juste comme il faut.'],
+  hiver: ['L’eau est trop douce, c’est de la triche.', 'Ça mord.', 'Gelé mais faisable.', 'Idéal pour se geler avec style.'],
+};
+
+// La phrase du jour en haut de l'écran.
+export function verdict(c) {
+  if (c.code >= 95) return { titre: 'Orage sur le lac. On rentre.', act: null };
+  const notes = ACTIVITES.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
+  const top = notes[0];
+  if (estBise(c) && top.a.id !== 'voile') return { titre: 'La bise est là. Accroche ton bonnet.', act: null };
+  if (top.n < 2) return { titre: 'Journée terrasse plutôt que plouf.', act: null, sortir: true };
+  const eau = c.eau == null ? '' : ` à ${Math.round(c.eau)}°`;
+  const titres = {
+    baignade: `Plouf : l’eau est${eau || ' bonne'}.`,
+    paddle: 'Lac d’huile. Sors le paddle.',
+    voile: 'Ça souffle. Cap sur le large.',
+    hiver: `Eau${eau}. Parfait pour les braves.`,
+  };
+  return { titre: titres[top.a.id], act: top.a.id };
+}

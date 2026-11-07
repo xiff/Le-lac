@@ -1,9 +1,20 @@
 {
+  "id": "./",
   "name": "Le Lac aujourd’hui",
   "short_name": "Le Lac",
+  "description": "Baignade, paddle, voile et terrasses : le Léman du jour en un coup d’œil.",
+  "lang": "fr",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#eef6fa",
-  "theme_color": "#0b5f8a",
-  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "orientation": "portrait",
+  "background_color": "#0d4a5c",
+  "theme_color": "#0d4a5c",
+  "categories": ["weather", "sports", "travel"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
 }

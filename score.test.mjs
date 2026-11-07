@@ -34,3 +34,12 @@ test('meilleur créneau = plus longue suite ≥ 2', () => {
   assert.deepEqual(meilleurCreneau(heures, paddle), { de: '12h', a: '14h' });
   assert.equal(meilleurCreneau([h('08h', 40)], paddle), null);
 });
+
+import { verdict } from './score.js';
+test('verdict : orage, bise, paddle, terrasse', () => {
+  assert.match(verdict({ ...calme, code: 96 }).titre, /Orage/);
+  assert.match(verdict({ ...calme, eau: 16, vent: 45, rafales: 60, dir: 45 }).titre, /bise/);
+  assert.equal(verdict({ ...calme, eau: 16, vent: 22, rafales: 30, dir: 45 }).act, 'voile');
+  assert.equal(verdict(calme).act, 'baignade');
+  assert.equal(verdict({ ...calme, eau: 15, air: 12, vent: 4, rafales: 26, code: 63 }).sortir, true);
+});
