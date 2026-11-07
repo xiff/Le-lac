@@ -6,6 +6,9 @@
 <title>Le Lac aujourd’hui</title>
 <meta name="description" content="Baignade, paddle, voile : les conditions du Léman en un coup d’œil.">
 <meta name="theme-color" content="#0b5f8a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
 <style>
   :root {
     --bg: #eef6fa; --carte: #fff; --texte: #10303f; --doux: #557482;
@@ -41,6 +44,17 @@
   footer { text-align: center; color: var(--doux); font-size: .75rem; margin-top: 20px; }
   footer a { color: inherit; }
   [hidden] { display: none; }
+  nav { display: flex; gap: 8px; margin-top: 12px; }
+  nav button, .filtres button { flex: 1; padding: 10px; border: 0; border-radius: 12px; font: inherit; font-weight: 600; background: var(--carte); color: var(--doux); cursor: pointer; }
+  nav button[aria-selected="true"], .filtres button[aria-pressed="true"] { background: var(--lac); color: #fff; }
+  .filtres { display: flex; gap: 8px; }
+  .filtres button { padding: 6px 10px; font-size: .9rem; background: var(--bg); }
+  #terrasse { margin: 0 0 12px; }
+  .lieu { padding: 12px 0; border-top: 1px solid #8882; }
+  .lieu:first-of-type { border-top: 0; }
+  .lieu small { color: var(--doux); display: block; }
+  .lieu a { color: var(--lac); font-size: .9rem; font-weight: 600; text-decoration: none; display: inline-block; padding: 6px 0; }
+  h3 { font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); margin: 16px 0 0; }
 </style>
 </head>
 <body>
@@ -52,6 +66,12 @@
   <label for="spot" hidden>Plage</label>
   <select id="spot"></select>
 
+  <nav role="tablist">
+    <button role="tab" id="t-lac" aria-selected="true" aria-controls="p-lac">🌊 Conditions</button>
+    <button role="tab" id="t-sortir" aria-selected="false" aria-controls="p-sortir">🍹 Sortir</button>
+  </nav>
+
+  <div id="p-lac" role="tabpanel" aria-labelledby="t-lac">
   <section class="carte">
     <div class="mesures">
       <div><b id="eau">–</b><small>eau</small></div>
@@ -67,6 +87,20 @@
     <h2>Prochaines heures</h2>
     <div class="heures" id="heures"></div>
   </section>
+  </div>
+
+  <div id="p-sortir" role="tabpanel" aria-labelledby="t-sortir" hidden>
+  <section class="carte">
+    <p class="alerte" id="terrasse" hidden>☀️ Temps de terrasse : c’est le moment.</p>
+    <div class="filtres" id="filtres">
+      <button aria-pressed="true" data-type="">Tout</button>
+      <button aria-pressed="false" data-type="bar">🍹 Bars</button>
+      <button aria-pressed="false" data-type="resto">🍽️ Restos</button>
+    </div>
+    <div id="lieux"></div>
+    <small style="color:var(--doux)">Horaires et saisons varient : vérifiez avant d’y aller.</small>
+  </section>
+  </div>
 
   <footer>
     Météo : <a href="https://open-meteo.com">Open-Meteo</a> · Eau : OFEV via <a href="https://api.existenz.ch">existenz.ch</a> (mesurée à Genève)<br>
@@ -76,15 +110,16 @@
 
 <script type="module">
 import { ACTIVITES, estBise, meilleurCreneau } from './score.js';
+import { LIEUX, lienCarte } from './lieux.js';
 
 const SPOTS = [
-  { nom: 'Bains des Pâquis', lat: 46.2105, lon: 6.1556 },
-  { nom: 'Genève-Plage', lat: 46.2189, lon: 6.1797 },
-  { nom: 'Baby-Plage', lat: 46.1988, lon: 6.1606 },
-  { nom: 'Nyon', lat: 46.3833, lon: 6.2417 },
-  { nom: 'Lausanne – Vidy', lat: 46.5161, lon: 6.5953 },
-  { nom: 'Vevey', lat: 46.4614, lon: 6.8419 },
-  { nom: 'Évian', lat: 46.4010, lon: 6.5900 },
+  { nom: 'Bains des Pâquis', lat: 46.2105, lon: 6.1556, zone: 'geneve' },
+  { nom: 'Genève-Plage', lat: 46.2189, lon: 6.1797, zone: 'geneve' },
+  { nom: 'Baby-Plage', lat: 46.1988, lon: 6.1606, zone: 'geneve' },
+  { nom: 'Nyon', lat: 46.3833, lon: 6.2417, zone: 'nyon' },
+  { nom: 'Lausanne – Vidy', lat: 46.5161, lon: 6.5953, zone: 'lausanne' },
+  { nom: 'Vevey', lat: 46.4614, lon: 6.8419, zone: 'vevey' },
+  { nom: 'Évian', lat: 46.4010, lon: 6.5900, zone: 'evian' },
 ];
 const LIBELLES = ['Non', 'Bof', 'Bien', 'Parfait'];
 const $ = (id) => document.getElementById(id);
@@ -92,7 +127,29 @@ const $ = (id) => document.getElementById(id);
 const sel = $('spot');
 SPOTS.forEach((s, i) => sel.add(new Option(s.nom, i)));
 try { sel.value = localStorage.getItem('spot') ?? 0; } catch {}
-sel.onchange = () => { try { localStorage.setItem('spot', sel.value); } catch {} charger(); };
+sel.onchange = () => { try { localStorage.setItem('spot', sel.value); } catch {} charger(); afficherLieux(); };
+
+const onglets = { 't-lac': 'p-lac', 't-sortir': 'p-sortir' };
+for (const [t, panneau] of Object.entries(onglets)) $(t).onclick = () => {
+  for (const [t2, p2] of Object.entries(onglets)) { $(t2).setAttribute('aria-selected', t2 === t); $(p2).hidden = t2 !== t; }
+};
+
+let filtre = '';
+$('filtres').onclick = (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  filtre = b.dataset.type;
+  $('filtres').querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+  afficherLieux();
+};
+const carteLieu = (l) => `<div class="lieu"><b>${l.type === 'bar' ? '🍹' : '🍽️'} ${l.nom}</b><small>${l.ville} · ${l.note}</small><a href="${lienCarte(l)}" target="_blank" rel="noopener">Itinéraire →</a></div>`;
+function afficherLieux() {
+  const zone = (SPOTS[sel.value] ?? SPOTS[0]).zone;
+  const liste = LIEUX.filter((l) => !filtre || l.type === filtre);
+  const pres = liste.filter((l) => l.zone === zone), loin = liste.filter((l) => l.zone !== zone);
+  $('lieux').innerHTML = (pres.length ? '<h3>Près de cette plage</h3>' + pres.map(carteLieu).join('') : '')
+    + (loin.length ? '<h3>Ailleurs sur le lac</h3>' + loin.map(carteLieu).join('') : '');
+}
+afficherLieux();
 
 // shortcut: une seule mesure d'eau (Rhône à la Halle de l'Île, ≈ surface du lac à Genève) pour tous les spots ; brancher Alplakes (Eawag) pour une température par plage.
 async function tempEau() {
@@ -132,6 +189,7 @@ async function charger() {
 
     const alerte = c.code >= 95 ? '⚡ Orage : sortez de l’eau.' : estBise(c) ? '🌬️ Bise en cours : vagues et courant vers le Rhône.' : c.rafales > 40 ? '💨 Fortes rafales.' : '';
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte;
+    $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
       const n = a.note(c), cr = meilleurCreneau(heures, a.note);
