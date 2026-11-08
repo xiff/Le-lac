@@ -5,6 +5,7 @@ export const SPOTS = [
   { id: 'pregny-chambesy', nom: 'Pregny-Chambésy', lat: 46.2400, lon: 6.1530, region: 'Genève', zone: 'geneve' },
   { id: 'bains-des-paquis', nom: 'Bains des Pâquis', lat: 46.2105, lon: 6.1556, region: 'Genève', zone: 'geneve' },
   { id: 'geneve-plage', nom: 'Genève-Plage', lat: 46.2189, lon: 6.1797, region: 'Genève', zone: 'geneve' },
+  { id: 'tropical-corner', nom: 'Tropical Corner', lat: 46.2212, lon: 6.1838, region: 'Genève', zone: 'geneve' },
   { id: 'baby-plage', nom: 'Baby-Plage', lat: 46.1988, lon: 6.1606, region: 'Genève', zone: 'geneve' },
   { id: 'plage-des-eaux-vives', nom: 'Plage des Eaux-Vives', lat: 46.2065, lon: 6.1650, region: 'Genève', zone: 'geneve' },
   { id: 'cologny', nom: 'Cologny', lat: 46.2250, lon: 6.1880, region: 'Genève', zone: 'geneve' },
@@ -77,7 +78,7 @@ export function valeurProche(serie, quand = Date.now()) {
 }
 
 // Tour du lac dans l'ordre du rivage (rive nord d'ouest en est, puis rive sud d'est en ouest) : sert à dessiner la carte.
-export const TOUR = ['bains-des-paquis', 'pregny-chambesy', 'bellevue', 'genthod', 'versoix', 'celigny', 'mies', 'coppet', 'nyon', 'prangins', 'gland', 'dully', 'rolle', 'perroy', 'allaman', 'buchillon', 'saint-prex', 'tolochenaz', 'morges', 'preverenges', 'saint-sulpice', 'lausanne-vidy', 'lausanne-ouchy', 'lausanne-bellerive', 'pully', 'paudex', 'lutry', 'villette', 'cully-moratel', 'rivaz', 'saint-saphorin', 'corseaux', 'vevey', 'la-tour-de-peilz', 'montreux-clarens', 'veytaux', 'villeneuve', 'noville', 'le-bouveret', 'saint-gingolph', 'meillerie', 'lugrin', 'maxilly', 'neuvecelle', 'evian', 'publier-amphion', 'thonon-saint-disdille', 'thonon', 'anthy-sur-leman', 'margencel', 'sciez', 'excenevex', 'yvoire', 'nernier', 'messery', 'chens-sur-leman', 'hermance', 'anieres', 'corsier-port', 'collonge-bellerive-la-savonniere', 'cologny', 'plage-des-eaux-vives', 'baby-plage', 'geneve-plage'];
+export const TOUR = ['bains-des-paquis', 'pregny-chambesy', 'bellevue', 'genthod', 'versoix', 'celigny', 'mies', 'coppet', 'nyon', 'prangins', 'gland', 'dully', 'rolle', 'perroy', 'allaman', 'buchillon', 'saint-prex', 'tolochenaz', 'morges', 'preverenges', 'saint-sulpice', 'lausanne-vidy', 'lausanne-ouchy', 'lausanne-bellerive', 'pully', 'paudex', 'lutry', 'villette', 'cully-moratel', 'rivaz', 'saint-saphorin', 'corseaux', 'vevey', 'la-tour-de-peilz', 'montreux-clarens', 'veytaux', 'villeneuve', 'noville', 'le-bouveret', 'saint-gingolph', 'meillerie', 'lugrin', 'maxilly', 'neuvecelle', 'evian', 'publier-amphion', 'thonon-saint-disdille', 'thonon', 'anthy-sur-leman', 'margencel', 'sciez', 'excenevex', 'yvoire', 'nernier', 'messery', 'chens-sur-leman', 'hermance', 'anieres', 'corsier-port', 'collonge-bellerive-la-savonniere', 'cologny', 'tropical-corner', 'plage-des-eaux-vives', 'baby-plage', 'geneve-plage'];
 
 // Projection simple (équirectangulaire autour de 46,4° N) vers un cadre de largeur donnée.
 export function projeter(largeur) {

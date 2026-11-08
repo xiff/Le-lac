@@ -3,6 +3,7 @@
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 export const LIEUX = [
   { nom: 'Buvette des Bains des Pâquis', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Ouverte toute l’année : fondue l’hiver, plat du jour l’été, les pieds presque dans l’eau.', en: 'Open all year: fondue in winter, dish of the day in summer, feet almost in the water.' },
+  { nom: 'Tropical Corner', ville: 'Cologny', zone: 'geneve', type: 'bar', mois: [4, 10], note: 'Club nautique les pieds dans l’eau depuis 1981 : terrasse sous les palmiers, burgers et tapas, ponton de wakeboard, windsurf et paddle.', en: 'Lakeside watersports club since 1981: terrace under palm trees, burgers and tapas, wakeboard pontoon, windsurf and paddle.' },
   { nom: 'Restaurant de la Plage & Buvette', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Sur pilotis au bout de la plage des Eaux-Vives : perches, hot-dogs et glaces.', en: 'On stilts at the end of Eaux-Vives beach: perch, hot dogs and ice cream.' },
   { nom: 'La Barje des Lavandières', ville: 'Genève', zone: 'geneve', type: 'bar', mois: [5, 9], note: 'Buvette d’été au bord du Rhône, concerts gratuits, à deux pas de la rade.', en: 'Summer bar on the Rhône with free concerts, a stone’s throw from the harbour.' },
   { nom: 'La Perle du Lac', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Pavillon dans le parc Mon Repos, grande terrasse face au lac. Fermé le lundi en hiver.', en: 'Pavilion in Mon Repos park, big terrace facing the lake. Closed Mondays in winter.' },
