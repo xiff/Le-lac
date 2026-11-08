@@ -4,14 +4,26 @@ import { lire, verdict, ACTIVITES, PHRASES, meilleurCreneau } from '../score.js'
 
 const $ = (id) => document.getElementById(id);
 const s = SPOTS.find((x) => x.id === document.body.dataset.id);
-const LIB = ['Non', 'Bof', 'Bien', 'Parfait'], NOMS = { baignade: 'Baignade', paddle: 'Paddle', voile: 'Voile / wing', hiver: 'Bain d’hiver' };
-const deg = (v) => (v == null ? '–' : v.toFixed(1).replace('.', ',') + '°');
+const L = document.documentElement.lang === 'en' ? 'en' : 'fr';
+const T = {
+  fr: { lib: ['Non', 'Bof', 'Bien', 'Parfait'], noms: { baignade: 'Baignade', paddle: 'Paddle', voile: 'Voile / wing', hiver: 'Bain d’hiver' },
+    classes: ['en cours de classification', 'excellente à bonne', 'bonne à moyenne', 'pouvant être momentanément polluée', 'de mauvaise qualité : baignade déconseillée'],
+    eau: (c) => `Eau de baignade ${c}`, ge: (d, p) => `Canton de Genève, analyse du ${d}, ${p}`, releve: (r, h) => `${r} · relevé de ${h}`,
+    meilleur: (de, a) => ` Meilleur moment ${de}–${a}.`, erreur: 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.' },
+  en: { lib: ['No', 'Meh', 'Good', 'Perfect'], noms: { baignade: 'Swimming', paddle: 'Paddle', voile: 'Sailing / wing', hiver: 'Winter swim' },
+    classes: ['being classified', 'excellent to good', 'good to fair', 'may be temporarily polluted', 'poor: swimming not advised'],
+    eau: (c) => `Bathing water ${c}`, ge: (d, p) => `Canton of Geneva, tested ${d}, ${p}`, releve: (r, h) => `${r} · reading from ${h}`,
+    meilleur: (de, a) => ` Best time ${de}–${a}.`, erreur: 'The lake isn’t answering right now. Try again in a moment.' },
+}[L];
+const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore' };
+const LIB = T.lib, NOMS = T.noms;
+const deg = (v) => (v == null ? '–' : (L === 'en' ? v.toFixed(1) : v.toFixed(1).replace('.', ',')) + '°');
+const donnee = (f) => new URL(`../${f}`, import.meta.url); // racine du site, quelle que soit la profondeur de la page
 
-const eauJson = await fetch('../../eau.json', { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
-const qualites = await fetch('../../qualite.json', { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
+const eauJson = await fetch(donnee('eau.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
+const qualites = await fetch(donnee('qualite.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
 const q = qualites?.spots?.[s.id];
-const CLASSES = ['en cours de classification', 'excellente à bonne', 'bonne à moyenne', 'pouvant être momentanément polluée', 'de mauvaise qualité : baignade déconseillée'];
-if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>Eau de baignade ${CLASSES[q.qualite]} (${q.source === 'ge' ? `Canton de Genève, analyse du ${String(q.date).replace(/-/g, '.')}, ${q.plage}` : `CIPEL, ${q.plage}`})${q.alerte ? ` · ${q.alerte}` : ''}`; }
+if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.eau(T.classes[q.qualite])} (${q.source === 'ge' ? T.ge(String(q.date).replace(/-/g, '.'), q.plage) : `CIPEL, ${q.plage}`})${q.alerte ? ` · ${q.alerte}` : ''}`; }
 const eau = (id) => valeurProche(eauJson?.spots?.[id]);
 document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(e.dataset.eau))));
 $('eau').textContent = deg(eau(s.id));
@@ -22,14 +34,14 @@ try {
   const c = lire(m.current, null, eau(s.id)); if (!c) throw new Error('incomplet');
   c.qualite = q?.qualite;
   const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, c.eau); return h && { ...h, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-  $('verdict').textContent = verdict(c, 'fr').titre;
+  $('verdict').textContent = verdict(c, L).titre;
   $('air').textContent = Math.round(c.air) + '°';
   $('vent').textContent = Math.round(c.vent);
-  $('releve').textContent = `${s.region} · relevé de ${String(m.current.time).slice(11, 16)}`;
+  $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
     const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-    return `<li><span class="nom">${NOMS[a.id]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES.fr[a.id][n]}${cr ? ` Meilleur moment ${cr.de}–${cr.a}.` : ''}</span></li>`;
+    return `<li><span class="nom">${NOMS[a.id]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][a.id][n]}${cr ? T.meilleur(cr.de, cr.a) : ''}</span></li>`;
   }).join('');
 } catch {
-  $('verdict').textContent = 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.';
+  $('verdict').textContent = T.erreur;
 }

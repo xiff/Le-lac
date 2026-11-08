@@ -8,7 +8,8 @@ body { margin: 0; background: var(--papier); color: var(--encre); font: 400 17px
 a { color: inherit; text-underline-offset: 3px; }
 header { background: var(--lac); color: var(--creme); padding: calc(18px + env(safe-area-inset-top)) 20px 36px; }
 header > * { max-width: 640px; margin-left: auto; margin-right: auto; }
-.retour { display: block; font-size: 14px; font-weight: 600; margin-bottom: 28px; }
+.haut { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+.retour { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; }
 h1, h2 { font-family: "Young Serif", Georgia, serif; font-weight: 400; margin: 0; text-wrap: balance; }
 h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.08; letter-spacing: -0.02em; }
 .verdict { font: 400 clamp(21px, 4vw, 27px)/1.25 "Young Serif", Georgia, serif; color: var(--soleil); margin-top: 18px; }
