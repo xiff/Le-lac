@@ -11,7 +11,7 @@ const eauJson = await fetch('../../eau.json', { cache: 'no-cache' }).then((r) =>
 const qualites = await fetch('../../qualite.json', { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
 const q = qualites?.spots?.[s.id];
 const CLASSES = ['en cours de classification', 'excellente à bonne', 'bonne à moyenne', 'pouvant être momentanément polluée', 'de mauvaise qualité : baignade déconseillée'];
-if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>Eau de baignade ${CLASSES[q.qualite]} (CIPEL, ${q.plage})${q.alerte ? ` · ${q.alerte}` : ''}`; }
+if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>Eau de baignade ${CLASSES[q.qualite]} (${q.source === 'ge' ? `Canton de Genève, analyse du ${String(q.date).replace(/-/g, '.')}, ${q.plage}` : `CIPEL, ${q.plage}`})${q.alerte ? ` · ${q.alerte}` : ''}`; }
 const eau = (id) => valeurProche(eauJson?.spots?.[id]);
 document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(e.dataset.eau))));
 $('eau').textContent = deg(eau(s.id));

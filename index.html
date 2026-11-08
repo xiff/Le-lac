@@ -426,7 +426,7 @@ async function charger() {
     const danger = c.code >= 95 || c.rafales > 40 || q?.qualite === 4;
     const alerte = c.code >= 95 ? T.orage : q?.qualite === 4 ? T.eauMauvaise : q?.qualite === 3 ? T.eauPolluee : estBise(c) ? T.bise : c.rafales > 40 ? T.rafales : '';
     $('qualite').hidden = !q;
-    if (q) $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.qualite(T.classes[q.qualite], q.plage)}${q.alerte ? ` · ${q.alerte}` : ''}`;
+    if (q) $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.qualite(T.classes[q.qualite], q.source === 'ge' ? T.sourceGe(String(q.date).replace(/-/g, '.'), q.plage) : `CIPEL, ${q.plage}`)}${q.alerte ? ` · ${q.alerte}` : ''}`;
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte; $('alerte').classList.toggle('danger', danger);
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
