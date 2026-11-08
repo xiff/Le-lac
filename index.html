@@ -270,11 +270,18 @@ function ouvrir() {
   const sortir = location.hash === '#sortir';
   $('onglets').dataset.actif = sortir ? 'sortir' : 'lac';
   $('t-lac').setAttribute('aria-selected', !sortir); $('t-sortir').setAttribute('aria-selected', sortir);
+  $('t-lac').tabIndex = sortir ? -1 : 0; $('t-sortir').tabIndex = sortir ? 0 : -1;
   $('p-lac').hidden = sortir; $('p-sortir').hidden = !sortir;
 }
 $('t-lac').onclick = () => { if (location.hash) history.back(); };
 $('t-sortir').onclick = () => { if (location.hash !== '#sortir') location.hash = 'sortir'; };
 addEventListener('hashchange', ouvrir);
+// Flèches gauche/droite entre les onglets, comme le prévoit le motif ARIA des onglets.
+$('onglets').onkeydown = (e) => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const cible = location.hash === '#sortir' ? $('t-lac') : $('t-sortir');
+  cible.click(); cible.focus(); e.preventDefault();
+};
 if (location.hash) history.replaceState(null, '', location.pathname); // toujours démarrer sur le lac
 ouvrir();
 
@@ -338,10 +345,13 @@ const cond = (o, i, eau) => {
   return { eau, air: v('temperature_2m'), vent: v('wind_speed_10m'), rafales: v('wind_gusts_10m'), dir: v('wind_direction_10m'), code: v('weather_code') };
 };
 
+let demande = 0;
 async function charger() {
+  const moi = ++demande;
   $('verdict').classList.add('charge');
   try {
     const [m, eau] = await Promise.all([meteo(spot()), tempEau()]);
+    if (moi !== demande) return; // une réponse plus récente (autre plage) a pris le relais
     const c = cond(m.current, null, eau);
     const heures = m.hourly.time.map((t, i) => ({ ...cond(m.hourly, i, eau), heure: t.slice(11, 13) + 'h' }));
     const v = verdict(c);
