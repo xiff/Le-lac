@@ -11,3 +11,12 @@ test('plage la plus proche', () => {
 test('chaque lieu a les champs requis', () => {
   for (const l of LIEUX) for (const k of ['nom', 'ville', 'zone', 'type', 'note']) assert.ok(l[k], `${l.nom} : ${k}`);
 });
+
+import { fermeture } from './lieux.js';
+test('saisons des lieux', () => {
+  const barje = LIEUX.find((l) => l.nom.includes('Barje'));
+  assert.equal(fermeture(barje, new Date(2026, 6, 14)), null);
+  assert.equal(fermeture(barje, new Date(2026, 10, 8)), 'Fermé jusqu’en mai');
+  assert.equal(fermeture(LIEUX[0], new Date(2026, 10, 8)), null);
+  for (const l of LIEUX) if (l.mois) assert.ok(l.mois[0] >= 1 && l.mois[1] <= 12 && l.mois[0] <= l.mois[1], l.nom);
+});

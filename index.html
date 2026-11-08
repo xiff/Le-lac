@@ -125,6 +125,7 @@
   .lieu b { font: 400 1.1rem/1.25 var(--display); }
   .lieu .ville { color: var(--lac-vif); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
   .lieu .ville svg { width: 15px; height: 15px; }
+  .lieu .ville .badge { margin-left: auto; text-transform: none; letter-spacing: 0; font-size: .75rem; padding: 3px 9px; }
   .lieu p { margin: 4px 0 8px; color: var(--doux); max-width: 60ch; }
   .lieu a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--lac-vif); font-weight: 700; font-size: .9rem; text-decoration: none; }
   .lieu a svg { width: 16px; height: 16px; }
@@ -241,7 +242,7 @@
 
 <script type="module">
 import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
-import { LIEUX, lienCarte, plusProche } from './lieux.js';
+import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { SPOTS, valeurProche } from './spots.js';
 
 const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon' };
@@ -294,11 +295,12 @@ $('filtres').onclick = (e) => {
   afficherLieux();
 };
 const carteLieu = (l, i) => `<article class="lieu lieu-ent" style="transition-delay:${Math.min(i, 6) * 40}ms">
-  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}</div>
+  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}${fermeture(l) ? `<span class="badge t1">${fermeture(l)}</span>` : ''}</div>
   <b>${l.nom}</b><p>${l.note}</p>
   <a href="${lienCarte(l)}" target="_blank" rel="noopener">${icone('cap')}Itinéraire</a>${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">Réserver</a>` : ''}</article>`;
 function afficherLieux() {
-  const liste = LIEUX.filter((l) => !filtre || l.type === filtre);
+  // Les lieux fermés pour la saison passent en fin de liste.
+  const liste = LIEUX.filter((l) => !filtre || l.type === filtre).sort((a, b) => !!fermeture(a) - !!fermeture(b));
   const pres = liste.filter((l) => l.zone === spot().zone), loin = liste.filter((l) => l.zone !== spot().zone);
   $('lieux').innerHTML = (pres.length ? `<h2>Près de ${spot().nom}</h2>` + pres.map(carteLieu).join('') : '')
     + (loin.length ? '<h2>Ailleurs sur le lac</h2>' + loin.map((l, i) => carteLieu(l, i + pres.length)).join('') : '');

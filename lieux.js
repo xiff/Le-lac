@@ -1,26 +1,32 @@
-// Bars et restos au bord de l'eau. zone = zone des plages (voir SPOTS dans index.html).
+// Bars et restos au bord de l'eau, vérifiés le 8 novembre 2026 (offices du tourisme, guides, sites des lieux).
+// zone = zone des plages (voir spots.js). mois = [premier, dernier] mois d'ouverture, absent si toute l'année.
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
-// shortcut: liste écrite à la main, sans horaires ni prix ; passer à une base éditable quand les partenaires paieront pour y figurer.
 export const LIEUX = [
-  { nom: 'Buvette des Bains des Pâquis', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Fondue l’hiver, plat du jour l’été, les pieds presque dans l’eau.' },
-  { nom: 'La Barje des Lavandières', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Buvette d’été au bord du Rhône, à deux pas de la rade.' },
-  { nom: 'Buvettes de la plage des Eaux-Vives', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'La plage la plus récente de Genève, l’apéro les pieds dans les galets.' },
-  { nom: 'Le Chat-Botté (Beau-Rivage)', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Terrasse face au Jet d’eau. Le restaurant pour les grandes occasions.' },
-  { nom: 'La Perle du Lac', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Terrasse dans le parc Mon Repos, face au lac.' },
-  { nom: 'Restaurant du Parc des Eaux-Vives', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Maison de maître dans le parc, vue sur la rade. Pour une occasion.' },
-  { nom: 'Auberge d’Hermance', ville: 'Hermance', zone: 'geneve', type: 'resto', note: 'Village au bord du lac, à 20 minutes de Genève.' },
-  { nom: 'Hôtel du Lac', ville: 'Coppet', zone: 'nyon', type: 'resto', note: 'Terrasse au ras de l’eau entre Genève et Nyon.' },
-  { nom: 'La Jetée de la Compagnie', ville: 'Lausanne', zone: 'lausanne', type: 'bar', note: 'Buvette d’été sur la jetée d’Ouchy, parfaite au coucher du soleil.' },
-  { nom: 'Le Lacustre', ville: 'Lausanne', zone: 'lausanne', type: 'resto', note: 'Sur le quai d’Ouchy, face aux bateaux CGN.' },
-  { nom: 'Beau-Rivage Palace', ville: 'Lausanne', zone: 'lausanne', type: 'bar', note: 'Le verre chic du dimanche, jardins jusqu’au lac.' },
-  { nom: 'Hôtel Le Rivage', ville: 'Lutry', zone: 'lausanne', type: 'resto', note: 'Terrasse sur le quai de Lutry, au pied de Lavaux.' },
-  { nom: 'Le Major Davel', ville: 'Cully', zone: 'vevey', type: 'resto', note: 'Filets de perche face au lac, au cœur de Lavaux.' },
-  { nom: 'Hôtel des Trois Couronnes', ville: 'Vevey', zone: 'vevey', type: 'bar', note: 'Terrasse Belle Époque sur les quais de Vevey.' },
-  { nom: 'Fairmont Le Montreux Palace', ville: 'Montreux', zone: 'vevey', type: 'bar', note: 'Un verre Belle Époque face aux Dents-du-Midi.' },
-  { nom: 'Hôtel du Port', ville: 'Yvoire', zone: 'evian', type: 'resto', note: 'Village médiéval, terrasse sur le port côté français.' },
+  { nom: 'Buvette des Bains des Pâquis', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Ouverte toute l’année : fondue l’hiver, plat du jour l’été, les pieds presque dans l’eau.' },
+  { nom: 'Restaurant de la Plage & Buvette', ville: 'Genève', zone: 'geneve', type: 'bar', note: 'Sur pilotis au bout de la plage des Eaux-Vives : perches, hot-dogs et glaces.' },
+  { nom: 'La Barje des Lavandières', ville: 'Genève', zone: 'geneve', type: 'bar', mois: [5, 9], note: 'Buvette d’été au bord du Rhône, concerts gratuits, à deux pas de la rade.' },
+  { nom: 'La Perle du Lac', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Pavillon dans le parc Mon Repos, grande terrasse face au lac. Fermé le lundi en hiver.' },
+  { nom: 'Hôtel du Parc des Eaux-Vives', ville: 'Genève', zone: 'geneve', type: 'resto', note: 'Maison de maître en haut du parc, vue sur le lac et le Jura. Pour une occasion.' },
+  { nom: 'Auberge d’Hermance', ville: 'Hermance', zone: 'geneve', type: 'resto', note: 'Village au bord du lac, à 20 minutes de Genève, produits du coin.' },
+  { nom: 'Hôtel du Lac', ville: 'Coppet', zone: 'nyon', type: 'resto', note: 'Terrasse avec vue sur le lac, entre Genève et Nyon.' },
+  { nom: 'La Jetée de la Compagnie', ville: 'Lausanne', zone: 'lausanne', type: 'bar', mois: [5, 9], note: 'Buvette d’été sur la jetée d’Ouchy : ponton, grillades et coucher de soleil.' },
+  { nom: 'Le Lacustre', ville: 'Lausanne', zone: 'lausanne', type: 'resto', note: 'Au-dessus du débarcadère d’Ouchy : pizzas au feu de bois et brunch le week-end.' },
+  { nom: 'Bar du Beau-Rivage Palace', ville: 'Lausanne', zone: 'lausanne', type: 'bar', note: 'Le verre chic, terrasse sous les arcades face au lac et aux Alpes.' },
+  { nom: 'Le Rivage', ville: 'Lutry', zone: 'lausanne', type: 'resto', note: 'Terrasse sur les quais de Lutry, poissons du lac, au pied de Lavaux.' },
+  { nom: 'Hôtel des Trois Couronnes', ville: 'Vevey', zone: 'vevey', type: 'bar', note: 'Terrasse panoramique Belle Époque sur les quais de Vevey.' },
+  { nom: 'La Terrasse du Petit Palais', ville: 'Montreux', zone: 'vevey', type: 'resto', mois: [5, 9], note: 'La terrasse du Montreux Palace, face au lac et aux Alpes, aux beaux jours.' },
+  { nom: 'Hôtel-Restaurant du Port', ville: 'Yvoire', zone: 'evian', type: 'resto', mois: [3, 10], note: 'Village médiéval, terrasse sur le port côté français.' },
 ];
 
 export const lienCarte = (l) => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${l.nom} ${l.ville}`);
+
+const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+// Fermé en ce moment ? Renvoie « Rouvre en mai » ou null si ouvert (ou ouvert toute l'année).
+export function fermeture(l, d = new Date()) {
+  if (!l.mois) return null;
+  const m = d.getMonth() + 1, [a, b] = l.mois;
+  return m >= a && m <= b ? null : `Fermé jusqu’en ${MOIS[a - 1]}`;
+}
 
 // Plage la plus proche d'une position (distance à plat, suffisante à l'échelle du lac).
 export function plusProche(spots, lat, lon) {
