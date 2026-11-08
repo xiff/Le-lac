@@ -23,13 +23,6 @@
     --display: "Young Serif", Georgia, serif; --texte: Onest, system-ui, sans-serif;
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --papier: #0c1d23; --carte: #132a32; --encre: #ece4d3; --doux: #a3b5b6; --trait: #ece4d31f;
-      --lac: #0a3a48; --lac-vif: #6cc3d3; --n0-bg: #4a211b; --n0: #ffc3b4; --n1-bg: #47360f; --n1: #ffdc8f;
-      --n2-bg: #173d2a; --n2: #a8e6c0; --n3-bg: #10404b; --n3: #a6e3ee; color-scheme: dark;
-    }
-  }
 
   * { box-sizing: border-box; }
   ::selection { background: var(--soleil); color: #10292f; }
@@ -147,7 +140,6 @@
   @media (hover: hover) and (pointer: fine) { .carte .point:hover circle.vu { transform: scale(1.4); } }
   .carte .point.actuel circle.vu { stroke: var(--encre); stroke-width: 2.5; }
   .extremes { color: var(--doux); font-size: .88rem; margin: 6px 0 0; }
-  @media (prefers-color-scheme: dark) { .carte .eau-lac { fill: #143844; } }
 
   /* Sortir */
   .filtres { display: flex; gap: 8px; margin-top: 18px; }
