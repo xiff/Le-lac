@@ -428,7 +428,7 @@ const eauDe = (s) => valeurProche(eauJson?.spots?.[s.id]);
 const meteos = {};
 async function meteo(s) {
   if (!meteos[s.id]) {
-    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
     meteos[s.id] = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
   }
   return meteos[s.id];

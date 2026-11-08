@@ -9,11 +9,11 @@ const T = {
   fr: { lib: ['Non', 'Bof', 'Bien', 'Parfait'], noms: { baignade: 'Baignade', paddle: 'Paddle', voile: 'Voile / wing', hiver: 'Bain d’hiver' },
     classes: ['en cours de classification', 'excellente à bonne', 'bonne à moyenne', 'pouvant être momentanément polluée', 'de mauvaise qualité : baignade déconseillée'],
     eau: (c) => `Eau de baignade ${c}`, ge: (d, p) => `Canton de Genève, analyse du ${d}, ${p}`, releve: (r, h) => `${r} · relevé de ${h}`,
-    meilleur: (de, a) => ` Meilleur moment ${de}–${a}.`, erreur: 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.' },
+    meilleur: (lib, de, a) => ` ${lib} de ${de} à ${a}.`, erreur: 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.' },
   en: { lib: ['No', 'Meh', 'Good', 'Perfect'], noms: { baignade: 'Swimming', paddle: 'Paddle', voile: 'Sailing / wing', hiver: 'Winter swim' },
     classes: ['being classified', 'excellent to good', 'good to fair', 'may be temporarily polluted', 'poor: swimming not advised'],
     eau: (c) => `Bathing water ${c}`, ge: (d, p) => `Canton of Geneva, tested ${d}, ${p}`, releve: (r, h) => `${r} · reading from ${h}`,
-    meilleur: (de, a) => ` Best time ${de}–${a}.`, erreur: 'The lake isn’t answering right now. Try again in a moment.' },
+    meilleur: (lib, de, a) => ` ${lib} from ${de} to ${a}.`, erreur: 'The lake isn’t answering right now. Try again in a moment.' },
 }[L];
 const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore' };
 const LIB = T.lib, NOMS = T.noms;
@@ -29,7 +29,7 @@ document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(
 $('eau').textContent = deg(eau(s.id));
 
 try {
-  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
   const m = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
   const c = lire(m.current, null, eau(s.id)); if (!c) throw new Error('incomplet');
   c.qualite = q?.qualite;
@@ -40,7 +40,7 @@ try {
   $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
     const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-    return `<li><span class="nom">${NOMS[cle(a, c)]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][cle(a, c)][n]}${cr ? T.meilleur(cr.de, cr.a) : ''}</span></li>`;
+    return `<li><span class="nom">${NOMS[cle(a, c)]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][cle(a, c)][n]}${cr ? T.meilleur(LIB[cr.n], cr.de, cr.a) : ''}</span></li>`;
   }).join('');
 } catch {
   $('verdict').textContent = T.erreur;

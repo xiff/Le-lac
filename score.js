@@ -50,19 +50,22 @@ export const ACTIVITES = [
   { id: 'voile', note: voile },
 ];
 
-// Meilleur créneau d'au moins 2 h consécutives où l'activité est notée ≥ 2.
+// Meilleur créneau de jour : la meilleure note (≥ Bien), la plus longue suite en cas d'égalité.
+// null s'il n'apprend rien : le créneau commence à l'heure en cours (la note du moment le dit déjà).
 export function meilleurCreneau(heures, noteFn) {
-  let best = null, debut = null;
-  heures.forEach((h, i) => {
-    const ok = noteFn(h) >= 2;
-    if (ok && debut === null) debut = i;
-    if ((!ok || i === heures.length - 1) && debut !== null) {
-      const fin = ok ? i : i - 1;
-      if (fin - debut >= 1 && (!best || fin - debut > best.fin - best.debut)) best = { debut, fin };
-      debut = null;
-    }
-  });
-  return best && { de: heures[best.debut].heure, a: heures[best.fin].heure };
+  const notes = heures.map((h) => (h.jour === false ? -1 : noteFn(h)));
+  const max = Math.max(-1, ...notes);
+  if (max < 2) return null;
+  let best = null;
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i] !== max) continue;
+    let f = i; while (notes[f + 1] === max) f++;
+    if (!best || f - i > best.fin - best.debut) best = { debut: i, fin: f };
+    i = f;
+  }
+  if (best.debut === 0) return null;
+  const fin = (parseInt(heures[best.fin].heure, 10) + 1) % 24;
+  return { n: max, de: heures[best.debut].heure, a: String(fin).padStart(2, '0') + 'h' };
 }
 
 // Phrases par activité et par note, avec un peu de caractère.
@@ -121,7 +124,7 @@ export const saison = (d) => { const a = d.getMonth() >= 8 ? d.getFullYear() : d
 // Renvoie null si une valeur indispensable manque : mieux vaut « pas de données » qu'un NaN.
 export function lire(o, i, eau) {
   const v = (k) => { const x = i == null ? o?.[k] : o?.[k]?.[i]; return x == null || x === '' ? NaN : Number(x); };
-  const c = { eau: Number.isFinite(eau) ? eau : null, air: v('temperature_2m'), vent: v('wind_speed_10m'), rafales: v('wind_gusts_10m'), dir: v('wind_direction_10m'), code: v('weather_code') };
+  const c = { eau: Number.isFinite(eau) ? eau : null, air: v('temperature_2m'), vent: v('wind_speed_10m'), rafales: v('wind_gusts_10m'), dir: v('wind_direction_10m'), code: v('weather_code'), jour: v('is_day') !== 0 };
   if (![c.air, c.vent].every(Number.isFinite)) return null;
   if (!Number.isFinite(c.rafales)) c.rafales = c.vent * 1.5; // rafales inconnues : estimation prudente plutôt que 0
   if (!Number.isFinite(c.dir)) c.dir = 0;
