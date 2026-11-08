@@ -284,8 +284,8 @@
       <p class="verdict" id="r-verdict">Water at 12°. Perfect for the brave.</p>
       <div class="mesures"><span><b id="r-eau">12.3°</b>water</span><span><b id="r-air">8°</b>air</span><span><b id="r-vent">6</b>wind km/h</span></div>
       <div class="acts" id="r-acts">
-        <span>Swimming <em class="note-ui t0">No</em></span><span>Paddle <em class="note-ui t2">Good</em></span>
-        <span>Sailing / wing <em class="note-ui t0">No</em></span><span>Winter swim <em class="note-ui t3">Perfect</em></span>
+        <span>Winter swim <em class="note-ui t3">Perfect</em></span><span>Paddle <em class="note-ui t2">Good</em></span>
+        <span>Sailing / wing <em class="note-ui t0">No</em></span>
       </div>
     </div>
     <div class="exemples entre"><span>Or try:</span><button type="button">Lausanne – Vidy</button><button type="button">Yvoire</button><button type="button">Montreux – Clarens</button></div>
@@ -400,7 +400,7 @@
 
 <script type="module">
 import { SPOTS, valeurProche } from '../../spots.js';
-import { lire, verdict, ACTIVITES, PHRASES } from '../../score.js';
+import { lire, verdict, ACTIVITES, PHRASES, cle } from '../../score.js';
 
 const $ = (id) => document.getElementById(id);
 const LIB = ['No', 'Meh', 'Good', 'Perfect'], NOMS = { baignade: 'Swimming', paddle: 'Paddle', voile: 'Sailing / wing', hiver: 'Winter swim' };
@@ -449,7 +449,7 @@ async function repondre() {
     const { c, v } = await conditions(s); if (moi !== tour) return;
     $('r-verdict').textContent = `${s.nom}: ${v.titre}`;
     $('r-eau').textContent = deg(c.eau); $('r-air').textContent = Math.round(c.air) + '°'; $('r-vent').textContent = Math.round(c.vent);
-    $('r-acts').innerHTML = ACTIVITES.map((a) => { const n = a.note(c); return `<span title="${PHRASES.en[a.id][n]}">${NOMS[a.id]} <em class="note-ui t${n}">${LIB[n]}</em></span>`; }).join('');
+    $('r-acts').innerHTML = ACTIVITES.map((a) => { const n = a.note(c); return `<span title="${PHRASES.en[cle(a, c)][n]}">${NOMS[cle(a, c)]} <em class="note-ui t${n}">${LIB[n]}</em></span>`; }).join('');
   } catch { if (moi === tour) $('r-verdict').textContent = 'The lake isn’t answering right now. Try again in a moment.'; }
 }
 $('plage').addEventListener('input', () => { clearTimeout(minuterie); minuterie = setTimeout(repondre, 350); });

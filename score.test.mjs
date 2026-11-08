@@ -65,7 +65,7 @@ test('lecture défensive des données météo', () => {
 test('verdict : canicule, eau très chaude, gel', () => {
   assert.match(verdict({ ...calme, air: 33 }).titre, /Canicule/);
   assert.match(verdict({ ...calme, eau: 26 }).titre, /presque un bain/);
-  assert.match(verdict({ eau: 7, air: -3, vent: 5, rafales: 9, dir: 200, code: 3 }).titre, /gèle/);
+  assert.match(verdict({ eau: 7, air: -3, vent: 5, rafales: 9, dir: 200, code: 3, mois: 1 }).titre, /gèle/);
 });
 
 import { PHRASES as PH } from './score.js';
@@ -81,4 +81,23 @@ test('qualité CIPEL : mauvaise = pas de baignade, polluée = bof au mieux', () 
   assert.equal(baignade({ ...calme, qualite: 1 }), 3);
   assert.equal(hiver({ eau: 8, air: 3, vent: 6, rafales: 10, dir: 200, code: 3, qualite: 4 }), 0);
   assert.equal(paddle({ ...calme, qualite: 4 }), 3); // le paddle ne se boit pas
+});
+
+import { estHiver, cle, ACTIVITES as ACTS, qualiteRecente } from './score.js';
+test('une seule case : bain d’hiver d’octobre à mai sous 15°', () => {
+  const b = ACTS.find((a) => a.id === 'baignade');
+  assert.equal(ACTS.length, 3);
+  assert.equal(estHiver({ eau: 12, mois: 11 }), true);
+  assert.equal(estHiver({ eau: 12, mois: 7 }), false);   // juillet : baignade froide, pas bain d'hiver
+  assert.equal(estHiver({ eau: 16, mois: 1 }), false);
+  assert.equal(cle(b, { eau: 9, mois: 2 }), 'hiver');
+  assert.equal(b.note({ eau: 8, air: 3, vent: 6, rafales: 10, dir: 200, code: 3, mois: 12 }), 3); // note bain d'hiver
+  assert.equal(b.note({ ...calme, eau: 12, mois: 7 }), 0); // note baignade en été
+  assert.match(verdict({ eau: 9, air: 5, vent: 5, rafales: 9, dir: 200, code: 3, mois: 11 }).titre, /braves/);
+});
+test('qualité affichée seulement si l’analyse a moins de 30 jours', () => {
+  const now = Date.UTC(2026, 10, 8);
+  assert.equal(qualiteRecente({ qualite: 1, date: '01-09-2026' }, now), null);
+  assert.equal(qualiteRecente({ qualite: 1, date: '20-10-2026' }, now)?.qualite, 1);
+  assert.equal(qualiteRecente({ qualite: 1, plage: 'CIPEL' }, now), null); // classement annuel sans date
 });

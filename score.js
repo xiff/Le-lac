@@ -37,11 +37,17 @@ export function hiver(c) {
   return eauSaine(c, c.rafales <= 20 ? 3 : c.rafales <= 35 ? 2 : 1);
 }
 
+// Une seule case pour l'eau : d'octobre à mai, sous 15°, la baignade devient un bain d'hiver.
+// c.mois (1-12) peut être fourni ; sinon le mois en cours.
+export const moisHiver = (m) => m >= 10 || m <= 5;
+export const estHiver = (c) => c.eau != null && c.eau < 15 && moisHiver(c.mois ?? new Date().getMonth() + 1);
+// Clé de texte d'une activité (nom, phrases) : « hiver » pour la baignade en mode bain d'hiver.
+export const cle = (a, c) => (a.id === 'baignade' && estHiver(c) ? 'hiver' : a.id);
+
 export const ACTIVITES = [
-  { id: 'baignade', nom: 'Baignade', emoji: '🏊', note: baignade },
-  { id: 'paddle', nom: 'Paddle', emoji: '🏄', note: paddle },
-  { id: 'voile', nom: 'Voile / wing', emoji: '⛵', note: voile },
-  { id: 'hiver', nom: 'Bain d’hiver', emoji: '🥶', note: hiver },
+  { id: 'baignade', note: (c) => (estHiver(c) ? hiver(c) : baignade(c)) },
+  { id: 'paddle', note: paddle },
+  { id: 'voile', note: voile },
 ];
 
 // Meilleur créneau d'au moins 2 h consécutives où l'activité est notée ≥ 2.
@@ -101,10 +107,11 @@ export function verdict(c, langue = 'fr') {
   if (estBise(c) && top.a.id !== 'voile') return { titre: T.bise, act: null };
   if (top.n < 2) return { titre: T.terrasse, act: null, sortir: true };
   const e = c.eau == null ? null : Math.round(c.eau);
-  if (top.a.id === 'baignade' && c.air >= 30) return { titre: T.canicule(e), act: 'baignade' };
-  if (top.a.id === 'baignade' && c.eau >= 25) return { titre: T.chaude(e), act: 'baignade' };
-  if (top.a.id === 'hiver' && c.air <= 0) return { titre: T.gel(e), act: 'hiver' };
-  return { titre: T[top.a.id](e), act: top.a.id };
+  const k = cle(top.a, c);
+  if (k === 'baignade' && c.air >= 30) return { titre: T.canicule(e), act: 'baignade' };
+  if (k === 'baignade' && c.eau >= 25) return { titre: T.chaude(e), act: 'baignade' };
+  if (k === 'hiver' && c.air <= 0) return { titre: T.gel(e), act: 'baignade' };
+  return { titre: T[k](e), act: top.a.id };
 }
 
 // Saison de bain d'hiver : de septembre à août, ex. « 2026-2027 ».
@@ -120,4 +127,13 @@ export function lire(o, i, eau) {
   if (!Number.isFinite(c.dir)) c.dir = 0;
   if (!Number.isFinite(c.code)) c.code = 0;
   return c;
+}
+
+// Qualité de l'eau affichable : seulement une analyse datée de moins de 30 jours (aujourd'hui les analyses
+// genevoises). Le classement annuel de la CIPEL ne dit rien de l'eau du jour : on ne l'affiche pas.
+export function qualiteRecente(q, maintenant = Date.now()) {
+  if (!q?.date) return null;
+  const [j, m, a] = String(q.date).split('-').map(Number);
+  const t = Date.UTC(a, m - 1, j);
+  return Number.isFinite(t) && maintenant - t >= 0 && maintenant - t <= 30 * 86400e3 ? q : null;
 }

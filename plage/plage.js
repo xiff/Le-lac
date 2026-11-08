@@ -1,6 +1,6 @@
 // Conditions du jour pour une page de plage : même calcul que l'app.
 import { SPOTS, valeurProche } from '../spots.js';
-import { lire, verdict, ACTIVITES, PHRASES, meilleurCreneau } from '../score.js';
+import { lire, verdict, ACTIVITES, PHRASES, meilleurCreneau, cle, qualiteRecente } from '../score.js';
 
 const $ = (id) => document.getElementById(id);
 const s = SPOTS.find((x) => x.id === document.body.dataset.id);
@@ -22,7 +22,7 @@ const donnee = (f) => new URL(`../${f}`, import.meta.url); // racine du site, qu
 
 const eauJson = await fetch(donnee('eau.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
 const qualites = await fetch(donnee('qualite.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
-const q = qualites?.spots?.[s.id];
+const q = qualiteRecente(qualites?.spots?.[s.id]); // analyse de plus de 30 jours : on n'affiche rien
 if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.eau(T.classes[q.qualite])} (${q.source === 'ge' ? T.ge(String(q.date).replace(/-/g, '.'), q.plage) : `CIPEL, ${q.plage}`})${q.alerte ? ` · ${q.alerte}` : ''}`; }
 const eau = (id) => valeurProche(eauJson?.spots?.[id]);
 document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(e.dataset.eau))));
@@ -40,7 +40,7 @@ try {
   $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
     const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-    return `<li><span class="nom">${NOMS[a.id]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][a.id][n]}${cr ? T.meilleur(cr.de, cr.a) : ''}</span></li>`;
+    return `<li><span class="nom">${NOMS[cle(a, c)]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][cle(a, c)][n]}${cr ? T.meilleur(cr.de, cr.a) : ''}</span></li>`;
   }).join('');
 } catch {
   $('verdict').textContent = T.erreur;

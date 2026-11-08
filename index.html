@@ -187,6 +187,7 @@
   @keyframes pulse { 50% { opacity: .45; } }
   footer { color: var(--doux); font-size: .75rem; margin-top: 28px; }
   footer a { color: inherit; text-underline-offset: 2px; }
+  footer .lien-qualite { display: block; margin-top: 8px; }
   .langue { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; padding: 0; border: 0; background: none; color: var(--lac-vif); font-weight: 600; font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -263,6 +264,7 @@
     <footer>
       <span data-th="pied">      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
       Indicatif : le lac a toujours le dernier mot.</span>
+      <a class="lien-qualite" id="lien-qualite" data-t="verifierQualite" href="https://www.cipel.org/carte-des-plages/" target="_blank" rel="noopener">Qualité de l’eau : vérifier à la source</a>
       <button class="langue" id="langue" lang="en">English</button>
     </footer>
   </div>
@@ -296,7 +298,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
+import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
 import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
@@ -313,7 +315,7 @@ document.getElementById('langue').onclick = () => { try { localStorage.setItem('
 
 const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon' };
 const LIBELLES = T.libelles;
-const NOM = (a) => T.activites[a.id];
+const NOM = (a, c = etat?.c) => T.activites[cle(a, c ?? {})];
 const $ = (id) => document.getElementById(id);
 const icone = (n, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const fleche = (dir, lib) => `<svg class="i fleche" style="rotate:${dir + 180}deg" role="img" aria-label="${lib ?? T.ventDe(dir)}"><use href="#i-fleche"/></svg>`;
@@ -465,9 +467,10 @@ let demande = 0;
 async function charger() {
   const moi = ++demande;
   $('verdict').classList.add('charge');
+  $('lien-qualite').href = spot().zone === 'geneve' ? 'https://www.ge.ch/plages-lieux-baignade-eaux-vives-geneve/qualite-eau-baignade' : 'https://www.cipel.org/carte-des-plages/';
   try {
     const [m, eau, qj] = await Promise.all([meteo(spot()), tempEau(spot()), donneesQualite()]);
-    const q = qj?.spots?.[spot().id];
+    const q = qualiteRecente(qj?.spots?.[spot().id]); // analyse de plus de 30 jours : on n'affiche rien
     if (moi !== demande) return; // une réponse plus récente (autre plage) a pris le relais
     const c = lire(m.current, null, eau);
     if (c) c.qualite = q?.qualite;
@@ -490,16 +493,16 @@ async function charger() {
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
       const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
-        <div><b>${NOM(a)}</b><small>${PHRASES[LANGUE][a.id][n]}${cr ? `<span class="cr">${T.meilleur(cr.de, cr.a)}</span>` : ''}</small></div>
-        <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[a.id]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
+      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a, c)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[cle(a, c)])}</span>
+        <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}${cr ? `<span class="cr">${T.meilleur(cr.de, cr.a)}</span>` : ''}</small></div>
+        <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[cle(a, c)]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
     }).join('');
     etat.heures = heures;
     if (!etat.choix || !ACTIVITES.some((a) => a.id === etat.choix)) etat.choix = v.act ?? 'paddle';
     afficherHeures();
-    $('defi').hidden = !(eau != null && eau <= 14);
+    $('defi').hidden = !estHiver(c);
     const sauna = LOCATIONS.find((l) => l.activites.includes('sauna') && ouvertLoc(l) && l.spot && SPOTS.find((x) => x.id === l.spot)?.zone === spot().zone);
-    $('sauna').hidden = !(sauna && eau != null && eau <= 14);
+    $('sauna').hidden = !(sauna && estHiver(c));
     if (sauna) { $('sauna').href = sauna.site ?? sauna.source; $('sauna').target = '_blank'; $('sauna').rel = 'noopener'; $('sauna').innerHTML = `<b>${T.saunaTitre(Math.round(eau ?? 0), sauna.nom)}</b><span>${LANGUE === 'en' ? sauna.en : sauna.note}</span>`; }
     $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
   } catch {
