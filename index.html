@@ -34,7 +34,7 @@
   * { box-sizing: border-box; }
   ::selection { background: var(--soleil); color: #10292f; }
   :focus-visible { outline: 2px solid var(--soleil); outline-offset: 3px; border-radius: 6px; }
-  html { -webkit-tap-highlight-color: transparent; }
+  html { -webkit-tap-highlight-color: transparent; scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); } /* rien de caché sous la barre d'onglets */
   body { margin: 0; font: 400 1rem/1.45 var(--texte); background: var(--papier); color: var(--encre); padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   svg.i { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -50,9 +50,20 @@
   .rond { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: #fbf4e41f; color: var(--creme); }
   .choix { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
   .rond.petit { width: 40px; height: 40px; }
+  #favori svg { transition: transform 300ms var(--ease-out), fill 150ms ease, stroke 150ms ease; }
+  #favori[aria-pressed="true"] svg { fill: var(--soleil); stroke: var(--soleil); }
+  #favori.pop svg { transform: scale(1.3); transition-duration: 120ms; }
+  .favoris { display: flex; gap: 8px; overflow-x: auto; margin: 12px -20px 0; padding: 2px 20px 2px; scrollbar-width: none; }
+  .favoris::-webkit-scrollbar { display: none; }
+  .favoris button { flex: none; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 0; border-radius: 99px; background: #fbf4e41f; color: var(--creme); font-weight: 600; font-size: .9rem; transition: transform 160ms var(--ease-out), background-color 150ms ease; }
+  .favoris button b { font: 400 1.05rem/1 var(--display); color: var(--soleil); }
+  .favoris button[aria-current="true"] { background: var(--soleil); color: #10292f; }
+  .favoris button[aria-current="true"] b { color: #10292f; }
   .rond.petit svg { width: 19px; height: 19px; }
   .rond[aria-busy="true"] svg { animation: pulse 1s ease-in-out infinite; }
-  .lieu-choix { position: relative; display: inline-flex; }
+  .lieu-choix { position: relative; display: inline-flex; min-width: 0; }
+  .choix .rond { flex: none; }
+  .lieu-choix select { max-width: 100%; text-overflow: ellipsis; }
   .lieu-choix select { appearance: none; border: 0; font: 600 .95rem var(--texte); color: var(--creme); background: #fbf4e41f; padding: 9px 36px 9px 14px; border-radius: 99px; }
   .lieu-choix select option { color: #10292f; }
   .lieu-choix svg { position: absolute; right: 12px; top: 50%; translate: 0 -50%; width: 16px; height: 16px; pointer-events: none; }
@@ -152,7 +163,7 @@
   .langue { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; padding: 0; border: 0; background: none; color: var(--lac-vif); font-weight: 600; font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .panneau, .lieu-ent, .toast, .bienvenue, .compteur { transform: none !important; }
+    .panneau, .lieu-ent, .toast, .bienvenue, .compteur, #favori svg { transform: none !important; }
     @starting-style { .panneau, .lieu-ent { transform: none; } }
     .onglets::before { transition-duration: 0ms; }
     .charge { animation: none; }
@@ -173,6 +184,7 @@
   <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
   <symbol id="i-bas" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-horsligne" viewBox="0 0 24 24"><path d="M12 20h.01M8.5 16.4a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5.2-2.7M19 12.9a10 10 0 0 0-2-1.5M2 8.8a15 15 0 0 1 4.2-2.6M22 8.8a15 15 0 0 0-11.3-3.8M2 2l20 20"/></symbol>
+  <symbol id="i-etoile" viewBox="0 0 24 24"><path d="M12 2.8l2.85 5.78 6.38.93-4.62 4.5 1.09 6.35L12 17.36l-5.7 3 1.09-6.35-4.62-4.5 6.38-.93z"/></symbol>
   <symbol id="i-epingle" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
 </svg>
 
@@ -184,7 +196,9 @@
   <div class="choix">
     <label class="lieu-choix"><span class="vh" data-t="plage">Plage</span><select id="spot"></select><svg class="i" aria-hidden="true"><use href="#i-bas"/></svg></label>
     <button class="rond petit" id="localiser" data-ta="localiserAria" aria-label="Choisir la plage la plus proche"><svg class="i"><use href="#i-epingle"/></svg></button>
+    <button class="rond petit" id="favori" aria-pressed="false"><svg class="i"><use href="#i-etoile"/></svg></button>
   </div>
+  <div class="favoris" id="favoris" role="group" hidden data-ta="mesPlages" aria-label="Mes plages"></div>
   <h1 id="verdict" class="charge" data-t="chargement">On regarde le lac…</h1>
   <p class="releve" id="releve" aria-live="polite">&nbsp;</p>
   <div class="mesures">
@@ -271,6 +285,7 @@ for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
   SPOTS.forEach((s, i) => s.region === r && g.append(new Option(s.nom, i)));
   sel.append(g);
 }
+sel.value = SPOTS.findIndex((s) => s.id === 'bains-des-paquis'); // plage par défaut
 // Plage mémorisée par identifiant ; l'ancienne version stockait un index dans une liste de 7 plages.
 const ANCIENS = ['bains-des-paquis', 'geneve-plage', 'baby-plage', 'nyon', 'lausanne-vidy', 'vevey', 'evian'];
 try {
@@ -278,7 +293,7 @@ try {
   const id = new URLSearchParams(location.search).get('plage') ?? localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
   const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
 } catch {}
-sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); };
+sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherFavoris(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
 // Onglets dans l'URL (#sortir) : le bouton retour d'Android revient au lac.
@@ -345,11 +360,14 @@ $('plustard').onclick = () => { fermerBienvenue(); sel.focus(); };
 
 // Eau par plage : modèle Alplakes (Eawag) mis en cache toutes les 3 h dans eau.json par GitHub Actions.
 // Secours pour la région genevoise seulement : la mesure OFEV du Rhône à la sortie du lac.
+let eauPromesse = null, eauDate = 0;
+const donneesEau = () => {
+  if (!eauPromesse || Date.now() - eauDate > 30 * 60e3) { eauDate = Date.now(); eauPromesse = fetch('eau.json', { cache: 'no-cache' }).then((r) => r.json()).catch(() => null); }
+  return eauPromesse;
+};
 async function tempEau(s) {
-  try {
-    const v = valeurProche((await (await fetch('eau.json', { cache: 'no-cache' })).json()).spots?.[s.id]);
-    if (v != null) return v;
-  } catch {}
+  const v = valeurProche((await donneesEau())?.spots?.[s.id]);
+  if (v != null) return v;
   if (s.zone !== 'geneve') return null;
   try {
     const r = await fetch('https://api.existenz.ch/apiv1/hydro/latest?locations=2606&parameters=temperature&app=lac-aujourdhui');
@@ -406,6 +424,33 @@ async function charger() {
 }
 charger();
 addEventListener('online', charger);
+
+// Favoris : une étoile par plage, et une rangée « Mes plages » avec l'eau de chacune.
+const lireFavoris = () => { try { return JSON.parse(localStorage.getItem('favoris')) || []; } catch { return []; } };
+async function afficherFavoris() {
+  const favs = lireFavoris().filter((id) => SPOTS.some((s) => s.id === id)), id = spot().id, est = favs.includes(id);
+  $('favori').setAttribute('aria-pressed', est);
+  $('favori').setAttribute('aria-label', est ? T.favoriRetirer(spot().nom) : T.favoriAjouter(spot().nom));
+  $('favoris').hidden = !favs.length;
+  const eau = (await donneesEau())?.spots ?? {};
+  $('favoris').innerHTML = favs.map((f) => {
+    const s = SPOTS.find((x) => x.id === f), t = valeurProche(eau[f]);
+    return `<button data-id="${f}" aria-current="${f === spot().id}">${s.nom}<b>${t == null ? '' : Math.round(t) + '°'}</b></button>`;
+  }).join('');
+}
+$('favori').onclick = () => {
+  const favs = lireFavoris(), id = spot().id, i = favs.indexOf(id);
+  if (i >= 0) favs.splice(i, 1); else favs.push(id);
+  try { localStorage.setItem('favoris', JSON.stringify(favs)); } catch {}
+  toast(i >= 0 ? T.favoriRetire(spot().nom) : T.favoriAjoute(spot().nom));
+  const b = $('favori'); b.classList.add('pop'); setTimeout(() => b.classList.remove('pop'), 120);
+  afficherFavoris();
+};
+$('favoris').onclick = (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  sel.value = SPOTS.findIndex((s) => s.id === b.dataset.id); sel.onchange();
+};
+afficherFavoris();
 
 // Toucher une activité : la bande des heures montre sa note heure par heure.
 function afficherHeures() {
