@@ -482,6 +482,8 @@ async function meteo(s) {
 }
 
 let demande = 0;
+// Une autre variante du titre à chaque affichage : compteur gardé sur l'appareil.
+const tirage = () => { let n = Math.floor(Math.random() * 60); try { n = (+localStorage.getItem('tirage') || 0) + 1; localStorage.setItem('tirage', n); } catch {} return n; };
 async function charger() {
   const moi = ++demande;
   $('verdict').classList.add('charge');
@@ -494,7 +496,7 @@ async function charger() {
     if (c) c.qualite = q?.qualite;
     if (!c) throw new Error('données incomplètes');
     const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-    const v = verdict(c, LANGUE);
+    const v = verdict(c, LANGUE, tirage());
     etat = { ...etat, c, v, heure: m.current.time.slice(11, 16) };
 
     $('verdict').textContent = v.titre;

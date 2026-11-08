@@ -437,7 +437,7 @@ async function conditions(s) {
   const m = await meteo(s), eau = eauDe(s);
   const c = lire(m.current, null, eau); if (!c) throw new Error('incomplet');
   const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-  return { c, heures, v: verdict(c, 'en') };
+  return { c, heures, v: verdict(c, 'en', Math.floor(Math.random() * 60)) };
 }
 
 // La démonstration : on tape, la page répond avec le vrai calcul de l'app.

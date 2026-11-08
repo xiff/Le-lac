@@ -85,36 +85,51 @@ export const PHRASES = {
 };
 
 // La phrase du jour en haut de l'écran.
+// Titres du verdict : plusieurs variantes par situation, tirage différent à chaque affichage.
+// a(e) = « à 12° » (ou rien si l'eau est inconnue).
+const a = (e) => (e == null ? '' : ` à ${e}°`), at = (e) => (e == null ? '' : ` at ${e}°`);
 const TITRES = {
   fr: {
-    orage: 'Orage sur le lac. On rentre.', bise: 'La bise est là. Accroche ton bonnet.', terrasse: 'Journée terrasse plutôt que plouf.',
-    canicule: (e) => `Canicule. Le lac est ta clim${e == null ? '' : `, eau à ${e}°`}.`, chaude: (e) => `Eau à ${e}°. C’est presque un bain.`,
-    gel: (e) => `Il gèle. Eau${e == null ? '' : ` à ${e}°`} : rendez-vous des braves.`,
-    baignade: (e) => `Plouf : l’eau est${e == null ? ' bonne' : ` à ${e}°`}.`, paddle: () => 'Lac d’huile. Sors le paddle.',
-    voile: () => 'Ça souffle. Cap sur le large.', hiver: (e) => `Eau${e == null ? '' : ` à ${e}°`}. Parfait pour les braves.`,
+    orage: [() => 'Orage sur le lac. On rentre.', () => 'Ça gronde. Tout le monde au sec.', () => 'Orage : le lac attendra, toi tu rentres.'],
+    bise: [() => 'La bise est là. Accroche ton bonnet.', () => 'Bise en vue : le lac fait des vagues.', () => 'La bise souffle. Journée chocolat chaud.'],
+    terrasse: [() => 'Journée terrasse plutôt que plouf.', () => 'Le lac est grognon. Va plutôt voir les terrasses.', () => 'Pas le jour pour l’eau. Un verre au bord, plutôt ?'],
+    canicule: [(e) => `Canicule. Le lac est ta clim${e == null ? '' : `, eau à ${e}°`}.`, (e) => `Trop chaud pour réfléchir. File au lac${e == null ? '' : `, eau à ${e}°`}.`, (e) => `Canicule : tout le monde à l’eau${e == null ? '' : `, elle est à ${e}°`}.`],
+    chaude: [(e) => `Eau à ${e}°. C’est presque un bain.`, (e) => `Eau à ${e}°. Même les frileux y vont.`, (e) => `Eau à ${e}°. Le Léman se prend pour la Méditerranée.`],
+    gel: [(e) => `Il gèle. Eau${a(e)} : rendez-vous des braves.`, (e) => `Il gèle dehors. L’eau${a(e)} paraît presque chaude.`, (e) => `Il gèle. Eau${a(e)}. Le sauna juste après, c’est permis.`],
+    baignade: [(e) => `Plouf : l’eau est${e == null ? ' bonne' : ` à ${e}°`}.`, (e) => `Eau${a(e)}. Le maillot, c’est maintenant.`, (e) => `Eau${a(e)}. Le lac t’attend, la serviette aussi.`, (e) => `Eau${a(e)}. On se baigne, on verra le reste après.`],
+    paddle: [() => 'Lac d’huile. Sors le paddle.', () => 'Pas une ride sur l’eau. La planche t’attend.', () => 'Lac plat comme une crêpe. Paddle obligatoire.', () => 'Calme plat : idéal pour voir les cygnes de près.'],
+    voile: [() => 'Ça souffle. Cap sur le large.', () => 'Du vent comme on l’aime. Hisse la voile.', () => 'Le lac moutonne juste ce qu’il faut. À la barre !', () => 'Beau vent : le Léman joue à l’océan.'],
+    hiver: [(e) => `Eau${a(e)}. Parfait pour les braves.`, (e) => `Eau${a(e)}. Bonnet obligatoire, courage aussi.`, (e) => `Eau${a(e)}. Trois minutes et tu deviens une légende.`, (e) => `Eau${a(e)}. Les cygnes, eux, n’hésitent pas.`, (e) => `Eau${a(e)}. Ça pique, ça réveille, ça se raconte.`],
   },
   en: {
-    orage: 'Storm on the lake. Head home.', bise: 'The bise is here. Hold on to your hat.', terrasse: 'More of a terrace day than a splash day.',
-    canicule: (e) => `Heatwave. The lake is your AC${e == null ? '' : `, water at ${e}°`}.`, chaude: (e) => `Water at ${e}°. Practically a bath.`,
-    gel: (e) => `It’s freezing. Water${e == null ? '' : ` at ${e}°`}: the brave meet here.`,
-    baignade: (e) => `Splash: the water is${e == null ? ' nice' : ` ${e}°`}.`, paddle: () => 'Flat as a mirror. Grab the paddle.',
-    voile: () => 'It’s blowing. Head out to open water.', hiver: (e) => `Water${e == null ? '' : ` at ${e}°`}. Perfect for the brave.`,
+    orage: [() => 'Storm on the lake. Head home.', () => 'Thunder rolling. Everybody stay dry.', () => 'Storm: the lake can wait, you head home.'],
+    bise: [() => 'The bise is here. Hold on to your hat.', () => 'Bise blowing: the lake is making waves.', () => 'The bise is out. Hot chocolate day.'],
+    terrasse: [() => 'More of a terrace day than a splash day.', () => 'The lake is grumpy. Try a terrace instead.', () => 'Not a water day. A drink by the lake, maybe?'],
+    canicule: [(e) => `Heatwave. The lake is your AC${e == null ? '' : `, water at ${e}°`}.`, (e) => `Too hot to think. Get to the lake${e == null ? '' : `, water at ${e}°`}.`, (e) => `Heatwave: everybody in${e == null ? '' : `, the water is ${e}°`}.`],
+    chaude: [(e) => `Water at ${e}°. Practically a bath.`, (e) => `Water at ${e}°. Even the chilly types go in.`, (e) => `Water at ${e}°. Lake Geneva thinks it’s the Med.`],
+    gel: [(e) => `It’s freezing. Water${at(e)}: the brave meet here.`, (e) => `Freezing outside. The water${at(e)} feels almost warm.`, (e) => `It’s freezing. Water${at(e)}. Sauna right after is allowed.`],
+    baignade: [(e) => `Splash: the water is${e == null ? ' nice' : ` ${e}°`}.`, (e) => `Water${at(e)}. Swimsuit time.`, (e) => `Water${at(e)}. The lake is waiting, so is your towel.`, (e) => `Water${at(e)}. Swim first, think later.`],
+    paddle: [() => 'Flat as a mirror. Grab the paddle.', () => 'Not a ripple. Your board is waiting.', () => 'Flat as a pancake. Paddle compulsory.', () => 'Dead calm: perfect for a close look at the swans.'],
+    voile: [() => 'It’s blowing. Head out to open water.', () => 'Just the wind we like. Hoist the sail.', () => 'Whitecaps, just enough. Take the helm!', () => 'Great wind: Lake Geneva plays ocean.'],
+    hiver: [(e) => `Water${at(e)}. Perfect for the brave.`, (e) => `Water${at(e)}. Hat compulsory, courage too.`, (e) => `Water${at(e)}. Three minutes and you’re a legend.`, (e) => `Water${at(e)}. The swans don’t hesitate.`, (e) => `Water${at(e)}. It stings, it wakes you up, it makes a story.`],
   },
 };
 
-export function verdict(c, langue = 'fr') {
+// tirage : n'importe quel entier ; chaque valeur donne une variante (0 = la première).
+export function verdict(c, langue = 'fr', tirage = 0) {
   const T = TITRES[langue] ?? TITRES.fr;
-  if (c.code >= 95) return { titre: T.orage, act: null };
+  const e = c.eau == null ? null : Math.round(c.eau);
+  const t = (k) => { const v = T[k]; return v[((tirage % v.length) + v.length) % v.length](e); };
+  if (c.code >= 95) return { titre: t('orage'), act: null };
   const notes = ACTIVITES.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
   const top = notes[0];
-  if (estBise(c) && top.a.id !== 'voile') return { titre: T.bise, act: null };
-  if (top.n < 2) return { titre: T.terrasse, act: null, sortir: true };
-  const e = c.eau == null ? null : Math.round(c.eau);
+  if (estBise(c) && top.a.id !== 'voile') return { titre: t('bise'), act: null };
+  if (top.n < 2) return { titre: t('terrasse'), act: null, sortir: true };
   const k = cle(top.a, c);
-  if (k === 'baignade' && c.air >= 30) return { titre: T.canicule(e), act: 'baignade' };
-  if (k === 'baignade' && c.eau >= 25) return { titre: T.chaude(e), act: 'baignade' };
-  if (k === 'hiver' && c.air <= 0) return { titre: T.gel(e), act: 'baignade' };
-  return { titre: T[k](e), act: top.a.id };
+  if (k === 'baignade' && c.air >= 30) return { titre: t('canicule'), act: 'baignade' };
+  if (k === 'baignade' && c.eau >= 25) return { titre: t('chaude'), act: 'baignade' };
+  if (k === 'hiver' && c.air <= 0) return { titre: t('gel'), act: 'baignade' };
+  return { titre: t(k), act: top.a.id };
 }
 
 // Saison de bain d'hiver : de septembre à août, ex. « 2026-2027 ».

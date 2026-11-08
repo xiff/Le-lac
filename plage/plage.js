@@ -34,7 +34,7 @@ try {
   const c = lire(m.current, null, eau(s.id)); if (!c) throw new Error('incomplet');
   c.qualite = q?.qualite;
   const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, c.eau); return h && { ...h, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-  $('verdict').textContent = verdict(c, L).titre;
+  $('verdict').textContent = verdict(c, L, Math.floor(Math.random() * 60)).titre;
   $('air').textContent = Math.round(c.air) + '°';
   $('vent').textContent = Math.round(c.vent);
   $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));

@@ -105,3 +105,12 @@ test('qualité affichée seulement si l’analyse a moins de 30 jours', () => {
   assert.equal(qualiteRecente({ qualite: 1, date: '20-10-2026' }, now)?.qualite, 1);
   assert.equal(qualiteRecente({ qualite: 1, plage: 'CIPEL' }, now), null); // classement annuel sans date
 });
+
+test('verdict : une autre variante à chaque tirage', () => {
+  const c = { eau: 12, air: 6, vent: 4, rafales: 8, dir: 200, code: 1, mois: 11 };
+  const vus = new Set([0, 1, 2, 3, 4].map((i) => verdict(c, 'fr', i).titre));
+  assert.equal(vus.size, 5);
+  for (const t of vus) assert.match(t, /12°/);
+  assert.notEqual(verdict(c, 'en', 7).titre, verdict(c, 'en', 8).titre);
+  assert.ok(verdict(c, 'fr', -3).titre); // entier négatif accepté
+});
