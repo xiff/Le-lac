@@ -240,7 +240,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison } from './score.js';
+import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
 import { LIEUX, lienCarte, plusProche } from './lieux.js';
 
 const SPOTS = [
@@ -331,7 +331,7 @@ async function tempEau() {
   try {
     const r = await fetch('https://api.existenz.ch/apiv1/hydro/latest?locations=2606&parameters=temperature&app=lac-aujourdhui');
     const v = (await r.json()).payload?.find((p) => p.par === 'temperature')?.val;
-    return typeof v === 'number' ? v : null;
+    return v == null || v === '' || !Number.isFinite(Number(v)) ? null : Number(v);
   } catch { return null; }
 }
 async function meteo(s) {
@@ -340,10 +340,6 @@ async function meteo(s) {
   if (!r.ok) throw new Error('météo ' + r.status);
   return r.json();
 }
-const cond = (o, i, eau) => {
-  const v = (k) => (i == null ? o[k] : o[k][i]);
-  return { eau, air: v('temperature_2m'), vent: v('wind_speed_10m'), rafales: v('wind_gusts_10m'), dir: v('wind_direction_10m'), code: v('weather_code') };
-};
 
 let demande = 0;
 async function charger() {
@@ -352,8 +348,9 @@ async function charger() {
   try {
     const [m, eau] = await Promise.all([meteo(spot()), tempEau()]);
     if (moi !== demande) return; // une réponse plus récente (autre plage) a pris le relais
-    const c = cond(m.current, null, eau);
-    const heures = m.hourly.time.map((t, i) => ({ ...cond(m.hourly, i, eau), heure: t.slice(11, 13) + 'h' }));
+    const c = lire(m.current, null, eau);
+    if (!c) throw new Error('données incomplètes');
+    const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
     const v = verdict(c);
     etat = { ...etat, c, v, heure: m.current.time.slice(11, 16) };
 
@@ -392,6 +389,7 @@ function afficherHeures() {
   const a = ACTIVITES.find((x) => x.id === etat.choix);
   $('activites').querySelectorAll('.act').forEach((b) => b.setAttribute('aria-pressed', b.dataset.act === a.id));
   $('h-heures').innerHTML = `Les 12 prochaines heures <span>· ${a.nom.toLowerCase()}</span>`;
+  if (!etat.heures.length) { $('heures').innerHTML = '<p class="note">Prévisions horaires indisponibles pour l’instant. Le lac garde ses secrets.</p>'; return; }
   $('heures').innerHTML = etat.heures.map((h) => {
     const n = a.note(h);
     return `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${a.nom} : ${LIBELLES[n]}"></i></div>`;

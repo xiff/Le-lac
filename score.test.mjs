@@ -50,3 +50,20 @@ test('saison de bain d’hiver', () => {
   assert.equal(saison(new Date(2027, 1, 14)), '2026-2027');
   assert.equal(saison(new Date(2027, 8, 1)), '2027-2028');
 });
+
+import { lire, hiver as hiverNote } from './score.js';
+test('lecture défensive des données météo', () => {
+  const cur = { temperature_2m: 12, wind_speed_10m: 8, wind_gusts_10m: null, wind_direction_10m: 230, weather_code: 3 };
+  assert.equal(lire(cur, null, 9).rafales, 12); // rafales estimées, pas 0
+  assert.equal(lire({ ...cur, temperature_2m: undefined }, null, 9), null);
+  assert.equal(lire({ temperature_2m: [1, 2], wind_speed_10m: [3] }, 1, null), null); // heure tronquée
+  assert.equal(lire({ ...cur, temperature_2m: '12.5' }, null, NaN).air, 12.5);
+  assert.equal(lire(cur, null, NaN).eau, null);
+  assert.equal(hiverNote({ ...lire(cur, null, null) }), 0); // eau inconnue : pas de promesse
+});
+
+test('verdict : canicule, eau très chaude, gel', () => {
+  assert.match(verdict({ ...calme, air: 33 }).titre, /Canicule/);
+  assert.match(verdict({ ...calme, eau: 26 }).titre, /presque un bain/);
+  assert.match(verdict({ eau: 7, air: -3, vent: 5, rafales: 9, dir: 200, code: 3 }).titre, /gèle/);
+});

@@ -30,7 +30,7 @@ export function voile(c) {
 
 // Les « nageurs d'hiver » : l'eau froide est le but, on regarde surtout le vent.
 export function hiver(c) {
-  if (orage(c) || (c.eau ?? 10) > 14) return 0;
+  if (orage(c) || c.eau == null || c.eau > 14) return 0; // eau inconnue : on ne promet rien aux braves
   return c.rafales <= 20 ? 3 : c.rafales <= 35 ? 2 : 1;
 }
 
@@ -72,6 +72,9 @@ export function verdict(c) {
   if (estBise(c) && top.a.id !== 'voile') return { titre: 'La bise est là. Accroche ton bonnet.', act: null };
   if (top.n < 2) return { titre: 'Journée terrasse plutôt que plouf.', act: null, sortir: true };
   const eau = c.eau == null ? '' : ` à ${Math.round(c.eau)}°`;
+  if (top.a.id === 'baignade' && c.air >= 30) return { titre: `Canicule. Le lac est ta clim${eau ? ', eau' + eau : ''}.`, act: 'baignade' };
+  if (top.a.id === 'baignade' && c.eau >= 25) return { titre: `Eau${eau}. C’est presque un bain.`, act: 'baignade' };
+  if (top.a.id === 'hiver' && c.air <= 0) return { titre: `Il gèle. Eau${eau} : rendez-vous des braves.`, act: 'hiver' };
   const titres = {
     baignade: `Plouf : l’eau est${eau || ' bonne'}.`,
     paddle: 'Lac d’huile. Sors le paddle.',
@@ -83,3 +86,15 @@ export function verdict(c) {
 
 // Saison de bain d'hiver : de septembre à août, ex. « 2026-2027 ».
 export const saison = (d) => { const a = d.getMonth() >= 8 ? d.getFullYear() : d.getFullYear() - 1; return `${a}-${a + 1}`; };
+
+// Lecture défensive d'une réponse Open-Meteo (o = current, ou hourly avec l'index i).
+// Renvoie null si une valeur indispensable manque : mieux vaut « pas de données » qu'un NaN.
+export function lire(o, i, eau) {
+  const v = (k) => { const x = i == null ? o?.[k] : o?.[k]?.[i]; return x == null || x === '' ? NaN : Number(x); };
+  const c = { eau: Number.isFinite(eau) ? eau : null, air: v('temperature_2m'), vent: v('wind_speed_10m'), rafales: v('wind_gusts_10m'), dir: v('wind_direction_10m'), code: v('weather_code') };
+  if (![c.air, c.vent].every(Number.isFinite)) return null;
+  if (!Number.isFinite(c.rafales)) c.rafales = c.vent * 1.5; // rafales inconnues : estimation prudente plutôt que 0
+  if (!Number.isFinite(c.dir)) c.dir = 0;
+  if (!Number.isFinite(c.code)) c.code = 0;
+  return c;
+}
