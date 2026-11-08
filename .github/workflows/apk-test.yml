@@ -71,6 +71,7 @@ jobs:
             echo "=== PLANTAGES ===" ; cat crash.txt
             echo "=== EXTRAIT ===" ; grep -iE "lelac|AndroidRuntime|FATAL|browserhelper|TrustedWebActivity|CustomTabs" logcat.txt | tail -150
             adb shell dumpsys activity activities | grep -iE "mResumedActivity|topResumedActivity" || true
+            if [ -s crash.txt ]; then echo "::error::L'app a planté au lancement"; exit 1; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
