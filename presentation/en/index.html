@@ -334,7 +334,7 @@
       <div class="rangee" role="row"><div class="nom" role="rowheader">Water at your beach</div><div class="vals"><span role="cell" data-col="My Lake">65 beaches, at 70 cm</span><span role="cell" data-col="Weather app">Rarely</span><span role="cell" data-col="Official">One station, in Geneva</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">The bise</div><div class="vals"><span role="cell" data-col="My Lake">Detected, with an alert</span><span role="cell" data-col="Weather app">Wind, without the name</span><span role="cell" data-col="Official">No</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Swim, paddle, sail</div><div class="vals"><span role="cell" data-col="My Lake">A rating for each</span><span role="cell" data-col="Weather app">Up to you to guess</span><span role="cell" data-col="Official">No</span></div></div>
-      <div class="rangee" role="row"><div class="nom" role="rowheader">The best time</div><div class="vals"><span role="cell" data-col="My Lake">Hour by hour, over 12 h</span><span role="cell" data-col="Weather app">The raw forecast</span><span role="cell" data-col="Official">No</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">The next hours</div><div class="vals"><span role="cell" data-col="My Lake">Hour by hour, over 12 h</span><span role="cell" data-col="Weather app">The raw forecast</span><span role="cell" data-col="Official">No</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Where to have a drink after</div><div class="vals"><span role="cell" data-col="My Lake">20 verified places</span><span role="cell" data-col="Weather app">No</span><span role="cell" data-col="Official">No</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">No signal on the beach</div><div class="vals"><span role="cell" data-col="My Lake">Yes, latest data</span><span role="cell" data-col="Weather app">Depends on the app</span><span role="cell" data-col="Official">No</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Account and price</div><div class="vals"><span role="cell" data-col="My Lake">No account, free</span><span role="cell" data-col="Weather app">Often an account</span><span role="cell" data-col="Official">Free</span></div></div>
@@ -428,7 +428,7 @@ const eauDe = (s) => valeurProche(eauJson?.spots?.[s.id]);
 const meteos = {};
 async function meteo(s) {
   if (!meteos[s.id]) {
-    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
+    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
     meteos[s.id] = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
   }
   return meteos[s.id];

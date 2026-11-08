@@ -334,7 +334,7 @@
       <div class="rangee" role="row"><div class="nom" role="rowheader">Eau à ta plage</div><div class="vals"><span role="cell" data-col="Mon Lac">65 plages, à 70 cm</span><span role="cell" data-col="App météo">Rarement</span><span role="cell" data-col="Officielle">Une station, à Genève</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">La bise</div><div class="vals"><span role="cell" data-col="Mon Lac">Détectée, avec alerte</span><span role="cell" data-col="App météo">Le vent, sans le nom</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Baignade, paddle, voile</div><div class="vals"><span role="cell" data-col="Mon Lac">Une note pour chacun</span><span role="cell" data-col="App météo">À toi de deviner</span><span role="cell" data-col="Officielle">Non</span></div></div>
-      <div class="rangee" role="row"><div class="nom" role="rowheader">Le meilleur moment</div><div class="vals"><span role="cell" data-col="Mon Lac">Heure par heure, sur 12 h</span><span role="cell" data-col="App météo">Les prévisions brutes</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Les prochaines heures</div><div class="vals"><span role="cell" data-col="Mon Lac">Heure par heure, sur 12 h</span><span role="cell" data-col="App météo">Les prévisions brutes</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Mon Lac">20 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Sans réseau sur la plage</div><div class="vals"><span role="cell" data-col="Mon Lac">Oui, dernières données</span><span role="cell" data-col="App météo">Selon l’app</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Compte et prix</div><div class="vals"><span role="cell" data-col="Mon Lac">Aucun compte, gratuit</span><span role="cell" data-col="App météo">Souvent un compte</span><span role="cell" data-col="Officielle">Gratuit</span></div></div>
@@ -427,7 +427,7 @@ const eauDe = (s) => valeurProche(eauJson?.spots?.[s.id]);
 const meteos = {};
 async function meteo(s) {
   if (!meteos[s.id]) {
-    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
+    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
     meteos[s.id] = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
   }
   return meteos[s.id];

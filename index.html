@@ -124,7 +124,6 @@
   .act div { flex: 1; min-width: 0; }
   .act b { font-weight: 600; }
   .act small { display: block; color: var(--doux); font-size: .88rem; }
-  .act .cr { display: block; color: var(--encre); font-size: .82rem; font-weight: 500; margin-top: 2px; }
   .badge { padding: 5px 11px; border-radius: 99px; font-weight: 700; font-size: .8rem; white-space: nowrap; }
   .t0 { background: var(--n0-bg); color: var(--n0); } .t1 { background: var(--n1-bg); color: var(--n1); }
   .t2 { background: var(--n2-bg); color: var(--n2); } .t3 { background: var(--n3-bg); color: var(--n3); }
@@ -327,7 +326,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
+import { ACTIVITES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
 import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
@@ -486,7 +485,7 @@ async function tempEau(s) {
   } catch { return null; }
 }
 async function meteo(s) {
-  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
   const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) });
   if (!r.ok) throw new Error('météo ' + r.status);
   return r.json();
@@ -523,9 +522,9 @@ async function charger() {
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte; $('alerte').classList.toggle('danger', danger);
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
-      const n = a.note(c), cr = meilleurCreneau(heures, a.note);
+      const n = a.note(c);
       return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a, c)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[cle(a, c)])}</span>
-        <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}${cr ? `<span class="cr">${T.meilleur(LIBELLES[cr.n], cr.de, cr.a)}</span>` : ''}</small></div>
+        <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}</small></div>
         <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[cle(a, c)]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
     }).join('');
     etat.heures = heures;
@@ -689,7 +688,11 @@ $('partager').onclick = () => partager(etat
   ? T.partageConditions(etat.v.titre, spot().nom, etat.c.eau == null ? '?' : Math.round(etat.c.eau) + '°', Math.round(etat.c.air), Math.round(etat.c.vent))
   : T.partageDefaut);
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator) {
+  // Nouvelle version installée : on recharge une fois pour ne jamais mélanger ancien et nouveau code.
+  if (navigator.serviceWorker.controller) navigator.serviceWorker.addEventListener('controllerchange', () => location.reload(), { once: true });
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
 </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { baignade, paddle, voile, hiver, estBise, meilleurCreneau } from './score.js';
+import { baignade, paddle, voile, hiver, estBise } from './score.js';
 
 const calme = { eau: 23, air: 28, vent: 5, rafales: 8, dir: 200, code: 0 };
 
@@ -26,17 +26,6 @@ test('orage : tout à zéro', () => {
 
 test('hiver calme : bain d’hiver parfait', () => {
   assert.equal(hiver({ eau: 8, air: 3, vent: 6, rafales: 10, dir: 200, code: 3 }), 3);
-});
-
-test('meilleur créneau : meilleure note de jour, rien si c’est déjà maintenant', () => {
-  const h = (heure, rafales, jour = true) => ({ ...calme, heure, rafales, jour });
-  const heures = [h('08h', 30), h('09h', 16), h('10h', 16), h('11h', 16), h('12h', 5), h('13h', 5), h('14h', 30)];
-  const n = paddle(heures[4]);
-  assert.ok(n > paddle(heures[1]), 'fixture : 12h–13h mieux noté que 9h–11h');
-  assert.deepEqual(meilleurCreneau(heures, paddle), { n, de: '12h', a: '14h' }); // meilleure note bat la plus longue suite, fin réelle
-  assert.equal(meilleurCreneau([h('08h', 5), h('09h', 5)], paddle), null); // bon dès maintenant : rien à ajouter
-  assert.equal(meilleurCreneau([h('18h', 30), h('19h', 5, false), h('20h', 5, false)], paddle), null); // la nuit ne compte pas
-  assert.equal(meilleurCreneau([h('08h', 40)], paddle), null);
 });
 
 import { verdict } from './score.js';
