@@ -13,3 +13,10 @@ test('valeur la plus proche, ignorée si trop vieille', () => {
   assert.equal(valeurProche({ t: ['2026-11-08T06:00:00Z'], v: [null] }, Date.parse('2026-11-08T06:00:00Z')), null);
   assert.equal(valeurProche(undefined), null);
 });
+
+import { TOUR, projeter } from './spots.js';
+test('tour du lac : chaque plage une fois, projection dans le cadre', () => {
+  assert.deepEqual([...TOUR].sort(), SPOTS.map((s) => s.id).sort());
+  const p = projeter(400);
+  for (const s of SPOTS) { const [x, y] = p.xy(s); assert.ok(x > 0 && x < 400 && y > 0 && y < p.hauteur, s.id); }
+});

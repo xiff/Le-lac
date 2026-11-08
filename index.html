@@ -127,6 +127,16 @@
   .h b { display: block; color: var(--encre); font: 400 1.15rem/1.3 var(--display); }
   .h .fleche { width: 14px; height: 14px; }
 
+  /* Carte du lac */
+  .carte svg { display: block; width: 100%; height: auto; }
+  .carte .eau-lac { fill: #cfe3ea; }
+  .carte .point { cursor: pointer; }
+  .carte .point circle.vu { stroke: var(--papier); stroke-width: 1.5; transition: transform 160ms var(--ease-out); transform-box: fill-box; transform-origin: center; }
+  @media (hover: hover) and (pointer: fine) { .carte .point:hover circle.vu { transform: scale(1.4); } }
+  .carte .point.actuel circle.vu { stroke: var(--encre); stroke-width: 2.5; }
+  .extremes { color: var(--doux); font-size: .88rem; margin: 6px 0 0; }
+  @media (prefers-color-scheme: dark) { .carte .eau-lac { fill: #143844; } }
+
   /* Sortir */
   .filtres { display: flex; gap: 8px; margin-top: 18px; }
   .filtres button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--trait); background: var(--carte); color: var(--doux); padding: 8px 14px; border-radius: 99px; font-weight: 600; font-size: .9rem; transition: transform 160ms var(--ease-out), background-color 150ms ease, color 150ms ease; }
@@ -229,6 +239,9 @@
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" data-ta="heuresAria" aria-label="Prévisions heure par heure"></div>
+    <h2 data-t="carteTitre">Tout le lac</h2>
+    <div class="carte" id="carte"></div>
+    <p class="extremes" id="extremes"></p>
     <footer>
       <span data-th="pied">      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
       Indicatif : le lac a toujours le dernier mot.</span>
@@ -259,7 +272,7 @@
 <script type="module">
 import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
-import { SPOTS, valeurProche } from './spots.js';
+import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
 import { LANGUE, T, AUTRE } from './textes.js';
 
 document.documentElement.lang = LANGUE;
@@ -293,7 +306,7 @@ try {
   const id = new URLSearchParams(location.search).get('plage') ?? localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
   const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
 } catch {}
-sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherFavoris(); };
+sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherFavoris(); afficherCarte(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
 // Onglets dans l'URL (#sortir) : le bouton retour d'Android revient au lac.
@@ -451,6 +464,40 @@ $('favoris').onclick = (e) => {
   sel.value = SPOTS.findIndex((s) => s.id === b.dataset.id); sel.onchange();
 };
 afficherFavoris();
+
+// Carte : contour du Léman tracé par les plages dans l'ordre du rivage, points colorés selon l'eau.
+const proj = projeter(400);
+function trace(points) { // courbe lissée fermée (Catmull-Rom vers Bézier)
+  const n = points.length, P = (i) => points[(i + n) % n];
+  let d = `M${P(0).join(',')}`;
+  for (let i = 0; i < n; i++) {
+    const [a, b, c, e] = [P(i - 1), P(i), P(i + 1), P(i + 2)];
+    d += `C${(b[0] + (c[0] - a[0]) / 6).toFixed(1)},${(b[1] + (c[1] - a[1]) / 6).toFixed(1)} ${(c[0] - (e[0] - b[0]) / 6).toFixed(1)},${(c[1] - (e[1] - b[1]) / 6).toFixed(1)} ${c[0]},${c[1]}`;
+  }
+  return d + 'Z';
+}
+const CONTOUR = trace(TOUR.map((id) => proj.xy(SPOTS.find((s) => s.id === id))).map(([x, y]) => [+x.toFixed(1), +y.toFixed(1)]));
+const melange = (f) => { const a = [90, 166, 196], b = [227, 168, 43]; return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`; };
+async function afficherCarte() {
+  const eau = (await donneesEau())?.spots ?? {};
+  const vals = SPOTS.map((s) => ({ s, t: valeurProche(eau[s.id]) })).filter((x) => x.t != null);
+  const min = Math.min(...vals.map((x) => x.t)), max = Math.max(...vals.map((x) => x.t));
+  $('carte').innerHTML = `<svg viewBox="0 0 400 ${proj.hauteur.toFixed(0)}" aria-hidden="true"><path class="eau-lac" d="${CONTOUR}"/>${SPOTS.map((s) => {
+    const [x, y] = proj.xy(s), t = valeurProche(eau[s.id]), f = t == null || max === min ? 0.5 : (t - min) / (max - min);
+    return `<g class="point${s.id === spot().id ? ' actuel' : ''}" data-id="${s.id}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12" fill="transparent"/><circle class="vu" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="${t == null ? '#9aa' : melange(f)}"><title>${s.nom}${t == null ? '' : ' ' + t.toFixed(1) + '°'}</title></circle></g>`;
+  }).join('')}</svg>`;
+  if (vals.length) {
+    const chaud = vals.find((x) => x.t === max).s.nom, froid = vals.find((x) => x.t === min).s.nom;
+    const f1 = (v) => v.toLocaleString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    $('extremes').textContent = T.extremes(chaud, f1(max), froid, f1(min));
+  }
+}
+$('carte').onclick = (e) => {
+  const g = e.target.closest('.point'); if (!g) return;
+  sel.value = SPOTS.findIndex((s) => s.id === g.dataset.id); sel.onchange();
+  scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+};
+afficherCarte();
 
 // Toucher une activité : la bande des heures montre sa note heure par heure.
 function afficherHeures() {

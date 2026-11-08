@@ -75,3 +75,14 @@ export function valeurProche(serie, quand = Date.now()) {
   serie.t.forEach((t, i) => { const e = Math.abs(Date.parse(t) - quand); if (e < ecart && Number.isFinite(serie.v[i])) { ecart = e; best = i; } });
   return best >= 0 && ecart <= 6 * 3600e3 ? serie.v[best] : null;
 }
+
+// Tour du lac dans l'ordre du rivage (rive nord d'ouest en est, puis rive sud d'est en ouest) : sert à dessiner la carte.
+export const TOUR = ['bains-des-paquis', 'pregny-chambesy', 'bellevue', 'genthod', 'versoix', 'celigny', 'mies', 'coppet', 'nyon', 'prangins', 'gland', 'dully', 'rolle', 'perroy', 'allaman', 'buchillon', 'saint-prex', 'tolochenaz', 'morges', 'preverenges', 'saint-sulpice', 'lausanne-vidy', 'lausanne-ouchy', 'lausanne-bellerive', 'pully', 'paudex', 'lutry', 'villette', 'cully-moratel', 'rivaz', 'saint-saphorin', 'corseaux', 'vevey', 'la-tour-de-peilz', 'montreux-clarens', 'veytaux', 'villeneuve', 'noville', 'le-bouveret', 'saint-gingolph', 'meillerie', 'lugrin', 'maxilly', 'neuvecelle', 'evian', 'publier-amphion', 'thonon-saint-disdille', 'thonon', 'anthy-sur-leman', 'margencel', 'sciez', 'excenevex', 'yvoire', 'nernier', 'messery', 'chens-sur-leman', 'hermance', 'anieres', 'corsier-port', 'collonge-bellerive-la-savonniere', 'cologny', 'plage-des-eaux-vives', 'baby-plage', 'geneve-plage'];
+
+// Projection simple (équirectangulaire autour de 46,4° N) vers un cadre de largeur donnée.
+export function projeter(largeur) {
+  const k = Math.cos((46.4 * Math.PI) / 180), lons = SPOTS.map((s) => s.lon), lats = SPOTS.map((s) => s.lat);
+  const x0 = Math.min(...lons), x1 = Math.max(...lons), y0 = Math.min(...lats), y1 = Math.max(...lats), m = 0.04;
+  const echelle = largeur / ((x1 - x0) * k + 2 * m);
+  return { hauteur: ((y1 - y0) + 2 * m) * echelle, xy: (s) => [((s.lon - x0) * k + m) * echelle, ((y1 - s.lat) + m) * echelle] };
+}
