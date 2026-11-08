@@ -18,6 +18,8 @@ jobs:
           SDKM=$(ls -d "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | sort -V | tail -1)
           yes | "$SDKM" --licenses > /dev/null || true
           "$SDKM" "build-tools;36.1.0" "platforms;android-36"
+          # Bubblewrap vérifie la présence de $ANDROID_HOME/bin (outils rangés ailleurs sur les machines GitHub)
+          [ -e "$ANDROID_HOME/bin" ] || ln -s "$(dirname "$SDKM")" "$ANDROID_HOME/bin"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
