@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Température du lac Léman par plage · Le Lac aujourd’hui</title>
+<meta name="description" content="Température de l’eau à 25 plages du Léman, vent, bise et un verdict du jour pour la baignade, le paddle et la voile, de Genève à Évian. Gratuit, sans compte, en français et en anglais.">
+<meta name="theme-color" content="#0d4a5c">
+<link rel="icon" href="../icon.svg">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<meta property="og:title" content="Le Léman, plage par plage">
+<meta property="og:description" content="L’eau, le vent et la bise sur 25 plages du lac, avec un verdict : on y va ou pas.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://xiff.github.io/Le-lac/presentation/img/vapeur-cgn.jpg">
+<link rel="preload" href="../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Le Lac aujourd’hui","url":"https://xiff.github.io/Le-lac/","applicationCategory":"WeatherApplication","operatingSystem":"Android, iOS, navigateur web","inLanguage":["fr","en"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},"description":"Température de l’eau, vent et bise sur 25 plages du lac Léman, avec un verdict du jour pour la baignade, le paddle, la voile et le bain d’hiver."}
+</script>
+<style>
+  @font-face { font-family: "Young Serif"; src: url(../fonts/young-serif-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: Onest; src: url(../fonts/onest-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+  :root {
+    --bg: #f5efe3; --surface: #ebe2cf; --surface-2: #e0d5bd; --ink: #10292f; --muted: #46605f; --accent: #0d4a5c; --on-accent: #fbf4e4; --sun: #f2b84b;
+    --n0: #b8432f; --n1: #b37d14; --n2: #2f7f50; --n3: #127a8f;
+    --display: "Young Serif", Georgia, serif; --text: Onest, system-ui, sans-serif;
+    --s-display: clamp(48px, 8vw, 132px); --s-h2: clamp(30px, 3.4vw, 48px); --s-h3: clamp(22px, 1.9vw, 27px); --s-body: 17px; --s-small: 14px;
+    --m: clamp(20px, 2.2vw, 32px); --col: calc((100vw - 2 * var(--m)) / 12);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--s-body)/1.55 var(--text); }
+  ::selection { background: var(--sun); color: var(--ink); }
+  :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+  a { color: inherit; text-underline-offset: 3px; }
+  img { display: block; max-width: 100%; height: auto; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+  h2 { font-size: var(--s-h2); line-height: 1.05; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .bouton { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border: 0; border-radius: 4px; background: var(--accent); color: var(--on-accent); font: 600 var(--s-body) var(--text); text-decoration: none; cursor: pointer; transition: transform 160ms var(--ease-out), background-color 160ms ease; }
+  .bouton:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) { .bouton:hover { background: #0a3b4a; } .lien:hover { color: var(--accent); } }
+  .lien { font-weight: 600; text-decoration: underline; transition: color 160ms ease; }
+  figure { margin: 0; }
+  figcaption { font-size: var(--s-small); color: var(--muted); margin-top: 10px; }
+  figcaption a { text-decoration: underline; }
+
+  /* Héros : une colonne sur un seul alignement */
+  .hero { position: relative; min-height: 100svh; padding: 56px var(--m) 0; overflow: hidden; }
+  .hero .coin { position: absolute; top: 28px; right: var(--m); font-size: var(--s-small); font-weight: 600; }
+  .axe { margin-left: calc(var(--col) * 3); }
+  .marque { display: flex; align-items: center; gap: 10px; font: 400 var(--s-body)/1 var(--display); }
+  .marque img { width: 36px; height: 36px; border-radius: 9px; }
+  .hero .colonne { width: min(380px, 100%); margin-top: 220px; }
+  .hero h1 { font-size: var(--s-h3); line-height: 1.25; letter-spacing: -0.01em; }
+  .hero h1 .ligne { display: block; overflow: hidden; }
+  .hero h1 .ligne > span { display: block; }
+  .hero .soutien { margin-top: 14px; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 28px; }
+  .apercu { position: absolute; bottom: 0; width: min(420px, calc(100% - 2 * var(--m))); height: 148px; overflow: hidden; background: var(--surface); padding: 18px 20px 0; border-radius: 8px 8px 0 0; }
+  .ligne-ui { display: flex; align-items: center; gap: 12px; height: 52px; font-size: 15px; }
+  .ligne-ui .pastille { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .ligne-ui b { font-weight: 600; flex: 1; }
+  .ligne-ui .temp { font: 400 22px/1 var(--display); font-variant-numeric: tabular-nums; }
+  .ligne-ui.survol { background: var(--bg); margin: 0 -10px; padding: 0 10px; border-radius: 6px; }
+
+  /* Photo pleine largeur, lente dérive */
+  .bande { margin-top: 0; }
+  .bande .cadre { overflow: hidden; height: min(78svh, 720px); }
+  .bande img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); animation: derive 24s ease-in-out infinite alternate; }
+  .bande figcaption { padding: 0 var(--m); }
+  @keyframes derive { to { transform: scale(1.0) translateX(-1.5%); } }
+
+  section { padding: clamp(120px, 14vw, 200px) var(--m) 0; }
+  .bande + .demo { margin-top: clamp(88px, 9vw, 140px); }
+
+  /* Démonstration : le titre qu'on tape */
+  .demo { background: var(--accent); color: var(--on-accent); margin-top: clamp(120px, 14vw, 200px); padding-top: clamp(88px, 9vw, 140px); padding-bottom: clamp(88px, 9vw, 140px); }
+  .demo label.consigne { display: block; font: 400 var(--s-h3)/1.2 var(--display); margin-bottom: 18px; }
+  .saisie { display: flex; align-items: baseline; }
+  .saisie input { width: 100%; border: 0; background: none; padding: 0; margin: 0; color: var(--ink); font: 400 var(--s-display)/1.05 var(--display); letter-spacing: -0.03em; caret-color: var(--sun); outline-offset: 8px; }
+  .demo .saisie input { color: var(--on-accent); }
+  .reponse { margin-top: 48px; width: min(640px, 100%); background: var(--bg); color: var(--ink); border-radius: 8px; padding: 26px 28px; }
+  .reponse .verdict { font: 400 var(--s-h3)/1.25 var(--display); }
+  .reponse .mesures { display: flex; gap: 28px; margin-top: 16px; font-size: 15px; color: var(--muted); }
+  .reponse .mesures b { display: block; color: var(--ink); font: 400 26px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+  .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-top: 18px; font-size: 15px; }
+  .acts span { display: flex; justify-content: space-between; gap: 8px; }
+  .note-ui { font-weight: 700; font-size: 14px; padding: 2px 10px; border-radius: 99px; }
+  .t0 { background: #f6dcd4; color: #8a2a1a; } .t1 { background: #f5e6c2; color: #6b4800; } .t2 { background: #d8eedf; color: #1b5f3c; } .t3 { background: #cde8ee; color: #0a4d5c; }
+  .exemples { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 40px; font-size: var(--s-body); }
+  .exemples button { border: 0; background: none; padding: 10px 0; font: inherit; color: var(--on-accent); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; transition: color 160ms ease, transform 160ms var(--ease-out); }
+  .exemples button:active { transform: scale(0.97); }
+  .exemples span { padding: 10px 0; }
+
+  /* Comment ça marche : appel et réponse */
+  .etapes { margin-left: calc(var(--col) * 3); width: min(560px, 100%); }
+  .etapes h2 { margin-bottom: 56px; }
+  .echange + .echange { margin-top: 88px; }
+  .echange > p { font: 600 var(--s-body)/1.35 var(--text); }
+  .appel { margin-top: 16px; background: var(--surface); border-radius: 8px; padding: 20px; font-size: 15px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .appel .faux-select { font-weight: 600; font-size: 17px; }
+  .retour { margin: 16px 0 0 56px; background: var(--surface-2); border-radius: 8px; padding: 18px 20px; }
+  .heures-ui { display: flex; gap: 6px; overflow: hidden; }
+  .heures-ui div { min-width: 44px; text-align: center; font-size: 13px; color: var(--muted); }
+  .heures-ui i { display: block; width: 10px; height: 10px; border-radius: 50%; margin: 6px auto 0; }
+  .final { width: min(760px, calc(100vw - var(--col) * 3 - 2 * var(--m))); margin-left: 0; background: var(--accent); color: var(--on-accent); padding: 28px; }
+  .final .verdict { font: 400 var(--s-h2)/1.1 var(--display); letter-spacing: -0.02em; }
+  .final .mesures { display: flex; gap: 32px; margin-top: 20px; font-size: 15px; opacity: .85; }
+  .final .mesures b { display: block; font: 400 30px/1.1 var(--display); opacity: 1; }
+
+  /* L'eau ce matin : liste à deux bouts + photo */
+  .eau { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--m); align-items: start; }
+  .eau .liste { grid-column: 3 / span 5; }
+  .eau h2 { margin-bottom: 14px; }
+  .eau .intro { color: var(--ink); margin-bottom: 32px; max-width: 46ch; }
+  .groupe + .groupe { margin-top: 40px; }
+  .groupe > p { color: var(--muted); font-size: var(--s-body); margin-bottom: 6px; }
+  .rang { display: flex; align-items: center; gap: 10px; min-height: 38px; font-size: var(--s-body); }
+  .rang i { width: 14px; height: 14px; border-radius: 50%; flex: none; background: var(--surface-2); }
+  .rang a { flex: 1; text-decoration: none; }
+  @media (hover: hover) and (pointer: fine) { .rang a:hover { text-decoration: underline; } }
+  .rang span { color: var(--muted); font-size: var(--s-small); font-variant-numeric: tabular-nums; }
+  .eau figure { grid-column: 8 / span 5; position: sticky; top: 40px; }
+
+  /* Comparaison en texte */
+  .compare h2 { margin-bottom: 48px; max-width: 18ch; }
+  .tableau { display: grid; grid-template-columns: 5fr 7fr; position: relative; }
+  .tableau .tete, .tableau .rangee { display: contents; }
+  .tableau .nom, .tableau .vals { padding: 0 16px; min-height: 68px; display: flex; align-items: center; }
+  .tableau .vals { display: grid; grid-template-columns: repeat(3, 1fr); padding: 0; }
+  .tableau .vals > * { padding: 12px 16px; display: flex; align-items: center; font-size: var(--s-body); }
+  .tableau .nom { font: 700 var(--s-body)/1.3 var(--text); }
+  .tableau .rangee:nth-child(even) .nom, .tableau .rangee:nth-child(even) .vals { background: var(--surface); }
+  .tableau .tete .vals > * { font-weight: 700; min-height: 56px; }
+  .tableau .vals > :first-child { background: var(--accent); color: var(--on-accent); }
+  .tableau .tete .vals > :first-child { border-radius: 4px 4px 0 0; }
+
+  /* Défi bain d'hiver */
+  .hiver { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--m); align-items: center; }
+  .hiver figure { grid-column: 1 / span 7; }
+  .hiver .texte { grid-column: 9 / span 4; }
+  .hiver p.corps { margin-top: 18px; }
+  .defi-ui { margin-top: 28px; display: flex; align-items: center; gap: 16px; background: var(--surface); border-radius: 8px; padding: 18px 20px; }
+  .defi-ui .compteur { font: 400 44px/1 var(--display); color: var(--n3); min-width: 1.2ch; text-align: center; transition: transform 300ms var(--ease-out); }
+  .defi-ui .compteur.bump { transform: scale(1.25); transition-duration: 120ms; }
+  .defi-ui div { flex: 1; font-size: 15px; }
+  .defi-ui b { display: block; font: 400 19px/1.2 var(--display); }
+
+  /* Deux photos du lac */
+  .duo { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--m); align-items: end; }
+  .duo figure:first-child { grid-column: 1 / span 7; }
+  .duo figure:last-child { grid-column: 8 / span 5; }
+
+  /* Questions */
+  .faq { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 var(--m); align-items: start; }
+  .faq .questions { grid-column: 1 / span 5; list-style: none; margin: 0; padding: 0; }
+  .faq .questions li:first-child { color: var(--muted); font-size: var(--s-body); margin-bottom: 18px; }
+  .faq button { display: flex; gap: 14px; align-items: baseline; width: 100%; padding: 9px 0; border: 0; background: none; text-align: left; font: 400 var(--s-body)/1.4 var(--text); color: var(--muted); cursor: pointer; transition: color 150ms ease; }
+  .faq button::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transform: translateY(-2px); transition: background-color 150ms ease; }
+  .faq button[aria-expanded="true"] { color: var(--ink); }
+  .faq button[aria-expanded="true"]::before { background: var(--accent); }
+  .faq .volet { grid-column: 7 / span 6; position: sticky; top: 120px; }
+  .faq .reponse-faq { font: 400 var(--s-h3)/1.35 var(--text); max-width: 30ch; transition: opacity 150ms ease; }
+  .faq .reponse-faq[hidden] { display: none; }
+  .faq .mobile { display: none; }
+
+  /* Château et appel final */
+  .chillon { padding-top: clamp(120px, 14vw, 200px); }
+  .chillon .cadre { overflow: hidden; height: min(64svh, 600px); margin: 0 var(--m); }
+  .chillon img { width: 100%; height: 100%; object-fit: cover; }
+  .chillon figcaption { padding: 0 var(--m); }
+  .cta form { font: 400 var(--s-display)/1.15 var(--display); letter-spacing: -0.02em; max-width: calc(var(--col) * 11); }
+  .cta input { font: inherit; letter-spacing: inherit; width: 7.2em; height: 1.15em; border: 0; border-radius: 4px; background: var(--surface); color: var(--ink); padding: 0 .2em; vertical-align: baseline; }
+  .cta input::placeholder { color: var(--muted); }
+  .cta button { font: inherit; letter-spacing: inherit; height: 1.15em; padding: 0 .25em; border: 0; border-radius: 4px; background: var(--accent); color: var(--on-accent); cursor: pointer; vertical-align: baseline; transition: transform 160ms var(--ease-out); }
+  .cta button:active { transform: scale(0.97); }
+  .cta .apres { margin-top: 22px; }
+
+  footer { margin-top: 30svh; padding: 0 var(--m) 30px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px 24px; font-size: var(--s-small); color: var(--muted); }
+  footer nav { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+  footer nav a { color: var(--ink); }
+  footer .droite { text-align: right; }
+  .credits { padding: 18px var(--m) 30px; font-size: var(--s-small); color: var(--muted); max-width: 120ch; }
+
+  /* Entrées au défilement */
+  .entre { opacity: 1; transform: none; }
+  .js .entre { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  .js .entre.vu { opacity: 1; transform: none; }
+  .js .hero h1 .ligne > span { transform: translateY(105%); transition: transform 900ms var(--ease-out); }
+  .js .hero h1 .ligne:nth-child(2) > span { transition-delay: 110ms; }
+  .js .hero.pret h1 .ligne > span { transform: none; }
+  .js .hero .apparait { opacity: 0; transition: opacity 600ms ease 500ms; }
+  .js .hero.pret .apparait { opacity: 1; }
+
+  @media (max-width: 760px) {
+    .axe, .etapes { margin-left: 0; }
+    .hero { padding-top: 32px; }
+    .hero .colonne { margin-top: 22svh; }
+    .hero h1 { font-size: 24px; }
+    .apercu { width: calc(100% - 2 * var(--m)); height: 168px; }
+    .saisie input { font-size: 9vw; }
+    .acts { grid-template-columns: 1fr; }
+    .bande .cadre { height: auto; }
+    .bande img { aspect-ratio: 2 / 1; height: auto; }
+    .reponse { margin-top: 28px; }
+    .exemples { gap: 8px; }
+    .exemples button { background: #145a6e; text-decoration: none; padding: 0 16px; min-height: 44px; border-radius: 4px; }
+    .exemples span { width: 100%; padding: 0; }
+    .retour { margin-left: 0; margin-top: 24px; }
+    .final { width: calc(100% + 2 * var(--m)); margin-left: calc(-1 * var(--m)); }
+    .eau .liste, .eau figure, .hiver figure, .hiver .texte, .duo figure:first-child, .duo figure:last-child, .faq .questions { grid-column: 1 / -1; }
+    .eau figure { position: static; margin-top: 48px; }
+    .rang { min-height: 44px; }
+    .hiver .texte { margin-top: 36px; }
+    .duo figure:last-child { margin-top: 28px; }
+    .tableau { display: block; }
+    .tableau .tete { display: none; }
+    .tableau .rangee { display: block; padding: 18px 16px; }
+    .tableau .rangee:nth-child(even) { background: var(--surface); }
+    .tableau .nom, .tableau .vals { padding: 0; min-height: 0; background: none !important; }
+    .tableau .nom { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .tableau .vals { display: block; }
+    .tableau .vals > * { padding: 4px 0; font-size: 16px; }
+    .tableau .vals > *::before { content: attr(data-col) " :"; font-weight: 600; margin-right: .35em; }
+    .tableau .vals > :first-child { padding: 6px 12px; margin: 0 -12px; border-radius: 4px; }
+    .faq .volet { display: none; }
+    .faq .mobile { display: block; font-size: var(--s-body); line-height: 1.45; padding: 4px 0 14px 22px; }
+    .faq .mobile[hidden] { display: none; }
+    .cta form { font-size: 10vw; max-width: none; }
+    .cta input { width: 4.4em; }
+    footer { margin-top: 20svh; grid-template-columns: 1fr; padding-bottom: 24px; }
+    footer nav { justify-content: flex-start; }
+    footer .droite { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bande img { animation: none; transform: none; }
+    .js .entre, .js .hero h1 .ligne > span { transform: none !important; transition: opacity 300ms ease; }
+    .defi-ui .compteur { transition: none; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<header class="hero" id="haut">
+  <a class="coin lien" href="../?lang=en" hreflang="en" lang="en">English</a>
+  <div class="axe">
+    <span class="marque"><img src="../icons/icon-192.png" alt="" width="36" height="36">Le Lac aujourd’hui</span>
+    <div class="colonne">
+      <h1><span class="ligne"><span>Température du Léman,</span></span><span class="ligne"><span>plage par plage.</span></span></h1>
+      <p class="soutien apparait">L’eau à 70 cm, le vent et la bise sur 25 plages, de Genève à Évian, avec un verdict du jour : on y va ou pas.</p>
+      <div class="actions apparait">
+        <a class="bouton" href="../">Ouvrir l’app</a>
+        <a class="lien" href="#comment">Comment ça marche →</a>
+      </div>
+    </div>
+  </div>
+  <div class="apercu axe" data-ui aria-label="Aperçu : températures de l’eau ce matin">
+    <div class="ligne-ui survol"><i class="pastille" id="ap-p1"></i><b>Bains des Pâquis</b><span class="temp" id="ap-t1">12,3°</span></div>
+    <div class="ligne-ui"><i class="pastille" id="ap-p2"></i><b>Lausanne – Vidy</b><span class="temp" id="ap-t2">9,4°</span></div>
+  </div>
+</header>
+
+<main>
+  <figure class="bande">
+    <div class="cadre"><img src="img/vapeur-cgn.jpg" alt="Le bateau à vapeur Italie de la CGN naviguant sur le Léman, montagnes au fond" width="1600" height="800"></div>
+    <figcaption>Le bateau Italie de la CGN sur le Léman. Photo Christian David, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Bateau_Italie_(CGN)_sur_le_L%C3%A9man.jpg">Wikimedia Commons</a>.</figcaption>
+  </figure>
+
+  <section class="demo" aria-labelledby="demo-titre">
+    <h2 id="demo-titre" class="vh">Essayer avec une plage</h2>
+    <label class="consigne entre" for="plage">Tape une plage, le lac répond.</label>
+    <div class="saisie entre" data-ui>
+      <input id="plage" list="plages" value="Bains des Pâquis" autocomplete="off" spellcheck="false" aria-describedby="reponse">
+      <datalist id="plages"></datalist>
+    </div>
+    <div class="reponse entre" id="reponse" data-ui aria-live="polite">
+      <p class="verdict" id="r-verdict">Eau à 12°. Parfait pour les braves.</p>
+      <div class="mesures"><span><b id="r-eau">12,3°</b>eau</span><span><b id="r-air">8°</b>air</span><span><b id="r-vent">6</b>vent km/h</span></div>
+      <div class="acts" id="r-acts">
+        <span>Baignade <em class="note-ui t0">Non</em></span><span>Paddle <em class="note-ui t2">Bien</em></span>
+        <span>Voile / wing <em class="note-ui t0">Non</em></span><span>Bain d’hiver <em class="note-ui t3">Parfait</em></span>
+      </div>
+    </div>
+    <div class="exemples entre"><span>Ou essaie :</span><button type="button">Lausanne – Vidy</button><button type="button">Yvoire</button><button type="button">Montreux – Clarens</button></div>
+  </section>
+
+  <section id="comment" aria-labelledby="comment-titre">
+    <div class="etapes">
+      <h2 id="comment-titre" class="entre">Comment ça marche</h2>
+      <div class="echange entre">
+        <p>D’abord, choisis ta plage.</p>
+        <div class="appel" data-ui><span class="faux-select">Lausanne – Vidy</span><span>ou l’épingle : la plus proche</span></div>
+        <div class="retour" data-ui><div class="ligne-ui"><b>Eau</b><span class="temp" id="c-eau">9,4°</span></div><div class="ligne-ui"><b>Vent</b><span class="temp" id="c-vent">4 km/h</span></div></div>
+      </div>
+      <div class="echange entre">
+        <p>Puis touche une activité.</p>
+        <div class="appel" data-ui><span class="faux-select">Paddle</span><em class="note-ui t2" id="c-note">Bien</em></div>
+        <div class="retour" data-ui><div class="heures-ui" id="c-heures" aria-label="Note du paddle heure par heure"></div></div>
+      </div>
+      <div class="echange entre">
+        <p>Enfin, lis le verdict et va au lac.</p>
+        <div class="appel" data-ui><span class="faux-select">Le verdict du jour</span><span>une phrase, tous les matins</span></div>
+      </div>
+    </div>
+    <div class="etapes"><div class="final entre" data-ui>
+      <p class="verdict" id="c-verdict">Eau à 9°. Parfait pour les braves.</p>
+      <div class="mesures"><span><b id="c-eau2">9,4°</b>eau à Vidy</span><span><b>25</b>plages</span><span><b>3 h</b>entre deux relevés</span></div>
+    </div></div>
+  </section>
+
+  <section class="eau" id="eau" aria-labelledby="eau-titre">
+    <div class="liste">
+      <h2 id="eau-titre" class="entre">L’eau ce matin</h2>
+      <p class="intro entre" id="eau-intro">Température à 70 cm sous la surface, plage par plage. Sur un même lac, l’écart dépasse souvent trois degrés.</p>
+      <div id="eau-liste"></div>
+    </div>
+    <figure class="entre">
+      <img src="img/jet-deau.jpg" alt="La rade de Genève et le Jet d’eau vus du lac" width="1600" height="1046" loading="lazy">
+      <figcaption>La rade de Genève. Photo Gzzz, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Rade_de_Gen%C3%A8ve_2012.jpg">Wikimedia Commons</a>.</figcaption>
+    </figure>
+  </section>
+
+  <section class="compare" aria-labelledby="compare-titre">
+    <h2 id="compare-titre" class="entre">Ce qu’une app météo ne dit pas</h2>
+    <div class="tableau entre" role="table" aria-label="Comparaison">
+      <div class="tete" role="row"><div class="nom" role="columnheader"><span class="vh">Ce qu’on veut savoir</span></div><div class="vals"><span role="columnheader">Le Lac aujourd’hui</span><span role="columnheader">Une app météo générale</span><span role="columnheader">La mesure officielle</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Eau à ta plage</div><div class="vals"><span role="cell" data-col="Le Lac">25 plages, à 70 cm</span><span role="cell" data-col="App météo">Rarement</span><span role="cell" data-col="Officielle">Une station, à Genève</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">La bise</div><div class="vals"><span role="cell" data-col="Le Lac">Détectée, avec alerte</span><span role="cell" data-col="App météo">Le vent, sans le nom</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Baignade, paddle, voile</div><div class="vals"><span role="cell" data-col="Le Lac">Une note pour chacun</span><span role="cell" data-col="App météo">À toi de deviner</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Le meilleur moment</div><div class="vals"><span role="cell" data-col="Le Lac">Heure par heure, sur 12 h</span><span role="cell" data-col="App météo">Les prévisions brutes</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Le Lac">14 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Sans réseau sur la plage</div><div class="vals"><span role="cell" data-col="Le Lac">Oui, dernières données</span><span role="cell" data-col="App météo">Selon l’app</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Compte et prix</div><div class="vals"><span role="cell" data-col="Le Lac">Aucun compte, gratuit</span><span role="cell" data-col="App météo">Souvent un compte</span><span role="cell" data-col="Officielle">Gratuit</span></div></div>
+    </div>
+  </section>
+
+  <section class="hiver" aria-labelledby="hiver-titre">
+    <figure class="entre">
+      <img src="img/baignade-hiver.jpg" alt="Nageurs en bonnet dans le lac lors de la Coupe de Noël à Genève" width="1600" height="1200" loading="lazy">
+      <figcaption>La Coupe de Noël, Genève. Photo GastelEtzwane, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Coupe_Noel_20151220.jpg">Wikimedia Commons</a>.</figcaption>
+    </figure>
+    <div class="texte">
+      <h2 id="hiver-titre" class="entre">L’hiver aussi</h2>
+      <p class="corps entre">Quand l’eau passe sous 14°, l’app compte tes bains de la saison et te laisse le dire au groupe. Le premier est le plus dur.</p>
+      <div class="defi-ui entre" data-ui>
+        <span class="compteur" id="compteur">3</span>
+        <div><b>Défi bain d’hiver</b>3 bains cette saison. Les cygnes te respectent.</div>
+        <button class="bouton" type="button" id="jysuisalle">J’y suis allé</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="duo" aria-label="Le Léman">
+    <figure class="entre">
+      <img src="img/paquis.jpg" alt="Les Bains des Pâquis à Genève, la jetée et ses cabines, le Salève au loin" width="1600" height="1066" loading="lazy">
+      <figcaption>Les Bains des Pâquis, Genève. Photo Babsy, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Bains_des_P%C3%A2quis_le_soir.JPG">Wikimedia Commons</a>.</figcaption>
+    </figure>
+    <figure class="entre">
+      <img src="img/lavaux.jpg" alt="Les vignobles en terrasses de Lavaux au-dessus du Léman" width="1600" height="1066" loading="lazy">
+      <figcaption>Lavaux et Saint-Saphorin. Photo JoachimKohler-HB, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:%C3%89glise_r%C3%A9form%C3%A9e_Saint-Symphorien,_Lac_Leman_et_les_vignobles_en_terrasses_de_Lavaux_(2013).jpg">Wikimedia Commons</a>.</figcaption>
+    </figure>
+  </section>
+
+  <section class="faq" id="questions" aria-label="Questions">
+    <ul class="questions">
+      <li>Questions fréquentes</li>
+    </ul>
+    <div class="volet" aria-live="polite"></div>
+  </section>
+
+  <figure class="chillon">
+    <div class="cadre"><img src="img/chillon.jpg" alt="Le château de Chillon au bord du Léman, montagnes en arrière-plan" width="1600" height="1200" loading="lazy"></div>
+    <figcaption>Le château de Chillon. Photo Benjamin Gimmel, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Schweiz_Schloss_Chillon_Gesamtansicht.jpg">Wikimedia Commons</a>.</figcaption>
+  </figure>
+
+  <section class="cta" aria-label="Ouvrir l’app sur une plage">
+    <form action="../" method="get" id="cta">
+      <label for="cta-plage" class="vh">Plage</label>
+      Le lac à <input id="cta-plage" list="plages" placeholder="Vidy" autocomplete="off"> <button type="submit">maintenant</button>
+      <input type="hidden" name="plage" id="cta-id">
+    </form>
+    <p class="apres">L’app s’ouvre sur cette plage, sans compte et sans rien installer. Tu pourras l’ajouter à ton écran d’accueil ensuite.</p>
+  </section>
+</main>
+
+<footer>
+  <span>Les conditions du Léman, plage par plage</span>
+  <nav aria-label="Liens"><a href="../">Ouvrir l’app</a><a href="#questions">Questions</a><a href="https://github.com/xiff/le-lac">Code source</a></nav>
+  <span class="droite">2026 · aucun cookie, aucun compte</span>
+</footer>
+<p class="credits">Données : eau <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), météo <a href="https://open-meteo.com">Open-Meteo</a>. Photos sous licence CC BY-SA, crédits sous chaque image.</p>
+
+<script type="module">
+import { SPOTS, valeurProche } from '../spots.js';
+import { lire, verdict, ACTIVITES, PHRASES } from '../score.js';
+
+const $ = (id) => document.getElementById(id);
+const LIB = ['Non', 'Bof', 'Bien', 'Parfait'], NOMS = { baignade: 'Baignade', paddle: 'Paddle', voile: 'Voile / wing', hiver: 'Bain d’hiver' };
+const deg = (v) => (v == null ? '–' : v.toFixed(1).replace('.', ',') + '°');
+const couleur = (t) => (t == null ? 'var(--surface-2)' : t < 12 ? '#5aa6c4' : t < 16 ? '#127a8f' : t < 20 ? '#2f7f50' : t < 24 ? '#e3a82b' : '#d0533a');
+const sans = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+// Entrée du héros puis des sections, une seule fois.
+requestAnimationFrame(() => $('haut').classList.add('pret'));
+const vus = new IntersectionObserver((es) => es.forEach((e) => {
+  if (!e.isIntersecting) return;
+  const freres = [...e.target.parentElement.querySelectorAll(':scope > .entre')];
+  e.target.style.transitionDelay = Math.max(0, freres.indexOf(e.target)) * 80 + 'ms';
+  e.target.classList.add('vu'); vus.unobserve(e.target);
+}), { rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.entre').forEach((el) => vus.observe(el));
+
+// Liste des plages pour les champs.
+$('plages').innerHTML = SPOTS.map((s) => `<option value="${s.nom}">`).join('');
+const trouver = (texte) => { const q = sans(texte); if (!q) return null; return SPOTS.find((s) => sans(s.nom) === q) ?? SPOTS.find((s) => sans(s.nom).startsWith(q)) ?? SPOTS.find((s) => sans(s.nom).includes(q)) ?? null; };
+
+// Eau : le même fichier que l'app, mis à jour toutes les 3 h.
+let eauJson = null;
+const eauDe = (s) => valeurProche(eauJson?.spots?.[s.id]);
+const meteos = {};
+async function meteo(s) {
+  if (!meteos[s.id]) {
+    const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+    meteos[s.id] = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+  }
+  return meteos[s.id];
+}
+async function conditions(s) {
+  const m = await meteo(s), eau = eauDe(s);
+  const c = lire(m.current, null, eau); if (!c) throw new Error('incomplet');
+  const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
+  return { c, heures, v: verdict(c, 'fr') };
+}
+
+// La démonstration : on tape, la page répond avec le vrai calcul de l'app.
+let tour = 0, minuterie;
+async function repondre() {
+  const s = trouver($('plage').value), moi = ++tour;
+  if (!s) { $('r-verdict').textContent = 'Pas de plage à ce nom. Essaie Nyon, Pully ou Thonon.'; return; }
+  try {
+    const { c, v } = await conditions(s); if (moi !== tour) return;
+    $('r-verdict').textContent = `${s.nom} : ${v.titre}`;
+    $('r-eau').textContent = deg(c.eau); $('r-air').textContent = Math.round(c.air) + '°'; $('r-vent').textContent = Math.round(c.vent);
+    $('r-acts').innerHTML = ACTIVITES.map((a) => { const n = a.note(c); return `<span title="${PHRASES.fr[a.id][n]}">${NOMS[a.id]} <em class="note-ui t${n}">${LIB[n]}</em></span>`; }).join('');
+  } catch { if (moi === tour) $('r-verdict').textContent = 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.'; }
+}
+$('plage').addEventListener('input', () => { clearTimeout(minuterie); minuterie = setTimeout(repondre, 350); });
+document.querySelectorAll('.exemples button').forEach((b) => (b.onclick = () => { $('plage').value = b.textContent; repondre(); $('plage').focus(); }));
+
+// Comment ça marche : les fragments montrent Vidy, en vrai.
+async function vidy() {
+  const s = SPOTS.find((x) => x.id === 'lausanne-vidy');
+  try {
+    const { c, heures, v } = await conditions(s), pad = ACTIVITES.find((a) => a.id === 'paddle');
+    $('c-eau').textContent = deg(c.eau); $('c-eau2').textContent = deg(c.eau); $('c-vent').textContent = Math.round(c.vent) + ' km/h';
+    const n = pad.note(c); $('c-note').className = `note-ui t${n}`; $('c-note').textContent = LIB[n];
+    $('c-heures').innerHTML = heures.slice(0, 10).map((h) => { const k = pad.note(h); return `<div>${h.heure}<i class="t${k}" style="background:${['#d0533a', '#e3a82b', '#3b9b5d', '#1a8ba3'][k]}" role="img" aria-label="${LIB[k]}"></i></div>`; }).join('');
+    $('c-verdict').textContent = v.titre;
+  } catch {}
+}
+
+// L'eau ce matin : les 25 plages, groupées par région.
+function liste() {
+  const regions = [...new Set(SPOTS.map((s) => s.region))];
+  const toutes = SPOTS.map(eauDe).filter((v) => v != null);
+  if (toutes.length) $('eau-intro').textContent = `Température à 70 cm sous la surface. Ce matin, de ${deg(Math.min(...toutes))} à ${deg(Math.max(...toutes))} sur le même lac.`;
+  $('eau-liste').innerHTML = regions.map((r) => `<div class="groupe"><p>${r}</p>${SPOTS.filter((s) => s.region === r).map((s) => { const t = eauDe(s); return `<div class="rang"><i style="background:${couleur(t)}" aria-hidden="true"></i><a href="../?plage=${s.id}">${s.nom}</a><span>${deg(t)}</span></div>`; }).join('')}</div>`).join('');
+  [['bains-des-paquis', 1], ['lausanne-vidy', 2]].forEach(([id, k]) => { const t = eauDe(SPOTS.find((s) => s.id === id)); if (t != null) { $('ap-t' + k).textContent = deg(t); $('ap-p' + k).style.background = couleur(t); } });
+}
+liste();
+fetch('../eau.json', { cache: 'no-cache' }).then((r) => r.json()).then((j) => { eauJson = j; liste(); repondre(); vidy(); }).catch(() => { repondre(); vidy(); });
+
+// Questions : la réponse change avec la question survolée, cliquée ou ciblée au clavier.
+const FAQ = [
+  ['D’où vient la température de l’eau ?', 'Du modèle Alplakes de l’Eawag, l’institut suisse de recherche sur l’eau. Il calcule le lac en trois dimensions ; on lit la valeur à 70 cm sous la surface devant chaque plage, toutes les trois heures.'],
+  ['Pourquoi l’eau change autant d’une plage à l’autre ?', 'Le vent pousse l’eau chaude de surface d’une rive à l’autre. Par bise, l’eau froide du fond remonte parfois près de Lausanne : trois ou quatre degrés d’écart avec Genève le même jour, ce n’est pas rare.'],
+  ['C’est gratuit ?', 'Oui, sans compte, sans publicité et sans cookie. Tu ouvres la page, tu choisis ta plage, c’est tout.'],
+  ['Comment l’installer sur mon téléphone ?', 'Sur Android, menu de Chrome puis « Installer l’application ». Sur iPhone, bouton Partager de Safari puis « Sur l’écran d’accueil ». Elle s’ouvre ensuite comme une app.'],
+  ['Et sans réseau sur la plage ?', 'L’app garde les dernières conditions chargées et te dit de quelle heure elles datent. Les bars et restos restent consultables.'],
+  ['Elle existe en anglais ?', 'Oui. Elle suit la langue de ton téléphone, et un bouton en bas de l’écran passe du français à l’anglais.'],
+];
+const ul = document.querySelector('.questions'), volet = document.querySelector('.volet');
+FAQ.forEach(([q, r], i) => {
+  const li = document.createElement('li');
+  li.innerHTML = `<button type="button" id="q${i}" aria-expanded="${i === 0}" aria-controls="r${i} m${i}">${q}</button><p class="mobile" id="m${i}" ${i === 0 ? '' : 'hidden'}>${r}</p>`;
+  ul.append(li);
+  volet.insertAdjacentHTML('beforeend', `<p class="reponse-faq" id="r${i}" ${i === 0 ? '' : 'hidden'}>${r}</p>`);
+});
+function choisir(i) {
+  FAQ.forEach((_, k) => { $('q' + k).setAttribute('aria-expanded', k === i); $('r' + k).hidden = k !== i; $('m' + k).hidden = k !== i; });
+}
+ul.querySelectorAll('button').forEach((b, i) => { b.onclick = () => choisir(i); b.onfocus = () => choisir(i); if (matchMedia('(hover: hover)').matches) b.onmouseenter = () => choisir(i); });
+
+// Défi : un aperçu qui réagit (le vrai compteur vit dans l'app).
+$('jysuisalle').onclick = () => {
+  const c = $('compteur'), n = +c.textContent + 1; c.textContent = n;
+  c.nextElementSibling.lastChild.textContent = `${n} bains cette saison. Les cygnes te respectent.`;
+  c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 120);
+};
+
+// Appel final : le nom tapé devient le lien vers la plage dans l'app.
+$('cta').onsubmit = (e) => {
+  const s = trouver($('cta-plage').value || 'Vidy');
+  if (!s) { e.preventDefault(); $('cta-plage').focus(); return; }
+  $('cta-id').value = s.id; $('cta-plage').removeAttribute('name');
+};
+</script>
+</body>
+</html>

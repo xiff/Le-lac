@@ -7,7 +7,7 @@ const TEXTES = {
     bienvenueTitre: 'Bienvenue au bord de l’eau.', bienvenueTexte: 'Chaque jour, on lit le vent, l’eau et la bise pour te dire si ça vaut le coup de sortir le maillot. Commence par ta plage.',
     trouver: 'Trouver ma plage', plusTard: 'Je choisis moi-même', surLeau: 'Sur l’eau',
     defiTitre: 'Défi bain d’hiver', jySuisAlle: 'J’y suis allé', heures: 'Les 12 prochaines heures', heuresAria: 'Prévisions heure par heure',
-    pied: 'Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot.',
+    pied: 'Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot. <a href="presentation/">À propos</a>',
     terrasse: 'Temps de terrasse. Ce serait dommage de rester dedans.', typeLieu: 'Type de lieu', tout: 'Tout', bars: 'Bars', restos: 'Restos',
     noteLieux: 'Horaires et saisons changent : un coup de fil avant d’y aller.', sections: 'Sections', ongletLac: 'Le lac', ongletSortir: 'Sortir',
     autreLangue: 'English', libelles: ['Non', 'Bof', 'Bien', 'Parfait'],
@@ -31,7 +31,7 @@ const TEXTES = {
     bienvenueTitre: 'Welcome to the waterfront.', bienvenueTexte: 'Every day we read the wind, the water and the bise to tell you if it’s worth grabbing your swimsuit. Start with your beach.',
     trouver: 'Find my beach', plusTard: 'I’ll pick myself', surLeau: 'On the water',
     defiTitre: 'Winter swim challenge', jySuisAlle: 'I went in', heures: 'Next 12 hours', heuresAria: 'Hour-by-hour forecast',
-    pied: 'Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.',
+    pied: 'Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word. <a href="presentation/">About</a>',
     terrasse: 'Terrace weather. Shame to stay indoors.', typeLieu: 'Type of place', tout: 'All', bars: 'Bars', restos: 'Restaurants',
     noteLieux: 'Hours and seasons change: give them a call before you go.', sections: 'Sections', ongletLac: 'The lake', ongletSortir: 'Go out',
     autreLangue: 'Français', libelles: ['No', 'Meh', 'Good', 'Perfect'],
@@ -52,6 +52,8 @@ const TEXTES = {
 };
 
 function choisir() {
+  const url = new URLSearchParams(globalThis.location?.search ?? '').get('lang');
+  if (TEXTES[url]) { try { localStorage.setItem('langue', url); } catch {} return url; }
   try { const l = localStorage.getItem('langue'); if (TEXTES[l]) return l; } catch {}
   return /^en\b/i.test(globalThis.navigator?.language ?? '') ? 'en' : 'fr';
 }

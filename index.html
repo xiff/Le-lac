@@ -274,7 +274,8 @@ for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
 // Plage mémorisée par identifiant ; l'ancienne version stockait un index dans une liste de 7 plages.
 const ANCIENS = ['bains-des-paquis', 'geneve-plage', 'baby-plage', 'nyon', 'lausanne-vidy', 'vevey', 'evian'];
 try {
-  const id = localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
+  // ?plage=lausanne-vidy (liens de la page de présentation) l'emporte sur la plage mémorisée.
+  const id = new URLSearchParams(location.search).get('plage') ?? localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
   const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
 } catch {}
 sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); };

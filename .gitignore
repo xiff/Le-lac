@@ -2,3 +2,4 @@ android/*.keystore
 android/app-release*
 android/app/
 android/build/
+.taste-skill/
