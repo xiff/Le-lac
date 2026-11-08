@@ -109,6 +109,13 @@
   .defi .principal { flex-basis: 100%; justify-content: center; }
   .defi b { font: 400 1.1rem/1.2 var(--display); display: block; }
   .defi small { color: var(--doux); }
+  .historique { flex-basis: 100%; }
+  .historique summary { cursor: pointer; color: var(--doux); font-size: .88rem; font-weight: 600; padding: 6px 0; }
+  .historique ul { list-style: none; margin: 4px 0 0; padding: 0; }
+  .historique li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid var(--trait); font-size: .88rem; color: var(--doux); }
+  .historique li b { font: 600 .9rem var(--texte); color: var(--encre); display: inline; margin-right: 8px; }
+  .historique li.saison-titre { border-top: 0; font-weight: 600; padding-top: 10px; }
+  .historique .retirer { flex: none; width: 44px; height: 44px; margin: -8px -8px -8px 0; border: 0; background: none; color: var(--doux); font-size: 1.3rem; border-radius: 99px; }
   .compteur { font: 400 2.2rem/1 var(--display); color: var(--n3); min-width: 1.4ch; text-align: center; transition: transform 300ms var(--ease-out); }
   .compteur.bump { transform: scale(1.25); transition-duration: 120ms; }
   .tuile { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; }
@@ -262,6 +269,7 @@
       <span class="compteur" id="compteur" aria-hidden="true">0</span>
       <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
       <button class="principal" id="jysuisalle" data-t="jySuisAlle">J’y suis allé</button>
+      <details class="historique" id="historique" hidden><summary data-t="historique">Mon historique</summary><ul id="historique-liste"></ul></details>
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" data-ta="heuresAria" aria-label="Prévisions heure par heure"></div>
@@ -618,21 +626,42 @@ $('form-lieu').onsubmit = (e) => {
   e.target.reset(); toast(T.pMerci);
 };
 
-// Défi bain d'hiver : compteur de la saison, sur cet appareil.
-const cleDefi = () => 'bains-' + saison(new Date());
-const lireBains = () => { try { return +localStorage.getItem(cleDefi()) || 0; } catch { return 0; } };
+// Défi bain d'hiver : liste datée des bains, par saison, sur cet appareil.
+// shortcut: stockée dans le navigateur seulement, perdue si on change de téléphone ; synchroniser quand il y aura des comptes.
+const cleDefi = (sa = saison(new Date())) => 'bains-liste-' + sa;
+function lireListe(sa) {
+  try {
+    const l = JSON.parse(localStorage.getItem(cleDefi(sa)) || 'null');
+    if (Array.isArray(l)) return l;
+    const ancien = +localStorage.getItem('bains-' + (sa ?? saison(new Date()))) || 0; // ancien compteur sans dates
+    return Array.from({ length: ancien }, () => ({ d: null }));
+  } catch { return []; }
+}
+const ecrireListe = (l, sa) => { try { localStorage.setItem(cleDefi(sa), JSON.stringify(l)); } catch {} };
+const saisons = () => { const a = new Set([saison(new Date())]); try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('bains-liste-')) a.add(k.slice(12)); } } catch {} return [...a].sort().reverse(); };
+const dateBain = (d) => (d ? new Date(d).toLocaleDateString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { weekday: 'short', day: 'numeric', month: 'long' }) : T.dateInconnue);
 function afficherDefi() {
-  const n = lireBains();
+  const n = lireListe().length;
   $('compteur').textContent = n;
   $('defi-texte').textContent = T.bains(n);
+  const groupes = saisons().map((sa) => [sa, lireListe(sa)]).filter(([, l]) => l.length);
+  $('historique').hidden = !groupes.length;
+  $('historique-liste').innerHTML = groupes.map(([sa, l]) => `<li class="saison-titre">${sa.replace('-', '–')}</li>` + l.map((b, i) => ({ b, i })).reverse().map(({ b, i }) =>
+    `<li><span><b>${dateBain(b.d)}</b>${[b.plage, b.eau == null ? '' : T.eau + ' ' + b.eau + '°'].filter(Boolean).join(' · ')}</span><button class="retirer" data-saison="${sa}" data-i="${i}" aria-label="${T.retirerBain(dateBain(b.d))}">×</button></li>`).join('')).join('');
 }
 afficherDefi();
+$('historique-liste').onclick = (e) => {
+  const b = e.target.closest('.retirer'); if (!b) return;
+  const l = lireListe(b.dataset.saison); l.splice(+b.dataset.i, 1); ecrireListe(l, b.dataset.saison);
+  afficherDefi(); toast(T.bainRetire);
+};
 $('jysuisalle').onclick = () => {
-  const n = lireBains() + 1;
-  try { localStorage.setItem(cleDefi(), n); } catch {}
+  const eau = etat?.c?.eau == null ? null : Math.round(etat.c.eau);
+  const l = lireListe(); l.push({ d: new Date().toISOString(), plage: spot().nom, eau }); ecrireListe(l);
+  const n = l.length;
   afficherDefi();
   const c = $('compteur'); c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 120);
-  partager(T.partageBain(n, spot().nom, etat?.c?.eau == null ? null : Math.round(etat.c.eau)), T.merciBain(n));
+  partager(T.partageBain(n, spot().nom, eau), T.merciBain(n));
 };
 
 let minuterie;
