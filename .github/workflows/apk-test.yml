@@ -12,10 +12,15 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: android-actions/setup-android@v3
+      # Le kit Android est préinstallé sur les machines GitHub ; on ajoute la version qu'attend Bubblewrap.
+      - name: Outils Android 36
+        run: |
+          SDKM=$(ls -d "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | sort -V | tail -1)
+          yes | "$SDKM" --licenses > /dev/null || true
+          "$SDKM" "build-tools;36.1.0" "platforms;android-36"
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - run: npm install --no-save @bubblewrap/core@1.27.0
       - name: Clé de test jetable
         run: keytool -genkeypair -keystore /tmp/test.keystore -alias test -keyalg RSA -keysize 2048 -validity 365 -storepass testtest -keypass testtest -dname "CN=Mon Lac test"
