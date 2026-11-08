@@ -149,6 +149,7 @@
   @keyframes pulse { 50% { opacity: .45; } }
   footer { color: var(--doux); font-size: .75rem; margin-top: 28px; }
   footer a { color: inherit; text-underline-offset: 2px; }
+  .langue { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; padding: 0; border: 0; background: none; color: var(--lac-vif); font-weight: 600; font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
     .panneau, .lieu-ent, .toast, .bienvenue, .compteur { transform: none !important; }
@@ -177,19 +178,19 @@
 
 <header>
   <div class="barre">
-    <span class="marque"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg>Le Lac aujourd’hui</span>
-    <button class="rond" id="partager" aria-label="Partager les conditions"><svg class="i"><use href="#i-partage"/></svg></button>
+    <span class="marque"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg><span data-t="titre">Le Lac aujourd’hui</span></span>
+    <button class="rond" id="partager" data-ta="partagerAria" aria-label="Partager les conditions"><svg class="i"><use href="#i-partage"/></svg></button>
   </div>
   <div class="choix">
-    <label class="lieu-choix"><span class="vh">Plage</span><select id="spot"></select><svg class="i" aria-hidden="true"><use href="#i-bas"/></svg></label>
-    <button class="rond petit" id="localiser" aria-label="Choisir la plage la plus proche"><svg class="i"><use href="#i-epingle"/></svg></button>
+    <label class="lieu-choix"><span class="vh" data-t="plage">Plage</span><select id="spot"></select><svg class="i" aria-hidden="true"><use href="#i-bas"/></svg></label>
+    <button class="rond petit" id="localiser" data-ta="localiserAria" aria-label="Choisir la plage la plus proche"><svg class="i"><use href="#i-epingle"/></svg></button>
   </div>
-  <h1 id="verdict" class="charge">On regarde le lac…</h1>
+  <h1 id="verdict" class="charge" data-t="chargement">On regarde le lac…</h1>
   <p class="releve" id="releve" aria-live="polite">&nbsp;</p>
   <div class="mesures">
-    <div><b id="eau">–</b><small>eau</small></div>
-    <div><b id="air">–</b><small>air</small></div>
-    <div><b id="vent">–</b><small>vent km/h</small></div>
+    <div><b id="eau">–</b><small data-t="eau">eau</small></div>
+    <div><b id="air">–</b><small data-t="air">air</small></div>
+    <div><b id="vent">–</b><small data-t="vent">vent km/h</small></div>
   </div>
   <svg class="vague" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 18V9c25 0 25-7 50-7s25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7v9Z"/></svg>
 </header>
@@ -197,45 +198,46 @@
 <main>
   <div id="p-lac" class="panneau" role="tabpanel" aria-labelledby="t-lac">
     <section class="bienvenue" id="bienvenue" hidden aria-labelledby="bienvenue-titre">
-      <h2 id="bienvenue-titre">Bienvenue au bord de l’eau.</h2>
-      <p>Chaque jour, on lit le vent, l’eau et la bise pour te dire si ça vaut le coup de sortir le maillot. Commence par ta plage.</p>
+      <h2 id="bienvenue-titre" data-t="bienvenueTitre">Bienvenue au bord de l’eau.</h2>
+      <p data-t="bienvenueTexte">Chaque jour, on lit le vent, l’eau et la bise pour te dire si ça vaut le coup de sortir le maillot. Commence par ta plage.</p>
       <div class="actions">
-        <button class="principal" id="trouver"><svg class="i" aria-hidden="true"><use href="#i-epingle"/></svg>Trouver ma plage</button>
-        <button class="secondaire" id="plustard">Je choisis moi-même</button>
+        <button class="principal" id="trouver"><svg class="i" aria-hidden="true"><use href="#i-epingle"/></svg><span data-t="trouver">Trouver ma plage</span></button>
+        <button class="secondaire" id="plustard" data-t="plusTard">Je choisis moi-même</button>
       </div>
     </section>
     <p class="alerte" id="alerte" hidden></p>
-    <h2>Sur l’eau</h2>
+    <h2 data-t="surLeau">Sur l’eau</h2>
     <div id="activites"></div>
     <section class="defi" id="defi" hidden aria-labelledby="defi-titre">
       <span class="compteur" id="compteur" aria-hidden="true">0</span>
-      <div><b id="defi-titre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
-      <button class="principal" id="jysuisalle">J’y suis allé</button>
+      <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
+      <button class="principal" id="jysuisalle" data-t="jySuisAlle">J’y suis allé</button>
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
-    <div class="heures" id="heures" tabindex="0" aria-label="Prévisions heure par heure"></div>
+    <div class="heures" id="heures" tabindex="0" data-ta="heuresAria" aria-label="Prévisions heure par heure"></div>
     <footer>
-      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
-      Indicatif : le lac a toujours le dernier mot.
+      <span data-th="pied">      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
+      Indicatif : le lac a toujours le dernier mot.</span>
+      <button class="langue" id="langue" lang="en">English</button>
     </footer>
   </div>
 
   <div id="p-sortir" class="panneau" role="tabpanel" aria-labelledby="t-sortir" hidden>
-    <p class="alerte" id="terrasse" hidden>Temps de terrasse. Ce serait dommage de rester dedans.</p>
-    <div class="filtres" id="filtres" role="group" aria-label="Type de lieu">
-      <button aria-pressed="true" data-type="">Tout</button>
-      <button aria-pressed="false" data-type="bar"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg>Bars</button>
-      <button aria-pressed="false" data-type="resto"><svg class="i" aria-hidden="true"><use href="#i-couverts"/></svg>Restos</button>
+    <p class="alerte" id="terrasse" hidden data-t="terrasse">Temps de terrasse. Ce serait dommage de rester dedans.</p>
+    <div class="filtres" id="filtres" role="group" data-ta="typeLieu" aria-label="Type de lieu">
+      <button aria-pressed="true" data-type=""><span data-t="tout">Tout</span></button>
+      <button aria-pressed="false" data-type="bar"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg><span data-t="bars">Bars</span></button>
+      <button aria-pressed="false" data-type="resto"><svg class="i" aria-hidden="true"><use href="#i-couverts"/></svg><span data-t="restos">Restos</span></button>
     </div>
     <div id="lieux"></div>
-    <p class="note">Horaires et saisons changent : un coup de fil avant d’y aller.</p>
+    <p class="note" data-t="noteLieux">Horaires et saisons changent : un coup de fil avant d’y aller.</p>
   </div>
 </main>
 
-<nav aria-label="Sections">
+<nav data-ta="sections" aria-label="Sections">
   <div class="onglets" role="tablist" id="onglets" data-actif="lac">
-    <button role="tab" id="t-lac" aria-selected="true" aria-controls="p-lac"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg>Le lac</button>
-    <button role="tab" id="t-sortir" aria-selected="false" aria-controls="p-sortir"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg>Sortir</button>
+    <button role="tab" id="t-lac" aria-selected="true" aria-controls="p-lac"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg><span data-t="ongletLac">Le lac</span></button>
+    <button role="tab" id="t-sortir" aria-selected="false" aria-controls="p-sortir"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg><span data-t="ongletSortir">Sortir</span></button>
   </div>
 </nav>
 <div class="toast" id="toast" role="status"></div>
@@ -244,17 +246,28 @@
 import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { SPOTS, valeurProche } from './spots.js';
+import { LANGUE, T, AUTRE } from './textes.js';
+
+document.documentElement.lang = LANGUE;
+document.title = T.titre;
+document.querySelectorAll('[data-t]').forEach((e) => (e.textContent = T[e.dataset.t]));
+document.querySelectorAll('[data-th]').forEach((e) => (e.innerHTML = T[e.dataset.th]));
+document.querySelectorAll('[data-ta]').forEach((e) => e.setAttribute('aria-label', T[e.dataset.ta]));
+document.getElementById('langue').textContent = T.autreLangue;
+document.getElementById('langue').lang = AUTRE;
+document.getElementById('langue').onclick = () => { try { localStorage.setItem('langue', AUTRE); } catch {} location.reload(); };
 
 const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon' };
-const LIBELLES = ['Non', 'Bof', 'Bien', 'Parfait'];
+const LIBELLES = T.libelles;
+const NOM = (a) => T.activites[a.id];
 const $ = (id) => document.getElementById(id);
 const icone = (n, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
-const fleche = (dir, lib) => `<svg class="i fleche" style="rotate:${dir + 180}deg" role="img" aria-label="${lib ?? 'vent venant de ' + dir + '°'}"><use href="#i-fleche"/></svg>`;
+const fleche = (dir, lib) => `<svg class="i fleche" style="rotate:${dir + 180}deg" role="img" aria-label="${lib ?? T.ventDe(dir)}"><use href="#i-fleche"/></svg>`;
 let etat = null;
 
 const sel = $('spot');
 for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
-  const g = document.createElement('optgroup'); g.label = r;
+  const g = document.createElement('optgroup'); g.label = T.regions[r] ?? r;
   SPOTS.forEach((s, i) => s.region === r && g.append(new Option(s.nom, i)));
   sel.append(g);
 }
@@ -295,15 +308,15 @@ $('filtres').onclick = (e) => {
   afficherLieux();
 };
 const carteLieu = (l, i) => `<article class="lieu lieu-ent" style="transition-delay:${Math.min(i, 6) * 40}ms">
-  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}${fermeture(l) ? `<span class="badge t1">${fermeture(l)}</span>` : ''}</div>
-  <b>${l.nom}</b><p>${l.note}</p>
-  <a href="${lienCarte(l)}" target="_blank" rel="noopener">${icone('cap')}Itinéraire</a>${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">Réserver</a>` : ''}</article>`;
+  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}${fermeture(l, undefined, LANGUE) ? `<span class="badge t1">${fermeture(l, undefined, LANGUE)}</span>` : ''}</div>
+  <b>${l.nom}</b><p>${LANGUE === 'en' ? l.en : l.note}</p>
+  <a href="${lienCarte(l)}" target="_blank" rel="noopener">${icone('cap')}${T.itineraire}</a>${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">${T.reserver}</a>` : ''}</article>`;
 function afficherLieux() {
   // Les lieux fermés pour la saison passent en fin de liste.
   const liste = LIEUX.filter((l) => !filtre || l.type === filtre).sort((a, b) => !!fermeture(a) - !!fermeture(b));
   const pres = liste.filter((l) => l.zone === spot().zone), loin = liste.filter((l) => l.zone !== spot().zone);
-  $('lieux').innerHTML = (pres.length ? `<h2>Près de ${spot().nom}</h2>` + pres.map(carteLieu).join('') : '')
-    + (loin.length ? '<h2>Ailleurs sur le lac</h2>' + loin.map((l, i) => carteLieu(l, i + pres.length)).join('') : '');
+  $('lieux').innerHTML = (pres.length ? `<h2>${T.pres(spot().nom)}</h2>` + pres.map(carteLieu).join('') : '')
+    + (loin.length ? `<h2>${T.ailleurs}</h2>` + loin.map((l, i) => carteLieu(l, i + pres.length)).join('') : '');
 }
 afficherLieux();
 
@@ -316,14 +329,14 @@ function fermerBienvenue() {
   b.classList.add('part'); setTimeout(() => (b.hidden = true), 180);
 }
 function localiser() {
-  if (!navigator.geolocation) return toast('Pas de localisation sur cet appareil.');
+  if (!navigator.geolocation) return toast(T.pasDeGeo);
   $('localiser').setAttribute('aria-busy', 'true');
   navigator.geolocation.getCurrentPosition((pos) => {
     $('localiser').removeAttribute('aria-busy');
     sel.value = plusProche(SPOTS, pos.coords.latitude, pos.coords.longitude);
     sel.onchange(); fermerBienvenue();
-    toast(`Cap sur ${spot().nom}.`);
-  }, () => { $('localiser').removeAttribute('aria-busy'); toast('Position refusée. Choisis ta plage dans la liste.'); }, { timeout: 8000, maximumAge: 600000 });
+    toast(T.cap(spot().nom));
+  }, () => { $('localiser').removeAttribute('aria-busy'); toast(T.geoRefusee); }, { timeout: 8000, maximumAge: 600000 });
 }
 $('localiser').onclick = localiser;
 $('trouver').onclick = localiser;
@@ -360,23 +373,23 @@ async function charger() {
     const c = lire(m.current, null, eau);
     if (!c) throw new Error('données incomplètes');
     const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-    const v = verdict(c);
+    const v = verdict(c, LANGUE);
     etat = { ...etat, c, v, heure: m.current.time.slice(11, 16) };
 
     $('verdict').textContent = v.titre;
-    $('releve').innerHTML = navigator.onLine ? `Relevé de ${etat.heure}` : `${icone('horsligne')}Hors ligne · dernières données de ${etat.heure}`;
+    $('releve').innerHTML = navigator.onLine ? T.releve(etat.heure) : icone('horsligne') + T.horsLigne(etat.heure);
     $('eau').textContent = eau == null ? '?' : eau.toFixed(1) + '°';
     $('air').textContent = Math.round(c.air) + '°';
     $('vent').innerHTML = `${Math.round(c.vent)} ${fleche(c.dir)}`;
 
     const danger = c.code >= 95 || c.rafales > 40;
-    const alerte = c.code >= 95 ? 'Orage : tout le monde sort de l’eau.' : estBise(c) ? 'Bise en cours : vagues, courant, et cheveux en bataille.' : c.rafales > 40 ? 'Rafales fortes : tiens bien ton paddle.' : '';
+    const alerte = c.code >= 95 ? T.orage : estBise(c) ? T.bise : c.rafales > 40 ? T.rafales : '';
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte; $('alerte').classList.toggle('danger', danger);
 
     $('activites').innerHTML = ACTIVITES.map((a) => {
       const n = a.note(c), cr = meilleurCreneau(heures, a.note);
-      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${a.nom} : ${LIBELLES[n]}. Afficher dans les prochaines heures"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
-        <div><b>${a.nom}</b><small>${PHRASES[a.id][n]}${cr ? `<span class="cr">Meilleur moment ${cr.de}–${cr.a}</span>` : ''}</small></div>
+      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
+        <div><b>${NOM(a)}</b><small>${PHRASES[LANGUE][a.id][n]}${cr ? `<span class="cr">${T.meilleur(cr.de, cr.a)}</span>` : ''}</small></div>
         <span class="badge t${n}">${LIBELLES[n]}</span></button>`;
     }).join('');
     etat.heures = heures;
@@ -385,8 +398,8 @@ async function charger() {
     $('defi').hidden = !(eau != null && eau <= 14);
     $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
   } catch {
-    $('verdict').textContent = 'Le lac ne répond pas.';
-    $('releve').textContent = 'Pas de réseau ni de données en mémoire. Réessaie dans un instant.';
+    $('verdict').textContent = T.pasDeReponse;
+    $('releve').textContent = T.pasDeDonnees;
   }
   $('verdict').classList.remove('charge');
 }
@@ -397,11 +410,11 @@ addEventListener('online', charger);
 function afficherHeures() {
   const a = ACTIVITES.find((x) => x.id === etat.choix);
   $('activites').querySelectorAll('.act').forEach((b) => b.setAttribute('aria-pressed', b.dataset.act === a.id));
-  $('h-heures').innerHTML = `Les 12 prochaines heures <span>· ${a.nom.toLowerCase()}</span>`;
-  if (!etat.heures.length) { $('heures').innerHTML = '<p class="note">Prévisions horaires indisponibles pour l’instant. Le lac garde ses secrets.</p>'; return; }
+  $('h-heures').innerHTML = `${T.heures} <span>· ${NOM(a).toLowerCase()}</span>`;
+  if (!etat.heures.length) { $('heures').innerHTML = `<p class="note">${T.heuresVides}</p>`; return; }
   $('heures').innerHTML = etat.heures.map((h) => {
     const n = a.note(h);
-    return `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${a.nom} : ${LIBELLES[n]}"></i></div>`;
+    return `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${NOM(a)} : ${LIBELLES[n]}"></i></div>`;
   }).join('');
 }
 $('activites').onclick = (e) => { const b = e.target.closest('.act'); if (b && etat?.heures) { etat.choix = b.dataset.act; afficherHeures(); } };
@@ -412,7 +425,7 @@ const lireBains = () => { try { return +localStorage.getItem(cleDefi()) || 0; } 
 function afficherDefi() {
   const n = lireBains();
   $('compteur').textContent = n;
-  $('defi-texte').textContent = n === 0 ? 'Aucun bain cette saison. Pour l’instant.' : n === 1 ? '1 bain cette saison. Le premier est le plus dur.' : `${n} bains cette saison. Les cygnes te respectent.`;
+  $('defi-texte').textContent = T.bains(n);
 }
 afficherDefi();
 $('jysuisalle').onclick = () => {
@@ -420,24 +433,23 @@ $('jysuisalle').onclick = () => {
   try { localStorage.setItem(cleDefi(), n); } catch {}
   afficherDefi();
   const c = $('compteur'); c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 120);
-  const eau = etat?.c?.eau == null ? '' : `, eau à ${Math.round(etat.c.eau)}°`;
-  partager(`Bain d’hiver n°${n} de la saison à ${spot().nom}${eau}. Qui me suit la prochaine fois ?`, `Respect. Bain n°${n} noté.`);
+  partager(T.partageBain(n, spot().nom, etat?.c?.eau == null ? null : Math.round(etat.c.eau)), T.merciBain(n));
 };
 
 let minuterie;
 function toast(t) { $('toast').textContent = t; $('toast').classList.add('on'); clearTimeout(minuterie); minuterie = setTimeout(() => $('toast').classList.remove('on'), 2200); }
 async function partager(texte, merci) {
   if (merci) toast(merci);
-  const donnees = { title: 'Le Lac aujourd’hui', text: texte, url: location.origin + location.pathname };
+  const donnees = { title: T.titre, text: texte, url: location.origin + location.pathname };
   try {
     if (navigator.share) return await navigator.share(donnees);
     await navigator.clipboard.writeText(`${texte} ${donnees.url}`);
-    toast(merci ? `${merci} Message copié.` : 'Copié. Plus qu’à coller dans le groupe.');
-  } catch (e) { if (e.name !== 'AbortError') toast('Partage impossible ici.'); }
+    toast(merci ? `${merci} ${T.copieAussi}` : T.copie);
+  } catch (e) { if (e.name !== 'AbortError') toast(T.partageImpossible); }
 }
 $('partager').onclick = () => partager(etat
-  ? `${etat.v.titre} ${spot().nom} : eau ${etat.c.eau == null ? '?' : Math.round(etat.c.eau) + '°'}, air ${Math.round(etat.c.air)}°, vent ${Math.round(etat.c.vent)} km/h.`
-  : 'Le Léman du jour en un coup d’œil.');
+  ? T.partageConditions(etat.v.titre, spot().nom, etat.c.eau == null ? '?' : Math.round(etat.c.eau) + '°', Math.round(etat.c.air), Math.round(etat.c.vent))
+  : T.partageDefaut);
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>

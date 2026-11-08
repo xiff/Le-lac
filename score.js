@@ -58,30 +58,50 @@ export function meilleurCreneau(heures, noteFn) {
 
 // Phrases par activité et par note, avec un peu de caractère.
 export const PHRASES = {
-  baignade: ['Même les cygnes hésitent.', 'Pour les courageux.', 'Ça se baigne sans crier.', 'L’eau est bonne, promis.'],
-  paddle: ['Reste au bistrot.', 'Ça secoue un peu.', 'Quelques vaguelettes.', 'Lac d’huile.'],
-  voile: ['Pas un souffle, ou bien trop.', 'Petit temps.', 'De quoi s’amuser.', 'Ça souffle juste comme il faut.'],
-  hiver: ['L’eau est trop douce, c’est de la triche.', 'Ça mord.', 'Gelé mais faisable.', 'Idéal pour se geler avec style.'],
+  fr: {
+    baignade: ['Même les cygnes hésitent.', 'Pour les courageux.', 'Ça se baigne sans crier.', 'L’eau est bonne, promis.'],
+    paddle: ['Reste au bistrot.', 'Ça secoue un peu.', 'Quelques vaguelettes.', 'Lac d’huile.'],
+    voile: ['Pas un souffle, ou bien trop.', 'Petit temps.', 'De quoi s’amuser.', 'Ça souffle juste comme il faut.'],
+    hiver: ['L’eau est trop douce, c’est de la triche.', 'Ça mord.', 'Gelé mais faisable.', 'Idéal pour se geler avec style.'],
+  },
+  en: {
+    baignade: ['Even the swans are hesitating.', 'For the brave.', 'Swimmable without screaming.', 'The water’s lovely, promise.'],
+    paddle: ['Stay at the bistro.', 'A bit choppy.', 'A few ripples.', 'Flat as a mirror.'],
+    voile: ['Not a breath, or way too much.', 'Light airs.', 'Enough to have fun.', 'Just the right breeze.'],
+    hiver: ['Water’s too mild, that’s cheating.', 'It bites.', 'Freezing but doable.', 'Perfect for freezing in style.'],
+  },
 };
 
 // La phrase du jour en haut de l'écran.
-export function verdict(c) {
-  if (c.code >= 95) return { titre: 'Orage sur le lac. On rentre.', act: null };
+const TITRES = {
+  fr: {
+    orage: 'Orage sur le lac. On rentre.', bise: 'La bise est là. Accroche ton bonnet.', terrasse: 'Journée terrasse plutôt que plouf.',
+    canicule: (e) => `Canicule. Le lac est ta clim${e == null ? '' : `, eau à ${e}°`}.`, chaude: (e) => `Eau à ${e}°. C’est presque un bain.`,
+    gel: (e) => `Il gèle. Eau${e == null ? '' : ` à ${e}°`} : rendez-vous des braves.`,
+    baignade: (e) => `Plouf : l’eau est${e == null ? ' bonne' : ` à ${e}°`}.`, paddle: () => 'Lac d’huile. Sors le paddle.',
+    voile: () => 'Ça souffle. Cap sur le large.', hiver: (e) => `Eau${e == null ? '' : ` à ${e}°`}. Parfait pour les braves.`,
+  },
+  en: {
+    orage: 'Storm on the lake. Head home.', bise: 'The bise is here. Hold on to your hat.', terrasse: 'More of a terrace day than a splash day.',
+    canicule: (e) => `Heatwave. The lake is your AC${e == null ? '' : `, water at ${e}°`}.`, chaude: (e) => `Water at ${e}°. Practically a bath.`,
+    gel: (e) => `It’s freezing. Water${e == null ? '' : ` at ${e}°`}: the brave meet here.`,
+    baignade: (e) => `Splash: the water is${e == null ? ' nice' : ` ${e}°`}.`, paddle: () => 'Flat as a mirror. Grab the paddle.',
+    voile: () => 'It’s blowing. Head out to open water.', hiver: (e) => `Water${e == null ? '' : ` at ${e}°`}. Perfect for the brave.`,
+  },
+};
+
+export function verdict(c, langue = 'fr') {
+  const T = TITRES[langue] ?? TITRES.fr;
+  if (c.code >= 95) return { titre: T.orage, act: null };
   const notes = ACTIVITES.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
   const top = notes[0];
-  if (estBise(c) && top.a.id !== 'voile') return { titre: 'La bise est là. Accroche ton bonnet.', act: null };
-  if (top.n < 2) return { titre: 'Journée terrasse plutôt que plouf.', act: null, sortir: true };
-  const eau = c.eau == null ? '' : ` à ${Math.round(c.eau)}°`;
-  if (top.a.id === 'baignade' && c.air >= 30) return { titre: `Canicule. Le lac est ta clim${eau ? ', eau' + eau : ''}.`, act: 'baignade' };
-  if (top.a.id === 'baignade' && c.eau >= 25) return { titre: `Eau${eau}. C’est presque un bain.`, act: 'baignade' };
-  if (top.a.id === 'hiver' && c.air <= 0) return { titre: `Il gèle. Eau${eau} : rendez-vous des braves.`, act: 'hiver' };
-  const titres = {
-    baignade: `Plouf : l’eau est${eau || ' bonne'}.`,
-    paddle: 'Lac d’huile. Sors le paddle.',
-    voile: 'Ça souffle. Cap sur le large.',
-    hiver: `Eau${eau}. Parfait pour les braves.`,
-  };
-  return { titre: titres[top.a.id], act: top.a.id };
+  if (estBise(c) && top.a.id !== 'voile') return { titre: T.bise, act: null };
+  if (top.n < 2) return { titre: T.terrasse, act: null, sortir: true };
+  const e = c.eau == null ? null : Math.round(c.eau);
+  if (top.a.id === 'baignade' && c.air >= 30) return { titre: T.canicule(e), act: 'baignade' };
+  if (top.a.id === 'baignade' && c.eau >= 25) return { titre: T.chaude(e), act: 'baignade' };
+  if (top.a.id === 'hiver' && c.air <= 0) return { titre: T.gel(e), act: 'hiver' };
+  return { titre: T[top.a.id](e), act: top.a.id };
 }
 
 // Saison de bain d'hiver : de septembre à août, ex. « 2026-2027 ».

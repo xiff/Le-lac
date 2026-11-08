@@ -20,3 +20,8 @@ test('saisons des lieux', () => {
   assert.equal(fermeture(LIEUX[0], new Date(2026, 10, 8)), null);
   for (const l of LIEUX) if (l.mois) assert.ok(l.mois[0] >= 1 && l.mois[1] <= 12 && l.mois[0] <= l.mois[1], l.nom);
 });
+
+test('lieux traduits', () => {
+  for (const l of LIEUX) assert.ok(l.en, l.nom);
+  assert.equal(fermeture(LIEUX.find((l) => l.nom.includes('Barje')), new Date(2026, 10, 8), 'en'), 'Closed until May');
+});

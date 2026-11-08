@@ -67,3 +67,10 @@ test('verdict : canicule, eau très chaude, gel', () => {
   assert.match(verdict({ ...calme, eau: 26 }).titre, /presque un bain/);
   assert.match(verdict({ eau: 7, air: -3, vent: 5, rafales: 9, dir: 200, code: 3 }).titre, /gèle/);
 });
+
+import { PHRASES as PH } from './score.js';
+test('verdict et phrases en anglais', () => {
+  assert.match(verdict(calme, 'en').titre, /Splash: the water is 23°/);
+  assert.match(verdict({ ...calme, code: 96 }, 'en').titre, /Storm/);
+  for (const id of Object.keys(PH.fr)) assert.equal(PH.en[id].length, PH.fr[id].length);
+});
