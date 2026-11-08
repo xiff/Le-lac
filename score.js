@@ -33,7 +33,7 @@ export function voile(c) {
 
 // Les « nageurs d'hiver » : l'eau froide est le but, on regarde surtout le vent.
 export function hiver(c) {
-  if (orage(c) || c.eau == null || c.eau > 14) return 0; // eau inconnue : on ne promet rien aux braves
+  if (orage(c) || c.eau == null || c.eau >= 15) return 0; // eau inconnue : on ne promet rien aux braves
   return eauSaine(c, c.rafales <= 20 ? 3 : c.rafales <= 35 ? 2 : 1);
 }
 
