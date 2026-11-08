@@ -29,6 +29,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 .acts .phrase { grid-column: 1 / -1; color: var(--doux); font-size: 15px; }
 .acts em { font-style: normal; font-weight: 700; font-size: 13px; padding: 3px 10px; border-radius: 99px; align-self: start; }
 .t0 { background: #f6dcd4; color: #8a2a1a; } .t1 { background: #f5e6c2; color: #6b4800; } .t2 { background: #d8eedf; color: #1b5f3c; } .t3 { background: #cde8ee; color: #0a4d5c; }
+.qualite { display: flex; gap: 8px; align-items: baseline; margin: 0 0 6px; color: var(--doux); font-size: 15px; }
+.qualite i { flex: none; width: 9px; height: 9px; border-radius: 50%; }
+.q1 { background: #2f7f50; } .q2 { background: #9bb83a; } .q3 { background: #e3a82b; } .q4 { background: #c94a3a; } .q0 { background: #9aa; }
 .voisines li { display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: 1px solid var(--trait); }
 .voisines li:first-child { border-top: 0; }
 .voisines a { font-weight: 600; }

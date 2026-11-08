@@ -74,3 +74,11 @@ test('verdict et phrases en anglais', () => {
   assert.match(verdict({ ...calme, code: 96 }, 'en').titre, /Storm/);
   for (const id of Object.keys(PH.fr)) assert.equal(PH.en[id].length, PH.fr[id].length);
 });
+
+test('qualité CIPEL : mauvaise = pas de baignade, polluée = bof au mieux', () => {
+  assert.equal(baignade({ ...calme, qualite: 4 }), 0);
+  assert.equal(baignade({ ...calme, qualite: 3 }), 1);
+  assert.equal(baignade({ ...calme, qualite: 1 }), 3);
+  assert.equal(hiver({ eau: 8, air: 3, vent: 6, rafales: 10, dir: 200, code: 3, qualite: 4 }), 0);
+  assert.equal(paddle({ ...calme, qualite: 4 }), 3); // le paddle ne se boit pas
+});

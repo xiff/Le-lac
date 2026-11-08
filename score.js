@@ -5,13 +5,16 @@ export const estBise = (c) => c.dir >= 20 && c.dir <= 80 && c.vent >= 15;
 const orage = (c) => c.code >= 95;
 const pluie = (c) => c.code >= 61;
 
+// Qualité CIPEL (c.qualite) : 4 = ne pas se baigner, 3 = eau pouvant être momentanément polluée.
+const eauSaine = (c, n) => (c.qualite === 4 ? 0 : c.qualite === 3 ? Math.min(n, 1) : n);
+
 export function baignade(c) {
   if (orage(c)) return 0;
   const eau = c.eau ?? 15;
   let n = eau >= 22 ? 3 : eau >= 19 ? 2 : eau >= 16 ? 1 : 0;
   if (c.rafales > 40 || (estBise(c) && c.vent > 25)) n = Math.min(n, 1);
   if (pluie(c) || c.air < 15) n = Math.max(0, n - 1);
-  return n;
+  return eauSaine(c, n);
 }
 
 export function paddle(c) {
@@ -31,7 +34,7 @@ export function voile(c) {
 // Les « nageurs d'hiver » : l'eau froide est le but, on regarde surtout le vent.
 export function hiver(c) {
   if (orage(c) || c.eau == null || c.eau > 14) return 0; // eau inconnue : on ne promet rien aux braves
-  return c.rafales <= 20 ? 3 : c.rafales <= 35 ? 2 : 1;
+  return eauSaine(c, c.rafales <= 20 ? 3 : c.rafales <= 35 ? 2 : 1);
 }
 
 export const ACTIVITES = [

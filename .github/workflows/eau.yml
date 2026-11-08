@@ -16,10 +16,11 @@ jobs:
         with:
           node-version: 20
       - run: node scripts/eau.mjs
+      - run: node scripts/qualite.mjs
       - run: node scripts/pages.mjs
       - name: Publier si changé
         run: |
-          git add eau.json plage sitemap.xml
+          git add eau.json qualite.json plage sitemap.xml
           git diff --cached --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
