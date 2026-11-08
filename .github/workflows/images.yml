@@ -1,0 +1,34 @@
+name: Photos de la présentation
+# Télécharge les photos libres listées dans presentation/img/credits.json (Wikimedia Commons),
+# les réduit à 1600 px de large et les publie. À lancer à la main quand la liste change.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - name: Télécharger et réduire
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, time, urllib.request
+          UA = 'LeLacAujourdhui/1.0 (+https://github.com/xiff/le-lac)'
+          for c in json.load(open('presentation/img/credits.json')):
+              brut = '/tmp/brut'
+              open(brut, 'wb').write(urllib.request.urlopen(urllib.request.Request(c['url'], headers={'User-Agent': UA}), timeout=120).read())
+              subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', brut, '-vf', 'scale=1600:-2', '-q:v', '4', 'presentation/' + c['fichier']], check=True)
+              print('ok', c['fichier'])
+              time.sleep(2)
+          PY
+      - name: Publier
+        run: |
+          git add presentation/img
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Photos de la présentation (Wikimedia Commons)"
+          git push
