@@ -50,6 +50,25 @@ export const ACTIVITES = [
   { id: 'voile', note: voile },
 ];
 
+// Kite : il faut du vent établi ; la bise, régulière, lui convient bien.
+export function kite(c) {
+  if (orage(c) || c.rafales > 55) return 0;
+  let n = c.vent >= 22 && c.vent <= 40 ? 3 : c.vent >= 16 && c.vent <= 45 ? 2 : c.vent >= 12 ? 1 : 0;
+  if (n && c.rafales - c.vent > 20) n--; // vent trop irrégulier
+  return n;
+}
+// Derrière un bateau : seule la vague du sillage compte, le lac doit être lisse (encore plus en wakesurf).
+const sillage = ([parfait, bien, bof]) => (c) => {
+  if (orage(c)) return 0;
+  let n = c.rafales <= parfait ? 3 : c.rafales <= bien ? 2 : c.rafales <= bof ? 1 : 0;
+  if (pluie(c) || c.air < 10) n = Math.max(0, n - 1);
+  return n;
+};
+export const wakeboard = sillage([15, 25, 32]);
+export const wakesurf = sillage([10, 18, 25]);
+// Activités à activer dans les réglages ; ACTIVITES reste la sélection par défaut (pages de plage, présentation).
+export const TOUTES = [...ACTIVITES, { id: 'kite', note: kite }, { id: 'wakeboard', note: wakeboard }, { id: 'wakesurf', note: wakesurf }];
+
 // Phrases par activité et par note, avec un peu de caractère.
 export const PHRASES = {
   fr: {
@@ -57,12 +76,18 @@ export const PHRASES = {
     paddle: ['Reste au bistrot.', 'Ça secoue un peu.', 'Quelques vaguelettes.', 'Lac d’huile.'],
     voile: ['Pas un souffle, ou bien trop.', 'Petit temps.', 'De quoi s’amuser.', 'Ça souffle juste comme il faut.'],
     hiver: ['L’eau est trop douce, c’est de la triche.', 'Ça mord.', 'Gelé mais faisable.', 'Idéal pour se geler avec style.'],
+    kite: ['Pas de quoi lever une aile.', 'Juste de quoi tirer un bord.', 'Ça tire bien.', 'Vent établi, décollage garanti.'],
+    wakeboard: ['Trop de clapot derrière le bateau.', 'Ça tape un peu.', 'Sillage propre.', 'Lac lisse, sillage parfait.'],
+    wakesurf: ['La vague du bateau se noie dans le clapot.', 'Vague brouillée.', 'Belle vague derrière le bateau.', 'Miroir : vague de rêve.'],
   },
   en: {
     baignade: ['Even the swans are hesitating.', 'For the brave.', 'Swimmable without screaming.', 'The water’s lovely, promise.'],
     paddle: ['Stay at the bistro.', 'A bit choppy.', 'A few ripples.', 'Flat as a mirror.'],
     voile: ['Not a breath, or way too much.', 'Light airs.', 'Enough to have fun.', 'Just the right breeze.'],
     hiver: ['Water’s too mild, that’s cheating.', 'It bites.', 'Freezing but doable.', 'Perfect for freezing in style.'],
+    kite: ['Not enough to lift a kite.', 'Barely enough for a reach.', 'Good pull.', 'Steady wind, guaranteed lift-off.'],
+    wakeboard: ['Too much chop behind the boat.', 'A bit bumpy.', 'Clean wake.', 'Glassy lake, perfect wake.'],
+    wakesurf: ['The boat wave drowns in the chop.', 'Messy wave.', 'Nice wave behind the boat.', 'Glass: dream wave.'],
   },
 };
 
@@ -81,6 +106,9 @@ const TITRES = {
     baignade: [(e) => `Plouf : l’eau est${e == null ? ' bonne' : ` à ${e}°`}.`, (e) => `Eau${a(e)}. Le maillot, c’est maintenant.`, (e) => `Eau${a(e)}. Le lac t’attend, la serviette aussi.`, (e) => `Eau${a(e)}. On se baigne, on verra le reste après.`],
     paddle: [() => 'Lac d’huile. Sors le paddle.', () => 'Pas une ride sur l’eau. La planche t’attend.', () => 'Lac plat comme une crêpe. Paddle obligatoire.', () => 'Calme plat : idéal pour voir les cygnes de près.'],
     voile: [() => 'Ça souffle. Cap sur le large.', () => 'Du vent comme on l’aime. Hisse la voile.', () => 'Le lac moutonne juste ce qu’il faut. À la barre !', () => 'Beau vent : le Léman joue à l’océan.'],
+    kite: [() => 'Vent établi. Sors l’aile.', () => 'Ça tire bien : journée kite.', () => 'Le vent est là, les kiteurs aussi.'],
+    wakeboard: [() => 'Lac lisse. Wakeboard derrière le bateau.', () => 'Sillage propre : en piste.', () => 'Pas une ride : le bateau t’attend.'],
+    wakesurf: [() => 'Lac miroir. Vague de rêve en wakesurf.', () => 'Pas de clapot : la vague du bateau est parfaite.', () => 'Calme plat : surfe le sillage.'],
     hiver: [(e) => `Eau${a(e)}. Parfait pour les braves.`, (e) => `Eau${a(e)}. Bonnet obligatoire, courage aussi.`, (e) => `Eau${a(e)}. Trois minutes et tu deviens une légende.`, (e) => `Eau${a(e)}. Les cygnes, eux, n’hésitent pas.`, (e) => `Eau${a(e)}. Ça pique, ça réveille, ça se raconte.`],
   },
   en: {
@@ -93,19 +121,23 @@ const TITRES = {
     baignade: [(e) => `Splash: the water is${e == null ? ' nice' : ` ${e}°`}.`, (e) => `Water${at(e)}. Swimsuit time.`, (e) => `Water${at(e)}. The lake is waiting, so is your towel.`, (e) => `Water${at(e)}. Swim first, think later.`],
     paddle: [() => 'Flat as a mirror. Grab the paddle.', () => 'Not a ripple. Your board is waiting.', () => 'Flat as a pancake. Paddle compulsory.', () => 'Dead calm: perfect for a close look at the swans.'],
     voile: [() => 'It’s blowing. Head out to open water.', () => 'Just the wind we like. Hoist the sail.', () => 'Whitecaps, just enough. Take the helm!', () => 'Great wind: Lake Geneva plays ocean.'],
+    kite: [() => 'Steady wind. Get the kite out.', () => 'Good pull: kite day.', () => 'The wind is here, so are the kiters.'],
+    wakeboard: [() => 'Glassy lake. Wakeboard behind the boat.', () => 'Clean wake: let’s ride.', () => 'Not a ripple: the boat is waiting.'],
+    wakesurf: [() => 'Glassy lake. Dream wave for wakesurf.', () => 'No chop: the boat wave is perfect.', () => 'Dead calm: surf the wake.'],
     hiver: [(e) => `Water${at(e)}. Perfect for the brave.`, (e) => `Water${at(e)}. Hat compulsory, courage too.`, (e) => `Water${at(e)}. Three minutes and you’re a legend.`, (e) => `Water${at(e)}. The swans don’t hesitate.`, (e) => `Water${at(e)}. It stings, it wakes you up, it makes a story.`],
   },
 };
 
 // tirage : n'importe quel entier ; chaque valeur donne une variante (0 = la première).
-export function verdict(c, langue = 'fr', tirage = 0) {
+// acts : activités affichées (la baignade y est toujours).
+export function verdict(c, langue = 'fr', tirage = 0, acts = ACTIVITES) {
   const T = TITRES[langue] ?? TITRES.fr;
   const e = c.eau == null ? null : Math.round(c.eau);
   const t = (k) => { const v = T[k]; return v[((tirage % v.length) + v.length) % v.length](e); };
   if (c.code >= 95) return { titre: t('orage'), act: null };
-  const notes = ACTIVITES.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
+  const notes = acts.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
   const top = notes[0];
-  if (estBise(c) && top.a.id !== 'voile') return { titre: t('bise'), act: null };
+  if (estBise(c) && top.a.id !== 'voile' && top.a.id !== 'kite') return { titre: t('bise'), act: null };
   if (top.n < 2) return { titre: t('terrasse'), act: null, sortir: true };
   const k = cle(top.a, c);
   if (k === 'baignade' && c.air >= 30) return { titre: t('canicule'), act: 'baignade' };

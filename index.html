@@ -163,6 +163,12 @@
   .lieu .liens a.source { color: var(--doux); font-weight: 500; font-size: .82rem; text-decoration: underline; text-underline-offset: 3px; }
   .louer { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; margin: -6px 0 6px 58px; color: var(--lac-vif); font-weight: 700; font-size: .85rem; text-decoration: none; }
   .louer svg { width: 15px; height: 15px; }
+  .reglages { margin: 6px 0 4px; }
+  .reglages summary { cursor: pointer; color: var(--lac-vif); font-weight: 700; font-size: .88rem; padding: 10px 0; }
+  .reglages p { color: var(--doux); font-size: .85rem; margin: 0 0 8px; }
+  .choix-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choix-acts label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--trait); border-radius: 99px; background: var(--carte); font-weight: 600; font-size: .9rem; cursor: pointer; }
+  .choix-acts input { width: 18px; height: 18px; accent-color: var(--lac); margin: 0; }
   .sauna { display: block; margin: 16px 0 0; padding: 16px; border-radius: 18px; background: var(--lac); color: var(--creme); text-decoration: none; }
   .sauna b { display: block; font: 400 1.15rem/1.25 var(--display); }
   .sauna span { color: var(--creme-doux); font-size: .9rem; }
@@ -211,6 +217,8 @@
   <symbol id="i-vagues" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
   <symbol id="i-paddle" viewBox="0 0 24 24"><path d="M5 19 15.5 8.5"/><path d="M14 4.5c1.6-1.6 4.4-1.4 5.7-.2 1.2 1.3 1.4 4.1-.2 5.7l-2.3 2.3-5.5-5.5Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0"/></symbol>
   <symbol id="i-voile" viewBox="0 0 24 24"><path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4Z"/><path d="M21 14 10 2 3 14h18Z"/><path d="M10 2v16"/></symbol>
+  <symbol id="i-kite" viewBox="0 0 24 24"><path d="M14 2 6 8l6 6 8-6Z"/><path d="M12 14c-1 3-3 5-6 6"/><path d="M4 22c1-1 2-1 3 0"/></symbol>
+  <symbol id="i-wake" viewBox="0 0 24 24"><path d="M5 15 16 5c2-1.6 4.6.6 3 2.6L9 18c-2 1.6-5.6-.8-4-3Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></symbol>
   <symbol id="i-flocon" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20"/><path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4"/></symbol>
   <symbol id="i-verre" viewBox="0 0 24 24"><path d="M8 22h8M12 11v11"/><path d="m19 3-7 8-7-8Z"/></symbol>
   <symbol id="i-couverts" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
@@ -258,6 +266,7 @@
     <h2 data-t="surLeau">Sur l’eau</h2>
     <p class="qualite" id="qualite" hidden></p>
     <div id="activites"></div>
+    <details class="reglages" id="reglages"><summary data-t="mesActivites">Mes activités</summary><p data-t="mesActivitesTexte">La baignade reste toujours là. Coche ce que tu pratiques.</p><div class="choix-acts" id="choix-acts"></div></details>
     <section class="defi" id="defi" hidden aria-labelledby="defi-titre">
       <span class="compteur" id="compteur" aria-hidden="true">0</span>
       <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
@@ -318,7 +327,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { ACTIVITES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
+import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
 import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
@@ -333,7 +342,7 @@ document.getElementById('langue').textContent = T.autreLangue;
 document.getElementById('langue').lang = AUTRE;
 document.getElementById('langue').onclick = () => { try { localStorage.setItem('langue', AUTRE); } catch {} location.reload(); };
 
-const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon' };
+const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon', kite: 'kite', wakeboard: 'wake', wakesurf: 'wake' };
 const LIBELLES = T.libelles;
 const NOM = (a, c = etat?.c) => T.activites[cle(a, c ?? {})];
 const $ = (id) => document.getElementById(id);
@@ -404,7 +413,18 @@ function afficherLieux() {
 afficherLieux();
 
 // Louer : loueurs autour du lac, filtrés par activité, près de la plage d'abord.
-const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'] };
+const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'], wakeboard: ['wakeboard'], wakesurf: ['wakeboard'] };
+
+// Activités affichées : la baignade toujours, les autres selon « Mes activités » (paddle et voile par défaut).
+const OPTIONNELLES = TOUTES.filter((a) => a.id !== 'baignade');
+function choisies() { try { const l = JSON.parse(localStorage.getItem('activites')); if (Array.isArray(l)) return l; } catch {} return ['paddle', 'voile']; }
+const actives = () => TOUTES.filter((a) => a.id === 'baignade' || choisies().includes(a.id));
+$('choix-acts').innerHTML = OPTIONNELLES.map((a) => `<label><input type="checkbox" value="${a.id}"${choisies().includes(a.id) ? ' checked' : ''}> ${T.activites[a.id]}</label>`).join('');
+$('choix-acts').onchange = () => {
+  const l = [...$('choix-acts').querySelectorAll('input:checked')].map((i) => i.value);
+  try { localStorage.setItem('activites', JSON.stringify(l)); } catch {}
+  if (etat?.c) afficherActivites();
+};
 let filtreLoc = '';
 const actsLoc = [...new Set(LOCATIONS.flatMap((l) => l.activites))];
 function afficherFiltresLoc() {
@@ -498,10 +518,7 @@ async function charger() {
     if (c) c.qualite = q?.qualite;
     if (!c) throw new Error('données incomplètes');
     const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
-    const v = verdict(c, LANGUE, tirage());
-    etat = { ...etat, c, v, heure: m.current.time.slice(11, 16) };
-
-    $('verdict').textContent = v.titre;
+    etat = { ...etat, c, heures, heure: m.current.time.slice(11, 16) };
     $('releve').innerHTML = navigator.onLine ? T.releve(etat.heure) : icone('horsligne') + T.horsLigne(etat.heure);
     $('eau').textContent = eau == null ? '?' : eau.toFixed(1) + '°';
     $('air').textContent = Math.round(c.air) + '°';
@@ -513,15 +530,7 @@ async function charger() {
     if (q) $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.qualite(T.classes[q.qualite], q.source === 'ge' ? T.sourceGe(String(q.date).replace(/-/g, '.'), q.plage) : `CIPEL, ${q.plage}`)}${q.alerte ? ` · ${q.alerte}` : ''}`;
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte; $('alerte').classList.toggle('danger', danger);
 
-    $('activites').innerHTML = ACTIVITES.map((a) => {
-      const n = a.note(c);
-      return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a, c)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[cle(a, c)])}</span>
-        <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}</small></div>
-        <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[cle(a, c)]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
-    }).join('');
-    etat.heures = heures;
-    if (!etat.choix || !ACTIVITES.some((a) => a.id === etat.choix)) etat.choix = v.act ?? 'paddle';
-    afficherHeures();
+    afficherActivites();
     $('defi').hidden = !estHiver(c);
     const sauna = LOCATIONS.find((l) => l.activites.includes('sauna') && ouvertLoc(l) && l.spot && SPOTS.find((x) => x.id === l.spot)?.zone === spot().zone);
     $('sauna').hidden = !(sauna && estHiver(c));
@@ -597,9 +606,24 @@ $('carte').onclick = (e) => {
 };
 afficherCarte();
 
+// Verdict et liste des activités, recalculés aussi quand on change « Mes activités ».
+function afficherActivites() {
+  const { c } = etat, acts = actives();
+  etat.v = verdict(c, LANGUE, tirage(), acts);
+  $('verdict').textContent = etat.v.titre;
+  $('activites').innerHTML = acts.map((a) => {
+    const n = a.note(c);
+    return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a, c)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[cle(a, c)])}</span>
+      <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}</small></div>
+      <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[cle(a, c)]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
+  }).join('');
+  if (!etat.choix || !acts.some((a) => a.id === etat.choix)) etat.choix = etat.v.act ?? 'baignade';
+  afficherHeures();
+}
+
 // Toucher une activité : la bande des heures montre sa note heure par heure.
 function afficherHeures() {
-  const a = ACTIVITES.find((x) => x.id === etat.choix);
+  const a = actives().find((x) => x.id === etat.choix);
   $('activites').querySelectorAll('.act').forEach((b) => b.setAttribute('aria-pressed', b.dataset.act === a.id));
   $('h-heures').innerHTML = `${T.heures} <span>· ${NOM(a).toLowerCase()}</span>`;
   if (!etat.heures.length) { $('heures').innerHTML = `<p class="note">${T.heuresVides}</p>`; return; }

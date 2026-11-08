@@ -103,3 +103,17 @@ test('verdict : une autre variante à chaque tirage', () => {
   assert.notEqual(verdict(c, 'en', 7).titre, verdict(c, 'en', 8).titre);
   assert.ok(verdict(c, 'fr', -3).titre); // entier négatif accepté
 });
+
+import { kite, wakeboard, wakesurf, TOUTES } from './score.js';
+test('kite, wakeboard, wakesurf', () => {
+  const base = { eau: 18, air: 20, dir: 200, code: 1 };
+  assert.equal(kite({ ...base, vent: 28, rafales: 35 }), 3);
+  assert.equal(kite({ ...base, vent: 28, rafales: 52 }), 2); // rafales irrégulières
+  assert.equal(kite({ ...base, vent: 5, rafales: 8 }), 0);
+  assert.equal(wakesurf({ ...base, vent: 4, rafales: 8 }), 3);
+  assert.equal(wakesurf({ ...base, vent: 12, rafales: 22 }), 1);
+  assert.equal(wakeboard({ ...base, vent: 12, rafales: 22 }), 2);
+  const venteux = { ...base, vent: 28, rafales: 35 };
+  assert.equal(verdict(venteux, 'fr', 0, TOUTES.filter((a) => a.id !== 'voile')).act, 'kite');
+  assert.notEqual(verdict(venteux).act, 'kite'); // pas activé : jamais proposé
+});

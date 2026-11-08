@@ -20,6 +20,7 @@ const TXT = {
     texte: (n) => `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le Léman en trois dimensions : on lit la valeur à 70 cm sous la surface, devant la plage, toutes les trois heures. Le vent et l’air viennent d’Open-Meteo. La qualité de l’eau de baignade n’est affichée que si une analyse de moins de 30 jours existe (canton de Genève pour les plages genevoises) ; sinon, vérifie-la à la source auprès du canton ou de la CIPEL, liens en bas de page. Le verdict est calculé par l’app Mon Lac aujourd’hui à partir de ces données. Indicatif : le lac a toujours le dernier mot.`,
     pied: 'Eau : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0) · qualité : <a href="https://ge.ch/sitg/">Canton de Genève (SITG)</a> et <a href="https://www.cipel.org/carte-des-plages/">CIPEL</a> · météo : <a href="https://open-meteo.com">Open-Meteo</a>',
     app: 'Mon Lac aujourd’hui', autre: 'English', lac: 'Lac Léman',
+    liste: 'Toutes les plages du Léman', listeDesc: 'Les 65 plages du Léman suivies par Mon Lac aujourd’hui : température de l’eau, vent et verdict du jour, plage par plage.', presentation: 'Présentation',
   },
   en: {
     titre: (n) => `Water temperature at ${n} today`, suffixe: 'Lake Geneva',
@@ -31,6 +32,7 @@ const TXT = {
     texte: (n) => `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes Lake Geneva in three dimensions: we read the value 70 cm below the surface, in front of the beach, every three hours. Wind and air come from Open-Meteo. Bathing water quality is only shown when a test less than 30 days old exists (Canton of Geneva for Geneva beaches); otherwise check it at the source with the canton or CIPEL, links at the bottom of the page. The verdict is computed by the My Lake Today app from this data. For guidance only: the lake always has the last word.`,
     pied: 'Water: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0) · quality: <a href="https://ge.ch/sitg/">Canton of Geneva (SITG)</a> and <a href="https://www.cipel.org/carte-des-plages/">CIPEL</a> · weather: <a href="https://open-meteo.com">Open-Meteo</a>',
     app: 'My Lake Today', autre: 'Français', lac: 'Lake Geneva',
+    liste: 'All Lake Geneva beaches', listeDesc: 'The 65 Lake Geneva beaches followed by My Lake Today: water temperature, wind and today’s verdict, beach by beach.', presentation: 'About',
   },
 };
 
@@ -63,7 +65,7 @@ export function page(s, langue = 'fr') {
 </head>
 <body data-id="${s.id}">
 <header>
-  <div class="haut"><a class="retour" href="${r}../../presentation/${en ? 'en/' : ''}#eau">${t.retour}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="retour" href="${en ? '../../en/' : '../'}">${t.retour}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${esc(titre)}</h1>
   <p class="verdict" id="verdict">${t.attente}</p>
   <div class="mesures">
@@ -104,14 +106,55 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(l.ville)}${l.mois 
 `;
 }
 
+// Liste de toutes les plages par région : plage/ (français) et plage/en/ (anglais).
+export function liste(langue = 'fr') {
+  const t = TXT[langue], en = langue === 'en', r = en ? '../' : '';
+  const regions = [...new Set(SPOTS.map((s) => s.region))];
+  return `<!doctype html>
+<html lang="${langue}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${t.liste} · ${t.app}</title>
+<meta name="description" content="${esc(t.listeDesc)}">
+<link rel="canonical" href="${BASE}plage/${en ? 'en/' : ''}">
+<link rel="alternate" hreflang="fr" href="${BASE}plage/">
+<link rel="alternate" hreflang="en" href="${BASE}plage/en/">
+<meta name="theme-color" content="#0d4a5c">
+<link rel="icon" href="${r}../icon.svg">
+<link rel="stylesheet" href="${r}plage.css">
+</head>
+<body>
+<header>
+  <div class="haut"><a class="retour" href="${r}../${en ? '?lang=en' : ''}">← ${t.app}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <h1>${t.liste}</h1>
+  <p class="releve">${esc(t.listeDesc)}</p>
+</header>
+<main>
+${regions.map((reg) => `  <section>
+    <h2>${esc(en ? REGIONS_EN[reg] ?? reg : reg)}</h2>
+    <ul class="voisines">
+${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${en ? `../${s.id}/en/` : `${s.id}/`}">${esc(s.nom)}</a></li>`).join('\n')}
+    </ul>
+  </section>`).join('\n')}
+</main>
+<footer><a href="${r}../presentation/${en ? 'en/' : ''}">${t.presentation}</a> · <a href="${r}../${en ? '?lang=en' : ''}">${t.app}</a></footer>
+</body>
+</html>
+`;
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
+  await mkdir('plage/en', { recursive: true });
+  await writeFile('plage/index.html', liste());
+  await writeFile('plage/en/index.html', liste('en'));
   for (const s of SPOTS) {
     await mkdir(`plage/${s.id}`, { recursive: true });
     await mkdir(`plage/${s.id}/en`, { recursive: true });
     await writeFile(`plage/${s.id}/index.html`, page(s));
     await writeFile(`plage/${s.id}/en/index.html`, page(s, 'en'));
   }
-  const urls = ['', 'presentation/', 'presentation/en/', ...SPOTS.flatMap((s) => [`plage/${s.id}/`, `plage/${s.id}/en/`])];
+  const urls = ['', 'presentation/', 'presentation/en/', 'plage/', 'plage/en/', ...SPOTS.flatMap((s) => [`plage/${s.id}/`, `plage/${s.id}/en/`])];
   await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
   console.log(`${SPOTS.length * 2} pages de plage (FR et EN) et sitemap.xml générés.`);
 }
