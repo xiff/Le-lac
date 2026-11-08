@@ -1,5 +1,5 @@
 // Bars et restos au bord de l'eau, vérifiés le 8 novembre 2026 (offices du tourisme, guides, sites des lieux).
-// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch, hautesavoiemontblanc-tourisme.com, montreuxriviera.com.
+// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch, hautesavoiemontblanc-tourisme.com, montreuxriviera.com, morges-tourisme.ch.
 // zone = zone des plages (voir spots.js). mois = [premier, dernier] mois d'ouverture, absent si toute l'année.
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 export const LIEUX = [
@@ -16,6 +16,7 @@ export const LIEUX = [
   { nom: 'Restaurant de la Plage', ville: 'Nyon', zone: 'nyon', type: 'resto', note: 'Poisson du lac et spécialités régionales au bord de l’eau, brunch le dimanche.', en: 'Lake fish and regional dishes by the water, Sunday brunch.' },
   { nom: 'Le Pavois', ville: 'Morges', zone: 'lausanne', type: 'resto', note: 'Restaurant de l’hôtel Mont-Blanc au Lac, terrasse sur les quais de Morges.', en: 'Restaurant of the Mont-Blanc au Lac hotel, terrace on the Morges quays.' },
   { nom: 'La Jetée de la Compagnie', ville: 'Lausanne', zone: 'lausanne', type: 'bar', mois: [5, 9], note: 'Buvette d’été sur la jetée d’Ouchy : ponton, grillades et coucher de soleil.', en: 'Summer bar on the Ouchy jetty: deck, barbecue and sunsets.' },
+  { nom: 'Hôtel-Restaurant de la Plage', ville: 'Préverenges', zone: 'lausanne', type: 'resto', note: 'Au bout de l’avenue de la Plage, terrasse ensoleillée à deux pas de la grande plage de sable.', en: 'At the end of Avenue de la Plage, sunny terrace a stone’s throw from the big sandy beach.' },
   { nom: 'La Guinguette de Vidy', ville: 'Lausanne', zone: 'lausanne', type: 'bar', mois: [4, 9], note: 'Devant le Bowl de Vidy, au bord de l’eau : le rendez-vous des promeneurs et des paddleurs.', en: 'In front of the Vidy Bowl by the water: where walkers and paddlers meet.' },
   { nom: 'Le Lacustre', ville: 'Lausanne', zone: 'lausanne', type: 'resto', note: 'Au-dessus du débarcadère d’Ouchy : pizzas au feu de bois et brunch le week-end.', en: 'Above the Ouchy pier: wood-fired pizza and weekend brunch.' },
   { nom: 'Bar du Beau-Rivage Palace', ville: 'Lausanne', zone: 'lausanne', type: 'bar', note: 'Le verre chic, terrasse sous les arcades face au lac et aux Alpes.', en: 'The fancy drink, terrace under the arches facing the lake and the Alps.' },
