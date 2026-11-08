@@ -77,7 +77,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     await mkdir(`plage/${s.id}`, { recursive: true });
     await writeFile(`plage/${s.id}/index.html`, page(s));
   }
-  const urls = ['', 'presentation/', ...SPOTS.map((s) => `plage/${s.id}/`)];
+  const urls = ['', 'presentation/', 'presentation/en/', ...SPOTS.map((s) => `plage/${s.id}/`)];
   await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
   console.log(`${SPOTS.length} pages de plage et sitemap.xml générés.`);
 }

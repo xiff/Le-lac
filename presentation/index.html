@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Température du lac Léman par plage · Mon Lac aujourd’hui</title>
 <meta name="description" content="Température de l’eau à 65 plages du Léman, vent, bise et un verdict du jour pour la baignade, le paddle et la voile, de Genève à Évian. Gratuit, sans compte, en français et en anglais.">
+<link rel="alternate" hreflang="fr" href="https://xiff.github.io/Le-lac/presentation/">
+<link rel="alternate" hreflang="en" href="https://xiff.github.io/Le-lac/presentation/en/">
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="../icon.svg">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
@@ -95,6 +97,8 @@
   .exemples span { padding: 10px 0; }
 
   /* Comment ça marche : appel et réponse */
+  #comment { background: var(--surface); margin-top: clamp(120px, 14vw, 200px); padding-top: clamp(88px, 9vw, 140px); padding-bottom: clamp(88px, 9vw, 140px); }
+  #comment .appel { background: var(--bg); }
   .etapes { margin-left: calc(var(--col) * 3); width: min(560px, 100%); }
   .etapes h2 { margin-bottom: 56px; }
   .echange + .echange { margin-top: 88px; }
@@ -142,7 +146,7 @@
   .hiver figure { grid-column: 1 / span 7; }
   .hiver .texte { grid-column: 9 / span 4; }
   .hiver p.corps { margin-top: 18px; }
-  .defi-ui { margin-top: 28px; display: flex; align-items: center; gap: 16px; background: var(--surface); border-radius: 8px; padding: 18px 20px; }
+  .defi-ui { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; background: var(--surface); border-radius: 8px; padding: 18px 20px; }
   .defi-ui .compteur { font: 400 44px/1 var(--display); color: var(--n3); min-width: 1.2ch; text-align: center; transition: transform 300ms var(--ease-out); }
   .defi-ui .compteur.bump { transform: scale(1.25); transition-duration: 120ms; }
   .defi-ui div { flex: 1; font-size: 15px; }
@@ -213,7 +217,7 @@
     .eau .liste, .eau figure, .hiver figure, .hiver .texte, .duo figure:first-child, .duo figure:last-child, .faq .questions { grid-column: 1 / -1; }
     .eau figure { position: static; margin-top: 48px; }
     .rang { min-height: 44px; }
-    .hiver .texte { margin-top: 36px; }
+    .hiver .texte { order: -1; margin-top: 0; margin-bottom: 36px; } /* texte avant la photo : la légende ne précède pas le titre */
     .duo figure:last-child { margin-top: 28px; }
     .tableau { display: block; }
     .tableau .tete { display: none; }
@@ -245,7 +249,7 @@
 <script>document.documentElement.classList.add('js');</script>
 
 <header class="hero" id="haut">
-  <a class="coin lien" href="../?lang=en" hreflang="en" lang="en">English</a>
+  <a class="coin lien" href="en/" hreflang="en" lang="en">English</a>
   <div class="axe">
     <span class="marque"><img src="../icons/icon-192.png" alt="" width="36" height="36">Mon Lac aujourd’hui</span>
     <div class="colonne">
@@ -331,7 +335,7 @@
       <div class="rangee" role="row"><div class="nom" role="rowheader">La bise</div><div class="vals"><span role="cell" data-col="Mon Lac">Détectée, avec alerte</span><span role="cell" data-col="App météo">Le vent, sans le nom</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Baignade, paddle, voile</div><div class="vals"><span role="cell" data-col="Mon Lac">Une note pour chacun</span><span role="cell" data-col="App météo">À toi de deviner</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Le meilleur moment</div><div class="vals"><span role="cell" data-col="Mon Lac">Heure par heure, sur 12 h</span><span role="cell" data-col="App météo">Les prévisions brutes</span><span role="cell" data-col="Officielle">Non</span></div></div>
-      <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Mon Lac">14 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Mon Lac">15 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Sans réseau sur la plage</div><div class="vals"><span role="cell" data-col="Mon Lac">Oui, dernières données</span><span role="cell" data-col="App météo">Selon l’app</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Compte et prix</div><div class="vals"><span role="cell" data-col="Mon Lac">Aucun compte, gratuit</span><span role="cell" data-col="App météo">Souvent un compte</span><span role="cell" data-col="Officielle">Gratuit</span></div></div>
     </div>
