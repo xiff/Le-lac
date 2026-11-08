@@ -1,6 +1,6 @@
 // Hors ligne : l'interface depuis le cache, la météo du réseau d'abord puis la dernière connue.
-const CACHE = 'lac-v18';
-const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'textes.js', 'manifest.webmanifest', 'icon.svg',
+const CACHE = 'lac-v19';
+const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'textes.js', 'locations.js', 'manifest.webmanifest', 'icon.svg',
   'fonts/young-serif-latin-400-normal.woff2', 'fonts/onest-latin-wght-normal.woff2'];
 
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(COQUILLE))); self.skipWaiting(); });

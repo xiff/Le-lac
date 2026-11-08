@@ -154,6 +154,18 @@
   .lieu p { margin: 4px 0 8px; color: var(--doux); max-width: 60ch; }
   .lieu a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--lac-vif); font-weight: 700; font-size: .9rem; text-decoration: none; }
   .lieu a svg { width: 16px; height: 16px; }
+  #filtres-loc { overflow-x: auto; margin: 18px -20px 0; padding: 2px 20px 4px; scrollbar-width: none; }
+  #filtres-loc::-webkit-scrollbar { display: none; }
+  #filtres-loc button { flex: none; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 6px; }
+  .tags span { font-size: .75rem; font-weight: 600; padding: 2px 9px; border-radius: 99px; background: var(--n3-bg); color: var(--n3); }
+  .lieu .liens { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; }
+  .lieu .liens a.source { color: var(--doux); font-weight: 500; font-size: .82rem; text-decoration: underline; text-underline-offset: 3px; }
+  .louer { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; margin: -6px 0 6px 58px; color: var(--lac-vif); font-weight: 700; font-size: .85rem; text-decoration: none; }
+  .louer svg { width: 15px; height: 15px; }
+  .sauna { display: block; margin: 16px 0 0; padding: 16px; border-radius: 18px; background: var(--lac); color: var(--creme); text-decoration: none; }
+  .sauna b { display: block; font: 400 1.15rem/1.25 var(--display); }
+  .sauna span { color: var(--creme-doux); font-size: .9rem; }
   .note { color: var(--doux); font-size: .8rem; margin-top: 18px; }
   .lieu-ent { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
   @starting-style { .lieu-ent { opacity: 0; transform: translateY(6px); } }
@@ -162,9 +174,10 @@
   .panneau { transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
   @starting-style { .panneau { opacity: 0; transform: translateY(6px); } }
   nav { position: fixed; left: 0; right: 0; bottom: 0; background: var(--carte); border-top: 1px solid var(--trait); box-shadow: 0 -6px 20px #10292f12; padding: 8px 20px calc(8px + env(safe-area-inset-bottom)); z-index: 5; }
-  .onglets { position: relative; display: grid; grid-template-columns: 1fr 1fr; max-width: 420px; margin: 0 auto; }
-  .onglets::before { content: ""; position: absolute; inset: 0 50% 0 0; border-radius: 14px; background: var(--n3-bg); transition: transform 250ms var(--ease-in-out); }
+  .onglets { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 460px; margin: 0 auto; }
+  .onglets::before { content: ""; position: absolute; inset: 0 66.666% 0 0; border-radius: 14px; background: var(--n3-bg); transition: transform 250ms var(--ease-in-out); }
   .onglets[data-actif="sortir"]::before { transform: translateX(100%); }
+  .onglets[data-actif="louer"]::before { transform: translateX(200%); }
   .onglets button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; border: 0; background: none; padding: 8px; min-height: 56px; color: var(--doux); font-weight: 600; font-size: .8rem; transition: transform 160ms var(--ease-out), color 150ms ease; }
   .onglets button[aria-selected="true"] { color: var(--n3); }
 
@@ -264,12 +277,20 @@
     <div id="lieux"></div>
     <p class="note" data-t="noteLieux">Horaires et saisons changent : un coup de fil avant d’y aller.</p>
   </div>
+
+  <div id="p-louer" class="panneau" role="tabpanel" aria-labelledby="t-louer" hidden>
+    <a class="sauna" id="sauna" hidden></a>
+    <div class="filtres" id="filtres-loc" role="group" data-ta="typeLoc" aria-label="Activité"></div>
+    <div id="locations"></div>
+    <p class="note" data-t="noteLoc">Prix, horaires et disponibilités : à vérifier auprès du loueur avant d’y aller.</p>
+  </div>
 </main>
 
 <nav data-ta="sections" aria-label="Sections">
   <div class="onglets" role="tablist" id="onglets" data-actif="lac">
     <button role="tab" id="t-lac" aria-selected="true" aria-controls="p-lac"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg><span data-t="ongletLac">Le lac</span></button>
     <button role="tab" id="t-sortir" aria-selected="false" aria-controls="p-sortir"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg><span data-t="ongletSortir">Sortir</span></button>
+    <button role="tab" id="t-louer" aria-selected="false" aria-controls="p-louer"><svg class="i" aria-hidden="true"><use href="#i-paddle"/></svg><span data-t="ongletLouer">Louer</span></button>
   </div>
 </nav>
 <div class="toast" id="toast" role="status"></div>
@@ -277,6 +298,7 @@
 <script type="module">
 import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
+import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
 import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
 import { LANGUE, T, AUTRE } from './textes.js';
 
@@ -311,25 +333,30 @@ try {
   const id = new URLSearchParams(location.search).get('plage') ?? localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
   const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
 } catch {}
-sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherFavoris(); afficherCarte(); };
+sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherLocations(); afficherFavoris(); afficherCarte(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
-// Onglets dans l'URL (#sortir) : le bouton retour d'Android revient au lac.
+// Onglets dans l'URL (#sortir, #louer) : une seule entrée d'historique au plus, le retour d'Android revient au lac.
+const ONGLETS = ['lac', 'sortir', 'louer'];
+const ongletActif = () => (ONGLETS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'lac');
 function ouvrir() {
-  const sortir = location.hash === '#sortir';
-  $('onglets').dataset.actif = sortir ? 'sortir' : 'lac';
-  $('t-lac').setAttribute('aria-selected', !sortir); $('t-sortir').setAttribute('aria-selected', sortir);
-  $('t-lac').tabIndex = sortir ? -1 : 0; $('t-sortir').tabIndex = sortir ? 0 : -1;
-  $('p-lac').hidden = sortir; $('p-sortir').hidden = !sortir;
+  const actif = ongletActif();
+  $('onglets').dataset.actif = actif;
+  for (const o of ONGLETS) { $('t-' + o).setAttribute('aria-selected', o === actif); $('t-' + o).tabIndex = o === actif ? 0 : -1; $('p-' + o).hidden = o !== actif; }
 }
-$('t-lac').onclick = () => { if (location.hash) history.back(); };
-$('t-sortir').onclick = () => { if (location.hash !== '#sortir') location.hash = 'sortir'; };
+function allerA(o) {
+  if (o === ongletActif()) return;
+  if (o === 'lac') history.back();
+  else if (location.hash) location.replace('#' + o);
+  else location.hash = o;
+}
+for (const o of ONGLETS) $('t-' + o).onclick = () => allerA(o);
 addEventListener('hashchange', ouvrir);
 // Flèches gauche/droite entre les onglets, comme le prévoit le motif ARIA des onglets.
 $('onglets').onkeydown = (e) => {
   if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-  const cible = location.hash === '#sortir' ? $('t-lac') : $('t-sortir');
-  cible.click(); cible.focus(); e.preventDefault();
+  const i = ONGLETS.indexOf(ongletActif()), cible = ONGLETS[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3];
+  allerA(cible); $('t-' + cible).focus(); e.preventDefault();
 };
 if (location.hash) history.replaceState(null, '', location.pathname); // toujours démarrer sur le lac
 ouvrir();
@@ -353,6 +380,38 @@ function afficherLieux() {
     + (loin.length ? `<h2>${T.ailleurs}</h2>` + loin.map((l, i) => carteLieu(l, i + pres.length)).join('') : '');
 }
 afficherLieux();
+
+// Louer : loueurs autour du lac, filtrés par activité, près de la plage d'abord.
+const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'] };
+let filtreLoc = '';
+const actsLoc = [...new Set(LOCATIONS.flatMap((l) => l.activites))];
+function afficherFiltresLoc() {
+  $('filtres-loc').innerHTML = ['', ...actsLoc].map((a) => `<button aria-pressed="${a === filtreLoc}" data-act="${a}">${a ? ACTIVITES_LOC[a][LANGUE] : T.tout}</button>`).join('');
+}
+const carteLoc = (l, i) => {
+  const s = SPOTS.find((x) => x.id === l.spot);
+  return `<article class="lieu lieu-ent" style="transition-delay:${Math.min(i, 6) * 40}ms">
+  <div class="ville">${icone('paddle')}${l.ville}${ouvertLoc(l) ? '' : `<span class="badge t1">${T.horsSaison}</span>`}</div>
+  <b>${l.nom}</b><div class="tags">${l.activites.map((a) => `<span>${ACTIVITES_LOC[a][LANGUE]}</span>`).join('')}</div>
+  <p>${LANGUE === 'en' ? l.en : l.note}</p>
+  <div class="liens">${l.site ? `<a href="${l.site}" target="_blank" rel="noopener">${icone('cap')}${T.siteLoc}</a>` : `<a href="${lienCarte({ nom: l.nom, ville: l.ville })}" target="_blank" rel="noopener">${icone('cap')}${T.itineraire}</a>`}${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">${T.reserver}</a>` : ''}<a class="source" href="${l.source}" target="_blank" rel="noopener">${T.sourceLoc}</a></div>
+  </article>`;
+};
+function afficherLocations() {
+  const liste = LOCATIONS.filter((l) => !filtreLoc || l.activites.includes(filtreLoc)).sort((a, b) => !ouvertLoc(a) - !ouvertLoc(b));
+  const zone = spot().zone, zoneDe = (l) => SPOTS.find((x) => x.id === l.spot)?.zone;
+  const pres = liste.filter((l) => zoneDe(l) === zone), loin = liste.filter((l) => zoneDe(l) !== zone);
+  $('locations').innerHTML = (pres.length ? `<h2>${T.pres(spot().nom)}</h2>` + pres.map(carteLoc).join('') : '')
+    + (loin.length ? `<h2>${T.ailleurs}</h2>` + loin.map((l, i) => carteLoc(l, i + pres.length)).join('') : '')
+    || `<p class="note">${T.aucunLoueur}</p>`;
+}
+$('filtres-loc').onclick = (e) => { const b = e.target.closest('button'); if (!b) return; filtreLoc = b.dataset.act; afficherFiltresLoc(); afficherLocations(); };
+afficherFiltresLoc(); afficherLocations();
+// Un lien « Louer… » sous une activité ouvre l'onglet filtré sur elle.
+$('activites').addEventListener('click', (e) => {
+  const a = e.target.closest('.louer'); if (!a) return;
+  e.preventDefault(); filtreLoc = a.dataset.loc; afficherFiltresLoc(); afficherLocations(); allerA('louer');
+});
 
 // Première visite : on propose de trouver la plage la plus proche.
 const vu = (() => { try { return localStorage.getItem('plage') !== null || localStorage.getItem('spot') !== null || localStorage.getItem('bienvenue'); } catch { return true; } })();
@@ -433,12 +492,15 @@ async function charger() {
       const n = a.note(c), cr = meilleurCreneau(heures, a.note);
       return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone(ICONES[a.id])}</span>
         <div><b>${NOM(a)}</b><small>${PHRASES[LANGUE][a.id][n]}${cr ? `<span class="cr">${T.meilleur(cr.de, cr.a)}</span>` : ''}</small></div>
-        <span class="badge t${n}">${LIBELLES[n]}</span></button>`;
+        <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[a.id]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
     }).join('');
     etat.heures = heures;
     if (!etat.choix || !ACTIVITES.some((a) => a.id === etat.choix)) etat.choix = v.act ?? 'paddle';
     afficherHeures();
     $('defi').hidden = !(eau != null && eau <= 14);
+    const sauna = LOCATIONS.find((l) => l.activites.includes('sauna') && ouvertLoc(l) && l.spot && SPOTS.find((x) => x.id === l.spot)?.zone === spot().zone);
+    $('sauna').hidden = !(sauna && eau != null && eau <= 14);
+    if (sauna) { $('sauna').href = sauna.site ?? sauna.source; $('sauna').target = '_blank'; $('sauna').rel = 'noopener'; $('sauna').innerHTML = `<b>${T.saunaTitre(Math.round(eau ?? 0), sauna.nom)}</b><span>${LANGUE === 'en' ? sauna.en : sauna.note}</span>`; }
     $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
   } catch {
     $('verdict').textContent = T.pasDeReponse;
