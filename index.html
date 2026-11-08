@@ -419,7 +419,7 @@ function afficherLieux() {
 afficherLieux();
 
 // Louer : loueurs autour du lac, filtrés par activité, près de la plage d'abord.
-const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'], wakeboard: ['wakeboard'], wakesurf: ['wakeboard'], ski: ['wakeboard'], windsurf: ['windsurf'], foil: ['wing'], bateau: ['bateau'] };
+const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'], wakeboard: ['wakeboard'], wakesurf: ['wakesurf', 'wakeboard'], ski: ['ski', 'wakeboard'], windsurf: ['windsurf'], foil: ['wing'], bateau: ['bateau'] };
 
 // Activités affichées : la baignade toujours, les autres selon « Mes activités » (paddle et voile par défaut).
 const OPTIONNELLES = TOUTES.filter((a) => a.id !== 'baignade');

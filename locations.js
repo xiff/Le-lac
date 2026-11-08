@@ -5,7 +5,8 @@
 export const ACTIVITES_LOC = {
   paddle: { fr: 'Paddle', en: 'Paddle' }, kayak: { fr: 'Kayak', en: 'Kayak' }, pedalo: { fr: 'Pédalo', en: 'Pedal boat' },
   bateau: { fr: 'Bateau', en: 'Boat' }, voile: { fr: 'Voile', en: 'Sailing' }, windsurf: { fr: 'Windsurf', en: 'Windsurf' },
-  wing: { fr: 'Wing foil', en: 'Wing foil' }, wakeboard: { fr: 'Wakeboard', en: 'Wakeboard' }, sauna: { fr: 'Sauna', en: 'Sauna' },
+  wing: { fr: 'Wing foil', en: 'Wing foil' }, wakeboard: { fr: 'Wakeboard', en: 'Wakeboard' }, wakesurf: { fr: 'Wakesurf', en: 'Wakesurf' },
+  ski: { fr: 'Ski nautique', en: 'Water-skiing' }, sauna: { fr: 'Sauna', en: 'Sauna' },
 };
 
 export const LOCATIONS = [
@@ -25,9 +26,9 @@ export const LOCATIONS = [
     note: 'École de voile du quartier des Eaux-Vives : cours et initiation sur la rade.',
     en: 'Sailing school in the Eaux-Vives district: lessons and taster sessions in the harbour.',
     source: 'https://torpille.ch/listing/marins-deau-douce/' },
-  { nom: 'GenevaBoats', ville: 'Genève', spot: 'bains-des-paquis', activites: ['bateau'],
-    note: 'Bateaux avec ou sans skipper depuis le quai du Mont-Blanc, pour une balade dans la rade ou plus loin.',
-    en: 'Boats with or without a skipper from Quai du Mont-Blanc, around the harbour or further.',
+  { nom: 'GenevaBoats', ville: 'Genève', spot: 'bains-des-paquis', activites: ['bateau', 'wakeboard', 'wakesurf', 'ski'],
+    note: 'Bateaux avec ou sans skipper depuis le quai du Mont-Blanc ; sorties wakeboard, wakesurf et ski nautique avec pilote.',
+    en: 'Boats with or without a skipper from Quai du Mont-Blanc; wakeboard, wakesurf and water-skiing outings with a driver.',
     source: 'https://www.geneve.com/fr/attractions/detail/location-de-bateaux-genevaboats' },
   { nom: 'SUP Club Nyon', ville: 'Nyon', spot: 'nyon', activites: ['paddle'],
     note: 'Club de paddle au bord du lac, rue de Rive.',
@@ -81,6 +82,22 @@ export const LOCATIONS = [
     note: 'Base nautique du quai de Ripaille, près de la plage de la Pinède : paddle, paddle géant, kayak, pédalo.',
     en: 'Water-sports base on Quai de Ripaille near Pinède beach: paddle, giant paddle, kayak, pedal boat.',
     source: 'https://www.haute-savoie-tourisme.org/loisirs/activites-sportives/sports-cyclistes/7914483-multi-activite-velo-electrique-canoe-ou-paddle' },
+  { nom: 'Wakeboard Geneva', ville: 'Pregny-Chambésy', spot: 'pregny-chambesy', activites: ['wakeboard', 'wakesurf', 'ski'], site: 'https://wakeboardgeneva.odoo.com/en',
+    note: 'École de wakeboard et de wakesurf à la plage du Reposoir, ski nautique et bouée aussi.',
+    en: 'Wakeboard and wakesurf school at Reposoir beach, water-skiing and tubing too.',
+    source: 'https://wakeboardgeneva.odoo.com/en' },
+  { nom: 'Water Sports Montreux', ville: 'Montreux', spot: 'veytaux', activites: ['wakeboard', 'wakesurf', 'ski'],
+    note: 'Un des plus anciens clubs de sports nautiques de Suisse, ponton à Territet : wakeboard, wakesurf et ski nautique, matériel compris.',
+    en: 'One of Switzerland’s oldest watersports clubs, pier at Territet: wakeboard, wakesurf and water-skiing, gear included.',
+    source: 'https://www.myswitzerland.com/en-us/experiences/aquatic-sports-action-with-alpine-panorama/' },
+  { nom: 'W-school', ville: 'Thonon-les-Bains', spot: 'thonon', activites: ['wakeboard', 'wakesurf', 'ski', 'wing'],
+    note: 'Sur la plage municipale, quai de Ripaille : wakesurf, wakeboard, ski nautique, foil et wing.',
+    en: 'On the town beach, Quai de Ripaille: wakesurf, wakeboard, water-skiing, foil and wing.',
+    source: 'https://www.haute-savoie-tourisme.org/loisirs/activites-sportives/sports-d-eau/475819-w-school-ecole-de-ski-nautique-et-wakeboard' },
+  { nom: 'Poolsnap', ville: 'Sciez', spot: 'sciez', activites: ['wakesurf', 'wakeboard', 'ski'],
+    note: 'École de ski nautique au port de Sciez, spécialisée wakesurf et wakeboard, du débutant à l’expert.',
+    en: 'Water-ski school at Sciez harbour, specialising in wakesurf and wakeboard, beginner to expert.',
+    source: 'https://hautesavoiemontblanc-tourisme.com/offres/wakesurf-sciez-fr-5833235/' },
 ];
 
 // Ouvert en ce moment ? (saisons à cheval sur l'année comprises, ex. octobre à mars)
