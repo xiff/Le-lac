@@ -34,3 +34,48 @@ jobs:
         with:
           name: mon-lac-apk-test
           path: mon-lac-test.apk
+
+  # Essai sur un téléphone Android virtuel : lance l'app et garde le rapport de plantage (logcat).
+  # playstore = avec Chrome ; google_apis = sans Chrome (comme un téléphone où Chrome est absent ou désactivé).
+  essai:
+    needs: apk
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [playstore, google_apis]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: mon-lac-apk-test
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: ${{ matrix.target }}
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install -r mon-lac-test.apk
+            adb logcat -c
+            adb shell monkey -p io.github.xiff.lelac -c android.intent.category.LAUNCHER 1
+            sleep 25
+            adb logcat -d -b crash > crash.txt || true
+            adb logcat -d > logcat.txt || true
+            adb exec-out screencap -p > ecran.png || true
+            echo "=== PLANTAGES ===" ; cat crash.txt
+            echo "=== EXTRAIT ===" ; grep -iE "lelac|AndroidRuntime|FATAL|browserhelper|TrustedWebActivity|CustomTabs" logcat.txt | tail -150
+            adb shell dumpsys activity activities | grep -iE "mResumedActivity|topResumedActivity" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: essai-${{ matrix.target }}
+          path: |
+            crash.txt
+            logcat.txt
+            ecran.png
