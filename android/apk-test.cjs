@@ -9,6 +9,12 @@ const { TwaManifest, TwaGenerator, Config, JdkHelper, AndroidSdkTools, GradleWra
   const dossier = path.resolve('build-twa');
   const manifeste = new TwaManifest(JSON.parse(fs.readFileSync(path.join(__dirname, 'twa-manifest.json'), 'utf8')));
   await new TwaGenerator().createTwaProject(dossier, manifeste, log);
+  // Sans réduction de code : R8 renommait une classe que la bibliothèque TWA active par son nom au démarrage
+  // (« Component class R.u does not exist »), et l'app se fermait aussitôt ouverte.
+  const gradle = path.join(dossier, 'app/build.gradle');
+  const avant = fs.readFileSync(gradle, 'utf8'), apres = avant.replace(/minifyEnabled\s+true/g, 'minifyEnabled false');
+  if (apres === avant) throw new Error('minifyEnabled true introuvable dans app/build.gradle');
+  fs.writeFileSync(gradle, apres);
 
   const config = new Config(process.env.JAVA_HOME, process.env.ANDROID_HOME);
   const jdk = new JdkHelper(process, config);
