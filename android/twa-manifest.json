@@ -1,8 +1,8 @@
 {
   "packageId": "io.github.xiff.lelac",
   "host": "xiff.github.io",
-  "name": "Le Lac aujourd’hui",
-  "launcherName": "Le Lac",
+  "name": "Mon Lac aujourd’hui",
+  "launcherName": "Mon Lac",
   "display": "standalone",
   "orientation": "portrait",
   "themeColor": "#0d4a5c",

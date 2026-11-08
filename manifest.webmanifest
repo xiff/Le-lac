@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Le Lac aujourd’hui",
-  "short_name": "Le Lac",
+  "name": "Mon Lac aujourd’hui",
+  "short_name": "Mon Lac",
   "description": "Baignade, paddle, voile et terrasses : le Léman du jour en un coup d’œil.",
   "lang": "fr",
   "start_url": "./",
