@@ -1,6 +1,6 @@
 // Hors ligne : l'interface depuis le cache, la météo du réseau d'abord puis la dernière connue.
-const CACHE = 'lac-v7';
-const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'manifest.webmanifest', 'icon.svg',
+const CACHE = 'lac-v8';
+const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'manifest.webmanifest', 'icon.svg',
   'fonts/young-serif-latin-400-normal.woff2', 'fonts/onest-latin-wght-normal.woff2'];
 
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(COQUILLE))); self.skipWaiting(); });
@@ -10,7 +10,8 @@ self.addEventListener('activate', (e) => {
 });
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
-  const api = new URL(e.request.url).origin !== location.origin;
+  const url = new URL(e.request.url);
+  const api = url.origin !== location.origin || url.pathname.endsWith('eau.json'); // données fraîches d'abord
   e.respondWith(caches.open(CACHE).then(async (cache) => {
     const enCache = await cache.match(e.request, { ignoreSearch: !api });
     const reseau = fetch(e.request).then((r) => { if (r.ok) cache.put(e.request, r.clone()); return r; });

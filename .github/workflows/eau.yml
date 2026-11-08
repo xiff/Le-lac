@@ -1,0 +1,26 @@
+name: Température de l'eau
+on:
+  schedule:
+    - cron: '23 */3 * * *'  # toutes les 3 h, comme le modèle Alplakes
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: eau
+jobs:
+  eau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/eau.mjs
+      - name: Publier si changé
+        run: |
+          git diff --quiet eau.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add eau.json
+          git commit -m "Température de l'eau (Alplakes)"
+          git push

@@ -214,7 +214,7 @@
     <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" aria-label="Prévisions heure par heure"></div>
     <footer>
-      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau OFEV via <a href="https://api.existenz.ch">existenz.ch</a>, mesurée à Genève.<br>
+      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
       Indicatif : le lac a toujours le dernier mot.
     </footer>
   </div>
@@ -242,16 +242,8 @@
 <script type="module">
 import { ACTIVITES, PHRASES, estBise, meilleurCreneau, verdict, saison, lire } from './score.js';
 import { LIEUX, lienCarte, plusProche } from './lieux.js';
+import { SPOTS, valeurProche } from './spots.js';
 
-const SPOTS = [
-  { nom: 'Bains des Pâquis', lat: 46.2105, lon: 6.1556, zone: 'geneve' },
-  { nom: 'Genève-Plage', lat: 46.2189, lon: 6.1797, zone: 'geneve' },
-  { nom: 'Baby-Plage', lat: 46.1988, lon: 6.1606, zone: 'geneve' },
-  { nom: 'Nyon', lat: 46.3833, lon: 6.2417, zone: 'nyon' },
-  { nom: 'Lausanne – Vidy', lat: 46.5161, lon: 6.5953, zone: 'lausanne' },
-  { nom: 'Vevey', lat: 46.4614, lon: 6.8419, zone: 'vevey' },
-  { nom: 'Évian', lat: 46.4010, lon: 6.5900, zone: 'evian' },
-];
 const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon' };
 const LIBELLES = ['Non', 'Bof', 'Bien', 'Parfait'];
 const $ = (id) => document.getElementById(id);
@@ -260,9 +252,18 @@ const fleche = (dir, lib) => `<svg class="i fleche" style="rotate:${dir + 180}de
 let etat = null;
 
 const sel = $('spot');
-SPOTS.forEach((s, i) => sel.add(new Option(s.nom, i)));
-try { const v = localStorage.getItem('spot'); if (SPOTS[v]) sel.value = v; } catch {}
-sel.onchange = () => { try { localStorage.setItem('spot', sel.value); } catch {} charger(); afficherLieux(); };
+for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
+  const g = document.createElement('optgroup'); g.label = r;
+  SPOTS.forEach((s, i) => s.region === r && g.append(new Option(s.nom, i)));
+  sel.append(g);
+}
+// Plage mémorisée par identifiant ; l'ancienne version stockait un index dans une liste de 7 plages.
+const ANCIENS = ['bains-des-paquis', 'geneve-plage', 'baby-plage', 'nyon', 'lausanne-vidy', 'vevey', 'evian'];
+try {
+  const id = localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
+  const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
+} catch {}
+sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
 // Onglets dans l'URL (#sortir) : le bouton retour d'Android revient au lac.
@@ -305,7 +306,7 @@ function afficherLieux() {
 afficherLieux();
 
 // Première visite : on propose de trouver la plage la plus proche.
-const vu = (() => { try { return localStorage.getItem('spot') !== null || localStorage.getItem('bienvenue'); } catch { return true; } })();
+const vu = (() => { try { return localStorage.getItem('plage') !== null || localStorage.getItem('spot') !== null || localStorage.getItem('bienvenue'); } catch { return true; } })();
 $('bienvenue').hidden = !!vu;
 function fermerBienvenue() {
   try { localStorage.setItem('bienvenue', '1'); } catch {}
@@ -326,8 +327,14 @@ $('localiser').onclick = localiser;
 $('trouver').onclick = localiser;
 $('plustard').onclick = () => { fermerBienvenue(); sel.focus(); };
 
-// shortcut: une seule mesure d'eau (Rhône à la Halle de l'Île, ≈ surface du lac à Genève) pour tous les spots ; brancher Alplakes (Eawag) pour une température par plage.
-async function tempEau() {
+// Eau par plage : modèle Alplakes (Eawag) mis en cache toutes les 3 h dans eau.json par GitHub Actions.
+// Secours pour la région genevoise seulement : la mesure OFEV du Rhône à la sortie du lac.
+async function tempEau(s) {
+  try {
+    const v = valeurProche((await (await fetch('eau.json', { cache: 'no-cache' })).json()).spots?.[s.id]);
+    if (v != null) return v;
+  } catch {}
+  if (s.zone !== 'geneve') return null;
   try {
     const r = await fetch('https://api.existenz.ch/apiv1/hydro/latest?locations=2606&parameters=temperature&app=lac-aujourdhui');
     const v = (await r.json()).payload?.find((p) => p.par === 'temperature')?.val;
@@ -346,7 +353,7 @@ async function charger() {
   const moi = ++demande;
   $('verdict').classList.add('charge');
   try {
-    const [m, eau] = await Promise.all([meteo(spot()), tempEau()]);
+    const [m, eau] = await Promise.all([meteo(spot()), tempEau(spot())]);
     if (moi !== demande) return; // une réponse plus récente (autre plage) a pris le relais
     const c = lire(m.current, null, eau);
     if (!c) throw new Error('données incomplètes');
