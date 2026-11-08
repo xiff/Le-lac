@@ -106,7 +106,9 @@
   #h-heures span { color: var(--doux); }
   .defi { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; margin-top: 18px; padding: 16px; border-radius: 20px; background: var(--carte); box-shadow: 0 1px 3px #10292f14; }
   .defi div { flex: 1; min-width: 0; }
-  .defi .principal { flex-basis: 100%; justify-content: center; }
+  .defi .defi-actions { flex: 1 1 100%; display: flex; gap: 8px; }
+  .defi .principal { flex: 1; justify-content: center; }
+  .defi .partager-bains { flex: none; background: none; color: var(--lac); box-shadow: inset 0 0 0 1.5px currentColor; }
   .defi b { font: 400 1.1rem/1.2 var(--display); display: block; }
   .defi small { color: var(--doux); }
   .historique { flex-basis: 100%; }
@@ -268,7 +270,8 @@
     <section class="defi" id="defi" hidden aria-labelledby="defi-titre">
       <span class="compteur" id="compteur" aria-hidden="true">0</span>
       <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
-      <button class="principal" id="jysuisalle" data-t="jySuisAlle">J’y suis allé</button>
+      <div class="defi-actions"><button class="principal" id="jysuisalle" data-t="jySuisAlle">Bain fait !</button>
+      <button class="principal partager-bains" id="partager-bains" hidden><svg class="i" aria-hidden="true"><use href="#i-partage"/></svg><span data-t="partagerBains">Partager</span></button></div>
       <details class="historique" id="historique" hidden><summary data-t="historique">Mon historique</summary><ul id="historique-liste"></ul></details>
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
@@ -645,7 +648,7 @@ function afficherDefi() {
   $('compteur').textContent = n;
   $('defi-texte').textContent = T.bains(n);
   const groupes = saisons().map((sa) => [sa, lireListe(sa)]).filter(([, l]) => l.length);
-  $('historique').hidden = !groupes.length;
+  $('historique').hidden = $('partager-bains').hidden = !groupes.length;
   $('historique-liste').innerHTML = groupes.map(([sa, l]) => `<li class="saison-titre">${sa.replace('-', '–')}</li>` + l.map((b, i) => ({ b, i })).reverse().map(({ b, i }) =>
     `<li><span><b>${dateBain(b.d)}</b>${[b.plage, b.eau == null ? '' : T.eau + ' ' + b.eau + '°'].filter(Boolean).join(' · ')}</span><button class="retirer" data-saison="${sa}" data-i="${i}" aria-label="${T.retirerBain(dateBain(b.d))}">×</button></li>`).join('')).join('');
 }
@@ -661,7 +664,14 @@ $('jysuisalle').onclick = () => {
   const n = l.length;
   afficherDefi();
   const c = $('compteur'); c.classList.add('bump'); setTimeout(() => c.classList.remove('bump'), 120);
-  partager(T.partageBain(n, spot().nom, eau), T.merciBain(n));
+  toast(T.merciBain(n));
+};
+// Partage à part : le bilan de la saison en cours (ou de la dernière saison avec des bains).
+$('partager-bains').onclick = () => {
+  const [sa, l] = saisons().map((x) => [x, lireListe(x)]).find(([, l]) => l.length) ?? [];
+  if (!l) return;
+  const lignes = l.slice(-10).reverse().map((b) => `• ${dateBain(b.d)}${b.plage ? ` · ${b.plage}` : ''}${b.eau == null ? '' : ` · ${b.eau}°`}`);
+  partager(`${T.partageBains(l.length, sa.replace('-', '–'))}\n${lignes.join('\n')}${l.length > 10 ? '\n…' : ''}\n${T.quiMeSuit}`);
 };
 
 let minuterie;
