@@ -98,6 +98,18 @@ export const LOCATIONS = [
     note: 'École de ski nautique au port de Sciez, spécialisée wakesurf et wakeboard, du débutant à l’expert.',
     en: 'Water-ski school at Sciez harbour, specialising in wakesurf and wakeboard, beginner to expert.',
     source: 'https://hautesavoiemontblanc-tourisme.com/offres/wakesurf-sciez-fr-5833235/' },
+  { nom: 'Wake Up', ville: 'Cologny', spot: 'cologny', activites: ['wakeboard', 'wakesurf'], mois: [4, 10],
+    note: 'École de wakeboard et de wakesurf au quai de Cologny, tous les jours sur demande d’avril à octobre.',
+    en: 'Wakeboard and wakesurf school at Quai de Cologny, daily on request from April to October.',
+    source: 'https://www.geneve.com/fr/attractions/wake-up-ecole-wakeboard-wake-surf' },
+  { nom: 'Fit Wake', ville: 'Genève', spot: 'bains-des-paquis', activites: ['wakeboard', 'wakesurf'],
+    note: 'Sessions de wakeboard et de wakesurf depuis le quai Wilson, en pleine rade.',
+    en: 'Wakeboard and wakesurf sessions from Quai Wilson, right in the harbour.',
+    source: 'https://www.geneve.com/en/attractions/fit-wake-wakeboard' },
+  { nom: 'Ski Nautique Club Lausanne', ville: 'Lausanne', spot: 'lausanne-ouchy', activites: ['ski', 'wakeboard', 'wakesurf'],
+    note: 'Club d’Ouchy depuis 1966, ponton de la Tour Haldimand : cours de ski nautique, wakeboard et wakesurf ouverts aux non-membres.',
+    en: 'Ouchy club since 1966, Tour Haldimand pier: water-skiing, wakeboard and wakesurf lessons open to non-members.',
+    source: 'https://www.lausanne-tourisme.ch/en/explore/ski-nautique-club-lausanne-lausanne-waterskiing-club' },
 ];
 
 // Ouvert en ce moment ? (saisons à cheval sur l'année comprises, ex. octobre à mars)
