@@ -1,5 +1,5 @@
 // Hors ligne : l'interface depuis le cache, la météo du réseau d'abord puis la dernière connue.
-const CACHE = 'lac-v20';
+const CACHE = 'lac-v21';
 const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'textes.js', 'locations.js', 'manifest.webmanifest', 'icon.svg',
   'fonts/young-serif-latin-400-normal.woff2', 'fonts/onest-latin-wght-normal.woff2'];
 

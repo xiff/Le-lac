@@ -167,6 +167,13 @@
   .sauna b { display: block; font: 400 1.15rem/1.25 var(--display); }
   .sauna span { color: var(--creme-doux); font-size: .9rem; }
   .note { color: var(--doux); font-size: .8rem; margin-top: 18px; }
+  .proposer { margin-top: 22px; padding: 16px; border-radius: 20px; background: var(--carte); box-shadow: 0 1px 3px #10292f14; }
+  .proposer summary { font: 400 1.1rem/1.2 var(--display); cursor: pointer; list-style-position: inside; }
+  .proposer p { color: var(--doux); font-size: .88rem; margin: 8px 0 12px; }
+  .proposer label { display: block; font-weight: 600; font-size: .85rem; margin: 10px 0 4px; }
+  .proposer input, .proposer select, .proposer textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; color: inherit; background: var(--papier); border: 1px solid var(--trait); border-radius: 12px; padding: 10px 12px; }
+  .proposer textarea { min-height: 72px; resize: vertical; }
+  .proposer .principal { margin-top: 14px; }
   .lieu-ent { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
   @starting-style { .lieu-ent { opacity: 0; transform: translateY(6px); } }
 
@@ -277,6 +284,17 @@
       <button aria-pressed="false" data-type="resto"><svg class="i" aria-hidden="true"><use href="#i-couverts"/></svg><span data-t="restos">Restos</span></button>
     </div>
     <div id="lieux"></div>
+    <details class="proposer" id="proposer">
+      <summary data-t="proposerTitre">Un bar ou un resto manque ?</summary>
+      <p data-t="proposerTexte">Dis-nous où, on vérifie et on l’ajoute.</p>
+      <form id="form-lieu">
+        <label for="pl-nom" data-t="pNom">Nom du lieu</label><input id="pl-nom" required maxlength="80" autocomplete="off">
+        <label for="pl-ville" data-t="pVille">Ville ou plage</label><input id="pl-ville" required maxlength="60" autocomplete="off">
+        <label for="pl-type" data-t="pType">Type</label><select id="pl-type"><option value="bar" data-t="pBar">Bar / buvette</option><option value="resto" data-t="pResto">Resto</option></select>
+        <label for="pl-note" data-t="pPourquoi">Pourquoi on l’aime (optionnel)</label><textarea id="pl-note" maxlength="300"></textarea>
+        <button class="principal" type="submit" data-t="pEnvoyer">Proposer ce lieu</button>
+      </form>
+    </details>
     <p class="note" data-t="noteLieux">Horaires et saisons changent : un coup de fil avant d’y aller.</p>
   </div>
 
@@ -587,6 +605,16 @@ function afficherHeures() {
   }).join('');
 }
 $('activites').onclick = (e) => { const b = e.target.closest('.act'); if (b && etat?.heures) { etat.choix = b.dataset.act; afficherHeures(); } };
+
+// Proposer un lieu : ouvre un ticket GitHub prérempli, relu avant ajout dans lieux.js.
+// shortcut: demande un compte GitHub ; passer à un formulaire hébergé (Formspree, etc.) quand le domaine sera en place.
+$('form-lieu').onsubmit = (e) => {
+  e.preventDefault();
+  const v = (id) => $(id).value.trim().slice(0, 300);
+  const corps = `Nom : ${v('pl-nom')}\nVille / plage : ${v('pl-ville')}\nType : ${$('pl-type').value}\nPourquoi : ${v('pl-note') || '–'}\nPlage affichée : ${spot().nom}`;
+  window.open('https://github.com/xiff/Le-lac/issues/new?labels=lieu&title=' + encodeURIComponent(`Lieu proposé : ${v('pl-nom')} (${v('pl-ville')})`) + '&body=' + encodeURIComponent(corps), '_blank', 'noopener');
+  e.target.reset(); toast(T.pMerci);
+};
 
 // Défi bain d'hiver : compteur de la saison, sur cet appareil.
 const cleDefi = () => 'bains-' + saison(new Date());
