@@ -642,7 +642,7 @@ function lireListe(sa) {
 }
 const ecrireListe = (l, sa) => { try { localStorage.setItem(cleDefi(sa), JSON.stringify(l)); } catch {} };
 const saisons = () => { const a = new Set([saison(new Date())]); try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('bains-liste-')) a.add(k.slice(12)); } } catch {} return [...a].sort().reverse(); };
-const dateBain = (d) => (d ? new Date(d).toLocaleDateString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { weekday: 'short', day: 'numeric', month: 'long' }) : T.dateInconnue);
+const dateBain = (d, annee = false) => (d ? new Date(d).toLocaleDateString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', annee ? { day: 'numeric', month: 'long', year: 'numeric' } : { weekday: 'short', day: 'numeric', month: 'long' }) : T.dateInconnue);
 function afficherDefi() {
   const n = lireListe().length;
   $('compteur').textContent = n;
@@ -670,7 +670,7 @@ $('jysuisalle').onclick = () => {
 $('partager-bains').onclick = () => {
   const [sa, l] = saisons().map((x) => [x, lireListe(x)]).find(([, l]) => l.length) ?? [];
   if (!l) return;
-  const lignes = l.slice(-10).reverse().map((b) => `• ${dateBain(b.d)}${b.plage ? ` · ${b.plage}` : ''}${b.eau == null ? '' : ` · ${b.eau}°`}`);
+  const lignes = l.slice(-10).reverse().map((b) => `• ${dateBain(b.d, true)}${b.plage ? ` · ${b.plage}` : ''}${b.eau == null ? '' : ` · ${b.eau}°`}`);
   partager(`${T.partageBains(l.length, sa.replace('-', '–'))}\n${lignes.join('\n')}${l.length > 10 ? '\n…' : ''}\n${T.quiMeSuit}`);
 };
 
