@@ -1,5 +1,5 @@
 // Bars et restos au bord de l'eau, vérifiés le 8 novembre 2026 (offices du tourisme, guides, sites des lieux).
-// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch, hautesavoiemontblanc-tourisme.com.
+// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch, hautesavoiemontblanc-tourisme.com, montreuxriviera.com.
 // zone = zone des plages (voir spots.js). mois = [premier, dernier] mois d'ouverture, absent si toute l'année.
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 export const LIEUX = [
@@ -23,8 +23,13 @@ export const LIEUX = [
   { nom: 'Restaurant du Port de Pully', ville: 'Pully', zone: 'lausanne', type: 'resto', note: 'Sur le port, face au lac et aux Alpes.', en: 'On the harbour, facing the lake and the Alps.' },
   { nom: 'Le Rivage', ville: 'Lutry', zone: 'lausanne', type: 'resto', note: 'Terrasse sur les quais de Lutry, poissons du lac, au pied de Lavaux.', en: 'Terrace on the Lutry quays, lake fish, at the foot of Lavaux.' },
   { nom: 'Hôtel des Trois Couronnes', ville: 'Vevey', zone: 'vevey', type: 'bar', note: 'Terrasse panoramique Belle Époque sur les quais de Vevey.', en: 'Belle Époque panoramic terrace on the Vevey quays.' },
+  { nom: 'Kju', ville: 'Vevey', zone: 'vevey', type: 'bar', note: 'Restaurant, bar et club dans un ancien hangar à bateaux du XVIIIe, une des plus belles terrasses de Vevey.', en: 'Restaurant, bar and club in an 18th-century boathouse, one of the finest terraces in Vevey.' },
+  { nom: 'La Véranda (Grand Hôtel du Lac)', ville: 'Vevey', zone: 'vevey', type: 'resto', note: 'Terrasse sur le port, le lac et les Alpes, cuisine décontractée.', en: 'Terrace over the harbour, the lake and the Alps, relaxed cooking.' },
   { nom: 'La Terrasse du Petit Palais', ville: 'Montreux', zone: 'vevey', type: 'resto', mois: [5, 9], note: 'La terrasse du Montreux Palace, face au lac et aux Alpes, aux beaux jours.', en: 'The Montreux Palace terrace, facing the lake and the Alps, in fine weather.' },
   { nom: 'Bar-Restaurant de la Plage municipale', ville: 'Thonon-les-Bains', zone: 'evian', type: 'resto', mois: [5, 9], note: 'Au cœur de la plage municipale, quai de Ripaille : menu du jour et spécialités locales, les pieds dans l’eau.', en: 'In the middle of the town beach on Quai de Ripaille: dish of the day and local specialities, feet in the water.' },
+  { nom: 'Le Phare', ville: 'Le Bouveret', zone: 'vevey', type: 'bar', note: 'Terrasse sur le lac face au coucher de soleil, ouverte de 9 h à minuit.', en: 'Lake terrace facing the sunset, open 9am to midnight.' },
+  { nom: 'Café Helvetia « Au 17 17 »', ville: 'Saint-Gingolph', zone: 'vevey', type: 'bar', note: 'Grande terrasse au-dessus du lac, ouverte toute l’année.', en: 'Big terrace above the lake, open all year round.' },
+  { nom: 'Restaurant Bellevue', ville: 'Saint-Gingolph', zone: 'vevey', type: 'resto', note: 'Sur le quai, terrasse face au lac et aux montagnes.', en: 'On the quay, terrace facing the lake and the mountains.' },
   { nom: 'Hôtel Restaurant de la Plage', ville: 'Excenevex', zone: 'evian', type: 'resto', note: 'Les pieds dans l’eau toute l’année, panorama sur le lac et les montagnes, cuisine maison de saison.', en: 'Feet in the water all year round, lake and mountain views, seasonal home cooking.' },
   { nom: 'La Guinguette de la plage', ville: 'Excenevex', zone: 'evian', type: 'bar', note: 'La guinguette de la grande plage de sable d’Excenevex.', en: 'The beach bar on Excenevex’s big sandy beach.' },
   { nom: 'Restaurant Plage Les Pêcheurs', ville: 'Sciez', zone: 'evian', type: 'resto', note: 'Une institution depuis 1964 : terrasse les pieds dans l’eau sous des platanes centenaires.', en: 'An institution since 1964: feet-in-the-water terrace under century-old plane trees.' },
