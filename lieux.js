@@ -1,5 +1,5 @@
 // Bars et restos au bord de l'eau, vérifiés le 8 novembre 2026 (offices du tourisme, guides, sites des lieux).
-// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch.
+// Sources des ajouts : lacote-tourisme.ch, myswitzerland.com, hautesavoiemontblanc-tourisme.com, montsdugenevois.com, auvergnerhonealpes-tourisme.com, lausanne-tourisme.ch, hautesavoiemontblanc-tourisme.com.
 // zone = zone des plages (voir spots.js). mois = [premier, dernier] mois d'ouverture, absent si toute l'année.
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 export const LIEUX = [
@@ -14,6 +14,7 @@ export const LIEUX = [
   { nom: 'Le Casino', ville: 'Rolle', zone: 'nyon', type: 'resto', note: 'Terrasse ombragée sur la promenade du lac et véranda lumineuse. Fermé dimanche soir et lundi.', en: 'Shaded terrace on the lakeside promenade and a bright veranda. Closed Sunday evening and Monday.' },
   { nom: 'O’Les Terrasses du Lac', ville: 'Nyon', zone: 'nyon', type: 'bar', note: 'Rue de Rive, trois espaces et une terrasse face au lac et aux Alpes, du café du matin au dernier verre.', en: 'Rue de Rive, three spaces and a terrace facing the lake and the Alps, from morning coffee to the last drink.' },
   { nom: 'Restaurant de la Plage', ville: 'Nyon', zone: 'nyon', type: 'resto', note: 'Poisson du lac et spécialités régionales au bord de l’eau, brunch le dimanche.', en: 'Lake fish and regional dishes by the water, Sunday brunch.' },
+  { nom: 'Le Pavois', ville: 'Morges', zone: 'lausanne', type: 'resto', note: 'Restaurant de l’hôtel Mont-Blanc au Lac, terrasse sur les quais de Morges.', en: 'Restaurant of the Mont-Blanc au Lac hotel, terrace on the Morges quays.' },
   { nom: 'La Jetée de la Compagnie', ville: 'Lausanne', zone: 'lausanne', type: 'bar', mois: [5, 9], note: 'Buvette d’été sur la jetée d’Ouchy : ponton, grillades et coucher de soleil.', en: 'Summer bar on the Ouchy jetty: deck, barbecue and sunsets.' },
   { nom: 'La Guinguette de Vidy', ville: 'Lausanne', zone: 'lausanne', type: 'bar', mois: [4, 9], note: 'Devant le Bowl de Vidy, au bord de l’eau : le rendez-vous des promeneurs et des paddleurs.', en: 'In front of the Vidy Bowl by the water: where walkers and paddlers meet.' },
   { nom: 'Le Lacustre', ville: 'Lausanne', zone: 'lausanne', type: 'resto', note: 'Au-dessus du débarcadère d’Ouchy : pizzas au feu de bois et brunch le week-end.', en: 'Above the Ouchy pier: wood-fired pizza and weekend brunch.' },
@@ -27,6 +28,8 @@ export const LIEUX = [
   { nom: 'Hôtel Restaurant de la Plage', ville: 'Excenevex', zone: 'evian', type: 'resto', note: 'Les pieds dans l’eau toute l’année, panorama sur le lac et les montagnes, cuisine maison de saison.', en: 'Feet in the water all year round, lake and mountain views, seasonal home cooking.' },
   { nom: 'La Guinguette de la plage', ville: 'Excenevex', zone: 'evian', type: 'bar', note: 'La guinguette de la grande plage de sable d’Excenevex.', en: 'The beach bar on Excenevex’s big sandy beach.' },
   { nom: 'Restaurant Plage Les Pêcheurs', ville: 'Sciez', zone: 'evian', type: 'resto', note: 'Une institution depuis 1964 : terrasse les pieds dans l’eau sous des platanes centenaires.', en: 'An institution since 1964: feet-in-the-water terrace under century-old plane trees.' },
+  { nom: 'Yacht Restaurant', ville: 'Évian-les-Bains', zone: 'evian', type: 'resto', note: 'Au Hilton, quai Paul-Léger, cuisine méditerranéenne face au lac.', en: 'At the Hilton on Quai Paul-Léger, Mediterranean food facing the lake.' },
+  { nom: 'Ô Lac', ville: 'Neuvecelle', zone: 'evian', type: 'resto', note: 'Hôtel-restaurant à Grande Rive, terrasse panoramique face au lac.', en: 'Hotel restaurant at Grande Rive, panoramic terrace facing the lake.' },
   { nom: 'Hôtel-Restaurant du Port', ville: 'Yvoire', zone: 'evian', type: 'resto', mois: [3, 10], note: 'Village médiéval, terrasse sur le port côté français.', en: 'Medieval village, terrace on the harbour on the French side.' },
 ];
 
