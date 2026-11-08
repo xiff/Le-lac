@@ -114,6 +114,19 @@ test('kite, wakeboard, wakesurf', () => {
   assert.equal(wakesurf({ ...base, vent: 12, rafales: 22 }), 1);
   assert.equal(wakeboard({ ...base, vent: 12, rafales: 22 }), 2);
   const venteux = { ...base, vent: 28, rafales: 35 };
-  assert.equal(verdict(venteux, 'fr', 0, TOUTES.filter((a) => a.id !== 'voile')).act, 'kite');
+  assert.equal(verdict(venteux, 'fr', 0, TOUTES.filter((a) => ['baignade', 'kite'].includes(a.id))).act, 'kite');
   assert.notEqual(verdict(venteux).act, 'kite'); // pas activé : jamais proposé
+});
+
+import { windsurf, foil, bateau, ski } from './score.js';
+test('windsurf, foil (downwind de bise), bateau, ski nautique', () => {
+  const base = { eau: 18, air: 20, dir: 200, code: 1 };
+  assert.equal(windsurf({ ...base, vent: 30, rafales: 45 }), 3);
+  assert.equal(windsurf({ ...base, vent: 8, rafales: 12 }), 0);
+  assert.equal(foil({ ...base, vent: 15, rafales: 20 }), 3);
+  assert.equal(foil({ ...base, vent: 2, rafales: 4 }), 1); // pump foil
+  assert.equal(foil({ ...base, dir: 45, vent: 40, rafales: 55 }), 3); // grosse bise : downwind
+  assert.equal(bateau({ ...base, vent: 5, rafales: 10 }), 3);
+  assert.equal(bateau({ ...base, dir: 45, vent: 30, rafales: 38 }), 1); // bise forte
+  assert.equal(ski({ ...base, vent: 12, rafales: 22 }), wakeboard({ ...base, vent: 12, rafales: 22 }));
 });

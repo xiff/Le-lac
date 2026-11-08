@@ -21,7 +21,7 @@ Site : **https://xiff.github.io/Le-lac/** (futur domaine : monlac.ch).
 
 À essayer dans l’app : changer de plage, l’étoile (mes plages), le bouton de localisation, toucher une activité
 pour voir ses 12 prochaines heures, la carte du lac, le défi bain d’hiver (« Bain fait ! », historique, ×, Partager),
-« Mes activités » sous la liste (activer ou masquer paddle, voile, kitesurf, wakeboard, wakesurf ; la baignade reste toujours), le bouton English / Français en bas.
+« Mes activités » sous la liste (activer ou masquer paddle, voile, windsurf, foil, kitesurf, wakeboard, wakesurf, ski nautique, sortie en bateau ; la baignade reste toujours), le bouton English / Français en bas.
 
 ### Présentation
 

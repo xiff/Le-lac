@@ -217,6 +217,7 @@
   <symbol id="i-vagues" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
   <symbol id="i-paddle" viewBox="0 0 24 24"><path d="M5 19 15.5 8.5"/><path d="M14 4.5c1.6-1.6 4.4-1.4 5.7-.2 1.2 1.3 1.4 4.1-.2 5.7l-2.3 2.3-5.5-5.5Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0"/></symbol>
   <symbol id="i-voile" viewBox="0 0 24 24"><path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4Z"/><path d="M21 14 10 2 3 14h18Z"/><path d="M10 2v16"/></symbol>
+  <symbol id="i-bateau" viewBox="0 0 24 24"><path d="M3 15h18l-2.5 4.5h-13Z"/><path d="M6 15V11h8l3 4"/><path d="M8 11V8h3"/></symbol>
   <symbol id="i-kite" viewBox="0 0 24 24"><path d="M14 2 6 8l6 6 8-6Z"/><path d="M12 14c-1 3-3 5-6 6"/><path d="M4 22c1-1 2-1 3 0"/></symbol>
   <symbol id="i-wake" viewBox="0 0 24 24"><path d="M5 15 16 5c2-1.6 4.6.6 3 2.6L9 18c-2 1.6-5.6-.8-4-3Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></symbol>
   <symbol id="i-flocon" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20"/><path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4"/></symbol>
@@ -342,7 +343,7 @@ document.getElementById('langue').textContent = T.autreLangue;
 document.getElementById('langue').lang = AUTRE;
 document.getElementById('langue').onclick = () => { try { localStorage.setItem('langue', AUTRE); } catch {} location.reload(); };
 
-const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon', kite: 'kite', wakeboard: 'wake', wakesurf: 'wake' };
+const ICONES = { baignade: 'vagues', paddle: 'paddle', voile: 'voile', hiver: 'flocon', kite: 'kite', wakeboard: 'wake', wakesurf: 'wake', windsurf: 'voile', foil: 'wake', ski: 'wake', bateau: 'bateau' };
 const LIBELLES = T.libelles;
 const NOM = (a, c = etat?.c) => T.activites[cle(a, c ?? {})];
 const $ = (id) => document.getElementById(id);
@@ -413,7 +414,7 @@ function afficherLieux() {
 afficherLieux();
 
 // Louer : loueurs autour du lac, filtrés par activité, près de la plage d'abord.
-const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'], wakeboard: ['wakeboard'], wakesurf: ['wakeboard'] };
+const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: ['voile', 'windsurf', 'wing'], hiver: ['sauna'], wakeboard: ['wakeboard'], wakesurf: ['wakeboard'], ski: ['wakeboard'], windsurf: ['windsurf'], foil: ['wing'], bateau: ['bateau'] };
 
 // Activités affichées : la baignade toujours, les autres selon « Mes activités » (paddle et voile par défaut).
 const OPTIONNELLES = TOUTES.filter((a) => a.id !== 'baignade');
