@@ -1,0 +1,29 @@
+name: APK de test Android
+# APK d'essai (signé avec une clé jetable) : à installer à la main, ne pas publier.
+on:
+  workflow_dispatch:
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save @bubblewrap/core@1.27.0
+      - name: Clé de test jetable
+        run: keytool -genkeypair -keystore /tmp/test.keystore -alias test -keyalg RSA -keysize 2048 -validity 365 -storepass testtest -keypass testtest -dname "CN=Mon Lac test"
+      - run: node android/apk-test.cjs
+        env:
+          KEYSTORE: /tmp/test.keystore
+          KS_PASS: testtest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mon-lac-apk-test
+          path: mon-lac-test.apk
