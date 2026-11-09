@@ -10,7 +10,7 @@ const requete = `[out:json][timeout:120];
   nwr["leisure"~"^(beach_resort|swimming_area|bathing_place)$"](46.15,6.10,46.55,6.95);
   nwr["amenity"="public_bath"](46.15,6.10,46.55,6.95);
   nwr["sport"="swimming"]["leisure"!="sports_centre"](46.15,6.10,46.55,6.95);
-  nwr["name"~"plage|bains|baignade|beach|lido",i](46.15,6.10,46.55,6.95);
+  nwr["name"~"plage|bains|baignade|beach|lido|corsier|disdille",i](46.15,6.10,46.55,6.95);
 );
 out center tags;`;
 // Overpass renvoie parfois 502/504 : plusieurs essais, puis un serveur de secours.
