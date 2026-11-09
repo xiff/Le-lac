@@ -126,6 +126,17 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 | Messery | [https://xiff.github.io/Le-lac/plage/messery/](https://xiff.github.io/Le-lac/plage/messery/) | [EN](https://xiff.github.io/Le-lac/plage/messery/en/) |
 | Chens-sur-Léman | [https://xiff.github.io/Le-lac/plage/chens-sur-leman/](https://xiff.github.io/Le-lac/plage/chens-sur-leman/) | [EN](https://xiff.github.io/Le-lac/plage/chens-sur-leman/en/) |
 
+### Blog
+
+| Page | Adresse |
+|---|---|
+| Liste des articles | https://xiff.github.io/Le-lac/blog/ |
+| Bain d’hiver dans le Léman | https://xiff.github.io/Le-lac/blog/bain-d-hiver-leman/ |
+| La bise sur le Léman | https://xiff.github.io/Le-lac/blog/bise-leman/ |
+| Température du lac Léman | https://xiff.github.io/Le-lac/blog/temperature-lac-leman/ |
+
+Articles dans `scripts/articles.mjs`, pages générées par `node scripts/blog.mjs`.
+
 ### Données (mises à jour automatiquement)
 
 | Fichier | Contenu |
