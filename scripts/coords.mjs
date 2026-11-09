@@ -13,9 +13,15 @@ const requete = `[out:json][timeout:120];
   nwr["name"~"plage|bains|baignade|beach|lido",i](46.15,6.10,46.55,6.95);
 );
 out center tags;`;
-const r = await fetch('https://overpass-api.de/api/interpreter', { method: 'POST', body: 'data=' + encodeURIComponent(requete),
-  headers: { 'User-Agent': 'MonLac-verification-coordonnees/1.0', 'Content-Type': 'application/x-www-form-urlencoded' } });
-if (!r.ok) throw new Error('Overpass ' + r.status);
+// Overpass renvoie parfois 502/504 : plusieurs essais, puis un serveur de secours.
+let r;
+for (const url of ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter']) {
+  r = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(requete),
+    headers: { 'User-Agent': 'MonLac-verification-coordonnees/1.0', 'Content-Type': 'application/x-www-form-urlencoded' } }).catch(() => null);
+  if (r?.ok) break;
+  console.error('Overpass', url, r?.status ?? 'réseau'); await new Promise((f) => setTimeout(f, 20000));
+}
+if (!r?.ok) throw new Error('Overpass indisponible');
 const elements = (await r.json()).elements.map((e) => ({ nom: e.tags?.name ?? '', type: e.tags?.natural ?? e.tags?.leisure ?? e.tags?.amenity ?? e.tags?.sport ?? e.tags?.place ?? e.tags?.highway ?? '?',
   lat: e.lat ?? e.center?.lat, lon: e.lon ?? e.center?.lon, osm: `${e.type}/${e.id}` })).filter((e) => e.lat);
 
