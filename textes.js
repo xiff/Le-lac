@@ -40,7 +40,7 @@ const TEXTES = {
     bienvenueTitre: 'Welcome to the waterfront.', bienvenueTexte: 'Every day we read the wind, the water and the bise to tell you if it’s worth grabbing your swimsuit. Start with your beach.',
     trouver: 'Find my beach', plusTard: 'I’ll pick myself', surLeau: 'On the water',
     defiTitre: 'Winter swim challenge', jySuisAlle: 'Swim done!', historique: 'My history', dateInconnue: 'Unknown date', retirerBain: (d) => `Remove swim: ${d}`, bainRetire: 'Swim removed.', heures: 'Next 12 hours', heuresAria: 'Hour-by-hour forecast',
-    pied: 'Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word. <a href="presentation/en/">About</a> · <a href="plage/en/">All beaches</a> · <a href="blog/">Blog (FR)</a>',
+    pied: 'Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word. <a href="presentation/en/">About</a> · <a href="plage/en/">All beaches</a> · <a href="blog/en/">Blog</a>',
     terrasse: 'Terrace weather. Shame to stay indoors.', typeLieu: 'Type of place', tout: 'All', bars: 'Bars', restos: 'Restaurants',
     noteLieux: 'Hours and seasons change: give them a call before you go.', sections: 'Sections', ongletLac: 'The lake', ongletSortir: 'Go out',
     qualite: (cl, o) => `Bathing water ${cl} (${o})`, sourceGe: (d, p) => `Canton of Geneva, tested ${d}, ${p}`, classes: ['being classified', 'excellent to good', 'good to fair', 'may be temporarily polluted', 'poor'],

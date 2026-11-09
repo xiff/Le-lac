@@ -128,14 +128,23 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 
 ### Blog
 
+10 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
+
 | Page | Adresse |
 |---|---|
-| Liste des articles | https://xiff.github.io/Le-lac/blog/ |
-| Bain d’hiver dans le Léman | https://xiff.github.io/Le-lac/blog/bain-d-hiver-leman/ |
-| La bise sur le Léman | https://xiff.github.io/Le-lac/blog/bise-leman/ |
-| Température du lac Léman | https://xiff.github.io/Le-lac/blog/temperature-lac-leman/ |
+| Liste des articles | https://xiff.github.io/Le-lac/blog/ (anglais : https://xiff.github.io/Le-lac/blog/en/) |
+| Bain d’hiver dans le Léman : bien débuter | https://xiff.github.io/Le-lac/blog/bain-d-hiver-leman/ |
+| La bise sur le Léman, et ce qu’elle change sur l’eau | https://xiff.github.io/Le-lac/blog/bise-leman/ |
+| Température du lac Léman : comment elle est mesurée, et pourquoi elle varie | https://xiff.github.io/Le-lac/blog/temperature-lac-leman/ |
+| Qualité de l’eau de baignade au Léman : comment la vérifier | https://xiff.github.io/Le-lac/blog/qualite-eau-baignade-leman/ |
+| Où se baigner à Genève : toutes les plages du canton | https://xiff.github.io/Le-lac/blog/plages-geneve/ |
+| Paddle sur le Léman : quand sortir et où louer | https://xiff.github.io/Le-lac/blog/paddle-leman/ |
+| Kitesurf, windsurf et wingfoil sur le Léman | https://xiff.github.io/Le-lac/blog/kitesurf-windsurf-wingfoil-leman/ |
+| Wakeboard, wakesurf et ski nautique sur le Léman | https://xiff.github.io/Le-lac/blog/wakeboard-wakesurf-ski-nautique-leman/ |
+| Buvettes et restaurants au bord du Léman, région par région | https://xiff.github.io/Le-lac/blog/buvettes-restaurants-bord-du-leman/ |
+| Les plages du Léman côté français, d’Évian à Chens-sur-Léman | https://xiff.github.io/Le-lac/blog/plages-leman-rive-francaise/ |
 
-Articles dans `scripts/articles.mjs`, pages générées par `node scripts/blog.mjs`.
+Articles dans `scripts/articles.mjs` (listes de plages, lieux et loueurs tirées des données de l’app), pages générées par `node scripts/blog.mjs`.
 
 ### Données (mises à jour automatiquement)
 

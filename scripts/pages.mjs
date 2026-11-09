@@ -3,7 +3,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { SPOTS } from '../spots.js';
 import { LIEUX } from '../lieux.js';
-import { ARTICLES } from './articles.mjs';
+import { URLS_BLOG } from './blog.mjs';
 
 const BASE = 'https://xiff.github.io/Le-lac/';
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -139,7 +139,7 @@ ${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${en ? `.
     </ul>
   </section>`).join('\n')}
 </main>
-<footer><a href="${r}../presentation/${en ? 'en/' : ''}">${t.presentation}</a> · <a href="${r}../blog/">Blog</a> · <a href="${r}../${en ? '?lang=en' : ''}">${t.app}</a></footer>
+<footer><a href="${r}../presentation/${en ? 'en/' : ''}">${t.presentation}</a> · <a href="${r}../blog/${en ? 'en/' : ''}">Blog</a> · <a href="${r}../${en ? '?lang=en' : ''}">${t.app}</a></footer>
 </body>
 </html>
 `;
@@ -155,7 +155,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     await writeFile(`plage/${s.id}/index.html`, page(s));
     await writeFile(`plage/${s.id}/en/index.html`, page(s, 'en'));
   }
-  const urls = ['', 'presentation/', 'presentation/en/', 'plage/', 'plage/en/', 'blog/', ...ARTICLES.map((a) => `blog/${a.slug}/`), ...SPOTS.flatMap((s) => [`plage/${s.id}/`, `plage/${s.id}/en/`])];
+  const urls = ['', 'presentation/', 'presentation/en/', 'plage/', 'plage/en/', ...URLS_BLOG, ...SPOTS.flatMap((s) => [`plage/${s.id}/`, `plage/${s.id}/en/`])];
   await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
   console.log(`${SPOTS.length * 2} pages de plage (FR et EN) et sitemap.xml générés.`);
 }
