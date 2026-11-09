@@ -18,6 +18,10 @@ const TXT = {
     titreBlog: 'The Lake Geneva blog', descBlog: 'Winter swimming, the bise, water temperature and quality, beaches, water sports and lakeside cafés: our guides to enjoying Lake Geneva all year round, with today’s data beach by beach.',
     photo: 'Photo', autre: 'Français', avertissement: '<strong>Disclaimer.</strong> This article gives general information taken from the sources cited; it is not medical advice. Cold-water swimming puts real strain on the heart and can be dangerous: talk to a doctor before you start, especially with a heart condition, high blood pressure or during pregnancy. Never swim alone and follow lifeguards’ instructions. You swim at your own risk; in an emergency, call 144 in Switzerland or 112.', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
 };
+// Thème de chaque article, pour la liste du blog et son filtre.
+const THEMES = { froid: { fr: 'Eau froide', en: 'Cold water' }, lac: { fr: 'Le lac', en: 'The lake' }, plages: { fr: 'Plages', en: 'Beaches' },
+  sports: { fr: 'Sports nautiques', en: 'Water sports' }, sortir: { fr: 'Sortir', en: 'Going out' } };
+const theme = (a) => (a.sante ? 'froid' : /plages/.test(a.slug) ? 'plages' : /paddle|kite|wake/.test(a.slug) ? 'sports' : /buvettes/.test(a.slug) ? 'sortir' : 'lac');
 const dateL = (d, L) => new Date(d + 'T12:00:00Z').toLocaleDateString(L === 'en' ? 'en-GB' : 'fr-CH', { day: 'numeric', month: 'long', year: 'numeric' });
 const urlArticle = (slug, L) => `${BASE}blog/${slug}/${L === 'en' ? 'en/' : ''}`;
 const urlBlog = (L) => `${BASE}blog/${L === 'en' ? 'en/' : ''}`;
@@ -110,17 +114,31 @@ export function liste(L = 'fr') {
     blogPost: [...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ '@type': 'BlogPosting', '@id': `${urlArticle(a.slug, L)}#article`, headline: a[L].titre, url: urlArticle(a.slug, L), datePublished: a.publie })),
   }, ariane([[t.nom, BASE], [t.blog, url]])];
   return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: { fr: urlBlog('fr'), en: urlBlog('en') }, image: `${BASE}${ARTICLES[0].image}`, type: 'website', ld, r })}
-<body>
+<body class="large">
 <header>
   <div class="haut"><a class="retour" href="${liens('{app}', L, r)}">← ${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.titreBlog}</h1>
-  <p class="releve">${esc(t.descBlog)}</p>
+  <p class="chapo">${esc(t.descBlog)}</p>
 </header>
-<main class="article">
-  <ul class="billets">
-${[...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => `    <li><a href="${r}blog/${a.slug}/${L === 'en' ? 'en/' : ''}"><b>${esc(a[L].titre)}</b></a><p>${esc(a[L].desc)}</p><time datetime="${a.publie}">${dateL(a.publie, L)}</time></li>`).join('\n')}
+<main class="blog">
+  <div class="themes" role="group" aria-label="${L === 'en' ? 'Topics' : 'Thèmes'}">
+    <button type="button" aria-pressed="true" data-theme="">${L === 'en' ? 'All' : 'Tout'}</button>
+${Object.entries(THEMES).map(([k, v]) => `    <button type="button" aria-pressed="false" data-theme="${k}">${v[L]}</button>`).join('\n')}
+  </div>
+  <ul class="grille">
+${[...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a, i) => `    <li data-theme="${theme(a)}"${i === 0 ? ' class="une"' : ''}><a href="${r}blog/${a.slug}/${L === 'en' ? 'en/' : ''}">
+      <span class="vignette"><img src="${r}${a.image}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? '' : ' loading="lazy"'}></span>
+      <span class="texte"><span class="meta">${THEMES[theme(a)][L]} · <time datetime="${a.publie}">${dateL(a.publie, L)}</time></span><h2>${esc(a[L].titre)}</h2><p>${esc(a[L].desc)}</p>${i === 0 ? `<span class="lire">${L === 'en' ? 'Read the article' : 'Lire l’article'} →</span>` : ''}</span>
+    </a></li>`).join('\n')}
   </ul>
 </main>
+<script>
+// Filtre par thème ; sans script, tous les articles restent visibles.
+const g = document.querySelector('.themes');
+g.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
+  g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+  document.querySelectorAll('.grille li').forEach((li) => { li.hidden = !!b.dataset.theme && li.dataset.theme !== b.dataset.theme; }); };
+</script>
 <footer><a href="${liens('{app}', L, r)}">${t.nom}</a> · <a href="${liens('{plages}', L, r)}">${t.plages}</a> · <a href="${r}presentation/${L === 'en' ? 'en/' : ''}">${t.presentation}</a></footer>
 </body>
 </html>

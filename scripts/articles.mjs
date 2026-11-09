@@ -449,7 +449,7 @@ ${listeLieux(() => true, L)}
     },
   },
   {
-    slug: 'plages-leman-rive-francaise', publie: '2026-11-05', modifie: '2026-11-08', ...IMG.chillon,
+    slug: 'plages-leman-rive-francaise', publie: '2026-11-05', modifie: '2026-11-08', ...IMG.cgn,
     sources: [ALPLAKES, CIPEL, ['Haute-Savoie Mont-Blanc Tourisme', 'https://hautesavoiemontblanc-tourisme.com']],
     fr: {
       titre: 'Plages du Léman côté français : d’Évian à Chens-sur-Léman',
