@@ -45,6 +45,12 @@ const METEOSUISSE = ['MétéoSuisse, les vents du Léman', 'https://www.meteosch
 const CIPEL = ['CIPEL, carte des plages', 'https://www.cipel.org/carte-des-plages/'];
 const GE_QUALITE = ['Canton de Genève, qualité de l’eau de baignade', 'https://www.ge.ch/plages-lieux-baignade-eaux-vives-geneve/qualite-eau-baignade'];
 const SITG = ['SITG, plages et qualité des eaux de baignade (opendata.swiss)', 'https://opendata.swiss/fr/dataset?q=ECO_PLAGES'];
+const BPA = ['BPA, une bouée de natation peut sauver une vie', 'https://www.bfu.ch/media/gdkcesaq/baignade-en-eaux-libres-une-bouee-de-natation-peut-sauver-une-vie.pdf'];
+const RNLI = ['RNLI, « Float to live » : le choc du froid', 'https://rnli.org/news-and-media/2017/may/25/rnli-says-fight-your-instincts-not-the-water-to-help-stay-alive'];
+const PORTSMOUTH = ['Université de Portsmouth, Float to Live en eau libre', 'https://www.port.ac.uk/news-events-and-blogs/news/inexperienced-water-users-can-float-to-live-in-open-water-conditions'];
+const OSS_KIT = ['Outdoor Swimming Society, équipement d’hiver', 'https://www.outdoorswimmingsociety.com/swim-accessories-winter/'];
+const AFTERDROP = ['220 Triathlon, se réchauffer après une nage en eau libre', 'https://www.220triathlon.com/gear/swim/how-to-warm-your-cold-body-up-after-open-water-swimming/'];
+const ALERTDIVER = ['DAN Alert Diver, hypothermie', 'https://alertdiver.eu/fr_FR/articles/hypothermie/'];
 const GE_NAV = ['Canton de Genève, ski nautique, wakeboard et wakesurf', 'https://www.ge.ch/naviguer-geneve/ski-nautique-wakeboard-wakesurf'];
 
 export const ARTICLES = [
@@ -76,7 +82,7 @@ export const ARTICLES = [
 <p><strong>Lausanne.</strong> À Ouchy, les Bains des Rives installent d’octobre à mars un sauna au bord du lac, avec un plongeon dans le Léman entre deux séances, près de la <a href="{plage:lausanne-ouchy}">plage d’Ouchy</a>.</p>
 <p>La <a href="{plages}">liste des 65 plages</a> donne la température et le vent de chacune.</p>
 <h2>Comment Mon Lac aide pour le bain d’hiver ?</h2>
-<p>D’octobre à mai, dès que l’eau est sous 15 °C, la case « Baignade » de l’app devient « Bain d’hiver ». Sa note dépend surtout du vent : l’eau froide est le but, les rafales et les vagues beaucoup moins. Le <strong>défi bain d’hiver</strong> garde la date, la plage et la température de chaque bain, et l’historique se partage en un geste. Pour comprendre les chiffres, voir <a href="{blog:temperature-lac-leman}">comment la température du Léman est calculée</a>.</p>`,
+<p>D’octobre à mai, dès que l’eau est sous 15 °C, la case « Baignade » de l’app devient « Bain d’hiver ». Sa note dépend surtout du vent : l’eau froide est le but, les rafales et les vagues beaucoup moins. Le <strong>défi bain d’hiver</strong> garde la date, la plage et la température de chaque bain, et l’historique se partage en un geste. Pour aller plus loin : <a href="{blog:choc-thermique-eau-froide}">les 90 premières secondes dans l’eau froide</a>, <a href="{blog:materiel-bain-d-hiver}">le matériel</a> et <a href="{blog:afterdrop-se-rechauffer}">se réchauffer après le bain</a>. Pour les chiffres, voir <a href="{blog:temperature-lac-leman}">comment la température du Léman est calculée</a>.</p>`,
     },
     en: {
       titre: 'Winter swimming in Lake Geneva: getting started in Geneva and Lausanne',
@@ -102,7 +108,7 @@ export const ARTICLES = [
 <p><strong>Lausanne.</strong> In Ouchy, the Bains des Rives set up a lakeside sauna from October to March, with a dip in the lake between sessions, near <a href="{plage:lausanne-ouchy}">Ouchy beach</a>.</p>
 <p>The <a href="{plages}">list of all 65 beaches</a> gives the water temperature and wind for each one.</p>
 <h2>How does My Lake help with winter swimming?</h2>
-<p>From October to May, once the water is below 15 °C, the app’s “Swimming” tile becomes “Winter swim”. Its rating depends mostly on the wind: cold water is the point, gusts and waves much less so. The <strong>winter swim challenge</strong> keeps the date, beach and water temperature of each swim, and your history can be shared in one tap. To understand the figures, see <a href="{blog:temperature-lac-leman}">how Lake Geneva’s temperature is calculated</a>.</p>`,
+<p>From October to May, once the water is below 15 °C, the app’s “Swimming” tile becomes “Winter swim”. Its rating depends mostly on the wind: cold water is the point, gusts and waves much less so. The <strong>winter swim challenge</strong> keeps the date, beach and water temperature of each swim, and your history can be shared in one tap. Read on: <a href="{blog:choc-thermique-eau-froide}">the first 90 seconds in cold water</a>, <a href="{blog:materiel-bain-d-hiver}">what to bring</a> and <a href="{blog:afterdrop-se-rechauffer}">warming up afterwards</a>. For the figures, see <a href="{blog:temperature-lac-leman}">how Lake Geneva’s temperature is calculated</a>.</p>`,
     },
   },
   {
@@ -474,6 +480,166 @@ ${listeLieux((x) => x.zone === 'evian', L)}
 ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski', 'wing'], L, (l) => SPOTS.find((s) => s.id === l.spot)?.region === 'Rive française')}
 <h2>How do you check the water quality?</h2>
 <p>For French beaches, the app has no recent test results: it links to CIPEL’s beach map. See <a href="{blog:qualite-eau-baignade-leman}">how to check water quality</a>. Today’s temperature for each beach is in the <a href="{app}">app</a>.</p>`,
+    },
+  },
+  {
+    slug: 'choc-thermique-eau-froide', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
+    sources: [RNLI, PORTSMOUTH, SSS, BPA],
+    fr: {
+      titre: 'Choc thermique : les 90 premières secondes dans l’eau froide du Léman',
+      h1: 'Choc thermique : bien vivre les 90 premières secondes dans l’eau froide',
+      desc: 'Ce que fait le corps en entrant dans une eau à 10 °C, pourquoi il ne faut pas plonger, comment respirer pendant la première minute, et pourquoi voir un médecin avant de commencer.',
+      bref: 'En entrant dans une eau froide, le corps réagit par un <strong>choc thermique</strong> : respiration haletante qu’on ne contrôle plus, cœur qui s’emballe, tension qui monte. Selon la RNLI, ce choc dure environ <strong>60 à 90 secondes</strong> ; c’est le moment le plus risqué. D’où les règles : voir un médecin avant de commencer, ne jamais plonger, entrer lentement en contrôlant sa respiration, ne jamais être seul, et, si l’on se retrouve dans l’eau sans l’avoir voulu, flotter le temps que le choc passe.',
+      html: () => `
+<h2>Que se passe-t-il dans le corps en entrant dans l’eau froide ?</h2>
+<p>Au contact de l’eau froide, la peau déclenche une réaction réflexe : une forte inspiration involontaire, puis une respiration rapide et difficile à maîtriser ; le cœur accélère et la tension monte. La RNLI, le service de sauvetage britannique, appelle ce phénomène le <em>cold water shock</em> et rappelle qu’une grande partie des décès en eau froide survient dans les premières minutes, à cause de ce choc et non de l’hypothermie.</p>
+<h2>Combien de temps dure le choc thermique ?</h2>
+<p>Environ 60 à 90 secondes selon la RNLI. Ensuite, la respiration se calme et on reprend le contrôle. C’est pourquoi les premières fois, on reste près du bord et on ne cherche pas à nager tout de suite.</p>
+<h2>Pourquoi ne faut-il pas plonger ?</h2>
+<p>Parce qu’une inspiration réflexe la tête sous l’eau peut faire avaler de l’eau. La Société Suisse de Sauvetage (SSS) recommande d’entrer lentement, sans plonger, de garder la tête hors de l’eau et de porter un bonnet.</p>
+<h2>Comment entrer dans l’eau froide pas à pas ?</h2>
+<ul class="liste">
+  <li><strong>Avec quelqu’un</strong> : un binôme sur la berge ou dans l’eau (SSS, BPA).</li>
+  <li><strong>Lentement</strong>, en marchant, en soufflant longuement pour garder une respiration régulière.</li>
+  <li><strong>Brièvement</strong> : les premières fois, de quelques dizaines de secondes à une ou deux minutes suffisent ; la SSS fixe le maximum à autant de minutes que de degrés.</li>
+  <li><strong>Sortir</strong> au moindre malaise, en cas de frissons intenses ou de doigts engourdis.</li>
+</ul>
+<h2>Que faire si l’on tombe dans l’eau froide ?</h2>
+<p>La RNLI enseigne le réflexe <strong>« Float to Live »</strong> : ne pas se débattre, basculer la tête en arrière, oreilles dans l’eau, écarter bras et jambes et respirer calmement le temps que le choc passe, puis appeler à l’aide ou rejoindre le bord. Une étude de l’Université de Portsmouth a montré que ces consignes aident aussi des personnes peu expérimentées à flotter en lac et en mer.</p>
+<h2>Faut-il voir un médecin avant de commencer ?</h2>
+<p>Oui, c’est le premier réflexe : le choc thermique sollicite fortement le cœur. En cas de problème cardiaque ou de tension, on demande un avis médical avant le premier bain. Certains nageurs s’habituent aussi en terminant leurs douches par quelques dizaines de secondes d’eau froide, en allongeant peu à peu ; ce n’est pas une garantie, juste une façon douce de découvrir la sensation.</p>
+<p>Pour la suite : <a href="{blog:materiel-bain-d-hiver}">le matériel du bain d’hiver</a> et <a href="{blog:afterdrop-se-rechauffer}">se réchauffer après le bain</a>. L’eau du jour, plage par plage, est dans l’<a href="{app}">app</a>.</p>`,
+    },
+    en: {
+      titre: 'Cold water shock: the first 90 seconds in Lake Geneva’s cold water',
+      h1: 'Cold water shock: getting through the first 90 seconds',
+      desc: 'What your body does when you enter 10 °C water, why you should not dive in, how to breathe during the first minute, and why to see a doctor before you start.',
+      bref: 'Entering cold water triggers <strong>cold water shock</strong>: uncontrollable gasping, a racing heart and rising blood pressure. According to the RNLI, it lasts about <strong>60 to 90 seconds</strong>, the riskiest moment. Hence the rules: see a doctor before starting, never dive in, get in slowly while controlling your breathing, never go alone, and if you end up in the water unexpectedly, float until the shock passes.',
+      html: () => `
+<h2>What happens to your body when you enter cold water?</h2>
+<p>When cold water hits the skin, it triggers a reflex: a sharp involuntary gasp, then fast breathing that is hard to control; the heart speeds up and blood pressure rises. The RNLI, the UK lifeboat charity, calls this cold water shock and points out that many cold-water deaths happen in the first minutes, because of this shock rather than hypothermia.</p>
+<h2>How long does cold water shock last?</h2>
+<p>About 60 to 90 seconds, according to the RNLI. After that, breathing settles and you regain control. That is why, the first few times, you stay close to the edge and do not try to swim straight away.</p>
+<h2>Why shouldn’t you dive in?</h2>
+<p>Because a reflex gasp with your head underwater can make you swallow water. The Swiss Lifesaving Society advises getting in slowly, without diving, keeping your head out of the water and wearing a cap.</p>
+<h2>How do you get into cold water step by step?</h2>
+<ul class="liste">
+  <li><strong>With someone</strong>: a buddy on the shore or in the water (Swiss Lifesaving Society, BFU).</li>
+  <li><strong>Slowly</strong>, walking in and breathing out long and slow to keep your breathing steady.</li>
+  <li><strong>Briefly</strong>: the first few times, a few tens of seconds to a minute or two is plenty; the lifesaving society sets the maximum at as many minutes as degrees.</li>
+  <li><strong>Get out</strong> at the first sign of feeling unwell, intense shivering or numb fingers.</li>
+</ul>
+<h2>What should you do if you fall into cold water?</h2>
+<p>The RNLI teaches <strong>“Float to Live”</strong>: don’t thrash, tilt your head back with your ears underwater, spread your arms and legs and breathe calmly until the shock passes, then call for help or make for the shore. A University of Portsmouth study showed these instructions also help inexperienced people float in lakes and the sea.</p>
+<h2>Should you see a doctor before starting?</h2>
+<p>Yes, that comes first: cold water shock puts real strain on the heart. With any heart or blood pressure condition, get medical advice before your first dip. Some swimmers also get used to the feeling by ending their showers with a few tens of seconds of cold water, gradually longer; it is no guarantee, just a gentle way to discover the sensation.</p>
+<p>Next: <a href="{blog:materiel-bain-d-hiver}">what to bring for winter swimming</a> and <a href="{blog:afterdrop-se-rechauffer}">warming up afterwards</a>. Today’s water, beach by beach, is in the <a href="{app}">app</a>.</p>`,
+    },
+  },
+  {
+    slug: 'materiel-bain-d-hiver', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.paquis,
+    sources: [OSS_KIT, SSS, BPA],
+    fr: {
+      titre: 'Matériel pour le bain d’hiver : la liste complète avant d’aller au Léman',
+      h1: 'Le matériel du bain d’hiver, de la tête aux pieds',
+      desc: 'Bonnet, chaussons et gants en néoprène, bouée, tapis pour se changer, cape et thermos : tout ce qu’il faut emporter pour un bain d’hiver dans le Léman, et pourquoi.',
+      bref: 'Pour un bain d’hiver, l’essentiel tient dans un sac : <strong>un maillot, un bonnet, des chaussons et éventuellement des gants en néoprène</strong> (les pieds et les mains refroidissent vite), <strong>une bouée de natation</strong> pour être visible et se reposer, puis pour la sortie <strong>une serviette, une cape ou un peignoir chaud, des vêtements faciles à enfiler, un tapis pour se changer et une boisson chaude</strong>. Et surtout, un binôme.',
+      html: () => `
+<h2>Que porter dans l’eau froide ?</h2>
+<ul class="liste">
+  <li><strong>Un maillot confortable</strong>, ou une combinaison si l’on veut nager plus longtemps.</li>
+  <li><strong>Un bonnet</strong> en silicone ou en néoprène : la Société Suisse de Sauvetage recommande de porter un bonnet et de garder la tête hors de l’eau.</li>
+  <li><strong>Des chaussons en néoprène</strong> : les pieds souffrent vite du froid, et les galets du Léman ne pardonnent pas.</li>
+  <li><strong>Des gants en néoprène</strong> si les mains engourdissent ; plus ils sont épais, plus ils protègent, mais plus les doigts perdent en agilité. L’Outdoor Swimming Society les cite avec les chaussons parmi les accessoires d’hiver utiles.</li>
+  <li><strong>Une bouée de natation</strong> colorée : le Bureau de prévention des accidents (BPA) la recommande en eau libre, pour être vu et pouvoir se tenir en cas de besoin.</li>
+</ul>
+<h2>Que prévoir pour la sortie de l’eau ?</h2>
+<ul class="liste">
+  <li><strong>Une grande serviette</strong> et une <strong>cape ou un peignoir chaud</strong> pour se changer à l’abri du vent.</li>
+  <li><strong>Des vêtements amples, faciles à enfiler</strong> avec des doigts froids : couches superposées, pas de boutons compliqués, bonnet et chaussettes chaudes.</li>
+  <li><strong>Un tapis pour se changer</strong>, pour ne pas poser les pieds sur les cailloux ou l’herbe gelée.</li>
+  <li><strong>Une thermos de boisson chaude</strong> : la SSS conseille une boisson tiède pour se réchauffer de l’intérieur. Pas d’alcool.</li>
+</ul>
+<h2>Quel est l’équipement le plus important ?</h2>
+<p>Un binôme. La SSS et le BPA sont formels : on ne nage jamais seul en eau libre, encore moins en eau froide. Le reste du matériel rend le bain plus agréable ; la présence de quelqu’un le rend plus sûr.</p>
+<h2>Où acheter ou louer ce matériel près du Léman ?</h2>
+<p>Les magasins de sport et de surf de la région proposent bonnets, chaussons et gants en néoprène. Pour se réchauffer sur place, certains lieux ont un sauna, comme les Bains des Rives à Ouchy l’hiver : voir le <a href="{blog:bain-d-hiver-leman}">guide du bain d’hiver</a>.</p>
+<p>Avant de partir : <a href="{blog:choc-thermique-eau-froide}">les 90 premières secondes dans l’eau froide</a>. En sortant : <a href="{blog:afterdrop-se-rechauffer}">bien se réchauffer</a>. L’eau du jour est dans l’<a href="{app}">app</a>.</p>`,
+    },
+    en: {
+      titre: 'Winter swimming kit: the complete list before heading to Lake Geneva',
+      h1: 'Winter swimming kit, from head to toe',
+      desc: 'Cap, neoprene socks and gloves, swim buoy, changing mat, robe and flask: everything to bring for a winter swim in Lake Geneva, and why.',
+      bref: 'For a winter swim, the essentials fit in one bag: <strong>a swimsuit, a cap, neoprene socks and possibly gloves</strong> (feet and hands chill fast), <strong>a swim buoy</strong> to be seen and rest on, then for getting out <strong>a towel, a warm robe or changing cape, easy-to-put-on clothes, a changing mat and a hot drink</strong>. And above all, a buddy.',
+      html: () => `
+<h2>What should you wear in cold water?</h2>
+<ul class="liste">
+  <li><strong>A comfortable swimsuit</strong>, or a wetsuit if you want to swim longer.</li>
+  <li><strong>A cap</strong>, silicone or neoprene: the Swiss Lifesaving Society advises wearing a cap and keeping your head out of the water.</li>
+  <li><strong>Neoprene socks</strong>: feet feel the cold fast, and Lake Geneva’s pebbles are unforgiving.</li>
+  <li><strong>Neoprene gloves</strong> if your hands go numb; thicker means warmer but less dexterity. The Outdoor Swimming Society lists them, with socks, among useful winter accessories.</li>
+  <li><strong>A brightly coloured swim buoy</strong>: the Swiss Council for Accident Prevention (BFU) recommends one in open water, to be seen and to hold on to if needed.</li>
+</ul>
+<h2>What do you need for getting out?</h2>
+<ul class="liste">
+  <li><strong>A large towel</strong> and a <strong>warm robe or changing cape</strong> to change out of the wind.</li>
+  <li><strong>Loose clothes that are easy to put on</strong> with cold fingers: layers, no fiddly buttons, a hat and warm socks.</li>
+  <li><strong>A changing mat</strong>, so your feet stay off stones or frozen grass.</li>
+  <li><strong>A flask of hot drink</strong>: the lifesaving society suggests a warm drink to warm up from the inside. No alcohol.</li>
+</ul>
+<h2>What is the most important piece of kit?</h2>
+<p>A buddy. The Swiss Lifesaving Society and the BFU are clear: never swim alone in open water, even less so in cold water. The rest of the kit makes the swim more pleasant; having someone there makes it safer.</p>
+<h2>Where can you buy or rent kit near Lake Geneva?</h2>
+<p>Local sports and surf shops sell neoprene caps, socks and gloves. To warm up on site, some places have a sauna, like the Bains des Rives in Ouchy in winter: see the <a href="{blog:bain-d-hiver-leman}">winter swimming guide</a>.</p>
+<p>Before you go: <a href="{blog:choc-thermique-eau-froide}">the first 90 seconds in cold water</a>. Afterwards: <a href="{blog:afterdrop-se-rechauffer}">warming up properly</a>. Today’s water is in the <a href="{app}">app</a>.</p>`,
+    },
+  },
+  {
+    slug: 'afterdrop-se-rechauffer', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
+    sources: [SSS, AFTERDROP, ALERTDIVER],
+    fr: {
+      titre: 'Afterdrop : pourquoi on a encore plus froid après un bain d’hiver, et comment se réchauffer',
+      h1: 'Afterdrop : bien se réchauffer après un bain d’hiver',
+      desc: 'Pourquoi le corps continue de se refroidir une dizaine de minutes après la sortie de l’eau, comment se changer, quoi boire, et ce qu’il vaut mieux éviter, comme la douche chaude.',
+      bref: 'L’<strong>afterdrop</strong>, c’est le refroidissement qui continue <strong>après</strong> la sortie de l’eau : on peut avoir plus froid dix minutes après être sorti qu’au moment de sortir, avec frissons, voire vertiges. Pour bien se réchauffer : se sécher et s’habiller vite et chaudement, boire une boisson tiède, bouger doucement sans gros effort, et rester au chaud et au calme une quinzaine de minutes. La Société Suisse de Sauvetage déconseille la douche chaude juste après.',
+      html: () => `
+<h2>Qu’est-ce que l’afterdrop ?</h2>
+<p>C’est la baisse de la température du corps qui se poursuit alors qu’on est déjà sorti de l’eau et qu’on se trouve au sec. Les guides de nage en eau libre la situent souvent une dizaine de minutes après la sortie ; elle peut durer plus longtemps après un bain long. On le ressent par une vague de froid, des frissons qui redoublent, parfois des vertiges.</p>
+<h2>Comment se réchauffer après un bain d’hiver ?</h2>
+<ul class="liste">
+  <li><strong>Se changer tout de suite</strong> : enlever le maillot mouillé, se sécher et enfiler des vêtements chauds et secs, à l’abri du vent (SSS).</li>
+  <li><strong>Couvrir la tête, les mains et les pieds</strong> : bonnet, gants, chaussettes chaudes.</li>
+  <li><strong>Boire chaud</strong> : la SSS recommande une boisson tiède pour se réchauffer de l’intérieur.</li>
+  <li><strong>Bouger doucement</strong> : marcher, piétiner. La SSS déconseille les gros efforts, et l’exercice intense peut accentuer l’afterdrop (DAN Alert Diver).</li>
+  <li><strong>Rester au chaud et au calme</strong> une quinzaine de minutes avant de reprendre la route, surtout à vélo ou au volant.</li>
+</ul>
+<h2>Pourquoi éviter la douche chaude juste après ?</h2>
+<p>La Société Suisse de Sauvetage la déconseille juste après un bain en eau froide. On se réchauffe d’abord en s’habillant et en buvant chaud ; la douche viendra plus tard, une fois le corps revenu à une température normale.</p>
+<h2>Quand faut-il s’inquiéter ?</h2>
+<p>Si les frissons ne s’arrêtent pas, si la personne devient confuse, maladroite ou somnolente, il faut la mettre au chaud et appeler les secours (144 en Suisse, 15 ou 112 en France) : ce sont des signes d’hypothermie, qui demandent un réchauffement encadré.</p>
+<p>À lire aussi : <a href="{blog:choc-thermique-eau-froide}">les 90 premières secondes dans l’eau froide</a> et <a href="{blog:materiel-bain-d-hiver}">le matériel du bain d’hiver</a>. Le <a href="{blog:bain-d-hiver-leman}">guide du bain d’hiver</a> donne les plages et les saunas du Léman.</p>`,
+    },
+    en: {
+      titre: 'Afterdrop: why you feel colder after a winter swim, and how to warm up',
+      h1: 'Afterdrop: warming up properly after a winter swim',
+      desc: 'Why your body keeps cooling for about ten minutes after getting out, how to change, what to drink, and what to avoid, such as a hot shower.',
+      bref: '<strong>Afterdrop</strong> is the cooling that continues <strong>after</strong> you leave the water: you can feel colder ten minutes after getting out than when you got out, with shivering or even dizziness. To warm up: dry off and dress quickly and warmly, have a warm drink, move gently without hard effort, and stay warm and calm for about fifteen minutes. The Swiss Lifesaving Society advises against a hot shower straight after.',
+      html: () => `
+<h2>What is afterdrop?</h2>
+<p>It is the drop in body temperature that continues once you are already out of the water and dry. Open-water swimming guides often place it about ten minutes after getting out; it can last longer after a long swim. You feel it as a wave of cold, stronger shivering, sometimes dizziness.</p>
+<h2>How do you warm up after a winter swim?</h2>
+<ul class="liste">
+  <li><strong>Change straight away</strong>: take off your wet swimsuit, dry off and put on warm, dry clothes, out of the wind (Swiss Lifesaving Society).</li>
+  <li><strong>Cover your head, hands and feet</strong>: hat, gloves, warm socks.</li>
+  <li><strong>Drink something warm</strong>: the lifesaving society recommends a warm drink to warm up from the inside.</li>
+  <li><strong>Move gently</strong>: walk, stamp your feet. Avoid hard exercise, which can make afterdrop worse (DAN Alert Diver).</li>
+  <li><strong>Stay warm and calm</strong> for about fifteen minutes before heading off, especially by bike or car.</li>
+</ul>
+<h2>Why avoid a hot shower straight after?</h2>
+<p>The Swiss Lifesaving Society advises against it right after a cold-water swim. Warm up first by dressing and drinking something hot; the shower can come later, once your body is back to normal.</p>
+<h2>When should you worry?</h2>
+<p>If the shivering does not stop, or the person becomes confused, clumsy or drowsy, get them somewhere warm and call emergency services (144 in Switzerland, 15 or 112 in France): these are signs of hypothermia, which needs supervised rewarming.</p>
+<p>Also read: <a href="{blog:choc-thermique-eau-froide}">the first 90 seconds in cold water</a> and <a href="{blog:materiel-bain-d-hiver}">winter swimming kit</a>. The <a href="{blog:bain-d-hiver-leman}">winter swimming guide</a> lists Lake Geneva’s beaches and saunas.</p>`,
     },
   },
 ];

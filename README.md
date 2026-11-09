@@ -128,7 +128,7 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 
 ### Blog
 
-10 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
+13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
 
 | Page | Adresse |
 |---|---|
@@ -143,6 +143,9 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 | Wakeboard, wakesurf et ski nautique sur le Léman | https://xiff.github.io/Le-lac/blog/wakeboard-wakesurf-ski-nautique-leman/ |
 | Buvettes et restaurants au bord du Léman, région par région | https://xiff.github.io/Le-lac/blog/buvettes-restaurants-bord-du-leman/ |
 | Les plages du Léman côté français, d’Évian à Chens-sur-Léman | https://xiff.github.io/Le-lac/blog/plages-leman-rive-francaise/ |
+| Choc thermique : les 90 premières secondes | https://xiff.github.io/Le-lac/blog/choc-thermique-eau-froide/ |
+| Le matériel du bain d’hiver | https://xiff.github.io/Le-lac/blog/materiel-bain-d-hiver/ |
+| Afterdrop : bien se réchauffer | https://xiff.github.io/Le-lac/blog/afterdrop-se-rechauffer/ |
 
 Articles dans `scripts/articles.mjs` (listes de plages, lieux et loueurs tirées des données de l’app), pages générées par `node scripts/blog.mjs`.
 
