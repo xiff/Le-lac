@@ -112,7 +112,7 @@ export function liste(L = 'fr') {
   return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: { fr: urlBlog('fr'), en: urlBlog('en') }, image: `${BASE}${ARTICLES[0].image}`, type: 'website', ld, r })}
 <body>
 <header>
-  <div class="haut"><a class="retour" href="${liens('{app}', L, r)}">← ${t.nom}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="retour" href="${liens('{app}', L, r)}">← ${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.titreBlog}</h1>
   <p class="releve">${esc(t.descBlog)}</p>
 </header>

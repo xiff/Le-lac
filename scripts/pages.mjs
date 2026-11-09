@@ -127,7 +127,7 @@ export function liste(langue = 'fr') {
 </head>
 <body>
 <header>
-  <div class="haut"><a class="retour" href="${r}../${en ? '?lang=en' : ''}">← ${t.app}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="retour" href="${r}../${en ? '?lang=en' : ''}">← ${en ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.liste}</h1>
   <p class="releve">${esc(t.listeDesc)}</p>
 </header>
