@@ -68,3 +68,4 @@ footer { max-width: 680px; margin: 0 auto; padding: 0 20px 40px; font-size: 14px
 .billets b { font: 400 21px/1.25 "Young Serif", Georgia, serif; }
 .billets p { margin: 6px 0; color: var(--doux); }
 .billets time { font-size: 13px; color: var(--doux); }
+.avertissement { margin-top: 16px; padding: 14px 18px; border-left: 4px solid var(--soleil); border-radius: 10px; background: #f2b84b1f; font-size: 15px; }

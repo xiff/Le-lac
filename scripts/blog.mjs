@@ -11,12 +11,12 @@ const TXT = {
     eau: 'L’eau du Léman en ce moment', eauRepli: 'La température de chaque plage est dans <a href="{app}">l’app Mon Lac</a>, mise à jour toutes les trois heures.',
     sources: 'Sources', voir: 'Voir le lac aujourd’hui', tous: 'Tous les articles', plages: 'Toutes les plages', presentation: 'Présentation', ariane: 'Fil d’Ariane',
     titreBlog: 'Le blog du Léman', descBlog: 'Bain d’hiver, bise, température et qualité de l’eau, plages, sports nautiques, buvettes : nos guides pour profiter du Léman toute l’année, avec les données du jour plage par plage.',
-    photo: 'Photo', autre: 'English', live: (f, c) => `En ce moment, l’eau va de <strong>${f.t}</strong> à ${f.a} à <strong>${c.t}</strong> à ${c.a}, à 70 cm sous la surface. Le détail de chaque plage est dans <a href="{app}">l’app</a>.` },
+    photo: 'Photo', autre: 'English', avertissement: '<strong>Avertissement.</strong> Cet article donne des informations générales tirées des sources citées ; il ne remplace pas un avis médical. La baignade en eau froide sollicite fortement le cœur et peut être dangereuse : demandez conseil à un médecin avant de commencer, en particulier en cas de problème cardiaque, de tension ou de grossesse. Ne vous baignez jamais seul et respectez les consignes des sauveteurs. Chacun pratique sous sa propre responsabilité ; en cas d’urgence, appelez le 144 en Suisse ou le 112.', live: (f, c) => `En ce moment, l’eau va de <strong>${f.t}</strong> à ${f.a} à <strong>${c.t}</strong> à ${c.a}, à 70 cm sous la surface. Le détail de chaque plage est dans <a href="{app}">l’app</a>.` },
   en: { nom: 'My Lake', blog: 'Blog', app: 'Open the app', par: 'By the', publie: 'published', maj: 'updated', bref: 'In short',
     eau: 'Lake Geneva’s water right now', eauRepli: 'Each beach’s water temperature is in <a href="{app}">the My Lake app</a>, updated every three hours.',
     sources: 'Sources', voir: 'See the lake today', tous: 'All articles', plages: 'All beaches', presentation: 'About', ariane: 'Breadcrumb',
     titreBlog: 'The Lake Geneva blog', descBlog: 'Winter swimming, the bise, water temperature and quality, beaches, water sports and lakeside cafés: our guides to enjoying Lake Geneva all year round, with today’s data beach by beach.',
-    photo: 'Photo', autre: 'Français', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
+    photo: 'Photo', autre: 'Français', avertissement: '<strong>Disclaimer.</strong> This article gives general information taken from the sources cited; it is not medical advice. Cold-water swimming puts real strain on the heart and can be dangerous: talk to a doctor before you start, especially with a heart condition, high blood pressure or during pregnancy. Never swim alone and follow lifeguards’ instructions. You swim at your own risk; in an emergency, call 144 in Switzerland or 112.', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
 };
 const dateL = (d, L) => new Date(d + 'T12:00:00Z').toLocaleDateString(L === 'en' ? 'en-GB' : 'fr-CH', { day: 'numeric', month: 'long', year: 'numeric' });
 const urlArticle = (slug, L) => `${BASE}blog/${slug}/${L === 'en' ? 'en/' : ''}`;
@@ -78,7 +78,7 @@ export function article(a, L = 'fr') {
 <main class="article">
   <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">${t.bref}</h2><p>${c.bref}</p></section>
-  ${liens(c.html(L).trim(), L, r)}
+${a.sante ? `  <p class="avertissement" role="note">${t.avertissement}</p>\n` : ''}  ${liens(c.html(L).trim(), L, r)}
   <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${t.eau}</h2>
     <p id="eau-live">${liens(t.eauRepli, L, r)}</p></section>
   <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">${t.sources}</h2><ul>

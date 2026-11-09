@@ -55,7 +55,7 @@ const GE_NAV = ['Canton de Genève, ski nautique, wakeboard et wakesurf', 'https
 
 export const ARTICLES = [
   {
-    slug: 'bain-d-hiver-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
+    slug: 'bain-d-hiver-leman', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
     sources: [SSS, ['BPA, une bouée de natation peut sauver une vie', 'https://www.bfu.ch/media/gdkcesaq/baignade-en-eaux-libres-une-bouee-de-natation-peut-sauver-une-vie.pdf'],
       ['Bains des Rives, Lausanne (loisirs.ch)', 'https://www.loisirs.ch/activite/bains-des-rives-a-lausanne-sauna/'], ['Sauna Boats Genève', 'https://saunaboat-geneve.ch/fr/'], ALPLAKES],
     fr: {
@@ -483,7 +483,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'choc-thermique-eau-froide', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
+    slug: 'choc-thermique-eau-froide', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
     sources: [RNLI, PORTSMOUTH, SSS, BPA],
     fr: {
       titre: 'Choc thermique : les 90 premières secondes dans l’eau froide du Léman',
@@ -537,7 +537,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'materiel-bain-d-hiver', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.paquis,
+    slug: 'materiel-bain-d-hiver', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.paquis,
     sources: [OSS_KIT, SSS, BPA],
     fr: {
       titre: 'Matériel pour le bain d’hiver : la liste complète avant d’aller au Léman',
@@ -595,7 +595,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'afterdrop-se-rechauffer', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
+    slug: 'afterdrop-se-rechauffer', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
     sources: [SSS, AFTERDROP, ALERTDIVER],
     fr: {
       titre: 'Afterdrop : pourquoi on a encore plus froid après un bain d’hiver, et comment se réchauffer',
