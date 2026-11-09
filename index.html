@@ -65,11 +65,7 @@
   h1 { font: 400 clamp(1.9rem, 8.4vw, 2.6rem)/1.08 var(--display); letter-spacing: -0.025em; margin: 14px 0 0; text-wrap: balance; }
   .releve { color: var(--creme-doux); font-size: .85rem; margin: 10px 0 0; display: flex; align-items: center; gap: 6px; }
   .releve svg { width: 15px; height: 15px; }
-  .mesures { display: grid; grid-template-columns: repeat(3, 1fr); margin: 22px 0 0; padding-bottom: 20px; }
-  .y-aller { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; margin-bottom: 34px; padding: 0 22px 0 18px; border-radius: 99px; background: var(--soleil); color: #10292f; font-weight: 700; text-decoration: none; transition: transform 160ms var(--ease-out), background-color 150ms ease; }
-  .y-aller svg { width: 18px; height: 18px; }
-  .y-aller:active { transform: scale(0.97); }
-  @media (hover: hover) and (pointer: fine) { .y-aller:hover { background: #f5c565; } }
+  .mesures { display: grid; grid-template-columns: repeat(3, 1fr); margin: 22px 0 0; padding-bottom: 34px; }
   .mesures div + div { border-left: 1px solid #fbf4e429; padding-left: 14px; }
   .mesures b { display: block; font: 400 2.1rem/1 var(--display); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .mesures small { color: var(--creme-doux); font-size: .8rem; }
@@ -255,6 +251,7 @@
     <label class="lieu-choix"><span class="vh" data-t="plage">Plage</span><select id="spot"></select><svg class="i" aria-hidden="true"><use href="#i-bas"/></svg></label>
     <button class="rond petit" id="localiser" data-ta="localiserAria" aria-label="Choisir la plage la plus proche"><svg class="i"><use href="#i-epingle"/></svg></button>
     <button class="rond petit" id="favori" aria-pressed="false"><svg class="i"><use href="#i-etoile"/></svg></button>
+    <a class="rond petit" id="y-aller" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg></a>
   </div>
   <div class="favoris" id="favoris" role="group" hidden data-ta="mesPlages" aria-label="Mes plages"></div>
   <h1 id="verdict" class="charge" data-t="chargement">On regarde le lac…</h1>
@@ -264,8 +261,6 @@
     <div><b id="air">–</b><small data-t="air">air</small></div>
     <div><b id="vent">–</b><small data-t="vent">vent km/h</small></div>
   </div>
-  <!-- Action principale de l'écran : après le verdict et les mesures, on décide, puis on y va. -->
-  <a class="y-aller" id="y-aller" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg><span data-t="yAller">Y aller</span></a>
   <svg class="vague" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 18V9c25 0 25-7 50-7s25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7v9Z"/></svg>
 </header>
 
@@ -528,7 +523,7 @@ async function charger() {
   const moi = ++demande;
   $('verdict').classList.add('charge');
   $('y-aller').href = `https://www.google.com/maps/dir/?api=1&destination=${spot().lat},${spot().lon}`;
-  $('y-aller').setAttribute('aria-label', T.yAllerAria(spot().nom));
+  $('y-aller').setAttribute('aria-label', T.yAllerAria(spot().nom)); $('y-aller').title = T.yAllerAria(spot().nom);
   $('lien-qualite').href = spot().zone === 'geneve' ? 'https://www.ge.ch/plages-lieux-baignade-eaux-vives-geneve/qualite-eau-baignade' : 'https://www.cipel.org/carte-des-plages/';
   try {
     const [m, eau, qj] = await Promise.all([meteo(spot()), tempEau(spot()), donneesQualite()]);
