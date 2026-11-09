@@ -18,10 +18,10 @@ const TXT = {
     releve: 'conditions mises à jour toutes les 3 heures', ouvrir: (n) => `Ouvrir ${n} dans l’app`, act: 'Sur l’eau aujourd’hui',
     actsVide: 'Baignade, paddle, voile et bain d’hiver : la note de chaque activité s’affiche ici.', voisines: 'Les plages voisines',
     lieux: 'Un verre ou un repas dans le coin', saison: ' · ouvert en saison', donnees: 'D’où viennent ces chiffres',
-    texte: (n) => `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le Léman en trois dimensions : on lit la valeur à 70 cm sous la surface, devant la plage, toutes les trois heures. Le vent et l’air viennent d’Open-Meteo. La qualité de l’eau de baignade n’est affichée que si une analyse de moins de 30 jours existe (canton de Genève pour les plages genevoises) ; sinon, vérifie-la à la source auprès du canton ou de la CIPEL, liens en bas de page. Le verdict est calculé par l’app Mon Lac aujourd’hui à partir de ces données. Indicatif : le lac a toujours le dernier mot.`,
+    texte: (n) => `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le Léman en trois dimensions : on lit la valeur à 70 cm sous la surface, devant la plage, toutes les trois heures. Le vent et l’air viennent d’Open-Meteo. La qualité de l’eau de baignade n’est affichée que si une analyse de moins de 30 jours existe (canton de Genève pour les plages genevoises) ; sinon, vérifie-la à la source auprès du canton ou de la CIPEL, liens en bas de page. Le verdict est calculé par l’app Mon Lac à partir de ces données. Indicatif : le lac a toujours le dernier mot.`,
     pied: 'Eau : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0) · qualité : <a href="https://ge.ch/sitg/">Canton de Genève (SITG)</a> et <a href="https://www.cipel.org/carte-des-plages/">CIPEL</a> · météo : <a href="https://open-meteo.com">Open-Meteo</a>',
-    app: 'Mon Lac aujourd’hui', autre: 'English', lac: 'Lac Léman',
-    liste: 'Toutes les plages du Léman', listeDesc: 'Les 65 plages du Léman suivies par Mon Lac aujourd’hui : température de l’eau, vent et verdict du jour, plage par plage.', presentation: 'Présentation',
+    app: 'Mon Lac', autre: 'English', lac: 'Lac Léman',
+    liste: 'Toutes les plages du Léman', listeDesc: 'Les 65 plages du Léman suivies par Mon Lac : température de l’eau, vent et verdict du jour, plage par plage.', presentation: 'Présentation',
   },
   en: {
     titre: (n) => `Water temperature at ${n} today`, suffixe: 'Lake Geneva',
@@ -30,10 +30,10 @@ const TXT = {
     releve: 'conditions updated every 3 hours', ouvrir: (n) => `Open ${n} in the app`, act: 'On the water today',
     actsVide: 'Swimming, paddle, sailing and winter swim: each activity’s rating appears here.', voisines: 'Nearby beaches',
     lieux: 'A drink or a meal nearby', saison: ' · open in season', donnees: 'Where these figures come from',
-    texte: (n) => `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes Lake Geneva in three dimensions: we read the value 70 cm below the surface, in front of the beach, every three hours. Wind and air come from Open-Meteo. Bathing water quality is only shown when a test less than 30 days old exists (Canton of Geneva for Geneva beaches); otherwise check it at the source with the canton or CIPEL, links at the bottom of the page. The verdict is computed by the My Lake Today app from this data. For guidance only: the lake always has the last word.`,
+    texte: (n) => `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes Lake Geneva in three dimensions: we read the value 70 cm below the surface, in front of the beach, every three hours. Wind and air come from Open-Meteo. Bathing water quality is only shown when a test less than 30 days old exists (Canton of Geneva for Geneva beaches); otherwise check it at the source with the canton or CIPEL, links at the bottom of the page. The verdict is computed by the My Lake app from this data. For guidance only: the lake always has the last word.`,
     pied: 'Water: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0) · quality: <a href="https://ge.ch/sitg/">Canton of Geneva (SITG)</a> and <a href="https://www.cipel.org/carte-des-plages/">CIPEL</a> · weather: <a href="https://open-meteo.com">Open-Meteo</a>',
-    app: 'My Lake Today', autre: 'Français', lac: 'Lake Geneva',
-    liste: 'All Lake Geneva beaches', listeDesc: 'The 65 Lake Geneva beaches followed by My Lake Today: water temperature, wind and today’s verdict, beach by beach.', presentation: 'About',
+    app: 'My Lake', autre: 'Français', lac: 'Lake Geneva',
+    liste: 'All Lake Geneva beaches', listeDesc: 'The 65 Lake Geneva beaches followed by My Lake: water temperature, wind and today’s verdict, beach by beach.', presentation: 'About',
   },
 };
 

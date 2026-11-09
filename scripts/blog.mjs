@@ -7,13 +7,13 @@ import { ARTICLES } from './articles.mjs';
 const BASE = 'https://xiff.github.io/Le-lac/';
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const TXT = {
-  fr: { nom: 'Mon Lac aujourd’hui', blog: 'Blog', app: 'Ouvrir l’app', par: 'Par la rédaction de', publie: 'publié le', maj: 'mis à jour le', bref: 'En bref',
-    eau: 'L’eau du Léman en ce moment', eauRepli: 'La température de chaque plage est dans <a href="{app}">l’app Mon Lac aujourd’hui</a>, mise à jour toutes les trois heures.',
+  fr: { nom: 'Mon Lac', blog: 'Blog', app: 'Ouvrir l’app', par: 'Par la rédaction de', publie: 'publié le', maj: 'mis à jour le', bref: 'En bref',
+    eau: 'L’eau du Léman en ce moment', eauRepli: 'La température de chaque plage est dans <a href="{app}">l’app Mon Lac</a>, mise à jour toutes les trois heures.',
     sources: 'Sources', voir: 'Voir le lac aujourd’hui', tous: 'Tous les articles', plages: 'Toutes les plages', presentation: 'Présentation', ariane: 'Fil d’Ariane',
     titreBlog: 'Le blog du Léman', descBlog: 'Bain d’hiver, bise, température et qualité de l’eau, plages, sports nautiques, buvettes : nos guides pour profiter du Léman toute l’année, avec les données du jour plage par plage.',
     photo: 'Photo', autre: 'English', live: (f, c) => `En ce moment, l’eau va de <strong>${f.t}</strong> à ${f.a} à <strong>${c.t}</strong> à ${c.a}, à 70 cm sous la surface. Le détail de chaque plage est dans <a href="{app}">l’app</a>.` },
-  en: { nom: 'My Lake Today', blog: 'Blog', app: 'Open the app', par: 'By the', publie: 'published', maj: 'updated', bref: 'In short',
-    eau: 'Lake Geneva’s water right now', eauRepli: 'Each beach’s water temperature is in <a href="{app}">the My Lake Today app</a>, updated every three hours.',
+  en: { nom: 'My Lake', blog: 'Blog', app: 'Open the app', par: 'By the', publie: 'published', maj: 'updated', bref: 'In short',
+    eau: 'Lake Geneva’s water right now', eauRepli: 'Each beach’s water temperature is in <a href="{app}">the My Lake app</a>, updated every three hours.',
     sources: 'Sources', voir: 'See the lake today', tous: 'All articles', plages: 'All beaches', presentation: 'About', ariane: 'Breadcrumb',
     titreBlog: 'The Lake Geneva blog', descBlog: 'Winter swimming, the bise, water temperature and quality, beaches, water sports and lakeside cafés: our guides to enjoying Lake Geneva all year round, with today’s data beach by beach.',
     photo: 'Photo', autre: 'Français', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
@@ -73,7 +73,7 @@ export function article(a, L = 'fr') {
   <div class="haut"><a class="retour" href="${r}blog/${L === 'en' ? 'en/' : ''}">← ${t.blog}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
   <nav class="ariane" aria-label="${t.ariane}"><a href="${liens('{app}', L, r)}">${t.nom}</a> › <a href="${r}blog/${L === 'en' ? 'en/' : ''}">${t.blog}</a></nav>
   <h1>${esc(c.h1)}</h1>
-  <p class="releve">${t.par} ${L === 'en' ? 'My Lake Today team' : t.nom} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
+  <p class="releve">${t.par} ${L === 'en' ? 'My Lake team' : t.nom} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
 </header>
 <main class="article">
   <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>

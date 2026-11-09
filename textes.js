@@ -2,7 +2,7 @@
 // Langue : choix mémorisé, sinon celle du téléphone ; français par défaut.
 const TEXTES = {
   fr: {
-    titre: 'Mon Lac aujourd’hui', partagerAria: 'Partager les conditions', plage: 'Plage', localiserAria: 'Choisir la plage la plus proche',
+    titre: 'Mon Lac', partagerAria: 'Partager les conditions', plage: 'Plage', localiserAria: 'Choisir la plage la plus proche',
     chargement: 'On regarde le lac…', eau: 'eau', air: 'air', vent: 'vent km/h',
     bienvenueTitre: 'Bienvenue au bord de l’eau.', bienvenueTexte: 'Chaque jour, on lit le vent, l’eau et la bise pour te dire si ça vaut le coup de sortir le maillot. Commence par ta plage.',
     trouver: 'Trouver ma plage', plusTard: 'Je choisis moi-même', surLeau: 'Sur l’eau',
@@ -35,7 +35,7 @@ const TEXTES = {
     partageConditions: (v, plage, eau, air, vent) => `${v} ${plage} : eau ${eau}, air ${air}°, vent ${vent} km/h.`, partageDefaut: 'Le Léman du jour en un coup d’œil.',
   },
   en: {
-    titre: 'My Lake Today', partagerAria: 'Share conditions', plage: 'Beach', localiserAria: 'Pick the nearest beach',
+    titre: 'My Lake', partagerAria: 'Share conditions', plage: 'Beach', localiserAria: 'Pick the nearest beach',
     chargement: 'Checking the lake…', eau: 'water', air: 'air', vent: 'wind km/h',
     bienvenueTitre: 'Welcome to the waterfront.', bienvenueTexte: 'Every day we read the wind, the water and the bise to tell you if it’s worth grabbing your swimsuit. Start with your beach.',
     trouver: 'Find my beach', plusTard: 'I’ll pick myself', surLeau: 'On the water',

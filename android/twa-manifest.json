@@ -1,7 +1,7 @@
 {
   "packageId": "io.github.xiff.lelac",
   "host": "xiff.github.io",
-  "name": "Mon Lac aujourd’hui",
+  "name": "Mon Lac",
   "launcherName": "Mon Lac",
   "display": "standalone",
   "orientation": "portrait",
