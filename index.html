@@ -427,9 +427,11 @@ const LOC_PAR_ACT = { baignade: ['pedalo'], paddle: ['paddle', 'kayak'], voile: 
 
 // Activités affichées : la baignade toujours, les autres selon « Mes activités » (paddle et voile par défaut).
 const OPTIONNELLES = TOUTES.filter((a) => a.id !== 'baignade');
-function choisies() { try { const l = JSON.parse(localStorage.getItem('activites')); if (Array.isArray(l)) return l; } catch {} return ['paddle', 'voile']; }
-const actives = () => TOUTES.filter((a) => a.id === 'baignade' || choisies().includes(a.id));
-$('choix-acts').innerHTML = OPTIONNELLES.map((a) => `<label><input type="checkbox" value="${a.id}"${choisies().includes(a.id) ? ' checked' : ''}> ${T.activites[a.id]}</label>`).join('');
+// Première visite : aucune activité cochée et la liste ouverte, pour que chacun choisisse les siennes.
+function choisies() { try { const l = JSON.parse(localStorage.getItem('activites')); if (Array.isArray(l)) return l; } catch {} return null; }
+const actives = () => TOUTES.filter((a) => a.id === 'baignade' || choisies()?.includes(a.id));
+$('reglages').open = choisies() === null;
+$('choix-acts').innerHTML = OPTIONNELLES.map((a) => `<label><input type="checkbox" value="${a.id}"${choisies()?.includes(a.id) ? ' checked' : ''}> ${T.activites[a.id]}</label>`).join('');
 $('choix-acts').onchange = () => {
   const l = [...$('choix-acts').querySelectorAll('input:checked')].map((i) => i.value);
   try { localStorage.setItem('activites', JSON.stringify(l)); } catch {}
