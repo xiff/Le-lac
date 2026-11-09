@@ -1,0 +1,17 @@
+name: Vérification des coordonnées des plages
+# Compare spots.js à OpenStreetMap (Overpass) ; résultat dans le journal et l'artefact coords.
+on:
+  workflow_dispatch:
+jobs:
+  coords:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/coords.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coords
+          path: coords.json
