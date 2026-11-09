@@ -10,12 +10,13 @@ const requete = `[out:json][timeout:120];
   nwr["leisure"~"^(beach_resort|swimming_area|bathing_place)$"](46.15,6.10,46.55,6.95);
   nwr["amenity"="public_bath"](46.15,6.10,46.55,6.95);
   nwr["sport"="swimming"]["leisure"!="sports_centre"](46.15,6.10,46.55,6.95);
+  nwr["name"~"plage|bains|baignade|beach|lido",i](46.15,6.10,46.55,6.95);
 );
 out center tags;`;
 const r = await fetch('https://overpass-api.de/api/interpreter', { method: 'POST', body: 'data=' + encodeURIComponent(requete),
   headers: { 'User-Agent': 'MonLac-verification-coordonnees/1.0', 'Content-Type': 'application/x-www-form-urlencoded' } });
 if (!r.ok) throw new Error('Overpass ' + r.status);
-const elements = (await r.json()).elements.map((e) => ({ nom: e.tags?.name ?? '', type: e.tags?.natural ?? e.tags?.leisure ?? e.tags?.amenity ?? e.tags?.sport,
+const elements = (await r.json()).elements.map((e) => ({ nom: e.tags?.name ?? '', type: e.tags?.natural ?? e.tags?.leisure ?? e.tags?.amenity ?? e.tags?.sport ?? e.tags?.place ?? e.tags?.highway ?? '?',
   lat: e.lat ?? e.center?.lat, lon: e.lon ?? e.center?.lon, osm: `${e.type}/${e.id}` })).filter((e) => e.lat);
 
 const km = (a, b) => 6371 * 2 * Math.asin(Math.sqrt(Math.sin(((b.lat - a.lat) * Math.PI) / 360) ** 2 + Math.cos((a.lat * Math.PI) / 180) * Math.cos((b.lat * Math.PI) / 180) * Math.sin(((b.lon - a.lon) * Math.PI) / 360) ** 2));
@@ -31,5 +32,6 @@ const res = SPOTS.map((s) => {
 await writeFile('coords.json', JSON.stringify(res, null, 1));
 for (const x of res) {
   const c = x.candidats[0];
-  console.log(`${x.id.padEnd(36)} ${c ? `${c.km.toFixed(2)} km → ${c.lat},${c.lon} ${c.nomOk ? '[nom]' : ''} ${c.type} « ${c.nom} » ${c.osm}` : 'aucun candidat'}`);
+  console.log(`${x.id} (actuel ${x.actuel.join(',')})`);
+  for (const c of x.candidats) console.log(`   ${c.km.toFixed(2)} km → ${c.lat},${c.lon} ${c.nomOk ? '[nom]' : ''} ${c.type} « ${c.nom} » ${c.osm}`);
 }
