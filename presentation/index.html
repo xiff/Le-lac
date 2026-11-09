@@ -244,33 +244,95 @@
     .defi-ui .compteur { transition: none; }
   }
 
-  /* Alignement sur l'app Mon Lac : en-tête bleu lac, contenu centré sur 1120 px, coins arrondis et boutons pilule. Thème clair uniquement. */
-  :root { color-scheme: light; --bord: max(var(--m), calc((100% - 1120px) / 2)); }
-  .hero { min-height: 0; background: var(--accent); color: var(--on-accent); padding: 28px var(--bord) 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 0 64px; align-items: end; }
-  .hero .coin { right: var(--bord); color: var(--on-accent); }
-  .hero .axe { margin-left: 0; padding-bottom: 72px; }
-  .hero .colonne { width: auto; max-width: 640px; margin-top: clamp(56px, 12vh, 128px); }
-  .hero h1 { font-size: clamp(36px, 5vw, 68px); line-height: 1.04; letter-spacing: -0.02em; }
-  .hero .soutien { font-size: 19px; max-width: 44ch; color: #fbf4e4d9; margin-top: 20px; }
-  .hero .bouton { background: var(--sun); color: var(--ink); }
-  .hero .lien { color: var(--on-accent); }
-  .apercu { position: static; width: auto; background: var(--bg); color: var(--ink); border-radius: 20px 20px 0 0; }
-  .ligne-ui.survol { background: #fffdf8; }
+  /* Mise en page alignée sur l'app Mon Lac : bleu lac, crème, beige ; contenu sur 1200 px ; thème clair uniquement. */
+  :root { color-scheme: light; --bord: max(var(--m), calc((100% - 1200px) / 2)); --gouttiere: clamp(40px, 5vw, 88px); }
   .bouton { border-radius: 99px; }
+  section { padding: clamp(96px, 10vw, 160px) var(--bord) 0; }
+  footer, .credits { padding-left: var(--bord); padding-right: var(--bord); }
+
+  /* Héros : le titre à gauche, une grande photo du lac à droite, l'aperçu des températures posé dessus */
+  .hero { min-height: 0; background: var(--accent); color: var(--on-accent); padding: 28px var(--bord) clamp(64px, 7vw, 112px);
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto auto 1fr; gap: 0 var(--gouttiere); align-items: end; }
+  .hero .coin { right: var(--bord); color: var(--on-accent); }
+  /* Le titre court sur toute la largeur, en une ligne ; texte et action à gauche, photo à droite. */
+  .hero > .axe, .hero .colonne { display: contents; }
+  .hero .marque { grid-column: 1 / -1; }
+  .hero h1 { grid-column: 1 / -1; margin-top: clamp(56px, 9vh, 120px); font-size: clamp(44px, 6.4vw, 96px); line-height: .96; letter-spacing: -0.035em; }
+  .hero .soutien { grid-column: 1; align-self: start; font-size: 20px; max-width: 32ch; color: #fbf4e4e6; margin-top: 48px; }
+  .hero .actions { grid-column: 1; align-self: start; margin-top: 32px; }
+  .hero .bouton { background: var(--sun); color: var(--ink); min-height: 56px; padding: 0 30px; }
   @media (hover: hover) and (pointer: fine) { .hero .bouton:hover { background: #f5c565; } }
-  .reponse, .appel, .retour, .defi-ui, .final, .bande .cadre, .chillon .cadre, .eau figure img, .hiver figure img, .duo figure img { border-radius: 20px; }
-  section, footer, .credits, .bande, .chillon figcaption { padding-left: var(--bord); padding-right: var(--bord); }
+  .hero .lien { color: var(--on-accent); }
+  .hero-media { position: relative; grid-column: 2; grid-row: 3 / span 2; margin-top: 48px; }
+  .hero-media .bande .cadre { height: clamp(460px, 62vh, 640px); border-radius: 24px; }
+  .hero-media .bande img { animation-duration: 30s; }
+  .hero-media figcaption { padding: 0; color: #fbf4e4a6; }
+  .apercu { position: absolute; left: clamp(-64px, -4vw, -24px); bottom: 64px; width: min(360px, 80%); height: auto; padding: 14px 16px; background: var(--bg); color: var(--ink); border-radius: 20px; }
+  .ligne-ui.survol { background: #fffdf8; }
+
+  /* Démonstration : la plage tapée en grand, la réponse et les autres plages côte à côte */
+  .demo { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0 var(--gouttiere); align-items: start; margin-top: 0; padding-bottom: clamp(96px, 10vw, 160px); }
+  .demo .consigne, .demo .saisie { grid-column: 1 / -1; }
+  .demo .reponse { width: auto; margin-top: 48px; padding: 32px 36px; border-radius: 24px; }
+  .demo .reponse .verdict { font-size: clamp(26px, 2.3vw, 34px); }
+  .demo .exemples { flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 48px; }
+  .demo .exemples span { font-size: var(--s-body); color: #fbf4e4b3; }
+  .demo .exemples button { font: 400 clamp(24px, 2.2vw, 32px)/1.3 var(--display); padding: 6px 0; }
+
+  /* Comment ça marche : le titre tient à gauche pendant que les trois étapes défilent à droite */
+  #comment { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 var(--gouttiere); margin-top: 0; padding-bottom: clamp(96px, 10vw, 160px); }
+  #comment .etapes { margin: 0; width: auto; grid-column: 2; }
+  #comment .etapes:first-child { display: contents; }
+  #comment h2 { grid-column: 1; grid-row: 1 / span 4; align-self: start; position: sticky; top: 48px; margin: 0; font-size: clamp(40px, 4.4vw, 64px); }
+  #comment .echange { grid-column: 2; }
+  #comment .echange + .echange { margin-top: 64px; }
+  #comment .etapes:last-child { margin-top: 64px; }
+  .appel, .retour { border-radius: 20px; }
+  .final { width: 100%; border-radius: 24px; padding: 32px 36px; }
+
+  /* L'eau ce matin : toutes les plages sur deux colonnes, la photo tient à droite */
+  .eau { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0 var(--gouttiere); }
+  .eau .liste { grid-column: 1; }
+  .eau h2 { font-size: clamp(40px, 4.4vw, 64px); }
+  #eau-liste { columns: 2; column-gap: 48px; }
+  .groupe { break-inside: avoid; }
+  .groupe + .groupe { margin-top: 0; padding-top: 32px; }
+  .eau figure { grid-column: 2; top: 48px; }
+  .eau figure img, .hiver figure img, .duo figure img, .chillon .cadre { border-radius: 24px; }
+
+  .compare h2 { font-size: clamp(40px, 4.4vw, 64px); max-width: 16ch; }
+  .tableau .tete .vals > :first-child { border-radius: 16px 16px 0 0; }
+  .tableau .rangee:last-child .vals > :first-child { border-radius: 0 0 16px 16px; }
+
+  .hiver .texte { grid-column: 8 / span 5; }
+  .hiver h2 { font-size: clamp(40px, 4.4vw, 64px); }
+  .defi-ui { border-radius: 24px; padding: 22px 24px; }
+
+  .faq .questions { grid-column: 1 / span 6; }
+  .faq .questions li:first-child { font: 400 clamp(40px, 4.4vw, 64px)/1.02 var(--display); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .faq button { font-size: 20px; padding: 11px 0; }
+  .faq .volet { grid-column: 8 / span 5; }
   .chillon .cadre { margin: 0 var(--bord); }
-  .etapes { margin-left: 0; }
-  .final { width: min(760px, 100%); }
+  .chillon figcaption { padding: 0 var(--bord); }
   .cta form { max-width: none; }
-  .cta input, .cta button { border-radius: 12px; }
-  @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; padding-top: 24px; }
-    .hero .axe { padding-bottom: 36px; }
-    .hero .colonne { margin-top: 48px; }
-    .apercu { width: auto; }
+  .cta input, .cta button { border-radius: 14px; }
+
+  @media (max-width: 900px) {
+    .hero, .demo, #comment, .eau { grid-template-columns: minmax(0, 1fr); }
+    .hero .colonne { padding-top: 48px; }
+    .hero-media { margin-top: 40px; }
+    .hero-media .bande .cadre { height: auto; aspect-ratio: 4 / 3; }
+    .hero-media .bande img { height: 100%; aspect-ratio: auto; }
     .final { width: 100%; margin-left: 0; }
+    .apercu { position: relative; left: auto; bottom: auto; width: auto; height: auto; margin: 16px 0 0; }
+    .demo .exemples button { padding: 0 16px; border-radius: 99px; font-size: 22px; }
+    .demo .exemples, #comment .echange, #comment .etapes { grid-column: 1; }
+    #comment h2 { grid-row: auto; position: static; margin-bottom: 40px; }
+    .eau .liste, .eau figure { grid-column: 1; }
+    #eau-liste { columns: 1; }
+    .final .verdict, .demo .reponse .verdict { font-size: 22px; }
+    .hero-media { grid-column: 1; grid-row: auto; }
+    .hero .soutien { margin-top: 24px; }
   }
 </style>
 </head>
@@ -282,7 +344,7 @@
   <div class="axe">
     <span class="marque"><img src="../icons/icon-192.png" alt="" width="36" height="36">Mon Lac</span>
     <div class="colonne">
-      <h1><span class="ligne"><span>Température du Léman,</span></span><span class="ligne"><span>plage par plage.</span></span></h1>
+      <h1><span class="ligne"><span>Le Léman,</span></span><span class="ligne"><span>plage par plage.</span></span></h1>
       <p class="soutien apparait">L’eau à 70 cm, le vent et la bise sur 65 plages, de Genève à Évian, avec un verdict du jour : on y va ou pas.</p>
       <div class="actions apparait">
         <a class="bouton" href="../?lang=fr">Ouvrir l’app</a>
@@ -290,18 +352,19 @@
       </div>
     </div>
   </div>
-  <div class="apercu axe" data-ui aria-label="Aperçu : températures de l’eau ce matin">
-    <div class="ligne-ui survol"><i class="pastille" id="ap-p1"></i><b>Bains des Pâquis</b><span class="temp" id="ap-t1">12,3°</span></div>
-    <div class="ligne-ui"><i class="pastille" id="ap-p2"></i><b>Lausanne – Vidy</b><span class="temp" id="ap-t2">9,4°</span></div>
+  <div class="hero-media">
+  <figure class="bande">
+      <div class="cadre"><img src="img/vapeur-cgn.jpg" alt="Le bateau à vapeur Italie de la CGN naviguant sur le Léman, montagnes au fond" width="1600" height="800"></div>
+      <figcaption>Le bateau Italie de la CGN sur le Léman. Photo Christian David, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Bateau_Italie_(CGN)_sur_le_L%C3%A9man.jpg">Wikimedia Commons</a>.</figcaption>
+    </figure>
+    <div class="apercu axe" data-ui aria-label="Aperçu : températures de l’eau ce matin">
+      <div class="ligne-ui survol"><i class="pastille" id="ap-p1"></i><b>Bains des Pâquis</b><span class="temp" id="ap-t1">12,3°</span></div>
+      <div class="ligne-ui"><i class="pastille" id="ap-p2"></i><b>Lausanne – Vidy</b><span class="temp" id="ap-t2">9,4°</span></div>
+    </div>
   </div>
 </header>
 
 <main>
-  <figure class="bande">
-    <div class="cadre"><img src="img/vapeur-cgn.jpg" alt="Le bateau à vapeur Italie de la CGN naviguant sur le Léman, montagnes au fond" width="1600" height="800"></div>
-    <figcaption>Le bateau Italie de la CGN sur le Léman. Photo Christian David, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Bateau_Italie_(CGN)_sur_le_L%C3%A9man.jpg">Wikimedia Commons</a>.</figcaption>
-  </figure>
-
   <section class="demo" aria-labelledby="demo-titre">
     <h2 id="demo-titre" class="vh">Essayer avec une plage</h2>
     <label class="consigne entre" for="plage">Tape une plage, le lac répond.</label>
@@ -364,7 +427,7 @@
       <div class="rangee" role="row"><div class="nom" role="rowheader">La bise</div><div class="vals"><span role="cell" data-col="Mon Lac">Détectée, avec alerte</span><span role="cell" data-col="App météo">Le vent, sans le nom</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Baignade, paddle, voile</div><div class="vals"><span role="cell" data-col="Mon Lac">Une note pour chacun</span><span role="cell" data-col="App météo">À toi de deviner</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Les prochaines heures</div><div class="vals"><span role="cell" data-col="Mon Lac">Heure par heure, sur 12 h</span><span role="cell" data-col="App météo">Les prévisions brutes</span><span role="cell" data-col="Officielle">Non</span></div></div>
-      <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Mon Lac">20 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
+      <div class="rangee" role="row"><div class="nom" role="rowheader">Où boire un verre après</div><div class="vals"><span role="cell" data-col="Mon Lac">34 adresses vérifiées</span><span role="cell" data-col="App météo">Non</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Sans réseau sur la plage</div><div class="vals"><span role="cell" data-col="Mon Lac">Oui, dernières données</span><span role="cell" data-col="App météo">Selon l’app</span><span role="cell" data-col="Officielle">Non</span></div></div>
       <div class="rangee" role="row"><div class="nom" role="rowheader">Compte et prix</div><div class="vals"><span role="cell" data-col="Mon Lac">Aucun compte, gratuit</span><span role="cell" data-col="App météo">Souvent un compte</span><span role="cell" data-col="Officielle">Gratuit</span></div></div>
     </div>
