@@ -125,21 +125,55 @@ export function liste(langue = 'fr') {
 <link rel="icon" href="${r}../icon.svg">
 <link rel="stylesheet" href="${r}plage.css">
 </head>
-<body>
+<body class="large">
 <header>
   <div class="haut"><a class="retour" href="${r}../?lang=${en ? 'en' : 'fr'}">← ${en ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.liste}</h1>
-  <p class="releve">${esc(t.listeDesc)}</p>
+  <p class="chapo">${esc(t.listeDesc)}</p>
+  <form class="cherche" id="cherche" action="${r}../" method="get" role="search">
+    <input type="hidden" name="lang" value="${langue}">
+    <label for="q">${en ? 'Type a beach, the lake answers.' : 'Tape une plage, le lac répond.'}</label>
+    <div class="champ"><input id="q" name="plage" list="noms" placeholder="${en ? 'Vidy, Yvoire, Pâquis…' : 'Vidy, Yvoire, Pâquis…'}" autocomplete="off" spellcheck="false"><button type="submit">${en ? 'Go' : 'Voir'}</button></div>
+    <datalist id="noms">${SPOTS.map((s) => `<option value="${esc(s.nom)}">`).join('')}</datalist>
+    <p class="ecart" id="ecart" aria-live="polite"></p>
+  </form>
 </header>
-<main>
-${regions.map((reg) => `  <section>
-    <h2>${esc(en ? REGIONS_EN[reg] ?? reg : reg)}</h2>
-    <ul class="voisines">
-${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${en ? `../${s.id}/en/` : `${s.id}/`}">${esc(s.nom)}</a></li>`).join('\n')}
+<main class="plages">
+${regions.map((reg) => `  <section aria-labelledby="r-${reg.replace(/[^a-z]/gi, '')}">
+    <h2 id="r-${reg.replace(/[^a-z]/gi, '')}">${esc(en ? REGIONS_EN[reg] ?? reg : reg)}</h2>
+    <ul class="rangs">
+${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${en ? `../${s.id}/en/` : `${s.id}/`}" data-id="${s.id}"><i></i><span>${esc(s.nom)}</span><b>–</b></a></li>`).join('\n')}
     </ul>
   </section>`).join('\n')}
 </main>
-<footer><a href="${r}../presentation/${en ? 'en/' : ''}">${t.presentation}</a> · <a href="${r}../blog/${en ? 'en/' : ''}">Blog</a> · <a href="${r}../${en ? '?lang=en' : ''}">${t.app}</a></footer>
+<footer><a href="${r}../presentation/${en ? 'en/' : ''}">${t.presentation}</a> · <a href="${r}../blog/${en ? 'en/' : ''}">Blog</a> · <a href="${r}../?lang=${langue}">${t.app}</a></footer>
+<script type="module">
+// Comme la présentation : l'eau de chaque plage en direct (même fichier que l'app), une pastille de couleur,
+// l'écart du moment, et la recherche qui ouvre la page de la plage. Sans script, la liste et les liens restent.
+import { SPOTS, valeurProche } from '${r}../spots.js';
+const sans = (x) => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const couleur = (t) => (t < 12 ? '#5aa6c4' : t < 16 ? '#127a8f' : t < 20 ? '#2f7f50' : t < 24 ? '#e3a82b' : '#d0533a');
+const deg = (t) => ${en ? "t.toFixed(1) + '°'" : "t.toFixed(1).replace('.', ',') + '°'"};
+document.getElementById('cherche').onsubmit = (e) => {
+  const q = sans(document.getElementById('q').value);
+  const s = q && (SPOTS.find((x) => sans(x.nom) === q) ?? SPOTS.find((x) => sans(x.nom).includes(q)));
+  e.preventDefault();
+  if (s) location.href = ${en ? "'../' + s.id + '/en/'" : "s.id + '/'"};
+  else document.getElementById('q').focus();
+};
+const d = await fetch('${r}../eau.json').then((x) => x.json()).catch(() => null);
+const v = [];
+for (const a of document.querySelectorAll('.rangs a')) {
+  const t = valeurProche(d?.spots?.[a.dataset.id]);
+  if (t == null) continue;
+  a.querySelector('b').textContent = deg(t); a.querySelector('i').style.background = couleur(t);
+  v.push([a.querySelector('span').textContent, t]);
+}
+if (v.length) {
+  v.sort((x, y) => x[1] - y[1]);
+  document.getElementById('ecart').textContent = ${en ? "`Right now, from ${deg(v[0][1])} at ${v[0][0]} to ${deg(v.at(-1)[1])} at ${v.at(-1)[0]}, 70 cm below the surface.`" : "`En ce moment, de ${deg(v[0][1])} à ${v[0][0]} à ${deg(v.at(-1)[1])} à ${v.at(-1)[0]}, à 70 cm sous la surface.`"};
+}
+</script>
 </body>
 </html>
 `;

@@ -99,3 +99,20 @@ body.large footer { max-width: 1080px; }
 .lire { margin-top: 8px; font-weight: 700; color: var(--lac); }
 @media (max-width: 760px) { .grille .une a { display: flex; gap: 14px; } .grille .une h2 { font-size: 28px; } }
 @media (prefers-reduced-motion: reduce) { .vignette img, .themes button { transition: none; } }
+/* Liste des plages : recherche dans l'en-tête, régions en colonnes, eau en direct avec pastille de couleur. */
+.cherche { margin-top: 32px; max-width: 640px; }
+.cherche label { display: block; font: 400 21px/1.25 "Young Serif", Georgia, serif; margin-bottom: 12px; }
+.champ { display: flex; gap: 8px; }
+.champ input { flex: 1; min-width: 0; min-height: 56px; padding: 0 20px; border: 0; border-radius: 99px; background: var(--creme); color: var(--encre); font: 500 18px Onest, system-ui, sans-serif; }
+.champ input::placeholder { color: var(--doux); }
+.champ button { min-height: 56px; padding: 0 26px; border: 0; border-radius: 99px; background: var(--soleil); color: var(--encre); font: 700 17px Onest, system-ui, sans-serif; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+.champ button:active { transform: scale(0.97); }
+.ecart { margin: 14px 0 0; color: #fbf4e4cc; font-size: 15px; min-height: 1.5em; }
+.plages { max-width: 1080px; columns: 3 300px; column-gap: 48px; padding-top: 24px; }
+.plages section { break-inside: avoid; margin-top: 0; padding-top: 28px; }
+.plages h2 { font-size: 26px; margin-bottom: 8px; }
+.rangs a { display: flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; border-radius: 12px; margin: 0 -10px; padding: 0 10px; transition: background-color 150ms ease; }
+@media (hover: hover) and (pointer: fine) { .rangs a:hover { background: var(--carte); } }
+.rangs i { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--trait); }
+.rangs span { flex: 1; }
+.rangs b { font: 400 18px/1 "Young Serif", Georgia, serif; font-variant-numeric: tabular-nums; color: var(--doux); }

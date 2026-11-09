@@ -56,7 +56,7 @@
   .marque img { width: 36px; height: 36px; border-radius: 9px; }
   .hero .colonne { width: min(380px, 100%); margin-top: 220px; }
   .hero h1 { font-size: var(--s-h3); line-height: 1.25; letter-spacing: -0.01em; }
-  .hero h1 .ligne { display: block; overflow: hidden; }
+  .hero h1 .ligne { display: block; overflow: hidden; padding-bottom: .14em; margin-bottom: -.14em; } /* place pour les jambages (g, p) */
   .hero h1 .ligne > span { display: block; }
   .hero .soutien { margin-top: 14px; }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 28px; }
@@ -251,22 +251,24 @@
   footer, .credits { padding-left: var(--bord); padding-right: var(--bord); }
 
   /* Héros : le titre à gauche, une grande photo du lac à droite, l'aperçu des températures posé dessus */
-  .hero { min-height: 0; background: var(--accent); color: var(--on-accent); padding: 28px var(--bord) clamp(64px, 7vw, 112px);
-    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto auto 1fr; gap: 0 var(--gouttiere); align-items: end; }
+  .hero { min-height: 0; background: var(--accent); color: var(--on-accent); padding: 28px var(--bord) clamp(24px, 3vw, 48px);
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: auto auto auto 1fr; gap: 0 var(--gouttiere); align-items: end; }
   .hero .coin { right: var(--bord); color: var(--on-accent); }
-  /* Le titre court sur toute la largeur, en une ligne ; texte et action à gauche, photo à droite. */
+  /* Titre, texte et action à gauche ; la photo calée en haut à droite, à hauteur du titre. */
   .hero > .axe, .hero .colonne { display: contents; }
   .hero .marque { grid-column: 1 / -1; }
-  .hero h1 { grid-column: 1 / -1; margin-top: clamp(56px, 9vh, 120px); font-size: clamp(44px, 6.4vw, 96px); line-height: .96; letter-spacing: -0.035em; }
+  .hero h1 { grid-column: 1; margin-top: clamp(56px, 9vh, 120px); font-size: clamp(44px, 5.4vw, 80px); line-height: .96; letter-spacing: -0.035em; }
   .hero .soutien { grid-column: 1; align-self: start; font-size: 20px; max-width: 32ch; color: #fbf4e4e6; margin-top: 48px; }
   .hero .actions { grid-column: 1; align-self: start; margin-top: 32px; }
   .hero .bouton { background: var(--sun); color: var(--ink); min-height: 56px; padding: 0 30px; }
   @media (hover: hover) and (pointer: fine) { .hero .bouton:hover { background: #f5c565; } }
   .hero .lien { color: var(--on-accent); }
-  .hero-media { position: relative; grid-column: 2; grid-row: 3 / span 2; margin-top: 48px; }
-  .hero-media .bande .cadre { height: clamp(460px, 62vh, 640px); border-radius: 24px; }
+  .hero-media { position: relative; grid-column: 2; grid-row: 2 / span 3; align-self: stretch; margin-top: clamp(56px, 9vh, 120px); display: flex; flex-direction: column; }
+  .hero-media .bande { flex: 1; display: flex; flex-direction: column; }
+  .hero-media .bande .cadre { flex: 1; min-height: 420px; height: auto; border-radius: 24px; }
   .hero-media .bande img { animation-duration: 30s; }
   .hero-media figcaption { padding: 0; color: #fbf4e4a6; }
+  .apercu, .apercu.axe { margin-left: 0; }
   .apercu { position: absolute; left: clamp(-64px, -4vw, -24px); bottom: 64px; width: min(360px, 80%); height: auto; padding: 14px 16px; background: var(--bg); color: var(--ink); border-radius: 20px; }
   .ligne-ui.survol { background: #fffdf8; }
 
@@ -321,7 +323,8 @@
     .hero, .demo, #comment, .eau { grid-template-columns: minmax(0, 1fr); }
     .hero .colonne { padding-top: 48px; }
     .hero-media { margin-top: 40px; }
-    .hero-media .bande .cadre { height: auto; aspect-ratio: 4 / 3; }
+    .hero-media .bande .cadre { height: auto; min-height: 0; flex: none; aspect-ratio: 4 / 3; }
+    .hero-media { margin-top: 40px; }
     .hero-media .bande img { height: 100%; aspect-ratio: auto; }
     .final { width: 100%; margin-left: 0; }
     .apercu { position: relative; left: auto; bottom: auto; width: auto; height: auto; margin: 16px 0 0; }
