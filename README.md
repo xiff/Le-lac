@@ -174,7 +174,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 - **La qualité de l’eau** : analyses du canton de Genève, affichées seulement si elles ont moins de 30 jours ;
   sinon un lien en bas de page renvoie à la source (canton ou CIPEL).
 - **Bars, restos, loueurs** : listes écrites à la main et vérifiées (`lieux.js`, `locations.js`).
-  Le formulaire « un lieu manque ? » ouvre un ticket GitHub à relire avant ajout.
+  Le formulaire « un lieu manque ? » ouvre un e-mail prérempli vers contact@monlac.ch, à relire avant ajout.
 - **Hors ligne** : un service worker (`sw.js`) garde la dernière version pour l’ouvrir sans réseau.
 - **Android** : `android/` contient de quoi générer l’app Play Store (Trusted Web Activity), voir `android/LISEZMOI.md`.
 
