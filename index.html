@@ -36,7 +36,8 @@
   button:active { transform: scale(0.97); }
 
   /* En-tête affiche */
-  header { background: var(--lac); color: var(--creme); padding: calc(14px + env(safe-area-inset-top)) 20px 0; position: relative; }
+  /* En-tête aligné sur la colonne de contenu (560 px) : sur ordinateur tout tient dans le même axe. */
+  header { background: var(--lac); color: var(--creme); padding: calc(14px + env(safe-area-inset-top)) max(20px, calc((100% - 520px) / 2)) 0; position: relative; }
   .barre { display: flex; align-items: center; gap: 8px; }
   .marque { font: 400 1rem/1 var(--display); letter-spacing: -0.01em; flex: 1; display: flex; align-items: center; gap: 8px; }
   .marque svg { width: 26px; height: 26px; }
