@@ -46,7 +46,7 @@ export function page(s, langue = 'fr') {
   const urlFr = `${BASE}plage/${s.id}/`, urlEn = `${urlFr}en/`, url = en ? urlEn : urlFr;
   const titre = t.titre(s.nom), desc = t.desc(s.nom, region);
   const ld = { '@context': 'https://schema.org', '@type': 'Beach', name: s.nom, url, geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lon }, containedInPlace: { '@type': 'LakeBodyOfWater', name: t.lac } };
-  const app = `${r}../../${en ? '?lang=en&' : '?'}plage=${s.id}`;
+  const app = `${r}../../?lang=${langue}&plage=${s.id}`;
   return `<!doctype html>
 <html lang="${langue}">
 <head>
@@ -100,7 +100,7 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(l.ville)}${l.mois 
     <p>${esc(t.texte(s.nom))}</p>
   </section>
 </main>
-<footer>${t.pied} · <a href="${r}../../${en ? '?lang=en' : ''}">${t.app}</a></footer>
+<footer>${t.pied} · <a href="${r}../../?lang=${langue}">${t.app}</a></footer>
 <script type="module" src="${r}../plage.js"></script>
 </body>
 </html>
@@ -127,7 +127,7 @@ export function liste(langue = 'fr') {
 </head>
 <body>
 <header>
-  <div class="haut"><a class="retour" href="${r}../${en ? '?lang=en' : ''}">← ${en ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="retour" href="${r}../?lang=${en ? 'en' : 'fr'}">← ${en ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.liste}</h1>
   <p class="releve">${esc(t.listeDesc)}</p>
 </header>

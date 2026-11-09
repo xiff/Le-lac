@@ -55,7 +55,7 @@ const GE_NAV = ['Canton de Genève, ski nautique, wakeboard et wakesurf', 'https
 
 export const ARTICLES = [
   {
-    slug: 'bain-d-hiver-leman', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
+    slug: 'bain-d-hiver-leman', sante: true, publie: '2026-11-06', modifie: '2026-11-06', ...IMG.hiver,
     sources: [SSS, ['BPA, une bouée de natation peut sauver une vie', 'https://www.bfu.ch/media/gdkcesaq/baignade-en-eaux-libres-une-bouee-de-natation-peut-sauver-une-vie.pdf'],
       ['Bains des Rives, Lausanne (loisirs.ch)', 'https://www.loisirs.ch/activite/bains-des-rives-a-lausanne-sauna/'], ['Sauna Boats Genève', 'https://saunaboat-geneve.ch/fr/'], ALPLAKES],
     fr: {
@@ -112,7 +112,7 @@ export const ARTICLES = [
     },
   },
   {
-    slug: 'bise-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.rade,
+    slug: 'bise-leman', publie: '2026-10-30', modifie: '2026-11-01', ...IMG.rade,
     sources: [METEOSUISSE, ['SISL, dossier technique « Le Léman »', 'https://sisl.ch/images/Dossiers_techniques/le_leman.pdf'], OPENMETEO],
     fr: {
       titre: 'La bise sur le Léman : ce qu’elle change pour la baignade, le paddle et le kite',
@@ -160,7 +160,7 @@ export const ARTICLES = [
     },
   },
   {
-    slug: 'temperature-lac-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.paquis,
+    slug: 'temperature-lac-leman', publie: '2026-10-22', modifie: '2026-10-22', ...IMG.paquis,
     sources: [['Eawag, « Cold shock in Lake Geneva: Alplakes shows why »', 'https://www.eawag.ch/en/info/portal/news/news-detail/cold-shock-in-lake-geneva-alplakes-shows-why'],
       ['Eawag, projet Alplakes', 'https://www.eawag.ch/fr/abteilung/surf/projekte/alplakes'], ALPLAKES,
       ['EGU 2026, précision des simulations des lacs suisses', 'https://meetingorganizer.copernicus.org/EGU26/EGU26-12579.html']],
@@ -208,7 +208,7 @@ export const ARTICLES = [
     },
   },
   {
-    slug: 'qualite-eau-baignade-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.ouchy,
+    slug: 'qualite-eau-baignade-leman', publie: '2026-11-08', modifie: '2026-11-08', ...IMG.ouchy,
     sources: [GE_QUALITE, SITG, CIPEL],
     fr: {
       titre: 'Qualité de l’eau de baignade au Léman : comment savoir si on peut se baigner',
@@ -252,7 +252,7 @@ export const ARTICLES = [
     },
   },
   {
-    slug: 'plages-geneve', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.rade,
+    slug: 'plages-geneve', publie: '2026-10-27', modifie: '2026-11-08', ...IMG.rade,
     sources: [GE_QUALITE, ALPLAKES],
     fr: {
       titre: 'Où se baigner à Genève : les plages du canton, une par une',
@@ -288,7 +288,7 @@ ${listeLieux((x) => x.zone === 'geneve', L)}
     },
   },
   {
-    slug: 'paddle-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
+    slug: 'paddle-leman', publie: '2026-10-26', modifie: '2026-10-30', ...IMG.lavaux,
     sources: [OPENMETEO, ...LOCATIONS.filter((l) => l.activites.includes('paddle')).map((l) => [l.nom, l.site ?? l.source])],
     fr: {
       titre: 'Paddle sur le Léman : quand le lac est assez calme, et où louer',
@@ -334,7 +334,7 @@ ${listeLoc(['paddle'], L)}
     },
   },
   {
-    slug: 'kitesurf-windsurf-wingfoil-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.cgn,
+    slug: 'kitesurf-windsurf-wingfoil-leman', publie: '2026-11-01', modifie: '2026-11-01', ...IMG.cgn,
     sources: [METEOSUISSE, OPENMETEO, ...LOCATIONS.filter((l) => l.activites.some((a) => ['windsurf', 'wing'].includes(a))).map((l) => [l.nom, l.site ?? l.source])],
     fr: {
       titre: 'Kitesurf, windsurf et wingfoil sur le Léman : le bon vent et les bons spots',
@@ -376,7 +376,7 @@ ${listeLoc(['windsurf', 'wing'], L)}
     },
   },
   {
-    slug: 'wakeboard-wakesurf-ski-nautique-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.ouchy,
+    slug: 'wakeboard-wakesurf-ski-nautique-leman', publie: '2026-10-23', modifie: '2026-10-23', ...IMG.ouchy,
     sources: [GE_NAV, ...LOCATIONS.filter((l) => l.activites.some((a) => ['wakeboard', 'wakesurf', 'ski'].includes(a))).map((l) => [l.nom, l.source])],
     fr: {
       titre: 'Wakeboard, wakesurf et ski nautique sur le Léman : les écoles et clubs',
@@ -418,7 +418,7 @@ ${listeLoc(['wakeboard', 'wakesurf', 'ski'], L)}
     },
   },
   {
-    slug: 'buvettes-restaurants-bord-du-leman', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
+    slug: 'buvettes-restaurants-bord-du-leman', publie: '2026-10-20', modifie: '2026-10-27', ...IMG.lavaux,
     sources: [['Genève Tourisme', 'https://www.geneve.com'], ['Lausanne Tourisme', 'https://www.lausanne-tourisme.ch'], ['Montreux Riviera', 'https://www.montreuxriviera.com'],
       ['La Côte Tourisme', 'https://www.lacote-tourisme.ch'], ['MySwitzerland', 'https://www.myswitzerland.com'], ['Haute-Savoie Mont-Blanc Tourisme', 'https://hautesavoiemontblanc-tourisme.com']],
     fr: {
@@ -449,7 +449,7 @@ ${listeLieux(() => true, L)}
     },
   },
   {
-    slug: 'plages-leman-rive-francaise', publie: '2026-11-09', modifie: '2026-11-09', ...IMG.chillon,
+    slug: 'plages-leman-rive-francaise', publie: '2026-11-05', modifie: '2026-11-08', ...IMG.chillon,
     sources: [ALPLAKES, CIPEL, ['Haute-Savoie Mont-Blanc Tourisme', 'https://hautesavoiemontblanc-tourisme.com']],
     fr: {
       titre: 'Plages du Léman côté français : d’Évian à Chens-sur-Léman',
@@ -483,7 +483,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'choc-thermique-eau-froide', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.hiver,
+    slug: 'choc-thermique-eau-froide', sante: true, publie: '2026-10-19', modifie: '2026-11-02', ...IMG.hiver,
     sources: [RNLI, PORTSMOUTH, SSS, BPA],
     fr: {
       titre: 'Choc thermique : les 90 premières secondes dans l’eau froide du Léman',
@@ -537,7 +537,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'materiel-bain-d-hiver', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.paquis,
+    slug: 'materiel-bain-d-hiver', sante: true, publie: '2026-10-29', modifie: '2026-11-06', ...IMG.paquis,
     sources: [OSS_KIT, SSS, BPA],
     fr: {
       titre: 'Matériel pour le bain d’hiver : la liste complète avant d’aller au Léman',
@@ -595,7 +595,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'afterdrop-se-rechauffer', sante: true, publie: '2026-11-09', modifie: '2026-11-09', ...IMG.lavaux,
+    slug: 'afterdrop-se-rechauffer', sante: true, publie: '2026-11-02', modifie: '2026-11-06', ...IMG.lavaux,
     sources: [SSS, AFTERDROP, ALERTDIVER],
     fr: {
       titre: 'Afterdrop : pourquoi on a encore plus froid après un bain d’hiver, et comment se réchauffer',

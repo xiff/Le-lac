@@ -10,7 +10,7 @@ test('page de plage : titre, adresse canonique, voisines et données structurée
   assert.match(h, /href="\.\.\/lausanne-ouchy\/"/); // la plus proche figure parmi les voisines
   assert.equal((h.match(/data-eau=/g) || []).length, 4);
   assert.match(h, /"@type":"Beach"/);
-  assert.match(h, /href="\.\.\/\.\.\/\?plage=lausanne-vidy"/);
+  assert.match(h, /href="\.\.\/\.\.\/\?lang=fr&plage=lausanne-vidy"/);
 });
 
 test('page de plage en anglais : chemins un niveau plus bas, hreflang réciproques', () => {

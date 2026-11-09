@@ -30,7 +30,7 @@ const ariane = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.m
 const liens = (html, L, r) => html
   .replace(/\{plage:([a-z0-9-]+)\}/g, (_, id) => `${r}plage/${id}/${L === 'en' ? 'en/' : ''}`)
   .replace(/\{plages\}/g, `${r}plage/${L === 'en' ? 'en/' : ''}`)
-  .replace(/\{app\}/g, `${r}${L === 'en' ? '?lang=en' : ''}`)
+  .replace(/\{app\}/g, `${r}?lang=${L}`)
   .replace(/\{blog:([a-z0-9-]+)\}/g, (_, s) => `${r}blog/${s}/${L === 'en' ? 'en/' : ''}`);
 
 const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype html>
@@ -78,10 +78,10 @@ export function article(a, L = 'fr') {
 <main class="article">
   <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">${t.bref}</h2><p>${c.bref}</p></section>
-${a.sante ? `  <p class="avertissement" role="note">${t.avertissement}</p>\n` : ''}  ${liens(c.html(L).trim(), L, r)}
+  ${liens(c.html(L).trim(), L, r)}
   <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${t.eau}</h2>
     <p id="eau-live">${liens(t.eauRepli, L, r)}</p></section>
-  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">${t.sources}</h2><ul>
+${a.sante ? `  <p class="avertissement" role="note">${t.avertissement}</p>\n` : ''}  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">${t.sources}</h2><ul>
 ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\n')}
   </ul></section>
   <a class="bouton" href="${liens('{app}', L, r)}">${t.voir}</a>
@@ -107,7 +107,7 @@ export function liste(L = 'fr') {
   const t = TXT[L], url = urlBlog(L), r = L === 'en' ? '../../' : '../';
   const ld = [ORG, SITE, {
     '@type': 'Blog', '@id': `${url}#blog`, url, name: t.titreBlog, description: t.descBlog, inLanguage: L === 'en' ? 'en' : 'fr-CH', publisher: { '@id': `${BASE}#org` },
-    blogPost: ARTICLES.map((a) => ({ '@type': 'BlogPosting', '@id': `${urlArticle(a.slug, L)}#article`, headline: a[L].titre, url: urlArticle(a.slug, L), datePublished: a.publie })),
+    blogPost: [...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ '@type': 'BlogPosting', '@id': `${urlArticle(a.slug, L)}#article`, headline: a[L].titre, url: urlArticle(a.slug, L), datePublished: a.publie })),
   }, ariane([[t.nom, BASE], [t.blog, url]])];
   return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: { fr: urlBlog('fr'), en: urlBlog('en') }, image: `${BASE}${ARTICLES[0].image}`, type: 'website', ld, r })}
 <body>
@@ -118,7 +118,7 @@ export function liste(L = 'fr') {
 </header>
 <main class="article">
   <ul class="billets">
-${ARTICLES.map((a) => `    <li><a href="${r}blog/${a.slug}/${L === 'en' ? 'en/' : ''}"><b>${esc(a[L].titre)}</b></a><p>${esc(a[L].desc)}</p><time datetime="${a.publie}">${dateL(a.publie, L)}</time></li>`).join('\n')}
+${[...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => `    <li><a href="${r}blog/${a.slug}/${L === 'en' ? 'en/' : ''}"><b>${esc(a[L].titre)}</b></a><p>${esc(a[L].desc)}</p><time datetime="${a.publie}">${dateL(a.publie, L)}</time></li>`).join('\n')}
   </ul>
 </main>
 <footer><a href="${liens('{app}', L, r)}">${t.nom}</a> · <a href="${liens('{plages}', L, r)}">${t.plages}</a> · <a href="${r}presentation/${L === 'en' ? 'en/' : ''}">${t.presentation}</a></footer>
