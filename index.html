@@ -65,7 +65,11 @@
   h1 { font: 400 clamp(1.9rem, 8.4vw, 2.6rem)/1.08 var(--display); letter-spacing: -0.025em; margin: 14px 0 0; text-wrap: balance; }
   .releve { color: var(--creme-doux); font-size: .85rem; margin: 10px 0 0; display: flex; align-items: center; gap: 6px; }
   .releve svg { width: 15px; height: 15px; }
-  .mesures { display: grid; grid-template-columns: repeat(3, 1fr); margin: 22px 0 0; padding-bottom: 34px; }
+  .mesures { display: grid; grid-template-columns: repeat(3, 1fr); margin: 22px 0 0; padding-bottom: 20px; }
+  .y-aller { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; margin-bottom: 34px; padding: 0 22px 0 18px; border-radius: 99px; background: var(--soleil); color: #10292f; font-weight: 700; text-decoration: none; transition: transform 160ms var(--ease-out), background-color 150ms ease; }
+  .y-aller svg { width: 18px; height: 18px; }
+  .y-aller:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) { .y-aller:hover { background: #f5c565; } }
   .mesures div + div { border-left: 1px solid #fbf4e429; padding-left: 14px; }
   .mesures b { display: block; font: 400 2.1rem/1 var(--display); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .mesures small { color: var(--creme-doux); font-size: .8rem; }
@@ -260,6 +264,8 @@
     <div><b id="air">–</b><small data-t="air">air</small></div>
     <div><b id="vent">–</b><small data-t="vent">vent km/h</small></div>
   </div>
+  <!-- Action principale de l'écran : après le verdict et les mesures, on décide, puis on y va. -->
+  <a class="y-aller" id="y-aller" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg><span data-t="yAller">Y aller</span></a>
   <svg class="vague" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 18V9c25 0 25-7 50-7s25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7v9Z"/></svg>
 </header>
 
@@ -521,6 +527,8 @@ const tirage = () => { let n = Math.floor(Math.random() * 60); try { n = (+local
 async function charger() {
   const moi = ++demande;
   $('verdict').classList.add('charge');
+  $('y-aller').href = `https://www.google.com/maps/dir/?api=1&destination=${spot().lat},${spot().lon}`;
+  $('y-aller').setAttribute('aria-label', T.yAllerAria(spot().nom));
   $('lien-qualite').href = spot().zone === 'geneve' ? 'https://www.ge.ch/plages-lieux-baignade-eaux-vives-geneve/qualite-eau-baignade' : 'https://www.cipel.org/carte-des-plages/';
   try {
     const [m, eau, qj] = await Promise.all([meteo(spot()), tempEau(spot()), donneesQualite()]);

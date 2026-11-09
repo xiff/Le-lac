@@ -75,7 +75,7 @@ export function page(s, langue = 'fr') {
     <div><b id="vent">–</b><small>${t.vent}</small></div>
   </div>
   <p class="releve" id="releve">${esc(region)} · ${t.releve}</p>
-  <a class="bouton" href="${app}">${esc(t.ouvrir(s.nom))}</a>
+  <div class="actions"><a class="bouton" href="${app}">${esc(t.ouvrir(s.nom))}</a><a class="bouton second" href="https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}" target="_blank" rel="noopener">${en ? 'Get there' : 'Y aller'}</a></div>
 </header>
 <main>
   <section aria-labelledby="t-act">
