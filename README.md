@@ -1,6 +1,6 @@
 # Mon Lac
 
-Le Léman du jour en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
+Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère et Sion en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
@@ -126,6 +126,63 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 | Messery | [https://xiff.github.io/Le-lac/plage/messery/](https://xiff.github.io/Le-lac/plage/messery/) | [EN](https://xiff.github.io/Le-lac/plage/messery/en/) |
 | Chens-sur-Léman | [https://xiff.github.io/Le-lac/plage/chens-sur-leman/](https://xiff.github.io/Le-lac/plage/chens-sur-leman/) | [EN](https://xiff.github.io/Le-lac/plage/chens-sur-leman/en/) |
 
+### Lac de Neuchâtel
+
+| Plage | Français | English |
+|---|---|---|
+| Yverdon-les-Bains | [https://xiff.github.io/Le-lac/plage/yverdon-les-bains/](https://xiff.github.io/Le-lac/plage/yverdon-les-bains/) | [EN](https://xiff.github.io/Le-lac/plage/yverdon-les-bains/en/) |
+| Grandson – Corcelettes | [https://xiff.github.io/Le-lac/plage/grandson-corcelettes/](https://xiff.github.io/Le-lac/plage/grandson-corcelettes/) | [EN](https://xiff.github.io/Le-lac/plage/grandson-corcelettes/en/) |
+| Yvonand | [https://xiff.github.io/Le-lac/plage/yvonand/](https://xiff.github.io/Le-lac/plage/yvonand/) | [EN](https://xiff.github.io/Le-lac/plage/yvonand/en/) |
+| Concise | [https://xiff.github.io/Le-lac/plage/concise/](https://xiff.github.io/Le-lac/plage/concise/) | [EN](https://xiff.github.io/Le-lac/plage/concise/en/) |
+| Saint-Aubin | [https://xiff.github.io/Le-lac/plage/saint-aubin-ne/](https://xiff.github.io/Le-lac/plage/saint-aubin-ne/) | [EN](https://xiff.github.io/Le-lac/plage/saint-aubin-ne/en/) |
+| Cortaillod | [https://xiff.github.io/Le-lac/plage/cortaillod/](https://xiff.github.io/Le-lac/plage/cortaillod/) | [EN](https://xiff.github.io/Le-lac/plage/cortaillod/en/) |
+| Boudry | [https://xiff.github.io/Le-lac/plage/boudry/](https://xiff.github.io/Le-lac/plage/boudry/) | [EN](https://xiff.github.io/Le-lac/plage/boudry/en/) |
+| Colombier | [https://xiff.github.io/Le-lac/plage/colombier/](https://xiff.github.io/Le-lac/plage/colombier/) | [EN](https://xiff.github.io/Le-lac/plage/colombier/en/) |
+| Neuchâtel – Jeunes-Rives | [https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/](https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/) | [EN](https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/en/) |
+| Hauterive | [https://xiff.github.io/Le-lac/plage/hauterive/](https://xiff.github.io/Le-lac/plage/hauterive/) | [EN](https://xiff.github.io/Le-lac/plage/hauterive/en/) |
+| Cudrefin | [https://xiff.github.io/Le-lac/plage/cudrefin/](https://xiff.github.io/Le-lac/plage/cudrefin/) | [EN](https://xiff.github.io/Le-lac/plage/cudrefin/en/) |
+| Portalban | [https://xiff.github.io/Le-lac/plage/portalban/](https://xiff.github.io/Le-lac/plage/portalban/) | [EN](https://xiff.github.io/Le-lac/plage/portalban/en/) |
+| Gletterens | [https://xiff.github.io/Le-lac/plage/gletterens/](https://xiff.github.io/Le-lac/plage/gletterens/) | [EN](https://xiff.github.io/Le-lac/plage/gletterens/en/) |
+| Forel | [https://xiff.github.io/Le-lac/plage/forel/](https://xiff.github.io/Le-lac/plage/forel/) | [EN](https://xiff.github.io/Le-lac/plage/forel/en/) |
+| Estavayer – Nouvelle Plage | [https://xiff.github.io/Le-lac/plage/estavayer-le-lac/](https://xiff.github.io/Le-lac/plage/estavayer-le-lac/) | [EN](https://xiff.github.io/Le-lac/plage/estavayer-le-lac/en/) |
+
+### Lac de Bienne
+
+| Plage | Français | English |
+|---|---|---|
+| La Neuveville | [https://xiff.github.io/Le-lac/plage/la-neuveville/](https://xiff.github.io/Le-lac/plage/la-neuveville/) | [EN](https://xiff.github.io/Le-lac/plage/la-neuveville/en/) |
+| Strandbad Rostele | [https://xiff.github.io/Le-lac/plage/strandbad-rostele/](https://xiff.github.io/Le-lac/plage/strandbad-rostele/) | [EN](https://xiff.github.io/Le-lac/plage/strandbad-rostele/en/) |
+| Tüscherz | [https://xiff.github.io/Le-lac/plage/tuscherz/](https://xiff.github.io/Le-lac/plage/tuscherz/) | [EN](https://xiff.github.io/Le-lac/plage/tuscherz/en/) |
+| Badewiese Funtelen | [https://xiff.github.io/Le-lac/plage/badewiese-funtelen/](https://xiff.github.io/Le-lac/plage/badewiese-funtelen/) | [EN](https://xiff.github.io/Le-lac/plage/badewiese-funtelen/en/) |
+| Bienne – Plage | [https://xiff.github.io/Le-lac/plage/bienne-plage/](https://xiff.github.io/Le-lac/plage/bienne-plage/) | [EN](https://xiff.github.io/Le-lac/plage/bienne-plage/en/) |
+| Nidau | [https://xiff.github.io/Le-lac/plage/nidau/](https://xiff.github.io/Le-lac/plage/nidau/) | [EN](https://xiff.github.io/Le-lac/plage/nidau/en/) |
+
+### Lac de Morat
+
+| Plage | Français | English |
+|---|---|---|
+| Morat | [https://xiff.github.io/Le-lac/plage/morat/](https://xiff.github.io/Le-lac/plage/morat/) | [EN](https://xiff.github.io/Le-lac/plage/morat/en/) |
+| Faoug | [https://xiff.github.io/Le-lac/plage/faoug/](https://xiff.github.io/Le-lac/plage/faoug/) | [EN](https://xiff.github.io/Le-lac/plage/faoug/en/) |
+| Avenches | [https://xiff.github.io/Le-lac/plage/avenches/](https://xiff.github.io/Le-lac/plage/avenches/) | [EN](https://xiff.github.io/Le-lac/plage/avenches/en/) |
+| Salavaux | [https://xiff.github.io/Le-lac/plage/salavaux/](https://xiff.github.io/Le-lac/plage/salavaux/) | [EN](https://xiff.github.io/Le-lac/plage/salavaux/en/) |
+
+### Lac de la Gruyère
+
+| Plage | Français | English |
+|---|---|---|
+| Pont-la-Ville | [https://xiff.github.io/Le-lac/plage/pont-la-ville/](https://xiff.github.io/Le-lac/plage/pont-la-ville/) | [EN](https://xiff.github.io/Le-lac/plage/pont-la-ville/en/) |
+| La Roche | [https://xiff.github.io/Le-lac/plage/la-roche/](https://xiff.github.io/Le-lac/plage/la-roche/) | [EN](https://xiff.github.io/Le-lac/plage/la-roche/en/) |
+| Gumefens | [https://xiff.github.io/Le-lac/plage/gumefens/](https://xiff.github.io/Le-lac/plage/gumefens/) | [EN](https://xiff.github.io/Le-lac/plage/gumefens/en/) |
+| Corbières | [https://xiff.github.io/Le-lac/plage/corbieres/](https://xiff.github.io/Le-lac/plage/corbieres/) | [EN](https://xiff.github.io/Le-lac/plage/corbieres/en/) |
+| Morlon | [https://xiff.github.io/Le-lac/plage/morlon/](https://xiff.github.io/Le-lac/plage/morlon/) | [EN](https://xiff.github.io/Le-lac/plage/morlon/en/) |
+
+### Lacs de Sion
+
+| Plage | Français | English |
+|---|---|---|
+| Domaine des Îles | [https://xiff.github.io/Le-lac/plage/domaine-des-iles/](https://xiff.github.io/Le-lac/plage/domaine-des-iles/) | [EN](https://xiff.github.io/Le-lac/plage/domaine-des-iles/en/) |
+| Lac de Montorge | [https://xiff.github.io/Le-lac/plage/lac-de-montorge/](https://xiff.github.io/Le-lac/plage/lac-de-montorge/) | [EN](https://xiff.github.io/Le-lac/plage/lac-de-montorge/en/) |
+
 ### Blog
 
 13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
@@ -167,7 +224,8 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
   de l’air, du vent, des rafales et de la météo. D’octobre à mai sous 15°, la baignade devient « bain d’hiver ».
   Le titre d’accueil vient de l’activité la mieux notée (ou orage, bise, journée terrasse), avec plusieurs phrases
   qui tournent à chaque affichage.
-- **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage.
+- **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage
+  (modèle 3D : Léman, Bienne, Morat, Neuchâtel ; 1D pour la Gruyère, une valeur pour tout le lac ; aucun modèle pour les lacs de Sion).
   Une tâche GitHub (`.github/workflows/eau.yml`, toutes les 3 h) écrit `eau.json`, `qualite.json`,
   les pages par plage et le sitemap.
 - **La météo** : Open-Meteo, lue directement par le navigateur.
@@ -185,7 +243,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `index.html` | L’app (une seule page, sans framework ni compilation) |
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
-| `spots.js` | Les 65 plages (position, région) |
+| `spots.js` | Les 97 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |

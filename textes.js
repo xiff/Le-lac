@@ -3,7 +3,7 @@
 const TEXTES = {
   fr: {
     titre: 'Mon Lac', partagerAria: 'Partager les conditions', plage: 'Plage', localiserAria: 'Choisir la plage la plus proche',
-    chargement: 'On regarde le lac…', eau: 'eau', air: 'air', vent: 'vent km/h',
+    chargement: 'On regarde le lac…', eau: 'eau', eauSansModele: 'eau non mesurée', air: 'air', vent: 'vent km/h',
     bienvenueTitre: 'Bienvenue au bord de l’eau.', bienvenueTexte: 'Chaque jour, on lit le vent, l’eau et la bise pour te dire si ça vaut le coup de sortir le maillot. Commence par ta plage.',
     trouver: 'Trouver ma plage', plusTard: 'Je choisis moi-même', surLeau: 'Sur l’eau',
     defiTitre: 'Défi bain d’hiver', jySuisAlle: 'Bain fait !', historique: 'Mon historique', dateInconnue: 'Date inconnue', retirerBain: (d) => `Retirer le bain : ${d}`, bainRetire: 'Bain retiré.', heures: 'Les 12 prochaines heures', heuresAria: 'Prévisions heure par heure',
@@ -36,7 +36,7 @@ const TEXTES = {
   },
   en: {
     titre: 'My Lake', partagerAria: 'Share conditions', plage: 'Beach', localiserAria: 'Pick the nearest beach',
-    chargement: 'Checking the lake…', eau: 'water', air: 'air', vent: 'wind km/h',
+    chargement: 'Checking the lake…', eau: 'water', eauSansModele: 'water not measured', air: 'air', vent: 'wind km/h',
     bienvenueTitre: 'Welcome to the waterfront.', bienvenueTexte: 'Every day we read the wind, the water and the bise to tell you if it’s worth grabbing your swimsuit. Start with your beach.',
     trouver: 'Find my beach', plusTard: 'I’ll pick myself', surLeau: 'On the water',
     defiTitre: 'Winter swim challenge', jySuisAlle: 'Swim done!', historique: 'My history', dateInconnue: 'Unknown date', retirerBain: (d) => `Remove swim: ${d}`, bainRetire: 'Swim removed.', heures: 'Next 12 hours', heuresAria: 'Hour-by-hour forecast',
