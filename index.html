@@ -555,7 +555,6 @@ async function charger() {
     $('eau').textContent = eau == null ? '?' : eau.toFixed(1) + '°';
     const k = ciel(c.code, m.current.is_day !== 0);
     $('air').innerHTML = `${Math.round(c.air)}°${iconeCiel(k)}`;
-    $('air-l').textContent = `${T.air} · ${T.ciel[k].toLowerCase()}`;
     $('vent').innerHTML = `${Math.round(c.vent)} ${fleche(c.dir)}`;
 
     const danger = c.code >= 95 || c.rafales > 40 || q?.qualite === 4;

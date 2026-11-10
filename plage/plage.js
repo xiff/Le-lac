@@ -44,7 +44,6 @@ try {
   $('verdict').textContent = verdict(c, L, Math.floor(Math.random() * 60)).titre;
   const k = ciel(c.code, m.current.is_day !== 0);
   $('air').innerHTML = `${Math.round(c.air)}°<svg class="ciel" viewBox="0 0 24 24" role="img" aria-label="${CIEL[L][k]}">${ICONES[k]}</svg>`;
-  $('air').nextElementSibling.textContent += ` · ${CIEL[L][k].toLowerCase()}`;
   $('vent').textContent = Math.round(c.vent);
   $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
