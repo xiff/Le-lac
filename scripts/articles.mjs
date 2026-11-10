@@ -63,7 +63,7 @@ export const ARTICLES = [
       h1: 'Bain d’hiver dans le Léman : bien débuter',
       desc: 'Combien de temps rester dans l’eau, comment entrer, où se baigner et se réchauffer à Genève et Lausanne : le guide du bain d’hiver dans le Léman, avec l’eau du jour plage par plage.',
       bref: 'Le bain d’hiver se pratique dans le Léman quand l’eau passe sous 15 °C, en gros d’octobre à mai. La Société Suisse de Sauvetage (SSS) donne une règle simple : <strong>ne pas rester plus de minutes que l’eau n’a de degrés</strong> (5 °C = 5 minutes au maximum). Entrer lentement, garder la tête hors de l’eau avec un bonnet, ne jamais y aller seul, sortir au moindre malaise, puis se sécher et s’habiller chaudement, sans douche chaude.',
-      html: () => `
+      html: (L) => `
 <h2>Combien de temps peut-on rester dans l’eau froide ?</h2>
 <p>La fiche « Nager en eau froide » de la SSS propose un repère facile à retenir : la température de l’eau en degrés donne la durée maximale de la baignade en minutes. À 10 °C, on ne dépasse pas 10 minutes ; à 5 °C, 5 minutes. C’est un maximum, pas un objectif : les premières fois, quelques brasses suffisent largement.</p>
 <p><a href="#eau-du-jour">L’eau du jour</a> est affichée plus bas et, plage par plage, dans <a href="{app}">l’app Mon Lac</a>.</p>
@@ -79,8 +79,11 @@ export const ARTICLES = [
 <p>Se sécher soigneusement et enfiler tout de suite des vêtements chauds et secs. La SSS déconseille la douche chaude juste après, les endroits exposés au vent et les gros efforts. Une boisson tiède aide à se réchauffer de l’intérieur.</p>
 <h2>Où se baigner l’hiver à Genève et à Lausanne ?</h2>
 <p><strong>Genève.</strong> Les <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> restent le rendez-vous des nageurs d’hiver ; leur buvette est ouverte toute l’année, avec la fondue l’hiver. En décembre, la Coupe de Noël se nage dans la rade. Pour se réchauffer autrement, le Sauna Boats Genève propose un sauna flottant au départ du quai Gustave-Ador, près de la <a href="{plage:plage-des-eaux-vives}">plage des Eaux-Vives</a>.</p>
-<p><strong>Lausanne.</strong> À Ouchy, les Bains des Rives installent d’octobre à mars un sauna au bord du lac, avec un plongeon dans le Léman entre deux séances, près de la <a href="{plage:lausanne-ouchy}">plage d’Ouchy</a>.</p>
+<p><strong>Lausanne.</strong> À Bellerive, les Bains des Rives installent d’octobre à mars des yourtes-saunas au bord du lac, avec un plongeon dans le Léman entre deux séances, près de la <a href="{plage:lausanne-bellerive}">plage de Bellerive</a>.</p>
 <p>La <a href="{plages}">liste des 65 plages</a> donne la température et le vent de chacune.</p>
+<h2>Où se réchauffer dans un sauna au bord du Léman ?</h2>
+${listeLoc(['sauna'], L)}
+<p>Horaires, prix et réservation changent d’une saison à l’autre : à vérifier auprès de chaque lieu.</p>
 <h2>Comment Mon Lac aide pour le bain d’hiver ?</h2>
 <p>D’octobre à mai, dès que l’eau est sous 15 °C, la case « Baignade » de l’app devient « Bain d’hiver ». Sa note dépend surtout du vent : l’eau froide est le but, les rafales et les vagues beaucoup moins. Le <strong>défi bain d’hiver</strong> garde la date, la plage et la température de chaque bain, et l’historique se partage en un geste. Pour aller plus loin : <a href="{blog:choc-thermique-eau-froide}">les 90 premières secondes dans l’eau froide</a>, <a href="{blog:materiel-bain-d-hiver}">le matériel</a> et <a href="{blog:afterdrop-se-rechauffer}">se réchauffer après le bain</a>. Pour les chiffres, voir <a href="{blog:temperature-lac-leman}">comment la température du Léman est calculée</a>.</p>`,
     },
@@ -89,7 +92,7 @@ export const ARTICLES = [
       h1: 'Winter swimming in Lake Geneva: getting started',
       desc: 'How long to stay in, how to get in, where to swim and warm up in Geneva and Lausanne: a guide to winter swimming in Lake Geneva, with today’s water temperature beach by beach.',
       bref: 'Winter swimming in Lake Geneva starts when the water drops below 15 °C, roughly from October to May. The Swiss Lifesaving Society (SLRG/SSS) gives a simple rule: <strong>stay in no more minutes than the water has degrees</strong> (5 °C = 5 minutes at most). Get in slowly, keep your head out of the water with a cap on, never go alone, get out at the first sign of feeling unwell, then dry off and dress warmly, without a hot shower.',
-      html: () => `
+      html: (L) => `
 <h2>How long can you stay in cold water?</h2>
 <p>The Swiss Lifesaving Society’s cold-water sheet gives an easy rule of thumb: the water temperature in degrees is the maximum swim time in minutes. At 10 °C, no more than 10 minutes; at 5 °C, 5 minutes. It is a maximum, not a target: the first few times, a few strokes are plenty.</p>
 <p><a href="#eau-du-jour">Today’s water temperature</a> is shown below, and beach by beach in <a href="{app}">the My Lake app</a>.</p>
@@ -105,8 +108,11 @@ export const ARTICLES = [
 <p>Dry off thoroughly and put on warm, dry clothes right away. The lifesaving society advises against a hot shower straight after, windy spots and hard exercise. A warm drink helps you warm up from the inside.</p>
 <h2>Where can you swim in winter in Geneva and Lausanne?</h2>
 <p><strong>Geneva.</strong> The <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> are the winter swimmers’ meeting point; their café is open all year, with fondue in winter. In December, the Coupe de Noël race is swum in the harbour. To warm up differently, Sauna Boats Genève runs a floating sauna from Quai Gustave-Ador, near <a href="{plage:plage-des-eaux-vives}">Eaux-Vives beach</a>.</p>
-<p><strong>Lausanne.</strong> In Ouchy, the Bains des Rives set up a lakeside sauna from October to March, with a dip in the lake between sessions, near <a href="{plage:lausanne-ouchy}">Ouchy beach</a>.</p>
+<p><strong>Lausanne.</strong> At Bellerive, the Bains des Rives set up lakeside yurt saunas from October to March, with a dip in the lake between sessions, near <a href="{plage:lausanne-bellerive}">Bellerive beach</a>.</p>
 <p>The <a href="{plages}">list of all 65 beaches</a> gives the water temperature and wind for each one.</p>
+<h2>Where can you warm up in a sauna by Lake Geneva?</h2>
+${listeLoc(['sauna'], L)}
+<p>Hours, prices and booking change from season to season: check with each place.</p>
 <h2>How does My Lake help with winter swimming?</h2>
 <p>From October to May, once the water is below 15 °C, the app’s “Swimming” tile becomes “Winter swim”. Its rating depends mostly on the wind: cold water is the point, gusts and waves much less so. The <strong>winter swim challenge</strong> keeps the date, beach and water temperature of each swim, and your history can be shared in one tap. Read on: <a href="{blog:choc-thermique-eau-froide}">the first 90 seconds in cold water</a>, <a href="{blog:materiel-bain-d-hiver}">what to bring</a> and <a href="{blog:afterdrop-se-rechauffer}">warming up afterwards</a>. For the figures, see <a href="{blog:temperature-lac-leman}">how Lake Geneva’s temperature is calculated</a>.</p>`,
     },
@@ -563,7 +569,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 <h2>Quel est l’équipement le plus important ?</h2>
 <p>Un binôme. La SSS et le BPA sont formels : on ne nage jamais seul en eau libre, encore moins en eau froide. Le reste du matériel rend le bain plus agréable ; la présence de quelqu’un le rend plus sûr.</p>
 <h2>Où acheter ou louer ce matériel près du Léman ?</h2>
-<p>Les magasins de sport et de surf de la région proposent bonnets, chaussons et gants en néoprène. Pour se réchauffer sur place, certains lieux ont un sauna, comme les Bains des Rives à Ouchy l’hiver : voir le <a href="{blog:bain-d-hiver-leman}">guide du bain d’hiver</a>.</p>
+<p>Les magasins de sport et de surf de la région proposent bonnets, chaussons et gants en néoprène. Pour se réchauffer sur place, certains lieux ont un sauna, comme les Bains des Rives à Bellerive (Lausanne) l’hiver : voir le <a href="{blog:bain-d-hiver-leman}">guide du bain d’hiver</a>.</p>
 <p>Avant de partir : <a href="{blog:choc-thermique-eau-froide}">les 90 premières secondes dans l’eau froide</a>. En sortant : <a href="{blog:afterdrop-se-rechauffer}">bien se réchauffer</a>. L’eau du jour est dans l’<a href="{app}">app</a>.</p>`,
     },
     en: {
@@ -590,7 +596,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 <h2>What is the most important piece of kit?</h2>
 <p>A buddy. The Swiss Lifesaving Society and the BFU are clear: never swim alone in open water, even less so in cold water. The rest of the kit makes the swim more pleasant; having someone there makes it safer.</p>
 <h2>Where can you buy or rent kit near Lake Geneva?</h2>
-<p>Local sports and surf shops sell neoprene caps, socks and gloves. To warm up on site, some places have a sauna, like the Bains des Rives in Ouchy in winter: see the <a href="{blog:bain-d-hiver-leman}">winter swimming guide</a>.</p>
+<p>Local sports and surf shops sell neoprene caps, socks and gloves. To warm up on site, some places have a sauna, like the Bains des Rives at Bellerive (Lausanne) in winter: see the <a href="{blog:bain-d-hiver-leman}">winter swimming guide</a>.</p>
 <p>Before you go: <a href="{blog:choc-thermique-eau-froide}">the first 90 seconds in cold water</a>. Afterwards: <a href="{blog:afterdrop-se-rechauffer}">warming up properly</a>. Today’s water is in the <a href="{app}">app</a>.</p>`,
     },
   },
