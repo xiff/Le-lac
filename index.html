@@ -69,6 +69,8 @@
   .mesures div + div { border-left: 1px solid #fbf4e429; padding-left: 14px; }
   .mesures b { display: block; font: 400 2.1rem/1 var(--display); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .mesures small { color: var(--creme-doux); font-size: .8rem; }
+  .mesures .ciel { width: 1.6rem; height: 1.6rem; margin-left: .3rem; vertical-align: -.12em; stroke-width: 1.6; color: var(--creme); }
+  .ciel-h { display: block; width: 22px; height: 22px; margin: 6px auto 0; color: var(--encre); }
   .fleche { display: inline-block; width: 20px; height: 20px; vertical-align: -2px; transition: rotate 300ms var(--ease-out); }
   .vague { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 18px; color: var(--papier); }
 
@@ -229,6 +231,17 @@
   <symbol id="i-act-wakesurf" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.8"/><path d="M12.5 7 11 11.5l2.5 2.5"/><path d="M12 8.5l-3.5 1.5M12.5 8.5l3.5 1"/><path d="M11 11.5 9 14"/><path d="M6 15.5h11"/><path d="M2 19c3 0 5-4 9-4s6 2 11 2"/></symbol>
   <symbol id="i-act-ski" viewBox="0 0 24 24"><path d="M2 6l9 4"/><circle cx="16" cy="5" r="1.8"/><path d="M15.5 7.5 13 12l3.5 2-1 3"/><path d="M14.5 9l-3.5 1"/><path d="M13 12l-3 5"/><path d="M5 18.5h15"/><path d="M5 20.5h15"/></symbol>
   <symbol id="i-act-bateau" viewBox="0 0 24 24"><path d="M2 14h17l-3 4H5Z"/><path d="M7 14l2-4h5l3 4"/><path d="M11 10V7"/><path d="M2 21c2-1 4-1 6 0s4 1 6 0"/></symbol>
+  <symbol id="i-meteo-soleil" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="i-meteo-lune" viewBox="0 0 24 24"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.4 6.4 0 0 0 10.1 10.1Z"/></symbol>
+  <symbol id="i-meteo-eclaircie" viewBox="0 0 24 24"><path d="M7.5 2.5v1.2M2.5 7.5h1.2M4 4l.85.85M11 4l-.85.85"/><path d="M4.9 9.4a3 3 0 0 1 5.2-3.3"/><path d="M9.5 20.5h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/></symbol>
+  <symbol id="i-meteo-lune-nuage" viewBox="0 0 24 24"><path d="M11.6 7.3A4.6 4.6 0 0 1 5.4 12a5.2 5.2 0 1 0 6.2-4.7Z" transform="translate(-1.5 -3.2) scale(.95)"/><path d="M9.5 20.5h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/></symbol>
+  <symbol id="i-meteo-couvert" viewBox="0 0 24 24"><path d="M7 19h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 19Z"/></symbol>
+  <symbol id="i-meteo-brouillard" viewBox="0 0 24 24"><path d="M7 13h10.5a3.6 3.6 0 0 0 .4-7.17 5.4 5.4 0 0 0-10.4-1 4.1 4.1 0 0 0-.5 8.17Z"/><path d="M4 17h16M7 20.5h10"/></symbol>
+  <symbol id="i-meteo-bruine" viewBox="0 0 24 24"><path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 19h.01M12 20.5h.01M15.5 19h.01"/></symbol>
+  <symbol id="i-meteo-pluie" viewBox="0 0 24 24"><path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 18.5 7.7 21M12.3 18.5l-.8 2.5M16.1 18.5l-.8 2.5"/></symbol>
+  <symbol id="i-meteo-averses" viewBox="0 0 24 24"><path d="M7.5 2.5v1.2M2.5 7.5h1.2M4 4l.85.85M11 4l-.85.85"/><path d="M4.9 9.4a3 3 0 0 1 5.2-3.3"/><path d="M9.5 17h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/><path d="M11.5 19.5l-.7 2M15.5 19.5l-.7 2"/></symbol>
+  <symbol id="i-meteo-neige" viewBox="0 0 24 24"><path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 18.5h.01M12 19h.01M15.5 18.5h.01M10.2 21h.01M13.8 21h.01"/></symbol>
+  <symbol id="i-meteo-orage" viewBox="0 0 24 24"><path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="m12.8 13.5-2.3 4h3l-2.3 4"/></symbol>
   <symbol id="i-vagues" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
   <symbol id="i-paddle" viewBox="0 0 24 24"><path d="M5 19 15.5 8.5"/><path d="M14 4.5c1.6-1.6 4.4-1.4 5.7-.2 1.2 1.3 1.4 4.1-.2 5.7l-2.3 2.3-5.5-5.5Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0"/></symbol>
   <symbol id="i-verre" viewBox="0 0 24 24"><path d="M8 22h8M12 11v11"/><path d="m19 3-7 8-7-8Z"/></symbol>
@@ -258,7 +271,7 @@
   <p class="releve" id="releve" aria-live="polite">&nbsp;</p>
   <div class="mesures">
     <div><b id="eau">–</b><small data-t="eau">eau</small></div>
-    <div><b id="air">–</b><small data-t="air">air</small></div>
+    <div><b id="air">–</b><small id="air-l" data-t="air">air</small></div>
     <div><b id="vent">–</b><small data-t="vent">vent km/h</small></div>
   </div>
   <svg class="vague" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 18V9c25 0 25-7 50-7s25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7 25-7 50-7 25 7 50 7v9Z"/></svg>
@@ -358,6 +371,10 @@ const LIBELLES = T.libelles;
 const NOM = (a, c = etat?.c) => T.activites[cle(a, c ?? {})];
 const $ = (id) => document.getElementById(id);
 const icone = (n, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+// Icône du temps qu'il fait, d'après le code météo WMO d'Open-Meteo (et le jour ou la nuit).
+const ciel = (code, jour = true) => (code >= 95 ? 'orage' : code >= 85 ? 'neige' : code >= 80 ? 'averses' : code >= 71 ? 'neige' : code >= 61 ? 'pluie'
+  : code >= 51 ? 'bruine' : code >= 45 ? 'brouillard' : code === 3 ? 'couvert' : code >= 1 ? (jour ? 'eclaircie' : 'lune-nuage') : (jour ? 'soleil' : 'lune'));
+const iconeCiel = (k, cls = 'ciel') => `<svg class="i ${cls}" role="img" aria-label="${T.ciel[k]}"><use href="#i-meteo-${k}"/></svg>`;
 const fleche = (dir, lib) => `<svg class="i fleche" style="rotate:${dir + 180}deg" role="img" aria-label="${lib ?? T.ventDe(dir)}"><use href="#i-fleche"/></svg>`;
 let etat = null;
 
@@ -510,7 +527,7 @@ async function tempEau(s) {
   } catch { return null; }
 }
 async function meteo(s) {
-  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
   const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) });
   if (!r.ok) throw new Error('météo ' + r.status);
   return r.json();
@@ -532,11 +549,13 @@ async function charger() {
     const c = lire(m.current, null, eau);
     if (c) c.qualite = q?.qualite;
     if (!c) throw new Error('données incomplètes');
-    const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
+    const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, jour: m.hourly.is_day?.[i] !== 0, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
     etat = { ...etat, c, heures, heure: m.current.time.slice(11, 16) };
     $('releve').innerHTML = navigator.onLine ? T.releve(etat.heure) : icone('horsligne') + T.horsLigne(etat.heure);
     $('eau').textContent = eau == null ? '?' : eau.toFixed(1) + '°';
-    $('air').textContent = Math.round(c.air) + '°';
+    const k = ciel(c.code, m.current.is_day !== 0);
+    $('air').innerHTML = `${Math.round(c.air)}°${iconeCiel(k)}`;
+    $('air-l').textContent = `${T.air} · ${T.ciel[k].toLowerCase()}`;
     $('vent').innerHTML = `${Math.round(c.vent)} ${fleche(c.dir)}`;
 
     const danger = c.code >= 95 || c.rafales > 40 || q?.qualite === 4;
@@ -644,7 +663,7 @@ function afficherHeures() {
   if (!etat.heures.length) { $('heures').innerHTML = `<p class="note">${T.heuresVides}</p>`; return; }
   $('heures').innerHTML = etat.heures.map((h) => {
     const n = a.note(h);
-    return `<div class="h">${h.heure}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${NOM(a)} : ${LIBELLES[n]}"></i></div>`;
+    return `<div class="h">${h.heure}${iconeCiel(ciel(h.code, h.jour), 'ciel-h')}<b>${Math.round(h.air)}°</b>${Math.round(h.vent)} ${fleche(h.dir)}<i class="t${n}" role="img" aria-label="${NOM(a)} : ${LIBELLES[n]}"></i></div>`;
   }).join('');
 }
 $('activites').onclick = (e) => { const b = e.target.closest('.act'); if (b && etat?.heures) { etat.choix = b.dataset.act; afficherHeures(); } };

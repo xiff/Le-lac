@@ -17,6 +17,14 @@ erreur: 'The lake isn’t answering right now. Try again in a moment.' },
 }[L];
 const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore' };
 const LIB = T.lib, NOMS = T.noms;
+// Icône du temps (code WMO d'Open-Meteo), dessinée comme celles de l'app.
+const ciel = (code, jour = true) => (code >= 95 ? 'orage' : code >= 85 ? 'neige' : code >= 80 ? 'averses' : code >= 71 ? 'neige' : code >= 61 ? 'pluie'
+  : code >= 51 ? 'bruine' : code >= 45 ? 'brouillard' : code === 3 ? 'couvert' : code >= 1 ? (jour ? 'eclaircie' : 'lune-nuage') : (jour ? 'soleil' : 'lune'));
+const CIEL = {
+  fr: { soleil: 'Ensoleillé', lune: 'Ciel clair', eclaircie: 'Éclaircies', 'lune-nuage': 'Quelques nuages', couvert: 'Couvert', brouillard: 'Brouillard', bruine: 'Bruine', pluie: 'Pluie', averses: 'Averses', neige: 'Neige', orage: 'Orage' },
+  en: { soleil: 'Sunny', lune: 'Clear sky', eclaircie: 'Sunny spells', 'lune-nuage': 'A few clouds', couvert: 'Overcast', brouillard: 'Fog', bruine: 'Drizzle', pluie: 'Rain', averses: 'Showers', neige: 'Snow', orage: 'Thunderstorm' },
+};
+const ICONES = { 'soleil': '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>', 'lune': '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.4 6.4 0 0 0 10.1 10.1Z"/>', 'eclaircie': '<path d="M7.5 2.5v1.2M2.5 7.5h1.2M4 4l.85.85M11 4l-.85.85"/><path d="M4.9 9.4a3 3 0 0 1 5.2-3.3"/><path d="M9.5 20.5h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/>', 'lune-nuage': '<path d="M11.6 7.3A4.6 4.6 0 0 1 5.4 12a5.2 5.2 0 1 0 6.2-4.7Z" transform="translate(-1.5 -3.2) scale(.95)"/><path d="M9.5 20.5h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/>', 'couvert': '<path d="M7 19h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 19Z"/>', 'brouillard': '<path d="M7 13h10.5a3.6 3.6 0 0 0 .4-7.17 5.4 5.4 0 0 0-10.4-1 4.1 4.1 0 0 0-.5 8.17Z"/><path d="M4 17h16M7 20.5h10"/>', 'bruine': '<path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 19h.01M12 20.5h.01M15.5 19h.01"/>', 'pluie': '<path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 18.5 7.7 21M12.3 18.5l-.8 2.5M16.1 18.5l-.8 2.5"/>', 'averses': '<path d="M7.5 2.5v1.2M2.5 7.5h1.2M4 4l.85.85M11 4l-.85.85"/><path d="M4.9 9.4a3 3 0 0 1 5.2-3.3"/><path d="M9.5 17h8a3.5 3.5 0 0 0 .5-6.97 5 5 0 0 0-9.5-.6 3.8 3.8 0 0 0 1 7.57Z"/><path d="M11.5 19.5l-.7 2M15.5 19.5l-.7 2"/>', 'neige': '<path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="M8.5 18.5h.01M12 19h.01M15.5 18.5h.01M10.2 21h.01M13.8 21h.01"/>', 'orage': '<path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="m12.8 13.5-2.3 4h3l-2.3 4"/>' };
 const deg = (v) => (v == null ? '–' : (L === 'en' ? v.toFixed(1) : v.toFixed(1).replace('.', ',')) + '°');
 const donnee = (f) => new URL(`../${f}`, import.meta.url); // racine du site, quelle que soit la profondeur de la page
 
@@ -29,12 +37,14 @@ document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(
 $('eau').textContent = deg(eau(s.id));
 
 try {
-  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
   const m = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
   const c = lire(m.current, null, eau(s.id)); if (!c) throw new Error('incomplet');
   c.qualite = q?.qualite;
   $('verdict').textContent = verdict(c, L, Math.floor(Math.random() * 60)).titre;
-  $('air').textContent = Math.round(c.air) + '°';
+  const k = ciel(c.code, m.current.is_day !== 0);
+  $('air').innerHTML = `${Math.round(c.air)}°<svg class="ciel" viewBox="0 0 24 24" role="img" aria-label="${CIEL[L][k]}">${ICONES[k]}</svg>`;
+  $('air').nextElementSibling.textContent += ` · ${CIEL[L][k].toLowerCase()}`;
   $('vent').textContent = Math.round(c.vent);
   $('releve').textContent = T.releve(L === 'en' ? REGIONS_EN[s.region] ?? s.region : s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
