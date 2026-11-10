@@ -1,5 +1,5 @@
 // Conditions du jour pour une page de plage : même calcul que l'app.
-import { SPOTS, valeurProche } from '../spots.js';
+import { SPOTS, valeurProche, REGIONS_EN } from '../spots.js';
 import { lire, verdict, ACTIVITES, PHRASES, cle, qualiteRecente } from '../score.js';
 
 const $ = (id) => document.getElementById(id);
@@ -15,7 +15,6 @@ erreur: 'Le lac ne répond pas pour l’instant. Réessaie dans un moment.' },
     eau: (c) => `Bathing water ${c}`, ge: (d, p) => `Canton of Geneva, tested ${d}, ${p}`, releve: (r, h) => `${r} · reading from ${h}`,
 erreur: 'The lake isn’t answering right now. Try again in a moment.' },
 }[L];
-const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore' };
 const LIB = T.lib, NOMS = T.noms;
 // Icône du temps (code WMO d'Open-Meteo), dessinée comme celles de l'app.
 const ciel = (code, jour = true) => (code >= 95 ? 'orage' : code >= 85 ? 'neige' : code >= 80 ? 'averses' : code >= 71 ? 'neige' : code >= 61 ? 'pluie'

@@ -562,12 +562,13 @@ async function vidy() {
   } catch {}
 }
 
-// L'eau ce matin : les 65 plages, groupées par région.
+// L'eau ce matin : les plages du Léman, groupées par région (les autres lacs ont leur page plage/).
+const LEMAN = SPOTS.filter((s) => !s.lac);
 function liste() {
-  const regions = [...new Set(SPOTS.map((s) => s.region))];
-  const toutes = SPOTS.map(eauDe).filter((v) => v != null);
+  const regions = [...new Set(LEMAN.map((s) => s.region))];
+  const toutes = LEMAN.map(eauDe).filter((v) => v != null);
   if (toutes.length) $('eau-intro').textContent = `Température à 70 cm sous la surface. Ce matin, de ${deg(Math.min(...toutes))} à ${deg(Math.max(...toutes))} sur le même lac.`;
-  $('eau-liste').innerHTML = regions.map((r) => `<div class="groupe"><p>${r}</p>${SPOTS.filter((s) => s.region === r).map((s) => { const t = eauDe(s); return `<div class="rang"><i style="background:${couleur(t)}" aria-hidden="true"></i><a href="../plage/${s.id}/">${s.nom}</a><span>${deg(t)}</span></div>`; }).join('')}</div>`).join('');
+  $('eau-liste').innerHTML = regions.map((r) => `<div class="groupe"><p>${r}</p>${LEMAN.filter((s) => s.region === r).map((s) => { const t = eauDe(s); return `<div class="rang"><i style="background:${couleur(t)}" aria-hidden="true"></i><a href="../plage/${s.id}/">${s.nom}</a><span>${deg(t)}</span></div>`; }).join('')}</div>`).join('');
   [['bains-des-paquis', 1], ['lausanne-vidy', 2]].forEach(([id, k]) => { const t = eauDe(SPOTS.find((s) => s.id === id)); if (t != null) { $('ap-t' + k).textContent = deg(t); $('ap-p' + k).style.background = couleur(t); } });
 }
 liste();

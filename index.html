@@ -301,7 +301,7 @@
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" data-ta="heuresAria" aria-label="Prévisions heure par heure"></div>
-    <h2 data-t="carteTitre">Tout le lac</h2>
+    <h2 id="h-carte" data-t="carteTitre">Tout le lac</h2>
     <div class="carte" id="carte"></div>
     <p class="extremes" id="extremes"></p>
     <footer>
@@ -355,7 +355,7 @@
 import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
-import { SPOTS, valeurProche, TOUR, projeter } from './spots.js';
+import { SPOTS, valeurProche, TOUR, projeter, LACS, lacDe, REGIONS_EN } from './spots.js';
 import { LANGUE, T, AUTRE } from './textes.js';
 
 document.documentElement.lang = LANGUE;
@@ -380,7 +380,7 @@ let etat = null;
 
 const sel = $('spot');
 for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
-  const g = document.createElement('optgroup'); g.label = T.regions[r] ?? r;
+  const g = document.createElement('optgroup'); g.label = (LANGUE === 'en' ? REGIONS_EN[r] : r) ?? r;
   SPOTS.forEach((s, i) => s.region === r && g.append(new Option(s.nom, i)));
   sel.append(g);
 }
@@ -541,6 +541,7 @@ async function charger() {
   $('verdict').classList.add('charge');
   $('y-aller').href = `https://www.google.com/maps/dir/?api=1&destination=${spot().lat},${spot().lon}`;
   $('y-aller').setAttribute('aria-label', T.yAllerAria(spot().nom)); $('y-aller').title = T.yAllerAria(spot().nom);
+  $('lien-qualite').hidden = lacDe(spot()) !== 'leman'; // sources de qualité suivies : canton de Genève et CIPEL
   $('lien-qualite').href = spot().zone === 'geneve' ? 'https://www.ge.ch/plages-lieux-baignade-eaux-vives-geneve/qualite-eau-baignade' : 'https://www.cipel.org/carte-des-plages/';
   try {
     const [m, eau, qj] = await Promise.all([meteo(spot()), tempEau(spot()), donneesQualite()]);
@@ -619,10 +620,14 @@ function trace(points) { // courbe lissée fermée (Catmull-Rom vers Bézier)
 const CONTOUR = trace(TOUR.map((id) => proj.xy(SPOTS.find((s) => s.id === id))).map(([x, y]) => [+x.toFixed(1), +y.toFixed(1)]));
 const melange = (f) => { const a = [90, 166, 196], b = [227, 168, 43]; return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`; };
 async function afficherCarte() {
-  const eau = (await donneesEau())?.spots ?? {};
-  const vals = SPOTS.map((s) => ({ s, t: valeurProche(eau[s.id]) })).filter((x) => x.t != null);
+  const eau = (await donneesEau())?.spots ?? {}, lac = lacDe(spot());
+  // La carte dessine le Léman ; ailleurs, seul l'écart du moment entre les plages du lac est affiché.
+  $('carte').hidden = $('h-carte').hidden = lac !== 'leman';
+  const vals = SPOTS.filter((s) => lacDe(s) === lac).map((s) => ({ s, t: valeurProche(eau[s.id]) })).filter((x) => x.t != null);
+  $('extremes').hidden = !vals.length || Math.min(...vals.map((x) => x.t)) === Math.max(...vals.map((x) => x.t));
+  if (lac !== 'leman') { if (!$('extremes').hidden) { const v = [...vals].sort((a, b) => a.t - b.t), f1 = (t) => t.toLocaleString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); $('extremes').textContent = T.extremesLac(v.at(-1).s.nom, f1(v.at(-1).t), v[0].s.nom, f1(v[0].t)); } return; }
   const min = Math.min(...vals.map((x) => x.t)), max = Math.max(...vals.map((x) => x.t));
-  $('carte').innerHTML = `<svg viewBox="0 0 400 ${proj.hauteur.toFixed(0)}" aria-hidden="true"><path class="eau-lac" d="${CONTOUR}"/>${SPOTS.map((s) => {
+  $('carte').innerHTML = `<svg viewBox="0 0 400 ${proj.hauteur.toFixed(0)}" aria-hidden="true"><path class="eau-lac" d="${CONTOUR}"/>${SPOTS.filter((s) => lacDe(s) === 'leman').map((s) => {
     const [x, y] = proj.xy(s), t = valeurProche(eau[s.id]), f = t == null || max === min ? 0.5 : (t - min) / (max - min);
     return `<g class="point${s.id === spot().id ? ' actuel' : ''}" data-id="${s.id}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12" fill="transparent"/><circle class="vu" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="${t == null ? '#9aa' : melange(f)}"><title>${s.nom}${t == null ? '' : ' ' + t.toFixed(1) + '°'}</title></circle></g>`;
   }).join('')}</svg>`;

@@ -1,11 +1,10 @@
 // Articles du blog, en français et en anglais. Chaque fait vient d'une source citée en bas d'article,
 // ou des listes vérifiées de l'app (plages, lieux, loueurs), insérées ici depuis les mêmes fichiers.
 // Liens dans le HTML : {plage:id}, {plages}, {app}, {blog:slug} ; le générateur les résout selon la langue.
-import { SPOTS } from '../spots.js';
+import { SPOTS, REGIONS_EN } from '../spots.js';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 
-const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore' };
 const ZONES = { geneve: 'Genève', nyon: 'La Côte', lausanne: 'Morges et Lausanne', vevey: 'Riviera', evian: 'Rive française' };
 const region = (r, L) => (L === 'en' ? REGIONS_EN[r] ?? r : r);
 const mois = (m, L) => new Date(2026, m - 1, 1).toLocaleDateString(L === 'en' ? 'en-GB' : 'fr-CH', { month: 'long' });

@@ -2,6 +2,21 @@
 // Plages suivies. Partagé par l'app et par scripts/eau.mjs (températures Alplakes).
 // Coordonnées vérifiées dans le modèle du Léman : toutes à moins de 800 m d'un point de calcul.
 // Liste établie d'après les sites de baignade cités par le canton de Genève, la CIPEL et les offices du tourisme.
+// Lacs suivis et modèle de température de l'eau (Alplakes, Eawag) : 3D = une valeur devant chaque plage,
+// 1D (Simstrat) = une valeur pour tout le lac, null = pas de modèle (petits lacs de Sion).
+export const LACS = {
+  leman: { nom: 'Léman', en: 'Lake Geneva', eau: { modele: 'delft3d-flow', lac: 'geneva' } },
+  neuchatel: { nom: 'Lac de Neuchâtel', en: 'Lake Neuchâtel', eau: { modele: 'mitgcm', lac: 'neuchatel' } },
+  bienne: { nom: 'Lac de Bienne', en: 'Lake Biel', eau: { modele: 'delft3d-flow', lac: 'biel' } },
+  morat: { nom: 'Lac de Morat', en: 'Lake Murten', eau: { modele: 'delft3d-flow', lac: 'murten' } },
+  gruyere: { nom: 'Lac de la Gruyère', en: 'Lake Gruyère', eau: { modele: 'simstrat', lac: 'gruyere' } },
+  sion: { nom: 'Lacs de Sion', en: 'Sion lakes', eau: null },
+};
+export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
+// Noms anglais des régions (les plages des autres lacs ont pour région le nom du lac).
+export const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore',
+  ...Object.fromEntries(Object.values(LACS).map((l) => [l.nom, l.en])) };
+
 export const SPOTS = [
   { id: 'pregny-chambesy', nom: 'Pregny-Chambésy', lat: 46.24265, lon: 6.15302, region: 'Genève', zone: 'geneve' },
   { id: 'bains-des-paquis', nom: 'Bains des Pâquis', lat: 46.21016, lon: 6.15489, region: 'Genève', zone: 'geneve' },
@@ -83,7 +98,8 @@ export const TOUR = ['bains-des-paquis', 'pregny-chambesy', 'bellevue', 'genthod
 
 // Projection simple (équirectangulaire autour de 46,4° N) vers un cadre de largeur donnée.
 export function projeter(largeur) {
-  const k = Math.cos((46.4 * Math.PI) / 180), lons = SPOTS.map((s) => s.lon), lats = SPOTS.map((s) => s.lat);
+  const leman = SPOTS.filter((s) => lacDe(s) === 'leman'); // la carte dessine le Léman
+  const k = Math.cos((46.4 * Math.PI) / 180), lons = leman.map((s) => s.lon), lats = leman.map((s) => s.lat);
   const x0 = Math.min(...lons), x1 = Math.max(...lons), y0 = Math.min(...lats), y1 = Math.max(...lats), m = 0.04;
   const echelle = largeur / ((x1 - x0) * k + 2 * m);
   return { hauteur: ((y1 - y0) + 2 * m) * echelle, xy: (s) => [((s.lon - x0) * k + m) * echelle, ((y1 - s.lat) + m) * echelle] };
