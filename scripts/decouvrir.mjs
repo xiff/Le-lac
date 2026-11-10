@@ -7,8 +7,10 @@ const corps = (b) => `[out:json][timeout:120];(
   nwr["leisure"~"^(beach_resort|swimming_area|bathing_place)$"](${b});
   nwr["amenity"="public_bath"](${b});
   nwr["name"~"plage|strandbad|bains|baignade|badi|lido|îles|montorge",i](${b});
+  nwr["natural"="water"]["name"~"^lac|see$|étang",i](${b});
 );out center tags;`;
-for (const [lac, b] of Object.entries(LACS)) {
+// node scripts/decouvrir.mjs [lac] : un seul lac si précisé.
+for (const [lac, b] of Object.entries(LACS).filter(([l]) => !process.argv[2] || l === process.argv[2])) {
   let r;
   for (const url of ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter']) {
     r = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(corps(b.join(','))), headers: { 'User-Agent': 'MonLac-decouverte/1.0', 'Content-Type': 'application/x-www-form-urlencoded' } }).catch(() => null);

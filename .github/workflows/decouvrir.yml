@@ -1,6 +1,10 @@
 name: Découverte des plages (nouveaux lacs)
 on:
   workflow_dispatch:
+    inputs:
+      lac:
+        description: 'Un seul lac (neuchatel, bienne, morat, gruyere, sion) ; vide = tous'
+        required: false
 jobs:
   decouvrir:
     runs-on: ubuntu-latest
@@ -9,4 +13,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/decouvrir.mjs
+      - run: node scripts/decouvrir.mjs "${{ inputs.lac }}"
