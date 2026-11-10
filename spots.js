@@ -3,14 +3,14 @@
 // Coordonnées vérifiées dans le modèle du Léman : toutes à moins de 800 m d'un point de calcul.
 // Liste établie d'après les sites de baignade cités par le canton de Genève, la CIPEL et les offices du tourisme.
 // Lacs suivis et modèle de température de l'eau (Alplakes, Eawag) : 3D = une valeur devant chaque plage,
-// 1D (Simstrat) = une valeur pour tout le lac, null = pas de modèle (petits lacs de Sion).
+// 1D (Simstrat) = une valeur pour tout le lac, null = pas de modèle (Domaine des Îles, Sion).
 export const LACS = {
   leman: { nom: 'Léman', en: 'Lake Geneva', eau: { modele: 'delft3d-flow', lac: 'geneva' } },
   neuchatel: { nom: 'Lac de Neuchâtel', en: 'Lake Neuchâtel', eau: { modele: 'mitgcm', lac: 'neuchatel' } },
   bienne: { nom: 'Lac de Bienne', en: 'Lake Biel', eau: { modele: 'delft3d-flow', lac: 'biel' } },
   morat: { nom: 'Lac de Morat', en: 'Lake Murten', eau: { modele: 'delft3d-flow', lac: 'murten' } },
   gruyere: { nom: 'Lac de la Gruyère', en: 'Lake Gruyère', eau: { modele: 'simstrat', lac: 'gruyere' } },
-  sion: { nom: 'Lacs de Sion', en: 'Sion lakes', eau: null },
+  sion: { nom: 'Sion – Domaine des Îles', en: 'Sion – Domaine des Îles', eau: null },
 };
 export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
 // Noms anglais des régions (les plages des autres lacs ont pour région le nom du lac).
@@ -114,8 +114,7 @@ export const SPOTS = [
   { id: 'gumefens', nom: 'Gumefens', lat: 46.67892, lon: 7.08875, region: 'Lac de la Gruyère', zone: 'gruyere', lac: 'gruyere' },
   { id: 'corbieres', nom: 'Corbières', lat: 46.66338, lon: 7.10178, region: 'Lac de la Gruyère', zone: 'gruyere', lac: 'gruyere' },
   { id: 'morlon', nom: 'Morlon', lat: 46.62662, lon: 7.09564, region: 'Lac de la Gruyère', zone: 'gruyere', lac: 'gruyere' },
-  { id: 'domaine-des-iles', nom: 'Domaine des Îles', lat: 46.21189, lon: 7.32197, region: 'Lacs de Sion', zone: 'sion', lac: 'sion' },
-  { id: 'lac-de-montorge', nom: 'Lac de Montorge', lat: 46.23313, lon: 7.33687, region: 'Lacs de Sion', zone: 'sion', lac: 'sion' },
+  { id: 'domaine-des-iles', nom: 'Domaine des Îles', lat: 46.21189, lon: 7.32197, region: 'Sion – Domaine des Îles', zone: 'sion', lac: 'sion' },
 ];
 
 // Valeur de la série la plus proche de l'instant donné, si elle date de moins de 6 h.

@@ -176,12 +176,11 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 | Corbières | [https://xiff.github.io/Le-lac/plage/corbieres/](https://xiff.github.io/Le-lac/plage/corbieres/) | [EN](https://xiff.github.io/Le-lac/plage/corbieres/en/) |
 | Morlon | [https://xiff.github.io/Le-lac/plage/morlon/](https://xiff.github.io/Le-lac/plage/morlon/) | [EN](https://xiff.github.io/Le-lac/plage/morlon/en/) |
 
-### Lacs de Sion
+### Sion – Domaine des Îles
 
 | Plage | Français | English |
 |---|---|---|
 | Domaine des Îles | [https://xiff.github.io/Le-lac/plage/domaine-des-iles/](https://xiff.github.io/Le-lac/plage/domaine-des-iles/) | [EN](https://xiff.github.io/Le-lac/plage/domaine-des-iles/en/) |
-| Lac de Montorge | [https://xiff.github.io/Le-lac/plage/lac-de-montorge/](https://xiff.github.io/Le-lac/plage/lac-de-montorge/) | [EN](https://xiff.github.io/Le-lac/plage/lac-de-montorge/en/) |
 
 ### Blog
 
@@ -225,7 +224,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
   Le titre d’accueil vient de l’activité la mieux notée (ou orage, bise, journée terrasse), avec plusieurs phrases
   qui tournent à chaque affichage.
 - **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage
-  (modèle 3D : Léman, Bienne, Morat, Neuchâtel ; 1D pour la Gruyère, une valeur pour tout le lac ; aucun modèle pour les lacs de Sion).
+  (modèle 3D : Léman, Bienne, Morat, Neuchâtel ; 1D pour la Gruyère, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
   Une tâche GitHub (`.github/workflows/eau.yml`, toutes les 3 h) écrit `eau.json`, `qualite.json`,
   les pages par plage et le sitemap.
 - **La météo** : Open-Meteo, lue directement par le navigateur.
@@ -243,7 +242,8 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `index.html` | L’app (une seule page, sans framework ni compilation) |
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
-| `spots.js` | Les 97 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
+| `spots.js` | Les 96 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |

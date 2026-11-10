@@ -553,7 +553,7 @@ async function charger() {
     const heures = (m.hourly?.time ?? []).map((t, i) => { const h = lire(m.hourly, i, eau); return h && { ...h, jour: m.hourly.is_day?.[i] !== 0, qualite: q?.qualite, heure: String(t).slice(11, 13) + 'h' }; }).filter(Boolean);
     etat = { ...etat, c, heures, heure: m.current.time.slice(11, 16) };
     $('releve').innerHTML = navigator.onLine ? T.releve(etat.heure) : icone('horsligne') + T.horsLigne(etat.heure);
-    const sansModele = !LACS[lacDe(spot())].eau; // petits lacs de Sion : pas de modèle, on ne devine pas
+    const sansModele = !LACS[lacDe(spot())].eau; // Domaine des Îles (Sion) : pas de modèle, on ne devine pas
     $('eau').textContent = eau == null ? (sansModele ? '–' : '?') : eau.toFixed(1) + '°';
     $('eau').nextElementSibling.textContent = sansModele ? T.eauSansModele : T.eau;
     const k = ciel(c.code, m.current.is_day !== 0);
