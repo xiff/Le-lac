@@ -1,0 +1,23 @@
+name: Photos (Wikimedia Commons)
+# Télécharge des photos libres dans presentation/img (le réseau de développement est limité par Wikimedia).
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          UA="MonLac-photos/1.0 (https://github.com/xiff/Le-lac)"
+          curl -fsSL -A "$UA" -o presentation/img/apres-bain.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Henri_kuprashvili_-_The_Winter_Swimming_2014.JPG/1920px-Henri_kuprashvili_-_The_Winter_Swimming_2014.JPG"
+          sleep 5
+          curl -fsSL -A "$UA" -o presentation/img/gruyere.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Lac_de_la_Gruy%C3%A8re_july_2014.jpg/1920px-Lac_de_la_Gruy%C3%A8re_july_2014.jpg"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add presentation/img
+          git diff --cached --quiet && exit 0
+          git commit -m "Photos : après-bain et lac de la Gruyère (Wikimedia Commons)"
+          git pull --rebase origin main
+          git push
