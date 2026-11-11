@@ -293,6 +293,20 @@ Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 
 | Plage | Français | English |
 |---|---|---|
+| Hünenberg | [https://monlac.ch/plage/huenenberg/](https://monlac.ch/plage/huenenberg/) | [EN](https://monlac.ch/plage/huenenberg/en/) |
+| Buonas | [https://monlac.ch/plage/buonas/](https://monlac.ch/plage/buonas/) | [EN](https://monlac.ch/plage/buonas/en/) |
+| Risch – Zweiern | [https://monlac.ch/plage/zweiern/](https://monlac.ch/plage/zweiern/) | [EN](https://monlac.ch/plage/zweiern/en/) |
+| Cham – Hirsgarten | [https://monlac.ch/plage/cham-hirsgarten/](https://monlac.ch/plage/cham-hirsgarten/) | [EN](https://monlac.ch/plage/cham-hirsgarten/en/) |
+| Cham | [https://monlac.ch/plage/cham/](https://monlac.ch/plage/cham/) | [EN](https://monlac.ch/plage/cham/en/) |
+| Immensee | [https://monlac.ch/plage/immensee/](https://monlac.ch/plage/immensee/) | [EN](https://monlac.ch/plage/immensee/en/) |
+| Zoug – Brüggli | [https://monlac.ch/plage/zug-brueggli/](https://monlac.ch/plage/zug-brueggli/) | [EN](https://monlac.ch/plage/zug-brueggli/en/) |
+| Zoug – Strandbad | [https://monlac.ch/plage/zug-strandbad/](https://monlac.ch/plage/zug-strandbad/) | [EN](https://monlac.ch/plage/zug-strandbad/en/) |
+| Zoug – Männerbadi | [https://monlac.ch/plage/zug-maennerbadi/](https://monlac.ch/plage/zug-maennerbadi/) | [EN](https://monlac.ch/plage/zug-maennerbadi/en/) |
+| Zoug – Seeliken | [https://monlac.ch/plage/zug-seeliken/](https://monlac.ch/plage/zug-seeliken/) | [EN](https://monlac.ch/plage/zug-seeliken/en/) |
+| Oberwil – Tellenörtli | [https://monlac.ch/plage/oberwil-tellenoertli/](https://monlac.ch/plage/oberwil-tellenoertli/) | [EN](https://monlac.ch/plage/oberwil-tellenoertli/en/) |
+| Oberwil – Trubikon | [https://monlac.ch/plage/oberwil-trubikon/](https://monlac.ch/plage/oberwil-trubikon/) | [EN](https://monlac.ch/plage/oberwil-trubikon/en/) |
+| Walchwil – Lido | [https://monlac.ch/plage/walchwil-lido/](https://monlac.ch/plage/walchwil-lido/) | [EN](https://monlac.ch/plage/walchwil-lido/en/) |
+| Walchwil | [https://monlac.ch/plage/walchwil/](https://monlac.ch/plage/walchwil/) | [EN](https://monlac.ch/plage/walchwil/en/) |
 | Arth | [https://monlac.ch/plage/arth/](https://monlac.ch/plage/arth/) | [EN](https://monlac.ch/plage/arth/en/) |
 
 ### Lac d’Ägeri
@@ -448,7 +462,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 206 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 220 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |
