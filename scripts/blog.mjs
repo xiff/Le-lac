@@ -91,7 +91,7 @@ ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\
   </ul></section>
   <a class="bouton" href="${liens('{app}', L, r)}">${t.voir}</a>
 </main>
-${pied(L, r, L === 'en' ? '../' : 'en/')}
+${pied(L, r, { fr: '../', en: 'en/' })}
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
@@ -140,7 +140,7 @@ g.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
   g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.grille li').forEach((li) => { li.hidden = !!b.dataset.theme && li.dataset.theme !== b.dataset.theme; }); };
 </script>
-${pied(L, r, L === 'en' ? '../' : 'en/')}
+${pied(L, r, { fr: '../', en: 'en/' })}
 </body>
 </html>
 `;
