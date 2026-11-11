@@ -130,10 +130,10 @@ export function valeurProche(serie, quand = Date.now()) {
 export const TOUR = ['bains-des-paquis', 'pregny-chambesy', 'bellevue', 'genthod', 'versoix', 'celigny', 'mies', 'coppet', 'nyon', 'prangins', 'gland', 'dully', 'rolle', 'perroy', 'allaman', 'buchillon', 'saint-prex', 'tolochenaz', 'morges', 'preverenges', 'saint-sulpice', 'lausanne-vidy', 'lausanne-ouchy', 'lausanne-bellerive', 'pully', 'paudex', 'lutry', 'villette', 'cully-moratel', 'rivaz', 'saint-saphorin', 'corseaux', 'vevey', 'la-tour-de-peilz', 'montreux-clarens', 'veytaux', 'villeneuve', 'noville', 'le-bouveret', 'saint-gingolph', 'meillerie', 'lugrin', 'maxilly', 'neuvecelle', 'evian', 'publier-amphion', 'thonon-saint-disdille', 'thonon', 'anthy-sur-leman', 'margencel', 'sciez', 'excenevex', 'yvoire', 'nernier', 'messery', 'chens-sur-leman', 'hermance', 'anieres', 'corsier-port', 'collonge-bellerive-la-savonniere', 'cologny', 'tropical-corner', 'plage-des-eaux-vives', 'baby-plage', 'geneve-plage'];
 
 // Projection simple (équirectangulaire autour de 46,4° N) vers un cadre de largeur donnée.
-export function projeter(largeur) {
-  const leman = SPOTS.filter((s) => lacDe(s) === 'leman'); // la carte dessine le Léman
-  const k = Math.cos((46.4 * Math.PI) / 180), lons = leman.map((s) => s.lon), lats = leman.map((s) => s.lat);
-  const x0 = Math.min(...lons), x1 = Math.max(...lons), y0 = Math.min(...lats), y1 = Math.max(...lats), m = 0.04;
+export function projeter(largeur, points = SPOTS.filter((s) => lacDe(s) === 'leman')) { // par défaut, les plages du Léman
+  const lons = points.map((s) => s.lon), lats = points.map((s) => s.lat);
+  const x0 = Math.min(...lons), x1 = Math.max(...lons), y0 = Math.min(...lats), y1 = Math.max(...lats);
+  const k = Math.cos((((y0 + y1) / 2) * Math.PI) / 180), m = Math.max(x1 - x0, y1 - y0) * 0.054; // marge : 0.04° pour le Léman, comme avant
   const echelle = largeur / ((x1 - x0) * k + 2 * m);
   return { hauteur: ((y1 - y0) + 2 * m) * echelle, xy: (s) => [((s.lon - x0) * k + m) * echelle, ((y1 - s.lat) + m) * echelle] };
 }
