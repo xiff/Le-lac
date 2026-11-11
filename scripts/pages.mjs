@@ -13,7 +13,7 @@ const TXT = {
   fr: {
     titre: (n) => `Température de l’eau à ${n} aujourd’hui`, 
     desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
-    retour: '← Toutes les plages', attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
+    attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
     releve: 'conditions mises à jour toutes les 3 heures', ouvrir: (n) => `Ouvrir ${n} dans l’app`, act: 'Sur l’eau aujourd’hui',
     actsVide: 'Baignade, paddle, voile et bain d’hiver : la note de chaque activité s’affiche ici.', voisines: 'Les plages voisines',
     lieux: 'Un verre ou un repas dans le coin', saison: ' · ouvert en saison', donnees: 'D’où viennent ces chiffres',
@@ -25,7 +25,7 @@ const TXT = {
   en: {
     titre: (n) => `Water temperature at ${n} today`, 
     desc: (n, r, l) => `Water temperature at 70 cm at ${n} (${r === l ? l : `${r}, ${l}`}), wind, bise and today’s verdict for swimming, paddle and sailing. Updated every 3 hours.`,
-    retour: '← All beaches', attente: 'Checking the lake…', eau: 'water at 70 cm', air: 'air', vent: 'wind km/h',
+    attente: 'Checking the lake…', eau: 'water at 70 cm', air: 'air', vent: 'wind km/h',
     releve: 'conditions updated every 3 hours', ouvrir: (n) => `Open ${n} in the app`, act: 'On the water today',
     actsVide: 'Swimming, paddle, sailing and winter swim: each activity’s rating appears here.', voisines: 'Nearby beaches',
     lieux: 'A drink or a meal nearby', saison: ' · open in season', donnees: 'Where these figures come from',
@@ -66,7 +66,7 @@ export function page(s, langue = 'fr') {
 </head>
 <body data-id="${s.id}">
 <header>
-  <div class="haut"><a class="retour" href="${en ? '../../en/' : '../'}">${t.retour}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="marque" href="${r}../../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${esc(titre)}</h1>
   <p class="verdict" id="verdict">${t.attente}</p>
   <div class="mesures">
@@ -127,7 +127,7 @@ export function liste(langue = 'fr') {
 </head>
 <body class="large">
 <header>
-  <div class="haut"><a class="retour" href="${r}../?lang=${en ? 'en' : 'fr'}">← ${en ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="marque" href="${r}../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a><a class="retour" href="${en ? '../' : 'en/'}" hreflang="${en ? 'fr' : 'en'}" lang="${en ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.liste}</h1>
   <p class="chapo">${esc(t.listeDesc)}</p>
   <form class="cherche" id="cherche" action="${r}../" method="get" role="search">

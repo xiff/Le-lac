@@ -74,7 +74,7 @@ export function article(a, L = 'fr') {
   return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: { fr: urlArticle(a.slug, 'fr'), en: urlArticle(a.slug, 'en') }, image, type: 'article', ld, r })}
 <body>
 <header>
-  <div class="haut"><a class="retour" href="${r}blog/${L === 'en' ? 'en/' : ''}">← ${t.blog}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
   <nav class="ariane" aria-label="${t.ariane}"><a href="${liens('{app}', L, r)}">${t.nom}</a> › <a href="${r}blog/${L === 'en' ? 'en/' : ''}">${t.blog}</a></nav>
   <h1>${esc(c.h1)}</h1>
   <p class="releve">${t.par} ${L === 'en' ? 'My Lake team' : t.nom} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
@@ -116,7 +116,7 @@ export function liste(L = 'fr') {
   return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: { fr: urlBlog('fr'), en: urlBlog('en') }, image: `${BASE}${ARTICLES[0].image}`, type: 'website', ld, r })}
 <body class="large">
 <header>
-  <div class="haut"><a class="retour" href="${liens('{app}', L, r)}">← ${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
   <h1>${t.titreBlog}</h1>
   <p class="chapo">${esc(t.descBlog)}</p>
 </header>

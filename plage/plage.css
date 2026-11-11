@@ -10,6 +10,9 @@ a { color: inherit; text-underline-offset: 3px; }
 /* L'en-tête bleu suit la colonne de lecture (680 px) sur grand écran. */
 header { background: var(--lac); color: var(--creme); padding: calc(18px + env(safe-area-inset-top)) max(20px, calc((100% - 640px) / 2)) 36px; }
 .haut { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+/* Logo Mon Lac, identique à celui de l'app */
+.marque { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1 "Young Serif", Georgia, serif; letter-spacing: -0.01em; text-decoration: none; }
+.marque svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .retour { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; }
 h1, h2 { font-family: "Young Serif", Georgia, serif; font-weight: 400; margin: 0; text-wrap: balance; }
 h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.08; letter-spacing: -0.02em; }

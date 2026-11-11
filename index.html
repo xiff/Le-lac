@@ -207,7 +207,11 @@
   footer { color: var(--doux); font-size: .75rem; margin-top: 28px; }
   footer a { color: inherit; text-underline-offset: 2px; }
   footer .lien-qualite { display: block; margin-top: 8px; }
-  .langue { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; padding: 0; border: 0; background: none; color: var(--lac-vif); font-weight: 600; font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
+  /* Liens du bas : une rangée, même taille, cibles de 44 px */
+  .liens { display: flex; flex-wrap: wrap; align-items: center; column-gap: 18px; margin-top: 4px; font-size: .8rem; }
+  .liens span { display: contents; }
+  .liens a, .langue { display: inline-flex; align-items: center; min-height: 44px; }
+  .langue { padding: 0; border: 0; background: none; font: inherit; color: var(--lac-vif); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
 
   @media (prefers-reduced-motion: reduce) {
     .panneau, .lieu-ent, .toast, .bienvenue, .compteur, #favori svg { transform: none !important; }
@@ -308,7 +312,7 @@
       <span data-th="pied">      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
       Indicatif : le lac a toujours le dernier mot.</span>
       <a class="lien-qualite" id="lien-qualite" data-t="verifierQualite" href="https://www.cipel.org/carte-des-plages/" target="_blank" rel="noopener">Qualité de l’eau : vérifier à la source</a>
-      <button class="langue" id="langue" lang="en">English</button>
+      <div class="liens"><span data-th="liens"></span><button class="langue" id="langue" lang="en">English</button></div>
     </footer>
   </div>
 
