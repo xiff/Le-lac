@@ -48,15 +48,23 @@ export function simplifier(p, tol) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
+  // Nominatim renvoie le polygone déjà simplifié (polygon_threshold, en degrés) ; une requête par seconde au plus.
+  const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère' };
   const out = {};
-  for (const [lac, [nom, b]] of Object.entries(LACS)) {
-    const j = await overpass(`[out:json][timeout:120];(relation["natural"="water"]["name"~"${nom}"](${b});way["natural"="water"]["name"~"${nom}"](${b}););out geom;`);
-    const candidats = j.elements.map((e) => anneau(e.type === 'way' ? [e.geometry] : e.members.filter((m) => m.role === 'outer' && m.geometry).map((m) => m.geometry)));
-    const r = candidats.sort((x, y) => y.length - x.length)[0] ?? [];
-    const s = simplifier(r, 0.0008).map(([x, y]) => [+x.toFixed(5), +y.toFixed(5)]);
-    console.log(lac, j.elements.map((e) => `${e.type}/${e.id} ${e.tags?.name}`).join(' ; '), '→', r.length, 'points, simplifié', s.length);
-    if (s.length > 10) out[lac] = s;
-    await pause(5000);
+  for (const [lac, q] of Object.entries(Q)) {
+    const u = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&countrycodes=ch&format=json&polygon_geojson=1&polygon_threshold=0.0008&limit=5`;
+    const r = await fetch(u, { headers: { 'User-Agent': 'MonLac-contours/1.0 (https://github.com/xiff/Le-lac)' } });
+    const j = r.ok ? await r.json() : [];
+    const e = j.find((x) => x.class === 'natural' && x.type === 'water' && /Polygon/.test(x.geojson?.type));
+    console.log(lac, r.status, j.map((x) => `${x.class}/${x.type} ${x.osm_type}/${x.osm_id} ${x.geojson?.type}`).join(' ; '));
+    if (e) {
+      const polys = e.geojson.type === 'Polygon' ? [e.geojson.coordinates] : e.geojson.coordinates;
+      const ext = polys.map((p) => p[0]).sort((a, b) => b.length - a.length)[0];
+      out[lac] = simplifier(ext, 0.0008).map(([x, y]) => [+x.toFixed(5), +y.toFixed(5)]);
+      console.log(' →', ext.length, 'points, simplifié', out[lac].length);
+    }
+    await pause(2000);
   }
+  if (!Object.keys(out).length) throw new Error('aucun contour');
   await writeFile('contours.js', `// Contours des lacs (OpenStreetMap, ODbL), [lon, lat], générés par scripts/contours.mjs.\nexport const CONTOURS = ${JSON.stringify(out)};\n`);
 }
