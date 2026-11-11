@@ -210,6 +210,7 @@
   /* Liens du bas : une rangée, même taille, cibles de 44 px */
   .liens { display: flex; flex-wrap: wrap; align-items: center; column-gap: 18px; margin-top: 4px; font-size: .8rem; }
   .liens span { display: contents; }
+  #langues { display: contents; }
   .liens a, .langue { display: inline-flex; align-items: center; min-height: 44px; }
   .langue { padding: 0; border: 0; background: none; font: inherit; color: var(--lac-vif); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
 
@@ -312,7 +313,7 @@
       <span data-th="pied">      Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>
       Indicatif : le lac a toujours le dernier mot.</span>
       <a class="lien-qualite" id="lien-qualite" data-t="verifierQualite" href="https://www.cipel.org/carte-des-plages/" target="_blank" rel="noopener">Qualité de l’eau : vérifier à la source</a>
-      <div class="liens"><span data-th="liens"></span><button class="langue" id="langue" lang="en">English</button></div>
+      <div class="liens"><span data-th="liens"></span><span id="langues" role="group" aria-label="Langue / Language"></span></div>
     </footer>
   </div>
 
@@ -359,8 +360,9 @@
 import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
-import { SPOTS, valeurProche, TOUR, projeter, LACS, lacDe, REGIONS_EN } from './spots.js';
-import { LANGUE, T, AUTRE } from './textes.js';
+import { SPOTS, valeurProche, TOUR, projeter, LACS, lacDe, REGIONS, nomLac } from './spots.js';
+import { LANGUE, T, AUTRE, LANGUES, LOCALE } from './textes.js';
+import { texteLieu, villeDe } from './traductions.js';
 const { CONTOURS } = await import('./contours.js').catch(() => ({ CONTOURS: {} })); // contours des autres lacs ; sans eux, pas de carte
 
 document.documentElement.lang = LANGUE;
@@ -368,9 +370,12 @@ document.title = T.titre;
 document.querySelectorAll('[data-t]').forEach((e) => (e.textContent = T[e.dataset.t]));
 document.querySelectorAll('[data-th]').forEach((e) => (e.innerHTML = T[e.dataset.th]));
 document.querySelectorAll('[data-ta]').forEach((e) => e.setAttribute('aria-label', T[e.dataset.ta]));
-document.getElementById('langue').textContent = T.autreLangue;
-document.getElementById('langue').lang = AUTRE;
-document.getElementById('langue').onclick = () => { try { localStorage.setItem('langue', AUTRE); } catch {} location.reload(); };
+// Sélecteur : les trois autres langues, chacune dans sa propre langue.
+document.getElementById('langues').replaceChildren(...LANGUES.filter(([c]) => c !== LANGUE).map(([c, nom]) => {
+  const b = document.createElement('button'); b.className = 'langue'; b.textContent = nom; b.lang = c;
+  b.onclick = () => { try { localStorage.setItem('langue', c); } catch {} location.reload(); };
+  return b;
+}));
 
 const LIBELLES = T.libelles;
 const NOM = (a, c = etat?.c) => T.activites[cle(a, c ?? {})];
@@ -385,7 +390,7 @@ let etat = null;
 
 const sel = $('spot');
 for (const r of [...new Set(SPOTS.map((s) => s.region))]) {
-  const g = document.createElement('optgroup'); g.label = (LANGUE === 'en' ? REGIONS_EN[r] : r) ?? r;
+  const g = document.createElement('optgroup'); g.label = REGIONS[LANGUE][r] ?? r;
   SPOTS.forEach((s, i) => s.region === r && g.append(new Option(s.nom, i)));
   sel.append(g);
 }
@@ -442,8 +447,8 @@ $('filtres').onclick = (e) => {
   afficherLieux();
 };
 const carteLieu = (l, i) => `<article class="lieu lieu-ent" style="transition-delay:${Math.min(i, 6) * 40}ms">
-  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}${fermeture(l, undefined, LANGUE) ? `<span class="badge t1">${fermeture(l, undefined, LANGUE)}</span>` : ''}</div>
-  <b>${l.nom}</b><p>${LANGUE === 'en' ? l.en : l.note}</p>
+  <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${villeDe(l.ville, LANGUE)}${fermeture(l, undefined, LANGUE) ? `<span class="badge t1">${fermeture(l, undefined, LANGUE)}</span>` : ''}</div>
+  <b>${l.nom}</b><p>${texteLieu(l, LANGUE)}</p>
   <a href="${lienCarte(l)}" target="_blank" rel="noopener">${icone('cap')}${T.itineraire}</a>${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">${T.reserver}</a>` : ''}</article>`;
 // Distance (km) entre deux points ; une zone (lieux sans coordonnées) est placée au centre de ses plages.
 const km = (a, b) => 111.2 * Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.lat * Math.PI) / 180));
@@ -484,9 +489,9 @@ function afficherFiltresLoc() {
 const carteLoc = (l, i) => {
   const s = SPOTS.find((x) => x.id === l.spot);
   return `<article class="lieu lieu-ent" style="transition-delay:${Math.min(i, 6) * 40}ms">
-  <div class="ville">${icone('paddle')}${l.ville}${ouvertLoc(l) ? '' : `<span class="badge t1">${T.horsSaison}</span>`}</div>
+  <div class="ville">${icone('paddle')}${villeDe(l.ville, LANGUE)}${ouvertLoc(l) ? '' : `<span class="badge t1">${T.horsSaison}</span>`}</div>
   <b>${l.nom}</b><div class="tags">${l.activites.map((a) => `<span>${ACTIVITES_LOC[a][LANGUE]}</span>`).join('')}</div>
-  <p>${LANGUE === 'en' ? l.en : l.note}</p>
+  <p>${texteLieu(l, LANGUE, 'loc')}</p>
   <div class="liens">${l.site ? `<a href="${l.site}" target="_blank" rel="noopener">${icone('cap')}${T.siteLoc}</a>` : `<a href="${lienCarte({ nom: l.nom, ville: l.ville })}" target="_blank" rel="noopener">${icone('cap')}${T.itineraire}</a>`}${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">${T.reserver}</a>` : ''}<a class="source" href="${l.source}" target="_blank" rel="noopener">${T.sourceLoc}</a></div>
   </article>`;
 };
@@ -593,7 +598,7 @@ async function charger() {
     $('defi').hidden = !estHiver(c);
     const sauna = LOCATIONS.find((l) => l.activites.includes('sauna') && ouvertLoc(l) && l.spot && SPOTS.find((x) => x.id === l.spot)?.zone === spot().zone);
     $('sauna').hidden = !(sauna && estHiver(c));
-    if (sauna) { $('sauna').href = sauna.site ?? sauna.source; $('sauna').target = '_blank'; $('sauna').rel = 'noopener'; $('sauna').innerHTML = `<b>${T.saunaTitre(Math.round(eau ?? 0), sauna.nom)}</b><span>${LANGUE === 'en' ? sauna.en : sauna.note}</span>`; }
+    if (sauna) { $('sauna').href = sauna.site ?? sauna.source; $('sauna').target = '_blank'; $('sauna').rel = 'noopener'; $('sauna').innerHTML = `<b>${T.saunaTitre(Math.round(eau ?? 0), sauna.nom)}</b><span>${texteLieu(sauna, LANGUE, 'loc')}</span>`; }
     $('terrasse').hidden = !(c.code <= 2 && c.air >= 18 && c.rafales < 30);
   } catch {
     $('verdict').textContent = T.pasDeReponse;
@@ -660,10 +665,10 @@ function carteLac(lac) {
 async function afficherCarte() {
   const eau = (await donneesEau())?.spots ?? {}, lac = lacDe(spot()), carte = carteLac(lac);
   $('carte').hidden = $('h-carte').hidden = !carte;
-  if (carte) $('h-carte').textContent = lac === 'leman' ? T.carteTitre : T.carteLac(LANGUE === 'en' ? LACS[lac].en : LACS[lac].nom);
+  if (carte) $('h-carte').textContent = lac === 'leman' ? T.carteTitre : T.carteLac(nomLac(lac, LANGUE));
   const vals = SPOTS.filter((s) => lacDe(s) === lac).map((s) => ({ s, t: valeurProche(eau[s.id]) })).filter((x) => x.t != null);
   $('extremes').hidden = !vals.length || Math.min(...vals.map((x) => x.t)) === Math.max(...vals.map((x) => x.t));
-  if (!carte) { if (!$('extremes').hidden) { const v = [...vals].sort((a, b) => a.t - b.t), f1 = (t) => t.toLocaleString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); $('extremes').textContent = T.extremesLac(v.at(-1).s.nom, f1(v.at(-1).t), v[0].s.nom, f1(v[0].t)); } return; }
+  if (!carte) { if (!$('extremes').hidden) { const v = [...vals].sort((a, b) => a.t - b.t), f1 = (t) => t.toLocaleString(LOCALE[LANGUE], { minimumFractionDigits: 1, maximumFractionDigits: 1 }); $('extremes').textContent = T.extremesLac(v.at(-1).s.nom, f1(v.at(-1).t), v[0].s.nom, f1(v[0].t)); } return; }
   const min = Math.min(...vals.map((x) => x.t)), max = Math.max(...vals.map((x) => x.t));
   $('carte').innerHTML = `<svg viewBox="0 0 400 ${carte.proj.hauteur.toFixed(0)}" aria-hidden="true"><path class="eau-lac" d="${carte.d}"/>${SPOTS.filter((s) => lacDe(s) === lac).map((s) => {
     const [x, y] = carte.proj.xy(s), t = valeurProche(eau[s.id]), f = t == null || max === min ? 0.5 : (t - min) / (max - min);
@@ -671,7 +676,7 @@ async function afficherCarte() {
   }).join('')}</svg>`;
   if (vals.length) {
     const chaud = vals.find((x) => x.t === max).s.nom, froid = vals.find((x) => x.t === min).s.nom;
-    const f1 = (v) => v.toLocaleString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const f1 = (v) => v.toLocaleString(LOCALE[LANGUE], { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     $('extremes').textContent = T.extremes(chaud, f1(max), froid, f1(min));
   }
 }
@@ -732,7 +737,7 @@ function lireListe(sa) {
 }
 const ecrireListe = (l, sa) => { try { localStorage.setItem(cleDefi(sa), JSON.stringify(l)); } catch {} };
 const saisons = () => { const a = new Set([saison(new Date())]); try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('bains-liste-')) a.add(k.slice(12)); } } catch {} return [...a].sort().reverse(); };
-const dateBain = (d, annee = false) => (d ? new Date(d).toLocaleDateString(LANGUE === 'en' ? 'en-GB' : 'fr-CH', annee ? { day: 'numeric', month: 'long', year: 'numeric' } : { weekday: 'short', day: 'numeric', month: 'long' }) : T.dateInconnue);
+const dateBain = (d, annee = false) => (d ? new Date(d).toLocaleDateString(LOCALE[LANGUE], annee ? { day: 'numeric', month: 'long', year: 'numeric' } : { weekday: 'short', day: 'numeric', month: 'long' }) : T.dateInconnue);
 function afficherDefi() {
   const n = lireListe().length;
   $('compteur').textContent = n;

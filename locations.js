@@ -3,10 +3,10 @@
 // site = site officiel quand il est confirmé ; source = page qui atteste l'offre.
 // reserver (optionnel) : lien de réservation d'un partenaire ; le bouton n'apparaît que s'il est rempli.
 export const ACTIVITES_LOC = {
-  paddle: { fr: 'Paddle', en: 'Paddle' }, kayak: { fr: 'Kayak', en: 'Kayak' }, pedalo: { fr: 'Pédalo', en: 'Pedal boat' },
-  bateau: { fr: 'Bateau', en: 'Boat' }, voile: { fr: 'Voile', en: 'Sailing' }, windsurf: { fr: 'Windsurf', en: 'Windsurf' },
-  wing: { fr: 'Wing foil', en: 'Wing foil' }, wakeboard: { fr: 'Wakeboard', en: 'Wakeboard' }, wakesurf: { fr: 'Wakesurf', en: 'Wakesurf' },
-  ski: { fr: 'Ski nautique', en: 'Water-skiing' }, sauna: { fr: 'Sauna', en: 'Sauna' },
+  paddle: { fr: 'Paddle', en: 'Paddle', de: 'Paddeln', it: 'Paddle' }, kayak: { fr: 'Kayak', en: 'Kayak', de: 'Kajak', it: 'Kayak' }, pedalo: { fr: 'Pédalo', en: 'Pedal boat', de: 'Tretboot', it: 'Pedalò' },
+  bateau: { fr: 'Bateau', en: 'Boat', de: 'Boot', it: 'Barca' }, voile: { fr: 'Voile', en: 'Sailing', de: 'Segeln', it: 'Vela' }, windsurf: { fr: 'Windsurf', en: 'Windsurf', de: 'Windsurfen', it: 'Windsurf' },
+  wing: { fr: 'Wing foil', en: 'Wing foil', de: 'Wing-Foil', it: 'Wing foil' }, wakeboard: { fr: 'Wakeboard', en: 'Wakeboard', de: 'Wakeboard', it: 'Wakeboard' }, wakesurf: { fr: 'Wakesurf', en: 'Wakesurf', de: 'Wakesurf', it: 'Wakesurf' },
+  ski: { fr: 'Ski nautique', en: 'Water-skiing', de: 'Wasserski', it: 'Sci nautico' }, sauna: { fr: 'Sauna', en: 'Sauna', de: 'Sauna', it: 'Sauna' },
 };
 
 export const LOCATIONS = [

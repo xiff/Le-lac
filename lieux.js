@@ -46,8 +46,8 @@ export function fermeture(l, d = new Date(), langue = 'fr') {
   if (!l.mois) return null;
   const m = d.getMonth() + 1, [a, b] = l.mois;
   if (m >= a && m <= b) return null;
-  const mois = new Date(2026, a - 1, 1).toLocaleDateString(langue === 'en' ? 'en-GB' : 'fr-CH', { month: 'long' });
-  return langue === 'en' ? `Closed until ${mois}` : `Fermé jusqu’en ${mois}`;
+  const mois = new Date(2026, a - 1, 1).toLocaleDateString({ en: 'en-GB', de: 'de-CH', it: 'it-CH' }[langue] ?? 'fr-CH', { month: 'long' });
+  return { en: `Closed until ${mois}`, de: `Geschlossen bis ${mois}`, it: `Chiuso fino a ${mois}` }[langue] ?? `Fermé jusqu’en ${mois}`;
 }
 
 // Plage la plus proche d'une position (distance à plat, suffisante à l'échelle du lac).

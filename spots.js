@@ -32,9 +32,25 @@ export const LACS = {
   sion: { nom: 'Sion – Domaine des Îles', en: 'Sion – Domaine des Îles', eau: null },
 };
 export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
-// Noms anglais des régions (les plages des autres lacs ont pour région le nom du lac).
+// Noms des régions et des lacs dans chaque langue, indexés par le nom français (spots.js nomme tout en français).
+const NOMS_DE = { leman: 'Genfersee', neuchatel: 'Neuenburgersee', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Greyerzersee', lugano: 'Luganersee', majeur: 'Lago Maggiore',
+  joux: 'Lac de Joux', bret: 'Lac de Bret', brenets: 'Lac des Brenets', zurich: 'Zürichsee', greifensee: 'Greifensee', lucerne: 'Vierwaldstättersee', zoug: 'Zugersee', aegeri: 'Ägerisee',
+  hallwil: 'Hallwilersee', thoune: 'Thunersee', brienz: 'Brienzersee', sempach: 'Sempachersee', baldegg: 'Baldeggersee', sarnen: 'Sarnersee', silvaplana: 'Silvaplanersee',
+  constance: 'Bodensee', untersee: 'Bodensee – Untersee', sion: 'Sitten – Domaine des Îles' };
+const NOMS_IT = { leman: 'Lago Lemano', neuchatel: 'Lago di Neuchâtel', bienne: 'Lago di Bienne', morat: 'Lago di Morat', gruyere: 'Lago della Gruyère', lugano: 'Lago di Lugano', majeur: 'Lago Maggiore',
+  joux: 'Lac de Joux', bret: 'Lac de Bret', brenets: 'Lac des Brenets', zurich: 'Lago di Zurigo', greifensee: 'Greifensee', lucerne: 'Lago dei Quattro Cantoni', zoug: 'Lago di Zugo', aegeri: 'Lago di Ägeri',
+  hallwil: 'Lago di Hallwil', thoune: 'Lago di Thun', brienz: 'Lago di Brienz', sempach: 'Lago di Sempach', baldegg: 'Lago di Baldegg', sarnen: 'Lago di Sarnen', silvaplana: 'Lago di Silvaplana',
+  constance: 'Lago di Costanza', untersee: 'Lago di Costanza – Untersee', sion: 'Sion – Domaine des Îles' };
+const lacs = (N) => Object.fromEntries(Object.entries(LACS).filter(([k]) => N[k]).map(([k, l]) => [l.nom, N[k]]));
 export const REGIONS_EN = { 'Genève': 'Geneva', 'Morges et Lausanne': 'Morges & Lausanne', 'Rive française': 'French shore',
   ...Object.fromEntries(Object.values(LACS).map((l) => [l.nom, l.en])) };
+export const REGIONS = {
+  fr: {}, en: REGIONS_EN,
+  de: { 'Genève': 'Genf', 'Morges et Lausanne': 'Morges und Lausanne', 'Rive française': 'Französisches Ufer', ...lacs(NOMS_DE) },
+  it: { 'Genève': 'Ginevra', 'Morges et Lausanne': 'Morges e Losanna', 'Rive française': 'Riva francese', ...lacs(NOMS_IT) },
+};
+// Nom d'un lac dans la langue donnée (français par défaut).
+export const nomLac = (cle, langue) => (langue === 'en' ? LACS[cle].en : langue === 'de' ? NOMS_DE[cle] : langue === 'it' ? NOMS_IT[cle] : null) ?? LACS[cle].nom;
 
 export const SPOTS = [
   { id: 'pregny-chambesy', nom: 'Pregny-Chambésy', lat: 46.24265, lon: 6.15302, region: 'Genève', zone: 'geneve' },

@@ -1,4 +1,4 @@
-// Textes de l'interface en français et en anglais (expatriés et organisations internationales).
+// Textes de l'interface en français, anglais, allemand et italien.
 // Langue : choix mémorisé, sinon celle du téléphone ; français par défaut.
 const TEXTES = {
   fr: {
@@ -69,15 +69,88 @@ const TEXTES = {
     merciBain: (n) => `Respect. Swim #${n} logged.`, copie: 'Copied. Paste it in the group chat.', copieAussi: 'Message copied.', partageImpossible: 'Sharing isn’t available here.',
     partageConditions: (v, plage, eau, air, vent) => `${v} ${plage}: water ${eau}, air ${air}°, wind ${vent} km/h.`, partageDefaut: 'Lake Geneva today at a glance.',
   },
+  de: {
+    titre: 'Mein See', partagerAria: 'Bedingungen teilen', plage: 'Badeplatz', localiserAria: 'Nächsten Badeplatz wählen',
+    chargement: 'Wir schauen auf den See…', eau: 'Wasser', eauSansModele: 'Wasser nicht gemessen', air: 'Luft', vent: 'Wind km/h',
+    bienvenueTitre: 'Willkommen am Wasser.', bienvenueTexte: 'Jeden Tag lesen wir Wind, Wasser und Bise und sagen dir, ob sich die Badehose lohnt. Fang mit deinem Badeplatz an.',
+    trouver: 'Meinen Badeplatz finden', plusTard: 'Ich wähle selbst', surLeau: 'Auf dem Wasser',
+    defiTitre: 'Winterbade-Challenge', jySuisAlle: 'Bad geschafft!', historique: 'Mein Verlauf', dateInconnue: 'Datum unbekannt', retirerBain: (d) => `Bad entfernen: ${d}`, bainRetire: 'Bad entfernt.', heures: 'Nächste 12 Stunden', heuresAria: 'Stundenprognose',
+    pied: 'Wetter <a href="https://open-meteo.com">Open-Meteo</a> · Wasser in 70 cm Tiefe: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), Modell alle 3 Std. aktualisiert.<br>Unverbindlich: Der See hat immer das letzte Wort.',
+    liens: '<a href="presentation/en/">Über uns</a><a href="plage/de/">Alle Badeplätze</a><a href="blog/en/">Blog</a>',
+    terrasse: 'Terrassenwetter. Schade, drinnen zu bleiben.', typeLieu: 'Art des Ortes', tout: 'Alle', bars: 'Bars', restos: 'Restaurants',
+    noteLieux: 'Öffnungszeiten und Saisons ändern sich: Ruf vorher an.', sections: 'Bereiche', ongletLac: 'Der See', ongletSortir: 'Ausgehen',
+    qualite: (cl, o) => `Badewasser ${cl} (${o})`, sourceGe: (d, p) => `Kanton Genf, Probe vom ${d}, ${p}`, classes: ['wird eingestuft', 'ausgezeichnet bis gut', 'gut bis ausreichend', 'kann vorübergehend verschmutzt sein', 'mangelhaft'],
+    eauMauvaise: 'Baden nicht empfohlen: schlechte Wasserqualität laut den letzten Proben.', eauPolluee: 'Das Wasser kann laut den letzten Proben vorübergehend verschmutzt sein: nach einem Gewitter meiden.',
+    ongletLouer: 'Mieten', typeLoc: 'Aktivität', noteLoc: 'Preise, Zeiten und Verfügbarkeit: Frag vorher beim Verleih nach.', horsSaison: 'Nebensaison', siteLoc: 'Website des Verleihs', sourceLoc: 'Quelle', aucunLoueur: 'Noch kein Verleih für diese Aktivität.',
+    louerLien: (a) => `In der Nähe mieten: ${a}`, saunaTitre: (e, n) => `Wasser bei ${e}°: ${n} wärmt dich danach wieder auf.`,
+    carteTitre: 'Der ganze Genfersee', carteLac: (l) => `Ganzer ${l}`, extremesLac: (c, tc, f, tf) => `Auf diesem See gerade: am wärmsten bei ${c}, ${tc}°, am kältesten bei ${f}, ${tf}°.`, extremes: (c, tc, f, tf) => `Am wärmsten: ${c}, ${tc}°. Am kältesten: ${f}, ${tf}°. Tippe auf einen Punkt, um hinzugehen.`,
+    mesPlages: 'Meine Badeplätze', favoriAjouter: (n) => `${n} zu meinen Badeplätzen hinzufügen`, favoriRetirer: (n) => `${n} aus meinen Badeplätzen entfernen`,
+    favoriAjoute: (n) => `${n} zu deinen Badeplätzen hinzugefügt.`, favoriRetire: (n) => `${n} aus deinen Badeplätzen entfernt.`,
+    proposerTitre: 'Fehlt eine Bar oder ein Restaurant?', proposerTexte: 'Sag uns, wo: Wir prüfen und ergänzen es. Es öffnet sich eine E-Mail an contact@monlac.ch.', pNom: 'Name des Ortes', pVille: 'Ort oder Badeplatz', pType: 'Art', pBar: 'Bar / Strandbar', pResto: 'Restaurant', pPourquoi: 'Warum du ihn magst (optional)', pEnvoyer: 'Diesen Ort vorschlagen', pMerci: 'Deine E-Mail ist bereit: einfach senden. Danke!',
+    yAller: 'Hinfahren', yAllerAria: (n) => `Route nach ${n}`, ciel: { soleil: 'Sonnig', lune: 'Klarer Himmel', eclaircie: 'Sonnige Abschnitte', 'lune-nuage': 'Ein paar Wolken', couvert: 'Bedeckt', brouillard: 'Nebel', bruine: 'Nieselregen', pluie: 'Regen', averses: 'Schauer', neige: 'Schnee', orage: 'Gewitter' },
+    verifierQualite: 'Wasserqualität: an der Quelle prüfen', autreLangue: 'Deutsch', libelles: ['Nein', 'Naja', 'Gut', 'Perfekt'],
+    activites: { baignade: 'Baden', paddle: 'Paddeln', voile: 'Segeln / Wing', hiver: 'Winterbaden', kite: 'Kitesurfen', wakeboard: 'Wakeboard', wakesurf: 'Wakesurf', windsurf: 'Windsurfen', foil: 'Foil', ski: 'Wasserski', bateau: 'Bootsausflug' },
+    mesActivites: 'Meine Aktivitäten', mesActivitesTexte: 'Baden bleibt immer dabei. Kreuz an, was du machst.',
+    ventDe: (d) => `Wind aus ${d}°`, releve: (h) => `Messung von ${h}`, horsLigne: (h) => `Offline · letzte Daten von ${h}`,
+    orage: 'Gewitter: alle raus aus dem Wasser.', bise: 'Bise weht: Wellen, Strömungen und zerzauste Haare.', rafales: 'Starke Böen: Halt dein Paddel fest.',
+    afficherHeures: 'In den nächsten Stunden anzeigen',
+    pasDeReponse: 'Der See antwortet nicht.', pasDeDonnees: 'Kein Netz und noch nichts gespeichert. Versuch es gleich noch einmal.',
+    heuresVides: 'Stundenprognose gerade nicht verfügbar. Der See behält seine Geheimnisse.',
+    pres: (n) => `In der Nähe von ${n}`, ailleurs: 'Etwas weiter weg, das Nächste zuerst', itineraire: 'Route', reserver: 'Buchen',
+    pasDeGeo: 'Kein Standort auf diesem Gerät.', cap: (n) => `Kurs auf ${n}.`, geoRefusee: 'Standort verweigert. Wähle deinen Badeplatz aus der Liste.',
+    bains: (n) => (n === 0 ? 'Noch kein Bad diese Saison.' : n === 1 ? '1 Bad diese Saison. Das erste ist das härteste.' : `${n} Bäder diese Saison. Die Schwäne respektieren dich.`),
+    partagerBains: 'Teilen', partageBains: (n, sa) => `Meine Winterbäder, Saison ${sa}: ${n} ${n > 1 ? 'Bäder' : 'Bad'}.`, quiMeSuit: 'Wer kommt nächstes Mal mit?',
+    merciBain: (n) => `Respekt. Bad Nr. ${n} eingetragen.`, copie: 'Kopiert. Füg es in den Gruppenchat ein.', copieAussi: 'Nachricht kopiert.', partageImpossible: 'Teilen ist hier nicht möglich.',
+    partageConditions: (v, plage, eau, air, vent) => `${v} ${plage}: Wasser ${eau}, Luft ${air}°, Wind ${vent} km/h.`, partageDefaut: 'Die Schweizer Seen heute auf einen Blick.',
+  },
+  it: {
+    titre: 'Il mio lago', partagerAria: 'Condividi le condizioni', plage: 'Spiaggia', localiserAria: 'Scegli la spiaggia più vicina',
+    chargement: 'Diamo un’occhiata al lago…', eau: 'acqua', eauSansModele: 'acqua non misurata', air: 'aria', vent: 'vento km/h',
+    bienvenueTitre: 'Benvenuto in riva all’acqua.', bienvenueTexte: 'Ogni giorno leggiamo vento, acqua e bise per dirti se vale la pena tirare fuori il costume. Comincia dalla tua spiaggia.',
+    trouver: 'Trova la mia spiaggia', plusTard: 'Scelgo io', surLeau: 'Sull’acqua',
+    defiTitre: 'Sfida bagno invernale', jySuisAlle: 'Bagno fatto!', historique: 'Il mio storico', dateInconnue: 'Data sconosciuta', retirerBain: (d) => `Rimuovi il bagno: ${d}`, bainRetire: 'Bagno rimosso.', heures: 'Prossime 12 ore', heuresAria: 'Previsioni ora per ora',
+    pied: 'Meteo <a href="https://open-meteo.com">Open-Meteo</a> · acqua a 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modello aggiornato ogni 3 ore.<br>Solo a titolo indicativo: l’ultima parola spetta sempre al lago.',
+    liens: '<a href="presentation/en/">Informazioni</a><a href="plage/it/">Tutte le spiagge</a><a href="blog/en/">Blog</a>',
+    terrasse: 'Tempo da terrazza. Peccato restare in casa.', typeLieu: 'Tipo di locale', tout: 'Tutti', bars: 'Bar', restos: 'Ristoranti',
+    noteLieux: 'Orari e stagioni cambiano: telefona prima di andare.', sections: 'Sezioni', ongletLac: 'Il lago', ongletSortir: 'Uscire',
+    qualite: (cl, o) => `Acqua di balneazione ${cl} (${o})`, sourceGe: (d, p) => `Cantone di Ginevra, analisi del ${d}, ${p}`, classes: ['in corso di classificazione', 'eccellente o buona', 'buona o sufficiente', 'può essere temporaneamente inquinata', 'scarsa'],
+    eauMauvaise: 'Balneazione sconsigliata: qualità dell’acqua scarsa secondo le ultime analisi.', eauPolluee: 'L’acqua può essere temporaneamente inquinata secondo le ultime analisi: evita il bagno dopo un temporale.',
+    ongletLouer: 'Noleggio', typeLoc: 'Attività', noteLoc: 'Prezzi, orari e disponibilità: chiedi al noleggio prima di andare.', horsSaison: 'Fuori stagione', siteLoc: 'Sito del noleggio', sourceLoc: 'Fonte', aucunLoueur: 'Ancora nessun noleggio per questa attività.',
+    louerLien: (a) => `Noleggio nelle vicinanze: ${a}`, saunaTitre: (e, n) => `Acqua a ${e}°: ${n} ti aspetta per riscaldarti.`,
+    carteTitre: 'Tutto il Lemano', carteLac: (l) => `Tutto il ${l}`, extremesLac: (c, tc, f, tf) => `Su questo lago in questo momento: più caldo a ${c}, ${tc}°, più freddo a ${f}, ${tf}°.`, extremes: (c, tc, f, tf) => `Più caldo: ${c}, ${tc}°. Più freddo: ${f}, ${tf}°. Tocca un punto per andarci.`,
+    mesPlages: 'Le mie spiagge', favoriAjouter: (n) => `Aggiungi ${n} alle mie spiagge`, favoriRetirer: (n) => `Rimuovi ${n} dalle mie spiagge`,
+    favoriAjoute: (n) => `${n} aggiunta alle tue spiagge.`, favoriRetire: (n) => `${n} rimossa dalle tue spiagge.`,
+    proposerTitre: 'Manca un bar o un ristorante?', proposerTexte: 'Dicci dove: controlliamo e lo aggiungiamo. Si apre un’e-mail a contact@monlac.ch.', pNom: 'Nome del locale', pVille: 'Località o spiaggia', pType: 'Tipo', pBar: 'Bar / chiosco sulla spiaggia', pResto: 'Ristorante', pPourquoi: 'Perché ti piace (facoltativo)', pEnvoyer: 'Suggerisci questo locale', pMerci: 'La tua e-mail è pronta: basta inviarla. Grazie!',
+    yAller: 'Come arrivare', yAllerAria: (n) => `Indicazioni per ${n}`, ciel: { soleil: 'Soleggiato', lune: 'Cielo sereno', eclaircie: 'Schiarite', 'lune-nuage': 'Qualche nuvola', couvert: 'Coperto', brouillard: 'Nebbia', bruine: 'Pioviggine', pluie: 'Pioggia', averses: 'Rovesci', neige: 'Neve', orage: 'Temporale' },
+    verifierQualite: 'Qualità dell’acqua: verifica alla fonte', autreLangue: 'Italiano', libelles: ['No', 'Così così', 'Bene', 'Perfetto'],
+    activites: { baignade: 'Balneazione', paddle: 'Paddle', voile: 'Vela / wing', hiver: 'Bagno invernale', kite: 'Kitesurf', wakeboard: 'Wakeboard', wakesurf: 'Wakesurf', windsurf: 'Windsurf', foil: 'Foil', ski: 'Sci nautico', bateau: 'Gita in barca' },
+    mesActivites: 'Le mie attività', mesActivitesTexte: 'La balneazione resta sempre. Spunta quello che pratichi.',
+    ventDe: (d) => `vento da ${d}°`, releve: (h) => `Rilevamento delle ${h}`, horsLigne: (h) => `Offline · ultimi dati delle ${h}`,
+    orage: 'Temporale: tutti fuori dall’acqua.', bise: 'Soffia la bise: onde, correnti e capelli arruffati.', rafales: 'Forti raffiche: tieni stretta la pagaia.',
+    afficherHeures: 'Mostra nelle prossime ore',
+    pasDeReponse: 'Il lago non risponde.', pasDeDonnees: 'Nessuna rete e ancora niente salvato. Riprova tra un attimo.',
+    heuresVides: 'Previsioni orarie non disponibili per ora. Il lago custodisce i suoi segreti.',
+    pres: (n) => `Vicino a ${n}`, ailleurs: 'Un po’ più lontano, dal più vicino', itineraire: 'Indicazioni', reserver: 'Prenota',
+    pasDeGeo: 'Nessuna posizione su questo dispositivo.', cap: (n) => `Si va verso ${n}.`, geoRefusee: 'Posizione negata. Scegli la tua spiaggia dall’elenco.',
+    bains: (n) => (n === 0 ? 'Nessun bagno questa stagione. Per ora.' : n === 1 ? '1 bagno questa stagione. Il primo è il più duro.' : `${n} bagni questa stagione. I cigni ti rispettano.`),
+    partagerBains: 'Condividi', partageBains: (n, sa) => `I miei bagni invernali, stagione ${sa}: ${n} ${n > 1 ? 'bagni' : 'bagno'}.`, quiMeSuit: 'Chi viene la prossima volta?',
+    merciBain: (n) => `Rispetto. Bagno n. ${n} registrato.`, copie: 'Copiato. Incollalo nella chat di gruppo.', copieAussi: 'Messaggio copiato.', partageImpossible: 'Condividere non è possibile qui.',
+    partageConditions: (v, plage, eau, air, vent) => `${v} ${plage}: acqua ${eau}, aria ${air}°, vento ${vent} km/h.`, partageDefaut: 'I laghi svizzeri oggi a colpo d’occhio.',
+  },
 };
 
 function choisir() {
   const url = new URLSearchParams(globalThis.location?.search ?? '').get('lang');
   if (TEXTES[url]) { try { localStorage.setItem('langue', url); } catch {} return url; }
   try { const l = localStorage.getItem('langue'); if (TEXTES[l]) return l; } catch {}
-  return /^en\b/i.test(globalThis.navigator?.language ?? '') ? 'en' : 'fr';
+  const nav = (globalThis.navigator?.languages?.[0] ?? globalThis.navigator?.language ?? '').slice(0, 2).toLowerCase();
+  return TEXTES[nav] ? nav : 'fr';
 }
 export const LANGUE = choisir();
 export const T = TEXTES[LANGUE];
 export const AUTRE = LANGUE === 'fr' ? 'en' : 'fr';
+// Les quatre langues du site, dans l'ordre du sélecteur : [code, nom dans sa propre langue].
+export const LANGUES = [['fr', 'Français'], ['en', 'English'], ['de', 'Deutsch'], ['it', 'Italiano']];
+// Noms des régions et des lacs dans chaque langue (spots.js les nomme en français).
+export const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
 export { TEXTES };

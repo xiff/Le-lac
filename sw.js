@@ -1,8 +1,8 @@
 // Réseau d'abord pour tout (interface comprise), cache seulement hors ligne.
 // Avant : interface servie depuis le cache et mise à jour fichier par fichier, d'où des mélanges
 // ancienne/nouvelle version (ex. index.html neuf + textes.js ancien) qui cassaient les boutons.
-const CACHE = 'lac-v75';
-const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'textes.js', 'locations.js', 'manifest.webmanifest', 'icon.svg',
+const CACHE = 'lac-v76';
+const COQUILLE = ['./', 'index.html', 'score.js', 'lieux.js', 'spots.js', 'textes.js', 'traductions.js', 'locations.js', 'contours.js', 'manifest.webmanifest', 'icon.svg',
   'fonts/young-serif-latin-400-normal.woff2', 'fonts/onest-latin-wght-normal.woff2'];
 
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(COQUILLE.map((f) => new Request(f, { cache: 'reload' }))))); self.skipWaiting(); });
