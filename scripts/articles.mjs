@@ -689,5 +689,15 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages)); // température de l'eau par lac, déjà en quatre langues
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages));
+// Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 11 novembre 2026.
+const DATES = {
+  'choc-thermique-eau-froide': ['2026-10-28', '2026-11-03'], 'buvettes-restaurants-bord-du-leman': ['2026-10-28', '2026-10-31'], 'temperature-lac-leman': ['2026-10-29'], 'wakeboard-wakesurf-ski-nautique-leman': ['2026-10-29'],
+  'paddle-leman': ['2026-10-30', '2026-11-02'], 'plages-geneve': ['2026-10-30', '2026-11-08'], 'materiel-bain-d-hiver': ['2026-10-31', '2026-11-06'], 'bise-leman': ['2026-11-01', '2026-11-03'],
+  'kitesurf-windsurf-wingfoil-leman': ['2026-11-02'], 'afterdrop-se-rechauffer': ['2026-11-03', '2026-11-06'], 'plages-leman-rive-francaise': ['2026-11-04', '2026-11-08'], 'bain-d-hiver-leman': ['2026-11-05', '2026-11-09'], 'qualite-eau-baignade-leman': ['2026-11-05'],
+  'saunas-bord-du-leman': ['2026-11-06'], 'saunas-flottants-bateaux-saunas-suisse': ['2026-11-07'], 'saunas-lac-de-zurich': ['2026-11-07'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-08'], 'bain-d-hiver-zurich': ['2026-11-08'],
+  'temperature-lac-neuchatel': ['2026-11-09'], 'temperature-lac-bienne': ['2026-11-09'], 'temperature-lac-morat': ['2026-11-09'], 'temperature-lac-gruyere': ['2026-11-10'], 'temperature-lac-joux': ['2026-11-10'], 'temperature-lac-zurich': ['2026-11-10'],
+  'temperature-lac-lucerne': ['2026-11-10'], 'temperature-lac-thoune': ['2026-11-11'], 'temperature-lac-brienz': ['2026-11-11'], 'temperature-lac-constance': ['2026-11-11'], 'temperature-lac-lugano': ['2026-11-11'], 'temperature-lac-majeur': ['2026-11-11'],
+};
+for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 
