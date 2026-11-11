@@ -400,29 +400,38 @@ try {
 sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherLocations(); afficherFavoris(); afficherCarte(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
-// Onglets dans l'URL (#sortir, #louer) : une seule entrée d'historique au plus, le retour d'Android revient au lac.
+// Onglets : affichés tout de suite au toucher (Safari iOS ratait le changement quand il dépendait de l'historique).
+// L'historique ne sert qu'au bouton retour : une seule entrée d'onglet au plus, le retour revient au lac.
 const ONGLETS = ['lac', 'sortir', 'louer'];
-const ongletActif = () => (ONGLETS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'lac');
-function ouvrir() {
-  const actif = ongletActif();
+const ongletUrl = () => (ONGLETS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'lac');
+let actif = 'lac';
+const ongletActif = () => actif;
+try { history.scrollRestoration = 'manual'; } catch {} // sinon Safari replace la page à une ancienne position au retour
+function ouvrir(o = ongletUrl()) {
+  if (o !== actif) scrollTo(0, 0); // chaque onglet s'ouvre en haut, pas au milieu de sa liste
+  actif = o;
   $('onglets').dataset.actif = actif;
-  for (const o of ONGLETS) { $('t-' + o).setAttribute('aria-selected', o === actif); $('t-' + o).tabIndex = o === actif ? 0 : -1; $('p-' + o).hidden = o !== actif; }
+  for (const x of ONGLETS) { $('t-' + x).setAttribute('aria-selected', x === actif); $('t-' + x).tabIndex = x === actif ? 0 : -1; $('p-' + x).hidden = x !== actif; }
 }
 function allerA(o) {
-  if (o === ongletActif()) return;
-  if (o === 'lac') history.back();
-  else if (location.hash) location.replace('#' + o);
-  else location.hash = o;
+  if (o === actif) return;
+  const empile = history.state?.onglet; // une entrée d'onglet est déjà dans l'historique
+  ouvrir(o);
+  try {
+    if (o !== 'lac') history[empile ? 'replaceState' : 'pushState']({ onglet: o }, '', '#' + o);
+    else if (empile) history.back();
+    else history.replaceState(null, '', location.pathname + location.search);
+  } catch {} // historique indisponible : l'onglet est déjà affiché
 }
 for (const o of ONGLETS) $('t-' + o).onclick = () => allerA(o);
-addEventListener('hashchange', ouvrir);
+addEventListener('popstate', () => ouvrir()); addEventListener('hashchange', () => ouvrir()); // bouton ou geste retour
 // Flèches gauche/droite entre les onglets, comme le prévoit le motif ARIA des onglets.
 $('onglets').onkeydown = (e) => {
   if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
   const i = ONGLETS.indexOf(ongletActif()), cible = ONGLETS[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3];
   allerA(cible); $('t-' + cible).focus(); e.preventDefault();
 };
-if (location.hash) history.replaceState(null, '', location.pathname); // toujours démarrer sur le lac
+if (location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); // toujours démarrer sur le lac
 ouvrir();
 
 let filtre = '';
