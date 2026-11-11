@@ -17,7 +17,9 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
    - [ ] **Lac de Lugano (Ceresio)** : 3D (`delft3d-flow/lugano`), 1D aussi (`lowerlugano`). Lido de Lugano, Paradiso, Caslano, Melide, Morcote…
    - [ ] **Lac Majeur (Verbano), rive suisse** : 1D (`simstrat/maggiore`). Lido de Locarno, Ascona, Tenero, Magadino, Brissago…
    - [ ] Petits lacs tessinois (Origlio, Muzzano) : pas de modèle Alplakes connu, afficher « eau non mesurée » comme à Sion.
-2. [ ] **Suisse romande** : lac de Joux (3D `joux`), lac de Bret (1D `bret`), lac des Brenets (1D `brenet`).
+2. [ ] **Suisse romande**
+   - [ ] **Lac de Joux** : 3D (`delft3d-flow/joux`), 1D aussi. Plages du Pont, de L’Abbaye, du Rocheray (Le Sentier)…
+   - [ ] Lac de Bret (1D `bret`), lac des Brenets (1D `brenet`).
 3. [ ] **Suisse centrale et alémanique** : lac de Zurich (3D), lac de Zoug (3D `mitgcm/zug`), lac des Quatre-Cantons (3D `mitgcm/lucerne`), lac d’Ägeri (3D), lac de Hallwil (3D), Greifensee (3D), lac de Thoune et lac de Brienz (1D), lac de Sempach, lac de Baldegg, lac de Sarnen (1D).
 4. [ ] **Grisons** : lacs de Saint-Moritz (3D `stmoritz`), Silvaplana et Sils (1D).
 5. [ ] **Lac de Constance, rive suisse** : 1D (`lowerconstance`).
