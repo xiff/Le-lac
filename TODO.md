@@ -35,3 +35,8 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
   pour garder la promesse « aucun cookie, aucun compte » de la présentation (pas de bannière de consentement à ajouter).
   Pistes : Plausible (UE), Matomo Cloud ou auto-hébergé, Simple Analytics (UE), Pirsch (Allemagne).
   Google Analytics est possible mais pose des cookies et demande une bannière de consentement (LPD suisse, RGPD pour les visiteurs de l’UE).
+
+## App
+
+- [ ] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
+  les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
