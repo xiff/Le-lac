@@ -3,13 +3,15 @@
 // Coordonnées vérifiées dans le modèle du Léman : toutes à moins de 800 m d'un point de calcul.
 // Liste établie d'après les sites de baignade cités par le canton de Genève, la CIPEL et les offices du tourisme.
 // Lacs suivis et modèle de température de l'eau (Alplakes, Eawag) : 3D = une valeur devant chaque plage,
-// 1D (Simstrat) = une valeur pour tout le lac, null = pas de modèle (Domaine des Îles, Sion).
+// 1D (Simstrat) = une valeur pour tout le lac (Gruyère, Majeur), null = pas de modèle (Domaine des Îles, Sion).
 export const LACS = {
   leman: { nom: 'Léman', en: 'Lake Geneva', eau: { modele: 'delft3d-flow', lac: 'geneva' } },
   neuchatel: { nom: 'Lac de Neuchâtel', en: 'Lake Neuchâtel', eau: { modele: 'mitgcm', lac: 'neuchatel' } },
   bienne: { nom: 'Lac de Bienne', en: 'Lake Biel', eau: { modele: 'delft3d-flow', lac: 'biel' } },
   morat: { nom: 'Lac de Morat', en: 'Lake Murten', eau: { modele: 'delft3d-flow', lac: 'murten' } },
   gruyere: { nom: 'Lac de la Gruyère', en: 'Lake Gruyère', eau: { modele: 'simstrat', lac: 'gruyere' } },
+  lugano: { nom: 'Lac de Lugano', en: 'Lake Lugano', eau: { modele: 'delft3d-flow', lac: 'lugano' } },
+  majeur: { nom: 'Lac Majeur', en: 'Lake Maggiore', eau: { modele: 'simstrat', lac: 'maggiore' }, carteSud: 46.06 }, // carte : la partie suisse et un peu au-delà
   sion: { nom: 'Sion – Domaine des Îles', en: 'Sion – Domaine des Îles', eau: null },
 };
 export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
@@ -116,6 +118,28 @@ export const SPOTS = [
   { id: 'corbieres', nom: 'Corbières', lat: 46.66338, lon: 7.10178, region: 'Lac de la Gruyère', zone: 'gruyere', lac: 'gruyere' },
   { id: 'morlon', nom: 'Morlon', lat: 46.62662, lon: 7.09564, region: 'Lac de la Gruyère', zone: 'gruyere', lac: 'gruyere' },
   { id: 'domaine-des-iles', nom: 'Domaine des Îles', lat: 46.21189, lon: 7.32197, region: 'Sion – Domaine des Îles', zone: 'sion', lac: 'sion' },
+  // Tessin : lidos tirés d'OpenStreetMap (scripts/decouvrir.mjs), le 11 novembre 2026, rive suisse uniquement.
+  { id: 'caslano', nom: 'Caslano', lat: 45.97119, lon: 8.88715, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'magliaso', nom: 'Magliaso', lat: 45.97988, lon: 8.89485, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'agno', nom: 'Agno', lat: 45.99222, lon: 8.89916, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'lugano-riva-caccia', nom: 'Lugano – Riva Caccia', lat: 45.99573, lon: 8.94713, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'paradiso-conca-d-oro', nom: 'Paradiso – Conca d’Oro', lat: 45.98879, lon: 8.95450, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'lugano-parco-ciani', nom: 'Lugano – Parco Ciani', lat: 46.00219, lon: 8.96116, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'lido-di-lugano', nom: 'Lido di Lugano', lat: 46.00472, lon: 8.96364, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'castagnola-san-domenico', nom: 'Castagnola – San Domenico', lat: 46.00219, lon: 8.98952, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'melide', nom: 'Melide', lat: 45.95280, lon: 8.94889, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'bissone', nom: 'Bissone', lat: 45.95171, lon: 8.96390, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'maroggia', nom: 'Maroggia', lat: 45.93375, lon: 8.96868, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'melano', nom: 'Melano', lat: 45.92096, lon: 8.98164, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'capolago', nom: 'Capolago', lat: 45.90492, lon: 8.97854, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'riva-san-vitale', nom: 'Riva San Vitale', lat: 45.90622, lon: 8.97433, region: 'Lac de Lugano', zone: 'lugano', lac: 'lugano' },
+  { id: 'brissago', nom: 'Brissago', lat: 46.11219, lon: 8.70599, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'ascona', nom: 'Ascona', lat: 46.14731, lon: 8.78201, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'gerra-gambarogno', nom: 'Gerra (Gambarogno)', lat: 46.12304, lon: 8.78376, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'lido-locarno', nom: 'Lido Locarno', lat: 46.16197, lon: 8.80378, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'locarno-bagno-pubblico', nom: 'Locarno – Bagno pubblico', lat: 46.15670, lon: 8.80360, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'tenero-lido-mappo', nom: 'Tenero – Lido Mappo', lat: 46.17472, lon: 8.84280, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  { id: 'tenero', nom: 'Tenero', lat: 46.16719, lon: 8.85097, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
 ];
 
 // Valeur de la série la plus proche de l'instant donné, si elle date de moins de 6 h.

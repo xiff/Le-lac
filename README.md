@@ -1,6 +1,6 @@
 # Mon Lac
 
-Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère et Sion en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
+Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
@@ -183,6 +183,37 @@ Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 |---|---|---|
 | Domaine des Îles | [https://monlac.ch/plage/domaine-des-iles/](https://monlac.ch/plage/domaine-des-iles/) | [EN](https://monlac.ch/plage/domaine-des-iles/en/) |
 
+### Lac de Lugano
+
+| Plage | Français | English |
+|---|---|---|
+| Caslano | [https://monlac.ch/plage/caslano/](https://monlac.ch/plage/caslano/) | [EN](https://monlac.ch/plage/caslano/en/) |
+| Magliaso | [https://monlac.ch/plage/magliaso/](https://monlac.ch/plage/magliaso/) | [EN](https://monlac.ch/plage/magliaso/en/) |
+| Agno | [https://monlac.ch/plage/agno/](https://monlac.ch/plage/agno/) | [EN](https://monlac.ch/plage/agno/en/) |
+| Lugano – Riva Caccia | [https://monlac.ch/plage/lugano-riva-caccia/](https://monlac.ch/plage/lugano-riva-caccia/) | [EN](https://monlac.ch/plage/lugano-riva-caccia/en/) |
+| Paradiso – Conca d’Oro | [https://monlac.ch/plage/paradiso-conca-d-oro/](https://monlac.ch/plage/paradiso-conca-d-oro/) | [EN](https://monlac.ch/plage/paradiso-conca-d-oro/en/) |
+| Lugano – Parco Ciani | [https://monlac.ch/plage/lugano-parco-ciani/](https://monlac.ch/plage/lugano-parco-ciani/) | [EN](https://monlac.ch/plage/lugano-parco-ciani/en/) |
+| Lido di Lugano | [https://monlac.ch/plage/lido-di-lugano/](https://monlac.ch/plage/lido-di-lugano/) | [EN](https://monlac.ch/plage/lido-di-lugano/en/) |
+| Castagnola – San Domenico | [https://monlac.ch/plage/castagnola-san-domenico/](https://monlac.ch/plage/castagnola-san-domenico/) | [EN](https://monlac.ch/plage/castagnola-san-domenico/en/) |
+| Melide | [https://monlac.ch/plage/melide/](https://monlac.ch/plage/melide/) | [EN](https://monlac.ch/plage/melide/en/) |
+| Bissone | [https://monlac.ch/plage/bissone/](https://monlac.ch/plage/bissone/) | [EN](https://monlac.ch/plage/bissone/en/) |
+| Maroggia | [https://monlac.ch/plage/maroggia/](https://monlac.ch/plage/maroggia/) | [EN](https://monlac.ch/plage/maroggia/en/) |
+| Melano | [https://monlac.ch/plage/melano/](https://monlac.ch/plage/melano/) | [EN](https://monlac.ch/plage/melano/en/) |
+| Capolago | [https://monlac.ch/plage/capolago/](https://monlac.ch/plage/capolago/) | [EN](https://monlac.ch/plage/capolago/en/) |
+| Riva San Vitale | [https://monlac.ch/plage/riva-san-vitale/](https://monlac.ch/plage/riva-san-vitale/) | [EN](https://monlac.ch/plage/riva-san-vitale/en/) |
+
+### Lac Majeur
+
+| Plage | Français | English |
+|---|---|---|
+| Brissago | [https://monlac.ch/plage/brissago/](https://monlac.ch/plage/brissago/) | [EN](https://monlac.ch/plage/brissago/en/) |
+| Ascona | [https://monlac.ch/plage/ascona/](https://monlac.ch/plage/ascona/) | [EN](https://monlac.ch/plage/ascona/en/) |
+| Gerra (Gambarogno) | [https://monlac.ch/plage/gerra-gambarogno/](https://monlac.ch/plage/gerra-gambarogno/) | [EN](https://monlac.ch/plage/gerra-gambarogno/en/) |
+| Lido Locarno | [https://monlac.ch/plage/lido-locarno/](https://monlac.ch/plage/lido-locarno/) | [EN](https://monlac.ch/plage/lido-locarno/en/) |
+| Locarno – Bagno pubblico | [https://monlac.ch/plage/locarno-bagno-pubblico/](https://monlac.ch/plage/locarno-bagno-pubblico/) | [EN](https://monlac.ch/plage/locarno-bagno-pubblico/en/) |
+| Tenero – Lido Mappo | [https://monlac.ch/plage/tenero-lido-mappo/](https://monlac.ch/plage/tenero-lido-mappo/) | [EN](https://monlac.ch/plage/tenero-lido-mappo/en/) |
+| Tenero | [https://monlac.ch/plage/tenero/](https://monlac.ch/plage/tenero/) | [EN](https://monlac.ch/plage/tenero/en/) |
+
 ### Blog
 
 13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
@@ -225,7 +256,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
   Le titre d’accueil vient de l’activité la mieux notée (ou orage, bise, journée terrasse), avec plusieurs phrases
   qui tournent à chaque affichage.
 - **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage
-  (modèle 3D : Léman, Bienne, Morat, Neuchâtel ; 1D pour la Gruyère, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
+  (modèle 3D : Léman, Bienne, Morat, Neuchâtel, Lugano ; 1D pour la Gruyère et le lac Majeur, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
   Une tâche GitHub (`.github/workflows/eau.yml`, toutes les 3 h) écrit `eau.json`, `qualite.json`,
   les pages par plage et le sitemap.
 - **La météo** : Open-Meteo, lue directement par le navigateur.
@@ -244,7 +275,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 97 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 118 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |
