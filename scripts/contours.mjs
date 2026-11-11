@@ -55,10 +55,12 @@ export function simplifierAnneau(p, tol) {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   // Nominatim renvoie le polygone déjà simplifié (polygon_threshold, en degrés) ; une requête par seconde au plus.
-  const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère', lugano: 'Lago di Lugano', majeur: 'Lago Maggiore', joux: 'Lac de Joux' };
+  const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère', lugano: 'Lago di Lugano', majeur: 'Lago Maggiore', joux: 'Lac de Joux',
+    zurich: 'Zürichsee', greifensee: 'Greifensee', lucerne: 'Vierwaldstättersee', zoug: 'Zugersee', aegeri: 'Ägerisee', hallwil: 'Hallwilersee',
+    thoune: 'Thunersee', brienz: 'Brienzersee', sempach: 'Sempachersee', baldegg: 'Baldeggersee', sarnen: 'Sarnersee', constance: 'Bodensee', untersee: 'Untersee' };
   const out = {};
   for (const [lac, q] of Object.entries(Q)) {
-    const u = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&countrycodes=ch,it&format=json&polygon_geojson=1&polygon_threshold=0.0008&limit=5`;
+    const u = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&countrycodes=ch,it,de,at&format=json&polygon_geojson=1&polygon_threshold=0.0008&limit=5`;
     const r = await fetch(u, { headers: { 'User-Agent': 'MonLac-contours/1.0 (https://github.com/xiff/Le-lac)' } });
     const j = r.ok ? await r.json() : [];
     const e = j.find((x) => (x.class === 'water' || x.class === 'natural') && /Polygon/.test(x.geojson?.type));

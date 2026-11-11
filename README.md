@@ -1,6 +1,6 @@
 # Mon Lac
 
-Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux, Bret et les Brenets en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
+25 lacs suisses, du Léman au lac de Constance, en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
@@ -233,6 +233,160 @@ Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 |---|---|---|
 | Les Brenets | [https://monlac.ch/plage/les-brenets/](https://monlac.ch/plage/les-brenets/) | [EN](https://monlac.ch/plage/les-brenets/en/) |
 
+### Lac de Zurich
+
+| Plage | Français | English |
+|---|---|---|
+| Zurich – Strandbad Mythenquai | [https://monlac.ch/plage/zurich-mythenquai/](https://monlac.ch/plage/zurich-mythenquai/) | [EN](https://monlac.ch/plage/zurich-mythenquai/en/) |
+| Zurich – Seebad Enge | [https://monlac.ch/plage/zurich-seebad-enge/](https://monlac.ch/plage/zurich-seebad-enge/) | [EN](https://monlac.ch/plage/zurich-seebad-enge/en/) |
+| Zurich – Strandbad Wollishofen | [https://monlac.ch/plage/zurich-wollishofen/](https://monlac.ch/plage/zurich-wollishofen/) | [EN](https://monlac.ch/plage/zurich-wollishofen/en/) |
+| Zurich – Seebad Utoquai | [https://monlac.ch/plage/zurich-utoquai/](https://monlac.ch/plage/zurich-utoquai/) | [EN](https://monlac.ch/plage/zurich-utoquai/en/) |
+| Zurich – Strandbad Tiefenbrunnen | [https://monlac.ch/plage/zurich-tiefenbrunnen/](https://monlac.ch/plage/zurich-tiefenbrunnen/) | [EN](https://monlac.ch/plage/zurich-tiefenbrunnen/en/) |
+| Kilchberg | [https://monlac.ch/plage/kilchberg/](https://monlac.ch/plage/kilchberg/) | [EN](https://monlac.ch/plage/kilchberg/en/) |
+| Rüschlikon | [https://monlac.ch/plage/rueschlikon/](https://monlac.ch/plage/rueschlikon/) | [EN](https://monlac.ch/plage/rueschlikon/en/) |
+| Thalwil | [https://monlac.ch/plage/thalwil/](https://monlac.ch/plage/thalwil/) | [EN](https://monlac.ch/plage/thalwil/en/) |
+| Zollikon | [https://monlac.ch/plage/zollikon/](https://monlac.ch/plage/zollikon/) | [EN](https://monlac.ch/plage/zollikon/en/) |
+| Küsnacht | [https://monlac.ch/plage/kuesnacht/](https://monlac.ch/plage/kuesnacht/) | [EN](https://monlac.ch/plage/kuesnacht/en/) |
+| Erlenbach | [https://monlac.ch/plage/erlenbach/](https://monlac.ch/plage/erlenbach/) | [EN](https://monlac.ch/plage/erlenbach/en/) |
+| Oberrieden | [https://monlac.ch/plage/oberrieden/](https://monlac.ch/plage/oberrieden/) | [EN](https://monlac.ch/plage/oberrieden/en/) |
+| Feldmeilen | [https://monlac.ch/plage/feldmeilen/](https://monlac.ch/plage/feldmeilen/) | [EN](https://monlac.ch/plage/feldmeilen/en/) |
+| Meilen | [https://monlac.ch/plage/meilen/](https://monlac.ch/plage/meilen/) | [EN](https://monlac.ch/plage/meilen/en/) |
+| Wädenswil – Rietliau | [https://monlac.ch/plage/wadenswil-rietliau/](https://monlac.ch/plage/wadenswil-rietliau/) | [EN](https://monlac.ch/plage/wadenswil-rietliau/en/) |
+| Uetikon am See | [https://monlac.ch/plage/uetikon/](https://monlac.ch/plage/uetikon/) | [EN](https://monlac.ch/plage/uetikon/en/) |
+| Richterswil | [https://monlac.ch/plage/richterswil/](https://monlac.ch/plage/richterswil/) | [EN](https://monlac.ch/plage/richterswil/en/) |
+| Bäch | [https://monlac.ch/plage/baech/](https://monlac.ch/plage/baech/) | [EN](https://monlac.ch/plage/baech/en/) |
+| Pfäffikon SZ | [https://monlac.ch/plage/pfaeffikon-sz/](https://monlac.ch/plage/pfaeffikon-sz/) | [EN](https://monlac.ch/plage/pfaeffikon-sz/en/) |
+| Rapperswil | [https://monlac.ch/plage/rapperswil/](https://monlac.ch/plage/rapperswil/) | [EN](https://monlac.ch/plage/rapperswil/en/) |
+
+### Greifensee
+
+| Plage | Français | English |
+|---|---|---|
+| Maur | [https://monlac.ch/plage/maur/](https://monlac.ch/plage/maur/) | [EN](https://monlac.ch/plage/maur/en/) |
+| Uster | [https://monlac.ch/plage/uster/](https://monlac.ch/plage/uster/) | [EN](https://monlac.ch/plage/uster/en/) |
+| Greifensee – Furren | [https://monlac.ch/plage/greifensee-furren/](https://monlac.ch/plage/greifensee-furren/) | [EN](https://monlac.ch/plage/greifensee-furren/en/) |
+
+### Lac des Quatre-Cantons
+
+| Plage | Français | English |
+|---|---|---|
+| Lucerne – Seebad | [https://monlac.ch/plage/lucerne-seebad/](https://monlac.ch/plage/lucerne-seebad/) | [EN](https://monlac.ch/plage/lucerne-seebad/en/) |
+| Lucerne – Ufschötti | [https://monlac.ch/plage/lucerne-ufschuetti/](https://monlac.ch/plage/lucerne-ufschuetti/) | [EN](https://monlac.ch/plage/lucerne-ufschuetti/en/) |
+| Lucerne – Tribschen | [https://monlac.ch/plage/lucerne-tribschen/](https://monlac.ch/plage/lucerne-tribschen/) | [EN](https://monlac.ch/plage/lucerne-tribschen/en/) |
+| Lucerne – Lido | [https://monlac.ch/plage/lucerne-lido/](https://monlac.ch/plage/lucerne-lido/) | [EN](https://monlac.ch/plage/lucerne-lido/en/) |
+| Horw – Seebad | [https://monlac.ch/plage/horw-seebad/](https://monlac.ch/plage/horw-seebad/) | [EN](https://monlac.ch/plage/horw-seebad/en/) |
+| Horw – Winkel | [https://monlac.ch/plage/horw-winkel/](https://monlac.ch/plage/horw-winkel/) | [EN](https://monlac.ch/plage/horw-winkel/en/) |
+| Hergiswil | [https://monlac.ch/plage/hergiswil/](https://monlac.ch/plage/hergiswil/) | [EN](https://monlac.ch/plage/hergiswil/en/) |
+| Stansstad | [https://monlac.ch/plage/stansstad/](https://monlac.ch/plage/stansstad/) | [EN](https://monlac.ch/plage/stansstad/en/) |
+| Meggen – Benzeholz | [https://monlac.ch/plage/meggen-benzeholz/](https://monlac.ch/plage/meggen-benzeholz/) | [EN](https://monlac.ch/plage/meggen-benzeholz/en/) |
+| Merlischachen | [https://monlac.ch/plage/merlischachen/](https://monlac.ch/plage/merlischachen/) | [EN](https://monlac.ch/plage/merlischachen/en/) |
+| Greppen | [https://monlac.ch/plage/greppen/](https://monlac.ch/plage/greppen/) | [EN](https://monlac.ch/plage/greppen/en/) |
+| Buochs-Ennetbürgen | [https://monlac.ch/plage/buochs-ennetbuergen/](https://monlac.ch/plage/buochs-ennetbuergen/) | [EN](https://monlac.ch/plage/buochs-ennetbuergen/en/) |
+| Beckenried | [https://monlac.ch/plage/beckenried/](https://monlac.ch/plage/beckenried/) | [EN](https://monlac.ch/plage/beckenried/en/) |
+| Vitznau – Lido | [https://monlac.ch/plage/vitznau-lido/](https://monlac.ch/plage/vitznau-lido/) | [EN](https://monlac.ch/plage/vitznau-lido/en/) |
+| Strandbad Cholplatz | [https://monlac.ch/plage/cholplatz/](https://monlac.ch/plage/cholplatz/) | [EN](https://monlac.ch/plage/cholplatz/en/) |
+| Gersau – Kindli | [https://monlac.ch/plage/gersau-kindli/](https://monlac.ch/plage/gersau-kindli/) | [EN](https://monlac.ch/plage/gersau-kindli/en/) |
+| Brunnen | [https://monlac.ch/plage/brunnen/](https://monlac.ch/plage/brunnen/) | [EN](https://monlac.ch/plage/brunnen/en/) |
+| Bauen | [https://monlac.ch/plage/bauen/](https://monlac.ch/plage/bauen/) | [EN](https://monlac.ch/plage/bauen/en/) |
+
+### Lac de Zoug
+
+| Plage | Français | English |
+|---|---|---|
+| Arth | [https://monlac.ch/plage/arth/](https://monlac.ch/plage/arth/) | [EN](https://monlac.ch/plage/arth/en/) |
+
+### Lac d’Ägeri
+
+| Plage | Français | English |
+|---|---|---|
+| Oberägeri | [https://monlac.ch/plage/oberaegeri/](https://monlac.ch/plage/oberaegeri/) | [EN](https://monlac.ch/plage/oberaegeri/en/) |
+
+### Lac de Hallwil
+
+| Plage | Français | English |
+|---|---|---|
+| Boniswil | [https://monlac.ch/plage/boniswil/](https://monlac.ch/plage/boniswil/) | [EN](https://monlac.ch/plage/boniswil/en/) |
+| Tennwil | [https://monlac.ch/plage/tennwil/](https://monlac.ch/plage/tennwil/) | [EN](https://monlac.ch/plage/tennwil/en/) |
+| Meisterschwanden | [https://monlac.ch/plage/meisterschwanden/](https://monlac.ch/plage/meisterschwanden/) | [EN](https://monlac.ch/plage/meisterschwanden/en/) |
+| Beinwil am See | [https://monlac.ch/plage/beinwil-am-see/](https://monlac.ch/plage/beinwil-am-see/) | [EN](https://monlac.ch/plage/beinwil-am-see/en/) |
+
+### Lac de Thoune
+
+| Plage | Français | English |
+|---|---|---|
+| Thoune – Strandbad | [https://monlac.ch/plage/thoune-strandbad/](https://monlac.ch/plage/thoune-strandbad/) | [EN](https://monlac.ch/plage/thoune-strandbad/en/) |
+| Hünibach | [https://monlac.ch/plage/huenibach/](https://monlac.ch/plage/huenibach/) | [EN](https://monlac.ch/plage/huenibach/en/) |
+| Spiez | [https://monlac.ch/plage/spiez/](https://monlac.ch/plage/spiez/) | [EN](https://monlac.ch/plage/spiez/en/) |
+| Faulensee | [https://monlac.ch/plage/faulensee/](https://monlac.ch/plage/faulensee/) | [EN](https://monlac.ch/plage/faulensee/en/) |
+| Krattigen – Lido | [https://monlac.ch/plage/krattigen-lido/](https://monlac.ch/plage/krattigen-lido/) | [EN](https://monlac.ch/plage/krattigen-lido/en/) |
+| Leissigen | [https://monlac.ch/plage/leissigen/](https://monlac.ch/plage/leissigen/) | [EN](https://monlac.ch/plage/leissigen/en/) |
+| Strandbad Hirschen | [https://monlac.ch/plage/oberhofen-hirschen/](https://monlac.ch/plage/oberhofen-hirschen/) | [EN](https://monlac.ch/plage/oberhofen-hirschen/en/) |
+| Neuhaus (Unterseen) | [https://monlac.ch/plage/neuhaus/](https://monlac.ch/plage/neuhaus/) | [EN](https://monlac.ch/plage/neuhaus/en/) |
+
+### Lac de Brienz
+
+| Plage | Français | English |
+|---|---|---|
+| Bönigen | [https://monlac.ch/plage/boenigen/](https://monlac.ch/plage/boenigen/) | [EN](https://monlac.ch/plage/boenigen/en/) |
+| Niederried | [https://monlac.ch/plage/niederried/](https://monlac.ch/plage/niederried/) | [EN](https://monlac.ch/plage/niederried/en/) |
+| Iseltwald | [https://monlac.ch/plage/iseltwald/](https://monlac.ch/plage/iseltwald/) | [EN](https://monlac.ch/plage/iseltwald/en/) |
+| Brienz | [https://monlac.ch/plage/brienz/](https://monlac.ch/plage/brienz/) | [EN](https://monlac.ch/plage/brienz/en/) |
+
+### Lac de Sempach
+
+| Plage | Français | English |
+|---|---|---|
+| Schenkon | [https://monlac.ch/plage/schenkon/](https://monlac.ch/plage/schenkon/) | [EN](https://monlac.ch/plage/schenkon/en/) |
+| Nottwil | [https://monlac.ch/plage/nottwil/](https://monlac.ch/plage/nottwil/) | [EN](https://monlac.ch/plage/nottwil/en/) |
+| Eich | [https://monlac.ch/plage/eich/](https://monlac.ch/plage/eich/) | [EN](https://monlac.ch/plage/eich/en/) |
+| Sempach | [https://monlac.ch/plage/sempach/](https://monlac.ch/plage/sempach/) | [EN](https://monlac.ch/plage/sempach/en/) |
+
+### Lac de Baldegg
+
+| Plage | Français | English |
+|---|---|---|
+| Gelfingen | [https://monlac.ch/plage/gelfingen/](https://monlac.ch/plage/gelfingen/) | [EN](https://monlac.ch/plage/gelfingen/en/) |
+| Baldegg | [https://monlac.ch/plage/baldegg/](https://monlac.ch/plage/baldegg/) | [EN](https://monlac.ch/plage/baldegg/en/) |
+
+### Lac de Sarnen
+
+| Plage | Français | English |
+|---|---|---|
+| Wilen – Wilerbädli | [https://monlac.ch/plage/wilen-wilerbaedli/](https://monlac.ch/plage/wilen-wilerbaedli/) | [EN](https://monlac.ch/plage/wilen-wilerbaedli/en/) |
+| Sarnen | [https://monlac.ch/plage/sarnen/](https://monlac.ch/plage/sarnen/) | [EN](https://monlac.ch/plage/sarnen/en/) |
+
+### Lac de Silvaplana
+
+| Plage | Français | English |
+|---|---|---|
+| Silvaplana | [https://monlac.ch/plage/silvaplana/](https://monlac.ch/plage/silvaplana/) | [EN](https://monlac.ch/plage/silvaplana/en/) |
+
+### Lac de Constance
+
+| Plage | Français | English |
+|---|---|---|
+| Münsterlingen | [https://monlac.ch/plage/muensterlingen/](https://monlac.ch/plage/muensterlingen/) | [EN](https://monlac.ch/plage/muensterlingen/en/) |
+| Landschlacht | [https://monlac.ch/plage/landschlacht/](https://monlac.ch/plage/landschlacht/) | [EN](https://monlac.ch/plage/landschlacht/en/) |
+| Altnau | [https://monlac.ch/plage/altnau/](https://monlac.ch/plage/altnau/) | [EN](https://monlac.ch/plage/altnau/en/) |
+| Güttingen | [https://monlac.ch/plage/guettingen/](https://monlac.ch/plage/guettingen/) | [EN](https://monlac.ch/plage/guettingen/en/) |
+| Kesswil | [https://monlac.ch/plage/kesswil/](https://monlac.ch/plage/kesswil/) | [EN](https://monlac.ch/plage/kesswil/en/) |
+| Uttwil | [https://monlac.ch/plage/uttwil/](https://monlac.ch/plage/uttwil/) | [EN](https://monlac.ch/plage/uttwil/en/) |
+| Romanshorn | [https://monlac.ch/plage/romanshorn/](https://monlac.ch/plage/romanshorn/) | [EN](https://monlac.ch/plage/romanshorn/en/) |
+| Egnach – Wiedehorn | [https://monlac.ch/plage/egnach-wiedehorn/](https://monlac.ch/plage/egnach-wiedehorn/) | [EN](https://monlac.ch/plage/egnach-wiedehorn/en/) |
+| Arbon | [https://monlac.ch/plage/arbon/](https://monlac.ch/plage/arbon/) | [EN](https://monlac.ch/plage/arbon/en/) |
+| Steinach | [https://monlac.ch/plage/steinach/](https://monlac.ch/plage/steinach/) | [EN](https://monlac.ch/plage/steinach/en/) |
+| Horn | [https://monlac.ch/plage/horn/](https://monlac.ch/plage/horn/) | [EN](https://monlac.ch/plage/horn/en/) |
+| Altenrhein | [https://monlac.ch/plage/altenrhein/](https://monlac.ch/plage/altenrhein/) | [EN](https://monlac.ch/plage/altenrhein/en/) |
+
+### Lac de Constance – Untersee
+
+| Plage | Français | English |
+|---|---|---|
+| Berlingen | [https://monlac.ch/plage/berlingen/](https://monlac.ch/plage/berlingen/) | [EN](https://monlac.ch/plage/berlingen/en/) |
+| Mannenbach | [https://monlac.ch/plage/mannenbach/](https://monlac.ch/plage/mannenbach/) | [EN](https://monlac.ch/plage/mannenbach/en/) |
+| Ermatingen | [https://monlac.ch/plage/ermatingen/](https://monlac.ch/plage/ermatingen/) | [EN](https://monlac.ch/plage/ermatingen/en/) |
+| Triboltingen | [https://monlac.ch/plage/triboltingen/](https://monlac.ch/plage/triboltingen/) | [EN](https://monlac.ch/plage/triboltingen/en/) |
+
 ### Blog
 
 13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
@@ -275,7 +429,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
   Le titre d’accueil vient de l’activité la mieux notée (ou orage, bise, journée terrasse), avec plusieurs phrases
   qui tournent à chaque affichage.
 - **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage
-  (modèle 3D : Léman, Bienne, Morat, Neuchâtel, Lugano, Joux ; 1D pour la Gruyère, le lac Majeur et le lac de Bret, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
+  (modèle 3D devant chaque plage pour les grands lacs ; 1D, une valeur pour tout le lac, pour les autres ; aucun modèle pour le Domaine des Îles à Sion et le lac des Brenets).
   Une tâche GitHub (`.github/workflows/eau.yml`, toutes les 3 h) écrit `eau.json`, `qualite.json`,
   les pages par plage et le sitemap.
 - **La météo** : Open-Meteo, lue directement par le navigateur.
@@ -294,7 +448,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 122 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 206 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |

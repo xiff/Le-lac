@@ -26,7 +26,7 @@ async function serie(s) {
   const m = LACS[lacDe(s)].eau;
   if (!m) return null;
   if (m.modele === 'simstrat') return (lac1D[m.lac] ??= lire(`${API}/1d/point/simstrat/${m.lac}/${fmt(debut)}/${fmt(fin)}/0.7?variables=T`, 'T'));
-  return lire(`${API}/point/${m.modele}/${m.lac}/${fmt(debut)}/${fmt(fin)}/0.7/${s.lat}/${s.lon}?variables=temperature`, 'temperature');
+  return lire(`${API}/point/${m.modele}/${m.lac}/${fmt(debut)}/${fmt(fin)}/0.7/${s.large?.[0] ?? s.lat}/${s.large?.[1] ?? s.lon}?variables=temperature`, 'temperature');
 }
 
 const spots = {};
