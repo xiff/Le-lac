@@ -95,6 +95,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${urls[l]}">`)
 <link rel="icon" href="${r}../../icon.svg">
 <link rel="stylesheet" href="${r}../plage.css">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>
 <body data-id="${s.id}">
 <header>
@@ -156,6 +157,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}plage/$
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="${r}../icon.svg">
 <link rel="stylesheet" href="${r}plage.css">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>
 <body class="large">
 <header>

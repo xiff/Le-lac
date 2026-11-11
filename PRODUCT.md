@@ -24,11 +24,11 @@ Usage mobile en extérieur, souvent en plein soleil, parfois avec peu de réseau
 ## Capabilities and Constraints
 - Données : eau 3D devant chaque plage pour le Léman, Neuchâtel, Bienne, Morat, Lugano, Joux, Zurich, Greifensee, Quatre-Cantons, Zoug, Ägeri, Hallwil ; une valeur par lac pour la Gruyère, Majeur, Bret, Thoune, Brienz, Sempach, Baldegg, Sarnen, Silvaplana, Constance, Untersee ; aucune mesure pour Les Brenets et Sion (affichés « eau non mesurée »). Qualité de l’eau : Léman uniquement.
 - Aucun fait inventé : les adresses viennent d’offices du tourisme ou des sites des lieux, les affirmations de santé exigent une source officielle (Société Suisse de Sauvetage, OFSP…).
-- Aucun cookie, aucun compte ; tout outil d’audience futur doit rester sans cookie et de préférence européen.
+- Aucun cookie, aucun compte ; la mesure d’audience passe par Umami Cloud, sans cookie.
 - Thème clair uniquement ; pas de mode sombre.
 - Pas de promesse de sécurité : l’app est indicative, « le lac a toujours le dernier mot ».
 - Terminologie : « verdict », « plage » (Badeplatz, spiaggia), « eau à 70 cm ».
-- Non décidé : tracker de visites, publication Android (Play Store), affiliation avec les lieux listés (à proposer, pas encore engagée).
+- Non décidé : publication Android (Play Store), affiliation avec les lieux listés (à proposer, pas encore engagée).
 
 ## Brand Commitments
 Nom Mon Lac et son logo à trois vagues. Voix chaleureuse, avec un brin d’humour dans les verdicts (« Même les cygnes hésitent »), toujours factuelle : chiffres et sources sérieux, jamais alarmiste. Un pied de page commun à toutes les pages ; le sélecteur de langue (sigles FR EN DE IT, nom complet en infobulle) est en haut de toutes les pages sauf l’app.

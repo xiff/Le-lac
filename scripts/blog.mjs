@@ -75,6 +75,7 @@ ${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" hre
 <link rel="icon" href="${r}icon.svg">
 <link rel="stylesheet" href="${r}plage/plage.css">
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': ld })}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>`;
 
 export function article(a, L = 'fr') {

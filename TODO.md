@@ -31,10 +31,9 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 ## Mesure d’audience
 
-- [ ] **Tracker des visites** : de préférence un outil européen, sans cookie et respectueux de la vie privée,
-  pour garder la promesse « aucun cookie, aucun compte » de la présentation (pas de bannière de consentement à ajouter).
-  Pistes : Plausible (UE), Matomo Cloud ou auto-hébergé, Simple Analytics (UE), Pirsch (Allemagne).
-  Google Analytics est possible mais pose des cookies et demande une bannière de consentement (LPD suisse, RGPD pour les visiteurs de l’UE).
+- [x] **Tracker des visites** : Umami Cloud (sans cookie) ajouté le 11 novembre 2026 dans le `<head>` de toutes les pages
+  (app, pages de plage, liste, blog, présentation). Statistiques sur cloud.umami.is.
+- [ ] **Umami** : vérifier dans les réglages du compte la région d’hébergement des données (UE si possible) et le mentionner sur la page « À propos » si besoin.
 
 ## App
 
