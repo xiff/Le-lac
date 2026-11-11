@@ -6,37 +6,53 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { ARTICLES } from './articles.mjs';
 
 const BASE = 'https://monlac.ch/';
+// Dossier de chaque langue ('' = français), locales, og:locale et inLanguage.
+const SUF = { fr: '', en: 'en/', de: 'de/', it: 'it/' }, LANGUES = Object.keys(SUF);
+const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' }, OG = { fr: 'fr_CH', en: 'en_GB', de: 'de_CH', it: 'it_CH' }, ILANG = { fr: 'fr-CH', en: 'en', de: 'de-CH', it: 'it-CH' };
+// Un article n'existe que dans les langues où il est traduit.
+const dispo = (a) => LANGUES.filter((l) => a[l]);
+const articles = (L) => ARTICLES.filter((a) => a[L]);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const TXT = {
   fr: { nom: 'Mon Lac', blog: 'Blog', app: 'Ouvrir l’app', par: 'Par la rédaction de', publie: 'publié le', maj: 'mis à jour le', bref: 'En bref',
     eau: 'L’eau du Léman en ce moment', eauRepli: 'La température de chaque plage est dans <a href="{app}">l’app Mon Lac</a>, mise à jour toutes les trois heures.',
     sources: 'Sources', voir: 'Voir le lac aujourd’hui', tous: 'Tous les articles', plages: 'Toutes les plages', presentation: 'Présentation', ariane: 'Fil d’Ariane',
     titreBlog: 'Le blog du Léman', descBlog: 'Bain d’hiver, bise, température et qualité de l’eau, plages, sports nautiques, buvettes : nos guides pour profiter du Léman toute l’année, avec les données du jour plage par plage.',
-    photo: 'Photo', autre: 'English', avertissement: '<strong>Avertissement.</strong> Cet article donne des informations générales tirées des sources citées ; il ne remplace pas un avis médical. La baignade en eau froide sollicite fortement le cœur et peut être dangereuse : demandez conseil à un médecin avant de commencer, en particulier en cas de problème cardiaque, de tension ou de grossesse. Ne vous baignez jamais seul et respectez les consignes des sauveteurs. Chacun pratique sous sa propre responsabilité ; en cas d’urgence, appelez le 144 en Suisse ou le 112.', live: (f, c) => `En ce moment, l’eau va de <strong>${f.t}</strong> à ${f.a} à <strong>${c.t}</strong> à ${c.a}, à 70 cm sous la surface. Le détail de chaque plage est dans <a href="{app}">l’app</a>.` },
+    themes: 'Thèmes', tout: 'Tout', lire: 'Lire l’article', equipe: 'Mon Lac', photo: 'Photo', avertissement: '<strong>Avertissement.</strong> Cet article donne des informations générales tirées des sources citées ; il ne remplace pas un avis médical. La baignade en eau froide sollicite fortement le cœur et peut être dangereuse : demandez conseil à un médecin avant de commencer, en particulier en cas de problème cardiaque, de tension ou de grossesse. Ne vous baignez jamais seul et respectez les consignes des sauveteurs. Chacun pratique sous sa propre responsabilité ; en cas d’urgence, appelez le 144 en Suisse ou le 112.', live: (f, c) => `En ce moment, l’eau va de <strong>${f.t}</strong> à ${f.a} à <strong>${c.t}</strong> à ${c.a}, à 70 cm sous la surface. Le détail de chaque plage est dans <a href="{app}">l’app</a>.` },
   en: { nom: 'My Lake', blog: 'Blog', app: 'Open the app', par: 'By the', publie: 'published', maj: 'updated', bref: 'In short',
     eau: 'Lake Geneva’s water right now', eauRepli: 'Each beach’s water temperature is in <a href="{app}">the My Lake app</a>, updated every three hours.',
     sources: 'Sources', voir: 'See the lake today', tous: 'All articles', plages: 'All beaches', presentation: 'About', ariane: 'Breadcrumb',
     titreBlog: 'The Lake Geneva blog', descBlog: 'Winter swimming, the bise, water temperature and quality, beaches, water sports and lakeside cafés: our guides to enjoying Lake Geneva all year round, with today’s data beach by beach.',
-    photo: 'Photo', autre: 'Français', avertissement: '<strong>Disclaimer.</strong> This article gives general information taken from the sources cited; it is not medical advice. Cold-water swimming puts real strain on the heart and can be dangerous: talk to a doctor before you start, especially with a heart condition, high blood pressure or during pregnancy. Never swim alone and follow lifeguards’ instructions. You swim at your own risk; in an emergency, call 144 in Switzerland or 112.', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
+    themes: 'Topics', tout: 'All', lire: 'Read the article', equipe: 'My Lake team', photo: 'Photo', avertissement: '<strong>Disclaimer.</strong> This article gives general information taken from the sources cited; it is not medical advice. Cold-water swimming puts real strain on the heart and can be dangerous: talk to a doctor before you start, especially with a heart condition, high blood pressure or during pregnancy. Never swim alone and follow lifeguards’ instructions. You swim at your own risk; in an emergency, call 144 in Switzerland or 112.', live: (f, c) => `Right now, the water ranges from <strong>${f.t}</strong> at ${f.a} to <strong>${c.t}</strong> at ${c.a}, 70 cm below the surface. Each beach’s details are in <a href="{app}">the app</a>.` },
+  de: { nom: 'Mein See', blog: 'Blog', app: 'App öffnen', par: 'Von der Redaktion von', publie: 'veröffentlicht am', maj: 'aktualisiert am', bref: 'Kurz gesagt',
+    eau: 'Das Wasser des Sees im Moment', eauRepli: 'Die Wassertemperatur jedes Badeplatzes steht in <a href="{app}">der App Mein See</a>, alle drei Stunden aktualisiert.',
+    sources: 'Quellen', voir: 'Den See heute ansehen', tous: 'Alle Artikel', plages: 'Alle Badeplätze', presentation: 'Über uns', ariane: 'Brotkrumennavigation',
+    titreBlog: 'Der Blog zu den Schweizer Seen', descBlog: 'Winterbaden, Bise, Wassertemperatur und -qualität, Badeplätze, Wassersport und Seebeizen: unsere Ratgeber, um den Genfersee das ganze Jahr zu geniessen, mit den Tagesdaten Badeplatz für Badeplatz.',
+    themes: 'Themen', tout: 'Alle', lire: 'Artikel lesen', equipe: 'Mein See', photo: 'Foto', avertissement: '<strong>Hinweis.</strong> Dieser Artikel gibt allgemeine Informationen aus den genannten Quellen wieder; er ersetzt keinen ärztlichen Rat. Baden in kaltem Wasser belastet das Herz stark und kann gefährlich sein: Lass dich vor dem Beginn von einer Ärztin oder einem Arzt beraten, besonders bei Herzproblemen, Bluthochdruck oder Schwangerschaft. Geh nie allein ins Wasser und befolge die Anweisungen der Rettungsschwimmer. Du badest auf eigene Verantwortung; im Notfall wähle in der Schweiz die 144 oder die 112.', live: (f, c) => `Im Moment liegt das Wasser zwischen <strong>${f.t}</strong> bei ${f.a} und <strong>${c.t}</strong> bei ${c.a}, 70 cm unter der Oberfläche. Die Einzelheiten jedes Badeplatzes stehen in <a href="{app}">der App</a>.` },
+  it: { nom: 'Il mio lago', blog: 'Blog', app: 'Apri l’app', par: 'Redazione:', publie: 'pubblicato il', maj: 'aggiornato il', bref: 'In breve',
+    eau: 'L’acqua del lago in questo momento', eauRepli: 'La temperatura dell’acqua di ogni spiaggia è nell’<a href="{app}">app Il mio lago</a>, aggiornata ogni tre ore.',
+    sources: 'Fonti', voir: 'Guarda il lago oggi', tous: 'Tutti gli articoli', plages: 'Tutte le spiagge', presentation: 'Informazioni', ariane: 'Percorso di navigazione',
+    titreBlog: 'Il blog dei laghi svizzeri', descBlog: 'Bagno invernale, bise, temperatura e qualità dell’acqua, spiagge, sport nautici e chioschi in riva al lago: le nostre guide per godersi il Lemano tutto l’anno, con i dati del giorno spiaggia per spiaggia.',
+    themes: 'Temi', tout: 'Tutti', lire: 'Leggi l’articolo', equipe: 'Il mio lago', photo: 'Foto', avertissement: '<strong>Avvertenza.</strong> Questo articolo fornisce informazioni generali tratte dalle fonti citate; non sostituisce il parere di un medico. Fare il bagno in acqua fredda sollecita molto il cuore e può essere pericoloso: chiedi consiglio a un medico prima di iniziare, in particolare in caso di problemi cardiaci, pressione alta o gravidanza. Non fare mai il bagno da solo e segui le indicazioni dei bagnini. Ognuno pratica a proprio rischio; in caso di emergenza, chiama il 144 in Svizzera o il 112.', live: (f, c) => `In questo momento l’acqua va da <strong>${f.t}</strong> a ${f.a} a <strong>${c.t}</strong> a ${c.a}, a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href="{app}">app</a>.` },
 };
 // Thème de chaque article, pour la liste du blog et son filtre.
-const THEMES = { froid: { fr: 'Eau froide', en: 'Cold water' }, lac: { fr: 'Le lac', en: 'The lake' }, plages: { fr: 'Plages', en: 'Beaches' },
-  sports: { fr: 'Sports nautiques', en: 'Water sports' }, sortir: { fr: 'Sortir', en: 'Going out' } };
+const THEMES = { froid: { fr: 'Eau froide', en: 'Cold water', de: 'Kaltes Wasser', it: 'Acqua fredda' }, lac: { fr: 'Le lac', en: 'The lake', de: 'Der See', it: 'Il lago' }, plages: { fr: 'Plages', en: 'Beaches', de: 'Badeplätze', it: 'Spiagge' },
+  sports: { fr: 'Sports nautiques', en: 'Water sports', de: 'Wassersport', it: 'Sport nautici' }, sortir: { fr: 'Sortir', en: 'Going out', de: 'Ausgehen', it: 'Uscire' } };
 const theme = (a) => (a.sante ? 'froid' : /plages/.test(a.slug) ? 'plages' : /paddle|kite|wake/.test(a.slug) ? 'sports' : /buvettes/.test(a.slug) ? 'sortir' : 'lac');
-const dateL = (d, L) => new Date(d + 'T12:00:00Z').toLocaleDateString(L === 'en' ? 'en-GB' : 'fr-CH', { day: 'numeric', month: 'long', year: 'numeric' });
-const urlArticle = (slug, L) => `${BASE}blog/${slug}/${L === 'en' ? 'en/' : ''}`;
-const urlBlog = (L) => `${BASE}blog/${L === 'en' ? 'en/' : ''}`;
-const ORG = { '@type': 'Organization', '@id': `${BASE}#org`, name: TXT.fr.nom, alternateName: TXT.en.nom, url: BASE, logo: { '@type': 'ImageObject', url: `${BASE}icons/icon-512.png`, width: 512, height: 512 } };
-const SITE = { '@type': 'WebSite', '@id': `${BASE}#site`, name: TXT.fr.nom, url: BASE, inLanguage: ['fr-CH', 'en'], publisher: { '@id': `${BASE}#org` } };
+const dateL = (d, L) => new Date(d + 'T12:00:00Z').toLocaleDateString(LOCALE[L], { day: 'numeric', month: 'long', year: 'numeric' });
+const urlArticle = (slug, L) => `${BASE}blog/${slug}/${SUF[L]}`;
+const urlBlog = (L) => `${BASE}blog/${SUF[L]}`;
+const ORG = { '@type': 'Organization', '@id': `${BASE}#org`, name: TXT.fr.nom, alternateName: [TXT.en.nom, TXT.de.nom, TXT.it.nom], url: BASE, logo: { '@type': 'ImageObject', url: `${BASE}icons/icon-512.png`, width: 512, height: 512 } };
+const SITE = { '@type': 'WebSite', '@id': `${BASE}#site`, name: TXT.fr.nom, url: BASE, inLanguage: Object.values(ILANG), publisher: { '@id': `${BASE}#org` } };
 const LEMAN = { '@type': 'LakeBodyOfWater', name: 'Lac Léman', alternateName: 'Lake Geneva', sameAs: 'https://www.wikidata.org/wiki/Q6403' };
 const ariane = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) });
 
 // Liens internes selon la langue et la profondeur (r = chemin vers la racine du site).
 const liens = (html, L, r) => html
-  .replace(/\{plage:([a-z0-9-]+)\}/g, (_, id) => `${r}plage/${id}/${L === 'en' ? 'en/' : ''}`)
-  .replace(/\{plages\}/g, `${r}plage/${L === 'en' ? 'en/' : ''}`)
+  .replace(/\{plage:([a-z0-9-]+)\}/g, (_, id) => `${r}plage/${id}/${SUF[L]}`)
+  .replace(/\{plages\}/g, `${r}plage/${SUF[L]}`)
   .replace(/\{app\}/g, `${r}?lang=${L}`)
-  .replace(/\{blog:([a-z0-9-]+)\}/g, (_, s) => `${r}blog/${s}/${L === 'en' ? 'en/' : ''}`);
+  .replace(/\{blog:([a-z0-9-]+)\}/g, (_, slug) => { const a = ARTICLES.find((x) => x.slug === slug); return `${r}blog/${slug}/${SUF[a?.[L] ? L : a?.en ? 'en' : 'fr']}`; }); // article pas encore traduit : repli sur l'anglais
 
 const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype html>
 <html lang="${L}">
@@ -46,15 +62,14 @@ const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype ht
 <title>${esc(titre)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
-<link rel="alternate" hreflang="fr" href="${alt.fr}">
-<link rel="alternate" hreflang="en" href="${alt.en}">
+${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${alt.fr}">
 <meta property="og:type" content="${type}">
 <meta property="og:title" content="${esc(titre)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${image}">
-<meta property="og:locale" content="${L === 'en' ? 'en_GB' : 'fr_CH'}">
+<meta property="og:locale" content="${OG[L]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="${r}icon.svg">
@@ -63,22 +78,22 @@ const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype ht
 </head>`;
 
 export function article(a, L = 'fr') {
-  const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = L === 'en' ? '../../../' : '../../';
+  const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = SUF[L] ? '../../../' : '../../';
   const ld = [ORG, SITE, {
     '@type': 'BlogPosting', '@id': `${url}#article`, mainEntityOfPage: url, url, headline: c.titre, description: c.desc,
     image: { '@type': 'ImageObject', url: image, width: 1600, height: a.hauteur, creditText: a.auteur, license: a.licence[1], acquireLicensePage: a.page },
-    datePublished: a.publie, dateModified: a.modifie, inLanguage: L === 'en' ? 'en' : 'fr-CH',
+    datePublished: a.publie, dateModified: a.modifie, inLanguage: ILANG[L],
     author: { '@id': `${BASE}#org` }, publisher: { '@id': `${BASE}#org` }, isPartOf: { '@id': `${urlBlog(L)}#blog` },
     about: LEMAN, citation: a.sources.map(([, u]) => u),
   }, ariane([[t.nom, BASE], [t.blog, urlBlog(L)], [c.h1, url]])];
   const credit = `${a.credit[L]}. ${t.photo} ${a.auteur}, <a href="${a.licence[1]}">${a.licence[0]}</a>, <a href="${a.page}">Wikimedia Commons</a>.`;
-  return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: { fr: urlArticle(a.slug, 'fr'), en: urlArticle(a.slug, 'en') }, image, type: 'article', ld, r })}
+  return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: Object.fromEntries(dispo(a).map((l) => [l, urlArticle(a.slug, l)])), image, type: 'article', ld, r })}
 <body>
 <header>
-  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
-  <nav class="ariane" aria-label="${t.ariane}"><a href="${liens('{app}', L, r)}">${t.nom}</a> › <a href="${r}blog/${L === 'en' ? 'en/' : ''}">${t.blog}</a></nav>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a></div>
+  <nav class="ariane" aria-label="${t.ariane}"><a href="${liens('{app}', L, r)}">${t.nom}</a> › <a href="${r}blog/${SUF[L]}">${t.blog}</a></nav>
   <h1>${esc(c.h1)}</h1>
-  <p class="releve">${t.par} ${L === 'en' ? 'My Lake team' : t.nom} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
+  <p class="releve">${t.par} ${t.equipe} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
 </header>
 <main class="article">
   <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>
@@ -91,14 +106,14 @@ ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\
   </ul></section>
   <a class="bouton" href="${liens('{app}', L, r)}">${t.voir}</a>
 </main>
-${pied(L, r, { fr: '../', en: 'en/' })}
+${pied(L, r, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SUF[l]}`])))}
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
 const d = await fetch('${r}eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length) {
-  const f = ([s, t]) => ({ t: ${L === 'en' ? "t.toFixed(1) + ' °C'" : "t.toFixed(1).replace('.', ',') + ' °C'"}, a: \`<a href="${r}plage/\${s.id}/${L === 'en' ? 'en/' : ''}">\${s.nom}</a>\` });
+  const f = ([s, t]) => ({ t: ${L === 'fr' ? "t.toFixed(1).replace('.', ',') + ' °C'" : "t.toFixed(1) + ' °C'"}, a: \`<a href="${r}plage/\${s.id}/${SUF[L]}">\${s.nom}</a>\` });
   document.getElementById('eau-live').innerHTML = ${JSON.stringify(liens(t.live({ t: '§F', a: '§FA' }, { t: '§C', a: '§CA' }), L, r))}
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }
@@ -109,27 +124,27 @@ if (v.length) {
 }
 
 export function liste(L = 'fr') {
-  const t = TXT[L], url = urlBlog(L), r = L === 'en' ? '../../' : '../';
+  const t = TXT[L], url = urlBlog(L), r = SUF[L] ? '../../' : '../', A = articles(L);
   const ld = [ORG, SITE, {
-    '@type': 'Blog', '@id': `${url}#blog`, url, name: t.titreBlog, description: t.descBlog, inLanguage: L === 'en' ? 'en' : 'fr-CH', publisher: { '@id': `${BASE}#org` },
-    blogPost: [...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ '@type': 'BlogPosting', '@id': `${urlArticle(a.slug, L)}#article`, headline: a[L].titre, url: urlArticle(a.slug, L), datePublished: a.publie })),
+    '@type': 'Blog', '@id': `${url}#blog`, url, name: t.titreBlog, description: t.descBlog, inLanguage: ILANG[L], publisher: { '@id': `${BASE}#org` },
+    blogPost: [...A].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ '@type': 'BlogPosting', '@id': `${urlArticle(a.slug, L)}#article`, headline: a[L].titre, url: urlArticle(a.slug, L), datePublished: a.publie })),
   }, ariane([[t.nom, BASE], [t.blog, url]])];
-  return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: { fr: urlBlog('fr'), en: urlBlog('en') }, image: `${BASE}${ARTICLES[0].image}`, type: 'website', ld, r })}
+  return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, urlBlog(l)])), image: `${BASE}${A[0].image}`, type: 'website', ld, r })}
 <body class="large">
 <header>
-  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${L === 'en' ? 'My Lake' : 'Mon Lac'}</a><a class="retour" href="${L === 'en' ? '../' : 'en/'}" hreflang="${L === 'en' ? 'fr' : 'en'}" lang="${L === 'en' ? 'fr' : 'en'}">${t.autre}</a></div>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a></div>
   <h1>${t.titreBlog}</h1>
   <p class="chapo">${esc(t.descBlog)}</p>
 </header>
 <main class="blog">
-  <div class="themes" role="group" aria-label="${L === 'en' ? 'Topics' : 'Thèmes'}">
-    <button type="button" aria-pressed="true" data-theme="">${L === 'en' ? 'All' : 'Tout'}</button>
+  <div class="themes" role="group" aria-label="${t.themes}">
+    <button type="button" aria-pressed="true" data-theme="">${t.tout}</button>
 ${Object.entries(THEMES).map(([k, v]) => `    <button type="button" aria-pressed="false" data-theme="${k}">${v[L]}</button>`).join('\n')}
   </div>
   <ul class="grille">
-${[...ARTICLES].sort((x, y) => y.publie.localeCompare(x.publie)).map((a, i) => `    <li data-theme="${theme(a)}"${i === 0 ? ' class="une"' : ''}><a href="${r}blog/${a.slug}/${L === 'en' ? 'en/' : ''}">
+${[...A].sort((x, y) => y.publie.localeCompare(x.publie)).map((a, i) => `    <li data-theme="${theme(a)}"${i === 0 ? ' class="une"' : ''}><a href="${r}blog/${a.slug}/${SUF[L]}">
       <span class="vignette"><img src="${r}${a.image}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? '' : ' loading="lazy"'}></span>
-      <span class="texte"><span class="meta">${THEMES[theme(a)][L]} · <time datetime="${a.publie}">${dateL(a.publie, L)}</time></span><h2>${esc(a[L].titre)}</h2><p>${esc(a[L].desc)}</p>${i === 0 ? `<span class="lire">${L === 'en' ? 'Read the article' : 'Lire l’article'} →</span>` : ''}</span>
+      <span class="texte"><span class="meta">${THEMES[theme(a)][L]} · <time datetime="${a.publie}">${dateL(a.publie, L)}</time></span><h2>${esc(a[L].titre)}</h2><p>${esc(a[L].desc)}</p>${i === 0 ? `<span class="lire">${t.lire} →</span>` : ''}</span>
     </a></li>`).join('\n')}
   </ul>
 </main>
@@ -140,22 +155,23 @@ g.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
   g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.grille li').forEach((li) => { li.hidden = !!b.dataset.theme && li.dataset.theme !== b.dataset.theme; }); };
 </script>
-${pied(L, r, { fr: '../', en: 'en/' })}
+${pied(L, r, Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, `${r}blog/${SUF[l]}`])))}
 </body>
 </html>
 `;
 }
 
-export const URLS_BLOG = ['blog/', 'blog/en/', ...ARTICLES.flatMap((a) => [`blog/${a.slug}/`, `blog/${a.slug}/en/`])];
+export const URLS_BLOG = LANGUES.flatMap((l) => (articles(l).length ? [`blog/${SUF[l]}`, ...articles(l).map((a) => `blog/${a.slug}/${SUF[l]}`)] : []));
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  await mkdir('blog/en', { recursive: true });
-  await writeFile('blog/index.html', liste('fr'));
-  await writeFile('blog/en/index.html', liste('en'));
-  for (const a of ARTICLES) {
-    await mkdir(`blog/${a.slug}/en`, { recursive: true });
-    await writeFile(`blog/${a.slug}/index.html`, article(a, 'fr'));
-    await writeFile(`blog/${a.slug}/en/index.html`, article(a, 'en'));
+  for (const l of LANGUES) {
+    if (!articles(l).length) continue;
+    await mkdir(`blog/${SUF[l]}`, { recursive: true });
+    await writeFile(`blog/${SUF[l]}index.html`, liste(l));
+    for (const a of articles(l)) {
+      await mkdir(`blog/${a.slug}/${SUF[l]}`, { recursive: true });
+      await writeFile(`blog/${a.slug}/${SUF[l]}index.html`, article(a, l));
+    }
   }
-  console.log(`Blog : ${ARTICLES.length} articles en français et en anglais.`);
+  console.log(`Blog : ${LANGUES.map((l) => `${articles(l).length} articles en ${l}`).join(', ')}.`);
 }

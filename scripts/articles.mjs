@@ -1,26 +1,31 @@
 // Articles du blog, en français et en anglais. Chaque fait vient d'une source citée en bas d'article,
 // ou des listes vérifiées de l'app (plages, lieux, loueurs), insérées ici depuis les mêmes fichiers.
 // Liens dans le HTML : {plage:id}, {plages}, {app}, {blog:slug} ; le générateur les résout selon la langue.
-import { SPOTS, REGIONS_EN, lacDe } from '../spots.js';
+import { SPOTS, REGIONS, lacDe } from '../spots.js';
+import { texteLieu, villeDe } from '../traductions.js';
+import { creerDe } from './articles.de.mjs';
+import { creerIt } from './articles.it.mjs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 
 const ZONES = { geneve: 'Genève', nyon: 'La Côte', lausanne: 'Morges et Lausanne', vevey: 'Riviera', evian: 'Rive française' };
-const region = (r, L) => (L === 'en' ? REGIONS_EN[r] ?? r : r);
-const mois = (m, L) => new Date(2026, m - 1, 1).toLocaleDateString(L === 'en' ? 'en-GB' : 'fr-CH', { month: 'long' });
-const saison = (x, L) => (x.mois ? (L === 'en' ? ` (${mois(x.mois[0], L)} to ${mois(x.mois[1], L)})` : ` (de ${mois(x.mois[0], L)} à ${mois(x.mois[1], L)})`) : '');
+const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
+const region = (r, L) => REGIONS[L][r] ?? r;
+const DEUX_PTS = (L) => (L === 'fr' ? ' : ' : ': '); // typographie française : espace avant les deux-points
+const mois = (m, L) => new Date(2026, m - 1, 1).toLocaleDateString(LOCALE[L], { month: 'long' });
+const saison = (x, L) => (x.mois ? ` (${{ fr: 'de {a} à {b}', en: '{a} to {b}', de: 'von {a} bis {b}', it: 'da {a} a {b}' }[L].replace('{a}', mois(x.mois[0], L)).replace('{b}', mois(x.mois[1], L))})` : '');
 const nomSpot = (id) => SPOTS.find((s) => s.id === id)?.nom ?? id;
 
 // Listes générées depuis les données de l'app : elles restent justes quand une plage ou un lieu est ajouté.
 const listePlages = (filtre, L) => `<ul class="liste">\n${SPOTS.filter(filtre).map((s) => `  <li><a href="{plage:${s.id}}">${s.nom}</a></li>`).join('\n')}\n</ul>`;
 const listeLieux = (filtre, L) => Object.entries(ZONES).map(([z, r]) => {
   const l = LIEUX.filter((x) => x.zone === z && filtre(x));
-  return l.length ? `<h3>${region(r, L)}</h3>\n<ul class="liste">\n${l.map((x) => `  <li><strong>${x.nom}</strong>, ${x.ville}${saison(x, L)}${L === 'en' ? ': ' + x.en : ' : ' + x.note}</li>`).join('\n')}\n</ul>` : '';
+  return l.length ? `<h3>${region(r, L)}</h3>\n<ul class="liste">\n${l.map((x) => `  <li><strong>${x.nom}</strong>, ${villeDe(x.ville, L)}${saison(x, L)}${DEUX_PTS(L)}${texteLieu(x, L)}</li>`).join('\n')}\n</ul>` : '';
 }).join('\n');
 // Les articles parlent du Léman : on n'y liste que ses loueurs et saunas.
 const duLeman = (l) => lacDe(SPOTS.find((s) => s.id === l.spot)) === 'leman';
 const listeLoc = (acts, L, filtre = () => true) => `<ul class="liste">\n${LOCATIONS.filter((l) => duLeman(l) && l.activites.some((a) => acts.includes(a)) && filtre(l)).map((l) =>
-  `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${l.ville}${saison(l, L)}, ${L === 'en' ? 'near' : 'près de'} <a href="{plage:${l.spot}}">${nomSpot(l.spot)}</a>${L === 'en' ? ': ' + l.en : ' : ' + l.note}</li>`).join('\n')}\n</ul>`;
+  `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${villeDe(l.ville, L)}${saison(l, L)}, ${{ fr: 'près de', en: 'near', de: 'bei', it: 'vicino a' }[L]} <a href="{plage:${l.spot}}">${nomSpot(l.spot)}</a>${DEUX_PTS(L)}${texteLieu(l, L, 'loc')}</li>`).join('\n')}\n</ul>`;
 
 const IMG = {
   coupeDepart: { image: 'presentation/img/coupe-noel-depart.jpg', hauteur: 1071, alt: { fr: 'Nageurs sur le ponton de départ de la Coupe de Noël à Genève', en: 'Swimmers on the start pontoon of the Coupe de Noël in Geneva' },
@@ -50,6 +55,23 @@ const IMG = {
   ouchy: { image: 'presentation/img/ouchy.jpg', hauteur: 900, alt: { fr: 'Les quais d’Ouchy au bord du Léman', en: 'The Ouchy waterfront on Lake Geneva' },
     credit: { fr: 'Les quais d’Ouchy, Lausanne', en: 'The Ouchy waterfront, Lausanne' }, auteur: 'Gnu-Bricoleur', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Quai_sur_lac.jpg' },
 };
+// Légendes et textes alternatifs en allemand et en italien : [alt de, alt it, légende de, légende it].
+const IMG_DE_IT = {
+  coupeDepart: ['Schwimmer auf dem Startponton der Coupe de Noël in Genf', 'Nuotatori sul pontile di partenza della Coupe de Noël a Ginevra', 'Die Coupe de Noël 2012, Genf', 'La Coupe de Noël 2012, Ginevra'],
+  coupeBonnets: ['Schwimmer mit Badekappen im See bei der Coupe de Noël in Genf', 'Nuotatori con la cuffia nel lago durante la Coupe de Noël a Ginevra', 'Die Coupe de Noël 2012, Genf', 'La Coupe de Noël 2012, Ginevra'],
+  bise: ['Ein eisbedeckter Steg in der Rade von Genf nach einem Bise-Stoss', 'Un pontile coperto di ghiaccio nella rada di Ginevra dopo un colpo di bise', 'Die Bise am Werk in Genf', 'La bise all’opera a Ginevra'],
+  satellite: ['Der Genfersee vom Satelliten Sentinel-2 aus gesehen', 'Il Lemano visto dal satellite Sentinel-2', 'Der Genfersee, gesehen von Sentinel-2, Juni 2018', 'Il Lemano visto da Sentinel-2, giugno 2018'],
+  vidy: ['Der Strand von Vidy in Lausanne im Sommer', 'La spiaggia di Vidy a Losanna, in estate', 'Der Strand von Vidy, Lausanne', 'La spiaggia di Vidy, Losanna'],
+  paquisEte: ['Der Steg und das Becken der Bains des Pâquis in Genf im Sommer', 'Il molo e la vasca dei Bains des Pâquis a Ginevra, in estate', 'Die Bains des Pâquis, Genf', 'I Bains des Pâquis, Ginevra'],
+  paddle: ['Drei Menschen beim Stand-up-Paddeln auf einem See bei Sonnenuntergang', 'Tre persone in stand up paddle su un lago al tramonto', 'Paddeln auf dem Zürichsee', 'Paddle sul lago di Zurigo'],
+  kite: ['Ein Kitesurfer auf dem Zugersee, im Hintergrund verschneite Alpen', 'Un kitesurfista sul lago di Zugo, sullo sfondo le Alpi innevate', 'Kitesurfen auf dem Zugersee', 'Kitesurf sul lago di Zugo'],
+  bateauSki: ['Ein Wasserskiboot am Genfersee vertäut, Paddler in der Ferne', 'Una barca da sci nautico ormeggiata sul Lemano, paddle in lontananza', 'Wasserskiboot auf dem Genfersee, Waadt', 'Barca da sci nautico sul Lemano, Vaud'],
+  ouchy: ['Die Quais von Ouchy am Genfersee', 'I lungolaghi di Ouchy sul Lemano', 'Die Quais von Ouchy, Lausanne', 'I lungolaghi di Ouchy, Losanna'],
+  yvoire: ['Der Hafen und die Seepromenade von Yvoire', 'Il porto e il lungolago di Yvoire', 'Die Seepromenade von Yvoire', 'Il lungolago di Yvoire'],
+  glace: ['Eine Winterbade-Leiter, die in ein ins Eis gesägtes Loch führt', 'Una scaletta da bagno invernale che scende in un buco aperto nel ghiaccio', 'Winterbaden in Malmö, Schweden', 'Bagno invernale a Malmö, Svezia'],
+  apresBain: ['Ein in ein Handtuch gehüllter Winterschwimmer trinkt nach dem Bad etwas Heisses', 'Un nuotatore invernale avvolto in un asciugamano beve qualcosa di caldo dopo il bagno', 'Nach dem Rennen, Weltmeisterschaften im Winterschwimmen, Rovaniemi 2014', 'Dopo la gara, campionati mondiali di nuoto invernale, Rovaniemi 2014'],
+};
+for (const [k, [ad, ai, cd, ci]] of Object.entries(IMG_DE_IT)) Object.assign(IMG[k].alt, { de: ad, it: ai }), Object.assign(IMG[k].credit, { de: cd, it: ci });
 
 const SSS = ['Société Suisse de Sauvetage SSS, « Nager en eau froide »', 'https://www.slrg.ch/sites/default/files/2025-02/Fiche-nager-en-eau-froide-web.pdf'];
 const ALPLAKES = ['Alplakes, Eawag (CC BY 4.0)', 'https://www.alplakes.eawag.ch'];
@@ -662,3 +684,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
 ];
+// Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
+const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc }), it: creerIt({ listePlages, listeLieux, listeLoc }) };
+for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
+
