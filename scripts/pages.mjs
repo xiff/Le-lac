@@ -136,6 +136,7 @@ export function liste(langue = 'fr') {
     <div class="champ"><input id="q" name="plage" list="noms" placeholder="${en ? 'Vidy, Yvoire, Pâquis…' : 'Vidy, Yvoire, Pâquis…'}" autocomplete="off" spellcheck="false"><button type="submit">${en ? 'Go' : 'Voir'}</button></div>
     <datalist id="noms">${SPOTS.map((s) => `<option value="${esc(s.nom)}">`).join('')}</datalist>
     <p class="ecart" id="ecart" aria-live="polite"></p>
+    <p class="ecart" id="legende" hidden>${en ? 'The label next to each beach: today’s winter swim rating.' : 'L’étiquette à côté de chaque plage : la note du bain d’hiver aujourd’hui.'}</p>
   </form>
 </header>
 <main class="plages">
@@ -151,6 +152,7 @@ ${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${en ? `.
 // Comme la présentation : l'eau de chaque plage en direct (même fichier que l'app), une pastille de couleur,
 // l'écart du moment, et la recherche qui ouvre la page de la plage. Sans script, la liste et les liens restent.
 import { SPOTS, valeurProche } from '${r}../spots.js';
+import { lire, hiver, estHiver, moisHiver } from '${r}../score.js';
 const sans = (x) => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const couleur = (t) => (t < 12 ? '#5aa6c4' : t < 16 ? '#127a8f' : t < 20 ? '#2f7f50' : t < 24 ? '#e3a82b' : '#d0533a');
 const deg = (t) => ${en ? "t.toFixed(1) + '°'" : "t.toFixed(1).replace('.', ',') + '°'"};
@@ -172,6 +174,23 @@ for (const a of document.querySelectorAll('.rangs a')) {
 if (v.length) {
   v.sort((x, y) => x[1] - y[1]);
   document.getElementById('ecart').textContent = ${en ? "`Right now, from ${deg(v[0][1])} at ${v[0][0]} to ${deg(v.at(-1)[1])} at ${v.at(-1)[0]}, 70 cm below the surface.`" : "`En ce moment, de ${deg(v[0][1])} à ${v[0][0]} à ${deg(v.at(-1)[1])} à ${v.at(-1)[0]}, à 70 cm sous la surface.`"};
+}
+// Bain d'hiver (octobre à mai) : une seule requête Open-Meteo pour toutes les plages, puis la même note que l'app.
+if (moisHiver(new Date().getMonth() + 1)) {
+  const as = [...document.querySelectorAll('.rangs a')], ps = as.map((a) => SPOTS.find((s) => s.id === a.dataset.id));
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+  const LIB = ${en ? "['No', 'Meh', 'Good', 'Perfect']" : "['Non', 'Bof', 'Bien', 'Parfait']"};
+  fetch(\`https://api.open-meteo.com/v1/forecast?latitude=\${ps.map((s) => s.lat).join(',')}&longitude=\${ps.map((s) => s.lon).join(',')}&current=\${champs}&timezone=Europe%2FZurich\`)
+    .then((x) => (x.ok ? x.json() : Promise.reject(x.status))).then((m) => {
+      let n = 0;
+      [].concat(m).forEach((x, i) => {
+        const c = lire(x.current, null, valeurProche(d?.spots?.[ps[i].id]));
+        if (!c || !estHiver(c)) return;
+        const k = hiver(c); n++;
+        as[i].querySelector('b').insertAdjacentHTML('beforebegin', \`<em class="t\${k}" title="${en ? 'Winter swim' : 'Bain d’hiver'}">\${LIB[k]}</em>\`);
+      });
+      if (n) document.getElementById('legende').hidden = false;
+    }).catch(() => {});
 }
 </script>
 </body>

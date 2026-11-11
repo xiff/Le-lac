@@ -23,6 +23,7 @@
     <div class="champ"><input id="q" name="plage" list="noms" placeholder="Vidy, Yvoire, Pâquis…" autocomplete="off" spellcheck="false"><button type="submit">Go</button></div>
     <datalist id="noms"><option value="Pregny-Chambésy"><option value="Bains des Pâquis"><option value="Genève-Plage"><option value="Tropical Corner"><option value="Baby-Plage"><option value="Plage des Eaux-Vives"><option value="Cologny"><option value="Collonge-Bellerive – La Savonnière"><option value="Corsier-Port"><option value="Anières"><option value="Hermance"><option value="Bellevue"><option value="Genthod"><option value="Versoix"><option value="Céligny"><option value="Mies"><option value="Coppet"><option value="Nyon"><option value="Prangins"><option value="Gland"><option value="Dully"><option value="Rolle"><option value="Perroy"><option value="Allaman"><option value="Buchillon"><option value="Saint-Prex"><option value="Tolochenaz"><option value="Morges"><option value="Préverenges"><option value="Saint-Sulpice"><option value="Lausanne – Vidy"><option value="Lausanne – Ouchy"><option value="Lausanne – Bellerive"><option value="Pully"><option value="Paudex"><option value="Lutry"><option value="Villette"><option value="Cully – Moratel"><option value="Rivaz"><option value="Saint-Saphorin"><option value="Corseaux"><option value="Vevey"><option value="La Tour-de-Peilz"><option value="Montreux – Clarens"><option value="Veytaux"><option value="Villeneuve"><option value="Noville"><option value="Le Bouveret"><option value="Saint-Gingolph"><option value="Meillerie"><option value="Lugrin"><option value="Maxilly"><option value="Neuvecelle"><option value="Évian"><option value="Publier – Amphion"><option value="Thonon"><option value="Thonon – Saint-Disdille"><option value="Anthy-sur-Léman"><option value="Margencel"><option value="Sciez"><option value="Excenevex"><option value="Yvoire"><option value="Nernier"><option value="Messery"><option value="Chens-sur-Léman"><option value="Yverdon-les-Bains"><option value="Grandson – Corcelettes"><option value="Yvonand"><option value="Concise"><option value="Saint-Aubin"><option value="Cortaillod"><option value="Boudry"><option value="Colombier"><option value="Neuchâtel – Jeunes-Rives"><option value="Hauterive"><option value="Cudrefin"><option value="Portalban"><option value="Gletterens"><option value="Forel"><option value="Estavayer – Nouvelle Plage"><option value="Cerlier (Erlach)"><option value="La Neuveville"><option value="Strandbad Rostele"><option value="Tüscherz"><option value="Badewiese Funtelen"><option value="Bienne – Plage"><option value="Nidau"><option value="Morat"><option value="Faoug"><option value="Avenches"><option value="Salavaux"><option value="Pont-la-Ville"><option value="La Roche"><option value="Gumefens"><option value="Corbières"><option value="Morlon"><option value="Domaine des Îles"></datalist>
     <p class="ecart" id="ecart" aria-live="polite"></p>
+    <p class="ecart" id="legende" hidden>The label next to each beach: today’s winter swim rating.</p>
   </form>
 </header>
 <main class="plages">
@@ -179,6 +180,7 @@
 // Comme la présentation : l'eau de chaque plage en direct (même fichier que l'app), une pastille de couleur,
 // l'écart du moment, et la recherche qui ouvre la page de la plage. Sans script, la liste et les liens restent.
 import { SPOTS, valeurProche } from '../../spots.js';
+import { lire, hiver, estHiver, moisHiver } from '../../score.js';
 const sans = (x) => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const couleur = (t) => (t < 12 ? '#5aa6c4' : t < 16 ? '#127a8f' : t < 20 ? '#2f7f50' : t < 24 ? '#e3a82b' : '#d0533a');
 const deg = (t) => t.toFixed(1) + '°';
@@ -200,6 +202,23 @@ for (const a of document.querySelectorAll('.rangs a')) {
 if (v.length) {
   v.sort((x, y) => x[1] - y[1]);
   document.getElementById('ecart').textContent = `Right now, from ${deg(v[0][1])} at ${v[0][0]} to ${deg(v.at(-1)[1])} at ${v.at(-1)[0]}, 70 cm below the surface.`;
+}
+// Bain d'hiver (octobre à mai) : une seule requête Open-Meteo pour toutes les plages, puis la même note que l'app.
+if (moisHiver(new Date().getMonth() + 1)) {
+  const as = [...document.querySelectorAll('.rangs a')], ps = as.map((a) => SPOTS.find((s) => s.id === a.dataset.id));
+  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code';
+  const LIB = ['No', 'Meh', 'Good', 'Perfect'];
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ps.map((s) => s.lat).join(',')}&longitude=${ps.map((s) => s.lon).join(',')}&current=${champs}&timezone=Europe%2FZurich`)
+    .then((x) => (x.ok ? x.json() : Promise.reject(x.status))).then((m) => {
+      let n = 0;
+      [].concat(m).forEach((x, i) => {
+        const c = lire(x.current, null, valeurProche(d?.spots?.[ps[i].id]));
+        if (!c || !estHiver(c)) return;
+        const k = hiver(c); n++;
+        as[i].querySelector('b').insertAdjacentHTML('beforebegin', `<em class="t${k}" title="Winter swim">${LIB[k]}</em>`);
+      });
+      if (n) document.getElementById('legende').hidden = false;
+    }).catch(() => {});
 }
 </script>
 </body>
