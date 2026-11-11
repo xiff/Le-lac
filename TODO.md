@@ -25,8 +25,9 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 ## Langues
 
-- [ ] **Allemand** : traduire l’app (`textes.js`), les pages de plage (`scripts/pages.mjs`), la liste, la présentation et le blog ; ajouter `de` aux liens `hreflang` et au sélecteur de langue.
-- [ ] **Italien** : même chose, utile dès l’ajout des lacs tessinois.
+- [x] **Allemand et italien** : app, pages de plage, liste, présentation et blog (13 articles) traduits le 11 novembre 2026.
+- [ ] **Relecture par des locuteurs natifs** : les traductions allemandes et italiennes (surtout les articles de santé sur le bain d’hiver) n’ont pas été relues par une personne dont c’est la langue.
+- [ ] **Titres et formulations propres à chaque langue** : adapter, si besoin, les jeux de mots des verdicts (« Même les cygnes hésitent », etc.).
 
 ## Mesure d’audience
 

@@ -2,7 +2,7 @@
 
 25 lacs suisses, du Léman au lac de Constance, en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
-au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
+au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français, anglais, allemand et italien.
 
 Site : **https://monlac.ch/** (mon-lac.ch redirige vers monlac.ch).
 

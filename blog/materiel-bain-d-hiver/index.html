@@ -8,6 +8,8 @@
 <link rel="canonical" href="https://monlac.ch/blog/materiel-bain-d-hiver/">
 <link rel="alternate" hreflang="fr" href="https://monlac.ch/blog/materiel-bain-d-hiver/">
 <link rel="alternate" hreflang="en" href="https://monlac.ch/blog/materiel-bain-d-hiver/en/">
+<link rel="alternate" hreflang="de" href="https://monlac.ch/blog/materiel-bain-d-hiver/de/">
+<link rel="alternate" hreflang="it" href="https://monlac.ch/blog/materiel-bain-d-hiver/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/materiel-bain-d-hiver/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matériel pour le bain d’hiver : la liste complète avant d’aller au Léman · Mon Lac">
@@ -63,13 +65,14 @@
 </main>
 <footer class="pied">
   <span>Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot.</span>
-  <div class="liens"><a href="../../presentation/">À propos</a><a href="../../plage/">Toutes les plages</a><a href="../../blog/">Blog</a><a class="langue" href="../../blog/materiel-bain-d-hiver/en/" hreflang="en" lang="en">English</a></div>
+  <div class="liens"><a href="../../presentation/">À propos</a><a href="../../plage/">Toutes les plages</a><a href="../../blog/">Blog</a><a class="langue" href="../../blog/materiel-bain-d-hiver/en/" hreflang="en" lang="en">English</a><a class="langue" href="../../blog/materiel-bain-d-hiver/de/" hreflang="de" lang="de">Deutsch</a><a class="langue" href="../../blog/materiel-bain-d-hiver/it/" hreflang="it" lang="it">Italiano</a></div>
 </footer>
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '../../spots.js';
 const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
-const v = SPOTS.map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+// Le blog parle du Léman : ses plages seulement.
+const v = SPOTS.filter((s) => !s.lac).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> à §FA à <strong>§C</strong> à §CA, à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."

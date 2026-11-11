@@ -685,6 +685,6 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
   },
 ];
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
-const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc }), it: creerIt({ listePlages, listeLieux, listeLoc }) };
+const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
 

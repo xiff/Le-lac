@@ -97,4 +97,184 @@ ${h.listeLoc(['sauna'], L)}
 <p>Die <a href="{plages}">Liste der Badeplätze</a> zeigt für jeden die Wassertemperatur und den Wind; für den Winter siehe auch <a href="{blog:bain-d-hiver-leman}">den Leitfaden zum Winterbaden</a>.</p>
 `,
   },
+  'plages-geneve': {
+    titre: 'Wo in Genf baden: die Badeplätze des Kantons, einer nach dem anderen',
+    h1: 'Wo in Genf baden: alle Badeplätze des Kantons',
+    desc: 'Von den Bains des Pâquis bis Hermance: die Genfer Badeplätze am Genfersee mit ihren Buvetten und der Wassertemperatur von heute für jeden.',
+    bref: 'Der Kanton Genf zählt <strong>15 Badeplätze und Badestellen, die Mein See verfolgt</strong>, von Pregny-Chambésy und Versoix am rechten Ufer bis Cologny, Corsier-Port und Hermance am linken Ufer, mit den Bains des Pâquis und Genève-Plage mitten in der Stadt. Jeder hat seine Seite mit der Wassertemperatur in 70 cm Tiefe und dem Wind von heute.',
+    html: (L) => `
+<h2>Welche Badeplätze gibt es in Genf?</h2>
+<p>Hier sind alle Genfer Badeplätze, die die App verfolgt, mit einem Link auf ihre Seite (Wasser, Wind, Tagesurteil):</p>
+${h.listePlages((s) => s.region === 'Genève', L)}
+<h2>Wo kann man im Zentrum von Genf baden?</h2>
+<p>Mitten in der Rade liegen die <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> am rechten Ufer und der <a href="{plage:plage-des-eaux-vives}">Strand Eaux-Vives</a> am linken Ufer, beide nur wenige Schritte vom Zentrum. Etwas weiter am linken Ufer ergänzen <a href="{plage:geneve-plage}">Genève-Plage</a> und <a href="{plage:baby-plage}">Baby-Plage</a> das Angebot.</p>
+<h2>Wo kann man in Genf am Wasser etwas trinken?</h2>
+${h.listeLieux((x) => x.zone === 'geneve', L)}
+<h2>Kann man überall baden?</h2>
+<p>Vor dem Baden sollte man die Wasserqualität beim Kanton prüfen, der datierte Analysen Badeplatz für Badeplatz veröffentlicht: siehe <a href="{blog:qualite-eau-baignade-leman}">wie man die Wasserqualität prüft</a>. Im Winter praktizieren die Mutigsten das <a href="{blog:bain-d-hiver-leman}">Winterbaden</a>.</p>
+`,
+  },
+  'paddle-leman': {
+    titre: 'Paddeln auf dem Genfersee: wann der See ruhig genug ist und wo man mieten kann',
+    h1: 'Paddeln auf dem Genfersee: wann los und wo mieten',
+    desc: 'Ab welchem Wind das Paddeln auf dem Genfersee schwierig wird, wie man Böen liest und die Paddle-Verleiher von Genf bis Saint-Gingolph.',
+    bref: 'Beim Paddeln zählen <strong>die Böen</strong>. In Mein See ist Paddeln «Perfekt» bis 12 km/h Böen, «Gut» bis 20 km/h, «Naja» bis 28 km/h und darüber nicht empfohlen; Regen oder Luft unter 8 °C kosten eine Stufe. Bei Bise bleibt man besser nahe am Ufer oder wartet.',
+    html: (L) => `
+<h2>Welcher Wind ist für das Paddeln maximal?</h2>
+<p>Auf dem Board stehend bietet man dem Wind viel Angriffsfläche, und Wellen bringen einen schnell aus dem Gleichgewicht. Das sind die Richtwerte der <a href="{app}">App</a> (keine offiziellen Normen):</p>
+<ul class="liste">
+  <li><strong>Perfekt</strong>: Böen bis 12 km/h, der See ist ein Spiegel.</li>
+  <li><strong>Gut</strong>: bis 20 km/h, ein paar Wellchen.</li>
+  <li><strong>Naja</strong>: bis 28 km/h, es schaukelt.</li>
+  <li><strong>Nein</strong>: darüber oder bei Gewitter.</li>
+</ul>
+<p>Regen oder Luft unter 8 °C kosten eine Stufe. Der Wind von heute steht Badeplatz für Badeplatz in der App; die <a href="{blog:bise-leman}">Bise</a> verdient besondere Aufmerksamkeit.</p>
+<h2>Wo kann man auf dem Genfersee ein Paddle mieten?</h2>
+${h.listeLoc(['paddle'], L)}
+<p>Preise, Zeiten und Verfügbarkeit ändern sich: Frag vor dem Hingehen beim Verleih nach.</p>
+<h2>Welchen Badeplatz wählt man für den Anfang?</h2>
+<p>Einen Badeplatz mit leichtem Einstieg und einer vor dem Wind des Tages geschützten Stelle: Der Windpfeil auf jeder <a href="{plages}">Badeplatz-Seite</a> hilft, das am wenigsten exponierte Ufer zu wählen.</p>
+`,
+  },
+  'kitesurf-windsurf-wingfoil-leman': {
+    titre: 'Kitesurfen, Windsurfen und Wingfoilen auf dem Genfersee: der richtige Wind und die richtigen Spots',
+    h1: 'Kitesurfen, Windsurfen und Wingfoilen auf dem Genfersee',
+    desc: 'Welche Windstärke fürs Kitesurfen, Windsurfen und Foilen auf dem Genfersee, warum die Bise die besten Downwinds macht und wo man mieten oder lernen kann.',
+    bref: 'Windsportarten brauchen einen stabilen Wind. In Mein See ist <strong>Kitesurfen</strong> «Perfekt» zwischen 22 und 40 km/h, <strong>Windsurfen</strong> zwischen 20 und 40 km/h und <strong>Foilen</strong> ab 12 km/h, für Downwinds bei Bise von mindestens 25 km/h. Die Bise, laut MeteoSchweiz der charakteristischste Nordostwind des Genfersees, ist ihr bester Verbündeter.',
+    html: (L) => `
+<h2>Welche Windstärke für welche Disziplin?</h2>
+<ul class="liste">
+  <li><strong>Kitesurfen</strong>: «Perfekt» von 22 bis 40 km/h, «Gut» von 16 bis 45 km/h; eine Note weniger, wenn die Böen den mittleren Wind um mehr als 20 km/h übersteigen, und «Nein» ab 55 km/h Böen.</li>
+  <li><strong>Windsurfen</strong>: «Perfekt» von 20 bis 40 km/h, «Gut» von 15 bis 45 km/h; es verträgt Böen besser, bis 60 km/h.</li>
+  <li><strong>Foilen</strong>: wenig Wind genügt, «Perfekt» von 12 bis 30 km/h; ohne Wind bleibt das Pump-Foilen.</li>
+</ul>
+<p>Das sind die Richtwerte der <a href="{app}">App</a>, keine Normen: Das Niveau jedes Einzelnen und die Grösse des Materials zählen ebenso viel.</p>
+<h2>Warum ist die Bise ideal für Downwinds?</h2>
+<p>Die <a href="{blog:bise-leman}">Bise</a> weht aus Nordosten, gleichmässig und oft stark, und wirft eine Dünung auf, die über den See läuft. Beim Foilen ergibt eine Bise von mindestens 25 km/h die Note «Perfekt»: genug für lange, von den Wellen getragene Fahrten. Auf dem Haut-Lac dreht sie auf Nord-Nordwest (MeteoSchweiz).</p>
+<h2>Wo kann man Windsurfen und Wingfoilen mieten oder lernen?</h2>
+${h.listeLoc(['windsurf', 'wing'], L)}
+<p>Fürs Kitesurfen haben wir noch keinen geprüften Verleih; die Spots wählt man nach der Windrichtung, die auf jeder <a href="{plages}">Badeplatz-Seite</a> zu sehen ist.</p>
+`,
+  },
+  'wakeboard-wakesurf-ski-nautique-leman': {
+    titre: 'Wakeboard, Wakesurf und Wasserski auf dem Genfersee: die Schulen und Clubs',
+    h1: 'Wakeboard, Wakesurf und Wasserski auf dem Genfersee',
+    desc: 'Von Pregny bis Thonon: die Schulen und Clubs, die das Boot für Wakeboard, Wakesurf und Wasserski rausnehmen, und warum es einen glatten See braucht.',
+    bref: 'Hinter einem Boot macht <strong>ein glatter See</strong> eine schöne Session: In Mein See sind Wakeboard und Wasserski «Perfekt» bis 15 km/h Böen, Wakesurf bis 10 km/h. Laut dem Kanton Genf ist die Ausübung auf dem Genfersee frei, unter Einhaltung der Sicherheitsregeln. Geprüfte Schulen und Clubs unten, von Genf bis Montreux und am französischen Ufer.',
+    html: (L) => `
+<h2>Warum braucht es einen glatten See?</h2>
+<p>Wakeboard und Wasserski fährt man vom Boot gezogen; Wakesurfen dagegen surft man ohne Seil auf der Welle des Kielwassers. Kabbelwasser verwischt diese Welle und macht das Gleiten unangenehm. Die Richtwerte der <a href="{app}">App</a>:</p>
+<ul class="liste">
+  <li><strong>Wakeboard und Wasserski</strong>: «Perfekt» bis 15 km/h Böen, «Gut» bis 25, «Naja» bis 32.</li>
+  <li><strong>Wakesurf</strong>: anspruchsvoller, «Perfekt» bis 10 km/h, «Gut» bis 18, «Naja» bis 25.</li>
+</ul>
+<p>Regen oder Luft unter 10 °C kosten eine Stufe. Ruhige Morgen sind oft die besten.</p>
+<h2>Wo kann man Wakeboard, Wakesurf oder Wasserski machen?</h2>
+${h.listeLoc(['wakeboard', 'wakesurf', 'ski'], L)}
+<p>Tarife, Saisons und Zeiten sind bei jeder Schule zu prüfen.</p>
+<h2>Braucht man einen Ausweis?</h2>
+<p>Bei einer Ausfahrt mit einer Schule oder einem Fahrer nein: Er steuert das Boot. Der Kanton Genf hält fest, dass die Ausübung auf dem Genfersee frei ist und die Regeln die Sicherheit der anderen Nutzer bezwecken; sie betreffen vor allem diejenigen, die ihr eigenes Boot benutzen.</p>`,
+  },
+  'buvettes-restaurants-bord-du-leman': {
+    titre: 'Buvetten und Restaurants am Genfersee: unsere Adressen mit den Füssen im Wasser',
+    h1: 'Buvetten und Restaurants am Genfersee, Region für Region',
+    desc: 'Die Terrassen am Wasser in Genf, an der Côte, in Lausanne, an der Riviera und am französischen Ufer, mit ihren Öffnungssaisons.',
+    bref: 'Mein See verzeichnet <strong>' + h.nbLieux + ' Buvetten und Restaurants am Genfersee</strong>, geprüft bei den Tourismusbüros und auf den Websites der Orte: von den Bains des Pâquis in Genf bis zu den Quais von Vevey, von der Guinguette de Vidy bis zum Strand von Sciez. Viele Buvetten sind nur in der schönen Jahreszeit geöffnet: Die Zeit ist angegeben, wenn sie bekannt ist.',
+    html: (L) => `
+<h2>Wo kann man am Genfersee etwas trinken oder essen?</h2>
+${h.listeLieux(() => true, L)}
+<h2>Sind die Buvetten das ganze Jahr geöffnet?</h2>
+<p>Nein: Viele öffnen nur von April oder Mai bis September, je nach Wetter. Die obigen Saisons stammen von den Tourismusbüros oder den Websites der Orte; Zeiten und Saisons ändern sich, ein Anruf vor dem Hingehen erspart Enttäuschungen. Der Reiter «Ausgehen» der <a href="{app}">App</a> zeigt ausserhalb der Saison «Geschlossen bis…» an.</p>
+<h2>Fehlt ein Ort?</h2>
+<p>Der Reiter «Ausgehen» der App bietet ein kleines Formular, um eine Adresse vorzuschlagen; sie wird vor der Aufnahme geprüft. Um den Badeplatz nebenan zu wählen, siehe die <a href="{plages}">Liste der Badeplätze</a> und, in Genf, <a href="{blog:plages-geneve}">alle Badeplätze des Kantons</a>.</p>`,
+  },
+  'plages-leman-rive-francaise': {
+    titre: 'Badeplätze am Genfersee auf der französischen Seite: von Évian bis Chens-sur-Léman',
+    h1: 'Die Badeplätze am Genfersee auf der französischen Seite, von Évian bis Chens-sur-Léman',
+    desc: 'Die Badeplätze am französischen Ufer des Genfersees, von Meillerie bis Chens-sur-Léman, mit der Wassertemperatur von heute, den Restaurants und den Wake-Schulen in der Nähe.',
+    bref: 'Mein See verfolgt <strong>' + h.nbRive + ' Badeplätze am französischen Ufer des Genfersees</strong>, in Haute-Savoie: von Meillerie und Évian im Osten bis Yvoire, Messery und Chens-sur-Léman nahe der Genfer Grenze. Jeder hat seine Seite mit dem Wasser in 70 cm Tiefe und dem Wind von heute; die Wasserqualität prüft man auf der Badeplatzkarte der CIPEL.',
+    html: (L) => `
+<h2>Welche Badeplätze gibt es am französischen Ufer?</h2>
+${h.listePlages((s) => s.region === 'Rive française', L)}
+<h2>Wo kann man auf der französischen Seite am Wasser essen?</h2>
+${h.listeLieux((x) => x.zone === 'evian', L)}
+<h2>Was kann man auf der französischen Seite auf dem Wasser machen?</h2>
+${h.listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski', 'wing'], L, (l) => h.SPOTS.find((s) => s.id === l.spot)?.region === 'Rive française')}
+<h2>Wie prüft man die Wasserqualität?</h2>
+<p>Für die französischen Badeplätze hat die App keine aktuelle Analyse: Sie verweist auf die Badeplatzkarte der CIPEL. Siehe <a href="{blog:qualite-eau-baignade-leman}">wie man die Wasserqualität prüft</a>. Die Tagestemperatur jedes Badeplatzes steht in der <a href="{app}">App</a>.</p>`,
+  },
+  'choc-thermique-eau-froide': {
+    titre: 'Kälteschock: die ersten 90 Sekunden im kalten Wasser des Genfersees',
+    h1: 'Kälteschock: die ersten 90 Sekunden im kalten Wasser gut überstehen',
+    desc: 'Was der Körper beim Einstieg in 10 °C kaltes Wasser tut, warum man nicht springen sollte, wie man in der ersten Minute atmet und warum man vor dem Start zum Arzt geht.',
+    bref: 'Beim Einstieg in kaltes Wasser reagiert der Körper mit einem <strong>Kälteschock</strong>: keuchende Atmung, die man nicht mehr kontrolliert, rasendes Herz, steigender Blutdruck. Laut RNLI dauert dieser Schock etwa <strong>60 bis 90 Sekunden</strong>; es ist der riskanteste Moment. Daher die Regeln: vor dem Start zum Arzt, nie springen, langsam einsteigen und die Atmung kontrollieren, nie allein sein und, wer unfreiwillig im Wasser landet, auf dem Rücken treiben, bis der Schock vorbei ist.',
+    html: (L) => `
+<h2>Was passiert im Körper beim Einstieg ins kalte Wasser?</h2>
+<p>Bei Kontakt mit kaltem Wasser löst die Haut eine Reflexreaktion aus: ein starkes, unwillkürliches Einatmen, dann schnelles und schwer zu beherrschendes Atmen; das Herz beschleunigt und der Blutdruck steigt. Die RNLI, der britische Seenotrettungsdienst, nennt dieses Phänomen <em>cold water shock</em> und erinnert daran, dass ein grosser Teil der Todesfälle im kalten Wasser in den ersten Minuten durch diesen Schock eintritt und nicht durch Unterkühlung.</p>
+<h2>Wie lange dauert der Kälteschock?</h2>
+<p>Laut RNLI etwa 60 bis 90 Sekunden. Danach beruhigt sich die Atmung und man hat sich wieder im Griff. Deshalb bleibt man die ersten Male nahe am Ufer und versucht nicht, sofort zu schwimmen.</p>
+<h2>Warum sollte man nicht springen?</h2>
+<p>Weil ein Reflex-Einatmen mit dem Kopf unter Wasser dazu führen kann, dass man Wasser schluckt. Die Schweizerische Lebensrettungs-Gesellschaft (SLRG) empfiehlt, langsam einzusteigen, nicht zu springen, den Kopf über Wasser zu halten und eine Mütze zu tragen.</p>
+<h2>Wie steigt man Schritt für Schritt ins kalte Wasser?</h2>
+<ul class="liste">
+  <li><strong>Mit jemandem</strong>: eine Begleitung am Ufer oder im Wasser (SLRG, BFU).</li>
+  <li><strong>Langsam</strong>, gehend, mit langem Ausatmen, um die Atmung gleichmässig zu halten.</li>
+  <li><strong>Kurz</strong>: Die ersten Male genügen einige Dutzend Sekunden bis ein oder zwei Minuten; die SLRG legt das Maximum auf so viele Minuten wie Grad fest.</li>
+  <li><strong>Raus</strong> beim kleinsten Unwohlsein, bei starkem Zittern oder tauben Fingern.</li>
+</ul>
+<h2>Was tun, wenn man ins kalte Wasser fällt?</h2>
+<p>Die RNLI lehrt den Reflex <strong>«Float to Live»</strong>: nicht um sich schlagen, den Kopf nach hinten legen, Ohren im Wasser, Arme und Beine ausstrecken und ruhig atmen, bis der Schock vorbei ist, dann um Hilfe rufen oder zum Ufer zurückkehren. Eine Studie der Universität Portsmouth hat gezeigt, dass diese Anweisungen auch wenig erfahrenen Personen helfen, in See und Meer zu treiben.</p>
+<h2>Sollte man vor dem Start zum Arzt?</h2>
+<p>Ja, das ist der erste Reflex: Der Kälteschock belastet das Herz stark. Bei Herzproblemen oder Bluthochdruck holt man vor dem ersten Bad ärztlichen Rat ein. Manche Schwimmer gewöhnen sich auch daran, indem sie ihre Duschen mit einigen Dutzend Sekunden kaltem Wasser beenden und diese nach und nach verlängern; das ist keine Garantie, nur eine sanfte Art, das Gefühl kennenzulernen.</p>
+<p>Zum Weiterlesen: <a href="{blog:materiel-bain-d-hiver}">die Ausrüstung fürs Winterbaden</a> und <a href="{blog:afterdrop-se-rechauffer}">sich nach dem Bad aufwärmen</a>. Das Wasser von heute steht Badeplatz für Badeplatz in der <a href="{app}">App</a>.</p>`,
+  },
+  'materiel-bain-d-hiver': {
+    titre: 'Ausrüstung fürs Winterbaden: die vollständige Liste vor dem Gang an den Genfersee',
+    h1: 'Die Ausrüstung fürs Winterbaden, von Kopf bis Fuss',
+    desc: 'Mütze, Neopren-Schuhe und -Handschuhe, Schwimmboje, Unterlage zum Umziehen, Cape und Thermosflasche: alles, was man für ein Winterbad im Genfersee mitnehmen sollte, und warum.',
+    bref: 'Für ein Winterbad passt das Wesentliche in eine Tasche: <strong>ein Badeanzug oder eine Badehose, eine Mütze, Schuhe und eventuell Neopren-Handschuhe</strong> (Füsse und Hände kühlen schnell aus), <strong>eine Schwimmboje</strong>, um gesehen zu werden und sich auszuruhen, und für den Ausstieg <strong>ein Handtuch, ein Cape oder ein warmer Bademantel, leicht anzuziehende Kleidung, eine Unterlage zum Umziehen und ein warmes Getränk</strong>. Und vor allem eine Begleitung.',
+    html: (L) => `
+<h2>Was trägt man im kalten Wasser?</h2>
+<ul class="liste">
+  <li><strong>Einen bequemen Badeanzug oder eine Badehose</strong>, oder einen Anzug, wenn man länger schwimmen will.</li>
+  <li><strong>Eine Mütze</strong> aus Silikon oder Neopren: Die Schweizerische Lebensrettungs-Gesellschaft empfiehlt, eine Mütze zu tragen und den Kopf über Wasser zu halten.</li>
+  <li><strong>Neopren-Schuhe</strong>: Die Füsse leiden schnell unter der Kälte, und die Kiesel des Genfersees verzeihen nichts.</li>
+  <li><strong>Neopren-Handschuhe</strong>, wenn die Hände taub werden; je dicker, desto besser der Schutz, aber desto weniger Geschick in den Fingern. Die Outdoor Swimming Society nennt sie zusammen mit den Schuhen unter den nützlichen Winterzubehörteilen.</li>
+  <li><strong>Eine farbige Schwimmboje</strong>: Die Beratungsstelle für Unfallverhütung (BFU) empfiehlt sie im Freiwasser, um gesehen zu werden und sich bei Bedarf festhalten zu können.</li>
+</ul>
+<h2>Was braucht man für den Ausstieg?</h2>
+<ul class="liste">
+  <li><strong>Ein grosses Handtuch</strong> und ein <strong>Cape oder einen warmen Bademantel</strong>, um sich windgeschützt umzuziehen.</li>
+  <li><strong>Weite, leicht anzuziehende Kleidung</strong> für kalte Finger: mehrere Schichten, keine komplizierten Knöpfe, Mütze und warme Socken.</li>
+  <li><strong>Eine Unterlage zum Umziehen</strong>, um nicht mit den Füssen auf Steine oder gefrorenes Gras zu treten.</li>
+  <li><strong>Eine Thermosflasche mit einem warmen Getränk</strong>: Die SLRG rät zu einem lauwarmen Getränk, um sich von innen aufzuwärmen. Kein Alkohol.</li>
+</ul>
+<h2>Welche Ausrüstung ist die wichtigste?</h2>
+<p>Eine Begleitung. SLRG und BFU sind eindeutig: Man schwimmt nie allein im Freiwasser, erst recht nicht im kalten Wasser. Der Rest der Ausrüstung macht das Bad angenehmer; die Anwesenheit von jemandem macht es sicherer.</p>
+<h2>Wo kann man diese Ausrüstung in der Nähe des Genfersees kaufen oder mieten?</h2>
+<p>Die Sport- und Surfgeschäfte der Region bieten Mützen, Schuhe und Handschuhe aus Neopren an. Zum Aufwärmen vor Ort haben manche Orte eine Sauna, etwa die Bains des Rives in Bellerive (Lausanne) im Winter: siehe den <a href="{blog:bain-d-hiver-leman}">Leitfaden zum Winterbaden</a>.</p>
+<p>Vor dem Aufbruch: <a href="{blog:choc-thermique-eau-froide}">die ersten 90 Sekunden im kalten Wasser</a>. Beim Ausstieg: <a href="{blog:afterdrop-se-rechauffer}">sich gut aufwärmen</a>. Das Wasser von heute steht in der <a href="{app}">App</a>.</p>`,
+  },
+  'afterdrop-se-rechauffer': {
+    titre: 'Afterdrop: warum man nach einem Winterbad noch mehr friert und wie man sich aufwärmt',
+    h1: 'Afterdrop: sich nach einem Winterbad gut aufwärmen',
+    desc: 'Warum der Körper nach dem Ausstieg noch etwa zehn Minuten weiter auskühlt, wie man sich umzieht, was man trinkt und was man besser vermeidet, etwa die heisse Dusche.',
+    bref: 'Der <strong>Afterdrop</strong> ist die Abkühlung, die <strong>nach</strong> dem Ausstieg aus dem Wasser weitergeht: Zehn Minuten nach dem Ausstieg kann man mehr frieren als im Moment des Ausstiegs, mit Zittern, bis hin zu Schwindel. Um sich gut aufzuwärmen: abtrocknen und sich schnell und warm anziehen, ein lauwarmes Getränk trinken, sich sanft ohne grosse Anstrengung bewegen und etwa eine Viertelstunde im Warmen und in Ruhe bleiben. Die Schweizerische Lebensrettungs-Gesellschaft rät von der heissen Dusche direkt danach ab.',
+    html: (L) => `
+<h2>Was ist der Afterdrop?</h2>
+<p>Das ist das Weitersinken der Körpertemperatur, obwohl man bereits aus dem Wasser gestiegen ist und im Trockenen steht. Die Ratgeber zum Freiwasserschwimmen setzen es oft etwa zehn Minuten nach dem Ausstieg an; nach einem langen Bad kann es länger dauern. Man spürt ihn als Kältewelle, verstärktes Zittern, manchmal Schwindel.</p>
+<h2>Wie wärmt man sich nach einem Winterbad auf?</h2>
+<ul class="liste">
+  <li><strong>Sofort umziehen</strong>: den nassen Badeanzug ausziehen, abtrocknen und warme, trockene Kleidung anziehen, windgeschützt (SLRG).</li>
+  <li><strong>Kopf, Hände und Füsse bedecken</strong>: Mütze, Handschuhe, warme Socken.</li>
+  <li><strong>Warm trinken</strong>: Die SLRG empfiehlt ein lauwarmes Getränk, um sich von innen aufzuwärmen.</li>
+  <li><strong>Sich sanft bewegen</strong>: gehen, auf der Stelle treten. Die SLRG rät von grossen Anstrengungen ab, und intensive Bewegung kann den Afterdrop verstärken (DAN Alert Diver).</li>
+  <li><strong>Etwa eine Viertelstunde im Warmen und in Ruhe bleiben</strong>, bevor man weiterfährt, besonders mit dem Velo oder am Steuer.</li>
+</ul>
+<h2>Warum direkt danach nicht heiss duschen?</h2>
+<p>Die Schweizerische Lebensrettungs-Gesellschaft rät direkt nach einem Bad in kaltem Wasser davon ab. Man wärmt sich zuerst auf, indem man sich anzieht und warm trinkt; die Dusche kommt später, wenn der Körper wieder auf normaler Temperatur ist.</p>
+<h2>Wann sollte man sich Sorgen machen?</h2>
+<p>Wenn das Zittern nicht aufhört oder die Person verwirrt, ungeschickt oder schläfrig wird, muss man sie ins Warme bringen und die Rettung rufen (144 in der Schweiz, 15 oder 112 in Frankreich): Das sind Anzeichen einer Unterkühlung, die eine begleitete Erwärmung erfordert.</p>
+<p>Lesenswert auch: <a href="{blog:choc-thermique-eau-froide}">die ersten 90 Sekunden im kalten Wasser</a> und <a href="{blog:materiel-bain-d-hiver}">die Ausrüstung fürs Winterbaden</a>. Der <a href="{blog:bain-d-hiver-leman}">Leitfaden zum Winterbaden</a> nennt die Badeplätze und Saunen am Genfersee.</p>`,
+  },
 });

@@ -111,7 +111,8 @@ ${pied(L, r, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SU
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
 const d = await fetch('${r}eau.json').then((x) => x.json()).catch(() => null);
-const v = SPOTS.map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+// Le blog parle du Léman : ses plages seulement.
+const v = SPOTS.filter((s) => !s.lac).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length) {
   const f = ([s, t]) => ({ t: ${L === 'fr' ? "t.toFixed(1).replace('.', ',') + ' °C'" : "t.toFixed(1) + ' °C'"}, a: \`<a href="${r}plage/\${s.id}/${SUF[L]}">\${s.nom}</a>\` });
   document.getElementById('eau-live').innerHTML = ${JSON.stringify(liens(t.live({ t: '§F', a: '§FA' }, { t: '§C', a: '§CA' }), L, r))}

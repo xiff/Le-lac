@@ -63,7 +63,8 @@
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '../../../spots.js';
 const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
-const v = SPOTS.map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+// Le blog parle du Léman : ses plages seulement.
+const v = SPOTS.filter((s) => !s.lac).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });
   document.getElementById('eau-live').innerHTML = "Right now, the water ranges from <strong>§F</strong> at §FA to <strong>§C</strong> at §CA, 70 cm below the surface. Each beach’s details are in <a href=\"../../../?lang=en\">the app</a>."
