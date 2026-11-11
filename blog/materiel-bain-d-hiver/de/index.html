@@ -71,9 +71,10 @@
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '../../../spots.js';
 const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
-// Le blog parle du Léman : ses plages seulement.
+// Les plages du lac dont parle l'article (le Léman par défaut).
 const v = SPOTS.filter((s) => !s.lac).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
-if (v.length) {
+if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
+else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/de/">${s.nom}</a>` });
   document.getElementById('eau-live').innerHTML = "Im Moment liegt das Wasser zwischen <strong>§F</strong> bei §FA und <strong>§C</strong> bei §CA, 70 cm unter der Oberfläche. Die Einzelheiten jedes Badeplatzes stehen in <a href=\"../../../?lang=de\">der App</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);

@@ -81,12 +81,12 @@ export function article(a, L = 'fr') {
   const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = SUF[L] ? '../../../' : '../../';
   const ld = [ORG, SITE, {
     '@type': 'BlogPosting', '@id': `${url}#article`, mainEntityOfPage: url, url, headline: c.titre, description: c.desc,
-    image: { '@type': 'ImageObject', url: image, width: 1600, height: a.hauteur, creditText: a.auteur, license: a.licence[1], acquireLicensePage: a.page },
+    image: { '@type': 'ImageObject', url: image, width: 1600, height: a.hauteur, ...(a.auteur ? { creditText: a.auteur, license: a.licence[1], acquireLicensePage: a.page } : { creditText: t.nom }) },
     datePublished: a.publie, dateModified: a.modifie, inLanguage: ILANG[L],
     author: { '@id': `${BASE}#org` }, publisher: { '@id': `${BASE}#org` }, isPartOf: { '@id': `${urlBlog(L)}#blog` },
     about: LEMAN, citation: a.sources.map(([, u]) => u),
   }, ariane([[t.nom, BASE], [t.blog, urlBlog(L)], [c.h1, url]])];
-  const credit = `${a.credit[L]}. ${t.photo} ${a.auteur}, <a href="${a.licence[1]}">${a.licence[0]}</a>, <a href="${a.page}">Wikimedia Commons</a>.`;
+  const credit = a.creditHtml?.[L] ?? `${a.credit[L]}. ${t.photo} ${a.auteur}, <a href="${a.licence[1]}">${a.licence[0]}</a>, <a href="${a.page}">Wikimedia Commons</a>.`;
   return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: Object.fromEntries(dispo(a).map((l) => [l, urlArticle(a.slug, l)])), image, type: 'article', ld, r })}
 <body>
 <header>
@@ -99,7 +99,7 @@ export function article(a, L = 'fr') {
   <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">${t.bref}</h2><p>${c.bref}</p></section>
   ${liens(c.html(L).trim(), L, r)}
-  <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${t.eau}</h2>
+  <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${c.eauTitre ?? t.eau}</h2>
     <p id="eau-live">${liens(t.eauRepli, L, r)}</p></section>
 ${a.sante ? `  <p class="avertissement" role="note">${t.avertissement}</p>\n` : ''}  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">${t.sources}</h2><ul>
 ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\n')}
@@ -111,9 +111,10 @@ ${pied(L, r, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SU
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
 const d = await fetch('${r}eau.json').then((x) => x.json()).catch(() => null);
-// Le blog parle du Léman : ses plages seulement.
-const v = SPOTS.filter((s) => !s.lac).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
-if (v.length) {
+// Les plages du lac dont parle l'article (le Léman par défaut).
+const v = SPOTS.filter((s) => ${a.lac ? `s.lac === '${a.lac}'` : '!s.lac'}).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+if (v.length && v[0][1] === v.at(-1)[1] && ${JSON.stringify(!!c.eauUne)}) document.getElementById('eau-live').innerHTML = ${JSON.stringify(c.eauUne ?? '')}.replace('§T', v[0][1].toFixed(1)${L === 'en' ? '' : ".replace('.', ',')"} + ' °C');
+else if (v.length) {
   const f = ([s, t]) => ({ t: ${L === 'fr' ? "t.toFixed(1).replace('.', ',') + ' °C'" : "t.toFixed(1) + ' °C'"}, a: \`<a href="${r}plage/\${s.id}/${SUF[L]}">\${s.nom}</a>\` });
   document.getElementById('eau-live').innerHTML = ${JSON.stringify(liens(t.live({ t: '§F', a: '§FA' }, { t: '§C', a: '§CA' }), L, r))}
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);

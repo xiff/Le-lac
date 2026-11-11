@@ -38,5 +38,28 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 ## App
 
+- [ ] **Activités de nuit** : ne plus donner de verdict favorable de nuit pour les activités qui ne s’y pratiquent pas
+  (paddle, kayak, kite, windsurf, wing, wakeboard, ski nautique, bateau de location). L’app connaît déjà la position de chaque plage :
+  calculer le lever et le coucher du soleil (Open-Meteo les fournit, `daily=sunrise,sunset`) et, entre le crépuscule et l’aube,
+  remplacer le verdict par « Il fait nuit : on range la planche » avec l’heure du prochain créneau de jour.
+  La baignade et le sauna restent affichés, avec un rappel de prudence (ne pas nager seul, rester près du bord).
+  Vérifier d’abord la règle exacte (ordonnance sur la navigation intérieure, feux obligatoires de nuit) pour citer la source et ne rien inventer.
+
 - [x] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
   les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
+
+## Blog : objectif 100 articles
+
+Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors du dépôt public.
+
+- [x] **Température de l’eau par lac** (12 articles, 4 langues), publiés le 11 novembre 2026.
+- [ ] **Bain d’hiver et saunas** (10) : saunas du Léman, bateaux-saunas de Suisse, saunas du lac de Zurich, bain d’hiver à Neuchâtel/Bienne et à Zurich,
+  clubs et rendez-vous, bienfaits (études à citer), respiration, programme de 4 semaines, néoprène. Il faut une photo libre par article (workflow `photos.yml`).
+- [ ] **« Où se baigner » par lac** (24), à mettre en ligne avant mars.
+- [ ] **Comprendre le lac** (10) : vents, foehn, chute brutale de température, seiches, brassage, niveau, lacs les plus chauds et les plus froids.
+- [ ] **Guides locaux du Léman** (12) : Lausanne, Riviera, La Côte, Lavaux, plages gratuites, familles, chiens, train, sable, plongeoirs, coucher de soleil, Rhône.
+- [ ] **Sécurité et santé** (10) : puces de canard, cyanobactéries, orages, feux de tempête, courants, eau libre, règles SSS, hypothermie. Sources officielles obligatoires.
+- [ ] **Activités** (9) : paddle par lac, bateau sans permis, kite à Silvaplana, wingfoil, kayak, traversées à la nage.
+- [ ] **SEO** : déclarer monlac.ch dans Google Search Console et soumettre le sitemap ; inscrire la température du jour dans le HTML des pages de plage ;
+  demander un lien aux lieux listés (avec la prise de contact affiliation), aux offices du tourisme et aux clubs ; écrire d’abord en allemand pour les lacs alémaniques.
+- [ ] **Article « Température du Léman »** : il parle encore de « 65 plages », à mettre à jour.
