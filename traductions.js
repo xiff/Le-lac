@@ -100,6 +100,16 @@ const LIEUX_DE_IT = {
   "Seehotel Wilerbad": { de: "Wilerbadstrasse 6: Panoramaterrasse mit Berg- und Seeblick auf den Sarnersee, Schweizer oder Thai-Küche.", it: "Wilerbadstrasse 6: terrazza panoramica con vista su montagne e lago di Sarnen, cucina svizzera o thailandese." },
   "Restaurant Bellevue": { de: "Champ-de-la-Fontaine 1: schattige Terrasse mit rund 60 Plätzen und Blick auf den Lac des Brenets, Eglifilets und Forellen aus dem eigenen Becken.", it: "Champ-de-la-Fontaine 1: terrazza ombreggiata di circa 60 posti con vista sul lago dei Brenets, filetti di pesce persico e trote dal vivaio." },
   "Bar du Port": { de: "Im Hafen von Les Brenets, Terrasse am Wasser, wo die Schiffe zum Saut du Doubs ablegen.", it: "Al porto di Les Brenets, terrazza in riva all’acqua da cui partono i battelli per il Saut du Doubs." },
+  "Löwen Meilen": { de: "Gasthaus aus dem Mittelalter, 2002 renoviert: im Sommer Terrasse mit direktem Seeanschluss, Fischgerichte und Fleisch vom heissen Stein.", it: "Locanda di origine medievale, rinnovata nel 2002: d’estate terrazza con accesso diretto al lago, pesce e carne sulla pietra calda." },
+  "Gasthof Hirschen am See": { de: "Terrasse und Seegarten direkt am Wasser.", it: "Terrazza e giardino direttamente sull’acqua." },
+  "Restaurant Tracht": { de: "Ein Haus am See, mit Terrasse direkt am Wasser.", it: "Una casa sul lago, con terrazza direttamente sull’acqua." },
+  "Ristorante La Scala": { de: "Italienisches Restaurant direkt am Hafen von Rapperswil, grosse Terrasse mit Blick auf den Hafen.", it: "Ristorante italiano direttamente sul porto di Rapperswil, grande terrazza con vista sul porto." },
+  "Quai 2": { de: "Café, Restaurant und Bar an der Seepromenade, dazu das Lakeside, eine Terrasse direkt am Wasser.", it: "Caffè, ristorante e bar sul lungolago, con il Lakeside, una terrazza direttamente sull’acqua." },
+  "Fischli am See": { de: "Terrasse am Wasser, am Weg der Schweiz.", it: "Terrazza in riva all’acqua, sulla Via Svizzera." },
+  "Seerestaurant Schlüssel": { de: "Pizzeria und Restaurant mit Terrasse direkt am See und eigenem Bootsplatz.", it: "Pizzeria e ristorante con terrazza direttamente sul lago e posto barca proprio." },
+  "Restaurant Schiff": { de: "Am Ufer mit Blick über den See: im Sommer grosse Terrasse direkt am Bodensee.", it: "Sulla riva con vista sul lago: d’estate grande terrazza direttamente sul lago di Costanza." },
+  "Krone am See": { de: "Am Hafenbecken; bestellen kann man online vom Badestrand oder vom Boot aus. Im Winter eingeschränkte Öffnungszeiten.", it: "Sul bacino del porto; si può ordinare online dalla spiaggia o dalla barca. Orari ridotti in inverno." },
+  "Restaurant Schiff Kesswil": { de: "Direkt am Bodensee gelegen, mit Seeblick und gemütlicher Fonduestube.", it: "Direttamente sul lago di Costanza, con vista sul lago e una sala per la fonduta." },
 };
 const LOC_DE_IT = {
   "Sauna Boats Genève": { de: "Die erste schwimmende Sauna des Genfersees: bis zu sechs Personen, im Hafenbecken ohne Bootsführerschein, Start am Quai Gustave-Ador 33.", it: "La prima sauna galleggiante del Lemano: fino a sei persone, senza patente nella rada, partenza dal Quai Gustave-Ador 33." },
