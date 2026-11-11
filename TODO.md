@@ -37,5 +37,5 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 ## App
 
-- [ ] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
+- [x] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
   les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
