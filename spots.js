@@ -12,6 +12,8 @@ export const LACS = {
   gruyere: { nom: 'Lac de la Gruyère', en: 'Lake Gruyère', eau: { modele: 'simstrat', lac: 'gruyere' } },
   lugano: { nom: 'Lac de Lugano', en: 'Lake Lugano', eau: { modele: 'delft3d-flow', lac: 'lugano' } },
   majeur: { nom: 'Lac Majeur', en: 'Lake Maggiore', eau: { modele: 'simstrat', lac: 'maggiore' }, carteSud: 46.06 }, // carte : la partie suisse et un peu au-delà
+  joux: { nom: 'Lac de Joux', en: 'Lac de Joux', eau: { modele: 'delft3d-flow', lac: 'joux' } },
+  bret: { nom: 'Lac de Bret', en: 'Lac de Bret', eau: { modele: 'simstrat', lac: 'bret' } },
   sion: { nom: 'Sion – Domaine des Îles', en: 'Sion – Domaine des Îles', eau: null },
 };
 export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
@@ -140,6 +142,10 @@ export const SPOTS = [
   { id: 'locarno-bagno-pubblico', nom: 'Locarno – Bagno pubblico', lat: 46.15670, lon: 8.80360, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
   { id: 'tenero-lido-mappo', nom: 'Tenero – Lido Mappo', lat: 46.17472, lon: 8.84280, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
   { id: 'tenero', nom: 'Tenero', lat: 46.16719, lon: 8.85097, region: 'Lac Majeur', zone: 'majeur', lac: 'majeur' },
+  // Lac de Joux et lac de Bret : OpenStreetMap (scripts/decouvrir.mjs), le 11 novembre 2026.
+  { id: 'le-sentier-rocheray', nom: 'Le Sentier – Le Rocheray', lat: 46.61870, lon: 6.24686, region: 'Lac de Joux', zone: 'joux', lac: 'joux' },
+  { id: 'le-pont', nom: 'Le Pont', lat: 46.66694, lon: 6.32894, region: 'Lac de Joux', zone: 'joux', lac: 'joux' },
+  { id: 'lac-de-bret', nom: 'Lac de Bret', lat: 46.51546, lon: 6.77170, region: 'Lac de Bret', zone: 'bret', lac: 'bret' },
 ];
 
 // Valeur de la série la plus proche de l'instant donné, si elle date de moins de 6 h.

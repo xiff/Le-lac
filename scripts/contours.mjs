@@ -55,7 +55,7 @@ export function simplifierAnneau(p, tol) {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   // Nominatim renvoie le polygone déjà simplifié (polygon_threshold, en degrés) ; une requête par seconde au plus.
-  const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère', lugano: 'Lago di Lugano', majeur: 'Lago Maggiore' };
+  const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère', lugano: 'Lago di Lugano', majeur: 'Lago Maggiore', joux: 'Lac de Joux' };
   const out = {};
   for (const [lac, q] of Object.entries(Q)) {
     const u = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&countrycodes=ch,it&format=json&polygon_geojson=1&polygon_threshold=0.0008&limit=5`;

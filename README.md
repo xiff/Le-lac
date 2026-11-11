@@ -1,6 +1,6 @@
 # Mon Lac
 
-Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
+Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux et Bret en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
@@ -214,6 +214,19 @@ Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 | Tenero – Lido Mappo | [https://monlac.ch/plage/tenero-lido-mappo/](https://monlac.ch/plage/tenero-lido-mappo/) | [EN](https://monlac.ch/plage/tenero-lido-mappo/en/) |
 | Tenero | [https://monlac.ch/plage/tenero/](https://monlac.ch/plage/tenero/) | [EN](https://monlac.ch/plage/tenero/en/) |
 
+### Lac de Joux
+
+| Plage | Français | English |
+|---|---|---|
+| Le Sentier – Le Rocheray | [https://monlac.ch/plage/le-sentier-rocheray/](https://monlac.ch/plage/le-sentier-rocheray/) | [EN](https://monlac.ch/plage/le-sentier-rocheray/en/) |
+| Le Pont | [https://monlac.ch/plage/le-pont/](https://monlac.ch/plage/le-pont/) | [EN](https://monlac.ch/plage/le-pont/en/) |
+
+### Lac de Bret
+
+| Plage | Français | English |
+|---|---|---|
+| Lac de Bret | [https://monlac.ch/plage/lac-de-bret/](https://monlac.ch/plage/lac-de-bret/) | [EN](https://monlac.ch/plage/lac-de-bret/en/) |
+
 ### Blog
 
 13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
@@ -256,7 +269,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
   Le titre d’accueil vient de l’activité la mieux notée (ou orage, bise, journée terrasse), avec plusieurs phrases
   qui tournent à chaque affichage.
 - **L’eau** : modèle Alplakes de l’Eawag (CC BY 4.0), valeur à 70 cm sous la surface devant chaque plage
-  (modèle 3D : Léman, Bienne, Morat, Neuchâtel, Lugano ; 1D pour la Gruyère et le lac Majeur, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
+  (modèle 3D : Léman, Bienne, Morat, Neuchâtel, Lugano, Joux ; 1D pour la Gruyère, le lac Majeur et le lac de Bret, une valeur pour tout le lac ; aucun modèle pour le Domaine des Îles à Sion).
   Une tâche GitHub (`.github/workflows/eau.yml`, toutes les 3 h) écrit `eau.json`, `qualite.json`,
   les pages par plage et le sitemap.
 - **La météo** : Open-Meteo, lue directement par le navigateur.
@@ -275,7 +288,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 118 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 121 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |
