@@ -189,10 +189,11 @@
   .cta button:active { transform: scale(0.96); }
   .cta .apres { margin-top: 22px; }
 
-  footer { margin-top: 30svh; padding: 0 var(--m) 30px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px 24px; font-size: var(--s-small); color: var(--muted); }
-  footer nav { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-  footer nav a { color: var(--ink); }
-  footer .droite { text-align: right; }
+  footer { margin-top: 30svh; padding: 0 var(--m); font-size: 12px; line-height: 1.5; color: var(--muted); }
+  footer a { color: inherit; text-underline-offset: 2px; }
+  footer .liens { display: flex; flex-wrap: wrap; align-items: center; column-gap: 18px; margin-top: 4px; font-size: 13px; }
+  footer .liens a { display: inline-flex; align-items: center; min-height: 44px; }
+  footer .liens .langue { color: var(--accent); font-weight: 600; }
   .credits { padding: 18px var(--m) 30px; font-size: var(--s-small); color: var(--muted); max-width: 120ch; }
 
   /* Entrées au défilement */
@@ -346,9 +347,7 @@
     .hiver .texte, .hiver figure, .faq .questions { grid-column: 1 / -1; }
     .groupe + .groupe { padding-top: 0; }
     .chillon .cadre { height: auto; aspect-ratio: 4 / 3; }
-    footer { margin-top: 96px; grid-template-columns: 1fr; }
-    footer nav { justify-content: flex-start; }
-    footer .droite { text-align: left; }
+    footer { margin-top: 96px; }
   }
 </style>
 </head>
@@ -499,12 +498,11 @@
   </section>
 </main>
 
-<footer>
-  <span>Six lacs romands, plage par plage</span>
-  <nav aria-label="Liens"><a href="../?lang=fr">Ouvrir l’app</a><a href="../plage/">Toutes les plages</a><a href="../blog/">Blog</a><a href="#questions">Questions</a></nav>
-  <span class="droite">2026 · aucun cookie, aucun compte</span>
+<footer class="pied">
+  <span>Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot.</span>
+  <div class="liens"><a href="../presentation/">À propos</a><a href="../plage/">Toutes les plages</a><a href="../blog/">Blog</a><a class="langue" href="en/" hreflang="en" lang="en">English</a></div>
 </footer>
-<p class="credits">Données : eau <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), météo <a href="https://open-meteo.com">Open-Meteo</a>. Photos sous licence CC BY-SA, crédits sous chaque image.</p>
+<p class="credits">Photos sous licence CC BY-SA, crédits sous chaque image.</p>
 
 <script type="module">
 import { SPOTS, valeurProche, REGIONS_EN } from '../spots.js';

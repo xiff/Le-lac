@@ -77,7 +77,10 @@
   </ul></section>
   <a class="bouton" href="../../../?lang=en">See the lake today</a>
 </main>
-<footer><a href="../../../blog/en/">All articles</a> · <a href="../../../plage/en/">All beaches</a> · <a href="../../../presentation/en/">About</a></footer>
+<footer class="pied">
+  <span>Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.</span>
+  <div class="liens"><a href="../../../presentation/en/">About</a><a href="../../../plage/en/">All beaches</a><a href="../../../blog/en/">Blog</a><a class="langue" href="../" hreflang="fr" lang="fr">Français</a></div>
+</footer>
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '../../../spots.js';

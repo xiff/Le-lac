@@ -1,6 +1,7 @@
 // Génère le blog : blog/ et blog/<slug>/ (français), blog/en/ et blog/<slug>/en/ (anglais), avec JSON-LD.
 // Graphe volontairement petit et fidèle à la page visible : Organization, WebSite, BlogPosting, BreadcrumbList, Blog.
 // Pas de FAQPage : Google réserve ce résultat enrichi aux sites officiels et de santé ; les questions restent en <h2>.
+import { pied } from './pied.mjs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { ARTICLES } from './articles.mjs';
 
@@ -90,7 +91,7 @@ ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\
   </ul></section>
   <a class="bouton" href="${liens('{app}', L, r)}">${t.voir}</a>
 </main>
-<footer><a href="${r}blog/${L === 'en' ? 'en/' : ''}">${t.tous}</a> · <a href="${liens('{plages}', L, r)}">${t.plages}</a> · <a href="${r}presentation/${L === 'en' ? 'en/' : ''}">${t.presentation}</a></footer>
+${pied(L, r, L === 'en' ? '../' : 'en/')}
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
@@ -139,7 +140,7 @@ g.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
   g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.grille li').forEach((li) => { li.hidden = !!b.dataset.theme && li.dataset.theme !== b.dataset.theme; }); };
 </script>
-<footer><a href="${liens('{app}', L, r)}">${t.nom}</a> · <a href="${liens('{plages}', L, r)}">${t.plages}</a> · <a href="${r}presentation/${L === 'en' ? 'en/' : ''}">${t.presentation}</a></footer>
+${pied(L, r, L === 'en' ? '../' : 'en/')}
 </body>
 </html>
 `;
