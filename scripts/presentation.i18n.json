@@ -1,0 +1,714 @@
+{
+ "rows": [
+  {
+   "fr": "<title>Température des lacs suisses par plage · Mon Lac</title>",
+   "en": "<title>Lake water temperature by beach in Switzerland · My Lake</title>",
+   "de": "<title>Temperatur der Schweizer Seen pro Badeplatz · Mein See</title>",
+   "it": "<title>Temperatura dei laghi svizzeri per spiaggia · Il mio lago</title>"
+  },
+  {
+   "fr": "content=\"Température de l’eau à 220 plages de 25 lacs suisses, du Léman au lac de Constance, vent, bise et un verdict du jour pour la baignade, le paddle et la voile. Gratuit, sans compte, en français, anglais, allemand et italien.\"",
+   "en": "content=\"Water temperature at 220 beaches on 25 Swiss lakes, from Lake Geneva to Lake Constance, wind, bise and a daily verdict for swimming, paddle and sailing. Free, no account, in French, English, German and Italian.\"",
+   "de": "content=\"Wassertemperatur an 220 Badeplätzen an 25 Schweizer Seen, vom Genfersee bis zum Bodensee, Wind, Bise und ein Tagesurteil fürs Baden, Paddeln und Segeln. Gratis, ohne Konto, auf Französisch, Englisch, Deutsch und Italienisch.\"",
+   "it": "content=\"Temperatura dell’acqua in 220 spiagge di 25 laghi svizzeri, dal Lemano al lago di Costanza, vento, bise e un verdetto del giorno per balneazione, paddle e vela. Gratis, senza account, in francese, inglese, tedesco e italiano.\""
+  },
+  {
+   "fr": "content=\"Ton lac, plage par plage\"",
+   "en": "content=\"Your lake, beach by beach\"",
+   "de": "content=\"Dein See, Badeplatz für Badeplatz\"",
+   "it": "content=\"Il tuo lago, spiaggia per spiaggia\""
+  },
+  {
+   "fr": "content=\"L’eau, le vent et la bise sur 220 plages de 25 lacs, avec un verdict : on y va ou pas.\"",
+   "en": "content=\"Water, wind and bise at 220 beaches on 25 lakes, with a verdict: go or no go.\"",
+   "de": "content=\"Wasser, Wind und Bise an 220 Badeplätzen an 25 Seen, mit einem Urteil: hingehen oder nicht.\"",
+   "it": "content=\"Acqua, vento e bise in 220 spiagge di 25 laghi, con un verdetto: si va o non si va.\""
+  },
+  {
+   "fr": "\"name\":\"Mon Lac\"",
+   "en": "\"name\":\"My Lake\"",
+   "de": "\"name\":\"Mein See\"",
+   "it": "\"name\":\"Il mio lago\""
+  },
+  {
+   "fr": "Température de l’eau, vent et bise sur 220 plages de 25 lacs suisses, du Léman au lac de Constance, avec un verdict du jour pour la baignade, le paddle, la voile et le bain d’hiver.",
+   "en": "Water temperature, wind and bise at 220 beaches on 25 Swiss lakes, from Lake Geneva to Lake Constance, with a daily verdict for swimming, paddle, sailing and winter swims.",
+   "de": "Wassertemperatur, Wind und Bise an 220 Badeplätzen an 25 Schweizer Seen, vom Genfersee bis zum Bodensee, mit einem Tagesurteil fürs Baden, Paddeln, Segeln und Winterbaden.",
+   "it": "Temperatura dell’acqua, vento e bise in 220 spiagge di 25 laghi svizzeri, dal Lemano al lago di Costanza, con un verdetto del giorno per balneazione, paddle, vela e bagno invernale."
+  },
+  {
+   "fr": "</svg>Mon Lac</a>",
+   "en": "</svg>My Lake</a>",
+   "de": "</svg>Mein See</a>",
+   "it": "</svg>Il mio lago</a>"
+  },
+  {
+   "fr": "<span>Ton lac,</span>",
+   "en": "<span>Your lake,</span>",
+   "de": "<span>Dein See,</span>",
+   "it": "<span>Il tuo lago,</span>"
+  },
+  {
+   "fr": "<span>plage par plage.</span>",
+   "en": "<span>beach by beach.</span>",
+   "de": "<span>Badeplatz für Badeplatz.</span>",
+   "it": "<span>spiaggia per spiaggia.</span>"
+  },
+  {
+   "fr": "L’eau à 70 cm, le vent et la bise sur 220 plages de 25 lacs suisses, du Léman au lac de Constance, avec un verdict du jour : on y va ou pas.",
+   "en": "Water at 70 cm, wind and bise at 220 beaches on 25 Swiss lakes, from Lake Geneva to Lake Constance, with a daily verdict: go or no go.",
+   "de": "Wasser in 70 cm Tiefe, Wind und Bise an 220 Badeplätzen an 25 Schweizer Seen, vom Genfersee bis zum Bodensee, mit einem Tagesurteil: hingehen oder nicht.",
+   "it": "Acqua a 70 cm, vento e bise in 220 spiagge di 25 laghi svizzeri, dal Lemano al lago di Costanza, con un verdetto del giorno: si va o non si va."
+  },
+  {
+   "fr": "<a class=\"lien\" href=\"#comment\">Comment ça marche →</a>",
+   "en": "<a class=\"lien\" href=\"#comment\">How it works →</a>",
+   "de": "<a class=\"lien\" href=\"#comment\">So funktioniert’s →</a>",
+   "it": "<a class=\"lien\" href=\"#comment\">Come funziona →</a>"
+  },
+  {
+   "fr": "aria-label=\"Aperçu : températures de l’eau ce matin\"",
+   "en": "aria-label=\"Preview: water temperatures this morning\"",
+   "de": "aria-label=\"Vorschau: Wassertemperaturen heute Morgen\"",
+   "it": "aria-label=\"Anteprima: temperature dell’acqua di questa mattina\""
+  },
+  {
+   "fr": "alt=\"Le bateau à vapeur Italie de la CGN naviguant sur le Léman, montagnes au fond\"",
+   "en": "alt=\"The CGN paddle steamer Italie on Lake Geneva, mountains behind\"",
+   "de": "alt=\"Der Raddampfer Italie der CGN auf dem Genfersee, Berge im Hintergrund\"",
+   "it": "alt=\"Il battello a vapore Italie della CGN sul Lemano, montagne sullo sfondo\""
+  },
+  {
+   "fr": "Le bateau Italie de la CGN sur le Léman. Photo Christian David,",
+   "en": "The CGN steamer Italie on Lake Geneva. Photo Christian David,",
+   "de": "Der Dampfer Italie der CGN auf dem Genfersee. Foto Christian David,",
+   "it": "Il battello Italie della CGN sul Lemano. Foto Christian David,"
+  },
+  {
+   "fr": ">Essayer avec une plage</h2>",
+   "en": ">Try a beach</h2>",
+   "de": ">Mit einem Badeplatz ausprobieren</h2>",
+   "it": ">Prova con una spiaggia</h2>"
+  },
+  {
+   "fr": ">Tape une plage, le lac répond.</label>",
+   "en": ">Type a beach, the lake answers.</label>",
+   "de": ">Tippe einen Badeplatz, der See antwortet.</label>",
+   "it": ">Scrivi una spiaggia, il lago risponde.</label>"
+  },
+  {
+   "fr": "<p class=\"verdict\" id=\"r-verdict\">Eau à 12°. Parfait pour les braves.</p>",
+   "en": "<p class=\"verdict\" id=\"r-verdict\">Water at 12°. Perfect for the brave.</p>",
+   "de": "<p class=\"verdict\" id=\"r-verdict\">Wasser bei 12°. Perfekt für die Mutigen.</p>",
+   "it": "<p class=\"verdict\" id=\"r-verdict\">Acqua a 12°. Perfetto per i coraggiosi.</p>"
+  },
+  {
+   "fr": "<span><b id=\"r-eau\">12,3°</b>eau</span><span><b id=\"r-air\">8°</b>air</span><span><b id=\"r-vent\">6</b>vent km/h</span>",
+   "en": "<span><b id=\"r-eau\">12.3°</b>water</span><span><b id=\"r-air\">8°</b>air</span><span><b id=\"r-vent\">6</b>wind km/h</span>",
+   "de": "<span><b id=\"r-eau\">12.3°</b>Wasser</span><span><b id=\"r-air\">8°</b>Luft</span><span><b id=\"r-vent\">6</b>Wind km/h</span>",
+   "it": "<span><b id=\"r-eau\">12.3°</b>acqua</span><span><b id=\"r-air\">8°</b>aria</span><span><b id=\"r-vent\">6</b>vento km/h</span>"
+  },
+  {
+   "fr": "<span>Bain d’hiver <em class=\"note-ui t3\">Parfait</em></span><span>Paddle <em class=\"note-ui t2\">Bien</em></span>",
+   "en": "<span>Winter swim <em class=\"note-ui t3\">Perfect</em></span><span>Paddle <em class=\"note-ui t2\">Good</em></span>",
+   "de": "<span>Winterbaden <em class=\"note-ui t3\">Perfekt</em></span><span>Paddeln <em class=\"note-ui t2\">Gut</em></span>",
+   "it": "<span>Bagno invernale <em class=\"note-ui t3\">Perfetto</em></span><span>Paddle <em class=\"note-ui t2\">Bene</em></span>"
+  },
+  {
+   "fr": "<span>Voile / wing <em class=\"note-ui t0\">Non</em></span>",
+   "en": "<span>Sailing / wing <em class=\"note-ui t0\">No</em></span>",
+   "de": "<span>Segeln / Wing <em class=\"note-ui t0\">Nein</em></span>",
+   "it": "<span>Vela / wing <em class=\"note-ui t0\">No</em></span>"
+  },
+  {
+   "fr": "<span>Ou essaie :</span>",
+   "en": "<span>Or try:</span>",
+   "de": "<span>Oder probier:</span>",
+   "it": "<span>Oppure prova:</span>"
+  },
+  {
+   "fr": ">Comment ça marche</h2>",
+   "en": ">How it works</h2>",
+   "de": ">So funktioniert’s</h2>",
+   "it": ">Come funziona</h2>"
+  },
+  {
+   "fr": "<p>D’abord, choisis ta plage.</p>",
+   "en": "<p>First, pick your beach.</p>",
+   "de": "<p>Zuerst wählst du deinen Badeplatz.</p>",
+   "it": "<p>Prima scegli la tua spiaggia.</p>"
+  },
+  {
+   "fr": "<span>ou l’épingle : la plus proche</span>",
+   "en": "<span>or the pin: the nearest one</span>",
+   "de": "<span>oder die Stecknadel: der nächste</span>",
+   "it": "<span>o la spilla: la più vicina</span>"
+  },
+  {
+   "fr": "<div class=\"ligne-ui\"><b>Eau</b><span class=\"temp\" id=\"c-eau\">9,4°</span></div><div class=\"ligne-ui\"><b>Vent</b>",
+   "en": "<div class=\"ligne-ui\"><b>Water</b><span class=\"temp\" id=\"c-eau\">9.4°</span></div><div class=\"ligne-ui\"><b>Wind</b>",
+   "de": "<div class=\"ligne-ui\"><b>Wasser</b><span class=\"temp\" id=\"c-eau\">9.4°</span></div><div class=\"ligne-ui\"><b>Wind</b>",
+   "it": "<div class=\"ligne-ui\"><b>Acqua</b><span class=\"temp\" id=\"c-eau\">9.4°</span></div><div class=\"ligne-ui\"><b>Vento</b>"
+  },
+  {
+   "fr": "<p>Puis touche une activité.</p>",
+   "en": "<p>Then tap an activity.</p>",
+   "de": "<p>Dann tippst du eine Aktivität an.</p>",
+   "it": "<p>Poi tocca un’attività.</p>"
+  },
+  {
+   "fr": "<em class=\"note-ui t2\" id=\"c-note\">Bien</em>",
+   "en": "<em class=\"note-ui t2\" id=\"c-note\">Good</em>",
+   "de": "<em class=\"note-ui t2\" id=\"c-note\">Gut</em>",
+   "it": "<em class=\"note-ui t2\" id=\"c-note\">Bene</em>"
+  },
+  {
+   "fr": "aria-label=\"Note du paddle heure par heure\"",
+   "en": "aria-label=\"Paddle rating hour by hour\"",
+   "de": "aria-label=\"Paddel-Bewertung Stunde für Stunde\"",
+   "it": "aria-label=\"Voto del paddle ora per ora\""
+  },
+  {
+   "fr": "<p>Enfin, lis le verdict et va au lac.</p>",
+   "en": "<p>Finally, read the verdict and head to the lake.</p>",
+   "de": "<p>Zum Schluss liest du das Urteil und gehst an den See.</p>",
+   "it": "<p>Infine leggi il verdetto e vai al lago.</p>"
+  },
+  {
+   "fr": "<span class=\"faux-select\">Le verdict du jour</span><span>une phrase, tous les matins</span>",
+   "en": "<span class=\"faux-select\">Today’s verdict</span><span>one sentence, every morning</span>",
+   "de": "<span class=\"faux-select\">Das Tagesurteil</span><span>ein Satz, jeden Morgen</span>",
+   "it": "<span class=\"faux-select\">Il verdetto del giorno</span><span>una frase, ogni mattina</span>"
+  },
+  {
+   "fr": "<p class=\"verdict\" id=\"c-verdict\">Eau à 9°. Parfait pour les braves.</p>",
+   "en": "<p class=\"verdict\" id=\"c-verdict\">Water at 9°. Perfect for the brave.</p>",
+   "de": "<p class=\"verdict\" id=\"c-verdict\">Wasser bei 9°. Perfekt für die Mutigen.</p>",
+   "it": "<p class=\"verdict\" id=\"c-verdict\">Acqua a 9°. Perfetto per i coraggiosi.</p>"
+  },
+  {
+   "fr": "<span><b id=\"c-eau2\">9,4°</b>eau à Vidy</span><span><b>220</b>plages</span><span><b>3 h</b>entre deux relevés</span>",
+   "en": "<span><b id=\"c-eau2\">9.4°</b>water at Vidy</span><span><b>220</b>beaches</span><span><b>3 h</b>between readings</span>",
+   "de": "<span><b id=\"c-eau2\">9.4°</b>Wasser in Vidy</span><span><b>220</b>Badeplätze</span><span><b>3 Std.</b>zwischen zwei Messungen</span>",
+   "it": "<span><b id=\"c-eau2\">9.4°</b>acqua a Vidy</span><span><b>220</b>spiagge</span><span><b>3 h</b>tra due rilevamenti</span>"
+  },
+  {
+   "fr": ">L’eau ce matin</h2>",
+   "en": ">The water this morning</h2>",
+   "de": ">Das Wasser heute Morgen</h2>",
+   "it": ">L’acqua di questa mattina</h2>"
+  },
+  {
+   "fr": "Température à 70 cm sous la surface, plage par plage. Sur un même lac, l’écart dépasse souvent trois degrés.",
+   "en": "Temperature 70 cm below the surface, beach by beach. On the same lake, the gap often exceeds three degrees.",
+   "de": "Temperatur in 70 cm Tiefe, Badeplatz für Badeplatz. Am selben See beträgt der Unterschied oft mehr als drei Grad.",
+   "it": "Temperatura a 70 cm sotto la superficie, spiaggia per spiaggia. Sullo stesso lago, la differenza supera spesso i tre gradi."
+  },
+  {
+   "fr": "alt=\"La rade de Genève et le Jet d’eau vus du lac\"",
+   "en": "alt=\"Geneva harbour and the Jet d’eau seen from the lake\"",
+   "de": "alt=\"Die Rade von Genf und der Jet d’eau, vom See aus gesehen\"",
+   "it": "alt=\"La rada di Ginevra e il Jet d’eau visti dal lago\""
+  },
+  {
+   "fr": "La rade de Genève. Photo Gzzz,",
+   "en": "Geneva harbour. Photo Gzzz,",
+   "de": "Die Rade von Genf. Foto Gzzz,",
+   "it": "La rada di Ginevra. Foto Gzzz,"
+  },
+  {
+   "fr": ">Ce qu’une app météo ne dit pas</h2>",
+   "en": ">What a weather app won’t tell you</h2>",
+   "de": ">Was eine Wetter-App nicht sagt</h2>",
+   "it": ">Quello che un’app meteo non ti dice</h2>"
+  },
+  {
+   "fr": "aria-label=\"Comparaison\"",
+   "en": "aria-label=\"Comparison\"",
+   "de": "aria-label=\"Vergleich\"",
+   "it": "aria-label=\"Confronto\""
+  },
+  {
+   "fr": "<span class=\"vh\">Ce qu’on veut savoir</span>",
+   "en": "<span class=\"vh\">What you want to know</span>",
+   "de": "<span class=\"vh\">Was man wissen will</span>",
+   "it": "<span class=\"vh\">Cosa si vuole sapere</span>"
+  },
+  {
+   "fr": "<span role=\"columnheader\">Mon Lac</span><span role=\"columnheader\">Une app météo générale</span><span role=\"columnheader\">La mesure officielle</span>",
+   "en": "<span role=\"columnheader\">My Lake</span><span role=\"columnheader\">A general weather app</span><span role=\"columnheader\">The official reading</span>",
+   "de": "<span role=\"columnheader\">Mein See</span><span role=\"columnheader\">Eine allgemeine Wetter-App</span><span role=\"columnheader\">Die offizielle Messung</span>",
+   "it": "<span role=\"columnheader\">Il mio lago</span><span role=\"columnheader\">Un’app meteo generica</span><span role=\"columnheader\">La misura ufficiale</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Eau à ta plage</div>",
+   "en": "role=\"rowheader\">Water at your beach</div>",
+   "de": "role=\"rowheader\">Wasser an deinem Badeplatz</div>",
+   "it": "role=\"rowheader\">Acqua alla tua spiaggia</div>"
+  },
+  {
+   "fr": ">218 plages, à 70 cm</span>",
+   "en": ">218 beaches, at 70 cm</span>",
+   "de": ">218 Badeplätze, in 70 cm Tiefe</span>",
+   "it": ">218 spiagge, a 70 cm</span>"
+  },
+  {
+   "fr": ">Rarement</span>",
+   "en": ">Rarely</span>",
+   "de": ">Selten</span>",
+   "it": ">Raramente</span>"
+  },
+  {
+   "fr": ">Une station, à Genève</span>",
+   "en": ">One station, in Geneva</span>",
+   "de": ">Eine Station, in Genf</span>",
+   "it": ">Una stazione, a Ginevra</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">La bise</div>",
+   "en": "role=\"rowheader\">The bise</div>",
+   "de": "role=\"rowheader\">Die Bise</div>",
+   "it": "role=\"rowheader\">La bise</div>"
+  },
+  {
+   "fr": ">Détectée, avec alerte</span>",
+   "en": ">Detected, with an alert</span>",
+   "de": ">Erkannt, mit Warnung</span>",
+   "it": ">Rilevata, con allerta</span>"
+  },
+  {
+   "fr": ">Le vent, sans le nom</span>",
+   "en": ">Wind, without the name</span>",
+   "de": ">Der Wind, ohne den Namen</span>",
+   "it": ">Il vento, senza il nome</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Baignade, paddle, voile</div>",
+   "en": "role=\"rowheader\">Swim, paddle, sail</div>",
+   "de": "role=\"rowheader\">Baden, Paddeln, Segeln</div>",
+   "it": "role=\"rowheader\">Balneazione, paddle, vela</div>"
+  },
+  {
+   "fr": ">Une note pour chacun</span>",
+   "en": ">A rating for each</span>",
+   "de": ">Eine Note für jede Aktivität</span>",
+   "it": ">Un voto per ogni attività</span>"
+  },
+  {
+   "fr": ">À toi de deviner</span>",
+   "en": ">Up to you to guess</span>",
+   "de": ">Das musst du selbst erraten</span>",
+   "it": ">Tocca a te indovinare</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Les prochaines heures</div>",
+   "en": "role=\"rowheader\">The next hours</div>",
+   "de": "role=\"rowheader\">Die nächsten Stunden</div>",
+   "it": "role=\"rowheader\">Le prossime ore</div>"
+  },
+  {
+   "fr": ">Heure par heure, sur 12 h</span>",
+   "en": ">Hour by hour, over 12 h</span>",
+   "de": ">Stunde für Stunde, über 12 Std.</span>",
+   "it": ">Ora per ora, su 12 h</span>"
+  },
+  {
+   "fr": ">Les prévisions brutes</span>",
+   "en": ">The raw forecast</span>",
+   "de": ">Die rohen Prognosen</span>",
+   "it": ">Le previsioni grezze</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Où boire un verre après</div>",
+   "en": "role=\"rowheader\">Where to have a drink after</div>",
+   "de": "role=\"rowheader\">Wo man danach etwas trinkt</div>",
+   "it": "role=\"rowheader\">Dove bere qualcosa dopo</div>"
+  },
+  {
+   "fr": ">34 adresses vérifiées</span>",
+   "en": ">34 verified places</span>",
+   "de": ">34 geprüfte Adressen</span>",
+   "it": ">34 indirizzi verificati</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Sans réseau sur la plage</div>",
+   "en": "role=\"rowheader\">No signal on the beach</div>",
+   "de": "role=\"rowheader\">Ohne Netz am Strand</div>",
+   "it": "role=\"rowheader\">Senza rete in spiaggia</div>"
+  },
+  {
+   "fr": ">Oui, dernières données</span>",
+   "en": ">Yes, latest data</span>",
+   "de": ">Ja, die letzten Daten</span>",
+   "it": ">Sì, gli ultimi dati</span>"
+  },
+  {
+   "fr": ">Selon l’app</span>",
+   "en": ">Depends on the app</span>",
+   "de": ">Je nach App</span>",
+   "it": ">Dipende dall’app</span>"
+  },
+  {
+   "fr": "role=\"rowheader\">Compte et prix</div>",
+   "en": "role=\"rowheader\">Account and price</div>",
+   "de": "role=\"rowheader\">Konto und Preis</div>",
+   "it": "role=\"rowheader\">Account e prezzo</div>"
+  },
+  {
+   "fr": ">Aucun compte, gratuit</span>",
+   "en": ">No account, free</span>",
+   "de": ">Kein Konto, gratis</span>",
+   "it": ">Nessun account, gratis</span>"
+  },
+  {
+   "fr": ">Souvent un compte</span>",
+   "en": ">Often an account</span>",
+   "de": ">Oft ein Konto</span>",
+   "it": ">Spesso un account</span>"
+  },
+  {
+   "fr": "data-col=\"Officielle\">Gratuit</span>",
+   "en": "data-col=\"Official\">Free</span>",
+   "de": "data-col=\"Offiziell\">Gratis</span>",
+   "it": "data-col=\"Ufficiale\">Gratis</span>"
+  },
+  {
+   "fr": "data-col=\"Mon Lac\"",
+   "en": "data-col=\"My Lake\"",
+   "de": "data-col=\"Mein See\"",
+   "it": "data-col=\"Il mio lago\""
+  },
+  {
+   "fr": "data-col=\"App météo\"",
+   "en": "data-col=\"Weather app\"",
+   "de": "data-col=\"Wetter-App\"",
+   "it": "data-col=\"App meteo\""
+  },
+  {
+   "fr": "data-col=\"Officielle\"",
+   "en": "data-col=\"Official\"",
+   "de": "data-col=\"Offiziell\"",
+   "it": "data-col=\"Ufficiale\""
+  },
+  {
+   "fr": ">Non</span>",
+   "en": ">No</span>",
+   "de": ">Nein</span>",
+   "it": ">No</span>"
+  },
+  {
+   "fr": "alt=\"Nageurs en bonnet dans le lac lors de la Coupe de Noël à Genève\"",
+   "en": "alt=\"Swimmers in caps in the lake during the Coupe de Noël in Geneva\"",
+   "de": "alt=\"Schwimmer mit Badekappen im See bei der Coupe de Noël in Genf\"",
+   "it": "alt=\"Nuotatori con la cuffia nel lago durante la Coupe de Noël a Ginevra\""
+  },
+  {
+   "fr": "La Coupe de Noël, Genève. Photo GastelEtzwane,",
+   "en": "The Coupe de Noël, Geneva. Photo GastelEtzwane,",
+   "de": "Die Coupe de Noël, Genf. Foto GastelEtzwane,",
+   "it": "La Coupe de Noël, Ginevra. Foto GastelEtzwane,"
+  },
+  {
+   "fr": ">L’hiver aussi</h2>",
+   "en": ">Winter too</h2>",
+   "de": ">Auch im Winter</h2>",
+   "it": ">Anche d’inverno</h2>"
+  },
+  {
+   "fr": "D’octobre à mai, quand l’eau passe sous 15°, l’app garde la date de chacun de tes bains et te laisse partager ton historique. Le premier est le plus dur.",
+   "en": "From October to May, when the water drops below 15°, the app keeps the date of each swim and lets you share your history. The first is the hardest.",
+   "de": "Von Oktober bis Mai, wenn das Wasser unter 15° fällt, merkt sich die App das Datum jedes deiner Bäder und lässt dich deinen Verlauf teilen. Das erste ist das härteste.",
+   "it": "Da ottobre a maggio, quando l’acqua scende sotto i 15°, l’app conserva la data di ogni tuo bagno e ti lascia condividere lo storico. Il primo è il più duro."
+  },
+  {
+   "fr": "<div><b>Défi bain d’hiver</b>3 bains cette saison. Les cygnes te respectent.</div>",
+   "en": "<div><b>Winter swim challenge</b>3 swims this season. The swans respect you.</div>",
+   "de": "<div><b>Winterbade-Challenge</b>3 Bäder diese Saison. Die Schwäne respektieren dich.</div>",
+   "it": "<div><b>Sfida bagno invernale</b>3 bagni questa stagione. I cigni ti rispettano.</div>"
+  },
+  {
+   "fr": "id=\"jysuisalle\">Bain fait !</button>",
+   "en": "id=\"jysuisalle\">Swim done!</button>",
+   "de": "id=\"jysuisalle\">Bad geschafft!</button>",
+   "it": "id=\"jysuisalle\">Bagno fatto!</button>"
+  },
+  {
+   "fr": "aria-label=\"Deux lacs\"",
+   "en": "aria-label=\"Two lakes\"",
+   "de": "aria-label=\"Zwei Seen\"",
+   "it": "aria-label=\"Due laghi\""
+  },
+  {
+   "fr": "alt=\"Les Bains des Pâquis à Genève, la jetée et ses cabines, le Salève au loin\"",
+   "en": "alt=\"Bains des Pâquis in Geneva, the jetty and its cabins, the Salève in the distance\"",
+   "de": "alt=\"Die Bains des Pâquis in Genf, der Steg und seine Kabinen, der Salève in der Ferne\"",
+   "it": "alt=\"I Bains des Pâquis a Ginevra, il molo e le sue cabine, il Salève in lontananza\""
+  },
+  {
+   "fr": "Les Bains des Pâquis, Genève. Photo Babsy,",
+   "en": "Bains des Pâquis, Geneva. Photo Babsy,",
+   "de": "Die Bains des Pâquis, Genf. Foto Babsy,",
+   "it": "I Bains des Pâquis, Ginevra. Foto Babsy,"
+  },
+  {
+   "fr": "alt=\"Le lac de la Gruyère en été, entouré de prés et de collines, les Préalpes au fond\"",
+   "en": "alt=\"Lake Gruyère in summer, surrounded by meadows and hills, the Fribourg Pre-Alps behind\"",
+   "de": "alt=\"Der Greyerzersee im Sommer, umgeben von Wiesen und Hügeln, die Voralpen im Hintergrund\"",
+   "it": "alt=\"Il lago della Gruyère in estate, circondato da prati e colline, le Prealpi sullo sfondo\""
+  },
+  {
+   "fr": "Le lac de la Gruyère. Photo",
+   "en": "Lake Gruyère. Photo",
+   "de": "Der Greyerzersee. Foto",
+   "it": "Il lago della Gruyère. Foto"
+  },
+  {
+   "fr": "<li>Questions fréquentes</li>",
+   "en": "<li>Frequent questions</li>",
+   "de": "<li>Häufige Fragen</li>",
+   "it": "<li>Domande frequenti</li>"
+  },
+  {
+   "fr": "alt=\"Le château de Chillon au bord du Léman, montagnes en arrière-plan\"",
+   "en": "alt=\"Chillon Castle on Lake Geneva, mountains behind\"",
+   "de": "alt=\"Das Schloss Chillon am Genfersee, Berge im Hintergrund\"",
+   "it": "alt=\"Il castello di Chillon in riva al Lemano, montagne sullo sfondo\""
+  },
+  {
+   "fr": "Le château de Chillon. Photo Benjamin Gimmel,",
+   "en": "Chillon Castle. Photo Benjamin Gimmel,",
+   "de": "Das Schloss Chillon. Foto Benjamin Gimmel,",
+   "it": "Il castello di Chillon. Foto Benjamin Gimmel,"
+  },
+  {
+   "fr": "aria-label=\"Ouvrir l’app sur une plage\"",
+   "en": "aria-label=\"Open the app on a beach\"",
+   "de": "aria-label=\"Die App an einem Badeplatz öffnen\"",
+   "it": "aria-label=\"Apri l’app su una spiaggia\""
+  },
+  {
+   "fr": "<label for=\"cta-plage\" class=\"vh\">Plage</label>",
+   "en": "<label for=\"cta-plage\" class=\"vh\">Beach</label>",
+   "de": "<label for=\"cta-plage\" class=\"vh\">Badeplatz</label>",
+   "it": "<label for=\"cta-plage\" class=\"vh\">Spiaggia</label>"
+  },
+  {
+   "fr": "      Le lac à <input id=\"cta-plage\" list=\"plages\" placeholder=\"Vidy\" autocomplete=\"off\"> <button type=\"submit\">maintenant</button>",
+   "en": "      The lake at <input id=\"cta-plage\" list=\"plages\" placeholder=\"Vidy\" autocomplete=\"off\"> <button type=\"submit\">now</button>",
+   "de": "      Der See in <input id=\"cta-plage\" list=\"plages\" placeholder=\"Vidy\" autocomplete=\"off\"> <button type=\"submit\">jetzt</button>",
+   "it": "      Il lago a <input id=\"cta-plage\" list=\"plages\" placeholder=\"Vidy\" autocomplete=\"off\"> <button type=\"submit\">adesso</button>"
+  },
+  {
+   "fr": "L’app s’ouvre sur cette plage, sans compte et sans rien installer. Tu pourras l’ajouter à ton écran d’accueil ensuite.",
+   "en": "The app opens on that beach, no account, nothing to install. You can add it to your home screen afterwards.",
+   "de": "Die App öffnet sich an diesem Badeplatz, ohne Konto und ohne Installation. Du kannst sie danach zu deinem Startbildschirm hinzufügen.",
+   "it": "L’app si apre su questa spiaggia, senza account e senza installare nulla. Potrai aggiungerla alla schermata iniziale dopo."
+  },
+  {
+   "fr": "<p class=\"credits\">Photos sous licence CC BY-SA, crédits sous chaque image.</p>",
+   "en": "<p class=\"credits\">Photos under CC BY-SA licence, credits below each image.</p>",
+   "de": "<p class=\"credits\">Fotos unter CC-BY-SA-Lizenz, Bildnachweis unter jedem Bild.</p>",
+   "it": "<p class=\"credits\">Foto con licenza CC BY-SA, crediti sotto ogni immagine.</p>"
+  },
+  {
+   "fr": "'Pas de plage à ce nom. Essaie Nyon, Pully ou Thonon.'",
+   "en": "'No beach by that name. Try Nyon, Pully or Thonon.'",
+   "de": "'Kein Badeplatz mit diesem Namen. Versuch Nyon, Zürich oder Luzern.'",
+   "it": "'Nessuna spiaggia con questo nome. Prova Nyon, Zurigo o Lucerna.'"
+  },
+  {
+   "fr": "`${s.nom} : ${v.titre}`",
+   "en": "`${s.nom}: ${v.titre}`",
+   "de": "`${s.nom}: ${v.titre}`",
+   "it": "`${s.nom}: ${v.titre}`"
+  },
+  {
+   "fr": "'Le lac ne répond pas pour l’instant. Réessaie dans un moment.'",
+   "en": "'The lake isn’t answering right now. Try again in a moment.'",
+   "de": "'Der See antwortet gerade nicht. Versuch es gleich noch einmal.'",
+   "it": "'Il lago non risponde per ora. Riprova tra un attimo.'"
+  },
+  {
+   "fr": "`${n} bains cette saison. Les cygnes te respectent.`",
+   "en": "`${n} swims this season. The swans respect you.`",
+   "de": "`${n} Bäder diese Saison. Die Schwäne respektieren dich.`",
+   "it": "`${n} bagni questa stagione. I cigni ti rispettano.`"
+  },
+  {
+   "fr": "${ps.length > 1 ? 'plages' : 'plage'}",
+   "en": "${ps.length > 1 ? 'beaches' : 'beach'}",
+   "de": "${ps.length > 1 ? 'Badeplätze' : 'Badeplatz'}",
+   "it": "${ps.length > 1 ? 'spiagge' : 'spiaggia'}"
+  },
+  {
+   "fr": "`Température à 70 cm sous la surface. Ce matin sur le Léman, de ${deg(Math.min(...leman))} à ${deg(Math.max(...leman))}.`",
+   "en": "`Temperature 70 cm below the surface. This morning on Lake Geneva, from ${deg(Math.min(...leman))} to ${deg(Math.max(...leman))}.`",
+   "de": "`Temperatur in 70 cm Tiefe. Heute Morgen am Genfersee von ${deg(Math.min(...leman))} bis ${deg(Math.max(...leman))}.`",
+   "it": "`Temperatura a 70 cm sotto la superficie. Questa mattina sul Lemano, da ${deg(Math.min(...leman))} a ${deg(Math.max(...leman))}.`"
+  }
+ ],
+ "faq": {
+  "fr": [
+   [
+    "D’où vient la température de l’eau ?",
+    "Du modèle Alplakes de l’Eawag, l’institut suisse de recherche sur l’eau. Il calcule les grands lacs en trois dimensions : on lit la valeur à 70 cm sous la surface devant chaque plage, toutes les trois heures. Pour les lacs modélisés en 1D (Gruyère, Majeur, Thoune, Constance…), une seule valeur pour tout le lac ; pour le Domaine des Îles à Sion et le lac des Brenets, aucun modèle, donc aucun chiffre."
+   ],
+   [
+    "Pourquoi l’eau change autant d’une plage à l’autre ?",
+    "Le vent pousse l’eau chaude de surface d’une rive à l’autre. Par bise, l’eau froide du fond remonte parfois près de Lausanne : trois ou quatre degrés d’écart avec Genève le même jour, ce n’est pas rare."
+   ],
+   [
+    "C’est gratuit ?",
+    "Oui, sans compte, sans publicité et sans cookie. Tu ouvres la page, tu choisis ta plage, c’est tout."
+   ],
+   [
+    "Comment l’installer sur mon téléphone ?",
+    "Sur Android, menu de Chrome puis « Installer l’application ». Sur iPhone, bouton Partager de Safari puis « Sur l’écran d’accueil ». Elle s’ouvre ensuite comme une app."
+   ],
+   [
+    "Et sans réseau sur la plage ?",
+    "L’app garde les dernières conditions chargées et te dit de quelle heure elles datent. Les bars et restos restent consultables."
+   ],
+   [
+    "Dans quelles langues ?",
+    "En français, en anglais, en allemand et en italien. Elle suit la langue de ton téléphone, et les liens en bas de l’écran permettent d’en changer."
+   ]
+  ],
+  "en": [
+   [
+    "Where does the water temperature come from?",
+    "From the Alplakes model by Eawag, the Swiss water research institute. It computes the large lakes in three dimensions: we read the value 70 cm below the surface in front of each beach, every three hours. For lakes modelled in 1D (Gruyère, Maggiore, Thun, Constance…), one value for the whole lake; for the Domaine des Îles in Sion and Lac des Brenets, no model, so no figure."
+   ],
+   [
+    "Why does the water vary so much between beaches?",
+    "Wind pushes warm surface water from one shore to the other. With the bise, cold deep water sometimes rises near Lausanne: three or four degrees difference with Geneva on the same day is not unusual."
+   ],
+   [
+    "Is it free?",
+    "Yes, no account, no ads and no cookies. Open the page, pick your beach, that’s it."
+   ],
+   [
+    "How do I install it on my phone?",
+    "On Android, Chrome menu then “Install app”. On iPhone, Safari’s Share button then “Add to Home Screen”. It then opens like an app."
+   ],
+   [
+    "And with no signal on the beach?",
+    "The app keeps the last conditions it loaded and tells you what time they are from. Bars and restaurants stay available."
+   ],
+   [
+    "Which languages?",
+    "French, English, German and Italian. It follows your phone’s language, and the links at the bottom of the screen let you switch."
+   ]
+  ],
+  "de": [
+   [
+    "Woher kommt die Wassertemperatur?",
+    "Aus dem Alplakes-Modell der Eawag, dem Schweizer Wasserforschungsinstitut. Es berechnet die grossen Seen dreidimensional: Wir lesen den Wert in 70 cm Tiefe vor jedem Badeplatz ab, alle drei Stunden. Bei den 1D-Seen (Greyerzersee, Lago Maggiore, Thunersee, Bodensee…) gibt es einen einzigen Wert für den ganzen See; für die Domaine des Îles in Sitten und den Lac des Brenets gibt es kein Modell, also auch keine Zahl."
+   ],
+   [
+    "Warum ist das Wasser an jedem Badeplatz anders?",
+    "Der Wind drückt das warme Oberflächenwasser von einem Ufer ans andere. Bei Bise steigt manchmal kaltes Tiefenwasser bei Lausanne auf: drei oder vier Grad Unterschied zu Genf am selben Tag sind nicht selten."
+   ],
+   [
+    "Ist es gratis?",
+    "Ja, ohne Konto, ohne Werbung und ohne Cookies. Du öffnest die Seite, wählst deinen Badeplatz, fertig."
+   ],
+   [
+    "Wie installiere ich es auf meinem Handy?",
+    "Auf Android: Chrome-Menü, dann «App installieren». Auf dem iPhone: Teilen-Taste von Safari, dann «Zum Home-Bildschirm». Danach öffnet sie sich wie eine App."
+   ],
+   [
+    "Und ohne Netz am Strand?",
+    "Die App behält die zuletzt geladenen Bedingungen und sagt dir, von wann sie sind. Bars und Restaurants bleiben abrufbar."
+   ],
+   [
+    "In welchen Sprachen?",
+    "Auf Französisch, Englisch, Deutsch und Italienisch. Sie folgt der Sprache deines Handys, und die Links unten auf dem Bildschirm lassen dich wechseln."
+   ]
+  ],
+  "it": [
+   [
+    "Da dove viene la temperatura dell’acqua?",
+    "Dal modello Alplakes dell’Eawag, l’istituto svizzero di ricerca sull’acqua. Calcola i grandi laghi in tre dimensioni: leggiamo il valore a 70 cm sotto la superficie davanti a ogni spiaggia, ogni tre ore. Per i laghi modellati in 1D (Gruyère, Maggiore, Thun, Costanza…) c’è un solo valore per tutto il lago; per il Domaine des Îles a Sion e il Lac des Brenets non esiste alcun modello, quindi nessun numero."
+   ],
+   [
+    "Perché l’acqua cambia tanto da una spiaggia all’altra?",
+    "Il vento spinge l’acqua calda di superficie da una riva all’altra. Con la bise, l’acqua fredda del fondo a volte risale vicino a Losanna: tre o quattro gradi di differenza con Ginevra nello stesso giorno non sono rari."
+   ],
+   [
+    "È gratis?",
+    "Sì, senza account, senza pubblicità e senza cookie. Apri la pagina, scegli la tua spiaggia, e basta."
+   ],
+   [
+    "Come la installo sul telefono?",
+    "Su Android, menu di Chrome poi «Installa app». Su iPhone, pulsante Condividi di Safari poi «Aggiungi alla schermata Home». Poi si apre come un’app."
+   ],
+   [
+    "E senza rete in spiaggia?",
+    "L’app conserva le ultime condizioni caricate e ti dice a che ora risalgono. Bar e ristoranti restano consultabili."
+   ],
+   [
+    "In quali lingue?",
+    "In francese, inglese, tedesco e italiano. Segue la lingua del tuo telefono, e i link in fondo allo schermo permettono di cambiarla."
+   ]
+  ]
+ },
+ "langue": {
+  "fr": {
+   "lib": [
+    "Non",
+    "Bof",
+    "Bien",
+    "Parfait"
+   ],
+   "noms": {
+    "baignade": "Baignade",
+    "paddle": "Paddle",
+    "voile": "Voile / wing",
+    "hiver": "Bain d’hiver"
+   }
+  },
+  "en": {
+   "lib": [
+    "No",
+    "Meh",
+    "Good",
+    "Perfect"
+   ],
+   "noms": {
+    "baignade": "Swimming",
+    "paddle": "Paddle",
+    "voile": "Sailing / wing",
+    "hiver": "Winter swim"
+   }
+  },
+  "de": {
+   "lib": [
+    "Nein",
+    "Naja",
+    "Gut",
+    "Perfekt"
+   ],
+   "noms": {
+    "baignade": "Baden",
+    "paddle": "Paddeln",
+    "voile": "Segeln / Wing",
+    "hiver": "Winterbaden"
+   }
+  },
+  "it": {
+   "lib": [
+    "No",
+    "Così così",
+    "Bene",
+    "Perfetto"
+   ],
+   "noms": {
+    "baignade": "Balneazione",
+    "paddle": "Paddle",
+    "voile": "Vela / wing",
+    "hiver": "Bagno invernale"
+   }
+  }
+ }
+}

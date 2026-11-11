@@ -2,7 +2,7 @@
 // sources des données, puis À propos · Toutes les plages · Blog · autres langues.
 // r = chemin vers la racine du site ('' à la racine, '../' un niveau plus bas…).
 // versLangues = { langue: adresse de la même page dans cette langue } : seules ces langues sont proposées.
-// La présentation et le blog n'existent pas encore en allemand ni en italien : ils renvoient à l'anglais.
+// Le blog n'existe pas encore en allemand ni en italien : il renvoie à l'anglais (ou au français pour le français).
 const NOMS = { fr: 'Français', en: 'English', de: 'Deutsch', it: 'Italiano' };
 const TEXTES = {
   fr: ['Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot.', 'À propos', 'Toutes les plages'],
@@ -16,6 +16,6 @@ export function pied(L, r, versLangues) {
     .map(([l, href]) => `<a class="langue" href="${href}" hreflang="${l}" lang="${l}">${NOMS[l]}</a>`).join('');
   return `<footer class="pied">
   <span>${source}</span>
-  <div class="liens"><a href="${r}presentation/${dn}">${apropos}</a><a href="${r}plage/${d}">${plages}</a><a href="${r}blog/${dn}">Blog</a>${autres}</div>
+  <div class="liens"><a href="${r}presentation/${d}">${apropos}</a><a href="${r}plage/${d}">${plages}</a><a href="${r}blog/${dn}">Blog</a>${autres}</div>
 </footer>`;
 }

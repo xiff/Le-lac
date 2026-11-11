@@ -475,7 +475,8 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 ```sh
 python3 -m http.server 8765        # puis http://localhost:8765/
 node --test *.test.mjs             # tests
-node scripts/pages.mjs             # régénérer les pages par plage et le sitemap
+node scripts/pages.mjs             # régénérer les pages par plage (4 langues) et le sitemap
+node scripts/presentation.mjs      # régénérer la présentation en anglais, allemand et italien depuis le français
 ```
 
 Après une modification de l’interface, changer le numéro de cache dans `sw.js` (`lac-vNN`).

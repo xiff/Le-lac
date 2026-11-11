@@ -239,8 +239,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     await mkdir(`plage/${s.id}/${SUF[l]}`, { recursive: true });
     await writeFile(`plage/${s.id}/${SUF[l]}index.html`, page(s, l));
   }
-  // Présentation et blog : français et anglais seulement pour l'instant.
-  const urls = ['', 'presentation/', 'presentation/en/', ...LANGUES.map((l) => `plage/${SUF[l]}`), ...URLS_BLOG, ...SPOTS.flatMap((s) => LANGUES.map((l) => `plage/${s.id}/${SUF[l]}`))];
+  // Présentation : quatre langues ; blog : français et anglais seulement pour l'instant.
+  const urls = ['', ...LANGUES.map((l) => `presentation/${SUF[l]}`), ...LANGUES.map((l) => `plage/${SUF[l]}`), ...URLS_BLOG, ...SPOTS.flatMap((s) => LANGUES.map((l) => `plage/${s.id}/${SUF[l]}`))];
   await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
   console.log(`${SPOTS.length * LANGUES.length} pages de plage (${LANGUES.join(', ')}) et sitemap.xml générés.`);
 }
