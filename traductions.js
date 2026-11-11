@@ -93,6 +93,13 @@ const LIEUX_DE_IT = {
   "Ristorante La Terrazza": { de: "Auf dem Dach des Hotels Casa Berno.", it: "Sul tetto dell’hotel Casa Berno." },
   "La Fontana Ristorante & Bar": { de: "Grosse Terrasse inmitten von Palmen und mediterraner Vegetation.", it: "Grande terrazza circondata da palme e vegetazione mediterranea." },
   "BLU Restaurant & Lounge": { de: "Direkt am Seeufer von Locarno, in entspannter Atmosphäre.", it: "Direttamente sul lungolago di Locarno, in un’atmosfera rilassata." },
+  "Restaurant Lago (Ägeribad)": { de: "Im Ägeribad (Strandweg 1): Sonnenterrasse mit Seeblick, mediterrane Küche und hausgemachte Desserts.", it: "All’Ägeribad (Strandweg 1): terrazza soleggiata con vista sul lago, cucina mediterranea e dolci fatti in casa." },
+  "Restaurant Seefeld (SeminarHotel)": { de: "Seestrasse 10: grosse Seeterrasse; im Sommer abends Licht- und Wasserspiel.", it: "Seestrasse 10: ampia terrazza sul lago; in estate, la sera, spettacolo di luci e acqua." },
+  "Restaurant Hüribach": { de: "Auf dem Camping Unterägeri (Wilbrunnenstrasse 81): Terrasse direkt am See, saisonale Küche, ganzjährig geöffnet.", it: "Al campeggio di Unterägeri (Wilbrunnenstrasse 81): terrazza direttamente sul lago, cucina di stagione, aperto tutto l’anno." },
+  "Seefeld Imbiss / Hafenbar": { de: "Seestrasse 20, im öffentlichen Seebad Sarnen: Seecafé mit grosser Glasfront und sonniger Terrasse, Selbstbedienung.", it: "Seestrasse 20, nel bagno pubblico di Sarnen: caffè in riva al lago con grande vetrata e terrazza soleggiata, self-service." },
+  "Seehotel Wilerbad": { de: "Wilerbadstrasse 6: Panoramaterrasse mit Berg- und Seeblick auf den Sarnersee, Schweizer oder Thai-Küche.", it: "Wilerbadstrasse 6: terrazza panoramica con vista su montagne e lago di Sarnen, cucina svizzera o thailandese." },
+  "Restaurant Bellevue": { de: "Champ-de-la-Fontaine 1: schattige Terrasse mit rund 60 Plätzen und Blick auf den Lac des Brenets, Eglifilets und Forellen aus dem eigenen Becken.", it: "Champ-de-la-Fontaine 1: terrazza ombreggiata di circa 60 posti con vista sul lago dei Brenets, filetti di pesce persico e trote dal vivaio." },
+  "Bar du Port": { de: "Im Hafen von Les Brenets, Terrasse am Wasser, wo die Schiffe zum Saut du Doubs ablegen.", it: "Al porto di Les Brenets, terrazza in riva all’acqua da cui partono i battelli per il Saut du Doubs." },
 };
 const LOC_DE_IT = {
   "Sauna Boats Genève": { de: "Die erste schwimmende Sauna des Genfersees: bis zu sechs Personen, im Hafenbecken ohne Bootsführerschein, Start am Quai Gustave-Ador 33.", it: "La prima sauna galleggiante del Lemano: fino a sei persone, senza patente nella rada, partenza dal Quai Gustave-Ador 33." },
