@@ -786,8 +786,8 @@ $('partager').onclick = () => partager(etat
   : T.partageDefaut);
 
 if ('serviceWorker' in navigator) {
-  // Nouvelle version installée : on recharge une fois pour ne jamais mélanger ancien et nouveau code.
-  if (navigator.serviceWorker.controller) navigator.serviceWorker.addEventListener('controllerchange', () => location.reload(), { once: true });
+  // Pas de rechargement quand une nouvelle version s'installe : tout est déjà chargé depuis le réseau (sw.js, réseau d'abord),
+  // et recharger faisait clignoter la page à chaque mise à jour.
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 </script>
