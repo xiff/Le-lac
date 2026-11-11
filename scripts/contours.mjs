@@ -47,6 +47,12 @@ export function simplifier(p, tol) {
   return dmax > tol ? simplifier(p.slice(0, imax + 1), tol).slice(0, -1).concat(simplifier(p.slice(imax), tol)) : [a, b];
 }
 
+// Anneau fermé (premier point = dernier) : on le coupe en deux moitiés, sinon le segment de référence est nul.
+export function simplifierAnneau(p, tol) {
+  const m = Math.floor(p.length / 2);
+  return simplifier(p.slice(0, m + 1), tol).slice(0, -1).concat(simplifier(p.slice(m), tol));
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   // Nominatim renvoie le polygone déjà simplifié (polygon_threshold, en degrés) ; une requête par seconde au plus.
   const Q = { neuchatel: 'Lac de Neuchâtel', bienne: 'Bielersee', morat: 'Murtensee', gruyere: 'Lac de la Gruyère' };
@@ -60,7 +66,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (e) {
       const polys = e.geojson.type === 'Polygon' ? [e.geojson.coordinates] : e.geojson.coordinates;
       const ext = polys.map((p) => p[0]).sort((a, b) => b.length - a.length)[0];
-      out[lac] = simplifier(ext, 0.0008).map(([x, y]) => [+x.toFixed(5), +y.toFixed(5)]);
+      out[lac] = simplifierAnneau(ext, 0.0008).map(([x, y]) => [+x.toFixed(5), +y.toFixed(5)]);
       console.log(' →', ext.length, 'points, simplifié', out[lac].length);
     }
     await pause(2000);

@@ -629,7 +629,7 @@ const melange = (f) => { const a = [90, 166, 196], b = [227, 168, 43]; return `r
 // Carte d'un lac : le Léman est tracé par ses plages, les autres par leur contour OpenStreetMap (contours.js).
 function carteLac(lac) {
   if (lac === 'leman') return { proj, d: CONTOUR };
-  const c = CONTOURS[lac]; if (!c) return null;
+  const c = CONTOURS[lac]; if (!(c?.length > 10)) return null;
   const pts = c.map(([lon, lat]) => ({ lon, lat })), p = projeter(400, pts);
   return { proj: p, d: 'M' + pts.map((x) => p.xy(x).map((v) => v.toFixed(1)).join(',')).join('L') + 'Z' };
 }
