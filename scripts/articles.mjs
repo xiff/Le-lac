@@ -6,6 +6,7 @@ import { texteLieu, villeDe } from '../traductions.js';
 import { creerDe } from './articles.de.mjs';
 import { creerIt } from './articles.it.mjs';
 import { articlesLacs } from './articles.lacs.mjs';
+import { articlesSaunas } from './articles.saunas.mjs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 
@@ -688,5 +689,5 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages)); // température de l'eau par lac, déjà en quatre langues
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages)); // température de l'eau par lac, déjà en quatre langues
 

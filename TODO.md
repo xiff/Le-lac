@@ -53,8 +53,10 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors du dépôt public.
 
 - [x] **Température de l’eau par lac** (12 articles, 4 langues), publiés le 11 novembre 2026.
-- [ ] **Bain d’hiver et saunas** (10) : saunas du Léman, bateaux-saunas de Suisse, saunas du lac de Zurich, bain d’hiver à Neuchâtel/Bienne et à Zurich,
-  clubs et rendez-vous, bienfaits (études à citer), respiration, programme de 4 semaines, néoprène. Il faut une photo libre par article (workflow `photos.yml`).
+- [x] **Saunas et bain d’hiver, première moitié** (5 articles, 4 langues), publiés le 11 novembre 2026 : saunas du Léman, saunas flottants de Suisse,
+  saunas du lac de Zurich, bain d’hiver dans les Trois-Lacs, bain d’hiver à Zurich.
+- [ ] **Bain d’hiver, seconde moitié** (5) : clubs et rendez-vous, bienfaits (études à citer), respiration, programme de 4 semaines, néoprène.
+  Sources médicales ou officielles obligatoires, et une photo libre par article (workflow `photos.yml`).
 - [ ] **« Où se baigner » par lac** (24), à mettre en ligne avant mars.
 - [ ] **Comprendre le lac** (10) : vents, foehn, chute brutale de température, seiches, brassage, niveau, lacs les plus chauds et les plus froids.
 - [ ] **Guides locaux du Léman** (12) : Lausanne, Riviera, La Côte, Lavaux, plages gratuites, familles, chiens, train, sable, plongeoirs, coucher de soleil, Rhône.

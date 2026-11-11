@@ -67,7 +67,7 @@
 import { SPOTS, valeurProche } from '../../../spots.js';
 const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
 // Les plages du lac dont parle l'article (le Léman par défaut).
-const v = SPOTS.filter((s) => s.lac === 'joux').map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+const v = SPOTS.filter((s) => ["joux"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "Right now the model gives <strong>§T</strong> at 70 cm below the surface for Lac de Joux as a whole.".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });

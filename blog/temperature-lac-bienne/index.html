@@ -72,7 +72,7 @@
 import { SPOTS, valeurProche } from '../../spots.js';
 const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 // Les plages du lac dont parle l'article (le Léman par défaut).
-const v = SPOTS.filter((s) => s.lac === 'bienne').map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+const v = SPOTS.filter((s) => ["bienne"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "En ce moment, le modèle donne <strong>§T</strong> à 70 cm sous la surface pour l’ensemble du lac de Bienne.".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
