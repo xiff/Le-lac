@@ -5,6 +5,9 @@ on:
       lac:
         description: 'Un seul lac (neuchatel, bienne, morat, gruyere, sion, lugano, majeur) ; vide = tous'
         required: false
+      chercher:
+        description: 'Noms à chercher (Nominatim), séparés par ;'
+        required: false
 jobs:
   decouvrir:
     runs-on: ubuntu-latest
@@ -14,3 +17,5 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/decouvrir.mjs "${{ inputs.lac }}"
+      - if: ${{ inputs.chercher }}
+        run: IFS=";" read -ra Q <<< "${{ inputs.chercher }}"; node scripts/chercher.mjs "${Q[@]}"
