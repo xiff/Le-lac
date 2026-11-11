@@ -1,7 +1,7 @@
 // Articles du blog, en français et en anglais. Chaque fait vient d'une source citée en bas d'article,
 // ou des listes vérifiées de l'app (plages, lieux, loueurs), insérées ici depuis les mêmes fichiers.
 // Liens dans le HTML : {plage:id}, {plages}, {app}, {blog:slug} ; le générateur les résout selon la langue.
-import { SPOTS, REGIONS_EN } from '../spots.js';
+import { SPOTS, REGIONS_EN, lacDe } from '../spots.js';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 
@@ -17,7 +17,9 @@ const listeLieux = (filtre, L) => Object.entries(ZONES).map(([z, r]) => {
   const l = LIEUX.filter((x) => x.zone === z && filtre(x));
   return l.length ? `<h3>${region(r, L)}</h3>\n<ul class="liste">\n${l.map((x) => `  <li><strong>${x.nom}</strong>, ${x.ville}${saison(x, L)}${L === 'en' ? ': ' + x.en : ' : ' + x.note}</li>`).join('\n')}\n</ul>` : '';
 }).join('\n');
-const listeLoc = (acts, L, filtre = () => true) => `<ul class="liste">\n${LOCATIONS.filter((l) => l.activites.some((a) => acts.includes(a)) && filtre(l)).map((l) =>
+// Les articles parlent du Léman : on n'y liste que ses loueurs et saunas.
+const duLeman = (l) => lacDe(SPOTS.find((s) => s.id === l.spot)) === 'leman';
+const listeLoc = (acts, L, filtre = () => true) => `<ul class="liste">\n${LOCATIONS.filter((l) => duLeman(l) && l.activites.some((a) => acts.includes(a)) && filtre(l)).map((l) =>
   `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${l.ville}${saison(l, L)}, ${L === 'en' ? 'near' : 'près de'} <a href="{plage:${l.spot}}">${nomSpot(l.spot)}</a>${L === 'en' ? ': ' + l.en : ' : ' + l.note}</li>`).join('\n')}\n</ul>`;
 
 const IMG = {

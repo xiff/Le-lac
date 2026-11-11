@@ -150,6 +150,7 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 
 | Plage | Français | English |
 |---|---|---|
+| Cerlier (Erlach) | [https://xiff.github.io/Le-lac/plage/cerlier/](https://xiff.github.io/Le-lac/plage/cerlier/) | [EN](https://xiff.github.io/Le-lac/plage/cerlier/en/) |
 | La Neuveville | [https://xiff.github.io/Le-lac/plage/la-neuveville/](https://xiff.github.io/Le-lac/plage/la-neuveville/) | [EN](https://xiff.github.io/Le-lac/plage/la-neuveville/en/) |
 | Strandbad Rostele | [https://xiff.github.io/Le-lac/plage/strandbad-rostele/](https://xiff.github.io/Le-lac/plage/strandbad-rostele/) | [EN](https://xiff.github.io/Le-lac/plage/strandbad-rostele/en/) |
 | Tüscherz | [https://xiff.github.io/Le-lac/plage/tuscherz/](https://xiff.github.io/Le-lac/plage/tuscherz/) | [EN](https://xiff.github.io/Le-lac/plage/tuscherz/en/) |
@@ -243,7 +244,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 96 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 97 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |

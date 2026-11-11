@@ -99,6 +99,7 @@ export const SPOTS = [
   { id: 'gletterens', nom: 'Gletterens', lat: 46.90804, lon: 6.92853, region: 'Lac de Neuchâtel', zone: 'neuchatel', lac: 'neuchatel' },
   { id: 'forel', nom: 'Forel', lat: 46.88102, lon: 6.88432, region: 'Lac de Neuchâtel', zone: 'neuchatel', lac: 'neuchatel' },
   { id: 'estavayer-le-lac', nom: 'Estavayer – Nouvelle Plage', lat: 46.85665, lon: 6.84823, region: 'Lac de Neuchâtel', zone: 'neuchatel', lac: 'neuchatel' },
+  { id: 'cerlier', nom: 'Cerlier (Erlach)', lat: 47.04708, lon: 7.09679, region: 'Lac de Bienne', zone: 'bienne', lac: 'bienne' },
   { id: 'la-neuveville', nom: 'La Neuveville', lat: 47.06001, lon: 7.08845, region: 'Lac de Bienne', zone: 'bienne', lac: 'bienne' },
   { id: 'strandbad-rostele', nom: 'Strandbad Rostele', lat: 47.09526, lon: 7.16302, region: 'Lac de Bienne', zone: 'bienne', lac: 'bienne' },
   { id: 'tuscherz', nom: 'Tüscherz', lat: 47.11150, lon: 7.19126, region: 'Lac de Bienne', zone: 'bienne', lac: 'bienne' },
