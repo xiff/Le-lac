@@ -17,8 +17,8 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 1. [x] **Tessin** : lac de Lugano (14 lidos, 3D) et lac Majeur (7 lidos, 1D), ajoutés le 11 novembre 2026.
    Origlio : baignade interdite (ticino.ch). Muzzano : aucun lido trouvé, à confirmer.
 2. [ ] **Suisse romande**
-   - [ ] **Lac de Joux** : 3D (`delft3d-flow/joux`), 1D aussi. Plages du Pont, de L’Abbaye, du Rocheray (Le Sentier)…
-   - [ ] Lac de Bret (1D `bret`), lac des Brenets (1D `brenet`).
+   - [x] **Lac de Joux** : 3D (`delft3d-flow/joux`), 1D aussi. Plages du Pont, de L’Abbaye, du Rocheray (Le Sentier)…
+   - [x] Lac de Joux (Le Rocheray, Le Pont), lac de Bret, lac des Brenets (sans modèle d’eau : le modèle `brenet` d’Alplakes est le lac Brenet, vallée de Joux).
 3. [ ] **Suisse centrale et alémanique** : lac de Zurich (3D), lac de Zoug (3D `mitgcm/zug`), lac des Quatre-Cantons (3D `mitgcm/lucerne`), lac d’Ägeri (3D), lac de Hallwil (3D), Greifensee (3D), lac de Thoune et lac de Brienz (1D), lac de Sempach, lac de Baldegg, lac de Sarnen (1D).
 4. [ ] **Grisons** : lacs de Saint-Moritz (3D `stmoritz`), Silvaplana et Sils (1D).
 5. [ ] **Lac de Constance, rive suisse** : 1D (`lowerconstance`).

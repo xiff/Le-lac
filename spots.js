@@ -14,6 +14,7 @@ export const LACS = {
   majeur: { nom: 'Lac Majeur', en: 'Lake Maggiore', eau: { modele: 'simstrat', lac: 'maggiore' }, carteSud: 46.06 }, // carte : la partie suisse et un peu au-delà
   joux: { nom: 'Lac de Joux', en: 'Lac de Joux', eau: { modele: 'delft3d-flow', lac: 'joux' } },
   bret: { nom: 'Lac de Bret', en: 'Lac de Bret', eau: { modele: 'simstrat', lac: 'bret' } },
+  brenets: { nom: 'Lac des Brenets', en: 'Lac des Brenets', eau: null }, // le modèle Alplakes « brenet » est le lac Brenet (vallée de Joux)
   sion: { nom: 'Sion – Domaine des Îles', en: 'Sion – Domaine des Îles', eau: null },
 };
 export const lacDe = (s) => s?.lac ?? 'leman'; // les plages du Léman n'ont pas de champ lac
@@ -146,6 +147,7 @@ export const SPOTS = [
   { id: 'le-sentier-rocheray', nom: 'Le Sentier – Le Rocheray', lat: 46.61870, lon: 6.24686, region: 'Lac de Joux', zone: 'joux', lac: 'joux' },
   { id: 'le-pont', nom: 'Le Pont', lat: 46.66694, lon: 6.32894, region: 'Lac de Joux', zone: 'joux', lac: 'joux' },
   { id: 'lac-de-bret', nom: 'Lac de Bret', lat: 46.51546, lon: 6.77170, region: 'Lac de Bret', zone: 'bret', lac: 'bret' },
+  { id: 'les-brenets', nom: 'Les Brenets', lat: 47.07174, lon: 6.70307, region: 'Lac des Brenets', zone: 'brenets', lac: 'brenets' },
 ];
 
 // Valeur de la série la plus proche de l'instant donné, si elle date de moins de 6 h.

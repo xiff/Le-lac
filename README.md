@@ -1,6 +1,6 @@
 # Mon Lac
 
-Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux et Bret en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
+Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux, Bret et les Brenets en un coup d’œil : pour chaque plage, la température de l’eau, l’air, le vent et la bise,
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
@@ -227,6 +227,12 @@ Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 |---|---|---|
 | Lac de Bret | [https://monlac.ch/plage/lac-de-bret/](https://monlac.ch/plage/lac-de-bret/) | [EN](https://monlac.ch/plage/lac-de-bret/en/) |
 
+### Lac des Brenets
+
+| Plage | Français | English |
+|---|---|---|
+| Les Brenets | [https://monlac.ch/plage/les-brenets/](https://monlac.ch/plage/les-brenets/) | [EN](https://monlac.ch/plage/les-brenets/en/) |
+
 ### Blog
 
 13 articles en français (`blog/<article>/`) et en anglais (`blog/<article>/en/`).
@@ -288,7 +294,7 @@ Page des compilations : https://github.com/xiff/Le-lac/actions/workflows/apk-tes
 | `score.js` | Notes, verdict, phrases |
 | `textes.js` | Textes de l’interface en français et en anglais |
 | `TODO.md` | Ce qui reste à faire (affiliation, domaine, etc.) |
-| `spots.js` | Les 121 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
+| `spots.js` | Les 122 plages (position, région, lac) et les lacs suivis (`LACS`, modèle d’eau) |
 | `lieux.js` | Bars et restos au bord de l’eau |
 | `locations.js` | Loueurs d’activités nautiques |
 | `plage/plage.js` | Conditions du jour sur les pages par plage |

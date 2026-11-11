@@ -20,7 +20,7 @@ const TXT = {
     lieux: 'Un verre ou un repas dans le coin', saison: ' · ouvert en saison', donnees: 'D’où viennent ces chiffres',
     texte: (n, l, m) => `${!m ? `Aucun modèle ne calcule encore la température de l’eau ici : l’app ne l’affiche donc pas, plutôt que d’inventer un chiffre.` : m === 'simstrat' ? `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le ${l} sur sa verticale : une seule valeur à 70 cm pour tout le lac, toutes les trois heures.` : `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le ${l} en trois dimensions : on lit la valeur à 70 cm sous la surface, devant la plage, toutes les trois heures.`} Le vent et l’air viennent d’Open-Meteo. La qualité de l’eau de baignade n’est affichée que si une analyse de moins de 30 jours existe (canton de Genève pour les plages genevoises) ; sinon, vérifie-la à la source auprès du canton ou de la CIPEL, liens en bas de page. Le verdict est calculé par l’app Mon Lac à partir de ces données. Indicatif : le lac a toujours le dernier mot.`,
     app: 'Mon Lac', autre: 'English',
-    liste: 'Toutes les plages', listeDesc: `Les ${SPOTS.length} plages suivies par Mon Lac, du Léman aux lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux et Bret : température de l’eau, vent et verdict du jour, plage par plage.`, presentation: 'Présentation',
+    liste: 'Toutes les plages', listeDesc: `Les ${SPOTS.length} plages suivies par Mon Lac, du Léman aux lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano, Majeur, Joux, Bret et les Brenets : température de l’eau, vent et verdict du jour, plage par plage.`, presentation: 'Présentation',
   },
   en: {
     titre: (n) => `Water temperature at ${n} today`, 
@@ -31,7 +31,7 @@ const TXT = {
     lieux: 'A drink or a meal nearby', saison: ' · open in season', donnees: 'Where these figures come from',
     texte: (n, l, m) => `${!m ? `No model computes the water temperature here yet, so the app does not show one rather than make up a figure.` : m === 'simstrat' ? `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes ${l} along its depth: one value at 70 cm for the whole lake, every three hours.` : `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes ${l} in three dimensions: we read the value 70 cm below the surface, in front of the beach, every three hours.`} Wind and air come from Open-Meteo. Bathing water quality is only shown when a test less than 30 days old exists (Canton of Geneva for Geneva beaches); otherwise check it at the source with the canton or CIPEL, links at the bottom of the page. The verdict is computed by the My Lake app from this data. For guidance only: the lake always has the last word.`,
     app: 'My Lake', autre: 'Français',
-    liste: 'All beaches', listeDesc: `The ${SPOTS.length} beaches followed by My Lake, from Lake Geneva to the lakes of Neuchâtel, Biel, Murten, Gruyère, Sion, Lugano, Maggiore, Joux and Bret: water temperature, wind and today’s verdict, beach by beach.`, presentation: 'About',
+    liste: 'All beaches', listeDesc: `The ${SPOTS.length} beaches followed by My Lake, from Lake Geneva to the lakes of Neuchâtel, Biel, Murten, Gruyère, Sion, Lugano, Maggiore, Joux, Bret and Les Brenets: water temperature, wind and today’s verdict, beach by beach.`, presentation: 'About',
   },
 };
 
