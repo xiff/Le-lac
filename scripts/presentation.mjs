@@ -34,7 +34,7 @@ export function generer(maitre, L) {
   s = s.replace(/const LIB = \[[^\]]*\], NOMS = \{[^}]*\};/, `const LIB = ${JSON.stringify(lib).replace(/"/g, "'")}, NOMS = ${JSON.stringify(noms).replace(/"([a-z]+)":/g, '$1: ').replace(/"/g, "'")};`);
   s = s.split('>Ouvrir l’app</a>').join(`>${{ en: 'Open the app', de: 'App öffnen', it: 'Apri l’app' }[L]}</a>`);
   // Langue, chemins et variantes du code
-  s = s.replace('<html lang="fr">', `<html lang="${L}">`).replace('"inLanguage":["fr","en"]', `"inLanguage":${JSON.stringify(ordre(L))}`)
+  s = s.replace('<html lang="fr">', `<html lang="${L}">`).replace('"inLanguage":["fr","en","de","it"]', `"inLanguage":${JSON.stringify(ordre(L))}`)
     .replaceAll('"../?lang=fr"', `"../../?lang=${L}"`).replaceAll('?lang=fr', `?lang=${L}`).replace('name="lang" value="fr"', `name="lang" value="${L}"`)
     .replace("verdict(c, 'fr'", `verdict(c, '${L}'`).replace('PHRASES.fr[', `PHRASES.${L}[`)
     .replace("v.toFixed(1).replace('.', ',') + '°'", "v.toFixed(1) + '°'");

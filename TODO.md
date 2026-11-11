@@ -6,7 +6,7 @@
 - [ ] **Icônes** : choisir les icônes définitives de la baignade et de la sortie en bateau.
 - [ ] **Vérification mensuelle des lieux** : relier le dépôt à la tâche planifiée dans claude.ai.
 - [ ] **Coordonnées à confirmer** : Corsier-Port et Thonon – Saint-Disdille.
-- [ ] **Autres lacs** : bars et restos ajoutés (58 adresses, sauf Ägeri, Sarnen, Les Brenets) ; reste les loueurs autour des lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur.
+- [ ] **Autres lacs** : bars et restos ajoutés (109 adresses au total sur 25 lacs) ; reste les loueurs autour des lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur.
 - [ ] **Android / Play Store** : régénérer l’APK pour monlac.ch, publier `.well-known/assetlinks.json` avec l’empreinte de la clé.
 
 ## Nouveaux lacs (Suisse), par priorité
@@ -64,4 +64,3 @@ Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors 
 - [ ] **Activités** (9) : paddle par lac, bateau sans permis, kite à Silvaplana, wingfoil, kayak, traversées à la nage.
 - [ ] **SEO** : déclarer monlac.ch dans Google Search Console et soumettre le sitemap ; inscrire la température du jour dans le HTML des pages de plage ;
   demander un lien aux lieux listés (avec la prise de contact affiliation), aux offices du tourisme et aux clubs ; écrire d’abord en allemand pour les lacs alémaniques.
-- [ ] **Article « Température du Léman »** : il parle encore de « 65 plages », à mettre à jour.
