@@ -5,7 +5,7 @@ import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG } from './blog.mjs';
-import { pied } from './pied.mjs';
+import { pied, langues } from './pied.mjs';
 
 const BASE = 'https://monlac.ch/';
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -98,7 +98,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${urls[l]}">`)
 </head>
 <body data-id="${s.id}">
 <header>
-  <div class="haut"><a class="marque" href="${r}../../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a></div>
+  <div class="haut"><a class="marque" href="${r}../../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a>${langues(langue, Object.fromEntries(LANGUES.map((l) => [l, r + SUF[l]])))}</div>
   <h1>${esc(titre)}</h1>
   <p class="verdict" id="verdict">${t.attente}</p>
   <div class="mesures">
@@ -132,7 +132,7 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(villeDe(l.ville, l
     <p>${esc(t.texte(s.nom, lac, L.eau?.modele))}</p>
   </section>
 </main>
-${pied(langue, r + '../../', Object.fromEntries(LANGUES.map((l) => [l, r + SUF[l]])))}
+${pied(langue, r + '../../')}
 <script type="module" src="${r}../plage.js"></script>
 </body>
 </html>
@@ -159,7 +159,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}plage/$
 </head>
 <body class="large">
 <header>
-  <div class="haut"><a class="marque" href="${r}../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a></div>
+  <div class="haut"><a class="marque" href="${r}../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a>${langues(langue, Object.fromEntries(LANGUES.map((l) => [l, r + SUF[l]])))}</div>
   <h1>${t.liste}</h1>
   <p class="chapo">${esc(t.listeDesc)}</p>
   <form class="cherche" id="cherche" action="${r}../" method="get" role="search">
@@ -179,7 +179,7 @@ ${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${sfx ? `
     </ul>
   </section>`).join('\n')}
 </main>
-${pied(langue, r + '../', Object.fromEntries(LANGUES.map((l) => [l, r + SUF[l]])))}
+${pied(langue, r + '../')}
 <script type="module">
 // Comme la présentation : l'eau de chaque plage en direct (même fichier que l'app), une pastille de couleur,
 // l'écart du moment, et la recherche qui ouvre la page de la plage. Sans script, la liste et les liens restent.

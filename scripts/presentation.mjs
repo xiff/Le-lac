@@ -16,9 +16,9 @@ export function generer(maitre, L) {
   let s = maitre;
   // Liens vers les autres langues : relatifs à presentation/<langue>/.
   const vers = Object.fromEntries(LANGUES.map((l) => [l, (fr ? '' : '../') + SUF[l]]));
-  const coin = LANGUES.filter((l) => l !== L).map((l) => `<a class="lien" href="${vers[l]}" hreflang="${l}" lang="${l}">${NOMS[l]}</a>`).join('');
+  const coin = LANGUES.filter((l) => l !== L).map((l) => `<a class="lien" href="${vers[l]}" hreflang="${l}" lang="${l}" title="${NOMS[l]}" aria-label="${NOMS[l]}">${l.toUpperCase()}</a>`).join('');
   s = s.replace(/<span class="coin">[\s\S]*?<\/span>/, `<span class="coin">${coin}</span>`);
-  s = s.replace(/<footer class="pied">[\s\S]*?<\/footer>/, pied(L, r, vers));
+  s = s.replace(/<footer class="pied">[\s\S]*?<\/footer>/, pied(L, r));
   // hreflang des quatre langues
   s = s.replace(/(<link rel="alternate" hreflang="[a-z-]+" href="[^"]+">\n)+/, LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}${SUF[l]}">\n`).join('') + `<link rel="alternate" hreflang="x-default" href="${BASE}">\n`);
   s = s.replace('<link rel="canonical" href="https://monlac.ch/presentation/">', `<link rel="canonical" href="${BASE}${SUF[L]}">`);

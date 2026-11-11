@@ -10,6 +10,10 @@ a { color: inherit; text-underline-offset: 3px; }
 /* L'en-tête bleu suit la colonne de lecture (680 px) sur grand écran. */
 header { background: var(--lac); color: var(--creme); padding: calc(18px + env(safe-area-inset-top)) max(20px, calc((100% - 640px) / 2)) 36px; }
 .haut { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+/* Sélecteur de langue : sigles, nom complet en title */
+.langues { display: flex; align-items: center; gap: 2px; }
+.langues a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-decoration: none; opacity: .85; }
+.langues a:hover { opacity: 1; text-decoration: underline; }
 /* Logo Mon Lac, identique à celui de l'app */
 .marque { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1 "Young Serif", Georgia, serif; letter-spacing: -0.01em; text-decoration: none; }
 .marque svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
@@ -51,7 +55,6 @@ footer { max-width: 680px; margin: 0 auto; padding: 0 20px 40px; font-size: 12px
 footer a { color: inherit; text-underline-offset: 2px; }
 footer .liens { display: flex; flex-wrap: wrap; align-items: center; column-gap: 18px; margin-top: 4px; font-size: 13px; }
 footer .liens a { display: inline-flex; align-items: center; min-height: 44px; }
-footer .liens .langue { color: var(--lac-vif); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .bouton { transition: none; } }
 
 /* Blog */

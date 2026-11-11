@@ -1,7 +1,7 @@
 // Génère le blog : blog/ et blog/<slug>/ (français), blog/en/ et blog/<slug>/en/ (anglais), avec JSON-LD.
 // Graphe volontairement petit et fidèle à la page visible : Organization, WebSite, BlogPosting, BreadcrumbList, Blog.
 // Pas de FAQPage : Google réserve ce résultat enrichi aux sites officiels et de santé ; les questions restent en <h2>.
-import { pied } from './pied.mjs';
+import { pied, langues } from './pied.mjs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { ARTICLES } from './articles.mjs';
 
@@ -90,7 +90,7 @@ export function article(a, L = 'fr') {
   return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: Object.fromEntries(dispo(a).map((l) => [l, urlArticle(a.slug, l)])), image, type: 'article', ld, r })}
 <body>
 <header>
-  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a></div>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a>${langues(L, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SUF[l]}`])))}</div>
   <nav class="ariane" aria-label="${t.ariane}"><a href="${liens('{app}', L, r)}">${t.nom}</a> › <a href="${r}blog/${SUF[L]}">${t.blog}</a></nav>
   <h1>${esc(c.h1)}</h1>
   <p class="releve">${t.par} ${t.equipe} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
@@ -106,7 +106,7 @@ ${a.sources.map(([s, u]) => `    <li><a href="${u}">${esc(s)}</a></li>`).join('\
   </ul></section>
   <a class="bouton" href="${liens('{app}', L, r)}">${t.voir}</a>
 </main>
-${pied(L, r, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SUF[l]}`])))}
+${pied(L, r)}
 <script type="module">
 // Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
 import { SPOTS, valeurProche } from '${r}spots.js';
@@ -134,7 +134,7 @@ export function liste(L = 'fr') {
   return `${tete({ L, titre: `${t.titreBlog} · ${t.nom}`, desc: t.descBlog, url, alt: Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, urlBlog(l)])), image: `${BASE}${A[0].image}`, type: 'website', ld, r })}
 <body class="large">
 <header>
-  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a></div>
+  <div class="haut"><a class="marque" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a>${langues(L, Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, `${r}blog/${SUF[l]}`])))}</div>
   <h1>${t.titreBlog}</h1>
   <p class="chapo">${esc(t.descBlog)}</p>
 </header>
@@ -157,7 +157,7 @@ g.onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
   g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.grille li').forEach((li) => { li.hidden = !!b.dataset.theme && li.dataset.theme !== b.dataset.theme; }); };
 </script>
-${pied(L, r, Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, `${r}blog/${SUF[l]}`])))}
+${pied(L, r)}
 </body>
 </html>
 `;
