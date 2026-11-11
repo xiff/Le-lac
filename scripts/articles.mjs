@@ -23,20 +23,32 @@ const listeLoc = (acts, L, filtre = () => true) => `<ul class="liste">\n${LOCATI
   `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${l.ville}${saison(l, L)}, ${L === 'en' ? 'near' : 'près de'} <a href="{plage:${l.spot}}">${nomSpot(l.spot)}</a>${L === 'en' ? ': ' + l.en : ' : ' + l.note}</li>`).join('\n')}\n</ul>`;
 
 const IMG = {
-  hiver: { image: 'presentation/img/baignade-hiver.jpg', hauteur: 1200, alt: { fr: 'Nageurs en bonnet dans le lac lors de la Coupe de Noël à Genève', en: 'Swimmers in caps in the lake during the Coupe de Noël in Geneva' },
-    credit: { fr: 'La Coupe de Noël, Genève', en: 'The Coupe de Noël, Geneva' }, auteur: 'GastelEtzwane', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Coupe_Noel_20151220.jpg' },
-  rade: { image: 'presentation/img/jet-deau.jpg', hauteur: 1047, alt: { fr: 'La rade de Genève et le Jet d’eau vus du lac', en: 'Geneva harbour and the Jet d’eau seen from the lake' },
-    credit: { fr: 'La rade de Genève', en: 'Geneva harbour' }, auteur: 'Gzzz', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:Rade_de_Gen%C3%A8ve_2012.jpg' },
-  paquis: { image: 'presentation/img/paquis.jpg', hauteur: 1067, alt: { fr: 'Les Bains des Pâquis à Genève, le soir', en: 'The Bains des Pâquis in Geneva at dusk' },
-    credit: { fr: 'Les Bains des Pâquis, Genève', en: 'The Bains des Pâquis, Geneva' }, auteur: 'Babsy', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Bains_des_P%C3%A2quis_le_soir.JPG' },
+  coupeDepart: { image: 'presentation/img/coupe-noel-depart.jpg', hauteur: 1071, alt: { fr: 'Nageurs sur le ponton de départ de la Coupe de Noël à Genève', en: 'Swimmers on the start pontoon of the Coupe de Noël in Geneva' },
+    credit: { fr: 'La Coupe de Noël 2012, Genève', en: 'The 2012 Coupe de Noël, Geneva' }, auteur: 'Clément Bucco-Lechat', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:2012_Coupe_de_Noel_-_Geneva_12.JPG' },
+  coupeBonnets: { image: 'presentation/img/coupe-noel-bonnets.jpg', hauteur: 1071, alt: { fr: 'Nageurs en bonnet dans le lac pendant la Coupe de Noël à Genève', en: 'Swimmers in caps in the lake during the Coupe de Noël in Geneva' },
+    credit: { fr: 'La Coupe de Noël 2012, Genève', en: 'The 2012 Coupe de Noël, Geneva' }, auteur: 'Clément Bucco-Lechat', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:2012_Coupe_de_Noel_-_Geneva_09.JPG' },
+  bise: { image: 'presentation/img/bise-geneve.jpg', hauteur: 1067, alt: { fr: 'Un ponton couvert de glace sur la rade de Genève après un coup de bise', en: 'A pontoon coated in ice on Geneva harbour after a spell of bise' },
+    credit: { fr: 'Effet de la bise à Genève', en: 'The bise at work in Geneva' }, auteur: 'Patrick Nouhailler', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:Effet_de_la_Bise_a_Geneve_-_panoramio_(4).jpg' },
+  satellite: { image: 'presentation/img/leman-satellite.jpg', hauteur: 1108, alt: { fr: 'Le Léman vu par le satellite Sentinel-2', en: 'Lake Geneva seen by the Sentinel-2 satellite' },
+    credit: { fr: 'Le Léman vu par Sentinel-2, juin 2018', en: 'Lake Geneva seen by Sentinel-2, June 2018' }, auteur: 'Copernicus Sentinel-2, ESA', licence: ['CC BY-SA 3.0 IGO', 'https://creativecommons.org/licenses/by-sa/3.0/igo/'], page: 'https://commons.wikimedia.org/wiki/File:Lake_Geneva_by_Sentinel-2.jpg' },
+  vidy: { image: 'presentation/img/vidy.jpg', hauteur: 1067, alt: { fr: 'La plage de Vidy à Lausanne, en été', en: 'Vidy beach in Lausanne, in summer' },
+    credit: { fr: 'La plage de Vidy, Lausanne', en: 'Vidy beach, Lausanne' }, auteur: 'Gzzz', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Vidy_plage_Lausanne_2020_(1).jpg' },
+  paquisEte: { image: 'presentation/img/paquis-ete.jpg', hauteur: 1200, alt: { fr: 'La jetée et le bassin des Bains des Pâquis à Genève, en été', en: 'The jetty and bathing area of the Bains des Pâquis in Geneva, in summer' },
+    credit: { fr: 'Les Bains des Pâquis, Genève', en: 'The Bains des Pâquis, Geneva' }, auteur: 'Mourad Ben Abdallah', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Bains_des_P%C3%A2quis_-_JeP_2022_-_Jet%C3%A9e.jpg' },
+  paddle: { image: 'presentation/img/paddle.jpg', hauteur: 1200, alt: { fr: 'Trois personnes en stand up paddle sur un lac au coucher du soleil', en: 'Three people stand-up paddling on a lake at sunset' },
+    credit: { fr: 'Paddle sur le lac de Zurich', en: 'Paddling on Lake Zurich' }, auteur: 'Roland zh', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:%27Paddler%27_-_B%C3%BCrkliplatz_2012-08-08_19-28-38_(WB850F).JPG' },
+  kite: { image: 'presentation/img/kite-zoug.jpg', hauteur: 900, alt: { fr: 'Un kitesurfeur sur le lac de Zoug, les Alpes enneigées au fond', en: 'A kitesurfer on Lake Zug, snowy Alps behind' },
+    credit: { fr: 'Kitesurf sur le lac de Zoug', en: 'Kitesurfing on Lake Zug' }, auteur: 'Roy Egloff', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:CH.ZG.Zug_Brueggli_2021-05-25_Lake-Zug_Kitesurfing_01_16x9-R.jpg' },
+  bateauSki: { image: 'presentation/img/bateau-ski.jpg', hauteur: 1067, alt: { fr: 'Un bateau de ski nautique amarré sur le Léman, des paddles au loin', en: 'A water-ski boat moored on Lake Geneva, paddleboarders in the distance' },
+    credit: { fr: 'Bateau de ski nautique sur le Léman, Vaud', en: 'Water-ski boat on Lake Geneva, Vaud' }, auteur: 'Christian David', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Moored_ski_boat_and_paddleboarders,_Lake_Geneva,_Vaud.jpg' },
+  yvoire: { image: 'presentation/img/yvoire.jpg', hauteur: 1150, alt: { fr: 'Le port et le front de lac d’Yvoire', en: 'The harbour and lakefront of Yvoire' },
+    credit: { fr: 'Le front de lac d’Yvoire', en: 'The Yvoire lakefront' }, auteur: 'Zairon', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Yvoire_Front_du_Lac_6.jpg' },
+  glace: { image: 'presentation/img/trou-glace.jpg', hauteur: 1067, alt: { fr: 'Une échelle de bain d’hiver plongeant dans un trou creusé dans la glace', en: 'A winter-swimming ladder going down into a hole cut in the ice' },
+    credit: { fr: 'Bain d’hiver à Malmö, Suède', en: 'Winter swimming in Malmö, Sweden' }, auteur: 'Johan Jönsson (Julle)', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Trappa_Ribergsborgsstranden_brygga_10_vinterbad_februari_2021_01.jpg' },
+  apresBain: { image: 'presentation/img/apres-bain.jpg', hauteur: 1067, alt: { fr: 'Un nageur d’hiver enveloppé dans une serviette boit une boisson chaude après le bain', en: 'A winter swimmer wrapped in a towel drinks something hot after the swim' },
+    credit: { fr: 'Après la course, championnats du monde de nage hivernale, Rovaniemi 2014', en: 'After the race, Winter Swimming World Championships, Rovaniemi 2014' }, auteur: 'Udrekeli', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:Henri_kuprashvili_-_The_Winter_Swimming_2014.JPG' },
   ouchy: { image: 'presentation/img/ouchy.jpg', hauteur: 900, alt: { fr: 'Les quais d’Ouchy au bord du Léman', en: 'The Ouchy waterfront on Lake Geneva' },
     credit: { fr: 'Les quais d’Ouchy, Lausanne', en: 'The Ouchy waterfront, Lausanne' }, auteur: 'Gnu-Bricoleur', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Quai_sur_lac.jpg' },
-  lavaux: { image: 'presentation/img/lavaux.jpg', hauteur: 1067, alt: { fr: 'Les vignobles en terrasses de Lavaux au-dessus du Léman', en: 'The Lavaux vineyard terraces above Lake Geneva' },
-    credit: { fr: 'Lavaux et Saint-Saphorin', en: 'Lavaux and Saint-Saphorin' }, auteur: 'JoachimKohler-HB', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:%C3%89glise_r%C3%A9form%C3%A9e_Saint-Symphorien,_Lac_Leman_et_les_vignobles_en_terrasses_de_Lavaux_(2013).jpg' },
-  cgn: { image: 'presentation/img/vapeur-cgn.jpg', hauteur: 800, alt: { fr: 'Le bateau à vapeur Italie de la CGN sur le Léman', en: 'The CGN paddle steamer Italie on Lake Geneva' },
-    credit: { fr: 'Le bateau Italie de la CGN sur le Léman', en: 'The CGN steamer Italie on Lake Geneva' }, auteur: 'Christian David', licence: ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], page: 'https://commons.wikimedia.org/wiki/File:Bateau_Italie_(CGN)_sur_le_L%C3%A9man.jpg' },
-  chillon: { image: 'presentation/img/chillon.jpg', hauteur: 1200, alt: { fr: 'Le château de Chillon au bord du Léman', en: 'Chillon Castle on the shore of Lake Geneva' },
-    credit: { fr: 'Le château de Chillon', en: 'Chillon Castle' }, auteur: 'Benjamin Gimmel', licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'], page: 'https://commons.wikimedia.org/wiki/File:Schweiz_Schloss_Chillon_Gesamtansicht.jpg' },
 };
 
 const SSS = ['Société Suisse de Sauvetage SSS, « Nager en eau froide »', 'https://www.slrg.ch/sites/default/files/2025-02/Fiche-nager-en-eau-froide-web.pdf'];
@@ -56,7 +68,7 @@ const GE_NAV = ['Canton de Genève, ski nautique, wakeboard et wakesurf', 'https
 
 export const ARTICLES = [
   {
-    slug: 'bain-d-hiver-leman', sante: true, publie: '2026-11-06', modifie: '2026-11-06', ...IMG.hiver,
+    slug: 'bain-d-hiver-leman', sante: true, publie: '2026-11-06', modifie: '2026-11-06', ...IMG.coupeDepart,
     sources: [SSS, ['BPA, une bouée de natation peut sauver une vie', 'https://www.bfu.ch/media/gdkcesaq/baignade-en-eaux-libres-une-bouee-de-natation-peut-sauver-une-vie.pdf'],
       ['Bains des Rives, Lausanne (loisirs.ch)', 'https://www.loisirs.ch/activite/bains-des-rives-a-lausanne-sauna/'], ['Sauna Boats Genève', 'https://saunaboat-geneve.ch/fr/'], ALPLAKES],
     fr: {
@@ -119,7 +131,7 @@ ${listeLoc(['sauna'], L)}
     },
   },
   {
-    slug: 'bise-leman', publie: '2026-10-30', modifie: '2026-11-01', ...IMG.rade,
+    slug: 'bise-leman', publie: '2026-10-30', modifie: '2026-11-01', ...IMG.bise,
     sources: [METEOSUISSE, ['SISL, dossier technique « Le Léman »', 'https://sisl.ch/images/Dossiers_techniques/le_leman.pdf'], OPENMETEO],
     fr: {
       titre: 'La bise sur le Léman : ce qu’elle change pour la baignade, le paddle et le kite',
@@ -167,7 +179,7 @@ ${listeLoc(['sauna'], L)}
     },
   },
   {
-    slug: 'temperature-lac-leman', publie: '2026-10-22', modifie: '2026-10-22', ...IMG.paquis,
+    slug: 'temperature-lac-leman', publie: '2026-10-22', modifie: '2026-10-22', ...IMG.satellite,
     sources: [['Eawag, « Cold shock in Lake Geneva: Alplakes shows why »', 'https://www.eawag.ch/en/info/portal/news/news-detail/cold-shock-in-lake-geneva-alplakes-shows-why'],
       ['Eawag, projet Alplakes', 'https://www.eawag.ch/fr/abteilung/surf/projekte/alplakes'], ALPLAKES,
       ['EGU 2026, précision des simulations des lacs suisses', 'https://meetingorganizer.copernicus.org/EGU26/EGU26-12579.html']],
@@ -215,7 +227,7 @@ ${listeLoc(['sauna'], L)}
     },
   },
   {
-    slug: 'qualite-eau-baignade-leman', publie: '2026-11-08', modifie: '2026-11-08', ...IMG.ouchy,
+    slug: 'qualite-eau-baignade-leman', publie: '2026-11-08', modifie: '2026-11-08', ...IMG.vidy,
     sources: [GE_QUALITE, SITG, CIPEL],
     fr: {
       titre: 'Qualité de l’eau de baignade au Léman : comment savoir si on peut se baigner',
@@ -259,7 +271,7 @@ ${listeLoc(['sauna'], L)}
     },
   },
   {
-    slug: 'plages-geneve', publie: '2026-10-27', modifie: '2026-11-08', ...IMG.rade,
+    slug: 'plages-geneve', publie: '2026-10-27', modifie: '2026-11-08', ...IMG.paquisEte,
     sources: [GE_QUALITE, ALPLAKES],
     fr: {
       titre: 'Où se baigner à Genève : les plages du canton, une par une',
@@ -295,7 +307,7 @@ ${listeLieux((x) => x.zone === 'geneve', L)}
     },
   },
   {
-    slug: 'paddle-leman', publie: '2026-10-26', modifie: '2026-10-30', ...IMG.lavaux,
+    slug: 'paddle-leman', publie: '2026-10-26', modifie: '2026-10-30', ...IMG.paddle,
     sources: [OPENMETEO, ...LOCATIONS.filter((l) => l.activites.includes('paddle')).map((l) => [l.nom, l.site ?? l.source])],
     fr: {
       titre: 'Paddle sur le Léman : quand le lac est assez calme, et où louer',
@@ -341,7 +353,7 @@ ${listeLoc(['paddle'], L)}
     },
   },
   {
-    slug: 'kitesurf-windsurf-wingfoil-leman', publie: '2026-11-01', modifie: '2026-11-01', ...IMG.cgn,
+    slug: 'kitesurf-windsurf-wingfoil-leman', publie: '2026-11-01', modifie: '2026-11-01', ...IMG.kite,
     sources: [METEOSUISSE, OPENMETEO, ...LOCATIONS.filter((l) => l.activites.some((a) => ['windsurf', 'wing'].includes(a))).map((l) => [l.nom, l.site ?? l.source])],
     fr: {
       titre: 'Kitesurf, windsurf et wingfoil sur le Léman : le bon vent et les bons spots',
@@ -383,7 +395,7 @@ ${listeLoc(['windsurf', 'wing'], L)}
     },
   },
   {
-    slug: 'wakeboard-wakesurf-ski-nautique-leman', publie: '2026-10-23', modifie: '2026-10-23', ...IMG.ouchy,
+    slug: 'wakeboard-wakesurf-ski-nautique-leman', publie: '2026-10-23', modifie: '2026-10-23', ...IMG.bateauSki,
     sources: [GE_NAV, ...LOCATIONS.filter((l) => l.activites.some((a) => ['wakeboard', 'wakesurf', 'ski'].includes(a))).map((l) => [l.nom, l.source])],
     fr: {
       titre: 'Wakeboard, wakesurf et ski nautique sur le Léman : les écoles et clubs',
@@ -425,7 +437,7 @@ ${listeLoc(['wakeboard', 'wakesurf', 'ski'], L)}
     },
   },
   {
-    slug: 'buvettes-restaurants-bord-du-leman', publie: '2026-10-20', modifie: '2026-10-27', ...IMG.lavaux,
+    slug: 'buvettes-restaurants-bord-du-leman', publie: '2026-10-20', modifie: '2026-10-27', ...IMG.ouchy,
     sources: [['Genève Tourisme', 'https://www.geneve.com'], ['Lausanne Tourisme', 'https://www.lausanne-tourisme.ch'], ['Montreux Riviera', 'https://www.montreuxriviera.com'],
       ['La Côte Tourisme', 'https://www.lacote-tourisme.ch'], ['MySwitzerland', 'https://www.myswitzerland.com'], ['Haute-Savoie Mont-Blanc Tourisme', 'https://hautesavoiemontblanc-tourisme.com']],
     fr: {
@@ -456,7 +468,7 @@ ${listeLieux(() => true, L)}
     },
   },
   {
-    slug: 'plages-leman-rive-francaise', publie: '2026-11-05', modifie: '2026-11-08', ...IMG.cgn,
+    slug: 'plages-leman-rive-francaise', publie: '2026-11-05', modifie: '2026-11-08', ...IMG.yvoire,
     sources: [ALPLAKES, CIPEL, ['Haute-Savoie Mont-Blanc Tourisme', 'https://hautesavoiemontblanc-tourisme.com']],
     fr: {
       titre: 'Plages du Léman côté français : d’Évian à Chens-sur-Léman',
@@ -490,7 +502,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'choc-thermique-eau-froide', sante: true, publie: '2026-10-19', modifie: '2026-11-02', ...IMG.hiver,
+    slug: 'choc-thermique-eau-froide', sante: true, publie: '2026-10-19', modifie: '2026-11-02', ...IMG.glace,
     sources: [RNLI, PORTSMOUTH, SSS, BPA],
     fr: {
       titre: 'Choc thermique : les 90 premières secondes dans l’eau froide du Léman',
@@ -544,7 +556,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'materiel-bain-d-hiver', sante: true, publie: '2026-10-29', modifie: '2026-11-06', ...IMG.paquis,
+    slug: 'materiel-bain-d-hiver', sante: true, publie: '2026-10-29', modifie: '2026-11-06', ...IMG.coupeBonnets,
     sources: [OSS_KIT, SSS, BPA],
     fr: {
       titre: 'Matériel pour le bain d’hiver : la liste complète avant d’aller au Léman',
@@ -602,7 +614,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
     },
   },
   {
-    slug: 'afterdrop-se-rechauffer', sante: true, publie: '2026-11-02', modifie: '2026-11-06', ...IMG.lavaux,
+    slug: 'afterdrop-se-rechauffer', sante: true, publie: '2026-11-02', modifie: '2026-11-06', ...IMG.apresBain,
     sources: [SSS, AFTERDROP, ALERTDIVER],
     fr: {
       titre: 'Afterdrop : pourquoi on a encore plus froid après un bain d’hiver, et comment se réchauffer',
