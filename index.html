@@ -630,7 +630,12 @@ const melange = (f) => { const a = [90, 166, 196], b = [227, 168, 43]; return `r
 function carteLac(lac) {
   if (lac === 'leman') return { proj, d: CONTOUR };
   const c = CONTOURS[lac]; if (!(c?.length > 10)) return null;
-  const pts = c.map(([lon, lat]) => ({ lon, lat })), p = projeter(400, pts);
+  const pts = c.map(([lon, lat]) => ({ lon, lat }));
+  let p = projeter(400, pts);
+  if (p.hauteur > 340) { // lac étroit (la Gruyère) : même hauteur maximale, centré, points à taille normale
+    const q = projeter((400 * 340) / p.hauteur, pts), dx = (400 - (400 * 340) / p.hauteur) / 2;
+    p = { hauteur: q.hauteur, xy: (x) => { const [a, b] = q.xy(x); return [a + dx, b]; } };
+  }
   return { proj: p, d: 'M' + pts.map((x) => p.xy(x).map((v) => v.toFixed(1)).join(',')).join('L') + 'Z' };
 }
 async function afficherCarte() {
