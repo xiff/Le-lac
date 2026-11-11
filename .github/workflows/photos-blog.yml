@@ -16,23 +16,14 @@ jobs:
             curl -fsSL -A "$UA" -o "blog/img/photo-$cle.jpg" "$url" || echo "ECHEC $cle"
             sleep 5
           done <<'LISTE'
-          neuchatel|Lac de Neuchâtel et Alpes.jpg
-          bienne|I09 361 Bieler See, Badestelle Sutz.jpg
-          morat|Murtensee im Herbst.jpg
-          gruyere|Aerial view, Lac de la Gruyère.jpg
-          joux|Lac de Joux from the north side.jpg
-          zurich|Lake Zurich at Rapperswil, 20250330 0825 7818.jpg
-          lucerne|Lucerne Lake from Schweizerhofquai.jpg
-          thoune|LakeThunSwissAlps.jpg
-          brienz|Brienzersee with a coastal town.jpg
-          constance|Bodensee Romanshorn CH.jpg
-          lugano|Lugano - Luganersee & Monte San Salvatore (2013).jpg
-          majeur|Lago Maggiore from Ascona.jpg
+          gruyere|Lake Gruyère at autumn.jpg
+          joux|040 Dent de Vaulion and Lac de Joux at Sunset Photo by Giles Laurent.jpg
+          majeur|Waterfront of Ascona from lake.jpg
           LISTE
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add blog/img
           git diff --cached --quiet && exit 0
-          git commit -m "Photos du blog : une photo par lac (Wikimedia Commons)"
+          git commit -m "Photos du blog : remplacements (Wikimedia Commons)"
           git pull --rebase origin main
           git push
