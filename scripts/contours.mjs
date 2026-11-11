@@ -55,7 +55,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const u = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&countrycodes=ch&format=json&polygon_geojson=1&polygon_threshold=0.0008&limit=5`;
     const r = await fetch(u, { headers: { 'User-Agent': 'MonLac-contours/1.0 (https://github.com/xiff/Le-lac)' } });
     const j = r.ok ? await r.json() : [];
-    const e = j.find((x) => x.class === 'natural' && x.type === 'water' && /Polygon/.test(x.geojson?.type));
+    const e = j.find((x) => (x.class === 'water' || x.class === 'natural') && /Polygon/.test(x.geojson?.type));
     console.log(lac, r.status, j.map((x) => `${x.class}/${x.type} ${x.osm_type}/${x.osm_id} ${x.geojson?.type}`).join(' ; '));
     if (e) {
       const polys = e.geojson.type === 'Polygon' ? [e.geojson.coordinates] : e.geojson.coordinates;
