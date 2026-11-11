@@ -6,7 +6,7 @@
 - [ ] **Icônes** : choisir les icônes définitives de la baignade et de la sortie en bateau.
 - [ ] **Vérification mensuelle des lieux** : relier le dépôt à la tâche planifiée dans claude.ai.
 - [ ] **Coordonnées à confirmer** : Corsier-Port et Thonon – Saint-Disdille.
-- [ ] **Autres lacs** : ajouter bars, restos et loueurs autour des lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur.
+- [ ] **Autres lacs** : bars et restos ajoutés (58 adresses, sauf Ägeri, Sarnen, Les Brenets) ; reste les loueurs autour des lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur.
 - [ ] **Android / Play Store** : régénérer l’APK pour monlac.ch, publier `.well-known/assetlinks.json` avec l’empreinte de la clé.
 
 ## Nouveaux lacs (Suisse), par priorité

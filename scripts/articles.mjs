@@ -466,7 +466,7 @@ ${listeLoc(['wakeboard', 'wakesurf', 'ski'], L)}
       titre: 'Buvettes et restos au bord du Léman : nos adresses les pieds dans l’eau',
       h1: 'Buvettes et restaurants au bord du Léman, région par région',
       desc: 'Les terrasses au bord de l’eau de Genève, La Côte, Lausanne, la Riviera et la rive française, avec leurs saisons d’ouverture.',
-      bref: 'Mon Lac recense <strong>' + LIEUX.length + ' buvettes et restaurants au bord du Léman</strong>, vérifiés auprès des offices du tourisme et des sites des lieux : des Bains des Pâquis à Genève aux quais de Vevey, de la Guinguette de Vidy à la plage de Sciez. Beaucoup de buvettes ne sont ouvertes qu’à la belle saison : la période est indiquée quand elle est connue.',
+      bref: 'Mon Lac recense <strong>' + LIEUX.filter((x) => ZONES[x.zone]).length + ' buvettes et restaurants au bord du Léman</strong>, vérifiés auprès des offices du tourisme et des sites des lieux : des Bains des Pâquis à Genève aux quais de Vevey, de la Guinguette de Vidy à la plage de Sciez. Beaucoup de buvettes ne sont ouvertes qu’à la belle saison : la période est indiquée quand elle est connue.',
       html: (L) => `
 <h2>Où boire un verre ou manger au bord du Léman ?</h2>
 ${listeLieux(() => true, L)}
@@ -479,7 +479,7 @@ ${listeLieux(() => true, L)}
       titre: 'Lakeside cafés and restaurants on Lake Geneva: our feet-in-the-water picks',
       h1: 'Cafés and restaurants on the shores of Lake Geneva, region by region',
       desc: 'Waterside terraces in Geneva, La Côte, Lausanne, the Riviera and the French shore, with their opening seasons.',
-      bref: 'My Lake lists <strong>' + LIEUX.length + ' cafés and restaurants on the shores of Lake Geneva</strong>, checked against tourist offices and the places’ own websites: from the Bains des Pâquis in Geneva to the Vevey waterfront, from the Guinguette de Vidy to Sciez beach. Many beach cafés only open in the warm season: the period is shown when known.',
+      bref: 'My Lake lists <strong>' + LIEUX.filter((x) => ZONES[x.zone]).length + ' cafés and restaurants on the shores of Lake Geneva</strong>, checked against tourist offices and the places’ own websites: from the Bains des Pâquis in Geneva to the Vevey waterfront, from the Guinguette de Vidy to Sciez beach. Many beach cafés only open in the warm season: the period is shown when known.',
       html: (L) => `
 <h2>Where can you eat or drink by Lake Geneva?</h2>
 ${listeLieux(() => true, L)}
@@ -685,6 +685,6 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
   },
 ];
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
-const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
+const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
 
