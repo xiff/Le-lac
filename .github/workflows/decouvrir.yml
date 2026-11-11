@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       lac:
-        description: 'Un seul lac (neuchatel, bienne, morat, gruyere, sion) ; vide = tous'
+        description: 'Un seul lac (neuchatel, bienne, morat, gruyere, sion, lugano, majeur) ; vide = tous'
         required: false
 jobs:
   decouvrir:
