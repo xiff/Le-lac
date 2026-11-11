@@ -445,9 +445,16 @@ const carteLieu = (l, i) => `<article class="lieu lieu-ent" style="transition-de
   <div class="ville">${icone(l.type === 'bar' ? 'verre' : 'couverts')}${l.ville}${fermeture(l, undefined, LANGUE) ? `<span class="badge t1">${fermeture(l, undefined, LANGUE)}</span>` : ''}</div>
   <b>${l.nom}</b><p>${LANGUE === 'en' ? l.en : l.note}</p>
   <a href="${lienCarte(l)}" target="_blank" rel="noopener">${icone('cap')}${T.itineraire}</a>${l.reserver ? `<a class="reserver" href="${l.reserver}" target="_blank" rel="noopener sponsored">${T.reserver}</a>` : ''}</article>`;
+// Distance (km) entre deux points ; une zone (lieux sans coordonnées) est placée au centre de ses plages.
+const km = (a, b) => 111.2 * Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.lat * Math.PI) / 180));
+const CENTRES = Object.fromEntries([...new Set(SPOTS.map((s) => s.zone))].map((z) => {
+  const ps = SPOTS.filter((s) => s.zone === z);
+  return [z, { lat: ps.reduce((t, s) => t + s.lat, 0) / ps.length, lon: ps.reduce((t, s) => t + s.lon, 0) / ps.length }];
+}));
 function afficherLieux() {
-  // Les lieux fermés pour la saison passent en fin de liste.
-  const liste = LIEUX.filter((l) => !filtre || l.type === filtre).sort((a, b) => !!fermeture(a) - !!fermeture(b));
+  // Du plus proche de la plage choisie au plus loin ; les lieux fermés pour la saison passent en fin de liste.
+  const d = (l) => (l.zone === spot().zone ? 0 : CENTRES[l.zone] ? km(spot(), CENTRES[l.zone]) : 1e9);
+  const liste = LIEUX.filter((l) => !filtre || l.type === filtre).sort((a, b) => !!fermeture(a) - !!fermeture(b) || d(a) - d(b));
   const pres = liste.filter((l) => l.zone === spot().zone), loin = liste.filter((l) => l.zone !== spot().zone);
   $('lieux').innerHTML = (pres.length ? `<h2>${T.pres(spot().nom)}</h2>` + pres.map(carteLieu).join('') : '')
     + (loin.length ? `<h2>${T.ailleurs}</h2>` + loin.map((l, i) => carteLieu(l, i + pres.length)).join('') : '');
@@ -484,8 +491,10 @@ const carteLoc = (l, i) => {
   </article>`;
 };
 function afficherLocations() {
-  const liste = LOCATIONS.filter((l) => !filtreLoc || l.activites.includes(filtreLoc)).sort((a, b) => !ouvertLoc(a) - !ouvertLoc(b));
-  const zone = spot().zone, zoneDe = (l) => SPOTS.find((x) => x.id === l.spot)?.zone;
+  const ici = (l) => SPOTS.find((x) => x.id === l.spot), d = (l) => (ici(l) ? km(spot(), ici(l)) : 1e9);
+  // Du plus proche de la plage choisie au plus loin ; hors saison en fin de liste.
+  const liste = LOCATIONS.filter((l) => !filtreLoc || l.activites.includes(filtreLoc)).sort((a, b) => !ouvertLoc(a) - !ouvertLoc(b) || d(a) - d(b));
+  const zone = spot().zone, zoneDe = (l) => ici(l)?.zone;
   const pres = liste.filter((l) => zoneDe(l) === zone), loin = liste.filter((l) => zoneDe(l) !== zone);
   $('locations').innerHTML = (pres.length ? `<h2>${T.pres(spot().nom)}</h2>` + pres.map(carteLoc).join('') : '')
     + (loin.length ? `<h2>${T.ailleurs}</h2>` + loin.map((l, i) => carteLoc(l, i + pres.length)).join('') : '')
