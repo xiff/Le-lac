@@ -3,7 +3,8 @@
 const LACS = { neuchatel: [46.74, 6.58, 47.06, 7.10], bienne: [47.03, 7.05, 47.17, 7.30], morat: [46.88, 7.00, 46.97, 7.14],
   gruyere: [46.60, 7.00, 46.79, 7.16], sion: [46.20, 7.28, 46.26, 7.42],
   lugano: [45.90, 8.83, 46.06, 9.10], majeur: [46.08, 8.58, 46.20, 8.92],
-  origlio: [46.04, 8.93, 46.07, 8.96], muzzano: [45.99, 8.90, 46.01, 8.94] };
+  origlio: [46.04, 8.93, 46.07, 8.96], muzzano: [45.99, 8.90, 46.01, 8.94],
+  joux: [46.58, 6.18, 46.70, 6.34], bret: [46.49, 6.75, 46.53, 6.80], brenets: [47.04, 6.68, 47.09, 6.75] };
 const corps = (b) => `[out:json][timeout:120];(
   nwr["natural"="beach"](${b});
   nwr["leisure"~"^(beach_resort|swimming_area|bathing_place)$"](${b});
