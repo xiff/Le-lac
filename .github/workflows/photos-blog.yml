@@ -1,0 +1,38 @@
+name: Photos du blog (Wikimedia Commons)
+# Télécharge une photo libre par lac dans blog/img (le réseau de développement est limité par Wikimedia).
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          UA="MonLac-photos/1.0 (https://github.com/xiff/Le-lac)"
+          while IFS='|' read -r cle fichier; do
+            url="https://commons.wikimedia.org/wiki/Special:FilePath/$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$fichier")?width=1600"
+            curl -fsSL -A "$UA" -o "blog/img/photo-$cle.jpg" "$url" || echo "ECHEC $cle"
+            sleep 5
+          done <<'LISTE'
+          neuchatel|Lac de Neuchâtel et Alpes.jpg
+          bienne|I09 361 Bieler See, Badestelle Sutz.jpg
+          morat|Murtensee im Herbst.jpg
+          gruyere|Aerial view, Lac de la Gruyère.jpg
+          joux|Lac de Joux from the north side.jpg
+          zurich|Lake Zurich at Rapperswil, 20250330 0825 7818.jpg
+          lucerne|Lucerne Lake from Schweizerhofquai.jpg
+          thoune|LakeThunSwissAlps.jpg
+          brienz|Brienzersee with a coastal town.jpg
+          constance|Bodensee Romanshorn CH.jpg
+          lugano|Lugano - Luganersee & Monte San Salvatore (2013).jpg
+          majeur|Lago Maggiore from Ascona.jpg
+          LISTE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog/img
+          git diff --cached --quiet && exit 0
+          git commit -m "Photos du blog : une photo par lac (Wikimedia Commons)"
+          git pull --rebase origin main
+          git push
