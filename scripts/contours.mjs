@@ -8,7 +8,7 @@ const LACS = {
 };
 const pause = (ms) => new Promise((f) => setTimeout(f, ms));
 async function overpass(q) {
-  for (const url of ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter']) {
+  for (const url of ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter']) {
     const r = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'User-Agent': 'MonLac-contours/1.0', 'Content-Type': 'application/x-www-form-urlencoded' } }).catch(() => null);
     if (r?.ok) return r.json();
     console.error('Overpass', url, r?.status ?? 'réseau'); await pause(20000);
