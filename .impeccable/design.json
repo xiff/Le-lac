@@ -1,0 +1,257 @@
+{
+ "schemaVersion": 2,
+ "generatedAt": "2026-11-11T22:28:29.379881Z",
+ "title": "Design System: Mon Lac",
+ "extensions": {
+  "colorMeta": {
+   "lac-profond": {
+    "role": "primary",
+    "displayName": "Lac profond",
+    "canonical": "oklch(38% 0.065 223)",
+    "tonalRamp": [
+     "#001b2b",
+     "#00394b",
+     "#225a6d",
+     "#467d91",
+     "#6aa2b6",
+     "#89c1d6",
+     "#a8e2f7",
+     "#bff9ff"
+    ]
+   },
+   "lac-vif": {
+    "role": "primary",
+    "displayName": "Lac vif",
+    "canonical": "oklch(49% 0.084 219)",
+    "tonalRamp": [
+     "#001c2f",
+     "#003c4f",
+     "#005d72",
+     "#2e8096",
+     "#56a5bb",
+     "#76c5dc",
+     "#96e5fd",
+     "#adfdff"
+    ]
+   },
+   "papier": {
+    "role": "neutral",
+    "displayName": "Papier chaud",
+    "canonical": "oklch(95% 0.017 85)",
+    "tonalRamp": [
+     "#1a150d",
+     "#373229",
+     "#575248",
+     "#797469",
+     "#9d988d",
+     "#bcb7ab",
+     "#ddd7cb",
+     "#f4eee2"
+    ]
+   },
+   "carte": {
+    "role": "neutral",
+    "displayName": "Carte",
+    "canonical": "oklch(99% 0.007 89)",
+    "tonalRamp": [
+     "#171613",
+     "#34332f",
+     "#54524e",
+     "#767470",
+     "#9a9893",
+     "#b9b7b2",
+     "#d9d7d2",
+     "#f0eee9"
+    ]
+   },
+   "encre": {
+    "role": "neutral",
+    "displayName": "Encre lac",
+    "canonical": "oklch(26% 0.033 215)",
+    "tonalRamp": [
+     "#021a1f",
+     "#1e373d",
+     "#3e575e",
+     "#5f7a81",
+     "#829ea5",
+     "#a1bdc5",
+     "#c0dde5",
+     "#d7f5fd"
+    ]
+   },
+   "doux": {
+    "role": "neutral",
+    "displayName": "Brume de lac",
+    "canonical": "oklch(49% 0.031 214)",
+    "tonalRamp": [
+     "#031a1f",
+     "#1f373d",
+     "#3f575d",
+     "#607a80",
+     "#839ea4",
+     "#a2bdc4",
+     "#c1dde4",
+     "#d8f4fb"
+    ]
+   },
+   "creme": {
+    "role": "neutral",
+    "displayName": "Crème",
+    "canonical": "oklch(97% 0.022 87)",
+    "tonalRamp": [
+     "#1a150a",
+     "#383226",
+     "#585245",
+     "#7a7466",
+     "#9e9889",
+     "#bdb7a8",
+     "#ded7c7",
+     "#f5eede"
+    ]
+   },
+   "soleil": {
+    "role": "primary",
+    "displayName": "Soleil",
+    "canonical": "oklch(82% 0.140 80)",
+    "tonalRamp": [
+     "#330000",
+     "#562300",
+     "#794500",
+     "#9e6800",
+     "#c58d05",
+     "#e6ac3d",
+     "#ffcd62",
+     "#ffe47a"
+    ]
+   }
+  },
+  "typographyMeta": {
+   "display": {
+    "displayName": "Titre",
+    "purpose": "Titres de page, Young Serif, texte équilibré."
+   },
+   "mesure": {
+    "displayName": "Mesure",
+    "purpose": "Températures et valeurs-clés, chiffres tabulaires."
+   },
+   "body": {
+    "displayName": "Texte",
+    "purpose": "Texte courant en Onest, 64 ch maximum dans les articles."
+   }
+  },
+  "shadows": [
+   {
+    "name": "carte",
+    "value": "0 1px 3px #10292f14",
+    "purpose": "Détache une carte du papier."
+   },
+   {
+    "name": "barre-du-bas",
+    "value": "0 -6px 20px #10292f12",
+    "purpose": "Barre d’onglets fixe de l’app."
+   }
+  ],
+  "motion": [
+   {
+    "name": "ease-out",
+    "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+    "purpose": "Appui, apparition, tout ce qui répond à un geste."
+   },
+   {
+    "name": "ease-in-out",
+    "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+    "purpose": "Glissement de la pastille d’onglet."
+   }
+  ],
+  "breakpoints": [
+   {
+    "name": "sm",
+    "value": "700px"
+   },
+   {
+    "name": "md",
+    "value": "760px"
+   },
+   {
+    "name": "lg",
+    "value": "1100px"
+   }
+  ]
+ },
+ "components": [
+  {
+   "name": "Bouton principal",
+   "kind": "button",
+   "refersTo": "bouton",
+   "description": "Action principale, pilule soleil.",
+   "html": "<a class=\"ds-bouton\" href=\"#\">Voir le lac aujourd’hui</a>",
+   "css": ".ds-bouton{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:99px;background:#f2b84b;color:#10292f;font:700 17px Onest,system-ui,sans-serif;text-decoration:none;border:0;transition:transform 160ms cubic-bezier(.23,1,.32,1)}.ds-bouton:active{transform:scale(.97)}.ds-bouton:focus-visible{outline:2px solid #f2b84b;outline-offset:3px}"
+  },
+  {
+   "name": "Carte",
+   "kind": "card",
+   "refersTo": "carte",
+   "description": "Bloc de contenu sur papier.",
+   "html": "<section class=\"ds-carte\"><h3>En bref</h3><p>Eau à 70 cm sous la surface.</p></section>",
+   "css": ".ds-carte{padding:18px 20px;border-radius:18px;background:#fffdf8;box-shadow:0 1px 3px #10292f14;font:400 17px/1.55 Onest,system-ui,sans-serif;color:#10292f}.ds-carte h3{margin:0 0 6px;font:400 20px/1.2 'Young Serif',Georgia,serif}.ds-carte p{margin:0}"
+  },
+  {
+   "name": "Badge de verdict",
+   "kind": "chip",
+   "refersTo": "badge-verdict",
+   "description": "Pastille tonale à quatre niveaux.",
+   "html": "<span class=\"ds-badge\">Excellent</span>",
+   "css": ".ds-badge{display:inline-block;padding:5px 11px;border-radius:99px;background:#cde8ee;color:#0a4d5c;font:700 .8rem Onest,system-ui,sans-serif}"
+  },
+  {
+   "name": "Sélecteur de langue",
+   "kind": "nav",
+   "refersTo": "langue",
+   "description": "Sigles FR EN DE IT, nom complet en infobulle.",
+   "html": "<nav class=\"ds-langues\"><a href=\"#\" title=\"English\" aria-label=\"English\">EN</a><a href=\"#\" title=\"Deutsch\" aria-label=\"Deutsch\">DE</a><a href=\"#\" title=\"Italiano\" aria-label=\"Italiano\">IT</a></nav>",
+   "css": ".ds-langues{display:flex;background:#0d4a5c;padding:8px 20px;border-radius:14px}.ds-langues a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:#fbf4e4;font:600 13px Onest,system-ui,sans-serif;letter-spacing:.06em;text-decoration:none;opacity:.85;border-radius:10px}.ds-langues a:hover{opacity:1;text-decoration:underline}.ds-langues a:focus-visible{outline:2px solid #f2b84b;outline-offset:-3px}"
+  }
+ ],
+ "narrative": {
+  "northStar": "Le carnet du baigneur",
+  "overview": "Mon Lac se lit comme un carnet de bord posé au bord de l’eau : papier chaud, encre bleu-vert très sombre, un lac profond pour les en-têtes et une seule pointe de soleil pour l’action.",
+  "keyCharacteristics": [
+   "Papier crème et encre profonde, un lac bleu-vert pour l’en-tête, un soleil pour l’action.",
+   "Verdict en pastille tonale, jamais en couleur saturée.",
+   "Surfaces plates, coins de 14 à 20 px, boutons en pilule de 44 px minimum.",
+   "Serif expressif pour les titres et les chiffres, sans-serif neutre pour le texte."
+  ],
+  "rules": [
+   {
+    "name": "La règle du Soleil unique",
+    "body": "Le jaune soleil ne marque que l’action principale, le focus et la sélection.",
+    "section": "colors"
+   },
+   {
+    "name": "La règle du verdict posé",
+    "body": "Un mauvais verdict se dit en terre cuite sur fond pâle, jamais en rouge saturé.",
+    "section": "colors"
+   },
+   {
+    "name": "La règle du chiffre aligné",
+    "body": "Tout nombre qui change utilise les chiffres tabulaires.",
+    "section": "typography"
+   },
+   {
+    "name": "La règle du plat au repos",
+    "body": "Aucune ombre portée marquée, aucun halo coloré.",
+    "section": "elevation"
+   }
+  ],
+  "dos": [
+   "Do garder papier #f5efe3 en fond et carte #fffdf8 pour les surfaces, avec le texte en encre #10292f.",
+   "Do réserver le soleil #f2b84b à l’action principale, au focus et à la sélection.",
+   "Do donner à toute cible tactile au moins 44 px, et un nom complet accessible aux sigles."
+  ],
+  "donts": [
+   "Don’t ajouter de mode sombre.",
+   "Don’t utiliser de look météo générique.",
+   "Don’t alarmer : pas de rouge criard, pas de promesse de sécurité."
+  ]
+ }
+}
