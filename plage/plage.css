@@ -11,8 +11,9 @@ a { color: inherit; text-underline-offset: 3px; }
 header { background: var(--lac); color: var(--creme); padding: calc(18px + env(safe-area-inset-top)) max(20px, calc((100% - 640px) / 2)) 36px; }
 .haut { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
 /* Sélecteur de langue : sigles, nom complet en title */
-.langues { display: flex; align-items: center; gap: 2px; }
-.langues a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-decoration: none; opacity: .85; }
+.langues { display: flex; align-items: center; margin-right: -14px; } /* la cible tactile déborde : le texte, lui, s'aligne sur la colonne */
+.langues a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-decoration: none; opacity: .85; border-radius: 10px; transition: opacity 150ms ease; }
+.langues a:focus-visible { outline-offset: -3px; }
 .langues a:hover { opacity: 1; text-decoration: underline; }
 /* Logo Mon Lac, identique à celui de l'app */
 .marque { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 400 16px/1 "Young Serif", Georgia, serif; letter-spacing: -0.01em; text-decoration: none; }
