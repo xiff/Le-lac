@@ -80,7 +80,7 @@ import { SPOTS, valeurProche } from '../../../spots.js';
 const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
 // Les plages du lac dont parle l'article (le Léman par défaut).
 const v = SPOTS.filter((s) => s.lac === 'lugano').map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
-if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "Im Moment ergibt das Modell <strong>§T</strong> in 70 cm Tiefe für den gesamten See (Luganersee).".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
+if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "Im Moment ergibt das Modell <strong>§T</strong> in 70 cm Tiefe für den gesamten See (Luganersee).".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/de/">${s.nom}</a>` });
   document.getElementById('eau-live').innerHTML = "Im Moment liegt das Wasser zwischen <strong>§F</strong> bei §FA und <strong>§C</strong> bei §CA, 70 cm unter der Oberfläche. Die Einzelheiten jedes Badeplatzes stehen in <a href=\"../../../?lang=de\">der App</a>."

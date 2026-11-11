@@ -113,7 +113,7 @@ import { SPOTS, valeurProche } from '${r}spots.js';
 const d = await fetch('${r}eau.json').then((x) => x.json()).catch(() => null);
 // Les plages du lac dont parle l'article (le Léman par défaut).
 const v = SPOTS.filter((s) => ${a.lac ? `s.lac === '${a.lac}'` : '!s.lac'}).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
-if (v.length && v[0][1] === v.at(-1)[1] && ${JSON.stringify(!!c.eauUne)}) document.getElementById('eau-live').innerHTML = ${JSON.stringify(c.eauUne ?? '')}.replace('§T', v[0][1].toFixed(1)${L === 'en' ? '' : ".replace('.', ',')"} + ' °C');
+if (v.length && v[0][1] === v.at(-1)[1] && ${JSON.stringify(!!c.eauUne)}) document.getElementById('eau-live').innerHTML = ${JSON.stringify(c.eauUne ?? '')}.replace('§T', v[0][1].toFixed(1)${L === 'fr' ? ".replace('.', ',')" : ''} + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: ${L === 'fr' ? "t.toFixed(1).replace('.', ',') + ' °C'" : "t.toFixed(1) + ' °C'"}, a: \`<a href="${r}plage/\${s.id}/${SUF[L]}">\${s.nom}</a>\` });
   document.getElementById('eau-live').innerHTML = ${JSON.stringify(liens(t.live({ t: '§F', a: '§FA' }, { t: '§C', a: '§CA' }), L, r))}
