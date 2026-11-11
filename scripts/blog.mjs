@@ -4,7 +4,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { ARTICLES } from './articles.mjs';
 
-const BASE = 'https://xiff.github.io/Le-lac/';
+const BASE = 'https://monlac.ch/';
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const TXT = {
   fr: { nom: 'Mon Lac', blog: 'Blog', app: 'Ouvrir l’app', par: 'Par la rédaction de', publie: 'publié le', maj: 'mis à jour le', bref: 'En bref',

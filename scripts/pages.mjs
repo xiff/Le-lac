@@ -5,7 +5,7 @@ import { SPOTS, LACS, lacDe, REGIONS_EN } from '../spots.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG } from './blog.mjs';
 
-const BASE = 'https://xiff.github.io/Le-lac/';
+const BASE = 'https://monlac.ch/';
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const dist = (a, b) => Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.lat * Math.PI) / 180));
 

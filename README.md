@@ -4,7 +4,7 @@ Le Léman, les lacs de Neuchâtel, Bienne, Morat, la Gruyère et Sion en un coup
 avec un verdict simple pour la baignade (ou le bain d’hiver), le paddle et la voile. En plus : bars et restos
 au bord de l’eau, loueurs d’activités nautiques, défi bain d’hiver avec historique, en français et en anglais.
 
-Site : **https://xiff.github.io/Le-lac/** (futur domaine : monlac.ch).
+Site : **https://monlac.ch/** (mon-lac.ch redirige vers monlac.ch).
 
 ## Pages à tester
 
@@ -12,12 +12,12 @@ Site : **https://xiff.github.io/Le-lac/** (futur domaine : monlac.ch).
 
 | Page | Adresse |
 |---|---|
-| App (français) | https://xiff.github.io/Le-lac/ |
-| App (anglais) | https://xiff.github.io/Le-lac/?lang=en |
-| Onglet Le lac | https://xiff.github.io/Le-lac/#lac |
-| Onglet Sortir (bars et restos, formulaire « un lieu manque ? ») | https://xiff.github.io/Le-lac/#sortir |
-| Onglet Louer (paddle, kayak, voile, sauna…) | https://xiff.github.io/Le-lac/#louer |
-| App ouverte sur une plage précise (ex. Vidy) | https://xiff.github.io/Le-lac/?plage=lausanne-vidy |
+| App (français) | https://monlac.ch/ |
+| App (anglais) | https://monlac.ch/?lang=en |
+| Onglet Le lac | https://monlac.ch/#lac |
+| Onglet Sortir (bars et restos, formulaire « un lieu manque ? ») | https://monlac.ch/#sortir |
+| Onglet Louer (paddle, kayak, voile, sauna…) | https://monlac.ch/#louer |
+| App ouverte sur une plage précise (ex. Vidy) | https://monlac.ch/?plage=lausanne-vidy |
 
 À essayer dans l’app : changer de plage, l’étoile (mes plages), le bouton de localisation, toucher une activité
 pour voir ses 12 prochaines heures, la carte du lac, le défi bain d’hiver (« Bain fait ! », historique, ×, Partager),
@@ -27,161 +27,161 @@ pour voir ses 12 prochaines heures, la carte du lac, le défi bain d’hiver («
 
 | Page | Adresse |
 |---|---|
-| Présentation (français) | https://xiff.github.io/Le-lac/presentation/ |
-| Présentation (anglais) | https://xiff.github.io/Le-lac/presentation/en/ |
+| Présentation (français) | https://monlac.ch/presentation/ |
+| Présentation (anglais) | https://monlac.ch/presentation/en/ |
 
 ### Pages par plage
 
 Une page par plage, en français et en anglais (faites pour Google : chaque page affiche les conditions du jour).
-Liste de toutes les plages : https://xiff.github.io/Le-lac/plage/ (anglais : https://xiff.github.io/Le-lac/plage/en/)
-Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/sitemap.xml
+Liste de toutes les plages : https://monlac.ch/plage/ (anglais : https://monlac.ch/plage/en/)
+Liste complète pour les moteurs de recherche : https://monlac.ch/sitemap.xml
 
 ### Genève
 
 | Plage | Français | English |
 |---|---|---|
-| Pregny-Chambésy | [https://xiff.github.io/Le-lac/plage/pregny-chambesy/](https://xiff.github.io/Le-lac/plage/pregny-chambesy/) | [EN](https://xiff.github.io/Le-lac/plage/pregny-chambesy/en/) |
-| Bains des Pâquis | [https://xiff.github.io/Le-lac/plage/bains-des-paquis/](https://xiff.github.io/Le-lac/plage/bains-des-paquis/) | [EN](https://xiff.github.io/Le-lac/plage/bains-des-paquis/en/) |
-| Genève-Plage | [https://xiff.github.io/Le-lac/plage/geneve-plage/](https://xiff.github.io/Le-lac/plage/geneve-plage/) | [EN](https://xiff.github.io/Le-lac/plage/geneve-plage/en/) |
-| Tropical Corner | [https://xiff.github.io/Le-lac/plage/tropical-corner/](https://xiff.github.io/Le-lac/plage/tropical-corner/) | [EN](https://xiff.github.io/Le-lac/plage/tropical-corner/en/) |
-| Baby-Plage | [https://xiff.github.io/Le-lac/plage/baby-plage/](https://xiff.github.io/Le-lac/plage/baby-plage/) | [EN](https://xiff.github.io/Le-lac/plage/baby-plage/en/) |
-| Plage des Eaux-Vives | [https://xiff.github.io/Le-lac/plage/plage-des-eaux-vives/](https://xiff.github.io/Le-lac/plage/plage-des-eaux-vives/) | [EN](https://xiff.github.io/Le-lac/plage/plage-des-eaux-vives/en/) |
-| Cologny | [https://xiff.github.io/Le-lac/plage/cologny/](https://xiff.github.io/Le-lac/plage/cologny/) | [EN](https://xiff.github.io/Le-lac/plage/cologny/en/) |
-| Collonge-Bellerive – La Savonnière | [https://xiff.github.io/Le-lac/plage/collonge-bellerive-la-savonniere/](https://xiff.github.io/Le-lac/plage/collonge-bellerive-la-savonniere/) | [EN](https://xiff.github.io/Le-lac/plage/collonge-bellerive-la-savonniere/en/) |
-| Corsier-Port | [https://xiff.github.io/Le-lac/plage/corsier-port/](https://xiff.github.io/Le-lac/plage/corsier-port/) | [EN](https://xiff.github.io/Le-lac/plage/corsier-port/en/) |
-| Anières | [https://xiff.github.io/Le-lac/plage/anieres/](https://xiff.github.io/Le-lac/plage/anieres/) | [EN](https://xiff.github.io/Le-lac/plage/anieres/en/) |
-| Hermance | [https://xiff.github.io/Le-lac/plage/hermance/](https://xiff.github.io/Le-lac/plage/hermance/) | [EN](https://xiff.github.io/Le-lac/plage/hermance/en/) |
-| Bellevue | [https://xiff.github.io/Le-lac/plage/bellevue/](https://xiff.github.io/Le-lac/plage/bellevue/) | [EN](https://xiff.github.io/Le-lac/plage/bellevue/en/) |
-| Genthod | [https://xiff.github.io/Le-lac/plage/genthod/](https://xiff.github.io/Le-lac/plage/genthod/) | [EN](https://xiff.github.io/Le-lac/plage/genthod/en/) |
-| Versoix | [https://xiff.github.io/Le-lac/plage/versoix/](https://xiff.github.io/Le-lac/plage/versoix/) | [EN](https://xiff.github.io/Le-lac/plage/versoix/en/) |
-| Céligny | [https://xiff.github.io/Le-lac/plage/celigny/](https://xiff.github.io/Le-lac/plage/celigny/) | [EN](https://xiff.github.io/Le-lac/plage/celigny/en/) |
+| Pregny-Chambésy | [https://monlac.ch/plage/pregny-chambesy/](https://monlac.ch/plage/pregny-chambesy/) | [EN](https://monlac.ch/plage/pregny-chambesy/en/) |
+| Bains des Pâquis | [https://monlac.ch/plage/bains-des-paquis/](https://monlac.ch/plage/bains-des-paquis/) | [EN](https://monlac.ch/plage/bains-des-paquis/en/) |
+| Genève-Plage | [https://monlac.ch/plage/geneve-plage/](https://monlac.ch/plage/geneve-plage/) | [EN](https://monlac.ch/plage/geneve-plage/en/) |
+| Tropical Corner | [https://monlac.ch/plage/tropical-corner/](https://monlac.ch/plage/tropical-corner/) | [EN](https://monlac.ch/plage/tropical-corner/en/) |
+| Baby-Plage | [https://monlac.ch/plage/baby-plage/](https://monlac.ch/plage/baby-plage/) | [EN](https://monlac.ch/plage/baby-plage/en/) |
+| Plage des Eaux-Vives | [https://monlac.ch/plage/plage-des-eaux-vives/](https://monlac.ch/plage/plage-des-eaux-vives/) | [EN](https://monlac.ch/plage/plage-des-eaux-vives/en/) |
+| Cologny | [https://monlac.ch/plage/cologny/](https://monlac.ch/plage/cologny/) | [EN](https://monlac.ch/plage/cologny/en/) |
+| Collonge-Bellerive – La Savonnière | [https://monlac.ch/plage/collonge-bellerive-la-savonniere/](https://monlac.ch/plage/collonge-bellerive-la-savonniere/) | [EN](https://monlac.ch/plage/collonge-bellerive-la-savonniere/en/) |
+| Corsier-Port | [https://monlac.ch/plage/corsier-port/](https://monlac.ch/plage/corsier-port/) | [EN](https://monlac.ch/plage/corsier-port/en/) |
+| Anières | [https://monlac.ch/plage/anieres/](https://monlac.ch/plage/anieres/) | [EN](https://monlac.ch/plage/anieres/en/) |
+| Hermance | [https://monlac.ch/plage/hermance/](https://monlac.ch/plage/hermance/) | [EN](https://monlac.ch/plage/hermance/en/) |
+| Bellevue | [https://monlac.ch/plage/bellevue/](https://monlac.ch/plage/bellevue/) | [EN](https://monlac.ch/plage/bellevue/en/) |
+| Genthod | [https://monlac.ch/plage/genthod/](https://monlac.ch/plage/genthod/) | [EN](https://monlac.ch/plage/genthod/en/) |
+| Versoix | [https://monlac.ch/plage/versoix/](https://monlac.ch/plage/versoix/) | [EN](https://monlac.ch/plage/versoix/en/) |
+| Céligny | [https://monlac.ch/plage/celigny/](https://monlac.ch/plage/celigny/) | [EN](https://monlac.ch/plage/celigny/en/) |
 
 ### La Côte
 
 | Plage | Français | English |
 |---|---|---|
-| Mies | [https://xiff.github.io/Le-lac/plage/mies/](https://xiff.github.io/Le-lac/plage/mies/) | [EN](https://xiff.github.io/Le-lac/plage/mies/en/) |
-| Coppet | [https://xiff.github.io/Le-lac/plage/coppet/](https://xiff.github.io/Le-lac/plage/coppet/) | [EN](https://xiff.github.io/Le-lac/plage/coppet/en/) |
-| Nyon | [https://xiff.github.io/Le-lac/plage/nyon/](https://xiff.github.io/Le-lac/plage/nyon/) | [EN](https://xiff.github.io/Le-lac/plage/nyon/en/) |
-| Prangins | [https://xiff.github.io/Le-lac/plage/prangins/](https://xiff.github.io/Le-lac/plage/prangins/) | [EN](https://xiff.github.io/Le-lac/plage/prangins/en/) |
-| Gland | [https://xiff.github.io/Le-lac/plage/gland/](https://xiff.github.io/Le-lac/plage/gland/) | [EN](https://xiff.github.io/Le-lac/plage/gland/en/) |
-| Dully | [https://xiff.github.io/Le-lac/plage/dully/](https://xiff.github.io/Le-lac/plage/dully/) | [EN](https://xiff.github.io/Le-lac/plage/dully/en/) |
-| Rolle | [https://xiff.github.io/Le-lac/plage/rolle/](https://xiff.github.io/Le-lac/plage/rolle/) | [EN](https://xiff.github.io/Le-lac/plage/rolle/en/) |
-| Perroy | [https://xiff.github.io/Le-lac/plage/perroy/](https://xiff.github.io/Le-lac/plage/perroy/) | [EN](https://xiff.github.io/Le-lac/plage/perroy/en/) |
-| Allaman | [https://xiff.github.io/Le-lac/plage/allaman/](https://xiff.github.io/Le-lac/plage/allaman/) | [EN](https://xiff.github.io/Le-lac/plage/allaman/en/) |
-| Buchillon | [https://xiff.github.io/Le-lac/plage/buchillon/](https://xiff.github.io/Le-lac/plage/buchillon/) | [EN](https://xiff.github.io/Le-lac/plage/buchillon/en/) |
+| Mies | [https://monlac.ch/plage/mies/](https://monlac.ch/plage/mies/) | [EN](https://monlac.ch/plage/mies/en/) |
+| Coppet | [https://monlac.ch/plage/coppet/](https://monlac.ch/plage/coppet/) | [EN](https://monlac.ch/plage/coppet/en/) |
+| Nyon | [https://monlac.ch/plage/nyon/](https://monlac.ch/plage/nyon/) | [EN](https://monlac.ch/plage/nyon/en/) |
+| Prangins | [https://monlac.ch/plage/prangins/](https://monlac.ch/plage/prangins/) | [EN](https://monlac.ch/plage/prangins/en/) |
+| Gland | [https://monlac.ch/plage/gland/](https://monlac.ch/plage/gland/) | [EN](https://monlac.ch/plage/gland/en/) |
+| Dully | [https://monlac.ch/plage/dully/](https://monlac.ch/plage/dully/) | [EN](https://monlac.ch/plage/dully/en/) |
+| Rolle | [https://monlac.ch/plage/rolle/](https://monlac.ch/plage/rolle/) | [EN](https://monlac.ch/plage/rolle/en/) |
+| Perroy | [https://monlac.ch/plage/perroy/](https://monlac.ch/plage/perroy/) | [EN](https://monlac.ch/plage/perroy/en/) |
+| Allaman | [https://monlac.ch/plage/allaman/](https://monlac.ch/plage/allaman/) | [EN](https://monlac.ch/plage/allaman/en/) |
+| Buchillon | [https://monlac.ch/plage/buchillon/](https://monlac.ch/plage/buchillon/) | [EN](https://monlac.ch/plage/buchillon/en/) |
 
 ### Morges et Lausanne
 
 | Plage | Français | English |
 |---|---|---|
-| Saint-Prex | [https://xiff.github.io/Le-lac/plage/saint-prex/](https://xiff.github.io/Le-lac/plage/saint-prex/) | [EN](https://xiff.github.io/Le-lac/plage/saint-prex/en/) |
-| Tolochenaz | [https://xiff.github.io/Le-lac/plage/tolochenaz/](https://xiff.github.io/Le-lac/plage/tolochenaz/) | [EN](https://xiff.github.io/Le-lac/plage/tolochenaz/en/) |
-| Morges | [https://xiff.github.io/Le-lac/plage/morges/](https://xiff.github.io/Le-lac/plage/morges/) | [EN](https://xiff.github.io/Le-lac/plage/morges/en/) |
-| Préverenges | [https://xiff.github.io/Le-lac/plage/preverenges/](https://xiff.github.io/Le-lac/plage/preverenges/) | [EN](https://xiff.github.io/Le-lac/plage/preverenges/en/) |
-| Saint-Sulpice | [https://xiff.github.io/Le-lac/plage/saint-sulpice/](https://xiff.github.io/Le-lac/plage/saint-sulpice/) | [EN](https://xiff.github.io/Le-lac/plage/saint-sulpice/en/) |
-| Lausanne – Vidy | [https://xiff.github.io/Le-lac/plage/lausanne-vidy/](https://xiff.github.io/Le-lac/plage/lausanne-vidy/) | [EN](https://xiff.github.io/Le-lac/plage/lausanne-vidy/en/) |
-| Lausanne – Ouchy | [https://xiff.github.io/Le-lac/plage/lausanne-ouchy/](https://xiff.github.io/Le-lac/plage/lausanne-ouchy/) | [EN](https://xiff.github.io/Le-lac/plage/lausanne-ouchy/en/) |
-| Lausanne – Bellerive | [https://xiff.github.io/Le-lac/plage/lausanne-bellerive/](https://xiff.github.io/Le-lac/plage/lausanne-bellerive/) | [EN](https://xiff.github.io/Le-lac/plage/lausanne-bellerive/en/) |
-| Pully | [https://xiff.github.io/Le-lac/plage/pully/](https://xiff.github.io/Le-lac/plage/pully/) | [EN](https://xiff.github.io/Le-lac/plage/pully/en/) |
-| Paudex | [https://xiff.github.io/Le-lac/plage/paudex/](https://xiff.github.io/Le-lac/plage/paudex/) | [EN](https://xiff.github.io/Le-lac/plage/paudex/en/) |
-| Lutry | [https://xiff.github.io/Le-lac/plage/lutry/](https://xiff.github.io/Le-lac/plage/lutry/) | [EN](https://xiff.github.io/Le-lac/plage/lutry/en/) |
+| Saint-Prex | [https://monlac.ch/plage/saint-prex/](https://monlac.ch/plage/saint-prex/) | [EN](https://monlac.ch/plage/saint-prex/en/) |
+| Tolochenaz | [https://monlac.ch/plage/tolochenaz/](https://monlac.ch/plage/tolochenaz/) | [EN](https://monlac.ch/plage/tolochenaz/en/) |
+| Morges | [https://monlac.ch/plage/morges/](https://monlac.ch/plage/morges/) | [EN](https://monlac.ch/plage/morges/en/) |
+| Préverenges | [https://monlac.ch/plage/preverenges/](https://monlac.ch/plage/preverenges/) | [EN](https://monlac.ch/plage/preverenges/en/) |
+| Saint-Sulpice | [https://monlac.ch/plage/saint-sulpice/](https://monlac.ch/plage/saint-sulpice/) | [EN](https://monlac.ch/plage/saint-sulpice/en/) |
+| Lausanne – Vidy | [https://monlac.ch/plage/lausanne-vidy/](https://monlac.ch/plage/lausanne-vidy/) | [EN](https://monlac.ch/plage/lausanne-vidy/en/) |
+| Lausanne – Ouchy | [https://monlac.ch/plage/lausanne-ouchy/](https://monlac.ch/plage/lausanne-ouchy/) | [EN](https://monlac.ch/plage/lausanne-ouchy/en/) |
+| Lausanne – Bellerive | [https://monlac.ch/plage/lausanne-bellerive/](https://monlac.ch/plage/lausanne-bellerive/) | [EN](https://monlac.ch/plage/lausanne-bellerive/en/) |
+| Pully | [https://monlac.ch/plage/pully/](https://monlac.ch/plage/pully/) | [EN](https://monlac.ch/plage/pully/en/) |
+| Paudex | [https://monlac.ch/plage/paudex/](https://monlac.ch/plage/paudex/) | [EN](https://monlac.ch/plage/paudex/en/) |
+| Lutry | [https://monlac.ch/plage/lutry/](https://monlac.ch/plage/lutry/) | [EN](https://monlac.ch/plage/lutry/en/) |
 
 ### Riviera
 
 | Plage | Français | English |
 |---|---|---|
-| Villette | [https://xiff.github.io/Le-lac/plage/villette/](https://xiff.github.io/Le-lac/plage/villette/) | [EN](https://xiff.github.io/Le-lac/plage/villette/en/) |
-| Cully – Moratel | [https://xiff.github.io/Le-lac/plage/cully-moratel/](https://xiff.github.io/Le-lac/plage/cully-moratel/) | [EN](https://xiff.github.io/Le-lac/plage/cully-moratel/en/) |
-| Rivaz | [https://xiff.github.io/Le-lac/plage/rivaz/](https://xiff.github.io/Le-lac/plage/rivaz/) | [EN](https://xiff.github.io/Le-lac/plage/rivaz/en/) |
-| Saint-Saphorin | [https://xiff.github.io/Le-lac/plage/saint-saphorin/](https://xiff.github.io/Le-lac/plage/saint-saphorin/) | [EN](https://xiff.github.io/Le-lac/plage/saint-saphorin/en/) |
-| Corseaux | [https://xiff.github.io/Le-lac/plage/corseaux/](https://xiff.github.io/Le-lac/plage/corseaux/) | [EN](https://xiff.github.io/Le-lac/plage/corseaux/en/) |
-| Vevey | [https://xiff.github.io/Le-lac/plage/vevey/](https://xiff.github.io/Le-lac/plage/vevey/) | [EN](https://xiff.github.io/Le-lac/plage/vevey/en/) |
-| La Tour-de-Peilz | [https://xiff.github.io/Le-lac/plage/la-tour-de-peilz/](https://xiff.github.io/Le-lac/plage/la-tour-de-peilz/) | [EN](https://xiff.github.io/Le-lac/plage/la-tour-de-peilz/en/) |
-| Montreux – Clarens | [https://xiff.github.io/Le-lac/plage/montreux-clarens/](https://xiff.github.io/Le-lac/plage/montreux-clarens/) | [EN](https://xiff.github.io/Le-lac/plage/montreux-clarens/en/) |
-| Veytaux | [https://xiff.github.io/Le-lac/plage/veytaux/](https://xiff.github.io/Le-lac/plage/veytaux/) | [EN](https://xiff.github.io/Le-lac/plage/veytaux/en/) |
-| Villeneuve | [https://xiff.github.io/Le-lac/plage/villeneuve/](https://xiff.github.io/Le-lac/plage/villeneuve/) | [EN](https://xiff.github.io/Le-lac/plage/villeneuve/en/) |
-| Noville | [https://xiff.github.io/Le-lac/plage/noville/](https://xiff.github.io/Le-lac/plage/noville/) | [EN](https://xiff.github.io/Le-lac/plage/noville/en/) |
-| Le Bouveret | [https://xiff.github.io/Le-lac/plage/le-bouveret/](https://xiff.github.io/Le-lac/plage/le-bouveret/) | [EN](https://xiff.github.io/Le-lac/plage/le-bouveret/en/) |
-| Saint-Gingolph | [https://xiff.github.io/Le-lac/plage/saint-gingolph/](https://xiff.github.io/Le-lac/plage/saint-gingolph/) | [EN](https://xiff.github.io/Le-lac/plage/saint-gingolph/en/) |
+| Villette | [https://monlac.ch/plage/villette/](https://monlac.ch/plage/villette/) | [EN](https://monlac.ch/plage/villette/en/) |
+| Cully – Moratel | [https://monlac.ch/plage/cully-moratel/](https://monlac.ch/plage/cully-moratel/) | [EN](https://monlac.ch/plage/cully-moratel/en/) |
+| Rivaz | [https://monlac.ch/plage/rivaz/](https://monlac.ch/plage/rivaz/) | [EN](https://monlac.ch/plage/rivaz/en/) |
+| Saint-Saphorin | [https://monlac.ch/plage/saint-saphorin/](https://monlac.ch/plage/saint-saphorin/) | [EN](https://monlac.ch/plage/saint-saphorin/en/) |
+| Corseaux | [https://monlac.ch/plage/corseaux/](https://monlac.ch/plage/corseaux/) | [EN](https://monlac.ch/plage/corseaux/en/) |
+| Vevey | [https://monlac.ch/plage/vevey/](https://monlac.ch/plage/vevey/) | [EN](https://monlac.ch/plage/vevey/en/) |
+| La Tour-de-Peilz | [https://monlac.ch/plage/la-tour-de-peilz/](https://monlac.ch/plage/la-tour-de-peilz/) | [EN](https://monlac.ch/plage/la-tour-de-peilz/en/) |
+| Montreux – Clarens | [https://monlac.ch/plage/montreux-clarens/](https://monlac.ch/plage/montreux-clarens/) | [EN](https://monlac.ch/plage/montreux-clarens/en/) |
+| Veytaux | [https://monlac.ch/plage/veytaux/](https://monlac.ch/plage/veytaux/) | [EN](https://monlac.ch/plage/veytaux/en/) |
+| Villeneuve | [https://monlac.ch/plage/villeneuve/](https://monlac.ch/plage/villeneuve/) | [EN](https://monlac.ch/plage/villeneuve/en/) |
+| Noville | [https://monlac.ch/plage/noville/](https://monlac.ch/plage/noville/) | [EN](https://monlac.ch/plage/noville/en/) |
+| Le Bouveret | [https://monlac.ch/plage/le-bouveret/](https://monlac.ch/plage/le-bouveret/) | [EN](https://monlac.ch/plage/le-bouveret/en/) |
+| Saint-Gingolph | [https://monlac.ch/plage/saint-gingolph/](https://monlac.ch/plage/saint-gingolph/) | [EN](https://monlac.ch/plage/saint-gingolph/en/) |
 
 ### Rive française
 
 | Plage | Français | English |
 |---|---|---|
-| Meillerie | [https://xiff.github.io/Le-lac/plage/meillerie/](https://xiff.github.io/Le-lac/plage/meillerie/) | [EN](https://xiff.github.io/Le-lac/plage/meillerie/en/) |
-| Lugrin | [https://xiff.github.io/Le-lac/plage/lugrin/](https://xiff.github.io/Le-lac/plage/lugrin/) | [EN](https://xiff.github.io/Le-lac/plage/lugrin/en/) |
-| Maxilly | [https://xiff.github.io/Le-lac/plage/maxilly/](https://xiff.github.io/Le-lac/plage/maxilly/) | [EN](https://xiff.github.io/Le-lac/plage/maxilly/en/) |
-| Neuvecelle | [https://xiff.github.io/Le-lac/plage/neuvecelle/](https://xiff.github.io/Le-lac/plage/neuvecelle/) | [EN](https://xiff.github.io/Le-lac/plage/neuvecelle/en/) |
-| Évian | [https://xiff.github.io/Le-lac/plage/evian/](https://xiff.github.io/Le-lac/plage/evian/) | [EN](https://xiff.github.io/Le-lac/plage/evian/en/) |
-| Publier – Amphion | [https://xiff.github.io/Le-lac/plage/publier-amphion/](https://xiff.github.io/Le-lac/plage/publier-amphion/) | [EN](https://xiff.github.io/Le-lac/plage/publier-amphion/en/) |
-| Thonon | [https://xiff.github.io/Le-lac/plage/thonon/](https://xiff.github.io/Le-lac/plage/thonon/) | [EN](https://xiff.github.io/Le-lac/plage/thonon/en/) |
-| Thonon – Saint-Disdille | [https://xiff.github.io/Le-lac/plage/thonon-saint-disdille/](https://xiff.github.io/Le-lac/plage/thonon-saint-disdille/) | [EN](https://xiff.github.io/Le-lac/plage/thonon-saint-disdille/en/) |
-| Anthy-sur-Léman | [https://xiff.github.io/Le-lac/plage/anthy-sur-leman/](https://xiff.github.io/Le-lac/plage/anthy-sur-leman/) | [EN](https://xiff.github.io/Le-lac/plage/anthy-sur-leman/en/) |
-| Margencel | [https://xiff.github.io/Le-lac/plage/margencel/](https://xiff.github.io/Le-lac/plage/margencel/) | [EN](https://xiff.github.io/Le-lac/plage/margencel/en/) |
-| Sciez | [https://xiff.github.io/Le-lac/plage/sciez/](https://xiff.github.io/Le-lac/plage/sciez/) | [EN](https://xiff.github.io/Le-lac/plage/sciez/en/) |
-| Excenevex | [https://xiff.github.io/Le-lac/plage/excenevex/](https://xiff.github.io/Le-lac/plage/excenevex/) | [EN](https://xiff.github.io/Le-lac/plage/excenevex/en/) |
-| Yvoire | [https://xiff.github.io/Le-lac/plage/yvoire/](https://xiff.github.io/Le-lac/plage/yvoire/) | [EN](https://xiff.github.io/Le-lac/plage/yvoire/en/) |
-| Nernier | [https://xiff.github.io/Le-lac/plage/nernier/](https://xiff.github.io/Le-lac/plage/nernier/) | [EN](https://xiff.github.io/Le-lac/plage/nernier/en/) |
-| Messery | [https://xiff.github.io/Le-lac/plage/messery/](https://xiff.github.io/Le-lac/plage/messery/) | [EN](https://xiff.github.io/Le-lac/plage/messery/en/) |
-| Chens-sur-Léman | [https://xiff.github.io/Le-lac/plage/chens-sur-leman/](https://xiff.github.io/Le-lac/plage/chens-sur-leman/) | [EN](https://xiff.github.io/Le-lac/plage/chens-sur-leman/en/) |
+| Meillerie | [https://monlac.ch/plage/meillerie/](https://monlac.ch/plage/meillerie/) | [EN](https://monlac.ch/plage/meillerie/en/) |
+| Lugrin | [https://monlac.ch/plage/lugrin/](https://monlac.ch/plage/lugrin/) | [EN](https://monlac.ch/plage/lugrin/en/) |
+| Maxilly | [https://monlac.ch/plage/maxilly/](https://monlac.ch/plage/maxilly/) | [EN](https://monlac.ch/plage/maxilly/en/) |
+| Neuvecelle | [https://monlac.ch/plage/neuvecelle/](https://monlac.ch/plage/neuvecelle/) | [EN](https://monlac.ch/plage/neuvecelle/en/) |
+| Évian | [https://monlac.ch/plage/evian/](https://monlac.ch/plage/evian/) | [EN](https://monlac.ch/plage/evian/en/) |
+| Publier – Amphion | [https://monlac.ch/plage/publier-amphion/](https://monlac.ch/plage/publier-amphion/) | [EN](https://monlac.ch/plage/publier-amphion/en/) |
+| Thonon | [https://monlac.ch/plage/thonon/](https://monlac.ch/plage/thonon/) | [EN](https://monlac.ch/plage/thonon/en/) |
+| Thonon – Saint-Disdille | [https://monlac.ch/plage/thonon-saint-disdille/](https://monlac.ch/plage/thonon-saint-disdille/) | [EN](https://monlac.ch/plage/thonon-saint-disdille/en/) |
+| Anthy-sur-Léman | [https://monlac.ch/plage/anthy-sur-leman/](https://monlac.ch/plage/anthy-sur-leman/) | [EN](https://monlac.ch/plage/anthy-sur-leman/en/) |
+| Margencel | [https://monlac.ch/plage/margencel/](https://monlac.ch/plage/margencel/) | [EN](https://monlac.ch/plage/margencel/en/) |
+| Sciez | [https://monlac.ch/plage/sciez/](https://monlac.ch/plage/sciez/) | [EN](https://monlac.ch/plage/sciez/en/) |
+| Excenevex | [https://monlac.ch/plage/excenevex/](https://monlac.ch/plage/excenevex/) | [EN](https://monlac.ch/plage/excenevex/en/) |
+| Yvoire | [https://monlac.ch/plage/yvoire/](https://monlac.ch/plage/yvoire/) | [EN](https://monlac.ch/plage/yvoire/en/) |
+| Nernier | [https://monlac.ch/plage/nernier/](https://monlac.ch/plage/nernier/) | [EN](https://monlac.ch/plage/nernier/en/) |
+| Messery | [https://monlac.ch/plage/messery/](https://monlac.ch/plage/messery/) | [EN](https://monlac.ch/plage/messery/en/) |
+| Chens-sur-Léman | [https://monlac.ch/plage/chens-sur-leman/](https://monlac.ch/plage/chens-sur-leman/) | [EN](https://monlac.ch/plage/chens-sur-leman/en/) |
 
 ### Lac de Neuchâtel
 
 | Plage | Français | English |
 |---|---|---|
-| Yverdon-les-Bains | [https://xiff.github.io/Le-lac/plage/yverdon-les-bains/](https://xiff.github.io/Le-lac/plage/yverdon-les-bains/) | [EN](https://xiff.github.io/Le-lac/plage/yverdon-les-bains/en/) |
-| Grandson – Corcelettes | [https://xiff.github.io/Le-lac/plage/grandson-corcelettes/](https://xiff.github.io/Le-lac/plage/grandson-corcelettes/) | [EN](https://xiff.github.io/Le-lac/plage/grandson-corcelettes/en/) |
-| Yvonand | [https://xiff.github.io/Le-lac/plage/yvonand/](https://xiff.github.io/Le-lac/plage/yvonand/) | [EN](https://xiff.github.io/Le-lac/plage/yvonand/en/) |
-| Concise | [https://xiff.github.io/Le-lac/plage/concise/](https://xiff.github.io/Le-lac/plage/concise/) | [EN](https://xiff.github.io/Le-lac/plage/concise/en/) |
-| Saint-Aubin | [https://xiff.github.io/Le-lac/plage/saint-aubin-ne/](https://xiff.github.io/Le-lac/plage/saint-aubin-ne/) | [EN](https://xiff.github.io/Le-lac/plage/saint-aubin-ne/en/) |
-| Cortaillod | [https://xiff.github.io/Le-lac/plage/cortaillod/](https://xiff.github.io/Le-lac/plage/cortaillod/) | [EN](https://xiff.github.io/Le-lac/plage/cortaillod/en/) |
-| Boudry | [https://xiff.github.io/Le-lac/plage/boudry/](https://xiff.github.io/Le-lac/plage/boudry/) | [EN](https://xiff.github.io/Le-lac/plage/boudry/en/) |
-| Colombier | [https://xiff.github.io/Le-lac/plage/colombier/](https://xiff.github.io/Le-lac/plage/colombier/) | [EN](https://xiff.github.io/Le-lac/plage/colombier/en/) |
-| Neuchâtel – Jeunes-Rives | [https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/](https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/) | [EN](https://xiff.github.io/Le-lac/plage/neuchatel-jeunes-rives/en/) |
-| Hauterive | [https://xiff.github.io/Le-lac/plage/hauterive/](https://xiff.github.io/Le-lac/plage/hauterive/) | [EN](https://xiff.github.io/Le-lac/plage/hauterive/en/) |
-| Cudrefin | [https://xiff.github.io/Le-lac/plage/cudrefin/](https://xiff.github.io/Le-lac/plage/cudrefin/) | [EN](https://xiff.github.io/Le-lac/plage/cudrefin/en/) |
-| Portalban | [https://xiff.github.io/Le-lac/plage/portalban/](https://xiff.github.io/Le-lac/plage/portalban/) | [EN](https://xiff.github.io/Le-lac/plage/portalban/en/) |
-| Gletterens | [https://xiff.github.io/Le-lac/plage/gletterens/](https://xiff.github.io/Le-lac/plage/gletterens/) | [EN](https://xiff.github.io/Le-lac/plage/gletterens/en/) |
-| Forel | [https://xiff.github.io/Le-lac/plage/forel/](https://xiff.github.io/Le-lac/plage/forel/) | [EN](https://xiff.github.io/Le-lac/plage/forel/en/) |
-| Estavayer – Nouvelle Plage | [https://xiff.github.io/Le-lac/plage/estavayer-le-lac/](https://xiff.github.io/Le-lac/plage/estavayer-le-lac/) | [EN](https://xiff.github.io/Le-lac/plage/estavayer-le-lac/en/) |
+| Yverdon-les-Bains | [https://monlac.ch/plage/yverdon-les-bains/](https://monlac.ch/plage/yverdon-les-bains/) | [EN](https://monlac.ch/plage/yverdon-les-bains/en/) |
+| Grandson – Corcelettes | [https://monlac.ch/plage/grandson-corcelettes/](https://monlac.ch/plage/grandson-corcelettes/) | [EN](https://monlac.ch/plage/grandson-corcelettes/en/) |
+| Yvonand | [https://monlac.ch/plage/yvonand/](https://monlac.ch/plage/yvonand/) | [EN](https://monlac.ch/plage/yvonand/en/) |
+| Concise | [https://monlac.ch/plage/concise/](https://monlac.ch/plage/concise/) | [EN](https://monlac.ch/plage/concise/en/) |
+| Saint-Aubin | [https://monlac.ch/plage/saint-aubin-ne/](https://monlac.ch/plage/saint-aubin-ne/) | [EN](https://monlac.ch/plage/saint-aubin-ne/en/) |
+| Cortaillod | [https://monlac.ch/plage/cortaillod/](https://monlac.ch/plage/cortaillod/) | [EN](https://monlac.ch/plage/cortaillod/en/) |
+| Boudry | [https://monlac.ch/plage/boudry/](https://monlac.ch/plage/boudry/) | [EN](https://monlac.ch/plage/boudry/en/) |
+| Colombier | [https://monlac.ch/plage/colombier/](https://monlac.ch/plage/colombier/) | [EN](https://monlac.ch/plage/colombier/en/) |
+| Neuchâtel – Jeunes-Rives | [https://monlac.ch/plage/neuchatel-jeunes-rives/](https://monlac.ch/plage/neuchatel-jeunes-rives/) | [EN](https://monlac.ch/plage/neuchatel-jeunes-rives/en/) |
+| Hauterive | [https://monlac.ch/plage/hauterive/](https://monlac.ch/plage/hauterive/) | [EN](https://monlac.ch/plage/hauterive/en/) |
+| Cudrefin | [https://monlac.ch/plage/cudrefin/](https://monlac.ch/plage/cudrefin/) | [EN](https://monlac.ch/plage/cudrefin/en/) |
+| Portalban | [https://monlac.ch/plage/portalban/](https://monlac.ch/plage/portalban/) | [EN](https://monlac.ch/plage/portalban/en/) |
+| Gletterens | [https://monlac.ch/plage/gletterens/](https://monlac.ch/plage/gletterens/) | [EN](https://monlac.ch/plage/gletterens/en/) |
+| Forel | [https://monlac.ch/plage/forel/](https://monlac.ch/plage/forel/) | [EN](https://monlac.ch/plage/forel/en/) |
+| Estavayer – Nouvelle Plage | [https://monlac.ch/plage/estavayer-le-lac/](https://monlac.ch/plage/estavayer-le-lac/) | [EN](https://monlac.ch/plage/estavayer-le-lac/en/) |
 
 ### Lac de Bienne
 
 | Plage | Français | English |
 |---|---|---|
-| Cerlier (Erlach) | [https://xiff.github.io/Le-lac/plage/cerlier/](https://xiff.github.io/Le-lac/plage/cerlier/) | [EN](https://xiff.github.io/Le-lac/plage/cerlier/en/) |
-| La Neuveville | [https://xiff.github.io/Le-lac/plage/la-neuveville/](https://xiff.github.io/Le-lac/plage/la-neuveville/) | [EN](https://xiff.github.io/Le-lac/plage/la-neuveville/en/) |
-| Strandbad Rostele | [https://xiff.github.io/Le-lac/plage/strandbad-rostele/](https://xiff.github.io/Le-lac/plage/strandbad-rostele/) | [EN](https://xiff.github.io/Le-lac/plage/strandbad-rostele/en/) |
-| Tüscherz | [https://xiff.github.io/Le-lac/plage/tuscherz/](https://xiff.github.io/Le-lac/plage/tuscherz/) | [EN](https://xiff.github.io/Le-lac/plage/tuscherz/en/) |
-| Badewiese Funtelen | [https://xiff.github.io/Le-lac/plage/badewiese-funtelen/](https://xiff.github.io/Le-lac/plage/badewiese-funtelen/) | [EN](https://xiff.github.io/Le-lac/plage/badewiese-funtelen/en/) |
-| Bienne – Plage | [https://xiff.github.io/Le-lac/plage/bienne-plage/](https://xiff.github.io/Le-lac/plage/bienne-plage/) | [EN](https://xiff.github.io/Le-lac/plage/bienne-plage/en/) |
-| Nidau | [https://xiff.github.io/Le-lac/plage/nidau/](https://xiff.github.io/Le-lac/plage/nidau/) | [EN](https://xiff.github.io/Le-lac/plage/nidau/en/) |
+| Cerlier (Erlach) | [https://monlac.ch/plage/cerlier/](https://monlac.ch/plage/cerlier/) | [EN](https://monlac.ch/plage/cerlier/en/) |
+| La Neuveville | [https://monlac.ch/plage/la-neuveville/](https://monlac.ch/plage/la-neuveville/) | [EN](https://monlac.ch/plage/la-neuveville/en/) |
+| Strandbad Rostele | [https://monlac.ch/plage/strandbad-rostele/](https://monlac.ch/plage/strandbad-rostele/) | [EN](https://monlac.ch/plage/strandbad-rostele/en/) |
+| Tüscherz | [https://monlac.ch/plage/tuscherz/](https://monlac.ch/plage/tuscherz/) | [EN](https://monlac.ch/plage/tuscherz/en/) |
+| Badewiese Funtelen | [https://monlac.ch/plage/badewiese-funtelen/](https://monlac.ch/plage/badewiese-funtelen/) | [EN](https://monlac.ch/plage/badewiese-funtelen/en/) |
+| Bienne – Plage | [https://monlac.ch/plage/bienne-plage/](https://monlac.ch/plage/bienne-plage/) | [EN](https://monlac.ch/plage/bienne-plage/en/) |
+| Nidau | [https://monlac.ch/plage/nidau/](https://monlac.ch/plage/nidau/) | [EN](https://monlac.ch/plage/nidau/en/) |
 
 ### Lac de Morat
 
 | Plage | Français | English |
 |---|---|---|
-| Morat | [https://xiff.github.io/Le-lac/plage/morat/](https://xiff.github.io/Le-lac/plage/morat/) | [EN](https://xiff.github.io/Le-lac/plage/morat/en/) |
-| Faoug | [https://xiff.github.io/Le-lac/plage/faoug/](https://xiff.github.io/Le-lac/plage/faoug/) | [EN](https://xiff.github.io/Le-lac/plage/faoug/en/) |
-| Avenches | [https://xiff.github.io/Le-lac/plage/avenches/](https://xiff.github.io/Le-lac/plage/avenches/) | [EN](https://xiff.github.io/Le-lac/plage/avenches/en/) |
-| Salavaux | [https://xiff.github.io/Le-lac/plage/salavaux/](https://xiff.github.io/Le-lac/plage/salavaux/) | [EN](https://xiff.github.io/Le-lac/plage/salavaux/en/) |
+| Morat | [https://monlac.ch/plage/morat/](https://monlac.ch/plage/morat/) | [EN](https://monlac.ch/plage/morat/en/) |
+| Faoug | [https://monlac.ch/plage/faoug/](https://monlac.ch/plage/faoug/) | [EN](https://monlac.ch/plage/faoug/en/) |
+| Avenches | [https://monlac.ch/plage/avenches/](https://monlac.ch/plage/avenches/) | [EN](https://monlac.ch/plage/avenches/en/) |
+| Salavaux | [https://monlac.ch/plage/salavaux/](https://monlac.ch/plage/salavaux/) | [EN](https://monlac.ch/plage/salavaux/en/) |
 
 ### Lac de la Gruyère
 
 | Plage | Français | English |
 |---|---|---|
-| Pont-la-Ville | [https://xiff.github.io/Le-lac/plage/pont-la-ville/](https://xiff.github.io/Le-lac/plage/pont-la-ville/) | [EN](https://xiff.github.io/Le-lac/plage/pont-la-ville/en/) |
-| La Roche | [https://xiff.github.io/Le-lac/plage/la-roche/](https://xiff.github.io/Le-lac/plage/la-roche/) | [EN](https://xiff.github.io/Le-lac/plage/la-roche/en/) |
-| Gumefens | [https://xiff.github.io/Le-lac/plage/gumefens/](https://xiff.github.io/Le-lac/plage/gumefens/) | [EN](https://xiff.github.io/Le-lac/plage/gumefens/en/) |
-| Corbières | [https://xiff.github.io/Le-lac/plage/corbieres/](https://xiff.github.io/Le-lac/plage/corbieres/) | [EN](https://xiff.github.io/Le-lac/plage/corbieres/en/) |
-| Morlon | [https://xiff.github.io/Le-lac/plage/morlon/](https://xiff.github.io/Le-lac/plage/morlon/) | [EN](https://xiff.github.io/Le-lac/plage/morlon/en/) |
+| Pont-la-Ville | [https://monlac.ch/plage/pont-la-ville/](https://monlac.ch/plage/pont-la-ville/) | [EN](https://monlac.ch/plage/pont-la-ville/en/) |
+| La Roche | [https://monlac.ch/plage/la-roche/](https://monlac.ch/plage/la-roche/) | [EN](https://monlac.ch/plage/la-roche/en/) |
+| Gumefens | [https://monlac.ch/plage/gumefens/](https://monlac.ch/plage/gumefens/) | [EN](https://monlac.ch/plage/gumefens/en/) |
+| Corbières | [https://monlac.ch/plage/corbieres/](https://monlac.ch/plage/corbieres/) | [EN](https://monlac.ch/plage/corbieres/en/) |
+| Morlon | [https://monlac.ch/plage/morlon/](https://monlac.ch/plage/morlon/) | [EN](https://monlac.ch/plage/morlon/en/) |
 
 ### Sion – Domaine des Îles
 
 | Plage | Français | English |
 |---|---|---|
-| Domaine des Îles | [https://xiff.github.io/Le-lac/plage/domaine-des-iles/](https://xiff.github.io/Le-lac/plage/domaine-des-iles/) | [EN](https://xiff.github.io/Le-lac/plage/domaine-des-iles/en/) |
+| Domaine des Îles | [https://monlac.ch/plage/domaine-des-iles/](https://monlac.ch/plage/domaine-des-iles/) | [EN](https://monlac.ch/plage/domaine-des-iles/en/) |
 
 ### Blog
 
@@ -189,20 +189,20 @@ Liste complète pour les moteurs de recherche : https://xiff.github.io/Le-lac/si
 
 | Page | Adresse |
 |---|---|
-| Liste des articles | https://xiff.github.io/Le-lac/blog/ (anglais : https://xiff.github.io/Le-lac/blog/en/) |
-| Bain d’hiver dans le Léman : bien débuter | https://xiff.github.io/Le-lac/blog/bain-d-hiver-leman/ |
-| La bise sur le Léman, et ce qu’elle change sur l’eau | https://xiff.github.io/Le-lac/blog/bise-leman/ |
-| Température du lac Léman : comment elle est mesurée, et pourquoi elle varie | https://xiff.github.io/Le-lac/blog/temperature-lac-leman/ |
-| Qualité de l’eau de baignade au Léman : comment la vérifier | https://xiff.github.io/Le-lac/blog/qualite-eau-baignade-leman/ |
-| Où se baigner à Genève : toutes les plages du canton | https://xiff.github.io/Le-lac/blog/plages-geneve/ |
-| Paddle sur le Léman : quand sortir et où louer | https://xiff.github.io/Le-lac/blog/paddle-leman/ |
-| Kitesurf, windsurf et wingfoil sur le Léman | https://xiff.github.io/Le-lac/blog/kitesurf-windsurf-wingfoil-leman/ |
-| Wakeboard, wakesurf et ski nautique sur le Léman | https://xiff.github.io/Le-lac/blog/wakeboard-wakesurf-ski-nautique-leman/ |
-| Buvettes et restaurants au bord du Léman, région par région | https://xiff.github.io/Le-lac/blog/buvettes-restaurants-bord-du-leman/ |
-| Les plages du Léman côté français, d’Évian à Chens-sur-Léman | https://xiff.github.io/Le-lac/blog/plages-leman-rive-francaise/ |
-| Choc thermique : les 90 premières secondes | https://xiff.github.io/Le-lac/blog/choc-thermique-eau-froide/ |
-| Le matériel du bain d’hiver | https://xiff.github.io/Le-lac/blog/materiel-bain-d-hiver/ |
-| Afterdrop : bien se réchauffer | https://xiff.github.io/Le-lac/blog/afterdrop-se-rechauffer/ |
+| Liste des articles | https://monlac.ch/blog/ (anglais : https://monlac.ch/blog/en/) |
+| Bain d’hiver dans le Léman : bien débuter | https://monlac.ch/blog/bain-d-hiver-leman/ |
+| La bise sur le Léman, et ce qu’elle change sur l’eau | https://monlac.ch/blog/bise-leman/ |
+| Température du lac Léman : comment elle est mesurée, et pourquoi elle varie | https://monlac.ch/blog/temperature-lac-leman/ |
+| Qualité de l’eau de baignade au Léman : comment la vérifier | https://monlac.ch/blog/qualite-eau-baignade-leman/ |
+| Où se baigner à Genève : toutes les plages du canton | https://monlac.ch/blog/plages-geneve/ |
+| Paddle sur le Léman : quand sortir et où louer | https://monlac.ch/blog/paddle-leman/ |
+| Kitesurf, windsurf et wingfoil sur le Léman | https://monlac.ch/blog/kitesurf-windsurf-wingfoil-leman/ |
+| Wakeboard, wakesurf et ski nautique sur le Léman | https://monlac.ch/blog/wakeboard-wakesurf-ski-nautique-leman/ |
+| Buvettes et restaurants au bord du Léman, région par région | https://monlac.ch/blog/buvettes-restaurants-bord-du-leman/ |
+| Les plages du Léman côté français, d’Évian à Chens-sur-Léman | https://monlac.ch/blog/plages-leman-rive-francaise/ |
+| Choc thermique : les 90 premières secondes | https://monlac.ch/blog/choc-thermique-eau-froide/ |
+| Le matériel du bain d’hiver | https://monlac.ch/blog/materiel-bain-d-hiver/ |
+| Afterdrop : bien se réchauffer | https://monlac.ch/blog/afterdrop-se-rechauffer/ |
 
 Articles dans `scripts/articles.mjs` (listes de plages, lieux et loueurs tirées des données de l’app), pages générées par `node scripts/blog.mjs`.
 
@@ -210,8 +210,8 @@ Articles dans `scripts/articles.mjs` (listes de plages, lieux et loueurs tirées
 
 | Fichier | Contenu |
 |---|---|
-| https://xiff.github.io/Le-lac/eau.json | Température de l’eau par plage, toutes les 3 h |
-| https://xiff.github.io/Le-lac/qualite.json | Qualité de l’eau de baignade |
+| https://monlac.ch/eau.json | Température de l’eau par plage, toutes les 3 h |
+| https://monlac.ch/qualite.json | Qualité de l’eau de baignade |
 
 ### APK Android de test
 

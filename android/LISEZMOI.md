@@ -6,7 +6,7 @@ Rien n'est publié : ces fichiers servent à la générer le moment venu.
 ## Étapes
 
 1. Installer Bubblewrap (Node 18+ et JDK 17) : `npm i -g @bubblewrap/cli`
-2. Dans ce dossier : `bubblewrap init --manifest=https://xiff.github.io/Le-lac/manifest.webmanifest`
+2. Dans ce dossier : `bubblewrap init --manifest=https://monlac.ch/manifest.webmanifest`
    (ou `bubblewrap update` pour reprendre `twa-manifest.json`). Il crée la clé de signature
    `android.keystore` : **la garder précieusement et ne jamais la commiter**, sans elle plus de mise à jour possible.
 3. `bubblewrap build` produit `app-release-bundle.aab` à envoyer sur la Google Play Console (compte à 25 $, une fois).
@@ -16,8 +16,6 @@ Rien n'est publié : ces fichiers servent à la générer le moment venu.
 
 ## Le piège de GitHub Pages
 
-`assetlinks.json` doit être servi à la racine du domaine : `https://xiff.github.io/.well-known/assetlinks.json`.
-Le dépôt `Le-lac` ne sert que `/Le-lac/…`, donc il faut **un dépôt `xiff/xiff.github.io`** contenant
-`.well-known/assetlinks.json` (avec un fichier `.nojekyll` vide à la racine, sinon le dossier caché est ignoré).
-Sans ça, l'app s'ouvre quand même mais avec une barre d'adresse en haut.
-Plus simple à terme : un nom de domaine à toi (ex. lelac.ch) pointé sur GitHub Pages.
+`assetlinks.json` doit être servi à la racine du domaine : `https://monlac.ch/.well-known/assetlinks.json`.
+Le site étant sur son propre domaine, il suffit de le copier dans `.well-known/assetlinks.json` à la racine de ce dépôt
+(avec un fichier `.nojekyll` vide à la racine, sinon GitHub Pages ignore le dossier caché), une fois l'empreinte remplie.
