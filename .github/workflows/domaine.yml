@@ -1,0 +1,14 @@
+name: Vérification du domaine
+# Teste monlac.ch, www et la redirection de mon-lac.ch (le réseau de développement ne les joint pas).
+on:
+  workflow_dispatch:
+jobs:
+  domaine:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://monlac.ch/ https://www.monlac.ch/ http://monlac.ch/ https://monlac.ch/plage/morat/ https://monlac.ch/eau.json https://monlac.ch/contours.js https://xiff.github.io/Le-lac/ http://mon-lac.ch/ https://mon-lac.ch/ https://www.mon-lac.ch/; do
+            echo "== $u"; curl -sS -o /dev/null -m 20 -w "%{http_code} -> %{redirect_url} (TLS %{ssl_verify_result})\n" "$u" || true
+          done
+          echo "== DNS"; dig +short monlac.ch A; dig +short monlac.ch AAAA; dig +short www.monlac.ch; dig +short mon-lac.ch A
+          echo "== titre"; curl -sSL -m 20 https://monlac.ch/ | grep -o '<title>[^<]*' || true
