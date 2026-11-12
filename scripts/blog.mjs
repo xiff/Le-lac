@@ -112,7 +112,7 @@ export function article(a, L = 'fr') {
   <p class="releve">${t.par} ${t.equipe} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
 </header>
 <main class="article">
-  <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" width="1600" height="${a.hauteur}"><figcaption>${credit}</figcaption></figure>
+  <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" srcset="${[640, 1200].map((w) => `${r}blog/img/min/${a.image.split('/').pop().replace('.jpg', `-${w}.jpg`)} ${w}w`).join(', ')}, ${r}${a.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${a.hauteur}" fetchpriority="high"><figcaption>${credit}</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">${t.bref}</h2><p>${c.bref}</p></section>
   ${liens(c.html(L).trim(), L, r)}
   <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${c.eauTitre ?? t.eau}</h2>
@@ -161,7 +161,7 @@ ${Object.entries(THEMES).map(([k, v]) => `    <button type="button" aria-pressed
   </div>
   <ul class="grille">
 ${[...A].sort((x, y) => y.publie.localeCompare(x.publie)).map((a, i) => `    <li data-theme="${theme(a)}"${i === 0 ? ' class="une"' : ''}><a href="${r}blog/${a.slug}/${SUF[L]}">
-      <span class="vignette"><img src="${r}${a.image}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? '' : ' loading="lazy"'}></span>
+      <span class="vignette"><img src="${r}blog/img/min/${a.image.split('/').pop().replace('.jpg', i === 0 ? '-1000.jpg' : '-640.jpg')}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy"'}></span>
       <span class="texte"><span class="meta">${THEMES[theme(a)][L]} · <time datetime="${a.publie}">${dateL(a.publie, L)}</time></span><h2>${esc(a[L].titre)}</h2><p>${esc(a[L].desc)}</p>${i === 0 ? `<span class="lire">${t.lire} →</span>` : ''}</span>
     </a></li>`).join('\n')}
   </ul>
