@@ -113,7 +113,7 @@ const v = SPOTS.filter((s) => ["lucerne"].includes(s.lac ?? 'leman')).map((s) =>
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "En ce moment, le modèle donne <strong>§T</strong> à 70 cm sous la surface pour l’ensemble du lac des Quatre-Cantons.".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
-  document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> à §FA à <strong>§C</strong> à §CA, à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
+  document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }
 </script>

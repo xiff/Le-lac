@@ -98,7 +98,7 @@ const v = SPOTS.filter((s) => ["thoune"].includes(s.lac ?? 'leman')).map((s) => 
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "In questo momento il modello indica <strong>§T</strong> a 70 cm sotto la superficie per l’insieme del lago di Thun.".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
   const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/it/">${s.nom}</a>` });
-  document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> a §FA a <strong>§C</strong> a §CA, a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
+  document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> (§FA) a <strong>§C</strong> (§CA), a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }
 </script>

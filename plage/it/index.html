@@ -433,7 +433,7 @@ for (const a of document.querySelectorAll('.rangs a')) {
 }
 if (v.length) {
   v.sort((x, y) => x[1] - y[1]);
-  document.getElementById('ecart').textContent = ((a, na, b, nb) => `In questo momento, da ${a} a ${na} a ${b} a ${nb}, 70 cm sotto la superficie.`)(deg(v[0][1]), v[0][0], deg(v.at(-1)[1]), v.at(-1)[0]);
+  document.getElementById('ecart').textContent = ((a, na, b, nb) => `In questo momento l’acqua va da ${a} (${na}) a ${b} (${nb}), a 70 cm sotto la superficie.`)(deg(v[0][1]), v[0][0], deg(v.at(-1)[1]), v.at(-1)[0]);
 }
 // Bain d'hiver (octobre à mai) : une seule requête Open-Meteo pour toutes les plages, puis la même note que l'app.
 if (moisHiver(new Date().getMonth() + 1)) {
