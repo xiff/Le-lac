@@ -116,15 +116,36 @@ ${liste}
 <h2>Dove vedere la temperatura ${del} in diretta?</h2>
 <p>Nell’<a href="{app}">app ${app}</a>, gratuita e senza account. L’<a href="{plages}">elenco di tutte le spiagge</a> copre anche gli altri laghi svizzeri.</p>` }; },
 };
+// Photo de tête de chaque article : Wikimedia Commons (téléchargée par .github/workflows/photos-blog.yml), regardée une à une.
+// [fichier Commons, auteur, licence, hauteur pour 1600 px de large, légende fr, en, de, it]
+const BY_SA4 = ['CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'], BY4 = ['CC BY 4.0', 'https://creativecommons.org/licenses/by/4.0/'];
+const PHOTOS = {
+  neuchatel: ['Lac de Neuchâtel et Alpes.jpg', 'Wysa', BY_SA4, 1200, 'Le lac de Neuchâtel et les Alpes', 'Lake Neuchâtel and the Alps', 'Der Neuenburgersee und die Alpen', 'Il lago di Neuchâtel e le Alpi'],
+  bienne: ['I09 361 Bieler See, Badestelle Sutz.jpg', 'Falk2', BY_SA4, 1067, 'Le lieu de baignade de Sutz, au bord du lac de Bienne', 'The bathing spot at Sutz on Lake Biel', 'Die Badestelle Sutz am Bielersee', 'Il punto di balneazione di Sutz, sul lago di Bienne'],
+  morat: ['Murtensee im Herbst.jpg', 'Chrisi1964', BY_SA4, 1067, 'Le lac de Morat en automne', 'Lake Murten in autumn', 'Der Murtensee im Herbst', 'Il lago di Morat in autunno'],
+  gruyere: ['Lake Gruyère at autumn.jpg', 'Türke Andras', BY_SA4, 1023, 'Le lac de la Gruyère en automne', 'Lake Gruyère in autumn', 'Der Greyerzersee im Herbst', 'Il lago della Gruyère in autunno'],
+  joux: ['040 Dent de Vaulion and Lac de Joux at Sunset Photo by Giles Laurent.jpg', 'Giles Laurent', BY_SA4, 900, 'La Dent de Vaulion et le lac de Joux au coucher du soleil, en hiver', 'The Dent de Vaulion and Lac de Joux at sunset, in winter', 'Die Dent de Vaulion und der Lac de Joux bei Sonnenuntergang, im Winter', 'La Dent de Vaulion e il Lac de Joux al tramonto, in inverno'],
+  zurich: ['Lake Zurich at Rapperswil, 20250330 0825 7818.jpg', 'Jakub Hałun', BY4, 1068, 'Le lac de Zurich à Rapperswil', 'Lake Zurich at Rapperswil', 'Der Zürichsee bei Rapperswil', 'Il lago di Zurigo a Rapperswil'],
+  lucerne: ['Lucerne Lake from Schweizerhofquai.jpg', 'Ymblanter', BY_SA4, 1067, 'Le lac des Quatre-Cantons vu du Schweizerhofquai, à Lucerne', 'Lake Lucerne from the Schweizerhofquai in Lucerne', 'Der Vierwaldstättersee vom Schweizerhofquai in Luzern', 'Il lago dei Quattro Cantoni dallo Schweizerhofquai, a Lucerna'],
+  thoune: ['LakeThunSwissAlps.jpg', 'Jasper.tm', BY_SA4, 1067, 'Le lac de Thoune et les Alpes', 'Lake Thun and the Alps', 'Der Thunersee und die Alpen', 'Il lago di Thun e le Alpi'],
+  brienz: ['Brienzersee with a coastal town.jpg', 'Nicojonesgodel', BY_SA4, 1067, 'Un village au bord du lac de Brienz', 'A village on the shore of Lake Brienz', 'Ein Dorf am Ufer des Brienzersees', 'Un villaggio sulla riva del lago di Brienz'],
+  constance: ['Bodensee Romanshorn CH.jpg', 'SiPE', BY_SA4, 900, 'Le lac de Constance à Romanshorn', 'Lake Constance at Romanshorn', 'Der Bodensee bei Romanshorn', 'Il lago di Costanza a Romanshorn'],
+  lugano: ['Lugano - Luganersee & Monte San Salvatore (2013).jpg', 'JoachimKohler-HB', BY_SA4, 1067, 'Le lac de Lugano et le Monte San Salvatore, à Lugano', 'Lake Lugano and Monte San Salvatore, in Lugano', 'Der Luganersee und der Monte San Salvatore in Lugano', 'Il lago di Lugano e il Monte San Salvatore, a Lugano'],
+  majeur: ['Waterfront of Ascona from lake.jpg', 'Paradise Chronicle', BY_SA4, 1067, 'Le front de lac d’Ascona, vu du lac Majeur', 'The Ascona waterfront seen from Lake Maggiore', 'Die Seepromenade von Ascona, vom Lago Maggiore aus', 'Il lungolago di Ascona visto dal lago Maggiore'],
+};
 const OSM = { fr: 'contributeurs OpenStreetMap', en: 'OpenStreetMap contributors', de: 'OpenStreetMap-Mitwirkende', it: 'contributori di OpenStreetMap' };
 
 export const articlesLacs = (listePlages) => CLES.map((cle) => {
   const n = SPOTS.filter((s) => lacDe(s) === cle).length, d3 = LACS[cle].eau.modele !== 'simstrat';
-  const a = { slug: `temperature-lac-${cle}`, lac: cle, publie: '2026-11-11', modifie: '2026-11-11', image: `blog/img/carte-${cle}.jpg`, hauteur: 900, sources: SOURCES, alt: {}, credit: {}, creditHtml: {} };
-  for (const L of ['fr', 'en', 'de', 'it']) {
+  const [fichier, auteur, licence, hauteur, ...legendes] = PHOTOS[cle], LL = ['fr', 'en', 'de', 'it'];
+  const a = { slug: `temperature-lac-${cle}`, lac: cle, publie: '2026-11-11', modifie: '2026-11-11', image: `blog/img/photo-${cle}.jpg`, hauteur, sources: SOURCES, auteur, licence,
+    page: 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(fichier.replaceAll(' ', '_')), alt: {}, credit: {} };
+  for (const L of LL) {
     const { alt, credit, html, ...t } = TEXTES[L](nomLac(cle, L), n, d3, listePlages((s) => lacDe(s) === cle, L));
-    a[L] = { ...t, html: () => html }; a.alt[L] = alt; a.credit[L] = credit;
-    a.creditHtml[L] = `${credit} © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.`;
+    // La carte du lac, avant la liste des plages (dernier <ul class="liste"> de l'article).
+    const carte = `<figure class="une"><img src="{racine}blog/img/carte-${cle}.jpg" alt="${alt}" width="1600" height="900" loading="lazy"><figcaption>${credit} © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.</figcaption></figure>\n`;
+    const i = html.lastIndexOf('<ul class="liste">');
+    a[L] = { ...t, html: () => html.slice(0, i) + carte + html.slice(i) }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
   }
   return a;
 });
