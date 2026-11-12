@@ -1,6 +1,8 @@
 // Articles « température de l'eau » par lac, en quatre langues, écrits depuis les données de l'app :
 // plages suivies (spots.js) et type de modèle Alplakes (3D = une valeur devant chaque plage, 1D = une valeur pour tout le lac).
 import { SPOTS, LACS, lacDe, nomLac } from '../spots.js';
+import { LOCATIONS } from '../locations.js';
+import { texteLieu, villeDe } from '../traductions.js';
 
 const CLES = ['neuchatel', 'bienne', 'morat', 'gruyere', 'joux', 'zurich', 'lucerne', 'thoune', 'brienz', 'constance', 'lugano', 'majeur'];
 const SOURCES = [['Eawag, projet Alplakes', 'https://www.eawag.ch/fr/abteilung/surf/projekte/alplakes'], ['Alplakes, Eawag (CC BY 4.0)', 'https://www.alplakes.eawag.ch'],
@@ -133,6 +135,22 @@ const PHOTOS = {
   lugano: ['Lugano - Luganersee & Monte San Salvatore (2013).jpg', 'JoachimKohler-HB', BY_SA4, 1067, 'Le lac de Lugano et le Monte San Salvatore, à Lugano', 'Lake Lugano and Monte San Salvatore, in Lugano', 'Der Luganersee und der Monte San Salvatore in Lugano', 'Il lago di Lugano e il Monte San Salvatore, a Lugano'],
   majeur: ['Waterfront of Ascona from lake.jpg', 'Paradise Chronicle', BY_SA4, 1067, 'Le front de lac d’Ascona, vu du lac Majeur', 'The Ascona waterfront seen from Lake Maggiore', 'Die Seepromenade von Ascona, vom Lago Maggiore aus', 'Il lungolago di Ascona visto dal lago Maggiore'],
 };
+// Loueurs et saunas du lac (locations.js), insérés avant la dernière section de chaque article.
+const SAISON = { fr: 'de {a} à {b}', en: '{a} to {b}', de: 'von {a} bis {b}', it: 'da {a} a {b}' }, LOC = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
+const moisNom = (m, L) => new Date(2026, m - 1, 1).toLocaleDateString(LOC[L], { month: 'long' });
+const ITEM = (l, L) => `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${villeDe(l.ville, L)}${l.mois ? ` (${SAISON[L].replace('{a}', moisNom(l.mois[0], L)).replace('{b}', moisNom(l.mois[1], L))})` : ''}, ${{ fr: 'près de', en: 'near', de: 'bei', it: 'vicino a' }[L]} <a href="{plage:${l.spot}}">${SPOTS.find((x) => x.id === l.spot).nom}</a>${L === 'fr' ? ' : ' : ': '}${texteLieu(l, L, 'loc')}</li>`;
+const TITRES_LOC = {
+  fr: (du) => [`Louer sur l’eau ${du}`, `Saunas au bord ${du}`, 'Chaque fiche renvoie au site du loueur quand il existe. Horaires et prix changent : à confirmer auprès de lui.'],
+  en: (_, N) => [`Renting on ${N}`, `Saunas on ${N}`, 'Each entry links to the operator’s own website when there is one. Hours and prices change: check with them.'],
+  de: (_, N) => [`Mieten am ${N}`, `Saunas am ${N}`, 'Jeder Eintrag führt auf die Website des Anbieters, wenn es eine gibt. Öffnungszeiten und Preise ändern sich: beim Anbieter nachfragen.'],
+  it: (_, N) => [`Noleggio sul ${N}`, `Saune sul ${N}`, 'Ogni scheda rimanda al sito del gestore, quando esiste. Orari e prezzi cambiano: da confermare con lui.'],
+};
+function loueurs(cle, L, N, du) {
+  const ici = LOCATIONS.filter((l) => lacDe(SPOTS.find((x) => x.id === l.spot)) === cle);
+  const loue = ici.filter((l) => l.activites.some((a) => a !== 'sauna')), sauna = ici.filter((l) => l.activites.length === 1 && l.activites[0] === 'sauna');
+  const [tLoue, tSauna, note] = TITRES_LOC[L](du, N), liste = (a) => `<ul class="liste">\n${a.map((l) => ITEM(l, L)).join('\n')}\n</ul>`;
+  return (loue.length ? `<h2>${tLoue}</h2>\n<p>${note}</p>\n${liste(loue)}\n` : '') + (sauna.length ? `<h2>${tSauna}</h2>\n${loue.length ? '' : `<p>${note}</p>\n`}${liste(sauna)}\n` : '');
+}
 const OSM = { fr: 'contributeurs OpenStreetMap', en: 'OpenStreetMap contributors', de: 'OpenStreetMap-Mitwirkende', it: 'contributori di OpenStreetMap' };
 
 export const articlesLacs = (listePlages) => CLES.map((cle) => {
@@ -144,8 +162,10 @@ export const articlesLacs = (listePlages) => CLES.map((cle) => {
     const { alt, credit, html, ...t } = TEXTES[L](nomLac(cle, L), n, d3, listePlages((s) => lacDe(s) === cle, L));
     // La carte du lac, avant la liste des plages (dernier <ul class="liste"> de l'article).
     const carte = `<figure class="une"><img src="{racine}blog/img/carte-${cle}.jpg" alt="${alt}" width="1600" height="900" loading="lazy"><figcaption>${credit} © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.</figcaption></figure>\n`;
-    const i = html.lastIndexOf('<ul class="liste">');
-    a[L] = { ...t, html: () => html.slice(0, i) + carte + html.slice(i) }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
+    const i = html.lastIndexOf('<ul class="liste">'), avecCarte = html.slice(0, i) + carte + html.slice(i);
+    const j = avecCarte.lastIndexOf('<h2>'), du = L === 'fr' ? 'du ' + nomLac(cle, L).replace(/^L/, 'l') : L === 'it' ? 'del ' + nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L);
+    const complet = avecCarte.slice(0, j) + loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), du) + avecCarte.slice(j);
+    a[L] = { ...t, html: () => complet }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
   }
   return a;
 });

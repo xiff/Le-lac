@@ -69,5 +69,11 @@ Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors 
 - [ ] **Guides locaux du Léman** (12) : Lausanne, Riviera, La Côte, Lavaux, plages gratuites, familles, chiens, train, sable, plongeoirs, coucher de soleil, Rhône.
 - [ ] **Sécurité et santé** (10) : puces de canard, cyanobactéries, orages, feux de tempête, courants, eau libre, règles SSS, hypothermie. Sources officielles obligatoires.
 - [ ] **Activités** (9) : paddle par lac, bateau sans permis, kite à Silvaplana, wingfoil, kayak, traversées à la nage.
-- [ ] **SEO** : monlac.ch est déclaré dans Google Search Console et le sitemap est soumis (12 novembre 2026) ; suivre l'indexation et les requêtes dans quelques jours. Reste : inscrire la température du jour dans le HTML des pages de plage ;
+- [ ] **SEO** : monlac.ch est déclaré dans Google Search Console et le sitemap est soumis (12 novembre 2026) ; suivre l'indexation et les requêtes dans quelques jours. la température du matin est écrite dans le HTML des pages de plage depuis le 12 novembre 2026 (voir ci-dessous). Reste :
   demander un lien aux lieux listés (avec la prise de contact affiliation), aux offices du tourisme et aux clubs ; écrire d’abord en allemand pour les lacs alémaniques.
+
+## Fait le 12 novembre 2026 : loueurs dans le blog et température dans le HTML
+
+- [x] **Loueurs et saunas dans les articles « température par lac »** (neuchâtel, bienne, morat, gruyère, zurich, lucerne, lugano, majeur, constance) : sections « Louer sur l'eau » et « Saunas », générées depuis `locations.js`, dans les quatre langues. Aucun loueur pour Joux, Thoune et Brienz (non cherchés) : pas de section.
+- [x] **Température du matin dans le HTML des pages de plage (SEO)** : une phrase datée (« Le 12 novembre 2026, au matin : 12,1 °C à 70 cm… d'après le modèle Alplakes ») dans la section « D'où viennent ces chiffres » et à la fin de la meta description, en quatre langues. La valeur vient de `eau-jour.json`, figé une fois par jour par `scripts/eau-jour.mjs` (workflow `eau.yml`), pour que les 880 pages ne changent qu'une fois par jour et non toutes les 3 heures. Rien d'écrit pour les plages sans modèle d'eau ni si la valeur a plus de 6 h d'écart. À surveiller : le premier passage de l'action après 6 h UTC doit bien créer `eau-jour.json`.
+- [ ] Étendre la température du matin à la liste des plages (`plage/`) et aux articles « température par lac » (une phrase datée avec la valeur du lac).

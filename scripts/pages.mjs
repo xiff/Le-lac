@@ -1,13 +1,25 @@
 // Génère une page statique par plage (plage/<id>/index.html) et sitemap.xml, pour Google.
 // Les conditions du jour sont chargées en direct par plage/plage.js. Relancer quand spots.js ou lieux.js change.
-import { mkdir, writeFile } from 'node:fs/promises';
-import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { SPOTS, LACS, lacDe, REGIONS, nomLac, valeurProche } from '../spots.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG } from './blog.mjs';
 import { pied, langues } from './pied.mjs';
 
 const BASE = 'https://monlac.ch/';
+// Température du matin (6 h UTC) écrite dans le HTML : valeur figée une fois par jour (eau-jour.json), pour les moteurs qui n'exécutent pas le script.
+// Sans fichier, trop ancien ou sans valeur (valeurProche refuse un écart de plus de 6 h), on n'écrit rien plutôt qu'un chiffre périmé.
+const EAU_JOUR = await readFile(new URL('../eau-jour.json', import.meta.url), 'utf8').then((t) => JSON.parse(t)).catch(() => null);
+const MATIN = new Date(); MATIN.setUTCHours(6, 0, 0, 0);
+const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
+const matin = (s, langue) => {
+  const v = valeurProche(EAU_JOUR?.spots?.[s.id], MATIN.getTime());
+  if (v == null) return null;
+  const date = MATIN.toLocaleDateString(LOCALE[langue], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const deg = (langue === 'fr' || langue === 'it' ? v.toFixed(1).replace('.', ',') : v.toFixed(1)) + ' °C';
+  return { deg, texte: TXT[langue].matin(date, deg) };
+};
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 // Dossier de chaque langue sous plage/<id>/ ('' = français) et langues du site.
 const SUF = { fr: '', en: 'en/', de: 'de/', it: 'it/' }, LANGUES = Object.keys(SUF);
@@ -15,6 +27,7 @@ const dist = (a, b) => Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.l
 
 const TXT = {
   fr: {
+    matin: (d, v) => `Le ${d}, au matin : ${v} à 70 cm sous la surface, d’après le modèle Alplakes.`,
     titre: (n) => `Température de l’eau à ${n} aujourd’hui`, 
     desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
     yAller: 'Y aller', attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
@@ -28,6 +41,7 @@ const TXT = {
     liste: 'Toutes les plages', listeDesc: `Les ${SPOTS.length} plages suivies par Mon Lac sur 25 lacs suisses, du Léman au lac de Constance : température de l’eau, vent et verdict du jour, plage par plage.`, presentation: 'Présentation',
   },
   en: {
+    matin: (d, v) => `On ${d}, in the morning: ${v} at 70 cm below the surface, according to the Alplakes model.`,
     titre: (n) => `Water temperature at ${n} today`, 
     desc: (n, r, l) => `Water temperature at 70 cm at ${n} (${r === l ? l : `${r}, ${l}`}), wind, bise and today’s verdict for swimming, paddle and sailing. Updated every 3 hours.`,
     yAller: 'Get there', attente: 'Checking the lake…', eau: 'water at 70 cm', air: 'air', vent: 'wind km/h',
@@ -41,6 +55,7 @@ const TXT = {
     liste: 'All beaches', listeDesc: `The ${SPOTS.length} beaches followed by My Lake on 25 Swiss lakes, from Lake Geneva to Lake Constance: water temperature, wind and today’s verdict, beach by beach.`, presentation: 'About',
   },
   de: {
+    matin: (d, v) => `Am ${d}, am Morgen: ${v} in 70 cm Tiefe, laut dem Alplakes-Modell.`,
     titre: (n) => `Wassertemperatur in ${n} heute`,
     desc: (n, r, l) => `Wassertemperatur in 70 cm Tiefe in ${n} (${r === l ? l : `${r}, ${l}`}), Wind, Bise und Tagesurteil fürs Baden, Paddeln und Segeln. Alle 3 Stunden aktualisiert.`,
     yAller: 'Hinfahren', attente: 'Wir schauen auf den See…', eau: 'Wasser in 70 cm', air: 'Luft', vent: 'Wind km/h',
@@ -54,6 +69,7 @@ const TXT = {
     legende: 'Das Etikett neben jedem Badeplatz: die heutige Bewertung fürs Winterbaden.', lib: ['Nein', 'Naja', 'Gut', 'Perfekt'], hiver: 'Winterbaden',
   },
   it: {
+    matin: (d, v) => `Il ${d}, al mattino: ${v} a 70 cm sotto la superficie, secondo il modello Alplakes.`,
     titre: (n) => `Temperatura dell’acqua a ${n} oggi`,
     desc: (n, r, l) => `Temperatura dell’acqua a 70 cm a ${n} (${r === l ? l : `${r}, ${l}`}), vento, bise e verdetto del giorno per balneazione, paddle e vela. Aggiornata ogni 3 ore.`,
     yAller: 'Come arrivare', attente: 'Diamo un’occhiata al lago…', eau: 'acqua a 70 cm', air: 'aria', vent: 'vento km/h',
@@ -76,7 +92,7 @@ export function page(s, langue = 'fr') {
   const region = REGIONS[langue][s.region] ?? s.region;
   const urls = Object.fromEntries(LANGUES.map((l) => [l, `${BASE}plage/${s.id}/${SUF[l]}`])), url = urls[langue];
   const L = LACS[lacDe(s)], lac = nomLac(lacDe(s), langue);
-  const titre = t.titre(s.nom), desc = t.desc(s.nom, region, lac);
+  const titre = t.titre(s.nom), mat = matin(s, langue), desc = t.desc(s.nom, region, lac) + (mat ? ` ${mat.texte}` : '');
   const ld = { '@context': 'https://schema.org', '@type': 'Beach', name: s.nom, url, geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lon }, containedInPlace: { '@type': 'LakeBodyOfWater', name: lac } };
   const app = `${r}../../?lang=${langue}&plage=${s.id}`;
   return `<!doctype html>
@@ -135,7 +151,8 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(villeDe(l.ville, l
   </section>
 ` : ''}  <section aria-labelledby="t-don">
     <h2 id="t-don">${t.donnees}</h2>
-    <p>${esc(t.texte(s.nom, lac, L.eau?.modele))}</p>
+    ${mat ? `<p class="matin">${esc(mat.texte)}</p>
+    ` : ''}<p>${esc(t.texte(s.nom, lac, L.eau?.modele))}</p>
   </section>
 </main>
 ${pied(langue, r + '../../')}
