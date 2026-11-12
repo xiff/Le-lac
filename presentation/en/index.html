@@ -195,6 +195,12 @@
   .cta button { font: inherit; letter-spacing: inherit; height: 1.15em; padding: 0 .25em; border: 0; border-radius: 4px; background: var(--accent); color: var(--on-accent); cursor: pointer; vertical-align: baseline; transition: transform 160ms var(--ease-out); }
   .cta button:active { transform: scale(0.96); }
   .cta .apres { margin-top: 22px; }
+  .hero .promesse { display: block; margin-top: 14px; font-weight: 600; font-size: .95rem; }
+  .donnees h2 { margin-bottom: 32px; max-width: 18ch; }
+  .donnees ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 62ch; }
+  .donnees li { padding: 18px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+  .donnees li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+  .donnees b { font-weight: 700; }
 
   footer { margin-top: 30svh; padding: 0 var(--m); font-size: 12px; line-height: 1.5; color: var(--muted); }
   footer a { color: inherit; text-underline-offset: 2px; }
@@ -318,6 +324,7 @@
   .eau figure img, .hiver figure img, .duo figure img, .chillon .cadre { border-radius: 24px; }
 
   .compare h2 { font-size: clamp(40px, 4.4vw, 64px); max-width: 16ch; }
+  .donnees h2 { font-size: clamp(40px, 4.4vw, 64px); max-width: 16ch; }
   .tableau .tete .vals > :first-child { border-radius: 16px 16px 0 0; }
   .tableau .rangee:last-child .vals > :first-child { border-radius: 0 0 16px 16px; }
 
@@ -368,7 +375,7 @@
     <a class="marque" translate="no" href="../../?lang=en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>My Lake</a>
     <div class="colonne">
       <h1><span class="ligne"><span>Your lake,</span></span><span class="ligne"><span>beach by beach.</span></span></h1>
-      <p class="soutien apparait">Water at 70 cm, wind and bise at 220 beaches on 25 Swiss lakes, from Lake Geneva to Lake Constance, with a daily verdict: go or no go.</p>
+      <p class="soutien apparait">Water at 70 cm, wind and bise at 220 beaches on 25 Swiss lakes, from Lake Geneva to Lake Constance, with a daily verdict: go or no go.<span class="promesse">No account, no cookies, no ads.</span></p>
       <div class="actions apparait">
         <a class="bouton" href="../../?lang=en">Open the app</a>
         <a class="lien" href="#comment">How it works →</a>
@@ -495,6 +502,16 @@
     <figcaption>Chillon Castle. Photo Benjamin Gimmel, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Schweiz_Schloss_Chillon_Gesamtansicht.jpg">Wikimedia Commons</a>.</figcaption>
   </figure>
 
+  <section class="donnees" aria-labelledby="donnees-titre">
+    <h2 id="donnees-titre" class="entre">Your data stays yours</h2>
+    <ul class="entre">
+      <li><b>No account, no cookies, no ads.</b> You open the page, and that’s it.</li>
+      <li><b>Your choices stay on your device.</b> Your beach, language, activities, favourites and swim history are saved in your browser, not on our side.</li>
+      <li><b>Your location never leaves your phone.</b> “Find my beach” looks for the nearest one in your browser; the weather is requested with the beach’s coordinates, never yours.</li>
+      <li><b>Respectful audience measurement.</b> To know how many people use the site, we use Umami: no cookies, with data hosted in Europe.</li>
+    </ul>
+  </section>
+
   <section class="cta" aria-label="Open the app on a beach">
     <form action="../../" method="get" id="cta">
       <input type="hidden" name="lang" value="en">
@@ -507,7 +524,7 @@
 </main>
 
 <footer class="pied">
-  <span>Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.</span>
+  <span>Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.<br>No account, no cookies. Audience measurement by Umami, cookie-free, data hosted in Europe.</span>
   <div class="liens"><a href="../../presentation/en/">About</a><a href="../../plage/en/">All beaches</a><a href="../../blog/en/">Blog</a></div>
 </footer>
 <p class="credits">Photos under CC BY-SA licence, credits below each image.</p>

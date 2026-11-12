@@ -545,6 +545,42 @@
    "en": "`Temperature 70 cm below the surface. This morning on Lake Geneva, from ${deg(Math.min(...leman))} to ${deg(Math.max(...leman))}.`",
    "de": "`Temperatur in 70 cm Tiefe. Heute Morgen am Genfersee von ${deg(Math.min(...leman))} bis ${deg(Math.max(...leman))}.`",
    "it": "`Temperatura a 70 cm sotto la superficie. Questa mattina sul Lemano, da ${deg(Math.min(...leman))} a ${deg(Math.max(...leman))}.`"
+  },
+  {
+   "fr": "<span class=\"promesse\">Sans compte, sans cookie, sans publicité.</span>",
+   "en": "<span class=\"promesse\">No account, no cookies, no ads.</span>",
+   "de": "<span class=\"promesse\">Ohne Konto, ohne Cookies, ohne Werbung.</span>",
+   "it": "<span class=\"promesse\">Senza account, senza cookie, senza pubblicità.</span>"
+  },
+  {
+   "fr": "<h2 id=\"donnees-titre\" class=\"entre\">Tes données restent les tiennes</h2>",
+   "en": "<h2 id=\"donnees-titre\" class=\"entre\">Your data stays yours</h2>",
+   "de": "<h2 id=\"donnees-titre\" class=\"entre\">Deine Daten bleiben deine</h2>",
+   "it": "<h2 id=\"donnees-titre\" class=\"entre\">I tuoi dati restano tuoi</h2>"
+  },
+  {
+   "fr": "<li><b>Pas de compte, pas de cookie, pas de pub.</b> Tu ouvres la page, et c’est tout.</li>",
+   "en": "<li><b>No account, no cookies, no ads.</b> You open the page, and that’s it.</li>",
+   "de": "<li><b>Kein Konto, keine Cookies, keine Werbung.</b> Du öffnest die Seite, fertig.</li>",
+   "it": "<li><b>Nessun account, nessun cookie, nessuna pubblicità.</b> Apri la pagina, e basta.</li>"
+  },
+  {
+   "fr": "<li><b>Tes choix restent sur ton appareil.</b> Ta plage, ta langue, tes activités, tes favoris et ton historique de bains sont enregistrés dans ton navigateur, pas chez nous.</li>",
+   "en": "<li><b>Your choices stay on your device.</b> Your beach, language, activities, favourites and swim history are saved in your browser, not on our side.</li>",
+   "de": "<li><b>Deine Auswahl bleibt auf deinem Gerät.</b> Badeplatz, Sprache, Aktivitäten, Favoriten und Badeverlauf werden in deinem Browser gespeichert, nicht bei uns.</li>",
+   "it": "<li><b>Le tue scelte restano sul tuo dispositivo.</b> Spiaggia, lingua, attività, preferiti e storico dei bagni sono salvati nel tuo browser, non da noi.</li>"
+  },
+  {
+   "fr": "<li><b>Ta position ne quitte pas ton téléphone.</b> « Trouver ma plage » cherche la plus proche dans ton navigateur ; la météo est demandée avec les coordonnées de la plage, jamais avec les tiennes.</li>",
+   "en": "<li><b>Your location never leaves your phone.</b> “Find my beach” looks for the nearest one in your browser; the weather is requested with the beach’s coordinates, never yours.</li>",
+   "de": "<li><b>Dein Standort verlässt dein Handy nicht.</b> «Meinen Badeplatz finden» sucht den nächsten in deinem Browser; das Wetter wird mit den Koordinaten des Badeplatzes abgefragt, nie mit deinen.</li>",
+   "it": "<li><b>La tua posizione non lascia il tuo telefono.</b> «Trova la mia spiaggia» cerca la più vicina nel tuo browser; il meteo viene richiesto con le coordinate della spiaggia, mai con le tue.</li>"
+  },
+  {
+   "fr": "<li><b>Une mesure d’audience respectueuse.</b> Pour savoir combien de personnes utilisent le site, on utilise Umami : sans cookie, avec des données hébergées en Europe.</li>",
+   "en": "<li><b>Respectful audience measurement.</b> To know how many people use the site, we use Umami: no cookies, with data hosted in Europe.</li>",
+   "de": "<li><b>Eine respektvolle Besuchermessung.</b> Um zu wissen, wie viele Menschen die Seite nutzen, verwenden wir Umami: ohne Cookies, mit Daten, die in Europa gehostet werden.</li>",
+   "it": "<li><b>Una misurazione del pubblico rispettosa.</b> Per sapere quante persone usano il sito, usiamo Umami: senza cookie, con dati ospitati in Europa.</li>"
   }
  ],
  "faq": {

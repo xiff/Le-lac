@@ -195,6 +195,12 @@
   .cta button { font: inherit; letter-spacing: inherit; height: 1.15em; padding: 0 .25em; border: 0; border-radius: 4px; background: var(--accent); color: var(--on-accent); cursor: pointer; vertical-align: baseline; transition: transform 160ms var(--ease-out); }
   .cta button:active { transform: scale(0.96); }
   .cta .apres { margin-top: 22px; }
+  .hero .promesse { display: block; margin-top: 14px; font-weight: 600; font-size: .95rem; }
+  .donnees h2 { margin-bottom: 32px; max-width: 18ch; }
+  .donnees ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 62ch; }
+  .donnees li { padding: 18px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+  .donnees li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+  .donnees b { font-weight: 700; }
 
   footer { margin-top: 30svh; padding: 0 var(--m); font-size: 12px; line-height: 1.5; color: var(--muted); }
   footer a { color: inherit; text-underline-offset: 2px; }
@@ -318,6 +324,7 @@
   .eau figure img, .hiver figure img, .duo figure img, .chillon .cadre { border-radius: 24px; }
 
   .compare h2 { font-size: clamp(40px, 4.4vw, 64px); max-width: 16ch; }
+  .donnees h2 { font-size: clamp(40px, 4.4vw, 64px); max-width: 16ch; }
   .tableau .tete .vals > :first-child { border-radius: 16px 16px 0 0; }
   .tableau .rangee:last-child .vals > :first-child { border-radius: 0 0 16px 16px; }
 
@@ -368,7 +375,7 @@
     <a class="marque" translate="no" href="../../?lang=it"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>Il mio lago</a>
     <div class="colonne">
       <h1><span class="ligne"><span>Il tuo lago,</span></span><span class="ligne"><span>spiaggia per spiaggia.</span></span></h1>
-      <p class="soutien apparait">Acqua a 70 cm, vento e bise in 220 spiagge di 25 laghi svizzeri, dal Lemano al lago di Costanza, con un verdetto del giorno: si va o non si va.</p>
+      <p class="soutien apparait">Acqua a 70 cm, vento e bise in 220 spiagge di 25 laghi svizzeri, dal Lemano al lago di Costanza, con un verdetto del giorno: si va o non si va.<span class="promesse">Senza account, senza cookie, senza pubblicità.</span></p>
       <div class="actions apparait">
         <a class="bouton" href="../../?lang=it">Apri l’app</a>
         <a class="lien" href="#comment">Come funziona →</a>
@@ -495,6 +502,16 @@
     <figcaption>Il castello di Chillon. Foto Benjamin Gimmel, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Schweiz_Schloss_Chillon_Gesamtansicht.jpg">Wikimedia Commons</a>.</figcaption>
   </figure>
 
+  <section class="donnees" aria-labelledby="donnees-titre">
+    <h2 id="donnees-titre" class="entre">I tuoi dati restano tuoi</h2>
+    <ul class="entre">
+      <li><b>Nessun account, nessun cookie, nessuna pubblicità.</b> Apri la pagina, e basta.</li>
+      <li><b>Le tue scelte restano sul tuo dispositivo.</b> Spiaggia, lingua, attività, preferiti e storico dei bagni sono salvati nel tuo browser, non da noi.</li>
+      <li><b>La tua posizione non lascia il tuo telefono.</b> «Trova la mia spiaggia» cerca la più vicina nel tuo browser; il meteo viene richiesto con le coordinate della spiaggia, mai con le tue.</li>
+      <li><b>Una misurazione del pubblico rispettosa.</b> Per sapere quante persone usano il sito, usiamo Umami: senza cookie, con dati ospitati in Europa.</li>
+    </ul>
+  </section>
+
   <section class="cta" aria-label="Apri l’app su una spiaggia">
     <form action="../../" method="get" id="cta">
       <input type="hidden" name="lang" value="it">
@@ -507,7 +524,7 @@
 </main>
 
 <footer class="pied">
-  <span>Meteo <a href="https://open-meteo.com">Open-Meteo</a> · acqua a 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modello aggiornato ogni 3 ore.<br>Solo a titolo indicativo: l’ultima parola spetta sempre al lago.</span>
+  <span>Meteo <a href="https://open-meteo.com">Open-Meteo</a> · acqua a 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modello aggiornato ogni 3 ore.<br>Solo a titolo indicativo: l’ultima parola spetta sempre al lago.<br>Senza account né cookie. Misurazione del pubblico con Umami, senza cookie, dati ospitati in Europa.</span>
   <div class="liens"><a href="../../presentation/it/">Informazioni</a><a href="../../plage/it/">Tutte le spiagge</a><a href="../../blog/it/">Blog</a></div>
 </footer>
 <p class="credits">Foto con licenza CC BY-SA, crediti sotto ogni immagine.</p>

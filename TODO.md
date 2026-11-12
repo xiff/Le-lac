@@ -31,7 +31,8 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 ## Respect de l’utilisateur
 
-- [ ] **Mettre en avant que monlac.ch respecte l’utilisateur** : aucun cookie, aucun compte, pas de publicité, mesure d’audience Umami hébergée en Europe, sans cookie ni suivi individuel. À dire clairement et sans jargon : une ligne sous le titre de la page « À propos », un encadré « Vos données » (quoi, pourquoi, où) dans la présentation et l'app, dans les quatre langues, et un mot dans le pied de page. Ne rien affirmer que les faits ne soutiennent pas (par exemple ne pas écrire « aucune donnée collectée » : Umami compte les visites).
+- [x] **Mettre en avant que monlac.ch respecte l’utilisateur** (12 novembre 2026) : « Sans compte, sans cookie, sans publicité » sous l’accroche de la présentation, section « Tes données restent les tiennes » (4 points : ni compte ni cookie, choix gardés sur l’appareil, position qui ne quitte pas le téléphone, Umami sans cookie hébergé en Europe) et une ligne dans le pied de page de l’app et de toutes les pages, en quatre langues. Chaque point a été vérifié dans le code (localStorage, géolocalisation calculée dans le navigateur, météo demandée avec les coordonnées de la plage).
+- [ ] À faire plus tard, si vous le voulez : une page « Confidentialité » complète (liste précise des services tiers : Open-Meteo, Alplakes, existenz.ch, Umami) et un lien depuis le pied de page.
 
 ## Mesure d’audience
 
