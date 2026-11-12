@@ -65,6 +65,20 @@ const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype ht
 <link rel="canonical" href="${url}">
 ${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${alt.fr}">
+<script>
+// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
+(() => { try {
+  const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
+  addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
+  let voulue = localStorage.getItem('langue');
+  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
+  sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
+  const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
+  if (autre) location.replace(new URL(autre.href).pathname + location.search + location.hash);
+} catch {} })();
+</script>
 <meta property="og:type" content="${type}">
 <meta property="og:title" content="${esc(titre)}">
 <meta property="og:description" content="${esc(desc)}">

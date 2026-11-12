@@ -11,6 +11,20 @@
 <link rel="alternate" hreflang="de" href="https://monlac.ch/blog/temperature-lac-brienz/de/">
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-brienz/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-brienz/">
+<script>
+// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
+(() => { try {
+  const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
+  addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
+  let voulue = localStorage.getItem('langue');
+  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
+  sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
+  const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
+  if (autre) location.replace(new URL(autre.href).pathname + location.search + location.hash);
+} catch {} })();
+</script>
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lake Brienz water temperature today, and where the figure comes from · My Lake">
 <meta property="og:description" content="Lake Brienz water temperature 70 cm below the surface, for the 4 beaches we follow, updated every three hours. Where the figure comes from and what it does not tell you.">
