@@ -11,7 +11,7 @@ const TEXTES = {
 };
 // Sélecteur de langue du haut de page : sigle (EN, DE…), nom complet en title et aria-label.
 export function langues(L, versLangues) {
-  return `<nav class="langues" aria-label="${{ fr: 'Langue', en: 'Language', de: 'Sprache', it: 'Lingua' }[L]}">${Object.entries(versLangues).filter(([l]) => l !== L)
+  return `<nav class="langues" translate="no" aria-label="${{ fr: 'Langue', en: 'Language', de: 'Sprache', it: 'Lingua' }[L]}">${Object.entries(versLangues).filter(([l]) => l !== L)
     .map(([l, href]) => `<a href="${href}" hreflang="${l}" lang="${l}" title="${NOMS[l]}" aria-label="${NOMS[l]}">${l.toUpperCase()}</a>`).join('')}</nav>`;
 }
 export function pied(L, r) {
