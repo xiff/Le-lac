@@ -2,6 +2,7 @@
 // plages suivies (spots.js) et type de modèle Alplakes (3D = une valeur devant chaque plage, 1D = une valeur pour tout le lac).
 import { SPOTS, LACS, lacDe, nomLac } from '../spots.js';
 import { LOCATIONS } from '../locations.js';
+import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
 import { texteLieu, villeDe } from '../traductions.js';
 
 const CLES = ['neuchatel', 'bienne', 'morat', 'gruyere', 'joux', 'zurich', 'lucerne', 'thoune', 'brienz', 'constance', 'lugano', 'majeur'];
@@ -145,6 +146,19 @@ const TITRES_LOC = {
   de: (_, N) => [`Mieten am ${N}`, `Saunas am ${N}`, 'Jeder Eintrag führt auf die Website des Anbieters, wenn es eine gibt. Öffnungszeiten und Preise ändern sich: beim Anbieter nachfragen.'],
   it: (_, N) => [`Noleggio sul ${N}`, `Saune sul ${N}`, 'Ogni scheda rimanda al sito del gestore, quando esiste. Orari e prezzi cambiano: da confermare con lui.'],
 };
+// Phrase datée de la valeur du matin pour le lac (une plage ou un intervalle selon les plages) ; null sans donnée récente.
+const MATIN_LAC = {
+  fr: (d, a, b, d3) => `Le ${d}, au matin, l’eau ${a === b ? `était à ${a}${d3 ? '' : ' pour l’ensemble du lac'}` : `allait de ${a} à ${b} selon la plage`} (70 cm sous la surface, modèle Alplakes).`,
+  en: (d, a, b, d3) => `On ${d}, in the morning, the water ${a === b ? `was at ${a}${d3 ? '' : ' for the whole lake'}` : `ranged from ${a} to ${b} depending on the beach`} (70 cm below the surface, Alplakes model).`,
+  de: (d, a, b, d3) => `Am ${d} lag das Wasser am Morgen ${a === b ? `bei ${a}${d3 ? '' : ' für den ganzen See'}` : `je nach Badeplatz zwischen ${a} und ${b}`} (70 cm unter der Oberfläche, Alplakes-Modell).`,
+  it: (d, a, b, d3) => `Il ${d}, al mattino, l’acqua ${a === b ? `era a ${a}${d3 ? '' : ' per tutto il lago'}` : `andava da ${a} a ${b} secondo la spiaggia`} (70 cm sotto la superficie, modello Alplakes).`,
+};
+function matinLac(cle, L, d3) {
+  const v = SPOTS.filter((s) => lacDe(s) === cle).map((s) => valeurMatin(s.id)).filter((x) => x != null);
+  if (!v.length) return '';
+  const [a, b] = [degMatin(Math.min(...v), L), degMatin(Math.max(...v), L)];
+  return `<p class="matin">${MATIN_LAC[L](dateMatin(L), a, b, d3)}</p>\n`;
+}
 function loueurs(cle, L, N, du) {
   const ici = LOCATIONS.filter((l) => lacDe(SPOTS.find((x) => x.id === l.spot)) === cle);
   const loue = ici.filter((l) => l.activites.some((a) => a !== 'sauna')), sauna = ici.filter((l) => l.activites.length === 1 && l.activites[0] === 'sauna');
@@ -165,7 +179,8 @@ export const articlesLacs = (listePlages) => CLES.map((cle) => {
     const i = html.lastIndexOf('<ul class="liste">'), avecCarte = html.slice(0, i) + carte + html.slice(i);
     const j = avecCarte.lastIndexOf('<h2>'), du = L === 'fr' ? 'du ' + nomLac(cle, L).replace(/^L/, 'l') : L === 'it' ? 'del ' + nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L);
     const complet = avecCarte.slice(0, j) + loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), du) + avecCarte.slice(j);
-    a[L] = { ...t, html: () => complet }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
+    const k0 = complet.indexOf('<h2>'), avecMatin = complet.slice(0, k0) + matinLac(cle, L, d3) + complet.slice(k0);
+    a[L] = { ...t, html: () => avecMatin }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
   }
   return a;
 });

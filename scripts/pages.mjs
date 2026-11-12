@@ -1,24 +1,20 @@
 // Génère une page statique par plage (plage/<id>/index.html) et sitemap.xml, pour Google.
 // Les conditions du jour sont chargées en direct par plage/plage.js. Relancer quand spots.js ou lieux.js change.
-import { mkdir, writeFile, readFile } from 'node:fs/promises';
-import { SPOTS, LACS, lacDe, REGIONS, nomLac, valeurProche } from '../spots.js';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
+import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG } from './blog.mjs';
 import { pied, langues } from './pied.mjs';
 
 const BASE = 'https://monlac.ch/';
-// Température du matin (6 h UTC) écrite dans le HTML : valeur figée une fois par jour (eau-jour.json), pour les moteurs qui n'exécutent pas le script.
-// Sans fichier, trop ancien ou sans valeur (valeurProche refuse un écart de plus de 6 h), on n'écrit rien plutôt qu'un chiffre périmé.
-const EAU_JOUR = await readFile(new URL('../eau-jour.json', import.meta.url), 'utf8').then((t) => JSON.parse(t)).catch(() => null);
-const MATIN = new Date(); MATIN.setUTCHours(6, 0, 0, 0);
-const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
+// Phrase du matin d'une plage (voir matin.mjs) ; null sans valeur récente.
 const matin = (s, langue) => {
-  const v = valeurProche(EAU_JOUR?.spots?.[s.id], MATIN.getTime());
+  const v = valeurMatin(s.id);
   if (v == null) return null;
-  const date = MATIN.toLocaleDateString(LOCALE[langue], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  const deg = (langue === 'fr' || langue === 'it' ? v.toFixed(1).replace('.', ',') : v.toFixed(1)) + ' °C';
-  return { deg, texte: TXT[langue].matin(date, deg) };
+  const deg = degMatin(v, langue);
+  return { deg, texte: TXT[langue].matin(dateMatin(langue), deg) };
 };
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 // Dossier de chaque langue sous plage/<id>/ ('' = français) et langues du site.
@@ -27,6 +23,7 @@ const dist = (a, b) => Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.l
 
 const TXT = {
   fr: {
+    matinListe: (d, a, na, b, nb) => `Le ${d}, au matin, l’eau allait de ${a} (${na}) à ${b} (${nb}), à 70 cm sous la surface, d’après le modèle Alplakes.`,
     matin: (d, v) => `Le ${d}, au matin : ${v} à 70 cm sous la surface, d’après le modèle Alplakes.`,
     titre: (n) => `Température de l’eau à ${n} aujourd’hui`, 
     desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
@@ -41,6 +38,7 @@ const TXT = {
     liste: 'Toutes les plages', listeDesc: `Les ${SPOTS.length} plages suivies par Mon Lac sur 25 lacs suisses, du Léman au lac de Constance : température de l’eau, vent et verdict du jour, plage par plage.`, presentation: 'Présentation',
   },
   en: {
+    matinListe: (d, a, na, b, nb) => `On ${d}, in the morning, the water ranged from ${a} (${na}) to ${b} (${nb}), 70 cm below the surface, according to the Alplakes model.`,
     matin: (d, v) => `On ${d}, in the morning: ${v} at 70 cm below the surface, according to the Alplakes model.`,
     titre: (n) => `Water temperature at ${n} today`, 
     desc: (n, r, l) => `Water temperature at 70 cm at ${n} (${r === l ? l : `${r}, ${l}`}), wind, bise and today’s verdict for swimming, paddle and sailing. Updated every 3 hours.`,
@@ -55,6 +53,7 @@ const TXT = {
     liste: 'All beaches', listeDesc: `The ${SPOTS.length} beaches followed by My Lake on 25 Swiss lakes, from Lake Geneva to Lake Constance: water temperature, wind and today’s verdict, beach by beach.`, presentation: 'About',
   },
   de: {
+    matinListe: (d, a, na, b, nb) => `Am ${d} reichte das Wasser am Morgen von ${a} (${na}) bis ${b} (${nb}), in 70 cm Tiefe, laut dem Alplakes-Modell.`,
     matin: (d, v) => `Am ${d}, am Morgen: ${v} in 70 cm Tiefe, laut dem Alplakes-Modell.`,
     titre: (n) => `Wassertemperatur in ${n} heute`,
     desc: (n, r, l) => `Wassertemperatur in 70 cm Tiefe in ${n} (${r === l ? l : `${r}, ${l}`}), Wind, Bise und Tagesurteil fürs Baden, Paddeln und Segeln. Alle 3 Stunden aktualisiert.`,
@@ -69,6 +68,7 @@ const TXT = {
     legende: 'Das Etikett neben jedem Badeplatz: die heutige Bewertung fürs Winterbaden.', lib: ['Nein', 'Naja', 'Gut', 'Perfekt'], hiver: 'Winterbaden',
   },
   it: {
+    matinListe: (d, a, na, b, nb) => `Il ${d}, al mattino, l’acqua andava da ${a} (${na}) a ${b} (${nb}), a 70 cm sotto la superficie, secondo il modello Alplakes.`,
     matin: (d, v) => `Il ${d}, al mattino: ${v} a 70 cm sotto la superficie, secondo il modello Alplakes.`,
     titre: (n) => `Temperatura dell’acqua a ${n} oggi`,
     desc: (n, r, l) => `Temperatura dell’acqua a 70 cm a ${n} (${r === l ? l : `${r}, ${l}`}), vento, bise e verdetto del giorno per balneazione, paddle e vela. Aggiornata ogni 3 ore.`,
@@ -163,6 +163,13 @@ ${pied(langue, r + '../../')}
 }
 
 // Liste de toutes les plages par région : plage/ (français) et plage/en/ (anglais).
+// Plage la plus froide et la plus chaude du matin, sur tout le site.
+const extremesMatin = (langue) => {
+  const v = SPOTS.map((s) => [s, valeurMatin(s.id)]).filter(([, x]) => x != null).sort((x, y) => x[1] - y[1]);
+  if (v.length < 2) return null;
+  const [a, b] = [v[0], v.at(-1)];
+  return TXT[langue].matinListe(dateMatin(langue), degMatin(a[1], langue), a[0].nom, degMatin(b[1], langue), b[0].nom);
+};
 export function liste(langue = 'fr') {
   const t = TXT[langue], sfx = SUF[langue], r = sfx ? '../' : '', fr = langue === 'fr';
   const regions = [...new Set(SPOTS.map((s) => s.region))];
@@ -191,6 +198,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}plage/$
   <div class="haut"><a class="marque" translate="no" href="${r}../?lang=${langue}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.app}</a>${langues(langue, Object.fromEntries(LANGUES.map((l) => [l, r + SUF[l]])))}</div>
   <h1>${t.liste}</h1>
   <p class="chapo">${esc(t.listeDesc)}</p>
+${extremesMatin(langue) ? `  <p class="chapo matin">${esc(extremesMatin(langue))}</p>\n` : ''}
   <form class="cherche" id="cherche" action="${r}../" method="get" role="search">
     <input type="hidden" name="lang" value="${langue}">
     <label for="q">${t.cherche}</label>
