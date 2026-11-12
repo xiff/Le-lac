@@ -6,7 +6,8 @@
 - [ ] **Icônes** : choisir les icônes définitives de la baignade et de la sortie en bateau.
 - [ ] **Vérification mensuelle des lieux** : relier le dépôt à la tâche planifiée dans claude.ai.
 - [ ] **Coordonnées à confirmer** : Corsier-Port et Thonon – Saint-Disdille.
-- [ ] **Autres lacs** : bars et restos ajoutés (109 adresses au total sur 25 lacs) ; reste les loueurs autour des lacs de Neuchâtel, Bienne, Morat, la Gruyère, Sion, Lugano et Majeur.
+- [x] **Autres lacs** (12 novembre 2026) : 109 bars et restos, et 21 loueurs ajoutés (Neuchâtel 5, Bienne 4, Morat 1, Gruyère 3, Sion 2, Lugano 3, Majeur 4), chacun avec une source. Sources à fiabilité moyenne (annuaires torpille.ch, search.ch) pour Les Vikings, Alphasurf, Club Y-Plage, Domaine des Îles et Oasis : à remplacer par le site du loueur quand on le trouve.
+  - [ ] Pas encore couverts : Cudrefin, Grandson (Nautic Plus : mentionné, sans page vérifiable), Brissago, Locarno côté kayak, le lac de Joux (aucun loueur cherché), RIVABIANCA à Lugano (lieu non confirmé), Kayak Lugano, Canoës Gruyère à Pont-en-Ogoz (fiche peu fiable). Horaires et prix non vérifiés : à confirmer auprès des loueurs, dans la prise de contact « affiliation ».
 - [ ] **Android / Play Store** : régénérer l’APK pour monlac.ch, publier `.well-known/assetlinks.json` avec l’empreinte de la clé.
 
 ## Nouveaux lacs (Suisse), par priorité
