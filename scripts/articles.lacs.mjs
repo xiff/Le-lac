@@ -159,7 +159,7 @@ function matinLac(cle, L, d3) {
   const [a, b] = [degMatin(Math.min(...v), L), degMatin(Math.max(...v), L)];
   return `<p class="matin">${MATIN_LAC[L](dateMatin(L), a, b, d3)}</p>\n`;
 }
-function loueurs(cle, L, N, du) {
+export function loueurs(cle, L, N, du) {
   const ici = LOCATIONS.filter((l) => lacDe(SPOTS.find((x) => x.id === l.spot)) === cle);
   const loue = ici.filter((l) => l.activites.some((a) => a !== 'sauna')), sauna = ici.filter((l) => l.activites.length === 1 && l.activites[0] === 'sauna');
   const [tLoue, tSauna, note] = TITRES_LOC[L](du, N), liste = (a) => `<ul class="liste">\n${a.map((l) => ITEM(l, L)).join('\n')}\n</ul>`;
@@ -167,6 +167,8 @@ function loueurs(cle, L, N, du) {
 }
 const OSM = { fr: 'contributeurs OpenStreetMap', en: 'OpenStreetMap contributors', de: 'OpenStreetMap-Mitwirkende', it: 'contributori di OpenStreetMap' };
 
+// « du lac de Neuchâtel », « del lago Maggiore », nom seul en anglais et en allemand : le tour de phrase de chaque langue.
+export const duLac = (cle, L) => L === 'fr' ? 'du ' + nomLac(cle, L).replace(/^L/, 'l') : L === 'it' ? 'del ' + nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L);
 export const articlesLacs = (listePlages) => CLES.map((cle) => {
   const n = SPOTS.filter((s) => lacDe(s) === cle).length, d3 = LACS[cle].eau.modele !== 'simstrat';
   const [fichier, auteur, licence, hauteur, ...legendes] = PHOTOS[cle], LL = ['fr', 'en', 'de', 'it'];

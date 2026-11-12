@@ -9,11 +9,14 @@ import { CONTOURS } from '../contours.js';
 const L = 1600, H = 900, M = 110;
 const nav = await chromium.launch(), page = await nav.newPage({ viewport: { width: L, height: H } });
 const contour = (lac) => lac === 'leman' ? TOUR.map((id) => SPOTS.find((s) => s.id === id)) // le Léman est tracé par ses plages, comme dans l'app
-  : CONTOURS[lac].filter(([, lat]) => lat >= (LACS[lac].carteSud ?? -90)).map(([lon, lat]) => ({ lon, lat }));
+  : CONTOURS[lac]?.filter(([, lat]) => lat >= (LACS[lac].carteSud ?? -90)).map(([lon, lat]) => ({ lon, lat })) ?? null; // null : pas de contour OpenStreetMap, on ne trace que les plages
 const saunas = (f = () => true) => LOCATIONS.filter((l) => l.activites.includes('sauna') && f(l)).map((l) => SPOTS.find((s) => s.id === l.spot));
 // Une carte : un ou plusieurs lacs, les plages (points blancs) et, si demandé, les plages proches d'un sauna (points orange).
-async function carte(fichier, lacs, { plages = true, sauna } = {}) {
-  const formes = lacs.map(contour), tous = formes.flat(), dans = (s) => lacs.includes(lacDe(s));
+async function carte(fichier, lacs, { plages = true, sauna, noms = false } = {}) {
+  const dans = (s) => lacs.includes(lacDe(s)), formes = lacs.map(contour).filter(Boolean), tous = formes.length ? formes.flat() : [...SPOTS.filter(dans)];
+  // Peu de plages, très proches (Bret, Brenets, Silvaplana…) : on cadre sur quelques kilomètres plutôt que sur un point.
+  const etendue = Math.max(...tous.map((q) => q.lon)) - Math.min(...tous.map((q) => q.lon));
+  if (etendue < 0.02) { const m = tous[0]; tous.push({ lon: m.lon - 0.02, lat: m.lat - 0.012 }, { lon: m.lon + 0.02, lat: m.lat + 0.012 }); }
   let p = projeter(L - 2 * M, tous), k = Math.min(1, (H - 2 * M) / p.hauteur); // tient en hauteur comme en largeur
   if (k < 1) p = projeter((L - 2 * M) * k, tous);
   const dx = (L - (L - 2 * M) * k) / 2, dy = (H - p.hauteur) / 2, xy = (s) => { const [a, b] = p.xy(s); return [(a + dx).toFixed(1), (b + dy).toFixed(1)]; };
@@ -21,11 +24,14 @@ async function carte(fichier, lacs, { plages = true, sauna } = {}) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${L}" height="${H}"><rect width="100%" height="100%" fill="#f3f7fa"/>
 ${formes.map((f) => `<path d="M${f.map((x) => xy(x).join(',')).join('L')}Z" fill="#bcdcf0" stroke="#2f7fb8" stroke-width="3" stroke-linejoin="round"/>`).join('')}
 ${plages ? SPOTS.filter(dans).map((s) => point(s, '#fff', '#0f4c75', 11)).join('') : ''}
+${noms ? SPOTS.filter(dans).map((s) => { const [x, y] = xy(s); return `<text x="${+x + 22}" y="${+y + 8}" font-family="Onest, Arial, sans-serif" font-size="30" font-weight="600" fill="#10292f">${s.nom.replace(/&/g, '&amp;')}</text>`; }).join('') : ''}
 ${sauna ? saunas(sauna).filter(dans).map((s) => point(s, '#f4a261', '#9c4a12', 14)).join('') : ''}</svg>`;
   await page.setContent(`<body style="margin:0">${svg}</body>`);
   await page.screenshot({ path: `blog/img/${fichier}.jpg`, type: 'jpeg', quality: 86 });
 }
 for (const lac of Object.keys(CONTOURS)) await carte(`carte-${lac}`, [lac]);
+// Articles « Où se baigner » : toutes les plages du lac (avec leur nom quand il y en a peu) ; sans contour, les plages seules.
+for (const lac of Object.keys(LACS).filter((l) => l !== 'leman')) await carte(`plages-${lac}`, [lac], { noms: SPOTS.filter((s) => lacDe(s) === lac).length <= 4 });
 const bateau = (l) => l.activites.includes('bateau') || /floss/i.test(l.nom); // bateaux-saunas et radeaux-saunas
 await carte('saunas-leman', ['leman'], { plages: false, sauna: () => true });
 await carte('saunas-flottants', ['leman', 'bienne', 'zurich', 'lucerne'], { plages: false, sauna: bateau });

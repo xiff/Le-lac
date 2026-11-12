@@ -64,7 +64,9 @@ Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors 
   saunas du lac de Zurich, bain d’hiver dans les Trois-Lacs, bain d’hiver à Zurich.
 - [ ] **Bain d’hiver, seconde moitié** (5) : clubs et rendez-vous, bienfaits (études à citer), respiration, programme de 4 semaines, néoprène.
   Sources médicales ou officielles obligatoires, et une photo libre par article (workflow `photos.yml`).
-- [ ] **« Où se baigner » par lac** (24), à mettre en ligne avant mars.
+- [x] **« Où se baigner » par lac** (24 articles × 4 langues, 12 novembre 2026) : générés par `scripts/articles.baignade.mjs` depuis les données de l'app (plages avec la température du matin, bars et restos, loueurs, saunas) et des chiffres de Wikipédia (surface, profondeur, altitude ; un chiffre contesté entre sources n'est pas écrit : surface de Joux et de Bret, profondeur de Bret et des Brenets, altitude de Zoug). Carte propre à chaque article (`plages-<lac>.jpg`). Les lacs à une seule plage (Bret, Brenets, Ägeri, Silvaplana, Sion) donnent des pages courtes : à étoffer avec des sources (office du tourisme, commune) avant de les promouvoir.
+  - [ ] Photos Wikimedia Commons pour ces 24 articles (aujourd'hui une carte en tête, la photo du lac est déjà dans l'article « température » pour 12 lacs).
+  - [ ] Faits locaux sourcés par lac (plage gratuite ou payante, saison des bains surveillés, accès en train) : à chercher à l'office du tourisme de chaque lac ; l'article n'en affirme aucun pour l'instant.
 - [ ] **Comprendre le lac** (10) : vents, foehn, chute brutale de température, seiches, brassage, niveau, lacs les plus chauds et les plus froids.
 - [ ] **Guides locaux du Léman** (12) : Lausanne, Riviera, La Côte, Lavaux, plages gratuites, familles, chiens, train, sable, plongeoirs, coucher de soleil, Rhône.
 - [ ] **Sécurité et santé** (10) : puces de canard, cyanobactéries, orages, feux de tempête, courants, eau libre, règles SSS, hypothermie. Sources officielles obligatoires.

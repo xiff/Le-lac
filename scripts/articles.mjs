@@ -7,6 +7,7 @@ import { creerDe } from './articles.de.mjs';
 import { creerIt } from './articles.it.mjs';
 import { articlesLacs } from './articles.lacs.mjs';
 import { articlesSaunas } from './articles.saunas.mjs';
+import { articlesBaignade } from './articles.baignade.mjs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 
@@ -689,24 +690,36 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages));
-// Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 11 novembre 2026.
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade());
+// Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 12 novembre 2026.
 const DATES = {
-  'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'temperature-lac-neuchatel': ['2026-10-28'],
+  'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28'],
+  'temperature-lac-neuchatel': ['2026-10-28'], 'plages-lac-neuchatel': ['2026-10-28'],
   'saunas-bord-du-leman': ['2026-10-29'], 'buvettes-restaurants-bord-du-leman': ['2026-10-29', '2026-11-01'],
-  'temperature-lac-zurich': ['2026-10-30'], 'bise-leman': ['2026-10-30', '2026-11-02'],
-  'temperature-lac-lugano': ['2026-10-31'], 'bain-d-hiver-leman': ['2026-10-31', '2026-11-03'],
-  'paddle-leman': ['2026-11-01', '2026-11-04'], 'temperature-lac-bienne': ['2026-11-01'],
-  'plages-geneve': ['2026-11-02', '2026-11-05'], 'bain-d-hiver-zurich': ['2026-11-02'],
+  'plages-lac-lugano': ['2026-10-29'], 'temperature-lac-zurich': ['2026-10-30'],
+  'plages-lac-bienne': ['2026-10-30'], 'bise-leman': ['2026-10-30', '2026-11-02'],
+  'plages-lac-thoune': ['2026-10-30'], 'temperature-lac-lugano': ['2026-10-31'],
+  'plages-lac-joux': ['2026-10-31'], 'bain-d-hiver-leman': ['2026-10-31', '2026-11-03'],
+  'paddle-leman': ['2026-11-01', '2026-11-04'], 'plages-lac-constance': ['2026-11-01'],
+  'temperature-lac-bienne': ['2026-11-01'], 'plages-lac-morat': ['2026-11-02'],
+  'plages-geneve': ['2026-11-02', '2026-11-05'], 'plages-lac-majeur': ['2026-11-02'],
+  'bain-d-hiver-zurich': ['2026-11-02'], 'plages-lac-lucerne': ['2026-11-03'],
   'temperature-lac-thoune': ['2026-11-03'], 'kitesurf-windsurf-wingfoil-leman': ['2026-11-03'],
-  'temperature-lac-gruyere': ['2026-11-04'], 'materiel-bain-d-hiver': ['2026-11-04', '2026-11-07'],
-  'saunas-lac-de-zurich': ['2026-11-05'], 'temperature-lac-leman': ['2026-11-05'],
-  'temperature-lac-constance': ['2026-11-06'], 'plages-leman-rive-francaise': ['2026-11-06', '2026-11-09'],
-  'temperature-lac-joux': ['2026-11-07'], 'wakeboard-wakesurf-ski-nautique-leman': ['2026-11-07'],
-  'saunas-flottants-bateaux-saunas-suisse': ['2026-11-08'], 'qualite-eau-baignade-leman': ['2026-11-08'],
-  'temperature-lac-majeur': ['2026-11-09'], 'afterdrop-se-rechauffer': ['2026-11-09', '2026-11-11'],
-  'temperature-lac-lucerne': ['2026-11-10'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-10'],
-  'temperature-lac-morat': ['2026-11-11'], 'temperature-lac-brienz': ['2026-11-11'],
+  'plages-lac-gruyere': ['2026-11-04'], 'temperature-lac-gruyere': ['2026-11-04'],
+  'plages-lac-zoug': ['2026-11-04'], 'materiel-bain-d-hiver': ['2026-11-05', '2026-11-08'],
+  'plages-lac-brienz': ['2026-11-05'], 'saunas-lac-de-zurich': ['2026-11-05'],
+  'plages-lac-bret': ['2026-11-05'], 'temperature-lac-leman': ['2026-11-06'],
+  'temperature-lac-constance': ['2026-11-06'], 'plages-lac-hallwil': ['2026-11-06'],
+  'plages-leman-rive-francaise': ['2026-11-07', '2026-11-10'], 'plages-lac-sion': ['2026-11-07'],
+  'temperature-lac-joux': ['2026-11-07'], 'plages-lac-aegeri': ['2026-11-07'],
+  'wakeboard-wakesurf-ski-nautique-leman': ['2026-11-08'], 'plages-lac-greifensee': ['2026-11-08'],
+  'saunas-flottants-bateaux-saunas-suisse': ['2026-11-08'], 'qualite-eau-baignade-leman': ['2026-11-09'],
+  'plages-lac-sarnen': ['2026-11-09'], 'temperature-lac-majeur': ['2026-11-09'],
+  'plages-lac-silvaplana': ['2026-11-10'], 'afterdrop-se-rechauffer': ['2026-11-10', '2026-11-12'],
+  'plages-lac-brenets': ['2026-11-10'], 'temperature-lac-lucerne': ['2026-11-10'],
+  'plages-lac-sempach': ['2026-11-11'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-11'],
+  'temperature-lac-morat': ['2026-11-11'], 'plages-lac-untersee': ['2026-11-12'],
+  'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 

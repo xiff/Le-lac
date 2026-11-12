@@ -53,6 +53,7 @@ const liens = (html, L, r) => html
   .replace(/\{plages\}/g, `${r}plage/${SUF[L]}`)
   .replace(/\{app\}/g, `${r}?lang=${L}`)
   .replace(/\{racine\}/g, r)
+  .replace(/\{titre:([a-z0-9-]+)\}/g, (_, slug) => { const x = ARTICLES.find((y) => y.slug === slug); return esc((x?.[L] ?? x?.en ?? x?.fr)?.titre ?? slug); })
   .replace(/\{blog:([a-z0-9-]+)\}/g, (_, slug) => { const a = ARTICLES.find((x) => x.slug === slug); return `${r}blog/${slug}/${SUF[a?.[L] ? L : a?.en ? 'en' : 'fr']}`; }); // article pas encore traduit : repli sur l'anglais
 
 const tete = ({ L, titre, desc, url, alt, image, type, ld, r, donnees }) => `<!doctype html>
