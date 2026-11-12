@@ -130,3 +130,22 @@ test('windsurf, foil (downwind de bise), bateau, ski nautique', () => {
   assert.equal(bateau({ ...base, dir: 45, vent: 30, rafales: 38 }), 1); // bise forte
   assert.equal(ski({ ...base, vent: 12, rafales: 22 }), wakeboard({ ...base, vent: 12, rafales: 22 }));
 });
+
+test('la nuit : réservé au jour pour les sports interdits de nuit, prudence pour paddle et foil, baignade/voile/bateau inchangés', async () => {
+  const { lire, TOUTES, NUIT, phrase, verdict } = await import('./score.js');
+  const mesure = { temperature_2m: 20, wind_speed_10m: 25, wind_gusts_10m: 30, wind_direction_10m: 200, weather_code: 0 };
+  const jour = lire({ ...mesure, is_day: 1 }, null, 18), nuit = lire({ ...mesure, is_day: 0 }, null, 18), inconnu = lire(mesure, null, 18);
+  assert.equal(jour.jour, true); assert.equal(nuit.jour, false);
+  assert.equal(inconnu.jour, true, 'is_day absent : on suppose le jour, on ne bloque rien sans information');
+  for (const a of TOUTES) {
+    if (NUIT[a.id]) { assert.equal(a.note(nuit), 0, a.id + ' la nuit'); assert.equal(a.note(jour), a.note(inconnu), a.id + ' le jour'); }
+    else assert.equal(a.note(nuit), a.note(jour), a.id + ' ne dépend pas de la nuit');
+  }
+  assert.deepEqual(Object.keys(NUIT).sort(), ['foil', 'kite', 'paddle', 'wakeboard', 'wakesurf', 'ski', 'windsurf'].sort());
+  const kite = TOUTES.find((a) => a.id === 'kite'), baignade = TOUTES.find((a) => a.id === 'baignade');
+  for (const L of ['fr', 'en', 'de', 'it']) {
+    assert.notEqual(phrase(kite, nuit, 0, L), phrase(kite, jour, 0, L));
+    assert.equal(phrase(baignade, nuit, 2, L), phrase(baignade, jour, 2, L));
+    assert.match(verdict(nuit, L, 0).titre, /\S/); assert.equal(verdict(nuit, L, 0).act, null);
+  }
+});

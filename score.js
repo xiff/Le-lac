@@ -1,5 +1,5 @@
 // Notes 0–3 par activité à partir des conditions : 0 = non, 1 = bof, 2 = bien, 3 = parfait.
-// c = { eau: °C|null, air: °C, vent: km/h, rafales: km/h, dir: degrés, code: code météo WMO }
+// c = { eau: °C|null, air: °C, vent: km/h, rafales: km/h, dir: degrés, code: code météo WMO, jour: false la nuit }
 
 export const estBise = (c) => c.dir >= 20 && c.dir <= 80 && c.vent >= 15;
 const orage = (c) => c.code >= 95;
@@ -44,11 +44,18 @@ export const estHiver = (c) => c.eau != null && c.eau < 15 && moisHiver(c.mois ?
 // Clé de texte d'une activité (nom, phrases) : « hiver » pour la baignade en mode bain d'hiver.
 export const cle = (a, c) => (a.id === 'baignade' && estHiver(c) ? 'hiver' : a.id);
 
+// La nuit (entre le coucher et le lever du soleil de la plage, d'après is_day) :
+//  - 'loi'   : réservé au jour par l'ordonnance fédérale sur la navigation intérieure (wakesurf, ski nautique, planche à voile, kite et engins tractés) ;
+//  - 'noir'  : aucune règle trouvée, mais sans éclairage on ne voit pas la personne sur l'eau (paddle, foil).
+// Pas concernés : la baignade (aucune règle), la voile et le bateau (on y navigue la nuit, feux allumés).
+export const NUIT = { windsurf: 'loi', kite: 'loi', wakeboard: 'loi', wakesurf: 'loi', ski: 'loi', paddle: 'noir', foil: 'noir' };
+const avecNuit = (a) => (NUIT[a.id] ? { ...a, note: (c) => (c.jour === false ? 0 : a.note(c)) } : a);
+
 export const ACTIVITES = [
   { id: 'baignade', note: (c) => (estHiver(c) ? hiver(c) : baignade(c)) },
   { id: 'paddle', note: paddle },
   { id: 'voile', note: voile },
-];
+].map(avecNuit);
 
 // Kite : il faut du vent établi ; la bise, régulière, lui convient bien.
 export function kite(c) {
@@ -89,7 +96,7 @@ export function bateau(c) {
 }
 // Activités à activer dans les réglages ; ACTIVITES reste la sélection par défaut (pages de plage, présentation).
 export const TOUTES = [...ACTIVITES, { id: 'windsurf', note: windsurf }, { id: 'foil', note: foil }, { id: 'kite', note: kite },
-  { id: 'wakeboard', note: wakeboard }, { id: 'wakesurf', note: wakesurf }, { id: 'ski', note: ski }, { id: 'bateau', note: bateau }];
+  { id: 'wakeboard', note: wakeboard }, { id: 'wakesurf', note: wakesurf }, { id: 'ski', note: ski }, { id: 'bateau', note: bateau }].map(avecNuit);
 
 // Phrases par activité et par note, avec un peu de caractère.
 export const PHRASES = {
@@ -147,12 +154,22 @@ export const PHRASES = {
   },
 };
 
+// Phrase d'une activité : la nuit, celle de la règle de nuit (voir NUIT) ; sinon celle de la note.
+const PHRASES_NUIT = {
+  fr: { loi: 'Réservé au jour : pas de ça dans le noir.', noir: 'Il fait nuit : on ne te voit pas sur l’eau.' },
+  en: { loi: 'Daylight only: not in the dark.', noir: 'It’s dark: nobody can see you on the water.' },
+  de: { loi: 'Nur bei Tageslicht erlaubt.', noir: 'Es ist dunkel: Man sieht dich auf dem Wasser nicht.' },
+  it: { loi: 'Solo di giorno: non al buio.', noir: 'È buio: sull’acqua non ti vede nessuno.' },
+};
+export const phrase = (a, c, n, langue) => (c.jour === false && NUIT[a.id] ? PHRASES_NUIT[langue][NUIT[a.id]] : PHRASES[langue][cle(a, c)][n]);
+
 // La phrase du jour en haut de l'écran.
 // Titres du verdict : plusieurs variantes par situation, tirage différent à chaque affichage.
 // a(e) = « à 12° » (ou rien si l'eau est inconnue).
 const a = (e) => (e == null ? '' : ` à ${e}°`), at = (e) => (e == null ? '' : ` at ${e}°`), ad = (e) => (e == null ? '' : ` bei ${e}°`), ai = (e) => (e == null ? '' : ` a ${e}°`);
 const TITRES = {
   fr: {
+    nuit: [() => 'Il fait nuit. Le lac dort, rendez-vous demain.', () => 'Nuit noire : la planche reste au sec.', () => 'Les cygnes dorment. Reviens à l’aube.'],
     orage: [() => 'Orage sur le lac. On rentre.', () => 'Ça gronde. Tout le monde au sec.', () => 'Orage : le lac attendra, toi tu rentres.'],
     bise: [() => 'La bise est là. Accroche ton bonnet.', () => 'Bise en vue : le lac fait des vagues.', () => 'La bise souffle. Journée chocolat chaud.'],
     terrasse: [() => 'Journée terrasse plutôt que plouf.', () => 'Le lac est grognon. Va plutôt voir les terrasses.', () => 'Pas le jour pour l’eau. Un verre au bord, plutôt ?'],
@@ -172,6 +189,7 @@ const TITRES = {
     hiver: [(e) => `Eau${a(e)}. Parfait pour les braves.`, (e) => `Eau${a(e)}. Bonnet obligatoire, courage aussi.`, (e) => `Eau${a(e)}. Trois minutes et tu deviens une légende.`, (e) => `Eau${a(e)}. Les cygnes, eux, n’hésitent pas.`, (e) => `Eau${a(e)}. Ça pique, ça réveille, ça se raconte.`],
   },
   en: {
+    nuit: [() => 'It’s night. The lake sleeps, see you tomorrow.', () => 'Pitch dark: the board stays dry.', () => 'The swans are asleep. Come back at dawn.'],
     orage: [() => 'Storm on the lake. Head home.', () => 'Thunder rolling. Everybody stay dry.', () => 'Storm: the lake can wait, you head home.'],
     bise: [() => 'The bise is here. Hold on to your hat.', () => 'Bise blowing: the lake is making waves.', () => 'The bise is out. Hot chocolate day.'],
     terrasse: [() => 'More of a terrace day than a splash day.', () => 'The lake is grumpy. Try a terrace instead.', () => 'Not a water day. A drink by the lake, maybe?'],
@@ -191,6 +209,7 @@ const TITRES = {
     hiver: [(e) => `Water${at(e)}. Perfect for the brave.`, (e) => `Water${at(e)}. Hat compulsory, courage too.`, (e) => `Water${at(e)}. Three minutes and you’re a legend.`, (e) => `Water${at(e)}. The swans don’t hesitate.`, (e) => `Water${at(e)}. It stings, it wakes you up, it makes a story.`],
   },
   de: {
+    nuit: [() => 'Es ist Nacht. Der See schläft, bis morgen.', () => 'Stockdunkel: Das Brett bleibt trocken.', () => 'Die Schwäne schlafen. Komm im Morgengrauen wieder.'],
     orage: [() => 'Gewitter am See. Ab nach Hause.', () => 'Es donnert. Alle ins Trockene.', () => 'Gewitter: Der See kann warten, du gehst heim.'],
     bise: [() => 'Die Bise ist da. Halt die Mütze fest.', () => 'Bise im Anmarsch: Der See macht Wellen.', () => 'Die Bise bläst. Tag für heisse Schokolade.'],
     terrasse: [() => 'Eher Terrassen- als Planschtag.', () => 'Der See ist mürrisch. Probier lieber eine Terrasse.', () => 'Kein Tag fürs Wasser. Wie wär’s mit einem Drink am Ufer?'],
@@ -210,6 +229,7 @@ const TITRES = {
     hiver: [(e) => `Wasser${ad(e)}. Perfekt für die Mutigen.`, (e) => `Wasser${ad(e)}. Mütze Pflicht, Mut auch.`, (e) => `Wasser${ad(e)}. Drei Minuten und du bist eine Legende.`, (e) => `Wasser${ad(e)}. Die Schwäne zögern nicht.`, (e) => `Wasser${ad(e)}. Es sticht, es weckt auf, es gibt eine Geschichte.`],
   },
   it: {
+    nuit: [() => 'È notte. Il lago dorme, a domani.', () => 'Buio pesto: la tavola resta all’asciutto.', () => 'I cigni dormono. Torna all’alba.'],
     orage: [() => 'Temporale sul lago. Si torna a casa.', () => 'Tuona. Tutti al riparo.', () => 'Temporale: il lago può aspettare, tu torni a casa.'],
     bise: [() => 'La bise è arrivata. Tieni stretto il cappello.', () => 'Bise in arrivo: il lago fa onde.', () => 'Soffia la bise. Giornata da cioccolata calda.'],
     terrasse: [() => 'Più giornata da terrazza che da tuffo.', () => 'Il lago è scontroso. Prova una terrazza.', () => 'Non è giornata da acqua. Un drink in riva?'],
@@ -237,6 +257,7 @@ export function verdict(c, langue = 'fr', tirage = 0, acts = ACTIVITES) {
   const e = c.eau == null ? null : Math.round(c.eau);
   const t = (k) => { const v = T[k]; return v[((tirage % v.length) + v.length) % v.length](e); };
   if (c.code >= 95) return { titre: t('orage'), act: null };
+  if (c.jour === false) return { titre: t('nuit'), act: null };
   const notes = acts.map((a) => ({ a, n: a.note(c) })).sort((x, y) => y.n - x.n);
   const top = notes[0];
   if (estBise(c) && !['voile', 'kite', 'windsurf', 'foil'].includes(top.a.id)) return { titre: t('bise'), act: null };
@@ -260,6 +281,7 @@ export function lire(o, i, eau) {
   if (!Number.isFinite(c.rafales)) c.rafales = c.vent * 1.5; // rafales inconnues : estimation prudente plutôt que 0
   if (!Number.isFinite(c.dir)) c.dir = 0;
   if (!Number.isFinite(c.code)) c.code = 0;
+  c.jour = v('is_day') !== 0; // is_day d'Open-Meteo, propre à la plage ; valeur absente : on suppose le jour
   return c;
 }
 

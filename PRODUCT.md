@@ -24,7 +24,7 @@ Usage mobile en extérieur, souvent en plein soleil, parfois avec peu de réseau
 ## Capabilities and Constraints
 - Données : eau 3D devant chaque plage pour le Léman, Neuchâtel, Bienne, Morat, Lugano, Joux, Zurich, Greifensee, Quatre-Cantons, Zoug, Ägeri, Hallwil ; une valeur par lac pour la Gruyère, Majeur, Bret, Thoune, Brienz, Sempach, Baldegg, Sarnen, Silvaplana, Constance, Untersee ; aucune mesure pour Les Brenets et Sion (affichés « eau non mesurée »). Qualité de l’eau : Léman uniquement.
 - Aucun fait inventé : les adresses viennent d’offices du tourisme ou des sites des lieux, les affirmations de santé exigent une source officielle (Société Suisse de Sauvetage, OFSP…).
-- Aucun cookie, aucun compte ; la mesure d’audience passe par Umami Cloud, sans cookie.
+- Aucun cookie, aucun compte ; la mesure d’audience passe par Umami Cloud, sans cookie, avec des données hébergées en Europe (confirmé par le propriétaire le 12 novembre 2026).
 - Thème clair uniquement ; pas de mode sombre.
 - Pas de promesse de sécurité : l’app est indicative, « le lac a toujours le dernier mot ».
 - Terminologie : « verdict », « plage » (Badeplatz, spiaggia), « eau à 70 cm ».

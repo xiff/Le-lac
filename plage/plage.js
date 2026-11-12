@@ -1,6 +1,6 @@
 // Conditions du jour pour une page de plage : même calcul que l'app.
 import { SPOTS, valeurProche, REGIONS } from '../spots.js';
-import { lire, verdict, ACTIVITES, PHRASES, cle, qualiteRecente } from '../score.js';
+import { lire, verdict, ACTIVITES, PHRASES, cle, qualiteRecente, phrase } from '../score.js';
 
 const $ = (id) => document.getElementById(id);
 const s = SPOTS.find((x) => x.id === document.body.dataset.id);
@@ -60,7 +60,7 @@ try {
   $('releve').textContent = T.releve(REGIONS[L][s.region] ?? s.region, String(m.current.time).slice(11, 16));
   $('acts').innerHTML = ACTIVITES.map((a) => {
     const n = a.note(c);
-    return `<li><span class="nom">${NOMS[cle(a, c)]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${PHRASES[L][cle(a, c)][n]}</span></li>`;
+    return `<li><span class="nom">${NOMS[cle(a, c)]}</span><em class="t${n}">${LIB[n]}</em><span class="phrase">${phrase(a, c, n, L)}</span></li>`;
   }).join('');
 } catch {
   $('verdict').textContent = T.erreur;

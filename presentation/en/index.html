@@ -514,7 +514,7 @@
 
 <script type="module">
 import { SPOTS, valeurProche, REGIONS_EN, REGIONS } from '../../spots.js';
-import { lire, verdict, ACTIVITES, PHRASES, cle } from '../../score.js';
+import { lire, verdict, ACTIVITES, PHRASES, cle, phrase } from '../../score.js';
 
 const $ = (id) => document.getElementById(id);
 const LIB = ['No','Meh','Good','Perfect'], NOMS = {baignade: 'Swimming',paddle: 'Paddle',voile: 'Sailing / wing',hiver: 'Winter swim'};
@@ -563,7 +563,7 @@ async function repondre() {
     const { c, v } = await conditions(s); if (moi !== tour) return;
     $('r-verdict').textContent = `${s.nom}: ${v.titre}`;
     $('r-eau').textContent = deg(c.eau); $('r-air').textContent = Math.round(c.air) + '°'; $('r-vent').textContent = Math.round(c.vent);
-    $('r-acts').innerHTML = ACTIVITES.map((a) => { const n = a.note(c); return `<span title="${PHRASES.en[cle(a, c)][n]}">${NOMS[cle(a, c)]} <em class="note-ui t${n}">${LIB[n]}</em></span>`; }).join('');
+    $('r-acts').innerHTML = ACTIVITES.map((a) => { const n = a.note(c); return `<span title="${phrase(a, c, n, 'fr')}">${NOMS[cle(a, c)]} <em class="note-ui t${n}">${LIB[n]}</em></span>`; }).join('');
   } catch { if (moi === tour) $('r-verdict').textContent = 'The lake isn’t answering right now. Try again in a moment.'; }
 }
 $('plage').addEventListener('input', () => { clearTimeout(minuterie); minuterie = setTimeout(repondre, 350); });

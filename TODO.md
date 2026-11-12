@@ -2,7 +2,7 @@
 
 - [ ] **Affiliation** : contacter tous les endroits proposés dans l’app (bars et restos de `lieux.js`,
   loueurs, écoles et saunas de `locations.js`) pour leur proposer un programme d’affiliation.
-- [ ] **Domaine** : monlac.ch est en ligne. Reste : cocher « Enforce HTTPS » dans GitHub Pages, et ajouter www.mon-lac.ch au certificat Infomaniak.
+- [ ] **Domaine** : monlac.ch est en ligne, « Enforce HTTPS » est coché (12 novembre 2026). Reste : ajouter www.mon-lac.ch au certificat Infomaniak.
 - [ ] **Icônes** : choisir les icônes définitives de la baignade et de la sortie en bateau.
 - [ ] **Vérification mensuelle des lieux** : relier le dépôt à la tâche planifiée dans claude.ai.
 - [ ] **Coordonnées à confirmer** : Corsier-Port et Thonon – Saint-Disdille.
@@ -29,21 +29,21 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 - [ ] **Relecture par des locuteurs natifs** : les traductions allemandes et italiennes (surtout les articles de santé sur le bain d’hiver) n’ont pas été relues par une personne dont c’est la langue.
 - [ ] **Titres et formulations propres à chaque langue** : adapter, si besoin, les jeux de mots des verdicts (« Même les cygnes hésitent », etc.).
 
+## Respect de l’utilisateur
+
+- [ ] **Mettre en avant que monlac.ch respecte l’utilisateur** : aucun cookie, aucun compte, pas de publicité, mesure d’audience Umami hébergée en Europe, sans cookie ni suivi individuel. À dire clairement et sans jargon : une ligne sous le titre de la page « À propos », un encadré « Vos données » (quoi, pourquoi, où) dans la présentation et l'app, dans les quatre langues, et un mot dans le pied de page. Ne rien affirmer que les faits ne soutiennent pas (par exemple ne pas écrire « aucune donnée collectée » : Umami compte les visites).
+
 ## Mesure d’audience
 
 - [x] **Tracker des visites** : Umami Cloud (sans cookie) ajouté le 11 novembre 2026 dans le `<head>` de toutes les pages
   (app, pages de plage, liste, blog, présentation). Statistiques sur cloud.umami.is.
-- [ ] **Umami** : vérifier dans les réglages du compte la région d’hébergement des données (UE si possible) et le mentionner sur la page « À propos » si besoin.
+- [x] **Umami** : hébergement des données en Europe (confirmé le 12 novembre 2026).
 
 ## App
 
-- [ ] **Activités de nuit** : ne plus donner de verdict favorable de nuit pour les activités qui ne s’y pratiquent pas
-  (paddle, kayak, kite, windsurf, wing, wakeboard, ski nautique, bateau de location). L’app connaît déjà la position de chaque plage :
-  calculer le lever et le coucher du soleil (Open-Meteo les fournit, `daily=sunrise,sunset`) et, entre le crépuscule et l’aube,
-  remplacer le verdict par « Il fait nuit : on range la planche » avec l’heure du prochain créneau de jour.
-  La baignade et le sauna restent affichés, avec un rappel de prudence (ne pas nager seul, rester près du bord).
-  Vérifier d’abord la règle exacte (ordonnance sur la navigation intérieure, feux obligatoires de nuit) pour citer la source et ne rien inventer.
-
+- [x] **Activités de nuit** (12 novembre 2026) : d'après `is_day` d'Open-Meteo, propre à chaque plage. La nuit, les verdicts du windsurf, du kite, du wakeboard, du wakesurf et du ski nautique passent à « Non » (« Réservé au jour »), ceux du paddle et du foil aussi (« on ne te voit pas sur l'eau ») ; titre du verdict : « Il fait nuit ». Baignade, voile et bateau inchangés. Règle (`NUIT` dans `score.js`) : l'ordonnance fédérale sur la navigation intérieure (BSV, SR 747.201.1) réserve au jour, par clarté, le wakesurf, le ski nautique, les planches à voile, les planches à cerf-volant et les engins tractés ; rien de trouvé pour le paddle et le foil, d'où une formulation de prudence, sans citer de loi.
+  - [ ] À vérifier : le texte exact de la BSV pour le wakeboard et le wing foil (non nommés dans ce que j'ai lu), et les règles cantonales plus strictes (par exemple Lucerne).
+  - [ ] Écran « Louer » : `#louer` dans l'adresse n'ouvre pas l'onglet.
 - [x] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
   les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
 
@@ -61,5 +61,5 @@ Plan complet (87 sujets, par groupe et priorité) : `BLOG-PLAN.md`, gardé hors 
 - [ ] **Guides locaux du Léman** (12) : Lausanne, Riviera, La Côte, Lavaux, plages gratuites, familles, chiens, train, sable, plongeoirs, coucher de soleil, Rhône.
 - [ ] **Sécurité et santé** (10) : puces de canard, cyanobactéries, orages, feux de tempête, courants, eau libre, règles SSS, hypothermie. Sources officielles obligatoires.
 - [ ] **Activités** (9) : paddle par lac, bateau sans permis, kite à Silvaplana, wingfoil, kayak, traversées à la nage.
-- [ ] **SEO** : déclarer monlac.ch dans Google Search Console et soumettre le sitemap ; inscrire la température du jour dans le HTML des pages de plage ;
+- [ ] **SEO** : monlac.ch est déclaré dans Google Search Console et le sitemap est soumis (12 novembre 2026) ; suivre l'indexation et les requêtes dans quelques jours. Reste : inscrire la température du jour dans le HTML des pages de plage ;
   demander un lien aux lieux listés (avec la prise de contact affiliation), aux offices du tourisme et aux clubs ; écrire d’abord en allemand pour les lacs alémaniques.

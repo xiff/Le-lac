@@ -370,7 +370,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
-import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente } from './score.js';
+import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente, phrase } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
 import { SPOTS, valeurProche, TOUR, projeter, LACS, lacDe, REGIONS, nomLac } from './spots.js';
@@ -710,7 +710,7 @@ function afficherActivites() {
   $('activites').innerHTML = acts.map((a) => {
     const n = a.note(c);
     return `<button class="act" data-act="${a.id}" aria-pressed="false" aria-label="${NOM(a, c)} : ${LIBELLES[n]}. ${T.afficherHeures}"><span class="tuile t${n}">${icone('act-' + cle(a, c))}</span>
-      <div><b>${NOM(a, c)}</b><small>${PHRASES[LANGUE][cle(a, c)][n]}</small></div>
+      <div><b>${NOM(a, c)}</b><small>${phrase(a, c, n, LANGUE)}</small></div>
       <span class="badge t${n}">${LIBELLES[n]}</span></button>${(() => { const l = n >= 2 && LOC_PAR_ACT[cle(a, c)]?.find((x) => actsLoc.includes(x)); return l ? `<a class="louer" href="#louer" data-loc="${l}">${icone('cap')}${T.louerLien(ACTIVITES_LOC[l][LANGUE])}</a>` : ''; })()}`;
   }).join('');
   if (!etat.choix || !acts.some((a) => a.id === etat.choix)) etat.choix = etat.v.act ?? 'baignade';
