@@ -32,7 +32,13 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 ## Respect de l’utilisateur
 
 - [x] **Mettre en avant que monlac.ch respecte l’utilisateur** (12 novembre 2026) : « Sans compte, sans cookie, sans publicité » sous l’accroche de la présentation, section « Tes données restent les tiennes » (4 points : ni compte ni cookie, choix gardés sur l’appareil, position qui ne quitte pas le téléphone, Umami sans cookie hébergé en Europe) et une ligne dans le pied de page de l’app et de toutes les pages, en quatre langues. Chaque point a été vérifié dans le code (localStorage, géolocalisation calculée dans le navigateur, météo demandée avec les coordonnées de la plage).
-- [ ] À faire plus tard, si vous le voulez : une page « Confidentialité » complète (liste précise des services tiers : Open-Meteo, Alplakes, existenz.ch, Umami) et un lien depuis le pied de page.
+- [ ] **Page « Confidentialité »** (quatre langues, générée comme la présentation) : à lier depuis le pied de page de l'app et de toutes les pages, et depuis l'encadré « Tes données restent les tiennes ». Contenu à établir avec des sources, sans rien affirmer d'invérifié :
+  - ce qui reste dans le navigateur (`localStorage` : plage, langue, activités, favoris, historique de bains, tirage des titres) et comment l'effacer ;
+  - la position : calculée dans le navigateur, jamais envoyée ;
+  - les services tiers appelés depuis le navigateur du visiteur : Open-Meteo (météo), existenz.ch (secours genevois), Umami (audience), polices et images servies par GitHub Pages ; chacun reçoit au minimum l'adresse IP du visiteur, comme tout serveur web ;
+  - Umami : ce que l'outil enregistre vraiment (lire sa documentation officielle avant d'écrire : adresse IP, pays, navigateur, pages vues ?), durée de conservation, région d'hébergement (Europe, confirmé), base légale ;
+  - responsable du traitement et contact (contact@monlac.ch) ;
+  - droits des visiteurs selon la loi suisse sur la protection des données (LPD) et le RGPD pour les visiteurs de l'UE : à faire relire par un juriste ou à reprendre d'un modèle officiel (PFPDT), pas à inventer.
 
 ## Mesure d’audience
 
