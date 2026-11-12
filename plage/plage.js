@@ -37,8 +37,12 @@ const ICONES = { 'soleil': '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12
 const deg = (v) => (v == null ? '–' : (L === 'fr' ? v.toFixed(1).replace('.', ',') : v.toFixed(1)) + '°');
 const donnee = (f) => new URL(`../${f}`, import.meta.url); // racine du site, quelle que soit la profondeur de la page
 
-const eauJson = await fetch(donnee('eau.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
-const qualites = await fetch(donnee('qualite.json'), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
+// Les trois requêtes partent ensemble : la météo n'attend plus les deux fichiers de données.
+const lireJson = (f) => fetch(donnee(f), { cache: 'no-cache' }).then((r) => r.json()).catch(() => null);
+const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
+const meteoPromesse = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+meteoPromesse.catch(() => {}); // l'échec est traité plus bas, pas ici
+const [eauJson, qualites] = await Promise.all([lireJson('eau.json'), lireJson('qualite.json')]);
 const q = qualiteRecente(qualites?.spots?.[s.id]); // analyse de plus de 30 jours : on n'affiche rien
 if (q) { $('qualite').hidden = false; $('qualite').innerHTML = `<i class="q${q.qualite}" aria-hidden="true"></i>${T.eau(T.classes[q.qualite])} (${q.source === 'ge' ? T.ge(String(q.date).replace(/-/g, '.'), q.plage) : `CIPEL, ${q.plage}`})${q.alerte ? ` · ${q.alerte}` : ''}`; }
 const eau = (id) => valeurProche(eauJson?.spots?.[id]);
@@ -46,8 +50,7 @@ document.querySelectorAll('[data-eau]').forEach((e) => (e.textContent = deg(eau(
 $('eau').textContent = deg(eau(s.id));
 
 try {
-  const champs = 'temperature_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,is_day';
-  const m = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=${champs}&hourly=${champs}&forecast_hours=12&timezone=Europe%2FZurich`, { signal: AbortSignal.timeout(12000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+  const m = await meteoPromesse;
   const c = lire(m.current, null, eau(s.id)); if (!c) throw new Error('incomplet');
   c.qualite = q?.qualite;
   $('verdict').textContent = verdict(c, L, Math.floor(Math.random() * 60)).titre;

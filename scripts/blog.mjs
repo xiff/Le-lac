@@ -55,7 +55,7 @@ const liens = (html, L, r) => html
   .replace(/\{racine\}/g, r)
   .replace(/\{blog:([a-z0-9-]+)\}/g, (_, slug) => { const a = ARTICLES.find((x) => x.slug === slug); return `${r}blog/${slug}/${SUF[a?.[L] ? L : a?.en ? 'en' : 'fr']}`; }); // article pas encore traduit : repli sur l'anglais
 
-const tete = ({ L, titre, desc, url, alt, image, type, ld, r }) => `<!doctype html>
+const tete = ({ L, titre, desc, url, alt, image, type, ld, r, donnees }) => `<!doctype html>
 <html lang="${L}">
 <head>
 <meta charset="utf-8">
@@ -89,7 +89,11 @@ ${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" hre
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="${r}icon.svg">
 <link rel="stylesheet" href="${r}plage/plage.css">
-<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': ld })}</script>
+<link rel="preload" href="${r}fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${r}fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+${donnees ? `<link rel="modulepreload" href="${r}spots.js">
+<link rel="preload" href="${r}eau.json" as="fetch" crossorigin>
+` : ''}<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': ld })}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>`;
 
@@ -103,7 +107,7 @@ export function article(a, L = 'fr') {
     about: LEMAN, citation: a.sources.map(([, u]) => u),
   }, ariane([[t.nom, BASE], [t.blog, urlBlog(L)], [c.h1, url]])];
   const credit = a.creditHtml?.[L] ?? `${a.credit[L]}. ${t.photo} ${a.auteur}, <a href="${a.licence[1]}">${a.licence[0]}</a>, <a href="${a.page}">Wikimedia Commons</a>.`;
-  return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: Object.fromEntries(dispo(a).map((l) => [l, urlArticle(a.slug, l)])), image, type: 'article', ld, r })}
+  return `${tete({ L, titre: `${c.titre} · ${t.nom}`, desc: c.desc, url, alt: Object.fromEntries(dispo(a).map((l) => [l, urlArticle(a.slug, l)])), image, type: 'article', ld, r, donnees: true })}
 <body>
 <header>
   <div class="haut"><a class="marque" translate="no" href="${liens('{app}', L, r)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>${t.nom}</a>${langues(L, Object.fromEntries(dispo(a).map((l) => [l, `${r}blog/${a.slug}/${SUF[l]}`])))}</div>

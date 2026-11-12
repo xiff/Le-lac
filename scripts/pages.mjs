@@ -94,6 +94,11 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${urls[l]}">`)
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="${r}../../icon.svg">
 <link rel="stylesheet" href="${r}../plage.css">
+<link rel="preload" href="${r}../../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${r}../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="${r}../plage.js">
+<link rel="modulepreload" href="${r}../../spots.js">
+<link rel="modulepreload" href="${r}../../score.js">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>
@@ -157,6 +162,11 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}plage/$
 <meta name="theme-color" content="#0d4a5c">
 <link rel="icon" href="${r}../icon.svg">
 <link rel="stylesheet" href="${r}plage.css">
+<link rel="preload" href="${r}../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${r}../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="${r}../spots.js">
+<link rel="modulepreload" href="${r}../score.js">
+<link rel="preload" href="${r}../eau.json" as="fetch" crossorigin>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>
 <body class="large">
