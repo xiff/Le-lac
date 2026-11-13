@@ -59,7 +59,9 @@ Aucune page ne les utilise encore. Pour en refaire une, relance son bloc ci-dess
 Corrections faites et points à vérifier :
 - `portrait-joux` : refaite le 13 novembre 2026, la Dent de Vaulion est maintenant une crête boisée qui finit en falaise.
 - `portrait-constance` : refaite le 13 novembre 2026, sans phare ni drapeau (digue, voiliers, ferry).
-- Repères de paysage en général : je ne les ai pas comparés avec des photos.
+- `og-image`, `saunas-lac-de-zurich`, `portrait-aegeri` : refaites le 13 novembre 2026, l'eau était agitée (lignes de vent reprises de l'image `bise`) alors que la scène la veut calme. Pour une scène calme, prendre `portrait-hallwil` comme image de référence plutôt que `bise`.
+- Relecture des 40 en grand le 13 novembre 2026 : aucun texte, aucun visage, style homogène. Petits écarts acceptés : un drapeau suisse sur le bateau à vapeur de Lucerne (réaliste), une silhouette minuscule sur le bain de l'Utoquai, des graduations sans chiffres sur le thermomètre de `bienfaits-bain-froid`.
+- Repères de paysage : jugés plausibles (Niesen, Pilatus, San Salvatore, Valère et Tourbillon, Giessbach, île Saint-Pierre), mais je ne les ai pas comparés avec des photos.
 
 ## Thèmes du site
 
