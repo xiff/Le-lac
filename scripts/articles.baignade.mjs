@@ -443,6 +443,134 @@ const LOCAUX = {
   "it": [
    "<strong>Strandbad Seerose</strong> (Meisterschwanden): ingresso adulti 7 franchi, 2 franchi dai 6 ai 16 anni; aperto dal 23 aprile 2026 con bel tempo, dalle 11 alle 19 a maggio, poi dalle 9 al tramonto da giugno a settembre; ingresso libero per chi va solo al ristorante. L’autopostale parte dalle stazioni di Wohlen e Lenzburg fino a Meisterschwanden Oberdorf."
   ]
+ },
+ "sempach": {
+  "src": [
+   [
+    "Gemeinde Nottwil, Seebad",
+    "https://www.nottwil.ch/de/verwaltung/dienstleistungen/282_seebad"
+   ],
+   [
+    "badi-info.ch, Seebad Nottwil",
+    "https://www.badi-info.ch/lu/nottwil-seebad.html"
+   ],
+   [
+    "Trechter, accès libre au lac de Sempach",
+    "https://trechter.ch/freier_zugang_sempachersee/"
+   ]
+  ],
+  "fr": [
+   "<strong>Seebad Nottwil</strong> : entrée gratuite ; saison 2026 du 3 avril au 27 septembre, prolongée par beau temps selon la commune ; de 13 h à 18 h d’avril à la mi-mai, puis de 9 h à 22 h jusqu’en septembre (badi-info.ch). Plage de sable, kiosque et restaurant en saison, pas de parking sur place.",
+   "Accès libre au lac aussi à <strong>Schenkon</strong> (Gmeindsplätzli) et à <strong>Sempach</strong> (Seeallee, où l’on se baigne à ses risques), d’après Trechter."
+  ],
+  "en": [
+   "<strong>Seebad Nottwil</strong>: free entry; 2026 season from 3 April to 27 September, extended in fine weather according to the municipality; 1pm to 6pm from April to mid-May, then 9am to 10pm until September (badi-info.ch). Sandy beach, kiosk and restaurant in season, no parking on site.",
+   "Free access to the lake also at <strong>Schenkon</strong> (Gmeindsplätzli) and <strong>Sempach</strong> (Seeallee, where you swim at your own risk), according to Trechter."
+  ],
+  "de": [
+   "<strong>Seebad Nottwil</strong>: freier Eintritt; Saison 2026 vom 3. April bis 27. September, bei schönem Wetter laut Gemeinde verlängerbar; von April bis Mitte Mai 13 bis 18 Uhr, danach 9 bis 22 Uhr bis September (badi-info.ch). Sandstrand, Kiosk und Restaurant in der Saison, keine Parkplätze vor Ort.",
+   "Freier Zugang zum See auch beim <strong>Gmeindsplätzli Schenkon</strong> und in der <strong>Seeallee Sempach</strong> (Baden auf eigene Gefahr), laut Trechter."
+  ],
+  "it": [
+   "<strong>Seebad Nottwil</strong>: ingresso gratuito; stagione 2026 dal 3 aprile al 27 settembre, prolungabile con bel tempo secondo il comune; dalle 13 alle 18 da aprile a metà maggio, poi dalle 9 alle 22 fino a settembre (badi-info.ch). Spiaggia di sabbia, chiosco e ristorante in stagione, nessun parcheggio sul posto.",
+   "Accesso libero al lago anche a <strong>Schenkon</strong> (Gmeindsplätzli) e a <strong>Sempach</strong> (Seeallee, dove si fa il bagno a proprio rischio), secondo Trechter."
+  ]
+ },
+ "baldegg": {
+  "src": [
+   [
+    "badi-info.ch, Seebad Baldegg",
+    "https://www.badi-info.ch/lu/baldegg-seebad.html"
+   ],
+   [
+    "Gemeinde Hochdorf, Seebad Baldegg",
+    "https://www.hochdorf.ch/freizeit/sport/seebad-baldegg.html/262/l/de"
+   ],
+   [
+    "badi-info.ch, Seebad Gelfingen",
+    "https://www.badi-info.ch/lu/gelfingen.html"
+   ]
+  ],
+  "fr": [
+   "<strong>Seebad Baldegg</strong> : saison 2026 du 10 mai au 13 septembre ; entrée adulte à 6 francs, 3 francs pour les enfants nés de 2010 à 2020, gratuit pour les enfants nés dès 2021. Les horaires de fermeture varient selon les sources : voir le site du bain.",
+   "<strong>Seebad Gelfingen</strong> : entrée gratuite, toujours accessible, surveillé seulement par moments (badi-info.ch) ; pelouse, plongeoir de 3 m, radeau, place de grill, vestiaires et WC."
+  ],
+  "en": [
+   "<strong>Seebad Baldegg</strong>: 2026 season from 10 May to 13 September; adult entry CHF 6, CHF 3 for children born 2010 to 2020, free for children born from 2021. Closing times differ between sources: see the bath’s website.",
+   "<strong>Seebad Gelfingen</strong>: free entry, always accessible, supervised only part of the time (badi-info.ch); lawn, 3 m diving tower, raft, barbecue spot, changing rooms and toilets."
+  ],
+  "de": [
+   "<strong>Seebad Baldegg</strong>: Saison 2026 vom 10. Mai bis 13. September; Eintritt Erwachsene CHF 6, Kinder Jahrgang 2010 bis 2020 CHF 3, Kinder ab Jahrgang 2021 gratis. Die Schliesszeiten weichen je nach Quelle ab: siehe Website des Bads.",
+   "<strong>Seebad Gelfingen</strong>: freier Eintritt, immer zugänglich, nur zeitweise beaufsichtigt (badi-info.ch); Liegewiese, 3-m-Sprungturm, Floss, Grillstelle, Umkleideräume und WC."
+  ],
+  "it": [
+   "<strong>Seebad Baldegg</strong>: stagione 2026 dal 10 maggio al 13 settembre; ingresso adulti 6 franchi, 3 franchi per i bambini nati dal 2010 al 2020, gratis per i nati dal 2021. Gli orari di chiusura variano secondo le fonti: vedi il sito del bagno.",
+   "<strong>Seebad Gelfingen</strong>: ingresso gratuito, sempre accessibile, sorvegliato solo a tratti (badi-info.ch); prato, trampolino da 3 m, zattera, griglia, spogliatoi e servizi."
+  ]
+ },
+ "sarnen": {
+  "src": [
+   [
+    "badi-info.ch, Frei- und Seebad Sarnen",
+    "https://www.badi-info.ch/a/sarnen.html"
+   ],
+   [
+    "Seefeld Park Sarnen, prix",
+    "https://www.seefeldpark.ch/preise/"
+   ]
+  ],
+  "fr": [
+   "<strong>Seebad Sarnen</strong> (Seefeld Park) : saison 2026 du 25 avril au 20 septembre ; entrée adulte à 8 francs, 4 francs pour les 6 à 15 ans, 6 francs pour apprentis et étudiants, 6 francs le soir dès 17 h. Les horaires varient selon les sources : voir le site du parc."
+  ],
+  "en": [
+   "<strong>Seebad Sarnen</strong> (Seefeld Park): 2026 season from 25 April to 20 September; adult entry CHF 8, CHF 4 for ages 6 to 15, CHF 6 for apprentices and students, CHF 6 in the evening from 5pm. Hours differ between sources: see the park’s website."
+  ],
+  "de": [
+   "<strong>Seebad Sarnen</strong> (Seefeld Park): Saison 2026 vom 25. April bis 20. September; Eintritt Erwachsene CHF 8, Kinder von 6 bis 15 Jahren CHF 4, Lernende und Studierende CHF 6, abends ab 17 Uhr CHF 6. Die Öffnungszeiten weichen je nach Quelle ab: siehe Website des Parks."
+  ],
+  "it": [
+   "<strong>Seebad Sarnen</strong> (Seefeld Park): stagione 2026 dal 25 aprile al 20 settembre; ingresso adulti 8 franchi, 4 franchi dai 6 ai 15 anni, 6 franchi per apprendisti e studenti, 6 franchi la sera dalle 17. Gli orari variano secondo le fonti: vedi il sito del parco."
+  ]
+ },
+ "greifensee": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Furren",
+    "https://www.badi-info.ch/furren.html"
+   ],
+   [
+    "freizeit.ch, Strandbad Uster",
+    "https://www.freizeit.ch/freizeit/25852/strandbad-uster"
+   ],
+   [
+    "badi-info.ch, Strandbad Maur",
+    "https://www.badi-info.ch/zh/maur-strandbad.html"
+   ],
+   [
+    "nau.ch, Badi Maur",
+    "https://www.nau.ch/news/schweiz/badi-maur-zh-fehlt-aufsicht-und-ist-nun-gratis-67141271"
+   ]
+  ],
+  "fr": [
+   "<strong>Furren</strong> : petit bain gratuit avec vestiaires, WC, douche froide et grill (badi-info.ch).",
+   "<strong>Strandbad Uster</strong> : saison 2026 dès le 9 mai ; entrée adulte à 6,50 francs, 3,50 francs dès 6 ans ; de 9 h à 20 h 30 en mai, jusqu’à 19 h en septembre.",
+   "<strong>Strandbad Maur</strong> : entrée gratuite depuis juillet 2026. Dans une annonce du 23 juin 2026, la commune dit que l’exploitant ne peut plus assurer ni l’exploitation ni la surveillance des bains : la situation a pu changer depuis, à vérifier auprès de la commune."
+  ],
+  "en": [
+   "<strong>Furren</strong>: a small free bath with changing rooms, toilets, a cold shower and a grill (badi-info.ch).",
+   "<strong>Strandbad Uster</strong>: 2026 season from 9 May; adult entry CHF 6.50, CHF 3.50 from age 6; 9am to 8.30pm in May, until 7pm in September.",
+   "<strong>Strandbad Maur</strong>: free entry since July 2026. In a notice of 23 June 2026 the municipality says the operator can no longer ensure either operation or lifeguard supervision: the situation may have changed since, check with the municipality."
+  ],
+  "de": [
+   "<strong>Furren</strong>: kleines Gratis-Seebad mit Garderobe, WC, Kaltwasserdusche und Grill (badi-info.ch).",
+   "<strong>Strandbad Uster</strong>: Saison 2026 ab 9. Mai; Eintritt Erwachsene CHF 6.50, Kinder ab 6 Jahren CHF 3.50; im Mai von 9 bis 20.30 Uhr, im September bis 19 Uhr.",
+   "<strong>Strandbad Maur</strong>: freier Eintritt seit Juli 2026. In einer Mitteilung vom 23. Juni 2026 schreibt die Gemeinde, dass der Pächter weder den Badebetrieb noch die Badeaufsicht gewährleisten kann: Die Lage kann sich seither geändert haben, bei der Gemeinde nachfragen."
+  ],
+  "it": [
+   "<strong>Furren</strong>: piccolo bagno gratuito con spogliatoi, servizi, doccia fredda e griglia (badi-info.ch).",
+   "<strong>Strandbad Uster</strong>: stagione 2026 dal 9 maggio; ingresso adulti 6,50 franchi, 3,50 franchi dai 6 anni; dalle 9 alle 20.30 a maggio, fino alle 19 a settembre.",
+   "<strong>Strandbad Maur</strong>: ingresso gratuito da luglio 2026. In un avviso del 23 giugno 2026 il comune dice che il gestore non può più garantire né l’esercizio né la sorveglianza dei bagni: la situazione può essere cambiata da allora, da verificare con il comune."
+  ]
  }
 };
 const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };

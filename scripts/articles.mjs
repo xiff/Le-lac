@@ -712,14 +712,14 @@ const DATES = {
   'temperature-lac-constance': ['2026-11-06'], 'plages-lac-hallwil': ['2026-11-06', '2026-11-13'],
   'plages-leman-rive-francaise': ['2026-11-07', '2026-11-10'], 'plages-lac-sion': ['2026-11-07'],
   'temperature-lac-joux': ['2026-11-07'], 'plages-lac-aegeri': ['2026-11-07'],
-  'wakeboard-wakesurf-ski-nautique-leman': ['2026-11-08'], 'plages-lac-greifensee': ['2026-11-08'],
+  'wakeboard-wakesurf-ski-nautique-leman': ['2026-11-08'], 'plages-lac-greifensee': ['2026-11-08', '2026-11-13'],
   'saunas-flottants-bateaux-saunas-suisse': ['2026-11-08'], 'qualite-eau-baignade-leman': ['2026-11-09'],
-  'plages-lac-sarnen': ['2026-11-09'], 'temperature-lac-majeur': ['2026-11-09'],
+  'plages-lac-sarnen': ['2026-11-09', '2026-11-13'], 'temperature-lac-majeur': ['2026-11-09'],
   'plages-lac-silvaplana': ['2026-11-10'], 'afterdrop-se-rechauffer': ['2026-11-10', '2026-11-12'],
   'plages-lac-brenets': ['2026-11-10'], 'temperature-lac-lucerne': ['2026-11-10'],
-  'plages-lac-sempach': ['2026-11-11'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-11'],
+  'plages-lac-sempach': ['2026-11-11', '2026-11-13'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-11'],
   'temperature-lac-morat': ['2026-11-11'], 'plages-lac-untersee': ['2026-11-12', '2026-11-13'],
-  'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12'],
+  'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 
