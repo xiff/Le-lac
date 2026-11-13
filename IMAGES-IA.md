@@ -53,14 +53,13 @@ APRÈS L'IMAGE, écris seulement une ligne :
 
 ## Suivi
 
-| Image | État |
-|---|---|
-| `bain-d-hiver-neuchatel-bienne-morat` | Reçue le 13 novembre 2026, **à refaire** : bonne composition (Mont Vully, Morat, Neuchâtel), mais photoréaliste. |
-| `bise` | **Refaite le 13 novembre 2026** (Nano Banana 2.1, depuis Claude Code) : gouache, Jet d'eau couché par la bise, aucun texte. À valider, puis à intégrer. |
-| `buvettes` | Reçue le 13 novembre 2026, **à refaire** : photoréaliste, texte « BUVETTE DE LA PLAGE » sur le kiosque. Prompt corrigé. |
-| Les 37 autres | À générer. |
+Les 40 images ont été générées le 13 novembre 2026 depuis Claude Code (Nano Banana 2.1), avec l'image `bise` comme référence de style : elles sont toutes dans `blog/img/ia/`, en 1376×768, **à valider** avant intégration.
+Aucune page ne les utilise encore. Pour en refaire une, relance son bloc ci-dessous et repousse-la sous le même nom.
 
-Les 3 images reçues sont dans `blog/img/ia/` mais ne sont utilisées par aucune page. Repousse les nouvelles versions sous le même nom : elles remplaceront les anciennes.
+Points à vérifier en priorité :
+- `portrait-joux` : la Dent de Vaulion y est un sommet enneigé en pointe, alors que c'est une falaise. À refaire si gênant.
+- `portrait-constance` : phare et drapeau suisse à l'entrée du port, repris de l'image de référence ; Romanshorn a bien un phare, à comparer.
+- Repères de paysage en général : je ne les ai pas comparés avec des photos.
 
 ## Thèmes du site
 
