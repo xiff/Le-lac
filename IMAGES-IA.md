@@ -56,7 +56,7 @@ APRÈS L'IMAGE, écris seulement une ligne :
 | Image | État |
 |---|---|
 | `bain-d-hiver-neuchatel-bienne-morat` | Reçue le 13 novembre 2026, **à refaire** : bonne composition (Mont Vully, Morat, Neuchâtel), mais photoréaliste. |
-| `bise` | Reçue le 13 novembre 2026, **à refaire** : photoréaliste, Jet d'eau tout droit au lieu d'être couché par la bise, cathédrale placée au bord de l'eau. Prompt corrigé. |
+| `bise` | **Refaite le 13 novembre 2026** (Nano Banana 2.1, depuis Claude Code) : gouache, Jet d'eau couché par la bise, aucun texte. À valider, puis à intégrer. |
 | `buvettes` | Reçue le 13 novembre 2026, **à refaire** : photoréaliste, texte « BUVETTE DE LA PLAGE » sur le kiosque. Prompt corrigé. |
 | Les 37 autres | À générer. |
 
