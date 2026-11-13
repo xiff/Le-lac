@@ -90,6 +90,8 @@
   @media (min-width: 1100px) { :root { --colonne: 680px; } }
   .alerte { display: flex; gap: 10px; align-items: center; margin: 16px 0 0; padding: 12px 14px; border-radius: 14px; background: var(--n1-bg); color: var(--n1); font-weight: 600; font-size: .92rem; }
   .alerte.danger { background: var(--n0-bg); color: var(--n0); }
+  .alerte.avis { display: block; font-weight: 500; line-height: 1.5; } /* texte + lien dans un même paragraphe, pas en colonnes */
+  .alerte.avis a { color: inherit; font-weight: 700; text-underline-offset: 3px; }
   .bienvenue { margin: 18px 0 4px; padding: 18px; border-radius: 20px; background: var(--n3-bg); color: var(--n3); opacity: 1; transform: none; transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
   @starting-style { .bienvenue { opacity: 0; transform: translateY(8px); } }
   .bienvenue.part { opacity: 0; transform: translateY(-4px); transition-duration: 180ms; }
@@ -306,6 +308,7 @@
       </div>
     </section>
     <p class="alerte" id="alerte" hidden></p>
+    <p class="alerte avis" id="avis" role="note" hidden></p>
     <h2 data-t="surLeau">Sur l’eau</h2>
     <p class="qualite" id="qualite" hidden></p>
     <div id="activites"></div>
@@ -415,7 +418,14 @@ try {
   const id = new URLSearchParams(location.search).get('plage') ?? localStorage.getItem('plage') ?? ANCIENS[localStorage.getItem('spot')];
   const i = SPOTS.findIndex((s) => s.id === id); if (i >= 0) sel.value = i;
 } catch {}
-sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherLocations(); afficherFavoris(); afficherCarte(); };
+// Avis propre à une plage (sources officielles) : aujourd'hui seulement le lac de Bret, dont la baignade pourrait être interdite au nord.
+const AVIS_BRET = 'https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_doc/Chasse/DC_LdB_Rap_explicatif.pdf';
+function afficherAvis() {
+  const bret = lacDe(spot()) === 'bret', e = $('avis');
+  e.hidden = !bret;
+  if (bret) e.innerHTML = `${T.avisBret} <a href="${AVIS_BRET}" target="_blank" rel="noopener">${T.avisBretLien}</a>`;
+}
+sel.onchange = () => { try { localStorage.setItem('plage', spot().id); } catch {} charger(); afficherLieux(); afficherLocations(); afficherFavoris(); afficherCarte(); afficherAvis(); };
 const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
 // Onglets : affichés tout de suite au toucher (Safari iOS ratait le changement quand il dépendait de l'historique).
@@ -701,6 +711,7 @@ $('carte').onclick = (e) => {
   scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 };
 afficherCarte();
+afficherAvis();
 
 // Verdict et liste des activités, recalculés aussi quand on change « Mes activités ».
 function afficherActivites() {
