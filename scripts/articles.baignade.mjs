@@ -323,6 +323,126 @@ const LOCAUX = {
   "it": [
    "<strong>Lido Locarno</strong>: tariffe estive 2026: piscine 13 franchi per un adulto, piscine e scivoli 18 franchi; 7 franchi per i bambini da 3 a 15 anni (piscine), gratis sotto i 3 anni. Gli orari cambiano nel corso della stagione: vedi il sito del lido."
   ]
+ },
+ "zoug": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Zug",
+    "https://www.badi-info.ch/a/zug-strandbad.html"
+   ],
+   [
+    "Zuger Zeitung, Badis im Kanton Zug",
+    "https://www.zugerzeitung.ch/zentralschweiz/zug/badis-im-kanton-zug-oeffnungszeiten-preise-kinderfreundlichkeit-ld.4164965"
+   ],
+   [
+    "nau.ch, nouveau Strandbad Zug",
+    "https://www.nau.ch/ort/zug/doppelt-so-viel-platz-neues-strandbad-ist-bereit-fur-die-saison-67125935"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Zug</strong> : entrée gratuite ; saison 2026 du 9 mai au 20 septembre, surveillance de 9 h à 19 h 30. La Ville de Zoug indique que tous ses bains restent gratuits, d’après nau.ch.",
+   "<strong>Cham</strong> (Strandbad) : entrée gratuite. <strong>Buonas</strong> (Seebad Wildenmann) : entrée payante, 3 francs pour un adulte et 2 francs pour les 6 à 15 ans, d’après la Zuger Zeitung (tarif d’un article dont je n’ai pas la date)."
+  ],
+  "en": [
+   "<strong>Strandbad Zug</strong>: free entry; 2026 season from 9 May to 20 September, lifeguards from 9am to 7.30pm. The City of Zug says all its baths stay free, according to nau.ch.",
+   "<strong>Cham</strong> (Strandbad): free entry. <strong>Buonas</strong> (Seebad Wildenmann): paid entry, CHF 3 for an adult and CHF 2 for ages 6 to 15, according to the Zuger Zeitung (prices from an article whose date I do not have)."
+  ],
+  "de": [
+   "<strong>Strandbad Zug</strong>: freier Eintritt; Saison 2026 vom 9. Mai bis 20. September, Badeaufsicht von 9 bis 19.30 Uhr. Die Stadt Zug sagt, dass alle ihre Badis gratis bleiben, laut nau.ch.",
+   "<strong>Cham</strong> (Strandbad): freier Eintritt. <strong>Buonas</strong> (Seebad Wildenmann): kostenpflichtig, Erwachsene CHF 3, Kinder von 6 bis 15 Jahren CHF 2, laut Zuger Zeitung (Preise aus einem Artikel, dessen Datum mir fehlt)."
+  ],
+  "it": [
+   "<strong>Strandbad Zug</strong>: ingresso gratuito; stagione 2026 dal 9 maggio al 20 settembre, sorveglianza dalle 9 alle 19.30. La Città di Zugo afferma che tutti i suoi bagni restano gratuiti, secondo nau.ch.",
+   "<strong>Cham</strong> (Strandbad): ingresso gratuito. <strong>Buonas</strong> (Seebad Wildenmann): a pagamento, 3 franchi per un adulto e 2 franchi dai 6 ai 15 anni, secondo la Zuger Zeitung (tariffe di un articolo di cui non ho la data)."
+  ]
+ },
+ "constance": {
+  "src": [
+   [
+    "Stadt Arbon, tarifs 2026",
+    "https://www.arbon.ch/public/upload/assets/258/Tarife_Schwimmbad_und_Strandbad_2026.pdf?fp=4"
+   ],
+   [
+    "badi-info.ch, Strandbad Buchhorn, Arbon",
+    "https://www.badi-info.ch/tg/strandbad-arbon.html"
+   ],
+   [
+    "Thurgauer Zeitung, prix du Seebad Romanshorn",
+    "https://www.thurgauerzeitung.ch/ostschweiz/oberthurgau/seebad-romanshorn-erhoehung-der-badi-preise-ld.4140188"
+   ],
+   [
+    "badi-info.ch, Seebad Romanshorn",
+    "https://www.badi-info.ch/tg/romanshorn.html"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Buchhorn, Arbon</strong> : tarif 2026 de la Ville, entrée adulte à 8 francs, 4 francs pour les enfants et élèves ; ouvert de 10 h à 19 h jusqu’au 7 juin, puis de 9 h à 20 h du 8 juin au 9 août (badi-info.ch).",
+   "<strong>Seebad Romanshorn</strong> : entrée adulte à 10 francs depuis la hausse (8 francs avant), 5 francs pour les enfants."
+  ],
+  "en": [
+   "<strong>Strandbad Buchhorn, Arbon</strong>: the town’s 2026 prices, adult entry CHF 8, CHF 4 for children and pupils; open 10am to 7pm until 7 June, then 9am to 8pm from 8 June to 9 August (badi-info.ch).",
+   "<strong>Seebad Romanshorn</strong>: adult entry CHF 10 since the increase (it was CHF 8), CHF 5 for children."
+  ],
+  "de": [
+   "<strong>Strandbad Buchhorn, Arbon</strong>: Tarif 2026 der Stadt, Eintritt Erwachsene CHF 8, Kinder und Schüler CHF 4; bis 7. Juni von 10 bis 19 Uhr geöffnet, danach vom 8. Juni bis 9. August von 9 bis 20 Uhr (badi-info.ch).",
+   "<strong>Seebad Romanshorn</strong>: Eintritt Erwachsene CHF 10 seit der Erhöhung (vorher CHF 8), Kinder CHF 5."
+  ],
+  "it": [
+   "<strong>Strandbad Buchhorn, Arbon</strong>: tariffe 2026 della città, ingresso adulti 8 franchi, 4 franchi per bambini e scolari; aperto dalle 10 alle 19 fino al 7 giugno, poi dalle 9 alle 20 dall’8 giugno al 9 agosto (badi-info.ch).",
+   "<strong>Seebad Romanshorn</strong>: ingresso adulti 10 franchi dopo l’aumento (prima 8 franchi), 5 franchi per i bambini."
+  ]
+ },
+ "untersee": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Ermatingen",
+    "https://www.badi-info.ch/tg/ermatingen.html"
+   ],
+   [
+    "Gemeinde Ermatingen, Strandbad",
+    "https://www.ermatingen.ch/de/Leben-am-Untersee/See,-Hafen/Strandbad"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Ermatingen</strong> : entrée gratuite ; saison 2026 du 10 mai au 20 septembre, ouvert de 10 h à 22 h d’après badi-info.ch (la page de la commune ne donne que la saison 2025, également à entrée libre)."
+  ],
+  "en": [
+   "<strong>Strandbad Ermatingen</strong>: free entry; 2026 season from 10 May to 20 September, open 10am to 10pm according to badi-info.ch (the municipality’s page only gives the 2025 season, also free)."
+  ],
+  "de": [
+   "<strong>Strandbad Ermatingen</strong>: freier Eintritt; Saison 2026 vom 10. Mai bis 20. September, laut badi-info.ch von 10 bis 22 Uhr geöffnet (die Gemeindeseite nennt nur die Saison 2025, ebenfalls mit freiem Eintritt)."
+  ],
+  "it": [
+   "<strong>Strandbad Ermatingen</strong>: ingresso gratuito; stagione 2026 dal 10 maggio al 20 settembre, aperto dalle 10 alle 22 secondo badi-info.ch (la pagina del comune riporta solo la stagione 2025, anch’essa a ingresso libero)."
+  ]
+ },
+ "hallwil": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Seerose Meisterschwanden",
+    "https://www.badi-info.ch/a/meisterschwanden.html"
+   ],
+   [
+    "freizeit.ch, Strandbad Seerose",
+    "https://www.freizeit.ch/freizeit/25854/strandbad-seerose"
+   ],
+   [
+    "Gemeinde Meisterschwanden, Strandbad Seerose",
+    "https://www.meisterschwanden.ch/tourismus/strandbaeder/strandbad-seerose.html/209"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Seerose</strong> (Meisterschwanden) : entrée adulte à 7 francs, 2 francs pour les 6 à 16 ans ; ouvert dès le 23 avril 2026 par beau temps, de 11 h à 19 h en mai, puis de 9 h au coucher du soleil de juin à septembre ; entrée libre pour les seuls clients du restaurant. Le car postal part des gares de Wohlen et de Lenzburg jusqu’à Meisterschwanden Oberdorf."
+  ],
+  "en": [
+   "<strong>Strandbad Seerose</strong> (Meisterschwanden): adult entry CHF 7, CHF 2 for ages 6 to 16; open from 23 April 2026 in fine weather, 11am to 7pm in May, then from 9am to sunset from June to September; free entry for restaurant-only visitors. The PostBus runs from Wohlen and Lenzburg stations to Meisterschwanden Oberdorf."
+  ],
+  "de": [
+   "<strong>Strandbad Seerose</strong> (Meisterschwanden): Eintritt Erwachsene CHF 7, Kinder von 6 bis 16 Jahren CHF 2; bei schönem Wetter ab 23. April 2026 geöffnet, im Mai von 11 bis 19 Uhr, von Juni bis September ab 9 Uhr bis Sonnenuntergang; Eintritt frei für reine Restaurantbesucher. Das Postauto fährt ab den Bahnhöfen Wohlen und Lenzburg bis Meisterschwanden Oberdorf."
+  ],
+  "it": [
+   "<strong>Strandbad Seerose</strong> (Meisterschwanden): ingresso adulti 7 franchi, 2 franchi dai 6 ai 16 anni; aperto dal 23 aprile 2026 con bel tempo, dalle 11 alle 19 a maggio, poi dalle 9 al tramonto da giugno a settembre; ingresso libero per chi va solo al ristorante. L’autopostale parte dalle stazioni di Wohlen e Lenzburg fino a Meisterschwanden Oberdorf."
+  ]
  }
 };
 const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };
