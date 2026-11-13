@@ -211,6 +211,118 @@ const LOCAUX = {
    "<strong>Seebad Utoquai</strong>: stagione 2026 dall’11 aprile al 25 ottobre, ingresso adulti 8 franchi (carta da 12 ingressi: 80 franchi).",
    "Altri bagni sul lago nel 2026, ingresso adulti: Kilchberg 6 franchi (dal 1° maggio al 20 settembre), Zollikon 6 franchi (dal 1° maggio al 13 settembre), Oberrieden 5 franchi (dal 10 maggio al 20 settembre), Richterswil 5 franchi."
   ]
+ },
+ "lucerne": {
+  "src": [
+   [
+    "Seebad Luzern, prix",
+    "https://www.seebadluzern.ch/das-bad/preise/"
+   ],
+   [
+    "badi-info.ch, Seebad Luzern",
+    "https://www.badi-info.ch/lu/luzern-seebad.html"
+   ],
+   [
+    "Lido Luzern, prix",
+    "https://new.lido-luzern.ch/zeiten_preise/preise/"
+   ]
+  ],
+  "fr": [
+   "<strong>Seebad Luzern</strong> : ouvert dès le 1er mai, saison en principe jusqu’au Bettag (20 septembre 2026), fermé par mauvais temps ; entrée adulte à 8 francs, 4 francs pour les 6 à 15 ans.",
+   "<strong>Lido Luzern</strong> (établissement distinct, payant) : entrée adulte à 8 francs en semaine et 10 francs le week-end ; 5 francs pour les moins de 16 ans, gratuit pour les moins de 6 ans."
+  ],
+  "en": [
+   "<strong>Seebad Luzern</strong>: open from 1 May, season normally until Bettag (20 September 2026), closed in bad weather; adult entry CHF 8, CHF 4 for ages 6 to 15.",
+   "<strong>Lido Luzern</strong> (a separate, paid facility): adult entry CHF 8 on weekdays and CHF 10 at weekends; CHF 5 under 16, free under 6."
+  ],
+  "de": [
+   "<strong>Seebad Luzern</strong>: ab 1. Mai geöffnet, Saison in der Regel bis zum Bettag (20. September 2026), bei schlechtem Wetter geschlossen; Eintritt Erwachsene CHF 8, Jugendliche von 6 bis 15 Jahren CHF 4.",
+   "<strong>Lido Luzern</strong> (eigene, kostenpflichtige Anlage): Eintritt Erwachsene CHF 8 unter der Woche und CHF 10 am Wochenende; unter 16 Jahren CHF 5, unter 6 Jahren gratis."
+  ],
+  "it": [
+   "<strong>Seebad Luzern</strong>: aperto dal 1° maggio, stagione in genere fino al Bettag (20 settembre 2026), chiuso con il maltempo; ingresso adulti 8 franchi, 4 franchi dai 6 ai 15 anni.",
+   "<strong>Lido Luzern</strong> (struttura distinta, a pagamento): ingresso adulti 8 franchi nei giorni feriali e 10 nel fine settimana; 5 franchi sotto i 16 anni, gratis sotto i 6."
+  ]
+ },
+ "thoune": {
+  "src": [
+   [
+    "Stadt Thun, début de la saison",
+    "https://www.thun.ch/medienmitteilungen/2838523"
+   ],
+   [
+    "freizeit.ch, Strandbad Thun",
+    "https://www.freizeit.ch/freizeit/25836/strandbad-thun"
+   ],
+   [
+    "Sportbetriebe Thun, entrées",
+    "https://sportwebshop.thun.ch/de/einzeleintritte"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Thun</strong> : saison 2026 du 2 mai au 20 septembre, ouvert tous les jours de 7 h à 20 h jusqu’au 31 août, puis jusqu’à 19 h en septembre ; entrée adulte à 7 francs, 5 francs pour apprentis et seniors, 3 francs pour les enfants."
+  ],
+  "en": [
+   "<strong>Strandbad Thun</strong>: 2026 season from 2 May to 20 September, open daily 7am to 8pm until 31 August, then until 7pm in September; adult entry CHF 7, CHF 5 for apprentices and seniors, CHF 3 for children."
+  ],
+  "de": [
+   "<strong>Strandbad Thun</strong>: Saison 2026 vom 2. Mai bis 20. September, bis 31. August täglich von 7 bis 20 Uhr, im September bis 19 Uhr; Eintritt Erwachsene CHF 7, Lernende und Senioren CHF 5, Kinder CHF 3."
+  ],
+  "it": [
+   "<strong>Strandbad Thun</strong>: stagione 2026 dal 2 maggio al 20 settembre, aperto ogni giorno dalle 7 alle 20 fino al 31 agosto, poi fino alle 19 a settembre; ingresso adulti 7 franchi, 5 franchi per apprendisti e anziani, 3 franchi per i bambini."
+  ]
+ },
+ "lugano": {
+  "src": [
+   [
+    "Città di Lugano, Lido di Lugano",
+    "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/lidi-e-piscine/lido-lugano/"
+   ],
+   [
+    "Città di Lugano, Lido Riva Caccia",
+    "https://www.lugano.ch/vivere-lugano/cultura-e-tempo-libero/lidi-e-piscine/lido-riva-caccia/"
+   ]
+  ],
+  "fr": [
+   "<strong>Lido di Lugano</strong> : d’après la Ville, entrée adulte à 11 francs, 7 francs pour les jeunes jusqu’à 20 ans, étudiants, AVS et AI, 3,50 francs jusqu’à 13 ans (la page ne dit pas pour quelle saison ces tarifs valent).",
+   "<strong>Lido Riva Caccia</strong> : d’après la Ville, ouvert du 25 mai au 20 septembre 2026, entrée adulte à 15 francs."
+  ],
+  "en": [
+   "<strong>Lido di Lugano</strong>: according to the City, adult entry CHF 11, CHF 7 for young people up to 20, students and pensioners, CHF 3.50 up to age 13 (the page does not say which season these prices apply to).",
+   "<strong>Lido Riva Caccia</strong>: according to the City, open from 25 May to 20 September 2026, adult entry CHF 15."
+  ],
+  "de": [
+   "<strong>Lido di Lugano</strong>: laut der Stadt Eintritt Erwachsene CHF 11, CHF 7 für Jugendliche bis 20 Jahre, Studierende, AHV und IV, CHF 3.50 bis 13 Jahre (die Seite sagt nicht, für welche Saison diese Preise gelten).",
+   "<strong>Lido Riva Caccia</strong>: laut der Stadt vom 25. Mai bis 20. September 2026 geöffnet, Eintritt Erwachsene CHF 15."
+  ],
+  "it": [
+   "<strong>Lido di Lugano</strong>: secondo la Città, ingresso adulti 11 franchi, 7 franchi per giovani fino a 20 anni, studenti, AVS e AI, 3,50 franchi fino a 13 anni (la pagina non dice per quale stagione valgano questi prezzi).",
+   "<strong>Lido Riva Caccia</strong>: secondo la Città, aperto dal 25 maggio al 20 settembre 2026, ingresso adulti 15 franchi."
+  ]
+ },
+ "majeur": {
+  "src": [
+   [
+    "Lido Locarno, tarifs d’été 2026",
+    "https://www.lidolocarno.ch/media/502754/tarifs-summer-2026.pdf"
+   ],
+   [
+    "Lido Locarno, horaires d’été 2026",
+    "https://www.lidolocarno.ch/it/news/news-detail/id/5827/orari-di-apertura-estate-2026"
+   ]
+  ],
+  "fr": [
+   "<strong>Lido Locarno</strong> : tarifs d’été 2026 : piscines à 13 francs pour un adulte, piscines et toboggans à 18 francs ; 7 francs pour les enfants de 3 à 15 ans (piscines), gratuit pour les moins de 3 ans. Les horaires changent au fil de la saison : voir le site du lido."
+  ],
+  "en": [
+   "<strong>Lido Locarno</strong>: summer 2026 prices: pools CHF 13 for an adult, pools and water slides CHF 18; CHF 7 for children aged 3 to 15 (pools), free under 3. Hours change through the season: see the lido’s website."
+  ],
+  "de": [
+   "<strong>Lido Locarno</strong>: Sommertarife 2026: Schwimmbecken CHF 13 für Erwachsene, Becken und Rutschbahnen CHF 18; CHF 7 für Kinder von 3 bis 15 Jahren (Becken), gratis unter 3 Jahren. Die Öffnungszeiten wechseln im Lauf der Saison: siehe Website des Lidos."
+  ],
+  "it": [
+   "<strong>Lido Locarno</strong>: tariffe estive 2026: piscine 13 franchi per un adulto, piscine e scivoli 18 franchi; 7 franchi per i bambini da 3 a 15 anni (piscine), gratis sotto i 3 anni. Gli orari cambiano nel corso della stagione: vedi il sito del lido."
+  ]
  }
 };
 const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };
