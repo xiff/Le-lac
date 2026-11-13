@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-image": {
+      "command": "npx",
+      "args": ["-y", "mcp-image"],
+      "env": {
+        "GEMINI_API_KEY": "cle-factice-remplacee-par-le-proxy",
+        "IMAGE_OUTPUT_DIR": "/home/user/le-lac/blog/img/ia"
+      }
+    }
+  }
+}
