@@ -8,6 +8,7 @@ Chaque bloc ci-dessous se colle tel quel dans Gemini.
 **À changer une fois dans le Gem** : remplace la règle « Pas de monument identifiable ni de lieu réel dessiné avec précision… » par :
 « Quand le prompt indique un LIEU RÉEL, dessine-le de façon reconnaissable (relief, rives, bâtiments, point de vue), toujours dans le style illustration, jamais comme une photo. »
 Sans ce changement, le Gem reçoit deux consignes contraires et invente des décors.
+Si les images sortent en photo, vérifie aussi que la consigne de style du Gem (illustration gouache, palette crème et bleu-vert) est toujours en place, et ajoute-lui 2 ou 3 images de référence dans ce style.
 
 1. Colle un bloc, génère **une image à la fois**, en 1K pour essayer, en 2K quand elle te plaît.
 2. Si le style dérive, écris : « Même style que l'image de référence, change seulement la scène. »
@@ -17,6 +18,17 @@ Sans ce changement, le Gem reçoit deux consignes contraires et invente des déc
 
 **Mention obligatoire** sous chaque image : « Illustration générée par IA ». Gemini y ajoute un filigrane invisible (SynthID) : ne le retirez pas et ne présentez jamais ces images comme des photos.
 Ne remplacez pas les photos Wikimedia des 12 articles « température » : elles montrent de vrais lieux.
+
+## Suivi
+
+| Image | État |
+|---|---|
+| `bain-d-hiver-neuchatel-bienne-morat` | Reçue le 13 novembre 2026, **à refaire** : bonne composition (Mont Vully, Morat, Neuchâtel), mais photoréaliste. |
+| `bise` | Reçue le 13 novembre 2026, **à refaire** : photoréaliste, Jet d'eau tout droit au lieu d'être couché par la bise, cathédrale placée au bord de l'eau. Prompt corrigé. |
+| `buvettes` | Reçue le 13 novembre 2026, **à refaire** : photoréaliste, texte « BUVETTE DE LA PLAGE » sur le kiosque. Prompt corrigé. |
+| Les 37 autres | À générer. |
+
+Les 3 images reçues sont dans `blog/img/ia/` mais ne sont utilisées par aucune page. Repousse les nouvelles versions sous le même nom : elles remplaceront les anciennes.
 
 ## Thèmes du site
 
@@ -85,7 +97,7 @@ FORMAT : 16:9.
 ```
 @generateur-image-le-lac
 LIEU RÉEL, à rendre reconnaissable : Bains des Pâquis et Jet d'eau, rade de Genève.
-SCÈNE : a cold sunny day with strong north-east wind: the stone jetty of the Bains des Pâquis with its white lighthouse, small whitecaps all over the harbour, the tall Jet d'eau fountain bent sideways by the wind and blowing spray; stylised wind lines sweeping across the water; a flag stiffly flying.
+SCÈNE : a cold sunny day with strong north-east wind: the stone jetty of the Bains des Pâquis with its white lighthouse, small whitecaps all over the harbour, the tall Jet d'eau fountain whose plume is blown almost horizontally by the wind into a long sheet of spray (it must NOT stand straight up); the old town in the background stays set back from the water, no cathedral on the shore; stylised wind lines sweeping across the water; a flag stiffly flying.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere.
 FORMAT : 16:9.
 ```
@@ -95,7 +107,7 @@ FORMAT : 16:9.
 ```
 @generateur-image-le-lac
 LIEU RÉEL, à rendre reconnaissable : une buvette de plage sur la rive vaudoise du Léman.
-SCÈNE : an empty lakeside buvette at golden hour: a small wooden kiosk with a striped awning, a few wooden tables and folded parasols on the grass, a pebble beach; across the wide lake, the French Chablais mountains in warm evening light.
+SCÈNE : an empty lakeside buvette at golden hour: a small wooden kiosk with a plain striped awning and a blank front (no sign, no lettering), a few wooden tables and folded parasols on the grass, a pebble beach; across the wide lake, the French Chablais mountains in warm evening light.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere.
 FORMAT : 16:9.
 ```
