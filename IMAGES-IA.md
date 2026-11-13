@@ -56,9 +56,9 @@ APRÈS L'IMAGE, écris seulement une ligne :
 Les 40 images ont été générées le 13 novembre 2026 depuis Claude Code (Nano Banana 2.1), avec l'image `bise` comme référence de style : elles sont toutes dans `blog/img/ia/`, en 1376×768, **à valider** avant intégration.
 Aucune page ne les utilise encore. Pour en refaire une, relance son bloc ci-dessous et repousse-la sous le même nom.
 
-Points à vérifier en priorité :
-- `portrait-joux` : la Dent de Vaulion y est un sommet enneigé en pointe, alors que c'est une falaise. À refaire si gênant.
-- `portrait-constance` : phare et drapeau suisse à l'entrée du port, repris de l'image de référence ; Romanshorn a bien un phare, à comparer.
+Corrections faites et points à vérifier :
+- `portrait-joux` : refaite le 13 novembre 2026, la Dent de Vaulion est maintenant une crête boisée qui finit en falaise.
+- `portrait-constance` : refaite le 13 novembre 2026, sans phare ni drapeau (digue, voiliers, ferry).
 - Repères de paysage en général : je ne les ai pas comparés avec des photos.
 
 ## Thèmes du site
@@ -271,7 +271,7 @@ FORMAT : 16:9.
 ```
 @generateur-image-le-lac
 LIEU RÉEL, à rendre reconnaissable : plage du Rocheray, Le Sentier, avec la Dent de Vaulion.
-SCÈNE : a high Jura valley lake in winter at sunset: in the foreground the snowy shore of Le Rocheray; the lake partly frozen; dense dark spruce forests on both sides; at the far end, the distinctive steep cliff of the Dent de Vaulion catching the last golden light.
+SCÈNE : a high Jura valley lake in winter at sunset: in the foreground the snowy shore of Le Rocheray; the lake partly frozen; dense dark spruce forests on both sides; low rounded hills (no Alpine peaks); at the far end of the valley, the Dent de Vaulion: a broad rounded wooded ridge ending abruptly in a steep vertical rock cliff, NOT a pointed snowy peak, catching the last golden light.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere.
 FORMAT : 16:9.
 ```
@@ -431,7 +431,7 @@ FORMAT : 16:9.
 ```
 @generateur-image-le-lac
 LIEU RÉEL, à rendre reconnaissable : port de Romanshorn.
-SCÈNE : a vast lake with an almost endless flat horizon under a big sky: in the foreground the harbour of Romanshorn with many sailboat masts and a large white car ferry; a lighthouse at the harbour entrance; the far German shore only a thin line.
+SCÈNE : a vast lake with an almost endless flat horizon under a big sky: in the foreground a long stone harbour wall; inside the harbour of Romanshorn, many sailboats with bare masts and a large white car ferry at its berth; the far German shore only a thin low line; no lighthouse, no flag.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere.
 FORMAT : 16:9.
 ```
