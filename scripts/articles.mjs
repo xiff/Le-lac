@@ -693,15 +693,15 @@ for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l
 ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade());
 // Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 12 novembre 2026.
 const DATES = {
-  'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28'],
-  'temperature-lac-neuchatel': ['2026-10-28'], 'plages-lac-neuchatel': ['2026-10-28'],
+  'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28', '2026-11-13'],
+  'temperature-lac-neuchatel': ['2026-10-28'], 'plages-lac-neuchatel': ['2026-10-28', '2026-11-13'],
   'saunas-bord-du-leman': ['2026-10-29'], 'buvettes-restaurants-bord-du-leman': ['2026-10-29', '2026-11-01'],
   'plages-lac-lugano': ['2026-10-29'], 'temperature-lac-zurich': ['2026-10-30'],
-  'plages-lac-bienne': ['2026-10-30'], 'bise-leman': ['2026-10-30', '2026-11-02'],
+  'plages-lac-bienne': ['2026-10-30', '2026-11-13'], 'bise-leman': ['2026-10-30', '2026-11-02'],
   'plages-lac-thoune': ['2026-10-30'], 'temperature-lac-lugano': ['2026-10-31'],
   'plages-lac-joux': ['2026-10-31'], 'bain-d-hiver-leman': ['2026-10-31', '2026-11-03'],
   'paddle-leman': ['2026-11-01', '2026-11-04'], 'plages-lac-constance': ['2026-11-01'],
-  'temperature-lac-bienne': ['2026-11-01'], 'plages-lac-morat': ['2026-11-02'],
+  'temperature-lac-bienne': ['2026-11-01'], 'plages-lac-morat': ['2026-11-02', '2026-11-13'],
   'plages-geneve': ['2026-11-02', '2026-11-05'], 'plages-lac-majeur': ['2026-11-02'],
   'bain-d-hiver-zurich': ['2026-11-02'], 'plages-lac-lucerne': ['2026-11-03'],
   'temperature-lac-thoune': ['2026-11-03'], 'kitesurf-windsurf-wingfoil-leman': ['2026-11-03'],

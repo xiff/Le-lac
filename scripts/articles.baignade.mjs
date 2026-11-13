@@ -86,10 +86,140 @@ const T = {
 };
 const CONTOURS_OK = new Set(Object.keys(CONTOURS));
 
+// Faits locaux sourcés, lac par lac : entrée et saison des bains (prix et dates de la saison 2026, relevés le 13 novembre 2026) et accès. À mettre à jour chaque printemps.
+const LOCAUX = {
+ "morat": {
+  "src": [
+   [
+    "BLS, Strandbad Murten",
+    "https://www.bls.ch/en/freizeit-und-ferien/ausfluege/badeplatz-strandbad-murten"
+   ],
+   [
+    "badi-info.ch, Strandbad Murten",
+    "https://www.badi-info.ch/a/murten.html"
+   ],
+   [
+    "freizeit.ch, Hallen- und Strandbad Murten",
+    "https://www.freizeit.ch/freizeit/hallen-und-strandbad-in-murten/"
+   ],
+   [
+    "Hallen-, Schwimm- und Strandbad Murten, billets",
+    "https://www.schwimmbad-murten.ch/de/hallenbad-ticket-erwachsen"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Murten</strong> (Lausannestrasse 2) : ouvert du 9 mai au 20 septembre 2026, avec une grande saison de 9 h à 21 h du 30 mai au 30 août ; entrée adulte à 8 francs ; plage de sable sur le lac. Depuis la gare de Morat, il faut compter environ 7 minutes à pied."
+  ],
+  "en": [
+   "<strong>Strandbad Murten</strong> (Lausannestrasse 2): open 9 May to 20 September 2026, with a main season of 9am to 9pm from 30 May to 30 August; adult entry CHF 8; sandy beach on the lake. From Murten station, allow about 7 minutes on foot."
+  ],
+  "de": [
+   "<strong>Strandbad Murten</strong> (Lausannestrasse 2): geöffnet vom 9. Mai bis 20. September 2026, mit Hauptsaison von 9 bis 21 Uhr vom 30. Mai bis 30. August; Eintritt Erwachsene CHF 8; Sandstrand am See. Vom Bahnhof Murten sind es etwa 7 Minuten zu Fuss."
+  ],
+  "it": [
+   "<strong>Strandbad Murten</strong> (Lausannestrasse 2): aperto dal 9 maggio al 20 settembre 2026, con alta stagione dalle 9 alle 21 dal 30 maggio al 30 agosto; ingresso adulti 8 franchi; spiaggia di sabbia sul lago. Dalla stazione di Morat ci vogliono circa 7 minuti a piedi."
+  ]
+ },
+ "bienne": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Biel",
+    "https://www.badi-info.ch/be/biel-strandbad.html"
+   ],
+   [
+    "freizeit.ch, Strandbad Biel",
+    "https://www.freizeit.ch/freizeit/25841/strandbad-biel"
+   ]
+  ],
+  "fr": [
+   "<strong>Strandbad Biel</strong> (Uferweg 40, Nidau) : saison 2026 du 9 mai au 13 septembre ; entrée adulte à 5 francs, 4 francs en tarif réduit (étudiants, apprentis, AVS)."
+  ],
+  "en": [
+   "<strong>Strandbad Biel</strong> (Uferweg 40, Nidau): 2026 season from 9 May to 13 September; adult entry CHF 5, CHF 4 reduced (students, apprentices, pensioners)."
+  ],
+  "de": [
+   "<strong>Strandbad Biel</strong> (Uferweg 40, Nidau): Saison 2026 vom 9. Mai bis 13. September; Eintritt Erwachsene CHF 5, ermässigt CHF 4 (Studierende, Lehrlinge, AHV)."
+  ],
+  "it": [
+   "<strong>Strandbad Biel</strong> (Uferweg 40, Nidau): stagione 2026 dal 9 maggio al 13 settembre; ingresso adulti 5 franchi, ridotto 4 franchi (studenti, apprendisti, AVS)."
+  ]
+ },
+ "neuchatel": {
+  "src": [
+   [
+    "Torpille, plages du lac de Neuchâtel",
+    "https://torpille.ch/plages-lac-neuchatel/"
+   ],
+   [
+    "Kidora, plage des Jeunes-Rives",
+    "https://kidora.ch/activites/plage-des-jeunes-rives-neuchatel"
+   ]
+  ],
+  "fr": [
+   "Les plages du lac sont pour la plupart gratuites ; seuls les bains avec piscine (Serrières, Nid-du-Crô) sont payants, d’après l’annuaire Torpille.",
+   "<strong>Jeunes-Rives</strong> : plage urbaine gratuite, avec douches, toilettes et pelouses, à environ 5 minutes à pied de la gare, d’après Kidora."
+  ],
+  "en": [
+   "Most of the lake’s beaches are free; only the baths with a pool (Serrières, Nid-du-Crô) charge, according to the Torpille directory.",
+   "<strong>Jeunes-Rives</strong>: a free city beach with showers, toilets and lawns, about 5 minutes’ walk from the station, according to Kidora."
+  ],
+  "de": [
+   "Die meisten Strände am See sind gratis; nur die Bäder mit Schwimmbecken (Serrières, Nid-du-Crô) kosten Eintritt, laut dem Verzeichnis Torpille.",
+   "<strong>Jeunes-Rives</strong>: gratis Stadtstrand mit Duschen, WC und Wiesen, etwa 5 Gehminuten vom Bahnhof, laut Kidora."
+  ],
+  "it": [
+   "La maggior parte delle spiagge del lago è gratuita; solo i bagni con piscina (Serrières, Nid-du-Crô) sono a pagamento, secondo l’elenco Torpille.",
+   "<strong>Jeunes-Rives</strong>: spiaggia urbana gratuita con docce, servizi e prati, a circa 5 minuti a piedi dalla stazione, secondo Kidora."
+  ]
+ },
+ "zurich": {
+  "src": [
+   [
+    "badi-info.ch, Seebad Utoquai",
+    "https://www.badi-info.ch/Utoquai.html"
+   ],
+   [
+    "badi-info.ch, Seebad Kilchberg",
+    "https://www.badi-info.ch/zh/kilchberg-strandbad.html"
+   ],
+   [
+    "badi-info.ch, Seebad Zollikon",
+    "https://www.badi-info.ch/zh/zollikon-seebad.html"
+   ],
+   [
+    "badi-info.ch, Strandbad Oberrieden",
+    "https://www.badi-info.ch/zh/oberrieden-strandbad.html"
+   ],
+   [
+    "badi-info.ch, Seebad Richterswil",
+    "https://www.badi-info.ch/zh/richterswil-strandbad.html"
+   ]
+  ],
+  "fr": [
+   "<strong>Seebad Utoquai</strong> : saison 2026 du 11 avril au 25 octobre, entrée adulte à 8 francs (carte de 12 entrées : 80 francs).",
+   "Autres bains de la rive en 2026, entrée adulte : Kilchberg 6 francs (du 1er mai au 20 septembre), Zollikon 6 francs (du 1er mai au 13 septembre), Oberrieden 5 francs (du 10 mai au 20 septembre), Richterswil 5 francs."
+  ],
+  "en": [
+   "<strong>Seebad Utoquai</strong>: 2026 season from 11 April to 25 October, adult entry CHF 8 (12-entry card: CHF 80).",
+   "Other lakeside baths in 2026, adult entry: Kilchberg CHF 6 (1 May to 20 September), Zollikon CHF 6 (1 May to 13 September), Oberrieden CHF 5 (10 May to 20 September), Richterswil CHF 5."
+  ],
+  "de": [
+   "<strong>Seebad Utoquai</strong>: Saison 2026 vom 11. April bis 25. Oktober, Eintritt Erwachsene CHF 8 (12er-Karte: CHF 80).",
+   "Weitere Seebäder 2026, Eintritt Erwachsene: Kilchberg CHF 6 (1. Mai bis 20. September), Zollikon CHF 6 (1. Mai bis 13. September), Oberrieden CHF 5 (10. Mai bis 20. September), Richterswil CHF 5."
+  ],
+  "it": [
+   "<strong>Seebad Utoquai</strong>: stagione 2026 dall’11 aprile al 25 ottobre, ingresso adulti 8 franchi (carta da 12 ingressi: 80 franchi).",
+   "Altri bagni sul lago nel 2026, ingresso adulti: Kilchberg 6 franchi (dal 1° maggio al 20 settembre), Zollikon 6 franchi (dal 1° maggio al 13 settembre), Oberrieden 5 franchi (dal 10 maggio al 20 settembre), Richterswil 5 franchi."
+  ]
+ }
+};
+const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };
 export const articlesBaignade = () => Object.keys(LACS).filter((c) => c !== 'leman').map((cle) => {
   const plages = SPOTS.filter((s) => lacDe(s) === cle), n = plages.length, [aire, prof, alt, src] = FAITS[cle], lieux = LIEUX.filter((x) => x.zone === cle);
   const a = { slug: `plages-lac-${cle}`, lac: cle, publie: '2026-11-12', modifie: '2026-11-12', image: `blog/img/plages-${cle}.jpg`, hauteur: 900, alt: {}, credit: {}, creditHtml: {},
     sources: [[`Wikipedia, ${nomLac(cle, 'en')}`, src], SOURCE_ALP, ['OpenStreetMap, contours et plages (ODbL)', 'https://www.openstreetmap.org/copyright']] };
+  if (LOCAUX[cle]) a.sources.push(...LOCAUX[cle].src);
+  if (LOCAUX[cle]) a.modifie = '2026-11-13';
   if (cle === 'sion') a.sources[0] = ['Bourgeoisie de Sion, Domaine des Îles', src];
   for (const L of ['fr', 'en', 'de', 'it']) {
     const t = T[L], F = formes(cle, L), sep = L === 'fr' ? ' : ' : ': ';
@@ -103,7 +233,7 @@ export const articlesBaignade = () => Object.keys(LACS).filter((c) => c !== 'lem
     const lieuxHtml = lieux.length ? `<h2>${t.hLieux(F)}</h2>\n<ul class="liste">\n${lieux.map((x) => `  <li><strong>${x.nom}</strong>, ${villeDe(x.ville, L)}${x.mois ? t.saison.replace('{a}', mois(x.mois[0], L)).replace('{b}', mois(x.mois[1], L)) : ''}${sep}${texteLieu(x, L)}</li>`).join('\n')}\n</ul>\n` : '';
     const aussi = [AVEC_TEMP.includes(cle) && `temperature-lac-${cle}`, ...(LIENS[cle] ?? [])].filter(Boolean);
     const aussiHtml = aussi.length ? `<h2>${t.hAussi}</h2>\n<ul class="liste">\n${aussi.map((sl) => `  <li><a href="{blog:${sl}}">${sl.startsWith('temperature') ? t.tempT(F) : `{titre:${sl}}`}</a></li>`).join('\n')}\n</ul>\n` : '';
-    const html = `${intro ? `<p>${intro}</p>\n` : ''}<h2>${t.hPlages(F, n)}</h2>\n${avecValeur ? `<p>${t.valeurs(dateMatin(L))}</p>\n` : ''}${liste}\n${modele ? `<p>${modele}</p>\n` : ''}${lieuxHtml}${loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), duLac(cle, L))}${aussiHtml}`;
+    const html = `${intro ? `<p>${intro}</p>\n` : ''}<h2>${t.hPlages(F, n)}</h2>\n${avecValeur ? `<p>${t.valeurs(dateMatin(L))}</p>\n` : ''}${liste}\n${modele ? `<p>${modele}</p>\n` : ''}${LOCAUX[cle] ? `<h2>${T_LOCAL[L][0]}</h2>\n<p>${T_LOCAL[L][1]}</p>\n<ul class="liste">\n${LOCAUX[cle][L].map((x) => `  <li>${x}</li>`).join('\n')}\n</ul>\n` : ''}${lieuxHtml}${loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), duLac(cle, L))}${aussiHtml}`;
     a[L] = { titre: t.titre(F, n), h1: t.h1(F), desc: t.desc(F, n), bref: t.bref(F, n, plages[0].nom), html: () => html };
     a.alt[L] = t.alt(F, n); a.credit[L] = t.credit(F);
     a.creditHtml[L] = t.credit(F) + (CONTOURS_OK.has(cle) ? `, © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.` : '.');
