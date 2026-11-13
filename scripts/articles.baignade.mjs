@@ -341,19 +341,19 @@ const LOCAUX = {
   ],
   "fr": [
    "<strong>Strandbad Zug</strong> : entrée gratuite ; saison 2026 du 9 mai au 20 septembre, surveillance de 9 h à 19 h 30. La Ville de Zoug indique que tous ses bains restent gratuits, d’après nau.ch.",
-   "<strong>Cham</strong> (Strandbad) : entrée gratuite. <strong>Buonas</strong> (Seebad Wildenmann) : entrée payante, 3 francs pour un adulte et 2 francs pour les 6 à 15 ans, d’après la Zuger Zeitung (tarif d’un article dont je n’ai pas la date)."
+   "<strong>Cham</strong> (Strandbad) : entrée gratuite. <strong>Buonas</strong> (Seebad Wildenmann) : entrée payante, 3 francs pour un adulte et 2 francs pour les 6 à 15 ans, d’après la Zuger Zeitung (tarif d’un article dont nous n’avons pas la date)."
   ],
   "en": [
    "<strong>Strandbad Zug</strong>: free entry; 2026 season from 9 May to 20 September, lifeguards from 9am to 7.30pm. The City of Zug says all its baths stay free, according to nau.ch.",
-   "<strong>Cham</strong> (Strandbad): free entry. <strong>Buonas</strong> (Seebad Wildenmann): paid entry, CHF 3 for an adult and CHF 2 for ages 6 to 15, according to the Zuger Zeitung (prices from an article whose date I do not have)."
+   "<strong>Cham</strong> (Strandbad): free entry. <strong>Buonas</strong> (Seebad Wildenmann): paid entry, CHF 3 for an adult and CHF 2 for ages 6 to 15, according to the Zuger Zeitung (prices from an article whose date we do not have)."
   ],
   "de": [
    "<strong>Strandbad Zug</strong>: freier Eintritt; Saison 2026 vom 9. Mai bis 20. September, Badeaufsicht von 9 bis 19.30 Uhr. Die Stadt Zug sagt, dass alle ihre Badis gratis bleiben, laut nau.ch.",
-   "<strong>Cham</strong> (Strandbad): freier Eintritt. <strong>Buonas</strong> (Seebad Wildenmann): kostenpflichtig, Erwachsene CHF 3, Kinder von 6 bis 15 Jahren CHF 2, laut Zuger Zeitung (Preise aus einem Artikel, dessen Datum mir fehlt)."
+   "<strong>Cham</strong> (Strandbad): freier Eintritt. <strong>Buonas</strong> (Seebad Wildenmann): kostenpflichtig, Erwachsene CHF 3, Kinder von 6 bis 15 Jahren CHF 2, laut Zuger Zeitung (Preise aus einem Artikel, dessen Datum uns fehlt)."
   ],
   "it": [
    "<strong>Strandbad Zug</strong>: ingresso gratuito; stagione 2026 dal 9 maggio al 20 settembre, sorveglianza dalle 9 alle 19.30. La Città di Zugo afferma che tutti i suoi bagni restano gratuiti, secondo nau.ch.",
-   "<strong>Cham</strong> (Strandbad): ingresso gratuito. <strong>Buonas</strong> (Seebad Wildenmann): a pagamento, 3 franchi per un adulto e 2 franchi dai 6 ai 15 anni, secondo la Zuger Zeitung (tariffe di un articolo di cui non ho la data)."
+   "<strong>Cham</strong> (Strandbad): ingresso gratuito. <strong>Buonas</strong> (Seebad Wildenmann): a pagamento, 3 franchi per un adulto e 2 franchi dai 6 ai 15 anni, secondo la Zuger Zeitung (tariffe di un articolo di cui non abbiamo la data)."
   ]
  },
  "constance": {
@@ -717,11 +717,11 @@ const LOCAUX = {
   ],
   "en": [
    "Lac de Bret is a drinking-water reserve and a sensitive natural site: no developed public bathing area appears in the official sources consulted.",
-   "A classification project published in 2025 by the Canton of Vaud plans to ban swimming and watercraft in the protected northern part of the lake, so as not to disturb wildlife. I could not confirm whether it has come into force: check locally before swimming."
+   "A classification project published in 2025 by the Canton of Vaud plans to ban swimming and watercraft in the protected northern part of the lake, so as not to disturb wildlife. We could not confirm whether it has come into force: check locally before swimming."
   ],
   "de": [
    "Der Lac de Bret ist ein Trinkwasserreservoir und ein empfindliches Naturgebiet: In den konsultierten offiziellen Quellen erscheint keine eingerichtete öffentliche Badezone.",
-   "Ein 2025 vom Kanton Waadt veröffentlichtes Schutzprojekt sieht vor, Baden und Wasserfahrzeuge im geschützten Nordteil des Sees zu verbieten, um die Tierwelt nicht zu stören. Ob es in Kraft getreten ist, konnte ich nicht bestätigen: Vor dem Baden vor Ort nachfragen."
+   "Ein 2025 vom Kanton Waadt veröffentlichtes Schutzprojekt sieht vor, Baden und Wasserfahrzeuge im geschützten Nordteil des Sees zu verbieten, um die Tierwelt nicht zu stören. Ob es in Kraft getreten ist, konnten wir nicht bestätigen: Vor dem Baden vor Ort nachfragen."
   ],
   "it": [
    "Il Lac de Bret è una riserva di acqua potabile e un sito naturale sensibile: nelle fonti ufficiali consultate non compare alcuna zona di balneazione pubblica attrezzata.",
@@ -745,19 +745,19 @@ const LOCAUX = {
   ],
   "fr": [
    "Le domaine, géré par la Bourgeoisie de Sion, est décrit comme gratuit et en accès libre toute l’année (Discovr).",
-   "Une baignade surveillée par des sauveteurs est annoncée surtout de mai à septembre (Alpvision, page d’il y a environ un an) : je n’ai pas de confirmation pour 2026, à demander à la Bourgeoisie."
+   "Une baignade surveillée par des sauveteurs est annoncée surtout de mai à septembre (Alpvision, page d’il y a environ un an) : nous n’avons pas de confirmation pour 2026, à demander à la Bourgeoisie."
   ],
   "en": [
    "The estate, run by the Bourgeoisie of Sion, is described as free and open all year (Discovr).",
-   "Lifeguard-supervised swimming is announced mainly from May to September (Alpvision, a page about a year old): I have no confirmation for 2026, ask the Bourgeoisie."
+   "Lifeguard-supervised swimming is announced mainly from May to September (Alpvision, a page about a year old): we have no confirmation for 2026, ask the Bourgeoisie."
   ],
   "de": [
    "Das von der Burgergemeinde Sitten verwaltete Gelände wird als gratis und das ganze Jahr frei zugänglich beschrieben (Discovr).",
-   "Beaufsichtigtes Baden wird vor allem von Mai bis September angekündigt (Alpvision, eine rund ein Jahr alte Seite): Für 2026 habe ich keine Bestätigung, bei der Burgergemeinde nachfragen."
+   "Beaufsichtigtes Baden wird vor allem von Mai bis September angekündigt (Alpvision, eine rund ein Jahr alte Seite): Für 2026 haben wir keine Bestätigung, bei der Burgergemeinde nachfragen."
   ],
   "it": [
    "La tenuta, gestita dalla Borghesia di Sion, è descritta come gratuita e ad accesso libero tutto l’anno (Discovr).",
-   "La balneazione sorvegliata da bagnini è annunciata soprattutto da maggio a settembre (Alpvision, una pagina di circa un anno fa): non ho conferma per il 2026, da chiedere alla Borghesia."
+   "La balneazione sorvegliata da bagnini è annunciata soprattutto da maggio a settembre (Alpvision, una pagina di circa un anno fa): non abbiamo conferma per il 2026, da chiedere alla Borghesia."
   ]
  },
  "silvaplana": {
@@ -773,15 +773,15 @@ const LOCAUX = {
   ],
   "fr": [
    "Le lac est librement accessible et n’est jamais surveillé ; les sports nautiques se pratiquent à ses propres risques, uniquement depuis les accès officiels (plage du centre de surf, extrémité du port côté camping, plage du camping), d’après schweizersee.ch.",
-   "Parking payant à Mulets et au pont de Surlej. Je n’ai trouvé aucun droit d’entrée pour se baigner."
+   "Parking payant à Mulets et au pont de Surlej. Nous n’avons trouvé aucun droit d’entrée pour se baigner."
   ],
   "en": [
    "The lake is freely accessible and never supervised; water sports are at your own risk, only from the official access points (the surf centre beach, the campsite end of the harbour, the campsite beach), according to schweizersee.ch.",
-   "Paid parking at Mulets and the Surlej bridge. I found no entry fee for swimming."
+   "Paid parking at Mulets and the Surlej bridge. We found no entry fee for swimming."
   ],
   "de": [
    "Der See ist frei zugänglich und zu keiner Zeit überwacht; Wassersport erfolgt auf eigene Gefahr, nur von den offiziellen Zugängen aus (Strand beim Surf Center, Hafenende auf der Campingseite, Strand des Campingplatzes), laut schweizersee.ch.",
-   "Parkplätze kostenpflichtig bei Mulets und an der Surlej-Brücke. Einen Eintritt zum Baden habe ich nicht gefunden."
+   "Parkplätze kostenpflichtig bei Mulets und an der Surlej-Brücke. Einen Eintritt zum Baden haben wir nicht gefunden."
   ],
   "it": [
    "Il lago è liberamente accessibile e mai sorvegliato; gli sport nautici si praticano a proprio rischio, solo dagli accessi ufficiali (spiaggia del centro surf, estremità del porto lato campeggio, spiaggia del campeggio), secondo schweizersee.ch.",
