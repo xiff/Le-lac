@@ -98,6 +98,9 @@ ${donnees ? `<link rel="modulepreload" href="${r}spots.js">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>`;
 
+// Image d'article : tête (prioritaire) ou image secondaire dans le corps (chargée plus tard).
+const figure = (x, alt, legende, r, cls = 'seconde') => `<figure class="${cls}"><img src="${r}${x.image}" alt="${esc(alt)}" srcset="${[640, 1200].map((w) => `${r}blog/img/min/${x.image.split('/').pop().replace('.jpg', `-${w}.jpg`)} ${w}w`).join(', ')}, ${r}${x.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${x.hauteur}"${cls === 'une' ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${legende}</figcaption></figure>`;
+
 export function article(a, L = 'fr') {
   const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = SUF[L] ? '../../../' : '../../';
   const ld = [ORG, SITE, {
@@ -117,9 +120,10 @@ export function article(a, L = 'fr') {
   <p class="releve">${t.par} ${t.equipe} · ${t.publie} <time datetime="${a.publie}">${dateL(a.publie, L)}</time>${a.modifie !== a.publie ? ` · ${t.maj} <time datetime="${a.modifie}">${dateL(a.modifie, L)}</time>` : ''}</p>
 </header>
 <main class="article">
-  <figure class="une"><img src="${r}${a.image}" alt="${esc(a.alt[L])}" srcset="${[640, 1200].map((w) => `${r}blog/img/min/${a.image.split('/').pop().replace('.jpg', `-${w}.jpg`)} ${w}w`).join(', ')}, ${r}${a.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${a.hauteur}" fetchpriority="high"><figcaption>${credit}</figcaption></figure>
+  ${figure(a, a.alt[L], credit, r, 'une')}
   <section class="bref" aria-labelledby="bref"><h2 id="bref">${t.bref}</h2><p>${c.bref}</p></section>
-  ${liens(c.html(L).trim(), L, r)}
+${a.seconde ? `  ${figure(a.seconde, a.seconde.alt[L], a.seconde.credit[L], r)}
+` : ''}  ${liens(c.html(L).trim(), L, r)}
   <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">${c.eauTitre ?? t.eau}</h2>
     <p id="eau-live">${liens(t.eauRepli, L, r)}</p></section>
 ${a.sante ? `  <p class="avertissement" role="note">${t.avertissement}</p>\n` : ''}  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">${t.sources}</h2><ul>

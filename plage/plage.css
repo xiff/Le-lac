@@ -63,9 +63,10 @@ footer .liens a { display: inline-flex; align-items: center; min-height: 44px; }
 .article p, .article li { max-width: 64ch; }
 .article h2 { margin-top: 36px; }
 .une { margin: 24px 0 0; }
-.une img { width: 100%; height: auto; border-radius: 16px; display: block; }
-.une figcaption, .sources li { color: var(--doux); font-size: 13px; }
-.une figcaption { margin-top: 6px; }
+.seconde { margin: 28px 0 0; }
+.une img, .seconde img { width: 100%; height: auto; border-radius: 16px; display: block; }
+.une figcaption, .seconde figcaption, .sources li { color: var(--doux); font-size: 13px; }
+.une figcaption, .seconde figcaption { margin-top: 6px; }
 .bref { margin-top: 28px; padding: 18px 20px; border-radius: 18px; background: var(--carte); box-shadow: 0 1px 3px #10292f14; }
 .bref h2 { margin: 0 0 6px; font-size: 20px; }
 .bref p { margin: 0; }

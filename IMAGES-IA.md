@@ -53,8 +53,8 @@ APRÈS L'IMAGE, écris seulement une ligne :
 
 ## Suivi
 
-Les 40 images ont été générées le 13 novembre 2026 depuis Claude Code (Nano Banana 2.1), avec l'image `bise` comme référence de style : elles sont toutes dans `blog/img/ia/`, en 1376×768, **à valider** avant intégration.
-Aucune page ne les utilise encore. Pour en refaire une, relance son bloc ci-dessous et repousse-la sous le même nom.
+Les 40 images ont été générées le 13 novembre 2026 depuis Claude Code (Nano Banana 2.1), avec l'image `bise` comme référence de style : elles sont dans `blog/img/ia/`.
+**Intégrées le 13 novembre 2026** en tête de 32 articles (24 « Où se baigner », 5 saunas et bains d'hiver, bise, buvettes, paddle), redimensionnées en 1600×893 ; l'ancienne image (carte ou photo) descend juste après « En bref ». Correspondance et textes alternatifs en 4 langues : `scripts/illustrations.mjs`. `og-image` sert d'image de partage du site (`og-image-1200x630.jpg`, dans `index.html`). Pas encore utilisées, faute de page : `nuit`, `donnees`, `clubs-bain-d-hiver`, `bienfaits-bain-froid`, `respiration`, `programme-4-semaines`, `neoprene`. Pour en refaire une, relance son bloc ci-dessous et repousse-la sous le même nom.
 
 Corrections faites et points à vérifier :
 - `portrait-joux` : refaite le 13 novembre 2026, la Dent de Vaulion est maintenant une crête boisée qui finit en falaise.
@@ -468,10 +468,10 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
-## Ce que je ferai des images
+## Ce que deviennent les images
 
-- Les placer en tête des articles concernés (à la place de la carte, qui passe dans le corps de l'article), avec le texte alternatif du Gem et la légende « Illustration générée par IA ».
-- Ne rien changer aux pages de plage : elles montrent des lieux réels.
+- En tête des articles concernés, avec le texte alternatif de `scripts/illustrations.mjs` et la légende « Illustration générée par IA » ; la carte ou la photo d'avant passe dans le corps de l'article. Pour en ajouter une : l'enregistrer dans `blog/img/ia/` en 1600×893, ajouter une ligne dans `scripts/illustrations.mjs`, puis lancer `node scripts/miniatures.mjs` et `node scripts/blog.mjs`.
+- Rien ne change sur les pages de plage : elles montrent des lieux réels.
 
 ## Serveur d'images directement dans Claude Code (optionnel)
 

@@ -10,6 +10,7 @@ import { articlesSaunas } from './articles.saunas.mjs';
 import { articlesBaignade } from './articles.baignade.mjs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
+import { illustrer, ILLUSTRATIONS } from './illustrations.mjs';
 
 const ZONES = { geneve: 'Genève', nyon: 'La Côte', lausanne: 'Morges et Lausanne', vevey: 'Riviera', evian: 'Rive française' };
 const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
@@ -722,4 +723,5 @@ const DATES = {
   'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
-
+// Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
+ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = { ...illustrer(a), modifie: a.modifie > '2026-11-13' ? a.modifie : '2026-11-13' }; });
