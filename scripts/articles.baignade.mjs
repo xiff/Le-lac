@@ -571,6 +571,222 @@ const LOCAUX = {
    "<strong>Strandbad Uster</strong>: stagione 2026 dal 9 maggio; ingresso adulti 6,50 franchi, 3,50 franchi dai 6 anni; dalle 9 alle 20.30 a maggio, fino alle 19 a settembre.",
    "<strong>Strandbad Maur</strong>: ingresso gratuito da luglio 2026. In un avviso del 23 giugno 2026 il comune dice che il gestore non può più garantire né l’esercizio né la sorveglianza dei bagni: la situazione può essere cambiata da allora, da verificare con il comune."
   ]
+ },
+ "brienz": {
+  "src": [
+   [
+    "badi-info.ch, Strandbad Bönigen",
+    "https://www.badi-info.ch/be/boenigen.html"
+   ],
+   [
+    "freizeit.ch, Strandbad Brienz",
+    "https://www.freizeit.ch/freizeit/19287/strandbad-brienz"
+   ],
+   [
+    "badi-info.ch, Strandbad Iseltwald",
+    "https://www.badi-info.ch/be/iseltwald.html"
+   ],
+   [
+    "badi-info.ch, Strandbad Niederried",
+    "https://www.badi-info.ch/be/niederried-strandbad.html"
+   ]
+  ],
+  "fr": [
+   "<strong>Bönigen</strong> (payant) : saison 2026 du 16 mai au 13 septembre ; adulte 6 francs, 4 francs de 6 à 15 ans, tarif de fin de journée dès 17 h (3,50 francs adulte).",
+   "<strong>Brienz</strong> (payant) : du 1er mai au 15 septembre 2026, tous les jours de 11 h à 21 h ; adulte dès 16 ans 6 francs, 4 francs dès 6 ans, gratuit en dessous.",
+   "<strong>Iseltwald</strong> et <strong>Niederried</strong> : entrée gratuite. À Niederried, le bain est toujours accessible et sans surveillance ; Iseltwald est ouvert dès le 9 mai 2026 (les horaires varient selon les sources)."
+  ],
+  "en": [
+   "<strong>Bönigen</strong> (paid): 2026 season from 16 May to 13 September; adult CHF 6, CHF 4 for ages 6 to 15, evening rate from 5pm (adult CHF 3.50).",
+   "<strong>Brienz</strong> (paid): 1 May to 15 September 2026, daily 11am to 9pm; adult from age 16 CHF 6, CHF 4 from age 6, free below that.",
+   "<strong>Iseltwald</strong> and <strong>Niederried</strong>: free entry. At Niederried the bathing spot is always accessible and unsupervised; Iseltwald opens from 9 May 2026 (hours differ between sources)."
+  ],
+  "de": [
+   "<strong>Bönigen</strong> (kostenpflichtig): Saison 2026 vom 16. Mai bis 13. September; Erwachsene CHF 6, Kinder von 6 bis 15 Jahren CHF 4, Feierabendtarif ab 17 Uhr (Erwachsene CHF 3.50).",
+   "<strong>Brienz</strong> (kostenpflichtig): 1. Mai bis 15. September 2026, täglich von 11 bis 21 Uhr; Erwachsene ab 16 Jahren CHF 6, Kinder ab 6 Jahren CHF 4, darunter gratis.",
+   "<strong>Iseltwald</strong> und <strong>Niederried</strong>: freier Eintritt. In Niederried ist das Seebädli immer zugänglich und ohne Badeaufsicht; Iseltwald ist ab 9. Mai 2026 geöffnet (die Zeiten weichen je nach Quelle ab)."
+  ],
+  "it": [
+   "<strong>Bönigen</strong> (a pagamento): stagione 2026 dal 16 maggio al 13 settembre; adulti 6 franchi, 4 franchi dai 6 ai 15 anni, tariffa serale dalle 17 (adulti 3,50 franchi).",
+   "<strong>Brienz</strong> (a pagamento): dal 1° maggio al 15 settembre 2026, ogni giorno dalle 11 alle 21; adulti dai 16 anni 6 franchi, 4 franchi dai 6 anni, gratis sotto.",
+   "<strong>Iseltwald</strong> e <strong>Niederried</strong>: ingresso gratuito. A Niederried il bagno è sempre accessibile e senza sorveglianza; Iseltwald apre dal 9 maggio 2026 (gli orari variano secondo le fonti)."
+  ]
+ },
+ "aegeri": {
+  "src": [
+   [
+    "Ägeribad, Strandbad",
+    "https://www.aegeribad.ch/schwimmen/Strandbad.html"
+   ],
+   [
+    "badi-info.ch, Ägeribad",
+    "https://www.badi-info.ch/a/aegeribad.html"
+   ],
+   [
+    "badi-info.ch, Lido Unterägeri",
+    "https://www.badi-info.ch/a/unteraegeri.html"
+   ]
+  ],
+  "fr": [
+   "<strong>Ägeribad</strong> (Oberägeri) : l’accès au lac est gratuit d’après badi-info.ch ; saison de la plage du 10 mai au 20 septembre 2026 (site du bain).",
+   "<strong>Lido Unterägeri</strong> : saison 2026 du 9 mai au 20 septembre ; adulte 5 francs, 3,50 francs pour jeunes et étudiants, 2,50 francs de 6 à 16 ans ; ferme à 18 h le 1er août ; radeau et plongeoirs de 1, 3 et 5 m ; bus jusqu’à l’arrêt Unterägeri Seefeld, parking gratuit."
+  ],
+  "en": [
+   "<strong>Ägeribad</strong> (Oberägeri): lake access is free according to badi-info.ch; beach season from 10 May to 20 September 2026 (the bath’s website).",
+   "<strong>Lido Unterägeri</strong>: 2026 season from 9 May to 20 September; adult CHF 5, CHF 3.50 for young people and students, CHF 2.50 for ages 6 to 16; closes at 6pm on 1 August; raft and diving boards at 1, 3 and 5 m; bus to the Unterägeri Seefeld stop, free parking."
+  ],
+  "de": [
+   "<strong>Ägeribad</strong> (Oberägeri): Der Zugang zum See ist laut badi-info.ch kostenlos; Strandbad-Saison vom 10. Mai bis 20. September 2026 (Website des Bads).",
+   "<strong>Lido Unterägeri</strong>: Saison 2026 vom 9. Mai bis 20. September; Erwachsene CHF 5, Jugendliche und Studierende CHF 3.50, Kinder von 6 bis 16 Jahren CHF 2.50; am 1. August schliesst es um 18 Uhr; Floss und Sprungturm mit 1, 3 und 5 m; Bus bis Haltestelle Unterägeri Seefeld, Parkplätze kostenlos."
+  ],
+  "it": [
+   "<strong>Ägeribad</strong> (Oberägeri): l’accesso al lago è gratuito secondo badi-info.ch; stagione della spiaggia dal 10 maggio al 20 settembre 2026 (sito del bagno).",
+   "<strong>Lido Unterägeri</strong>: stagione 2026 dal 9 maggio al 20 settembre; adulti 5 franchi, 3,50 franchi per giovani e studenti, 2,50 franchi dai 6 ai 16 anni; chiude alle 18 il 1° agosto; zattera e trampolini da 1, 3 e 5 m; autobus fino alla fermata Unterägeri Seefeld, parcheggio gratuito."
+  ]
+ },
+ "gruyere": {
+  "src": [
+   [
+    "Torpille, plages du lac de la Gruyère",
+    "https://torpille.ch/plages-lac-gruyere/"
+   ],
+   [
+    "Kidora, plage de La Roche",
+    "https://kidora.ch/activites/plage-de-la-roche"
+   ]
+  ],
+  "fr": [
+   "D’après les annuaires Torpille et Kidora, les plages du lac sont gratuites : à La Roche, l’accès est libre et seuls la location nautique et la buvette sont payantes ; Corbières et Morlon sont aussi en accès libre.",
+   "Aucune source consultée ne mentionne de surveillance de baignade, et certaines zones du lac sont réglementées : la baignade n’est pas autorisée partout. À vérifier auprès des communes."
+  ],
+  "en": [
+   "According to the Torpille and Kidora directories, the lake’s beaches are free: at La Roche access is open and only the boat rental and the kiosk charge; Corbières and Morlon are also free to enter.",
+   "None of the sources consulted mentions lifeguard supervision, and some areas of the lake are regulated: swimming is not allowed everywhere. Check with the municipalities."
+  ],
+  "de": [
+   "Laut den Verzeichnissen Torpille und Kidora sind die Strände am See gratis: In La Roche ist der Zugang frei, nur Bootsvermietung und Kiosk kosten; auch Corbières und Morlon sind frei zugänglich.",
+   "Keine der konsultierten Quellen nennt eine Badeaufsicht, und einzelne Bereiche des Sees sind reglementiert: Baden ist nicht überall erlaubt. Bei den Gemeinden nachfragen."
+  ],
+  "it": [
+   "Secondo gli elenchi Torpille e Kidora, le spiagge del lago sono gratuite: a La Roche l’accesso è libero e solo il noleggio nautico e il chiosco sono a pagamento; anche Corbières e Morlon sono ad accesso libero.",
+   "Nessuna fonte consultata menziona una sorveglianza dei bagnanti e alcune zone del lago sono regolamentate: non si può fare il bagno ovunque. Da verificare con i comuni."
+  ]
+ },
+ "joux": {
+  "src": [
+   [
+    "Kidora, plage du Rocheray",
+    "https://kidora.ch/activites/plage-du-rocheray-lac-de-joux"
+   ],
+   [
+    "Kidora, plage du Pont",
+    "https://kidora.ch/activites/plage-du-pont-lac-de-joux"
+   ],
+   [
+    "Torpille, plages du lac de Joux",
+    "https://torpille.ch/plages-lac-joux/"
+   ]
+  ],
+  "fr": [
+   "D’après Kidora et Torpille, les plages du lac de Joux sont gratuites et en accès libre (au Rocheray, seuls les locations nautiques et la petite restauration sont payantes), accessibles toute l’année.",
+   "La baignade n’est pas surveillée sur ces plages : gardez les jeunes enfants à l’œil au bord de l’eau."
+  ],
+  "en": [
+   "According to Kidora and Torpille, the beaches on Lac de Joux are free and open (at the Rocheray, only boat rental and snacks are paid), accessible all year.",
+   "Swimming is not supervised on these beaches: keep an eye on young children at the water’s edge."
+  ],
+  "de": [
+   "Laut Kidora und Torpille sind die Strände am Lac de Joux gratis und frei zugänglich (am Rocheray kosten nur Bootsvermietung und kleine Verpflegung), das ganze Jahr.",
+   "Das Baden ist an diesen Stränden nicht beaufsichtigt: Kleine Kinder am Wasser im Auge behalten."
+  ],
+  "it": [
+   "Secondo Kidora e Torpille, le spiagge del Lac de Joux sono gratuite e ad accesso libero (al Rocheray solo il noleggio nautico e la ristorazione leggera sono a pagamento), accessibili tutto l’anno.",
+   "La balneazione non è sorvegliata su queste spiagge: tenete d’occhio i bambini piccoli a bordo acqua."
+  ]
+ },
+ "bret": {
+  "src": [
+   [
+    "État de Vaud, projet de classement du lac de Bret (rapport explicatif)",
+    "https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_doc/Chasse/DC_LdB_Rap_explicatif.pdf"
+   ]
+  ],
+  "fr": [
+   "Le lac de Bret est une réserve d’eau potable et un site naturel sensible : aucune zone de baignade publique aménagée n’apparaît dans les sources officielles consultées.",
+   "Un projet de classement publié en 2025 par l’État de Vaud prévoit d’interdire la baignade et les engins nautiques dans le secteur protégé du nord du lac, pour ne pas déranger la faune. Je n’ai pas pu confirmer s’il est entré en vigueur : renseignez-vous sur place avant de vous baigner."
+  ],
+  "en": [
+   "Lac de Bret is a drinking-water reserve and a sensitive natural site: no developed public bathing area appears in the official sources consulted.",
+   "A classification project published in 2025 by the Canton of Vaud plans to ban swimming and watercraft in the protected northern part of the lake, so as not to disturb wildlife. I could not confirm whether it has come into force: check locally before swimming."
+  ],
+  "de": [
+   "Der Lac de Bret ist ein Trinkwasserreservoir und ein empfindliches Naturgebiet: In den konsultierten offiziellen Quellen erscheint keine eingerichtete öffentliche Badezone.",
+   "Ein 2025 vom Kanton Waadt veröffentlichtes Schutzprojekt sieht vor, Baden und Wasserfahrzeuge im geschützten Nordteil des Sees zu verbieten, um die Tierwelt nicht zu stören. Ob es in Kraft getreten ist, konnte ich nicht bestätigen: Vor dem Baden vor Ort nachfragen."
+  ],
+  "it": [
+   "Il Lac de Bret è una riserva di acqua potabile e un sito naturale sensibile: nelle fonti ufficiali consultate non compare alcuna zona di balneazione pubblica attrezzata.",
+   "Un progetto di classificazione pubblicato nel 2025 dal Canton Vaud prevede di vietare la balneazione e le imbarcazioni nel settore protetto a nord del lago, per non disturbare la fauna. Non ho potuto confermare se sia entrato in vigore: informatevi sul posto prima di fare il bagno."
+  ]
+ },
+ "sion": {
+  "src": [
+   [
+    "Discovr, Domaine des Îles",
+    "https://discovr.ch/fr/places/domaine-iles/"
+   ],
+   [
+    "Alpvision, Domaine des Îles",
+    "https://www.alpvisionresidences.com/blog/fr/domaine-des-iles/"
+   ],
+   [
+    "Bourgeoisie de Sion, Domaine des Îles",
+    "https://www.bourgeoisie-de-sion.ch/fr/nature/domaine-des-iles/"
+   ]
+  ],
+  "fr": [
+   "Le domaine, géré par la Bourgeoisie de Sion, est décrit comme gratuit et en accès libre toute l’année (Discovr).",
+   "Une baignade surveillée par des sauveteurs est annoncée surtout de mai à septembre (Alpvision, page d’il y a environ un an) : je n’ai pas de confirmation pour 2026, à demander à la Bourgeoisie."
+  ],
+  "en": [
+   "The estate, run by the Bourgeoisie of Sion, is described as free and open all year (Discovr).",
+   "Lifeguard-supervised swimming is announced mainly from May to September (Alpvision, a page about a year old): I have no confirmation for 2026, ask the Bourgeoisie."
+  ],
+  "de": [
+   "Das von der Burgergemeinde Sitten verwaltete Gelände wird als gratis und das ganze Jahr frei zugänglich beschrieben (Discovr).",
+   "Beaufsichtigtes Baden wird vor allem von Mai bis September angekündigt (Alpvision, eine rund ein Jahr alte Seite): Für 2026 habe ich keine Bestätigung, bei der Burgergemeinde nachfragen."
+  ],
+  "it": [
+   "La tenuta, gestita dalla Borghesia di Sion, è descritta come gratuita e ad accesso libero tutto l’anno (Discovr).",
+   "La balneazione sorvegliata da bagnini è annunciata soprattutto da maggio a settembre (Alpvision, una pagina di circa un anno fa): non ho conferma per il 2026, da chiedere alla Borghesia."
+  ]
+ },
+ "silvaplana": {
+  "src": [
+   [
+    "schweizersee.ch, Silvaplanersee",
+    "https://www.schweizersee.ch/silvaplanersee/"
+   ],
+   [
+    "Silvaplana Tourismus, Badesee",
+    "https://silvaplana.ch/sommer/erleben/badesee-schwimmen"
+   ]
+  ],
+  "fr": [
+   "Le lac est librement accessible et n’est jamais surveillé ; les sports nautiques se pratiquent à ses propres risques, uniquement depuis les accès officiels (plage du centre de surf, extrémité du port côté camping, plage du camping), d’après schweizersee.ch.",
+   "Parking payant à Mulets et au pont de Surlej. Je n’ai trouvé aucun droit d’entrée pour se baigner."
+  ],
+  "en": [
+   "The lake is freely accessible and never supervised; water sports are at your own risk, only from the official access points (the surf centre beach, the campsite end of the harbour, the campsite beach), according to schweizersee.ch.",
+   "Paid parking at Mulets and the Surlej bridge. I found no entry fee for swimming."
+  ],
+  "de": [
+   "Der See ist frei zugänglich und zu keiner Zeit überwacht; Wassersport erfolgt auf eigene Gefahr, nur von den offiziellen Zugängen aus (Strand beim Surf Center, Hafenende auf der Campingseite, Strand des Campingplatzes), laut schweizersee.ch.",
+   "Parkplätze kostenpflichtig bei Mulets und an der Surlej-Brücke. Einen Eintritt zum Baden habe ich nicht gefunden."
+  ],
+  "it": [
+   "Il lago è liberamente accessibile e mai sorvegliato; gli sport nautici si praticano a proprio rischio, solo dagli accessi ufficiali (spiaggia del centro surf, estremità del porto lato campeggio, spiaggia del campeggio), secondo schweizersee.ch.",
+   "Parcheggio a pagamento a Mulets e al ponte di Surlej. Non ho trovato alcun ingresso a pagamento per fare il bagno."
+  ]
  }
 };
 const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };
