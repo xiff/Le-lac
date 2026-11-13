@@ -51,7 +51,7 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
 
 - [x] **Activités de nuit** (12 novembre 2026) : d'après `is_day` d'Open-Meteo, propre à chaque plage. La nuit, les verdicts du windsurf, du kite, du wakeboard, du wakesurf et du ski nautique passent à « Non » (« Réservé au jour »), ceux du paddle et du foil aussi (« on ne te voit pas sur l'eau ») ; titre du verdict : « Il fait nuit ». Baignade, voile et bateau inchangés. Règle (`NUIT` dans `score.js`) : l'ordonnance fédérale sur la navigation intérieure (BSV, SR 747.201.1) réserve au jour, par clarté, le wakesurf, le ski nautique, les planches à voile, les planches à cerf-volant et les engins tractés ; rien de trouvé pour le paddle et le foil, d'où une formulation de prudence, sans citer de loi.
   - [ ] À vérifier : le texte exact de la BSV pour le wakeboard et le wing foil (non nommés dans ce que j'ai lu), et les règles cantonales plus strictes (par exemple Lucerne).
-  - [ ] Écran « Louer » : `#louer` dans l'adresse n'ouvre pas l'onglet.
+  - [x] Écran « Louer » : `#louer` dans l'adresse n'ouvre pas l'onglet. Corrigé le 13 novembre 2026 : un lien `#louer` ou `#sortir` ouvre l’onglet ; un rechargement revient sur le lac.
 - [x] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
   les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
 

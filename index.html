@@ -461,8 +461,10 @@ $('onglets').onkeydown = (e) => {
   const i = ONGLETS.indexOf(ongletActif()), cible = ONGLETS[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3];
   allerA(cible); $('t-' + cible).focus(); e.preventDefault();
 };
-if (location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); // toujours démarrer sur le lac
-ouvrir();
+// Un lien /#louer ouvre cet onglet ; un rechargement ou un retour revient toujours sur le lac.
+const arrivee = performance.getEntriesByType('navigation')[0]?.type === 'navigate' ? ongletUrl() : 'lac';
+if (location.hash || history.state) history.replaceState(arrivee === 'lac' ? null : { onglet: arrivee }, '', arrivee === 'lac' ? location.pathname + location.search : '#' + arrivee);
+ouvrir(arrivee);
 
 let filtre = '';
 $('filtres').onclick = (e) => {
