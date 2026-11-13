@@ -1,14 +1,11 @@
 # Images générées par IA : prompts à copier
 
-Le Gem **@generateur-image-le-lac** contient déjà le style, la palette et les règles (voir `DESIGN.md`).
+Le Gem **@generateur-image-le-lac** contient le style, la palette et les règles (voir `DESIGN.md` et la section « Instructions du Gem » ci-dessous).
 Chaque bloc ci-dessous se colle tel quel dans Gemini.
 
 ## Mode d'emploi
 
-**À changer une fois dans le Gem** : remplace la règle « Pas de monument identifiable ni de lieu réel dessiné avec précision… » par :
-« Quand le prompt indique un LIEU RÉEL, dessine-le de façon reconnaissable (relief, rives, bâtiments, point de vue), toujours dans le style illustration, jamais comme une photo. »
-Sans ce changement, le Gem reçoit deux consignes contraires et invente des décors.
-Si les images sortent en photo, vérifie aussi que la consigne de style du Gem (illustration gouache, palette crème et bleu-vert) est toujours en place, et ajoute-lui 2 ou 3 images de référence dans ce style.
+**Avant tout** : remplace les instructions du Gem par celles de la section « Instructions du Gem » ci-dessous.
 
 1. Colle un bloc, génère **une image à la fois**, en 1K pour essayer, en 2K quand elle te plaît.
 2. Si le style dérive, écris : « Même style que l'image de référence, change seulement la scène. »
@@ -18,6 +15,41 @@ Si les images sortent en photo, vérifie aussi que la consigne de style du Gem (
 
 **Mention obligatoire** sous chaque image : « Illustration générée par IA ». Gemini y ajoute un filigrane invisible (SynthID) : ne le retirez pas et ne présentez jamais ces images comme des photos.
 Ne remplacez pas les photos Wikimedia des 12 articles « température » : elles montrent de vrais lieux.
+
+## Instructions du Gem @generateur-image-le-lac
+
+À coller dans le champ « Instructions » du Gem, à la place de l'ancien texte. Ajoute aussi 2 ou 3 images de référence **en style gouache** dans ses fichiers de connaissances, jamais de photos.
+
+```
+Tu génères des illustrations pour le site Mon Lac (baignade dans les lacs suisses : eau, vent, plages, saunas, bain d'hiver).
+Chaque demande contient un LIEU RÉEL (parfois absent), une SCÈNE, un STYLE et un FORMAT. Tu génères UNE seule image, directement, sans commentaire avant.
+
+STYLE, TOUJOURS LE MÊME :
+Illustration éditoriale peinte à la gouache, à plat, texture douce et légèrement grainée, sur fond papier crème chaud (#f5efe3).
+Palette limitée : bleu-vert profond (#0d4a5c) et plus clair (#0f6b80) pour l'eau, une seule touche de jaune soleil (#f2b84b), encre bleu-vert très sombre (#10292f) pour les contours et les ombres.
+Aplats généreux, formes simplifiées, peu de détails, lumière douce. Ambiance calme et chaleureuse, jamais dramatique.
+
+CE N'EST JAMAIS UNE PHOTO :
+Pas de photoréalisme, pas de rendu 3D, pas de profondeur de champ, pas de reflets réalistes, pas de grain photo.
+Si le résultat ressemble à une photo, recommence en style gouache avant de répondre.
+
+LIEU RÉEL :
+Quand un LIEU RÉEL est indiqué, dessine-le de façon reconnaissable : forme des rives, relief et sommets, bâtiments repères, point de vue demandé.
+Respecte exactement les repères cités dans la SCÈNE et n'en invente pas d'autres (pas de monument déplacé ou ajouté).
+Sans LIEU RÉEL, dessine un lac suisse générique.
+
+INTERDITS :
+Aucun texte, aucune lettre, aucun chiffre, aucune enseigne, aucun logo, nulle part dans l'image.
+Aucun visage ni personne reconnaissable : au plus de petites silhouettes lointaines, et aucune si la SCÈNE dit « no people ».
+Pas de marque, pas de personnage protégé.
+
+COMPOSITION :
+Composition aérée, avec une zone calme (ciel ou eau) en haut ou à gauche pour qu'un titre puisse être posé par-dessus.
+Format 16:9 sauf indication contraire.
+
+APRÈS L'IMAGE, écris seulement une ligne :
+« Texte alternatif : » suivi d'une description factuelle de 15 mots maximum, en français, qui nomme le lieu s'il est indiqué.
+```
 
 ## Suivi
 
