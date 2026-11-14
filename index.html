@@ -135,12 +135,18 @@
   .historique, .sauvegarde, #avis-bains { flex-basis: 100%; }
   .sauvegarde { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; font-size: .82rem; color: var(--doux); }
   .sauvegarde.rappel #sauvegarde-texte { color: var(--n1); font-weight: 600; }
-  .sauv-actions { display: flex; gap: 8px; }
-  .defi .secondaire, #avis-bains .secondaire { background: none; color: var(--lac); box-shadow: inset 0 0 0 1.5px currentColor; font-size: .85rem; }
+  .sauv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .sauvegarde > span:first-child { flex-basis: 100%; }
+  /* boutons de la sauvegarde : pastille à contour, texte centré, jamais soulignée */
+  .bouton { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 0; border-radius: 99px; background: none; color: var(--lac); box-shadow: inset 0 0 0 1.5px currentColor; font-weight: 600; font-size: .9rem; text-decoration: none; white-space: nowrap; }
+  .bouton.plein { background: currentColor; box-shadow: none; }
+  .bouton.discret { box-shadow: none; padding: 0 12px; color: var(--doux); }
+  .sauvegarde.rappel #exporter { background: var(--lac); color: var(--creme); box-shadow: none; }
   #avis-bains { margin: 0; flex-direction: column; align-items: flex-start; gap: 10px; font-size: .88rem; }
   #avis-bains b { display: block; font: 700 .95rem/1.3 var(--texte); margin-bottom: 4px; }
   #avis-bains .avis-corps > span { display: block; }
-  #avis-bains .secondaire { color: inherit; min-height: 40px; padding: 0 14px; }
+  #avis-bains .bouton { color: var(--n1); align-self: flex-start; margin-top: 6px; }
+  #avis-bains .bouton.plein { background: var(--n1); color: var(--n1-bg); }
   .historique { }
   .historique summary { cursor: pointer; color: var(--doux); font-size: .88rem; font-weight: 600; padding: 6px 0; }
   .historique ul { list-style: none; margin: 4px 0 0; padding: 0; }
@@ -336,10 +342,10 @@
       <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
       <div class="defi-actions"><button class="principal" id="jysuisalle" data-t="jySuisAlle">Bain fait !</button>
       <button class="principal partager-bains" id="partager-bains" hidden><svg class="i" aria-hidden="true"><use href="#i-partage"/></svg><span data-t="partagerBains">Partager</span></button></div>
-      <p class="alerte avis" id="avis-bains" role="note" hidden><span class="avis-corps"><b data-t="sauvTitre"></b><span data-t="sauvTexte"></span></span><button class="secondaire" id="compris" data-t="compris"></button></p>
+      <p class="alerte avis" id="avis-bains" role="note" hidden><span class="avis-corps"><b data-t="sauvTitre"></b><span data-t="sauvTexte"></span></span><button class="bouton plein" id="compris" data-t="compris"></button></p>
       <details class="historique" id="historique" hidden><summary data-t="historique">Mon historique</summary><ul id="historique-liste"></ul></details>
       <div class="sauvegarde" id="sauvegarde"><span id="sauvegarde-texte"></span>
-        <span class="sauv-actions"><button class="secondaire" id="exporter" data-t="exporter"></button><button class="secondaire" id="importer" data-t="importer"></button></span>
+        <span class="sauv-actions"><button class="bouton" id="exporter" data-t="exporter"></button><button class="bouton discret" id="importer" data-t="importer"></button></span>
         <input type="file" id="fichier-import" accept="application/json,.json" hidden></div>
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
@@ -395,6 +401,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script type="module">
+import { fusionner, SAISON } from './journal.js';
 import { TOUTES, PHRASES, estBise, verdict, saison, lire, cle, estHiver, qualiteRecente, phrase } from './score.js';
 import { LIEUX, lienCarte, plusProche, fermeture } from './lieux.js';
 import { LOCATIONS, ACTIVITES_LOC, ouvertLoc } from './locations.js';
@@ -644,7 +651,7 @@ async function charger() {
     $('alerte').textContent = alerte; $('alerte').hidden = !alerte; $('alerte').classList.toggle('danger', danger);
 
     afficherActivites();
-    $('defi').hidden = !estHiver(c);
+    $('defi').hidden = !(estHiver(c) || totalBains() > 0); // le journal reste accessible toute l'année dès qu'il contient des bains
     const sauna = LOCATIONS.find((l) => l.activites.includes('sauna') && ouvertLoc(l) && l.spot && SPOTS.find((x) => x.id === l.spot)?.zone === spot().zone);
     $('sauna').hidden = !(sauna && estHiver(c));
     if (sauna) { $('sauna').href = sauna.site ?? sauna.source; $('sauna').target = '_blank'; $('sauna').rel = 'noopener'; $('sauna').innerHTML = `<b>${T.saunaTitre(Math.round(eau ?? 0), sauna.nom)}</b><span>${texteLieu(sauna, LANGUE, 'loc')}</span>`; }
@@ -826,10 +833,8 @@ $('fichier-import').onchange = async (e) => {
   try {
     const { saisons: im } = JSON.parse(await f.text());
     for (const [sa, liste] of Object.entries(im)) {
-      if (!/^\d{4}-\d{4}$/.test(sa) || !Array.isArray(liste)) continue; // clés et listes attendues seulement
-      const l = lireListe(sa), vus = new Set(l.map((b) => b.d + '|' + b.plage));
-      for (const b of liste) if (b && typeof b === 'object' && !vus.has(b.d + '|' + b.plage)) l.push({ d: typeof b.d === 'string' ? b.d : null, plage: typeof b.plage === 'string' ? b.plage.slice(0, 80) : undefined, eau: typeof b.eau === 'number' ? b.eau : null });
-      l.sort((x, y) => String(x.d).localeCompare(String(y.d))); ecrireListe(l, sa);
+      if (!SAISON.test(sa)) continue; // clés attendues seulement
+      ecrireListe(fusionner(lireListe(sa), liste), sa);
     }
     afficherDefi(); toast(T.importeOk);
   } catch { toast(T.importeKo); }
