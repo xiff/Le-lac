@@ -18,3 +18,12 @@ test('données structurées des articles (FR et EN) : complètes et fidèles à 
   }
   for (const L of ['fr', 'en']) assert.equal(ld(liste(L)).find((x) => x['@type'] === 'Blog').blogPost.length, ARTICLES.length);
 });
+
+test('images des articles et de la liste : chaque fichier cité (WebP et JPEG de secours) existe', async () => {
+  const { existsSync } = await import('node:fs');
+  for (const a of ARTICLES) for (const html of [article(a, 'fr'), liste('fr')]) {
+    const chemins = [...html.matchAll(/(?:src|srcset)="([^"]+)"/g)].flatMap(([, v]) => v.split(',').map((x) => x.trim().split(' ')[0])).filter((u) => /\.(jpg|webp)$/.test(u));
+    for (const u of chemins) assert.ok(existsSync(u.replace(/^(\.\.\/)+/, '')), `${a.slug} : ${u} manquant`);
+  }
+  assert.match(article(ARTICLES[0], 'fr'), /<source type="image\/webp"/);
+});

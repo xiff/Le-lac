@@ -99,7 +99,8 @@ ${donnees ? `<link rel="modulepreload" href="${r}spots.js">
 </head>`;
 
 // Image d'article : tête (prioritaire) ou image secondaire dans le corps (chargée plus tard).
-const figure = (x, alt, legende, r, cls = 'seconde') => `<figure class="${cls}"><img src="${r}${x.image}" alt="${esc(alt)}" srcset="${[640, 1200].map((w) => `${r}blog/img/min/${x.image.split('/').pop().replace('.jpg', `-${w}.jpg`)} ${w}w`).join(', ')}, ${r}${x.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${x.hauteur}"${cls === 'une' ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${legende}</figcaption></figure>`;
+const mini = (image, w, ext, r) => `${r}blog/img/min/${image.split('/').pop().replace('.jpg', `-${w}.${ext}`)}`;
+const figure = (x, alt, legende, r, cls = 'seconde') => `<figure class="${cls}"><picture><source type="image/webp" srcset="${[640, 1200, 1600].map((w) => `${mini(x.image, w, 'webp', r)} ${w}w`).join(', ')}" sizes="(max-width: 700px) 100vw, 680px"><img src="${r}${x.image}" alt="${esc(alt)}" srcset="${[640, 1200].map((w) => `${mini(x.image, w, 'jpg', r)} ${w}w`).join(', ')}, ${r}${x.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${x.hauteur}"${cls === 'une' ? ' fetchpriority="high"' : ' loading="lazy"'}></picture><figcaption>${legende}</figcaption></figure>`;
 
 export function article(a, L = 'fr') {
   const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = SUF[L] ? '../../../' : '../../';
@@ -170,7 +171,7 @@ ${Object.entries(THEMES).map(([k, v]) => `    <button type="button" aria-pressed
   </div>
   <ul class="grille">
 ${[...A].sort((x, y) => y.publie.localeCompare(x.publie)).map((a, i) => `    <li data-theme="${theme(a)}"${i === 0 ? ' class="une"' : ''}><a href="${r}blog/${a.slug}/${SUF[L]}">
-      <span class="vignette"><img src="${r}blog/img/min/${a.image.split('/').pop().replace('.jpg', i === 0 ? '-1000.jpg' : '-640.jpg')}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy"'}></span>
+      <span class="vignette"><picture><source type="image/webp" srcset="${mini(a.image, i === 0 ? 1000 : 640, 'webp', r)}"><img src="${mini(a.image, i === 0 ? 1000 : 640, 'jpg', r)}" alt="" width="1600" height="${a.hauteur}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy"'}></picture></span>
       <span class="texte"><span class="meta">${THEMES[theme(a)][L]} · <time datetime="${a.publie}">${dateL(a.publie, L)}</time></span><h2>${esc(a[L].titre)}</h2><p>${esc(a[L].desc)}</p>${i === 0 ? `<span class="lire">${t.lire} →</span>` : ''}</span>
     </a></li>`).join('\n')}
   </ul>
