@@ -55,6 +55,11 @@ Modèle de l’eau disponible chez Alplakes (Eawag) : 3D = une valeur devant cha
   - [x] Écran « Louer » : `#louer` dans l'adresse n'ouvre pas l'onglet. Corrigé le 13 novembre 2026 : un lien `#louer` ou `#sortir` ouvre l’onglet ; un rechargement revient sur le lac.
 - [x] **Sortir et Louer selon la plage choisie** : dans les onglets « Sortir » et « Louer », afficher en premier
   les lieux et loueurs proches de la plage sélectionnée (triés par distance), au lieu d’une liste générale.
+- [ ] **Journal de bains d’hiver, sauvegardé en local** : l’utilisateur note ses bains (date, plage, température de l’eau et de l’air, durée, ressenti) dans l’app.
+  Tout reste dans le navigateur (`localStorage`, avec `try/catch` et repli sans stockage), sans compte, sans serveur et sans envoi vers Umami : c’est cohérent avec « Tes données restent les tiennes ».
+  À prévoir : préremplir la plage et la température du jour, export et import d’un fichier JSON (pour ne pas tout perdre en changeant de téléphone), bouton « tout effacer »,
+  rappel de prudence (durée courte, ne jamais y aller seul), mention dans la page Confidentialité, textes en 4 langues, test automatisé de la lecture et de l’écriture.
+
 
 ## Blog : objectif 100 articles
 
