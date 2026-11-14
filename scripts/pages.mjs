@@ -10,6 +10,16 @@ import { pied, langues } from './pied.mjs';
 
 const BASE = 'https://monlac.ch/';
 // Phrase du matin d'une plage (voir matin.mjs) ; null sans valeur récente.
+// Avis propre à une plage, affiché en tête de sa page (sources officielles seulement).
+const AVIS = {
+  'lac-de-bret': {
+    lien: ['https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_doc/Chasse/DC_LdB_Rap_explicatif.pdf', { fr: 'Rapport explicatif de l’État de Vaud', en: 'Explanatory report, Canton of Vaud', de: 'Erläuternder Bericht des Kantons Waadt', it: 'Rapporto esplicativo del Canton Vaud' }],
+    fr: '<strong>À vérifier avant de vous baigner.</strong> Le lac de Bret est une réserve d’eau potable et un site naturel sensible. Un projet de classement publié en 2025 par l’État de Vaud prévoit d’interdire la baignade dans le secteur protégé du nord du lac, pour ne pas déranger la faune ; nous n’avons pas pu confirmer s’il est entré en vigueur. Renseignez-vous sur place.',
+    en: '<strong>Check before you swim.</strong> Lac de Bret is a drinking-water reserve and a sensitive natural site. A classification project published in 2025 by the Canton of Vaud plans to ban swimming in the protected northern part of the lake, so as not to disturb wildlife; We could not confirm whether it has come into force. Check locally.',
+    de: '<strong>Vor dem Baden prüfen.</strong> Der Lac de Bret ist ein Trinkwasserreservoir und ein empfindliches Naturgebiet. Ein 2025 vom Kanton Waadt veröffentlichtes Schutzprojekt sieht vor, das Baden im geschützten Nordteil des Sees zu verbieten, um die Tierwelt nicht zu stören; ob es in Kraft getreten ist, konnten wir nicht bestätigen. Vor Ort nachfragen.',
+    it: '<strong>Da verificare prima di fare il bagno.</strong> Il Lac de Bret è una riserva di acqua potabile e un sito naturale sensibile. Un progetto di classificazione pubblicato nel 2025 dal Canton Vaud prevede di vietare la balneazione nel settore protetto a nord del lago, per non disturbare la fauna; non abbiamo potuto confermare se sia entrato in vigore. Informatevi sul posto.',
+  },
+};
 const matin = (s, langue) => {
   const v = valeurMatin(s.id);
   if (v == null) return null;
@@ -132,7 +142,7 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${urls[l]}">`)
   <div class="actions"><a class="bouton" href="${app}">${esc(t.ouvrir(s.nom))}</a><a class="bouton second" href="https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}" target="_blank" rel="noopener">${t.yAller}</a></div>
 </header>
 <main>
-  <section aria-labelledby="t-act">
+${AVIS[s.id] ? `  <p class="avertissement" role="note">${AVIS[s.id][langue]} <a href="${AVIS[s.id].lien[0]}">${AVIS[s.id].lien[1][langue]}</a>.</p>\n` : ''}  <section aria-labelledby="t-act">
     <h2 id="t-act">${t.act}</h2>
     <p class="qualite" id="qualite" hidden></p>
     <ul class="acts" id="acts"><li>${t.actsVide}</li></ul>
