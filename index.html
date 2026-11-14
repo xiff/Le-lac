@@ -132,7 +132,16 @@
   .defi .partager-bains { flex: none; background: none; color: var(--lac); box-shadow: inset 0 0 0 1.5px currentColor; }
   .defi b { font: 400 1.1rem/1.2 var(--display); display: block; }
   .defi small { color: var(--doux); }
-  .historique { flex-basis: 100%; }
+  .historique, .sauvegarde, #avis-bains { flex-basis: 100%; }
+  .sauvegarde { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; font-size: .82rem; color: var(--doux); }
+  .sauvegarde.rappel #sauvegarde-texte { color: var(--n1); font-weight: 600; }
+  .sauv-actions { display: flex; gap: 8px; }
+  .defi .secondaire, #avis-bains .secondaire { background: none; color: var(--lac); box-shadow: inset 0 0 0 1.5px currentColor; font-size: .85rem; }
+  #avis-bains { margin: 0; flex-direction: column; align-items: flex-start; gap: 10px; font-size: .88rem; }
+  #avis-bains b { display: block; font: 700 .95rem/1.3 var(--texte); margin-bottom: 4px; }
+  #avis-bains .avis-corps > span { display: block; }
+  #avis-bains .secondaire { color: inherit; min-height: 40px; padding: 0 14px; }
+  .historique { }
   .historique summary { cursor: pointer; color: var(--doux); font-size: .88rem; font-weight: 600; padding: 6px 0; }
   .historique ul { list-style: none; margin: 4px 0 0; padding: 0; }
   .historique li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid var(--trait); font-size: .88rem; color: var(--doux); }
@@ -327,7 +336,11 @@
       <div><b id="defi-titre" data-t="defiTitre">Défi bain d’hiver</b><small id="defi-texte">Aucun bain cette saison. Pour l’instant.</small></div>
       <div class="defi-actions"><button class="principal" id="jysuisalle" data-t="jySuisAlle">Bain fait !</button>
       <button class="principal partager-bains" id="partager-bains" hidden><svg class="i" aria-hidden="true"><use href="#i-partage"/></svg><span data-t="partagerBains">Partager</span></button></div>
+      <p class="alerte avis" id="avis-bains" role="note" hidden><span class="avis-corps"><b data-t="sauvTitre"></b><span data-t="sauvTexte"></span></span><button class="secondaire" id="compris" data-t="compris"></button></p>
       <details class="historique" id="historique" hidden><summary data-t="historique">Mon historique</summary><ul id="historique-liste"></ul></details>
+      <div class="sauvegarde" id="sauvegarde"><span id="sauvegarde-texte"></span>
+        <span class="sauv-actions"><button class="secondaire" id="exporter" data-t="exporter"></button><button class="secondaire" id="importer" data-t="importer"></button></span>
+        <input type="file" id="fichier-import" accept="application/json,.json" hidden></div>
     </section>
     <h2 id="h-heures">Les 12 prochaines heures</h2>
     <div class="heures" id="heures" tabindex="0" data-ta="heuresAria" aria-label="Prévisions heure par heure"></div>
@@ -781,9 +794,46 @@ function afficherDefi() {
   $('defi-texte').textContent = T.bains(n);
   const groupes = saisons().map((sa) => [sa, lireListe(sa)]).filter(([, l]) => l.length);
   $('historique').hidden = $('partager-bains').hidden = !groupes.length;
+  afficherSauvegarde();
   $('historique-liste').innerHTML = groupes.map(([sa, l]) => `<li class="saison-titre">${sa.replace('-', '–')}</li>` + l.map((b, i) => ({ b, i })).reverse().map(({ b, i }) =>
     `<li><span><b>${dateBain(b.d)}</b>${[b.plage, b.eau == null ? '' : T.eau + ' ' + b.eau + '°'].filter(Boolean).join(' · ')}</span><button class="retirer" data-saison="${sa}" data-i="${i}" aria-label="${T.retirerBain(dateBain(b.d))}">×</button></li>`).join('')).join('');
 }
+// Sauvegarde du journal : tout reste sur l'appareil, donc export/import JSON et rappel après 30 jours ou 10 bains non exportés.
+const lireExport = () => { try { return JSON.parse(localStorage.getItem('bains-export')) || {}; } catch { return {}; } };
+const totalBains = () => saisons().reduce((n, sa) => n + lireListe(sa).length, 0);
+function afficherSauvegarde() {
+  const total = totalBains(), ex = lireExport(), jours = ex.d ? (Date.now() - new Date(ex.d)) / 864e5 : 0;
+  const rappel = total > 0 && (jours > 30 || total - (ex.n || 0) >= 10); // shortcut: sans export jamais fait, seul le seuil de 10 bains déclenche le rappel
+  $('sauvegarde').classList.toggle('rappel', rappel);
+  $('sauvegarde-texte').textContent = rappel && ex.d ? T.sauvRappel : T.sauvEtat(ex.d ? dateBain(ex.d, true) : null);
+  let vu = false; try { vu = localStorage.getItem('bains-avis') === '1'; } catch {}
+  $('avis-bains').hidden = vu || total === 0;
+}
+$('compris').onclick = () => { try { localStorage.setItem('bains-avis', '1'); } catch {} afficherSauvegarde(); };
+$('exporter').onclick = () => {
+  const saisonsListes = Object.fromEntries(saisons().map((sa) => [sa, lireListe(sa)]).filter(([, l]) => l.length));
+  const total = Object.values(saisonsListes).reduce((n, l) => n + l.length, 0);
+  if (!total) return toast(T.exportVide);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ version: 1, saisons: saisonsListes }, null, 1)], { type: 'application/json' }));
+  a.download = `${T.fichierExport}-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  try { localStorage.setItem('bains-export', JSON.stringify({ d: new Date().toISOString(), n: total })); } catch {}
+  afficherSauvegarde();
+};
+$('importer').onclick = () => $('fichier-import').click();
+$('fichier-import').onchange = async (e) => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  try {
+    const { saisons: im } = JSON.parse(await f.text());
+    for (const [sa, liste] of Object.entries(im)) {
+      if (!/^\d{4}-\d{4}$/.test(sa) || !Array.isArray(liste)) continue; // clés et listes attendues seulement
+      const l = lireListe(sa), vus = new Set(l.map((b) => b.d + '|' + b.plage));
+      for (const b of liste) if (b && typeof b === 'object' && !vus.has(b.d + '|' + b.plage)) l.push({ d: typeof b.d === 'string' ? b.d : null, plage: typeof b.plage === 'string' ? b.plage.slice(0, 80) : undefined, eau: typeof b.eau === 'number' ? b.eau : null });
+      l.sort((x, y) => String(x.d).localeCompare(String(y.d))); ecrireListe(l, sa);
+    }
+    afficherDefi(); toast(T.importeOk);
+  } catch { toast(T.importeKo); }
+};
 afficherDefi();
 $('historique-liste').onclick = (e) => {
   const b = e.target.closest('.retirer'); if (!b) return;
