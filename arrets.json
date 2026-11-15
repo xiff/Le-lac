@@ -1,0 +1,195 @@
+{
+ "pregny-chambesy": {
+  "nom": "Chambésy, Plage du Vengeron",
+  "m": 356
+ },
+ "bains-des-paquis": {
+  "nom": "Genève, Bains des Pâquis",
+  "m": 244
+ },
+ "geneve-plage": {
+  "nom": "Genève, Plage",
+  "m": 289
+ },
+ "tropical-corner": {
+  "nom": "Cologny, Righi",
+  "m": 150
+ },
+ "baby-plage": {
+  "nom": "Genève-Eaux-Vives (lac)",
+  "m": 150
+ },
+ "plage-des-eaux-vives": {
+  "nom": "Genève, Parc et Plage des Eaux-Vives",
+  "m": 187
+ },
+ "cologny": {
+  "nom": "Cologny, Montalègre",
+  "m": 167
+ },
+ "collonge-bellerive-la-savonniere": {
+  "nom": "Collonge-Bellerive, Pré-d'Orsat",
+  "m": 972
+ },
+ "corsier-port": {
+  "nom": "Corsier GE (lac)",
+  "m": 592
+ },
+ "anieres": {
+  "nom": "Anières (lac)",
+  "m": 131
+ },
+ "hermance": {
+  "nom": "Hermance (lac)",
+  "m": 234
+ },
+ "bellevue": {
+  "nom": "Creux-de-Genthod, gare",
+  "m": 475
+ },
+ "genthod": {
+  "nom": "Creux-de-Genthod, gare",
+  "m": 205
+ },
+ "versoix": {
+  "nom": "Versoix, Port Choiseul",
+  "m": 391
+ },
+ "celigny": {
+  "nom": "Céligny (lac)",
+  "m": 639
+ },
+ "mies": {
+  "nom": "Tannay",
+  "m": 455
+ },
+ "coppet": {
+  "nom": "Coppet (lac)",
+  "m": 645
+ },
+ "nyon": {
+  "nom": "Nyon, plage",
+  "m": 33
+ },
+ "prangins": {
+  "nom": "Prangins, hôpital",
+  "m": 702
+ },
+ "gland": {
+  "nom": "Gland, La Falaise",
+  "m": 471
+ },
+ "dully": {
+  "nom": "Gland, Lignière-Dullive",
+  "m": 502
+ },
+ "rolle": {
+  "nom": "Mont-sur-Rolle, Bellefontaine",
+  "m": 292
+ },
+ "perroy": {
+  "nom": "Perroy, Couronnette",
+  "m": 632
+ },
+ "allaman": {
+  "nom": "Féchy, En Burnens",
+  "m": 1073
+ },
+ "buchillon": {
+  "nom": "Buchillon, collège",
+  "m": 352
+ },
+ "saint-prex": {
+  "nom": "St-Prex, gare sud",
+  "m": 261
+ },
+ "tolochenaz": {
+  "nom": "Tolochenaz, Les Noyers",
+  "m": 896
+ },
+ "morges": {
+  "nom": "Morges, ch. du Bochet",
+  "m": 400
+ },
+ "preverenges": {
+  "nom": "Préverenges, village",
+  "m": 452
+ },
+ "saint-sulpice": {
+  "nom": "St-Sulpice VD, Pâqueret",
+  "m": 373
+ },
+ "lausanne-vidy": {
+  "nom": "Lausanne, Parc Bourget",
+  "m": 176
+ },
+ "lausanne-ouchy": {
+  "nom": "Lausanne, Ouchy-Olympique",
+  "m": 218
+ },
+ "lausanne-bellerive": {
+  "nom": "Lausanne, Bellerive",
+  "m": 329
+ },
+ "pully": {
+  "nom": "Pully, Vignes",
+  "m": 282
+ },
+ "paudex": {
+  "nom": "Paudex, Verrière",
+  "m": 216
+ },
+ "lutry": {
+  "nom": "Lutry, Corniche",
+  "m": 187
+ },
+ "villette": {
+  "nom": "Villette VD",
+  "m": 317
+ },
+ "cully-moratel": {
+  "nom": "Epesses, gare",
+  "m": 297
+ },
+ "rivaz": {
+  "nom": "Rivaz, gare",
+  "m": 358
+ },
+ "saint-saphorin": {
+  "nom": "St-Saphorin (Lavaux), gare",
+  "m": 56
+ },
+ "corseaux": {
+  "nom": "Vevey, Corseaux-plage",
+  "m": 110
+ },
+ "vevey": {
+  "nom": "Vevey",
+  "m": 84
+ },
+ "la-tour-de-peilz": {
+  "nom": "La Tour-de-Peilz, centre",
+  "m": 192
+ },
+ "montreux-clarens": {
+  "nom": "Clarens, centre",
+  "m": 180
+ },
+ "veytaux": {
+  "nom": "Veytaux-Chillon",
+  "m": 190
+ },
+ "villeneuve": {
+  "nom": "Villeneuve VD, La Plage",
+  "m": 104
+ },
+ "noville": null,
+ "le-bouveret": {
+  "nom": "Bouveret",
+  "m": 604
+ },
+ "saint-gingolph": {
+  "nom": "St-Gingolph (Suisse)",
+  "m": 844
+ }
+}

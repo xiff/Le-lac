@@ -743,6 +743,7 @@ const DATES = {
   'brassage-du-lac': ['2026-11-20'], 'seiches-internes-leman': ['2026-11-20'],
   // Guides locaux du Léman : deux par jour, Lausanne et Lavaux d'abord, puis Riviera et La Côte.
   'plages-lausanne': ['2026-11-21'], 'plages-lavaux': ['2026-11-21'], 'plages-riviera': ['2026-11-22'], 'plages-la-cote': ['2026-11-22'],
+  'plages-transports-publics-leman': ['2026-11-23'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 // Publication programmée : les pages sont régénérées toutes les 3 h (eau.yml) ; un article ne sort qu'à partir de sa date (UTC).

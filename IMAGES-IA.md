@@ -562,7 +562,7 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
-### Guides locaux du Léman (4 images)
+### Guides locaux du Léman (5 images)
 
 Même règle : déposer le fichier dans `blog/img/ia/` sous le nom indiqué, l'article le reprend à la prochaine génération.
 
@@ -598,6 +598,15 @@ FORMAT : 16:9.
 ```
 @generateur-image-le-lac
 SCÈNE : a small harbour at Rolle with its square castle beside a calm lake, vineyards of La Côte rising behind, a few moored sailboats, morning light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+#### `guide-transports.jpg` · À la plage en transports publics
+
+```
+@generateur-image-le-lac
+SCÈNE : a small vintage tram and a regional bus stopped at a lakeside stop, a covered platform with a wooden bench, calm lake and mountains behind, soft morning light, nobody around.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
 FORMAT : 16:9.
 ```

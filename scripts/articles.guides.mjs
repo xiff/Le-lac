@@ -8,6 +8,7 @@ import { LOCATIONS } from '../locations.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { ITEM } from './articles.lacs.mjs';
 import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
+import { readFileSync } from 'node:fs';
 
 const ALP = ['Alplakes, Eawag (CC BY 4.0)', 'https://www.alplakes.eawag.ch'];
 const OSM = ['OpenStreetMap, contours et plages (ODbL)', 'https://www.openstreetmap.org/copyright'];
@@ -58,7 +59,7 @@ const TXT = {
 };
 const nomSpot = (id) => SPOTS.find((s) => s.id === id)?.nom ?? id;
 
-export const articlesGuides = () => Object.entries(GUIDES).map(([slug, g]) => {
+export const articlesGuides = () => [...Object.entries(GUIDES).map(([slug, g]) => {
   const plages = SPOTS.filter((s) => (g.ids ? g.ids.includes(s.id) : s.zone === g.zone && !g.hors.includes(s.id)));
   const ids = new Set(plages.map((s) => s.id)), n = plages.length;
   const lieux = LIEUX.filter((x) => (g.villes ? g.villes.includes(x.ville) : x.zone === g.zone && !(g.hors.length && ['Lutry', 'Villette', 'Cully', 'Rivaz', 'Saint-Saphorin'].includes(x.ville))));
@@ -74,4 +75,45 @@ export const articlesGuides = () => Object.entries(GUIDES).map(([slug, g]) => {
     a[L] = { titre: x.titre, h1: x.h1, desc: x.desc, bref: x.bref, html: () => `<p>${x.ouv}</p>\n<h2>${t.hPlages}</h2>\n${matin}${liste}\n${lieuxHtml}${locHtml}<p>${t.fin}</p>` };
   }
   return a;
-});
+}), articleTransports()];
+
+// « Aller à la plage en transports publics » : l'arrêt de transport public le plus proche de chaque plage suisse du Léman (arrets.json, voir scripts/arrets.mjs).
+// La source ne dit pas si un arrêt est une gare, un arrêt de bus ou un débarcadère : le texte ne le dit pas non plus.
+const ARRETS = (() => { try { return JSON.parse(readFileSync(new URL('../arrets.json', import.meta.url), 'utf8')); } catch { return {}; } })();
+const OFT = ['Office fédéral des transports, « Arrêts tp » (via geo.admin.ch)', 'https://map.geo.admin.ch/?layers=ch.bav.haltestellen-oev'];
+const TR = {
+  fr: { titre: 'Aller à la plage en transports publics : l’arrêt le plus proche de chaque plage du Léman', h1: 'À la plage en transports publics : l’arrêt le plus proche, plage par plage',
+    desc: 'Pour chaque plage suisse du Léman, le nom de l’arrêt de transport public le plus proche et la distance à vol d’oiseau, d’après les données de l’Office fédéral des transports.',
+    bref: (n) => `Pour <strong>${n} plages suisses du Léman</strong>, voici l’<strong>arrêt de transport public le plus proche</strong> et sa distance à vol d’oiseau. Les données ne disent pas s’il s’agit d’une gare, d’un arrêt de bus ou d’un débarcadère : vérifiez la ligne et l’horaire avant de partir.`,
+    h: ['À moins de 200 m', 'De 200 à 500 m', 'Au-delà de 500 m'], ou: (n, m) => `${n} (${m} m)`, intro: 'Chaque ligne donne la plage, puis l’arrêt le plus proche et sa distance en mètres, à vol d’oiseau : le chemin à pied est un peu plus long.',
+    lim: 'Ce que cette page ne dit pas', limTxt: 'Elle ne dit pas quelle ligne passe à chaque arrêt, ni à quelle fréquence, ni si l’arrêt est une gare, un arrêt de bus ou un débarcadère : la source ne le précise pas. Les plages de la rive française ne sont pas couvertes, car la source ne concerne que la Suisse. Les distances sont calculées à partir du point de la plage dans l’app.',
+    fin: 'Pour choisir la plage : <a href="{app}">l’app Mon Lac</a> donne l’eau et le vent du moment. Autres guides : <a href="{blog:plages-lausanne}">Lausanne et Morges</a>, <a href="{blog:plages-riviera}">la Riviera</a>, <a href="{blog:plages-la-cote}">La Côte</a>, <a href="{blog:plages-geneve}">Genève</a>.', alt: 'Un petit tram et un bus devant un lac, un quai avec un banc, sans personne' },
+  en: { titre: 'Getting to the beach by public transport: the nearest stop to each Lake Geneva beach', h1: 'To the beach by public transport: the nearest stop, beach by beach',
+    desc: 'For each Swiss beach on Lake Geneva, the name of the nearest public transport stop and the straight-line distance, from Federal Office of Transport data.',
+    bref: (n) => `For <strong>${n} Swiss beaches on Lake Geneva</strong>, here is the <strong>nearest public transport stop</strong> and its straight-line distance. The data does not say whether it is a train station, a bus stop or a boat landing: check the line and timetable before you set off.`,
+    h: ['Within 200 m', '200 to 500 m', 'Beyond 500 m'], ou: (n, m) => `${n} (${m} m)`, intro: 'Each line gives the beach, then the nearest stop and its distance in metres, as the crow flies: the walk is a little longer.',
+    lim: 'What this page does not say', limTxt: 'It does not say which line serves each stop, how often, or whether the stop is a station, a bus stop or a boat landing: the source does not specify. Beaches on the French shore are not covered, since the source only concerns Switzerland. Distances are measured from the beach’s point in the app.',
+    fin: 'To pick a beach: <a href="{app}">the My Lake app</a> gives the current water and wind. More guides: <a href="{blog:plages-lausanne}">Lausanne and Morges</a>, <a href="{blog:plages-riviera}">the Riviera</a>, <a href="{blog:plages-la-cote}">La Côte</a>, <a href="{blog:plages-geneve}">Geneva</a>.', alt: 'A small tram and a bus in front of a lake, a platform with a bench, nobody around' },
+  de: { titre: 'Mit dem öV zum Strand: die nächste Haltestelle für jeden Badeplatz am Genfersee', h1: 'Mit dem öV zum Strand: die nächste Haltestelle, Badeplatz für Badeplatz',
+    desc: 'Für jeden Schweizer Badeplatz am Genfersee der Name der nächsten öV-Haltestelle und die Luftlinie, nach Daten des Bundesamts für Verkehr.',
+    bref: (n) => `Für <strong>${n} Schweizer Badeplätze am Genfersee</strong> steht hier die <strong>nächste Haltestelle des öffentlichen Verkehrs</strong> mit der Luftlinie. Die Daten sagen nicht, ob es ein Bahnhof, eine Bushaltestelle oder eine Schiffsanlegestelle ist: Prüfen Sie Linie und Fahrplan vor der Abreise.`,
+    h: ['Unter 200 m', '200 bis 500 m', 'Über 500 m'], ou: (n, m) => `${n} (${m} m)`, intro: 'Jede Zeile nennt den Badeplatz, dann die nächste Haltestelle und ihre Entfernung in Metern, Luftlinie: Der Fussweg ist etwas länger.',
+    lim: 'Was diese Seite nicht sagt', limTxt: 'Sie sagt nicht, welche Linie an welcher Haltestelle hält, wie oft, und ob die Haltestelle ein Bahnhof, eine Bushaltestelle oder eine Anlegestelle ist: Die Quelle gibt das nicht an. Die Badeplätze am französischen Ufer sind nicht erfasst, da die Quelle nur die Schweiz betrifft. Die Entfernungen gelten ab dem Punkt des Badeplatzes in der App.',
+    fin: 'Zur Wahl des Badeplatzes: <a href="{app}">die App Mein See</a> zeigt Wasser und Wind von heute. Weitere Ratgeber: <a href="{blog:plages-lausanne}">Lausanne und Morges</a>, <a href="{blog:plages-riviera}">die Riviera</a>, <a href="{blog:plages-la-cote}">die Côte</a>, <a href="{blog:plages-geneve}">Genf</a>.', alt: 'Ein kleines Tram und ein Bus vor einem See, ein Bahnsteig mit Bank, niemand zu sehen' },
+  it: { titre: 'Raggiungere la spiaggia con i trasporti pubblici: la fermata più vicina a ogni spiaggia del Lemano', h1: 'In spiaggia con i trasporti pubblici: la fermata più vicina, spiaggia per spiaggia',
+    desc: 'Per ogni spiaggia svizzera del Lemano, il nome della fermata di trasporto pubblico più vicina e la distanza in linea d’aria, dai dati dell’Ufficio federale dei trasporti.',
+    bref: (n) => `Per <strong>${n} spiagge svizzere del Lemano</strong> ecco la <strong>fermata di trasporto pubblico più vicina</strong> e la sua distanza in linea d’aria. I dati non dicono se sia una stazione, una fermata dell’autobus o un imbarcadero: controllate linea e orario prima di partire.`,
+    h: ['Entro 200 m', 'Da 200 a 500 m', 'Oltre 500 m'], ou: (n, m) => `${n} (${m} m)`, intro: 'Ogni riga dà la spiaggia, poi la fermata più vicina e la sua distanza in metri, in linea d’aria: il percorso a piedi è un po’ più lungo.',
+    lim: 'Cosa questa pagina non dice', limTxt: 'Non dice quale linea serve ogni fermata, con che frequenza, né se la fermata è una stazione, una fermata dell’autobus o un imbarcadero: la fonte non lo precisa. Le spiagge della riva francese non sono coperte, perché la fonte riguarda solo la Svizzera. Le distanze sono misurate dal punto della spiaggia nell’app.',
+    fin: 'Per scegliere la spiaggia: <a href="{app}">l’app Il mio lago</a> dà acqua e vento del momento. Altre guide: <a href="{blog:plages-lausanne}">Losanna e Morges</a>, <a href="{blog:plages-riviera}">la Riviera</a>, <a href="{blog:plages-la-cote}">La Côte</a>, <a href="{blog:plages-geneve}">Ginevra</a>.', alt: 'Un piccolo tram e un autobus davanti a un lago, una banchina con una panchina, nessuno intorno' },
+};
+function articleTransports() {
+  const lignes = SPOTS.map((s) => [s, ARRETS[s.id]]).filter(([, a]) => a), n = lignes.length;
+  const a = { slug: 'plages-transports-publics-leman', sante: false, img: 'guide-transports', altIA: ['fr', 'en', 'de', 'it'].map((L) => TR[L].alt), sources: [OFT, OSM] };
+  for (const L of ['fr', 'en', 'de', 'it']) {
+    const t = TR[L], bande = (min, max) => lignes.filter(([, x]) => x.m >= min && x.m < max).sort((p, q) => p[1].m - q[1].m);
+    const bloc = (titre, arr) => (arr.length ? `<h2>${titre}</h2>\n<ul class="liste">\n${arr.map(([s, x]) => `  <li><a href="{plage:${s.id}}">${s.nom}</a> : ${t.ou(x.nom, x.m)}</li>`).join('\n')}\n</ul>\n` : '');
+    a[L] = { titre: t.titre, h1: t.h1, desc: t.desc, bref: t.bref(n), html: () => `<p>${t.intro}</p>\n${bloc(t.h[0], bande(0, 200))}${bloc(t.h[1], bande(200, 500))}${bloc(t.h[2], bande(500, 1e9))}<h2>${t.lim}</h2>\n<p>${t.limTxt}</p>\n<p>${t.fin}</p>` };
+  }
+  return a;
+}
