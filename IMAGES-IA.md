@@ -611,6 +611,100 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
+### Sécurité et santé (10 images)
+
+Même règle : déposer le fichier dans `blog/img/ia/` sous le nom indiqué.
+
+#### `securite-maximes.jpg` · Les six maximes de la baignade
+
+```
+@generateur-image-le-lac
+SCÈNE : a wooden jetty with a red lifebuoy hung on a post, calm lake and mountains behind, soft morning light, no one around.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `puces-canard.jpg` · Puces de canard
+
+```
+@generateur-image-le-lac
+SCÈNE : a single duck on calm shallow water near a wooden jetty, pale water plants beneath the surface, a folded towel on a bench; soft light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `cyanobacteries.jpg` · Cyanobactéries
+
+```
+@generateur-image-le-lac
+SCÈNE : a lake edge with cloudy turquoise-green water and soft streaks on the surface, a blank yellow warning sign (no text) on a post, pebbles; muted light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `feux-tempete.jpg` · Feux de tempête
+
+```
+@generateur-image-le-lac
+SCÈNE : a harbour mast with a round orange warning lamp at the top, the lake below under a sky filling with dark clouds; moored boats rocking slightly.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `enfants.jpg` · Enfants au bord de l’eau
+
+```
+@generateur-image-le-lac
+SCÈNE : a small bucket, a spade and tiny shoes at the edge of shallow water, a towel and an adult’s hand just entering the frame; no faces.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `repas-soleil.jpg` · Manger, boire et bronzer avant la baignade
+
+```
+@generateur-image-le-lac
+SCÈNE : a towel, a closed picnic basket and a glass of water on a jetty, the sun high over the lake; no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `eau-inconnue.jpg` · Plonger dans l’inconnu
+
+```
+@generateur-image-le-lac
+SCÈNE : a jetty reaching over dark murky water, a few branches just breaking the surface near the shore; moody grey-teal light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `bouees.jpg` · Matelas et bouées en eau profonde
+
+```
+@generateur-image-le-lac
+SCÈNE : a colourful air mattress drifting alone far from a small distant shore on calm deep water; no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `nager-seul.jpg` · Nager seul en eau libre
+
+```
+@generateur-image-le-lac
+SCÈNE : an orange swim tow-float bobbing alone offshore of a distant shore, the lake calm, early light; no swimmer visible.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
+#### `crampes.jpg` · Crampes et hypothermie
+
+```
+@generateur-image-le-lac
+SCÈNE : a simple water thermometer hung on a jetty post, mist rising from cold lake water; a bare hand just leaving the frame; no faces.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs with text anywhere. No faces.
+FORMAT : 16:9.
+```
+
 ## Ce que deviennent les images
 
 - En tête des articles concernés, avec le texte alternatif de `scripts/illustrations.mjs` et la légende « Illustration générée par IA » ; la carte ou la photo d'avant passe dans le corps de l'article. Pour en ajouter une : l'enregistrer dans `blog/img/ia/` en 1600×893, ajouter une ligne dans `scripts/illustrations.mjs`, puis lancer `node scripts/miniatures.mjs` et `node scripts/blog.mjs`.
