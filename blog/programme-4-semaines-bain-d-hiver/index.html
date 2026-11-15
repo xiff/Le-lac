@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Programme de 4 semaines pour débuter le bain d’hiver, pas à pas · Mon Lac</title>
+<meta name="description" content="Quatre semaines pour passer de quelques secondes à quelques minutes dans l’eau froide, avec la règle de la Société Suisse de Sauvetage comme plafond. Une proposition de Mon Lac, pas un protocole médical.">
+<link rel="canonical" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/">
+<link rel="alternate" hreflang="fr" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/">
+<link rel="alternate" hreflang="en" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/en/">
+<link rel="alternate" hreflang="de" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/de/">
+<link rel="alternate" hreflang="it" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/it/">
+<link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/">
+<script>
+// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
+(() => { try {
+  const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
+  addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
+  let voulue = localStorage.getItem('langue');
+  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
+  sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
+  const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
+  if (autre) location.replace(new URL(autre.href).pathname + location.search + location.hash);
+} catch {} })();
+</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programme de 4 semaines pour débuter le bain d’hiver, pas à pas · Mon Lac">
+<meta property="og:description" content="Quatre semaines pour passer de quelques secondes à quelques minutes dans l’eau froide, avec la règle de la Société Suisse de Sauvetage comme plafond. Une proposition de Mon Lac, pas un protocole médical.">
+<meta property="og:url" content="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/">
+<meta property="og:image" content="https://monlac.ch/blog/img/ia/programme-4-semaines.jpg">
+<meta property="og:locale" content="fr_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d4a5c">
+<link rel="icon" href="../../icon.svg">
+<link rel="stylesheet" href="../../plage/plage.css">
+<link rel="preload" href="../../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="../../spots.js">
+<link rel="preload" href="../../eau.json" as="fetch" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://monlac.ch/#org","name":"Mon Lac","alternateName":["My Lake","Mein See","Il mio lago"],"url":"https://monlac.ch/","logo":{"@type":"ImageObject","url":"https://monlac.ch/icons/icon-512.png","width":512,"height":512}},{"@type":"WebSite","@id":"https://monlac.ch/#site","name":"Mon Lac","url":"https://monlac.ch/","inLanguage":["fr-CH","en","de-CH","it-CH"],"publisher":{"@id":"https://monlac.ch/#org"}},{"@type":"BlogPosting","@id":"https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/#article","mainEntityOfPage":"https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/","url":"https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/","headline":"Programme de 4 semaines pour débuter le bain d’hiver, pas à pas","description":"Quatre semaines pour passer de quelques secondes à quelques minutes dans l’eau froide, avec la règle de la Société Suisse de Sauvetage comme plafond. Une proposition de Mon Lac, pas un protocole médical.","image":{"@type":"ImageObject","url":"https://monlac.ch/blog/img/ia/programme-4-semaines.jpg","width":1600,"height":893,"creditText":"Mon Lac"},"datePublished":"2026-11-15","dateModified":"2026-11-15","inLanguage":"fr-CH","author":{"@id":"https://monlac.ch/#org"},"publisher":{"@id":"https://monlac.ch/#org"},"isPartOf":{"@id":"https://monlac.ch/blog/#blog"},"about":{"@type":"LakeBodyOfWater","name":"Lac Léman","alternateName":"Lake Geneva","sameAs":"https://www.wikidata.org/wiki/Q6403"},"citation":["https://www.slrg.ch/sites/default/files/2025-02/Fiche-nager-en-eau-froide-web.pdf","https://www.helsana.ch/content/helsana/de/blog/koerper/bewegung/winterschwimmen.html","https://www.outdoorswimmingsociety.com/risks-cold-water/","https://www.graubuenden.ch/de/aktivitaeten/winter/eisbaden"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mon Lac","item":"https://monlac.ch/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://monlac.ch/blog/"},{"@type":"ListItem","position":3,"name":"Débuter le bain d’hiver : un programme de 4 semaines","item":"https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/"}]}]}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
+</head>
+<body>
+<header>
+  <div class="haut"><a class="marque" translate="no" href="../../?lang=fr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>Mon Lac</a><nav class="langues" translate="no" aria-label="Langue"><a href="../../blog/programme-4-semaines-bain-d-hiver/en/" hreflang="en" lang="en" title="English" aria-label="English">EN</a><a href="../../blog/programme-4-semaines-bain-d-hiver/de/" hreflang="de" lang="de" title="Deutsch" aria-label="Deutsch">DE</a><a href="../../blog/programme-4-semaines-bain-d-hiver/it/" hreflang="it" lang="it" title="Italiano" aria-label="Italiano">IT</a></nav></div>
+  <nav class="ariane" aria-label="Fil d’Ariane"><a href="../../?lang=fr">Mon Lac</a> › <a href="../../blog/">Blog</a></nav>
+  <h1>Débuter le bain d’hiver : un programme de 4 semaines</h1>
+  <p class="releve">Par la rédaction de Mon Lac · publié le <time datetime="2026-11-15">15 novembre 2026</time></p>
+</header>
+<main class="article">
+  <figure class="une"><picture><source type="image/webp" srcset="../../blog/img/min/programme-4-semaines-640.webp 640w, ../../blog/img/min/programme-4-semaines-1200.webp 1200w, ../../blog/img/min/programme-4-semaines-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../blog/img/ia/programme-4-semaines.jpg" alt="Un ponton de pierre et son escalier de bois qui descend dans un lac bleu, rives lointaines" srcset="../../blog/img/min/programme-4-semaines-640.jpg 640w, ../../blog/img/min/programme-4-semaines-1200.jpg 1200w, ../../blog/img/ia/programme-4-semaines.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustration générée par IA</figcaption></figure>
+  <section class="bref" aria-labelledby="bref"><h2 id="bref">En bref</h2><p>Voici <strong>notre proposition</strong> en quatre étapes, construite sur les règles des sources : commencer par quelques secondes (Helsana), entrer lentement, ne jamais dépasser <strong>autant de minutes que l’eau a de degrés</strong> (Société Suisse de Sauvetage), y aller accompagné. C’est un cadre de prudence, pas un protocole médical ni une promesse de résultat : ceux qui ont un souci de santé en parlent d’abord à leur médecin.</p></section>
+  <h2>Les règles qui fixent le cadre</h2>
+<ul class="liste">
+  <li><strong>Plafond de durée</strong> : autant de minutes que l’eau a de degrés (5 minutes à 5 °C), et c’est un maximum, pas un objectif (Société Suisse de Sauvetage, Helsana).</li>
+  <li><strong>Commencer petit</strong> : au début, quelques secondes suffisent ; on augmente avec le temps (Helsana).</li>
+  <li><strong>Entrer lentement</strong>, se mouiller le corps peu à peu, éviter de plonger la tête (Helsana).</li>
+  <li><strong>Jamais seul</strong> : une deuxième personne vient avec vous (Helsana).</li>
+  <li><strong>S’habituer en été déjà</strong> : des bains réguliers en plein air avant l’automne habituent le corps aux températures plus basses (Helsana).</li>
+  <li><strong>Pas de débutant sous 12 °C</strong> avec une combinaison non plus : celle-ci n’empêche ni le choc du froid ni l’hypothermie (RLSS, Royaume-Uni).</li>
+</ul>
+<h2>Semaine 1 : s’habituer à l’eau</h2>
+<p>Deux ou trois sorties. Entrez jusqu’aux genoux, puis à la taille, quelques secondes, sans plonger. Sortez avant d’avoir vraiment froid. L’objectif : que le réflexe de souffle (<a href="../../blog/respiration-eau-froide/">voir l’article</a>) devienne moins surprenant.</p>
+<h2>Semaine 2 : jusqu’aux épaules</h2>
+<p>Entrez lentement jusqu’aux épaules, la tête hors de l’eau, de quelques dizaines de secondes à une minute. Restez où vous avez pied, attendez que la respiration soit calme avant de bouger les bras.</p>
+<h2>Semaine 3 : quelques minutes, avec prudence</h2>
+<p>Passez à une ou deux minutes, puis trois si l’eau le permet. Vérifiez la <a href="#eau-du-jour">température du moment</a> avant d’entrer : le plafond de la règle baisse avec l’eau. Pour les femmes, Helsana rapporte que les experts recommandent des variantes plus douces, une à trois minutes dans une eau de 10 à 12 °C, surtout dans la seconde moitié du cycle.</p>
+<h2>Semaine 4 : fixer sa routine</h2>
+<p>Restez sous le plafond de la règle, et plutôt en dessous. Choisissez une plage où vous pouvez sortir facilement et vous changer à l’abri, venez avec la même personne, et prévoyez <a href="../../blog/afterdrop-se-rechauffer/">le réchauffement</a> et <a href="../../blog/materiel-bain-d-hiver/">le matériel</a> avant l’entrée.</p>
+<h2>Quand arrêter ou s’abstenir</h2>
+<p>On sort dès qu’on se sent mal à l’aise. Graubünden Ferien déconseille le bain dans l’eau glacée en cas d’hypertension, de diabète ou de maladie du cœur et des vaisseaux ; Helsana invite à y renoncer ou à demander l’avis de son médecin en cas de problème de santé ou de doute. Pour le contexte des études : <a href="../../blog/bienfaits-bain-froid/">les bienfaits du bain froid</a>.</p>
+<p>L’eau du moment, plage par plage, est dans l’<a href="../../?lang=fr">app</a>.</p>
+  <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">L’eau du Léman en ce moment</h2>
+    <p id="eau-live">La température de chaque plage est dans <a href="../../?lang=fr">l’app Mon Lac</a>, mise à jour toutes les trois heures.</p></section>
+  <p class="avertissement" role="note"><strong>Avertissement.</strong> Cet article donne des informations générales tirées des sources citées ; il ne remplace pas un avis médical. La baignade en eau froide sollicite fortement le cœur et peut être dangereuse : demandez conseil à un médecin avant de commencer, en particulier en cas de problème cardiaque, de tension ou de grossesse. Ne vous baignez jamais seul et respectez les consignes des sauveteurs. Chacun pratique sous sa propre responsabilité ; en cas d’urgence, appelez le 144 en Suisse ou le 112.</p>
+  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">Sources</h2><ul>
+    <li><a href="https://www.slrg.ch/sites/default/files/2025-02/Fiche-nager-en-eau-froide-web.pdf">Société Suisse de Sauvetage SSS, « Nager en eau froide »</a></li>
+    <li><a href="https://www.helsana.ch/content/helsana/de/blog/koerper/bewegung/winterschwimmen.html">Helsana, « Winterschwimmen – das bringt’s und so geht’s »</a></li>
+    <li><a href="https://www.outdoorswimmingsociety.com/risks-cold-water/">Outdoor Swimming Society, « Risks of cold water »</a></li>
+    <li><a href="https://www.graubuenden.ch/de/aktivitaeten/winter/eisbaden">Graubünden Ferien, « Eisbaden »</a></li>
+  </ul></section>
+  <a class="bouton" href="../../?lang=fr">Voir le lac aujourd’hui</a>
+</main>
+<footer class="pied">
+  <span>Météo <a href="https://open-meteo.com">Open-Meteo</a> · eau à 70 cm : <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), modèle mis à jour toutes les 3 h.<br>Indicatif : le lac a toujours le dernier mot.<br>Sans compte ni cookie. Mesure d’audience Umami, sans cookie, données hébergées en Europe.</span>
+  <div class="liens"><a href="../../presentation/">À propos</a><a href="../../plage/">Toutes les plages</a><a href="../../blog/">Blog</a><a href="../../confidentialite/">Confidentialité</a></div>
+</footer>
+<script type="module">
+// Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
+import { SPOTS, valeurProche } from '../../spots.js';
+const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
+// Les plages du lac dont parle l'article (le Léman par défaut).
+const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
+else if (v.length) {
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
+    .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
+}
+</script>
+</body>
+</html>

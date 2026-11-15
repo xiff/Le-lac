@@ -8,6 +8,7 @@ import { creerIt } from './articles.it.mjs';
 import { articlesLacs } from './articles.lacs.mjs';
 import { articlesSaunas } from './articles.saunas.mjs';
 import { articlesBaignade } from './articles.baignade.mjs';
+import { articlesHiver } from './articles.hiver.mjs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 import { illustrer, ILLUSTRATIONS } from './illustrations.mjs';
@@ -691,7 +692,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade());
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver());
 // Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 12 novembre 2026.
 const DATES = {
   'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28', '2026-11-13'],
@@ -721,6 +722,8 @@ const DATES = {
   'plages-lac-sempach': ['2026-11-11', '2026-11-13'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-11'],
   'temperature-lac-morat': ['2026-11-11'], 'plages-lac-untersee': ['2026-11-12', '2026-11-13'],
   'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
+  'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
+  'neoprene-bain-d-hiver': ['2026-11-15'], 'bain-d-hiver-en-groupe-suisse': ['2026-11-15'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 // Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
