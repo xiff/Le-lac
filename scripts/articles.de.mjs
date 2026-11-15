@@ -21,7 +21,7 @@ export const creerDe = (h) => ({
 <h2>Was tun nach dem Bad?</h2>
 <p>Gründlich abtrocknen und sofort warme, trockene Kleidung anziehen. Die SLRG rät von einer heissen Dusche direkt danach, windigen Orten und grossen Anstrengungen ab. Ein lauwarmes Getränk hilft, sich von innen aufzuwärmen.</p>
 <h2>Wo kann man im Winter in Genf und Lausanne baden?</h2>
-<p><strong>Genf.</strong> Die <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> bleiben der Treffpunkt der Winterschwimmer; ihre Buvette ist das ganze Jahr geöffnet, im Winter mit Fondue. Im Dezember wird die Coupe de Noël im Hafenbecken geschwommen. Zum Aufwärmen auf andere Art bietet Sauna Boats Genf eine schwimmende Sauna ab dem Quai Gustave-Ador, nahe dem <a href="{plage:plage-des-eaux-vives}">Strand Eaux-Vives</a>.</p>
+<p><strong>Genf.</strong> Die <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> bleiben der Treffpunkt der Winterschwimmer; ihre Buvette ist das ganze Jahr geöffnet, im Winter mit Fondue. Im Dezember wird die <a href="{blog:coupe-de-noel-geneve}">Coupe de Noël</a> im Hafenbecken geschwommen. Zum Aufwärmen auf andere Art bietet Sauna Boats Genf eine schwimmende Sauna ab dem Quai Gustave-Ador, nahe dem <a href="{plage:plage-des-eaux-vives}">Strand Eaux-Vives</a>.</p>
 <p><strong>Lausanne.</strong> In Bellerive stellen die Bains des Rives von Oktober bis März Jurten-Saunen am See auf, mit einem Sprung in den Genfersee zwischen den Gängen, nahe dem <a href="{plage:lausanne-bellerive}">Strand von Bellerive</a>.</p>
 <p>Die <a href="{plages}">Liste aller Badeplätze</a> zeigt Temperatur und Wind jedes einzelnen.</p>
 <h2>Wo kann man sich in einer Sauna am Genfersee aufwärmen?</h2>

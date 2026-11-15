@@ -9,6 +9,7 @@ import { articlesLacs } from './articles.lacs.mjs';
 import { articlesSaunas } from './articles.saunas.mjs';
 import { articlesBaignade } from './articles.baignade.mjs';
 import { articlesHiver } from './articles.hiver.mjs';
+import { articlesNoel } from './articles.noel.mjs';
 import { articlesComprendre } from './articles.comprendre.mjs';
 import { articlesGuides } from './articles.guides.mjs';
 import { articlesSecurite } from './articles.securite.mjs';
@@ -123,7 +124,7 @@ export const ARTICLES = [
 <h2>Que faire en sortant de l’eau ?</h2>
 <p>Se sécher soigneusement et enfiler tout de suite des vêtements chauds et secs. La SSS déconseille la douche chaude juste après, les endroits exposés au vent et les gros efforts. Une boisson tiède aide à se réchauffer de l’intérieur.</p>
 <h2>Où se baigner l’hiver à Genève et à Lausanne ?</h2>
-<p><strong>Genève.</strong> Les <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> restent le rendez-vous des nageurs d’hiver ; leur buvette est ouverte toute l’année, avec la fondue l’hiver. En décembre, la Coupe de Noël se nage dans la rade. Pour se réchauffer autrement, le Sauna Boats Genève propose un sauna flottant au départ du quai Gustave-Ador, près de la <a href="{plage:plage-des-eaux-vives}">plage des Eaux-Vives</a>.</p>
+<p><strong>Genève.</strong> Les <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> restent le rendez-vous des nageurs d’hiver ; leur buvette est ouverte toute l’année, avec la fondue l’hiver. En décembre, la <a href="{blog:coupe-de-noel-geneve}">Coupe de Noël</a> se nage dans la rade. Pour se réchauffer autrement, le Sauna Boats Genève propose un sauna flottant au départ du quai Gustave-Ador, près de la <a href="{plage:plage-des-eaux-vives}">plage des Eaux-Vives</a>.</p>
 <p><strong>Lausanne.</strong> À Bellerive, les Bains des Rives installent d’octobre à mars des yourtes-saunas au bord du lac, avec un plongeon dans le Léman entre deux séances, près de la <a href="{plage:lausanne-bellerive}">plage de Bellerive</a>.</p>
 <p>La <a href="{plages}">liste des 65 plages</a> donne la température et le vent de chacune.</p>
 <h2>Où se réchauffer dans un sauna au bord du Léman ?</h2>
@@ -152,7 +153,7 @@ ${listeLoc(['sauna'], L)}
 <h2>What should you do when you get out?</h2>
 <p>Dry off thoroughly and put on warm, dry clothes right away. The lifesaving society advises against a hot shower straight after, windy spots and hard exercise. A warm drink helps you warm up from the inside.</p>
 <h2>Where can you swim in winter in Geneva and Lausanne?</h2>
-<p><strong>Geneva.</strong> The <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> are the winter swimmers’ meeting point; their café is open all year, with fondue in winter. In December, the Coupe de Noël race is swum in the harbour. To warm up differently, Sauna Boats Genève runs a floating sauna from Quai Gustave-Ador, near <a href="{plage:plage-des-eaux-vives}">Eaux-Vives beach</a>.</p>
+<p><strong>Geneva.</strong> The <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> are the winter swimmers’ meeting point; their café is open all year, with fondue in winter. In December, the <a href="{blog:coupe-de-noel-geneve}">Coupe de Noël</a> race is swum in the harbour. To warm up differently, Sauna Boats Genève runs a floating sauna from Quai Gustave-Ador, near <a href="{plage:plage-des-eaux-vives}">Eaux-Vives beach</a>.</p>
 <p><strong>Lausanne.</strong> At Bellerive, the Bains des Rives set up lakeside yurt saunas from October to March, with a dip in the lake between sessions, near <a href="{plage:lausanne-bellerive}">Bellerive beach</a>.</p>
 <p>The <a href="{plages}">list of all 65 beaches</a> gives the water temperature and wind for each one.</p>
 <h2>Where can you warm up in a sauna by Lake Geneva?</h2>
@@ -697,7 +698,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver());
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver(), ...articlesNoel());
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
@@ -735,7 +736,7 @@ const DATES = {
   'plages-lac-sempach': ['2026-11-11', '2026-11-13'], 'bain-d-hiver-neuchatel-bienne-morat': ['2026-11-11'],
   'temperature-lac-morat': ['2026-11-11'], 'plages-lac-untersee': ['2026-11-12', '2026-11-13'],
   'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
-  'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
+  'coupe-de-noel-geneve': ['2026-11-15'], 'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
   'neoprene-bain-d-hiver': ['2026-11-15'], 'bain-d-hiver-en-groupe-suisse': ['2026-11-15'],
   // « Comprendre le lac » : deux par jour, thèmes mélangés ; un article daté d'un jour futur n'est publié qu'à cette date (voir plus bas).
   'vents-du-leman': ['2026-11-16'], 'lacs-les-plus-chauds-et-les-plus-froids': ['2026-11-16'],
