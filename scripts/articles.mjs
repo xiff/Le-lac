@@ -16,6 +16,7 @@ import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 import { illustrer, ILLUSTRATIONS } from './illustrations.mjs';
+import { remplacerPhotos } from './photos-ia.mjs';
 
 const ZONES = { geneve: 'Genève', nyon: 'La Côte', lausanne: 'Morges et Lausanne', vevey: 'Riviera', evian: 'Rive française' };
 const LOCALE = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
@@ -759,3 +760,5 @@ export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slic
 ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
 // Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
 ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = { ...illustrer(a), modifie: a.modifie > '2026-11-13' ? a.modifie : '2026-11-13' }; });
+// Photos Creative Commons remplacées par une illustration au style du site dès qu'elle existe (scripts/photos-ia.mjs).
+remplacerPhotos(ARTICLES);

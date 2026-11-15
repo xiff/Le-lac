@@ -705,6 +705,344 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
+<!-- photos-cc:debut -->
+
+## Photos Creative Commons à transformer (25)
+
+Ces photos du blog (Wikimedia Commons, licences CC BY ou CC BY-SA) n’ont pas le style du reste du site. Pour chacune : ce que montre la photo, le prompt de l’illustration, et le nom du fichier à déposer dans `blog/img/ia/`.
+Dès que le fichier existe, `scripts/photos-ia.mjs` remplace la photo par l’illustration dans l’article (rien à changer dans le code), avec la légende « Illustration générée par IA, d’après une photo de… » et le crédit de l’auteur. Pour les photos de lacs, le portrait du lac (déjà dans le style) a déjà pris la place de la photo : l’illustration propre à l’article, si elle arrive, est plus variée mais pas indispensable.
+
+**Règles de cette section** : on décrit la scène réelle (lieu, composition, lumière), jamais une personne reconnaissable : pas de visages, pas de logos ni de texte (bannières, panneaux, marques). Les nageurs, paddlers et kiteurs deviennent des silhouettes ou disparaissent. La même règle de style que partout : gouache à plat sur papier crème, teal `#0d4a5c`, soleil `#f2b84b`, encre `#10292f`.
+
+**Crédit** : par prudence, la légende garde le nom de l’auteur de la photo et sa licence. Une illustration inspirée d’une photo CC BY-SA en est peut-être une œuvre dérivée ; ce n’est pas un avis juridique.
+
+### `coupe-de-noel-depart.jpg` · remplace `presentation/img/coupe-noel-depart.jpg`
+
+Article : `bain-d-hiver-leman`
+
+**La photo montre** : Départ de la Coupe de Noël à Genève : des nageurs en tenue de fête sautent d’un ponton rouge couvert de banderoles, un bateau d’excursion derrière.
+
+```
+@generateur-image-le-lac
+SCÈNE : a red-carpeted starting pontoon in Geneva harbour on a grey December morning, plain bunting and festive paper hats left on the railing (no text on them), a row of buckets, a ladder into dark cold water, a tour boat moored behind; no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `coupe-de-noel-bonnets.jpg` · remplace `presentation/img/coupe-noel-bonnets.jpg`
+
+Article : `materiel-bain-d-hiver`
+
+**La photo montre** : Des nageurs en bonnets blancs à pompon (l’un avec des cornes) dans une eau grise, un bateau de sécurité au fond.
+
+```
+@generateur-image-le-lac
+SCÈNE : a cluster of white wool bobble swim caps and one horned cap floating on grey-green cold lake water, seen from behind and small so no faces show, a dark rubber safety boat blurred at the top of the picture.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `trou-dans-la-glace.jpg` · remplace `presentation/img/trou-glace.jpg`
+
+Article : `choc-thermique-eau-froide`
+
+**La photo montre** : Une échelle de bain d’hiver plonge dans un trou scié dans la glace, entouré de blocs de neige.
+
+```
+@generateur-image-le-lac
+SCÈNE : a rectangular hole sawn in thick lake ice seen from above, piled blocks of snow and ice around it, two steel handrails with a ladder going down into dark water, pale cold light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `apres-bain-boisson-chaude.jpg` · remplace `presentation/img/apres-bain.jpg`
+
+Article : `afterdrop-se-rechauffer`
+
+**La photo montre** : Un nageur enroulé dans une serviette boit un gobelet chaud sous une tente, d’autres en peignoir derrière lui (gros plan sur un visage).
+
+```
+@generateur-image-le-lac
+SCÈNE : a still life after a cold swim: a white towel and a navy bathrobe hung over a rail, a steaming paper cup on a wooden bench, a swim cap with goggles beside it, a white event tent blurred behind; no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `leman-vu-du-ciel.jpg` · remplace `presentation/img/leman-satellite.jpg`
+
+Article : `temperature-lac-leman`
+
+**La photo montre** : Le Léman vu par un satellite : un croissant bleu sombre entre des collines vertes, des Alpes enneigées au sud-est.
+
+```
+@generateur-image-le-lac
+SCÈNE : Lake Geneva seen from above as a flat map-like illustration: a crescent-shaped deep teal lake among soft green hills, cream-white snowy Alps in the south-east, simple shapes, cream background, no labels.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `plage-de-vidy.jpg` · remplace `presentation/img/vidy.jpg`
+
+Article : `qualite-eau-baignade-leman`
+
+**La photo montre** : La plage de sable de Vidy à Lausanne : une grande courbe de sable bordée d’arbres, quelques baigneurs, des rochers au premier plan.
+
+```
+@generateur-image-le-lac
+SCÈNE : a long curved sandy beach of Lausanne-Vidy lined with tall green trees, a few tiny bathers as dots, rocks in the foreground, high rippled clouds, calm turquoise water, hazy mountains.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `paquis-ete.jpg` · remplace `presentation/img/paquis-ete.jpg`
+
+Article : `plages-geneve`
+
+**La photo montre** : Vue aérienne des Bains des Pâquis : jetée en bois avec phare, platanes, plateformes de bronzage, bassin d’eau claire.
+
+```
+@generateur-image-le-lac
+SCÈNE : an aerial view of the Bains des Pâquis in Geneva: a long wooden jetty with a small lighthouse at its end, a group of plane trees, sunbathing decks, a clear turquoise swimming enclosure with a round diving platform, tiny figures only as dots.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `yvoire-port.jpg` · remplace `presentation/img/yvoire.jpg`
+
+Article : `plages-leman-rive-francaise`
+
+**La photo montre** : Le petit port d’Yvoire : voiliers amarrés dans une eau verte, maisons de pierre et clocher à flèche bleue.
+
+```
+@generateur-image-le-lac
+SCÈNE : the small harbour of Yvoire: moored white sailboats in green-turquoise water, stone houses with brown roofs, a church tower with a blue pointed spire, flowers on the quay, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `kite-foil.jpg` · remplace `presentation/img/kite-zoug.jpg`
+
+Article : `kitesurf-windsurf-wingfoil-leman`
+
+**La photo montre** : Un kitefoiler en plein saut au-dessus du lac, collines vertes et hautes montagnes enneigées derrière.
+
+```
+@generateur-image-le-lac
+SCÈNE : a kite-foil rider as a simple dark silhouette mid-jump above a wide lake, in front of green wooded hills and snowy high mountains, one thin kite line rising out of frame, no face.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `bateau-ski-nautique.jpg` · remplace `presentation/img/bateau-ski.jpg`
+
+Article : `wakeboard-wakesurf-ski-nautique-leman`
+
+**La photo montre** : Un bateau à moteur bâché amarré sur une eau bleue très claire, deux nageurs au loin, les coteaux de Lavaux à droite.
+
+```
+@generateur-image-le-lac
+SCÈNE : a yellow motorboat with a grey tarp cover moored on bright blue calm water, a marker buoy, two tiny swimmers far away, distant vineyard hills on the right.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `ponton-glace-bise.jpg` · remplace `presentation/img/bise-geneve.jpg`
+
+Article : `bise-leman`
+
+**La photo montre** : Un ponton de la rade de Genève couvert de glace après un coup de bise : bittes d’amarrage et rambarde givrées, façades de la ville au fond.
+
+```
+@generateur-image-le-lac
+SCÈNE : a Geneva lake landing stage in winter with white mooring posts and railing coated in thick ice after the bise, a yellow-and-white sign board with no text, the city’s grand waterfront buildings blurred in grey light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `paddle-coucher-soleil.jpg` · remplace `presentation/img/paddle.jpg`
+
+Article : `paddle-leman`
+
+**La photo montre** : Trois personnes en stand up paddle au coucher du soleil, vues de dos, lumière orange sur l’eau.
+
+```
+@generateur-image-le-lac
+SCÈNE : three stand-up paddleboards seen from behind at sunset on dark teal water, long paddles, warm orange light on the water, the paddlers as simple silhouettes with no faces.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `quais-ouchy.jpg` · remplace `presentation/img/ouchy.jpg`
+
+Article : `buvettes-restaurants-bord-du-leman`
+
+**La photo montre** : Les pontons d’Ouchy au coucher du soleil : eau dorée, nuages gris, chaîne alpine à l’horizon.
+
+```
+@generateur-image-le-lac
+SCÈNE : floating pontoons and mooring posts at Ouchy at sunset, the rippled lake gold, layered grey clouds, an Alpine ridge on the horizon, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-neuchatel.jpg` · remplace `blog/img/photo-neuchatel.jpg`
+
+Article : `temperature-lac-neuchatel` · repli déjà en place : `portrait-neuchatel.jpg`
+
+**La photo montre** : Une grande étendue d’eau bleue et calme, la ligne des Alpes à l’horizon, deux canards et des rochers au premier plan.
+
+```
+@generateur-image-le-lac
+SCÈNE : a vast calm blue lake with a thin line of the Alps on the far horizon, a few rocks and two ducks in the foreground, a wide empty sky.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-bienne.jpg` · remplace `blog/img/photo-bienne.jpg`
+
+Article : `temperature-lac-bienne` · repli déjà en place : `portrait-bienne.jpg`
+
+**La photo montre** : Une rive de galets avec de grands arbres, une promenade en bois et un panneau, quelques pique-niqueurs, le lac jusqu’à de longues collines.
+
+```
+@generateur-image-le-lac
+SCÈNE : a pebble shore with big trees, a wooden railing and boardwalk, an information board with no text, a few tiny picnickers as dots, the lake stretching to long wooded hills.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-morat.jpg` · remplace `blog/img/photo-morat.jpg`
+
+Article : `temperature-lac-morat` · repli déjà en place : `portrait-morat.jpg`
+
+**La photo montre** : Roseaux et saule doré au premier plan, un bout de lac et la colline de vignes du Vully derrière.
+
+```
+@generateur-image-le-lac
+SCÈNE : autumn reeds and a bare golden willow in the foreground, a patch of lake and the gentle vineyard-covered Mont Vully behind, blue sky with white clouds.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-gruyere.jpg` · remplace `blog/img/photo-gruyere.jpg`
+
+Article : `temperature-lac-gruyere` · repli déjà en place : `portrait-gruyere.jpg`
+
+**La photo montre** : Un village au clocher blanc sous des collines aux couleurs d’automne, le lac gris devant, une rive rocheuse.
+
+```
+@generateur-image-le-lac
+SCÈNE : a small village with a white church tower below hillsides in autumn colours, a reservoir lake in front with a rocky shore.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-joux.jpg` · remplace `blog/img/photo-joux.jpg`
+
+Article : `temperature-lac-joux` · repli déjà en place : `portrait-joux.jpg`
+
+**La photo montre** : Vue aérienne d’hiver : forêts d’épicéas enneigées et crêtes au-dessus du lac de Joux en partie gelé, dans une brume dorée.
+
+```
+@generateur-image-le-lac
+SCÈNE : aerial winter view of snowy spruce forests and ridges above a partly frozen Lac de Joux in golden mist.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-zurich.jpg` · remplace `blog/img/photo-zurich.jpg`
+
+Article : `temperature-lac-zurich` · repli déjà en place : `portrait-zurich.jpg`
+
+**La photo montre** : Une vieille ville au château perché et son front de maisons, reflétés dans une eau parfaitement calme, un bateau blanc à quai.
+
+```
+@generateur-image-le-lac
+SCÈNE : a lakeside old town with a castle and church on a hill, a row of historic houses reflected in perfectly still water, a white lake ferry at the quay, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-lucerne.jpg` · remplace `blog/img/photo-lucerne.jpg`
+
+Article : `temperature-lac-lucerne` · repli déjà en place : `portrait-lucerne.jpg`
+
+**La photo montre** : Un lac bleu avec un petit pédalo, une presqu’île boisée aux villas, des montagnes bleutées en couches, un embarcadère à droite.
+
+```
+@generateur-image-le-lac
+SCÈNE : a blue lake with a small pedal boat, a wooded promontory with villas, layered blue mountains behind, a landing pier on the right.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-thoune.jpg` · remplace `blog/img/photo-thoune.jpg`
+
+Article : `temperature-lac-thoune` · repli déjà en place : `portrait-thoune.jpg`
+
+**La photo montre** : Un lac turquoise au fond d’une vallée verte, vu d’un belvédère à travers des branches de pins, sommets enneigés au bout de la vallée.
+
+```
+@generateur-image-le-lac
+SCÈNE : a turquoise lake in a green valley seen from a high viewpoint through pine branches, snowy peaks at the end of the valley.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-brienz.jpg` · remplace `blog/img/photo-brienz.jpg`
+
+Article : `temperature-lac-brienz` · repli déjà en place : `portrait-brienz.jpg`
+
+**La photo montre** : Un village de chalets en bois sur une presqu’île, un lac turquoise, de hautes montagnes enneigées.
+
+```
+@generateur-image-le-lac
+SCÈNE : a village of wooden chalets on a small promontory, a turquoise lake, high snow-dusted mountains rising behind.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-constance.jpg` · remplace `blog/img/photo-constance.jpg`
+
+Article : `temperature-lac-constance` · repli déjà en place : `portrait-constance.jpg`
+
+**La photo montre** : Un port de plaisance plein de mâts de voiliers et de bateaux bâchés, reflétés dans une eau calme, de gros nuages.
+
+```
+@generateur-image-le-lac
+SCÈNE : a marina full of sailboat masts and covered boats reflected in still water, big white clouds in a blue sky, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-lugano.jpg` · remplace `blog/img/photo-lugano.jpg`
+
+Article : `temperature-lac-lugano` · repli déjà en place : `portrait-lugano.jpg`
+
+**La photo montre** : Une promenade au bord du lac bordée de colonnes, de palmiers et de fleurs, le mont San Salvatore au fond.
+
+```
+@generateur-image-le-lac
+SCÈNE : a lakeside promenade lined with stone columns, palm trees and red flowers, Monte San Salvatore across the turquoise water, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+### `temp-majeur.jpg` · remplace `blog/img/photo-majeur.jpg`
+
+Article : `temperature-lac-majeur` · repli déjà en place : `portrait-majeur.jpg`
+
+**La photo montre** : Le front de lac d’Ascona : maisons colorées, platanes taillés, colline boisée et immeubles au-dessus de l’eau bleue.
+
+```
+@generateur-image-le-lac
+SCÈNE : the Ascona lakefront: colourful houses, pollarded plane trees, a wooded hillside with buildings above deep blue water, no people.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
+FORMAT : 16:9.
+```
+
+<!-- photos-cc:fin -->
+
 ## Ce que deviennent les images
 
 - En tête des articles concernés, avec le texte alternatif de `scripts/illustrations.mjs` et la légende « Illustration générée par IA » ; la carte ou la photo d'avant passe dans le corps de l'article. Pour en ajouter une : l'enregistrer dans `blog/img/ia/` en 1600×893, ajouter une ligne dans `scripts/illustrations.mjs`, puis lancer `node scripts/miniatures.mjs` et `node scripts/blog.mjs`.
