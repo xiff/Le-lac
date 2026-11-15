@@ -3,7 +3,6 @@
 - [ ] **Affiliation** : contacter tous les endroits proposés dans l’app (bars et restos de `lieux.js`,
   loueurs, écoles et saunas de `locations.js`) pour leur proposer un programme d’affiliation.
 - [ ] **Domaine** : monlac.ch est en ligne, « Enforce HTTPS » est coché (12 novembre 2026). Reste : ajouter www.mon-lac.ch au certificat Infomaniak.
-- [ ] **Icônes** : choisir les icônes définitives de la baignade et de la sortie en bateau.
 - [ ] **Vérification mensuelle des lieux** : relier le dépôt à la tâche planifiée dans claude.ai.
 - [ ] **Compteur de bains d'hiver remis à zéro dans l'app Android** (signalé le 13 novembre 2026) : cause probable, chaque APK de test était signé avec une clé jetable, donc il fallait désinstaller l'app (et perdre ses données) pour installer le suivant. **Corrigé le 14 novembre 2026** : `.github/workflows/apk-test.yml` signe avec une clé fixe lue dans les secrets `APK_TEST_KEYSTORE` (keystore en base64, alias `test`) et `APK_TEST_KS_PASS` ; sans ces secrets, il revient à la clé jetable avec un avertissement. 
   - [ ] Ajouter les secrets `APK_TEST_KEYSTORE` (la longue ligne) et `APK_TEST_KS_PASS` (le mot de passe) dans GitHub : Settings → Secrets and variables → Actions → New repository secret. Valeurs dans le fichier `cle-apk-test.txt` envoyé le 14 novembre 2026, à supprimer de l'ordinateur ensuite.
