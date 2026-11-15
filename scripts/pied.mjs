@@ -15,9 +15,9 @@ export function langues(L, versLangues) {
     .map(([l, href]) => `<a href="${href}" hreflang="${l}" lang="${l}" title="${NOMS[l]}" aria-label="${NOMS[l]}">${l.toUpperCase()}</a>`).join('')}</nav>`;
 }
 export function pied(L, r) {
-  const [source, apropos, plages] = TEXTES[L], d = { fr: '', en: 'en/', de: 'de/', it: 'it/' }[L];
+  const [source, apropos, plages] = TEXTES[L], conf = { fr: 'Confidentialité', en: 'Privacy', de: 'Datenschutz', it: 'Privacy' }[L], d = { fr: '', en: 'en/', de: 'de/', it: 'it/' }[L];
   return `<footer class="pied">
   <span>${source}</span>
-  <div class="liens"><a href="${r}presentation/${d}">${apropos}</a><a href="${r}plage/${d}">${plages}</a><a href="${r}blog/${d}">Blog</a></div>
+  <div class="liens"><a href="${r}presentation/${d}">${apropos}</a><a href="${r}plage/${d}">${plages}</a><a href="${r}blog/${d}">Blog</a><a href="${r}confidentialite/${d}">${conf}</a></div>
 </footer>`;
 }

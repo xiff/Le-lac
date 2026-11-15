@@ -24,3 +24,12 @@ test('page de plage en anglais : chemins un niveau plus bas, hreflang réciproqu
   assert.match(h, /src="\.\.\/\.\.\/plage\.js"/);
   assert.match(page(vidy), /hreflang="en" href="https:\/\/monlac\.ch\/plage\/lausanne-vidy\/en\/"/);
 });
+
+test('page Confidentialité : quatre langues, contact, services tiers, retour vers les autres langues', async () => {
+  const { readFile } = await import('node:fs/promises');
+  for (const [l, dir] of [['fr', ''], ['en', 'en/'], ['de', 'de/'], ['it', 'it/']]) {
+    const h = await readFile(new URL(`./confidentialite/${dir}index.html`, import.meta.url), 'utf8');
+    assert.match(h, new RegExp(`<html lang="${l}">`));
+    for (const m of ['contact@monlac.ch', 'Umami', 'Open-Meteo', 'existenz.ch', 'GitHub', 'hreflang="x-default"']) assert.ok(h.includes(m), `${l} : ${m}`);
+  }
+});
