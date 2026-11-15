@@ -468,6 +468,100 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
+## Articles « Comprendre le lac » (10 images)
+
+Déposer le fichier dans `blog/img/ia/` sous le nom indiqué (1600×893 de préférence) : l'article le reprend tout seul à la prochaine génération (en attendant, il utilise l'image neutre du site). Puis `node scripts/miniatures.mjs`.
+
+### `vents-leman.jpg` · Les vents du Léman
+
+```
+@generateur-image-le-lac
+SCÈNE : the Bains des Pâquis jetty in Geneva with flags and pennants stretched flat by a strong wind, short choppy waves on Lake Geneva, the Jet d’eau in the distance slightly blown sideways, a few gulls; clear cold sky.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `lacs-chauds-froids.jpg` · Lacs les plus chauds et les plus froids
+
+```
+@generateur-image-le-lac
+SCÈNE : a split composition across the middle: on the left a sunny pale-blue lake with a warm sun and a lido, on the right a dark deep mountain lake under snowy peaks; in the centre a simple wooden thermometer standing in the water at the dividing line.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `seiches.jpg` · Seiches du Léman
+
+```
+@generateur-image-le-lac
+SCÈNE : a calm lake at dusk seen from a wooden jetty; concentric ripples spreading on the still water near the posts; soft pink and teal light; far shore and mountains barely visible.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `seiches-internes.jpg` · Seiches internes
+
+```
+@generateur-image-le-lac
+SCÈNE : a lake seen as a cut-away cross-section: a pale warm layer of water on top and a dark cold layer below, the boundary between them gently tilted like a see-saw; a stone jetty at the water line above; no labels.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `foehn.jpg` · Foehn
+
+```
+@generateur-image-le-lac
+SCÈNE : a wall of white lens-shaped cloud sitting on the Alpine ridges, clear blue sky and golden light above a lake in the foreground; a couple of taut sailboat sails; a strong warm southern wind suggested by bent reeds.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `brassage.jpg` · Brassage du lac
+
+```
+@generateur-image-le-lac
+SCÈNE : a lake in winter under a thin morning mist, the water steaming slightly; below the surface, layers of blue swirling and mixing in gentle spirals; a bare willow on the shore.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `niveau-leman.jpg` · Niveau du Léman
+
+```
+@generateur-image-le-lac
+SCÈNE : a wooden jetty on pebbles with a tall graduated gauge post standing in the lake, the waterline marked on it, wet dark pebbles showing a slightly lower earlier level; calm lake behind.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `stratification.jpg` · Stratification et thermocline
+
+```
+@generateur-image-le-lac
+SCÈNE : a lake in cross-section showing three horizontal bands of water, from pale warm blue at the top, to a thin shimmering band in the middle, to deep dark blue at the bottom; a simple thermometer at each level; no labels.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `microclimat.jpg` · Microclimat du Léman
+
+```
+@generateur-image-le-lac
+SCÈNE : terraced vineyards sloping down to a lake, the shore bathed in soft golden light, a promenade with palm trees as at Montreux, snow-dusted mountains behind; the lake gently misting.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+### `rechauffement.jpg` · Réchauffement du Léman
+
+```
+@generateur-image-le-lac
+SCÈNE : a large simple thermometer standing in the shallows of a calm lake, the mercury high; a gentle curve drawn in the clouds above like a rising graph line (no numbers, no letters); warm morning light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no numbers, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
 ## Ce que deviennent les images
 
 - En tête des articles concernés, avec le texte alternatif de `scripts/illustrations.mjs` et la légende « Illustration générée par IA » ; la carte ou la photo d'avant passe dans le corps de l'article. Pour en ajouter une : l'enregistrer dans `blog/img/ia/` en 1600×893, ajouter une ligne dans `scripts/illustrations.mjs`, puis lancer `node scripts/miniatures.mjs` et `node scripts/blog.mjs`.

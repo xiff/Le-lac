@@ -27,3 +27,8 @@ test('images des articles et de la liste : chaque fichier cité (WebP et JPEG de
   }
   assert.match(article(ARTICLES[0], 'fr'), /<source type="image\/webp"/);
 });
+
+test('publication programmée : aucun article daté d’un jour futur n’est publié', async () => {
+  const { AUJOURDHUI } = await import('./scripts/articles.mjs');
+  assert.ok(ARTICLES.every((a) => a.publie <= AUJOURDHUI));
+});

@@ -49,6 +49,7 @@ const ariane = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.m
 
 // Liens internes selon la langue et la profondeur (r = chemin vers la racine du site).
 const liens = (html, L, r) => html
+  .replace(/<a href="\{blog:([a-z0-9-]+)\}">([^<]*)<\/a>/g, (m, slug, texte) => (ARTICLES.some((x) => x.slug === slug) ? m : texte)) // article programmé, pas encore publié
   .replace(/\{plage:([a-z0-9-]+)\}/g, (_, id) => `${r}plage/${id}/${SUF[L]}`)
   .replace(/\{plages\}/g, `${r}plage/${SUF[L]}`)
   .replace(/\{app\}/g, `${r}?lang=${L}`)

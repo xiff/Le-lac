@@ -9,6 +9,8 @@ import { articlesLacs } from './articles.lacs.mjs';
 import { articlesSaunas } from './articles.saunas.mjs';
 import { articlesBaignade } from './articles.baignade.mjs';
 import { articlesHiver } from './articles.hiver.mjs';
+import { articlesComprendre } from './articles.comprendre.mjs';
+import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
 import { illustrer, ILLUSTRATIONS } from './illustrations.mjs';
@@ -693,6 +695,14 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
 ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver());
+// Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
+const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
+const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
+for (const { img, altIA, ...a } of articlesComprendre()) {
+  const propre = existsSync(new URL(`../blog/img/ia/${img}.jpg`, import.meta.url));
+  ARTICLES.push({ ...a, image: `blog/img/ia/${propre ? img : 'og-image'}.jpg`, hauteur: propre ? 893 : 768,
+    alt: propre ? { fr: altIA[0], en: altIA[1], de: altIA[2], it: altIA[3] } : NEUTRE_ALT, credit: {}, creditHtml: { ...LEGENDE_IA } });
+}
 // Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 12 novembre 2026.
 const DATES = {
   'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28', '2026-11-13'],
@@ -724,7 +734,16 @@ const DATES = {
   'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
   'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
   'neoprene-bain-d-hiver': ['2026-11-15'], 'bain-d-hiver-en-groupe-suisse': ['2026-11-15'],
+  // « Comprendre le lac » : deux par jour, thèmes mélangés ; un article daté d'un jour futur n'est publié qu'à cette date (voir plus bas).
+  'vents-du-leman': ['2026-11-16'], 'lacs-les-plus-chauds-et-les-plus-froids': ['2026-11-16'],
+  'seiches-leman': ['2026-11-17'], 'microclimat-du-leman': ['2026-11-17'],
+  'foehn-suisse-lacs': ['2026-11-18'], 'niveau-du-leman': ['2026-11-18'],
+  'stratification-thermocline-lac': ['2026-11-19'], 'rechauffement-du-leman': ['2026-11-19'],
+  'brassage-du-lac': ['2026-11-20'], 'seiches-internes-leman': ['2026-11-20'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
+// Publication programmée : les pages sont régénérées toutes les 3 h (eau.yml) ; un article ne sort qu'à partir de sa date (UTC).
+export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slice(0, 10); // BLOG_DATE : pour prévisualiser une date
+ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
 // Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
 ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = { ...illustrer(a), modifie: a.modifie > '2026-11-13' ? a.modifie : '2026-11-13' }; });
