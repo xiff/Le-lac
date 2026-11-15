@@ -10,6 +10,7 @@ import { articlesSaunas } from './articles.saunas.mjs';
 import { articlesBaignade } from './articles.baignade.mjs';
 import { articlesHiver } from './articles.hiver.mjs';
 import { articlesComprendre } from './articles.comprendre.mjs';
+import { articlesGuides } from './articles.guides.mjs';
 import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
@@ -698,7 +699,7 @@ ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...a
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
-for (const { img, altIA, ...a } of articlesComprendre()) {
+for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides()]) {
   const propre = existsSync(new URL(`../blog/img/ia/${img}.jpg`, import.meta.url));
   ARTICLES.push({ ...a, image: `blog/img/ia/${propre ? img : 'og-image'}.jpg`, hauteur: propre ? 893 : 768,
     alt: propre ? { fr: altIA[0], en: altIA[1], de: altIA[2], it: altIA[3] } : NEUTRE_ALT, credit: {}, creditHtml: { ...LEGENDE_IA } });
@@ -740,6 +741,8 @@ const DATES = {
   'foehn-suisse-lacs': ['2026-11-18'], 'niveau-du-leman': ['2026-11-18'],
   'stratification-thermocline-lac': ['2026-11-19'], 'rechauffement-du-leman': ['2026-11-19'],
   'brassage-du-lac': ['2026-11-20'], 'seiches-internes-leman': ['2026-11-20'],
+  // Guides locaux du Léman : deux par jour, Lausanne et Lavaux d'abord, puis Riviera et La Côte.
+  'plages-lausanne': ['2026-11-21'], 'plages-lavaux': ['2026-11-21'], 'plages-riviera': ['2026-11-22'], 'plages-la-cote': ['2026-11-22'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 // Publication programmée : les pages sont régénérées toutes les 3 h (eau.yml) ; un article ne sort qu'à partir de sa date (UTC).

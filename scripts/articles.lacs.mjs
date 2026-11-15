@@ -139,7 +139,7 @@ const PHOTOS = {
 // Loueurs et saunas du lac (locations.js), insérés avant la dernière section de chaque article.
 const SAISON = { fr: 'de {a} à {b}', en: '{a} to {b}', de: 'von {a} bis {b}', it: 'da {a} a {b}' }, LOC = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
 const moisNom = (m, L) => new Date(2026, m - 1, 1).toLocaleDateString(LOC[L], { month: 'long' });
-const ITEM = (l, L) => `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${villeDe(l.ville, L)}${l.mois ? ` (${SAISON[L].replace('{a}', moisNom(l.mois[0], L)).replace('{b}', moisNom(l.mois[1], L))})` : ''}, ${{ fr: 'près de', en: 'near', de: 'bei', it: 'vicino a' }[L]} <a href="{plage:${l.spot}}">${SPOTS.find((x) => x.id === l.spot).nom}</a>${L === 'fr' ? ' : ' : ': '}${texteLieu(l, L, 'loc')}</li>`;
+export const ITEM = (l, L) => `  <li><strong><a href="${l.site ?? l.source}">${l.nom}</a></strong>, ${villeDe(l.ville, L)}${l.mois ? ` (${SAISON[L].replace('{a}', moisNom(l.mois[0], L)).replace('{b}', moisNom(l.mois[1], L))})` : ''}, ${{ fr: 'près de', en: 'near', de: 'bei', it: 'vicino a' }[L]} <a href="{plage:${l.spot}}">${SPOTS.find((x) => x.id === l.spot).nom}</a>${L === 'fr' ? ' : ' : ': '}${texteLieu(l, L, 'loc')}</li>`;
 const TITRES_LOC = {
   fr: (du) => [`Louer sur l’eau ${du}`, `Saunas au bord ${du}`, 'Chaque fiche renvoie au site du loueur quand il existe. Horaires et prix changent : à confirmer auprès de lui.'],
   en: (_, N) => [`Renting on ${N}`, `Saunas on ${N}`, 'Each entry links to the operator’s own website when there is one. Hours and prices change: check with them.'],

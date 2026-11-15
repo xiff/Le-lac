@@ -562,6 +562,46 @@ STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not pho
 FORMAT : 16:9.
 ```
 
+### Guides locaux du Léman (4 images)
+
+Même règle : déposer le fichier dans `blog/img/ia/` sous le nom indiqué, l'article le reprend à la prochaine génération.
+
+#### `guide-lausanne.jpg` · Où se baigner à Lausanne et Morges
+
+```
+@generateur-image-le-lac
+SCÈNE : the harbour of Ouchy in Lausanne with its small castle-like tower on the lakeshore, a lakeside promenade with a few people-less benches, calm Lake Geneva and the French Alps across the water at golden hour.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+#### `guide-lavaux.jpg` · Où se baigner à Lavaux
+
+```
+@generateur-image-le-lac
+SCÈNE : terraced vineyards of Lavaux sloping steeply down to Lake Geneva, stone walls, a tiny harbour with a couple of boats, the Alps far across the water; autumn colours.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+#### `guide-riviera.jpg` · Où se baigner sur la Riviera
+
+```
+@generateur-image-le-lac
+SCÈNE : the Montreux/Vevey lakefront promenade with palm trees and a flower-lined quay, a small jetty, calm lake, snow-capped mountains on the opposite shore, soft afternoon light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
+#### `guide-la-cote.jpg` · Où se baigner sur La Côte
+
+```
+@generateur-image-le-lac
+SCÈNE : a small harbour at Rolle with its square castle beside a calm lake, vineyards of La Côte rising behind, a few moored sailboats, morning light.
+STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no signs anywhere. No people, no faces.
+FORMAT : 16:9.
+```
+
 ## Ce que deviennent les images
 
 - En tête des articles concernés, avec le texte alternatif de `scripts/illustrations.mjs` et la légende « Illustration générée par IA » ; la carte ou la photo d'avant passe dans le corps de l'article. Pour en ajouter une : l'enregistrer dans `blog/img/ia/` en 1600×893, ajouter une ligne dans `scripts/illustrations.mjs`, puis lancer `node scripts/miniatures.mjs` et `node scripts/blog.mjs`.
