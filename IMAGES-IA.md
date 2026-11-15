@@ -56,6 +56,8 @@ APRÈS L'IMAGE, écris seulement une ligne :
 Les 40 images ont été générées le 13 novembre 2026 depuis Claude Code (Nano Banana 2.1), avec l'image `bise` comme référence de style : elles sont dans `blog/img/ia/`.
 **Intégrées le 13 novembre 2026** en tête de 32 articles (24 « Où se baigner », 5 saunas et bains d'hiver, bise, buvettes, paddle), redimensionnées en 1600×893 ; l'ancienne image (carte ou photo) descend juste après « En bref ». Correspondance et textes alternatifs en 4 langues : `scripts/illustrations.mjs`. `og-image` sert d'image de partage du site (`og-image-1200x630.jpg`, dans `index.html`). Pas encore utilisées, faute de page : `nuit`, `donnees`, `clubs-bain-d-hiver`, `bienfaits-bain-froid`, `respiration`, `programme-4-semaines`, `neoprene`. Pour en refaire une, relance son bloc ci-dessous et repousse-la sous le même nom.
 
+**15 novembre 2026** : 38 images de plus générées et mises en ligne (10 « Comprendre le lac », 5 guides locaux, 10 « Sécurité et santé », 13 photos Creative Commons remplacées). `leman-vu-du-ciel` refaite une fois (la forme du lac n'était pas un croissant). Non générées, facultatives : les 12 `temp-<lac>` (le portrait du lac tient déjà leur place).
+
 Corrections faites et points à vérifier :
 - `portrait-joux` : refaite le 13 novembre 2026, la Dent de Vaulion est maintenant une crête boisée qui finit en falaise.
 - `portrait-constance` : refaite le 13 novembre 2026, sans phare ni drapeau (digue, voiliers, ferry).
