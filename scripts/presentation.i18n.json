@@ -581,8 +581,9 @@
    "en": "<li><b>Respectful audience measurement.</b> To know how many people use the site, we use Umami: no cookies, with data hosted in Europe.</li>",
    "de": "<li><b>Eine respektvolle Besuchermessung.</b> Um zu wissen, wie viele Menschen die Seite nutzen, verwenden wir Umami: ohne Cookies, mit Daten, die in Europa gehostet werden.</li>",
    "it": "<li><b>Una misurazione del pubblico rispettosa.</b> Per sapere quante persone usano il sito, usiamo Umami: senza cookie, con dati ospitati in Europa.</li>"
-  }
- ],
+  },
+    {"fr": "<li><b>Le détail, sans jargon.</b> Ce qui est enregistré, chez qui, et comment l’effacer : <a href=\"../confidentialite/\">la page Confidentialité</a>.</li>", "en": "<li><b>The details, in plain words.</b> what is recorded, by whom, and how to erase it: <a href=\"../../confidentialite/en/\">the Privacy page</a>.</li>", "de": "<li><b>Die Einzelheiten, ohne Fachjargon.</b> Was gespeichert wird, bei wem und wie du es löschst: <a href=\"../../confidentialite/de/\">die Datenschutzseite</a>.</li>", "it": "<li><b>I dettagli, senza gergo.</b> Cosa viene registrato, presso chi e come cancellarlo: <a href=\"../../confidentialite/it/\">la pagina Privacy</a>.</li>"}
+  ],
  "faq": {
   "fr": [
    [
