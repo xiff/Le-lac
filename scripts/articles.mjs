@@ -97,6 +97,7 @@ const PORTSMOUTH = ['Université de Portsmouth, Float to Live en eau libre', 'ht
 const OSS_KIT = ['Outdoor Swimming Society, équipement d’hiver', 'https://www.outdoorswimmingsociety.com/swim-accessories-winter/'];
 const AFTERDROP = ['220 Triathlon, se réchauffer après une nage en eau libre', 'https://www.220triathlon.com/gear/swim/how-to-warm-your-cold-body-up-after-open-water-swimming/'];
 const ALERTDIVER = ['DAN Alert Diver, hypothermie', 'https://alertdiver.eu/fr_FR/articles/hypothermie/'];
+const GE_KITE = ['Canton de Genève, paddle, windsurf, wingfoil, parawing et kitesurf', 'https://www.ge.ch/naviguer-geneve/paddle-windsurf-wingfoil-parawing-kitesurf'];
 const GE_NAV = ['Canton de Genève, ski nautique, wakeboard et wakesurf', 'https://www.ge.ch/naviguer-geneve/ski-nautique-wakeboard-wakesurf'];
 
 export const ARTICLES = [
@@ -118,6 +119,8 @@ export const ARTICLES = [
   <li><strong>Entrer lentement</strong> pour laisser le corps s’habituer, sans sauter ni plonger.</li>
   <li><strong>Garder la tête hors de l’eau</strong> et porter un bonnet.</li>
   <li><strong>Ne jamais y aller seul</strong> : le Bureau de prévention des accidents (BPA) recommande aussi une aide à la flottaison, comme une bouée de natation.</li>
+  <li><strong>Commencer très court</strong> : quelques secondes les premières fois, puis allonger peu à peu. L’idéal, selon la SSS, est de se baigner régulièrement dès la fin de l’été, pour que le corps suive la baisse de la température.</li>
+  <li><strong>Ni alcool ni autre stupéfiant</strong> avant d’aller dans l’eau (SSS).</li>
   <li><strong>Sortir immédiatement</strong> si l’on se sent mal.</li>
   <li><strong>Être en bonne condition physique</strong> : la SSS rappelle que l’eau froide le demande. En cas de doute sur sa santé, on en parle à son médecin avant de commencer.</li>
 </ul>
@@ -126,7 +129,7 @@ export const ARTICLES = [
 <h2>Où se baigner l’hiver à Genève et à Lausanne ?</h2>
 <p><strong>Genève.</strong> Les <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> restent le rendez-vous des nageurs d’hiver ; leur buvette est ouverte toute l’année, avec la fondue l’hiver. En décembre, la <a href="{blog:coupe-de-noel-geneve}">Coupe de Noël</a> se nage dans la rade. Pour se réchauffer autrement, le Sauna Boats Genève propose un sauna flottant au départ du quai Gustave-Ador, près de la <a href="{plage:plage-des-eaux-vives}">plage des Eaux-Vives</a>.</p>
 <p><strong>Lausanne.</strong> À Bellerive, les Bains des Rives installent d’octobre à mars des yourtes-saunas au bord du lac, avec un plongeon dans le Léman entre deux séances, près de la <a href="{plage:lausanne-bellerive}">plage de Bellerive</a>.</p>
-<p>La <a href="{plages}">liste des 65 plages</a> donne la température et le vent de chacune.</p>
+<p>La <a href="{plages}">liste de toutes les plages</a> donne la température et le vent de chacune.</p>
 <h2>Où se réchauffer dans un sauna au bord du Léman ?</h2>
 ${listeLoc(['sauna'], L)}
 <p>Horaires, prix et réservation changent d’une saison à l’autre : à vérifier auprès de chaque lieu.</p>
@@ -147,6 +150,8 @@ ${listeLoc(['sauna'], L)}
   <li><strong>Get in slowly</strong> to let your body adjust; no jumping or diving.</li>
   <li><strong>Keep your head out of the water</strong> and wear a cap.</li>
   <li><strong>Never go alone</strong>: the Swiss Council for Accident Prevention (BFU) also recommends a flotation aid such as a swim buoy.</li>
+  <li><strong>Start very short</strong>: a few seconds the first few times, then build up gradually. Ideally, says the Swiss Lifesaving Society, you swim regularly from the end of summer, so your body follows the falling temperature.</li>
+  <li><strong>No alcohol or other drugs</strong> before getting in (Swiss Lifesaving Society).</li>
   <li><strong>Get out straight away</strong> if you feel unwell.</li>
   <li><strong>Be in good physical shape</strong>: cold water demands it. If in doubt about your health, talk to your doctor first.</li>
 </ul>
@@ -155,7 +160,7 @@ ${listeLoc(['sauna'], L)}
 <h2>Where can you swim in winter in Geneva and Lausanne?</h2>
 <p><strong>Geneva.</strong> The <a href="{plage:bains-des-paquis}">Bains des Pâquis</a> are the winter swimmers’ meeting point; their café is open all year, with fondue in winter. In December, the <a href="{blog:coupe-de-noel-geneve}">Coupe de Noël</a> race is swum in the harbour. To warm up differently, Sauna Boats Genève runs a floating sauna from Quai Gustave-Ador, near <a href="{plage:plage-des-eaux-vives}">Eaux-Vives beach</a>.</p>
 <p><strong>Lausanne.</strong> At Bellerive, the Bains des Rives set up lakeside yurt saunas from October to March, with a dip in the lake between sessions, near <a href="{plage:lausanne-bellerive}">Bellerive beach</a>.</p>
-<p>The <a href="{plages}">list of all 65 beaches</a> gives the water temperature and wind for each one.</p>
+<p>The <a href="{plages}">list of all beaches</a> gives the water temperature and wind for each one.</p>
 <h2>Where can you warm up in a sauna by Lake Geneva?</h2>
 ${listeLoc(['sauna'], L)}
 <p>Hours, prices and booking change from season to season: check with each place.</p>
@@ -387,7 +392,7 @@ ${listeLoc(['paddle'], L)}
   },
   {
     slug: 'kitesurf-windsurf-wingfoil-leman', publie: '2026-11-01', modifie: '2026-11-01', ...IMG.kite,
-    sources: [METEOSUISSE, OPENMETEO, ...LOCATIONS.filter((l) => l.activites.some((a) => ['windsurf', 'wing'].includes(a))).map((l) => [l.nom, l.site ?? l.source])],
+    sources: [METEOSUISSE, GE_KITE, OPENMETEO, ...LOCATIONS.filter((l) => l.activites.some((a) => ['windsurf', 'wing'].includes(a))).map((l) => [l.nom, l.site ?? l.source])],
     fr: {
       titre: 'Kitesurf, windsurf et wingfoil sur le Léman : le bon vent et les bons spots',
       h1: 'Kitesurf, windsurf et wingfoil sur le Léman',
@@ -403,6 +408,8 @@ ${listeLoc(['paddle'], L)}
 <p>Ce sont les repères de l’<a href="{app}">app</a>, pas des normes : le niveau de chacun et la taille du matériel comptent autant.</p>
 <h2>Pourquoi la bise est idéale pour le downwind ?</h2>
 <p>La <a href="{blog:bise-leman}">bise</a> souffle du nord-est, de façon régulière et souvent forte, et lève une houle qui court sur le lac. Pour le foil, une bise d’au moins 25 km/h donne une note « Parfait » : de quoi enchaîner de longues descentes portées par les vagues. Sur le Haut-Lac, elle tourne au nord-nord-ouest (MétéoSuisse).</p>
+<h2>Quelles règles respecter sur l’eau ?</h2>
+<p>D’après l’ordonnance fédérale sur la navigation intérieure, que résume le canton de Genève, la planche à voile (wingfoil et parawing compris) et le kitesurf ne sont autorisés que <strong>de jour et par temps clair, de 8 h au plus tôt à 21 h au plus tard</strong> ; c’est pourquoi l’app note le kitesurf et le windsurf « Non » la nuit. Au-delà de 300 m de la rive, il faut au moins une aide à la flottaison par personne, et planches et ailes doivent porter, bien visibles, le nom et l’adresse de leur propriétaire. À Genève, le kitesurf est interdit en aval d’une ligne Vengeron–Tour-Carrée, la planche à voile en aval d’une ligne Port-Noir–Perle-du-Lac, et les deux aux abords des débarcadères.</p>
 <h2>Où louer ou apprendre le windsurf et le wingfoil ?</h2>
 ${listeLoc(['windsurf', 'wing'], L)}
 <p>Pour le kitesurf, nous n’avons pas encore de loueur vérifié ; les spots se choisissent selon la direction du vent, visible sur chaque <a href="{plages}">page de plage</a>.</p>`,
@@ -422,6 +429,8 @@ ${listeLoc(['windsurf', 'wing'], L)}
 <p>These are the <a href="{app}">app</a>’s guidelines, not standards: skill level and gear size matter just as much.</p>
 <h2>Why is the bise ideal for downwinders?</h2>
 <p>The <a href="{blog:bise-leman}">bise</a> blows from the north-east, steadily and often strongly, and raises a swell that runs down the lake. For foiling, a bise of at least 25 km/h gives a “Perfect” rating: enough for long runs carried by the waves. On the Haut-Lac it turns north-north-west (MeteoSwiss).</p>
+<h2>What rules apply on the water?</h2>
+<p>Under the federal inland navigation ordinance, as summarised by the Canton of Geneva, sailboards (including wing foils and parawings) and kites are allowed <strong>only in daylight and clear weather, from 8 am at the earliest to 9 pm at the latest</strong>; that is why the app rates kitesurfing and windsurfing “No” at night. More than 300 m from the shore, you need at least one flotation aid per person, and boards and wings must clearly show the owner’s name and address. In Geneva, kitesurfing is banned downstream of a line from Vengeron to the Tour-Carrée, sailboards downstream of a line from Port-Noir to the Perle-du-Lac, and both near landing stages.</p>
 <h2>Where can you rent or learn windsurfing and wing foiling?</h2>
 ${listeLoc(['windsurf', 'wing'], L)}
 <p>For kitesurfing, we do not have a verified rental place yet; spots depend on the wind direction, shown on each <a href="{plages}">beach page</a>.</p>`,
@@ -553,14 +562,14 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 <ul class="liste">
   <li><strong>Avec quelqu’un</strong> : un binôme sur la berge ou dans l’eau (SSS, BPA).</li>
   <li><strong>Lentement</strong>, en marchant, en soufflant longuement pour garder une respiration régulière.</li>
-  <li><strong>Brièvement</strong> : les premières fois, de quelques dizaines de secondes à une ou deux minutes suffisent ; la SSS fixe le maximum à autant de minutes que de degrés.</li>
+  <li><strong>Brièvement</strong> : la SSS conseille de commencer par quelques secondes et d’allonger peu à peu ; elle fixe le maximum à autant de minutes que de degrés.</li>
   <li><strong>Sortir</strong> au moindre malaise, en cas de frissons intenses ou de doigts engourdis.</li>
 </ul>
 <h2>Que faire si l’on tombe dans l’eau froide ?</h2>
 <p>La RNLI enseigne le réflexe <strong>« Float to Live »</strong> : ne pas se débattre, basculer la tête en arrière, oreilles dans l’eau, écarter bras et jambes et respirer calmement le temps que le choc passe, puis appeler à l’aide ou rejoindre le bord. Une étude de l’Université de Portsmouth a montré que ces consignes aident aussi des personnes peu expérimentées à flotter en lac et en mer.</p>
 <h2>Faut-il voir un médecin avant de commencer ?</h2>
-<p>Oui, c’est le premier réflexe : le choc thermique sollicite fortement le cœur. En cas de problème cardiaque ou de tension, on demande un avis médical avant le premier bain. Certains nageurs s’habituent aussi en terminant leurs douches par quelques dizaines de secondes d’eau froide, en allongeant peu à peu ; ce n’est pas une garantie, juste une façon douce de découvrir la sensation.</p>
-<p>Pour la suite : <a href="{blog:materiel-bain-d-hiver}">le matériel du bain d’hiver</a> et <a href="{blog:afterdrop-se-rechauffer}">se réchauffer après le bain</a>. L’eau du jour, plage par plage, est dans l’<a href="{app}">app</a>.</p>`,
+<p>Oui, c’est le premier réflexe : le choc thermique sollicite fortement le cœur. En cas de problème cardiaque ou de tension, on demande un avis médical avant le premier bain. Pour habituer le corps, l’idéal, selon la SSS, est d’aller dans l’eau régulièrement dès la fin de l’été, en suivant la baisse de la température. Certains nageurs terminent aussi leurs douches par quelques dizaines de secondes d’eau froide ; ce n’est pas une garantie, juste une façon douce de découvrir la sensation.</p>
+<p>Pour la suite : <a href="{blog:respiration-eau-froide}">respirer dans l’eau froide</a>, <a href="{blog:programme-4-semaines-bain-d-hiver}">un programme de 4 semaines pour débuter</a>, <a href="{blog:materiel-bain-d-hiver}">le matériel du bain d’hiver</a> et <a href="{blog:afterdrop-se-rechauffer}">se réchauffer après le bain</a>. L’eau du jour, plage par plage, est dans l’<a href="{app}">app</a>.</p>`,
     },
     en: {
       titre: 'Cold water shock: the first 90 seconds in Lake Geneva’s cold water',
@@ -578,14 +587,14 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 <ul class="liste">
   <li><strong>With someone</strong>: a buddy on the shore or in the water (Swiss Lifesaving Society, BFU).</li>
   <li><strong>Slowly</strong>, walking in and breathing out long and slow to keep your breathing steady.</li>
-  <li><strong>Briefly</strong>: the first few times, a few tens of seconds to a minute or two is plenty; the lifesaving society sets the maximum at as many minutes as degrees.</li>
+  <li><strong>Briefly</strong>: the Swiss Lifesaving Society advises starting with a few seconds and building up gradually; it sets the maximum at as many minutes as degrees.</li>
   <li><strong>Get out</strong> at the first sign of feeling unwell, intense shivering or numb fingers.</li>
 </ul>
 <h2>What should you do if you fall into cold water?</h2>
 <p>The RNLI teaches <strong>“Float to Live”</strong>: don’t thrash, tilt your head back with your ears underwater, spread your arms and legs and breathe calmly until the shock passes, then call for help or make for the shore. A University of Portsmouth study showed these instructions also help inexperienced people float in lakes and the sea.</p>
 <h2>Should you see a doctor before starting?</h2>
-<p>Yes, that comes first: cold water shock puts real strain on the heart. With any heart or blood pressure condition, get medical advice before your first dip. Some swimmers also get used to the feeling by ending their showers with a few tens of seconds of cold water, gradually longer; it is no guarantee, just a gentle way to discover the sensation.</p>
-<p>Next: <a href="{blog:materiel-bain-d-hiver}">what to bring for winter swimming</a> and <a href="{blog:afterdrop-se-rechauffer}">warming up afterwards</a>. Today’s water, beach by beach, is in the <a href="{app}">app</a>.</p>`,
+<p>Yes, that comes first: cold water shock puts real strain on the heart. With any heart or blood pressure condition, get medical advice before your first dip. To get your body used to it, the Swiss Lifesaving Society says the ideal is to swim regularly from the end of summer, following the falling temperature. Some swimmers also end their showers with a few tens of seconds of cold water; it is no guarantee, just a gentle way to discover the sensation.</p>
+<p>Next: <a href="{blog:respiration-eau-froide}">breathing in cold water</a>, <a href="{blog:programme-4-semaines-bain-d-hiver}">a 4-week programme to get started</a>, <a href="{blog:materiel-bain-d-hiver}">what to bring for winter swimming</a> and <a href="{blog:afterdrop-se-rechauffer}">warming up afterwards</a>. Today’s water, beach by beach, is in the <a href="{app}">app</a>.</p>`,
     },
   },
   {
@@ -709,18 +718,18 @@ for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides()
 }
 // Dates de publication (et de mise à jour quand elle diffère), réparties sur les deux semaines du 28 octobre au 12 novembre 2026.
 const DATES = {
-  'choc-thermique-eau-froide': ['2026-10-28', '2026-10-31'], 'plages-lac-zurich': ['2026-10-28', '2026-11-13'],
+  'choc-thermique-eau-froide': ['2026-10-28', '2026-11-17'], 'plages-lac-zurich': ['2026-10-28', '2026-11-13'],
   'temperature-lac-neuchatel': ['2026-10-28'], 'plages-lac-neuchatel': ['2026-10-28', '2026-11-13'],
   'saunas-bord-du-leman': ['2026-10-29'], 'buvettes-restaurants-bord-du-leman': ['2026-10-29', '2026-11-01'],
   'plages-lac-lugano': ['2026-10-29', '2026-11-13'], 'temperature-lac-zurich': ['2026-10-30'],
   'plages-lac-bienne': ['2026-10-30', '2026-11-13'], 'bise-leman': ['2026-10-30', '2026-11-02'],
   'plages-lac-thoune': ['2026-10-30', '2026-11-13'], 'temperature-lac-lugano': ['2026-10-31'],
-  'plages-lac-joux': ['2026-10-31', '2026-11-13'], 'bain-d-hiver-leman': ['2026-10-31', '2026-11-03'],
+  'plages-lac-joux': ['2026-10-31', '2026-11-13'], 'bain-d-hiver-leman': ['2026-10-31', '2026-11-17'],
   'paddle-leman': ['2026-11-01', '2026-11-04'], 'plages-lac-constance': ['2026-11-01', '2026-11-13'],
   'temperature-lac-bienne': ['2026-11-01'], 'plages-lac-morat': ['2026-11-02', '2026-11-13'],
   'plages-geneve': ['2026-11-02', '2026-11-05'], 'plages-lac-majeur': ['2026-11-02', '2026-11-13'],
   'bain-d-hiver-zurich': ['2026-11-02'], 'plages-lac-lucerne': ['2026-11-03', '2026-11-13'],
-  'temperature-lac-thoune': ['2026-11-03'], 'kitesurf-windsurf-wingfoil-leman': ['2026-11-03'],
+  'temperature-lac-thoune': ['2026-11-03'], 'kitesurf-windsurf-wingfoil-leman': ['2026-11-03', '2026-11-17'],
   'plages-lac-gruyere': ['2026-11-04', '2026-11-13'], 'temperature-lac-gruyere': ['2026-11-04'],
   'plages-lac-zoug': ['2026-11-04', '2026-11-13'], 'materiel-bain-d-hiver': ['2026-11-05', '2026-11-08'],
   'plages-lac-brienz': ['2026-11-05', '2026-11-13'], 'saunas-lac-de-zurich': ['2026-11-05'],

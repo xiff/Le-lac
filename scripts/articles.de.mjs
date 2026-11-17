@@ -15,6 +15,8 @@ export const creerDe = (h) => ({
   <li><strong>Langsam hineingehen</strong>, damit sich der Körper gewöhnen kann, ohne zu springen oder zu tauchen.</li>
   <li><strong>Den Kopf über Wasser halten</strong> und eine Mütze tragen.</li>
   <li><strong>Nie allein gehen</strong>: Die Beratungsstelle für Unfallverhütung (BFU) empfiehlt ausserdem eine Schwimmhilfe, zum Beispiel eine Schwimmboje.</li>
+  <li><strong>Ganz kurz beginnen</strong>: die ersten Male ein paar Sekunden, dann nach und nach länger. Ideal ist laut SLRG, ab dem Ende des Sommers regelmässig baden zu gehen, damit der Körper die sinkende Temperatur mitmacht.</li>
+  <li><strong>Kein Alkohol und keine anderen Drogen</strong> vor dem Bad (SLRG).</li>
   <li><strong>Sofort aus dem Wasser</strong>, wenn man sich unwohl fühlt.</li>
   <li><strong>Gut in Form sein</strong>: Die SLRG erinnert daran, dass kaltes Wasser das verlangt. Bei Zweifeln an der eigenen Gesundheit spricht man vorher mit der Ärztin oder dem Arzt.</li>
 </ul>
@@ -151,6 +153,8 @@ ${h.listeLoc(['paddle'], L)}
 <p>Das sind die Richtwerte der <a href="{app}">App</a>, keine Normen: Das Niveau jedes Einzelnen und die Grösse des Materials zählen ebenso viel.</p>
 <h2>Warum ist die Bise ideal für Downwinds?</h2>
 <p>Die <a href="{blog:bise-leman}">Bise</a> weht aus Nordosten, gleichmässig und oft stark, und wirft eine Dünung auf, die über den See läuft. Beim Foilen ergibt eine Bise von mindestens 25 km/h die Note «Perfekt»: genug für lange, von den Wellen getragene Fahrten. Auf dem Haut-Lac dreht sie auf Nord-Nordwest (MeteoSchweiz).</p>
+<h2>Welche Regeln gelten auf dem Wasser?</h2>
+<p>Nach der eidgenössischen Binnenschifffahrtsverordnung, wie sie der Kanton Genf zusammenfasst, sind Segelbretter (inklusive Wingfoil und Parawing) und Kitesurfs <strong>nur tagsüber und bei klarer Sicht erlaubt, frühestens ab 8 Uhr und spätestens bis 21 Uhr</strong>; deshalb bewertet die App Kitesurfen und Windsurfen nachts mit «Nein». Mehr als 300 m vom Ufer entfernt braucht es mindestens eine Schwimmhilfe pro Person, und Bretter und Segel müssen gut sichtbar Name und Adresse des Eigentümers tragen. In Genf ist Kitesurfen unterhalb einer Linie Vengeron–Tour-Carrée verboten, Segelbretter unterhalb einer Linie Port-Noir–Perle-du-Lac, und beides in der Nähe der Schiffsstationen.</p>
 <h2>Wo kann man Windsurfen und Wingfoilen mieten oder lernen?</h2>
 ${h.listeLoc(['windsurf', 'wing'], L)}
 <p>Fürs Kitesurfen haben wir noch keinen geprüften Verleih; die Spots wählt man nach der Windrichtung, die auf jeder <a href="{plages}">Badeplatz-Seite</a> zu sehen ist.</p>
@@ -219,14 +223,14 @@ ${h.listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 's
 <ul class="liste">
   <li><strong>Mit jemandem</strong>: eine Begleitung am Ufer oder im Wasser (SLRG, BFU).</li>
   <li><strong>Langsam</strong>, gehend, mit langem Ausatmen, um die Atmung gleichmässig zu halten.</li>
-  <li><strong>Kurz</strong>: Die ersten Male genügen einige Dutzend Sekunden bis ein oder zwei Minuten; die SLRG legt das Maximum auf so viele Minuten wie Grad fest.</li>
+  <li><strong>Kurz</strong>: Die SLRG rät, mit ein paar Sekunden zu beginnen und nach und nach zu verlängern; sie legt das Maximum auf so viele Minuten wie Grad fest.</li>
   <li><strong>Raus</strong> beim kleinsten Unwohlsein, bei starkem Zittern oder tauben Fingern.</li>
 </ul>
 <h2>Was tun, wenn man ins kalte Wasser fällt?</h2>
 <p>Die RNLI lehrt den Reflex <strong>«Float to Live»</strong>: nicht um sich schlagen, den Kopf nach hinten legen, Ohren im Wasser, Arme und Beine ausstrecken und ruhig atmen, bis der Schock vorbei ist, dann um Hilfe rufen oder zum Ufer zurückkehren. Eine Studie der Universität Portsmouth hat gezeigt, dass diese Anweisungen auch wenig erfahrenen Personen helfen, in See und Meer zu treiben.</p>
 <h2>Sollte man vor dem Start zum Arzt?</h2>
-<p>Ja, das ist der erste Reflex: Der Kälteschock belastet das Herz stark. Bei Herzproblemen oder Bluthochdruck holt man vor dem ersten Bad ärztlichen Rat ein. Manche Schwimmer gewöhnen sich auch daran, indem sie ihre Duschen mit einigen Dutzend Sekunden kaltem Wasser beenden und diese nach und nach verlängern; das ist keine Garantie, nur eine sanfte Art, das Gefühl kennenzulernen.</p>
-<p>Zum Weiterlesen: <a href="{blog:materiel-bain-d-hiver}">die Ausrüstung fürs Winterbaden</a> und <a href="{blog:afterdrop-se-rechauffer}">sich nach dem Bad aufwärmen</a>. Das Wasser von heute steht Badeplatz für Badeplatz in der <a href="{app}">App</a>.</p>`,
+<p>Ja, das ist der erste Reflex: Der Kälteschock belastet das Herz stark. Bei Herzproblemen oder Bluthochdruck holt man vor dem ersten Bad ärztlichen Rat ein. Um den Körper zu gewöhnen, ist es laut SLRG ideal, ab dem Ende des Sommers regelmässig ins Wasser zu gehen und so der sinkenden Temperatur zu folgen. Manche Schwimmer beenden ihre Duschen auch mit einigen Dutzend Sekunden kaltem Wasser; das ist keine Garantie, nur eine sanfte Art, das Gefühl kennenzulernen.</p>
+<p>Zum Weiterlesen: <a href="{blog:respiration-eau-froide}">die Atmung im kalten Wasser</a>, <a href="{blog:programme-4-semaines-bain-d-hiver}">ein 4-Wochen-Programm für den Einstieg</a>, <a href="{blog:materiel-bain-d-hiver}">die Ausrüstung fürs Winterbaden</a> und <a href="{blog:afterdrop-se-rechauffer}">sich nach dem Bad aufwärmen</a>. Das Wasser von heute steht Badeplatz für Badeplatz in der <a href="{app}">App</a>.</p>`,
   },
   'materiel-bain-d-hiver': {
     titre: 'Ausrüstung fürs Winterbaden: die vollständige Liste vor dem Gang an den Genfersee',

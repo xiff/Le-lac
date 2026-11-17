@@ -15,6 +15,8 @@ export const creerIt = (h) => ({
   <li><strong>Entrare lentamente</strong> per lasciare al corpo il tempo di abituarsi, senza saltare né tuffarsi.</li>
   <li><strong>Tenere la testa fuori dall’acqua</strong> e indossare una cuffia.</li>
   <li><strong>Non andare mai da soli</strong>: l’Ufficio prevenzione infortuni (UPI) raccomanda anche un ausilio al galleggiamento, come una boa da nuoto.</li>
+  <li><strong>Cominciare molto brevi</strong>: qualche secondo le prime volte, poi allungare a poco a poco. L’ideale, secondo la SSS, è bagnarsi regolarmente già dalla fine dell’estate, perché il corpo segua il calo della temperatura.</li>
+  <li><strong>Niente alcol né altre sostanze stupefacenti</strong> prima di entrare in acqua (SSS).</li>
   <li><strong>Uscire subito</strong> se ci si sente male.</li>
   <li><strong>Essere in buona forma fisica</strong>: la SSS ricorda che l’acqua fredda lo richiede. In caso di dubbi sulla propria salute, se ne parla con il medico prima di cominciare.</li>
 </ul>
@@ -151,6 +153,8 @@ ${h.listeLoc(['paddle'], L)}
 <p>Sono i riferimenti dell’<a href="{app}">app</a>, non norme: il livello di ciascuno e la taglia dell’attrezzatura contano altrettanto.</p>
 <h2>Perché la bise è ideale per il downwind?</h2>
 <p>La <a href="{blog:bise-leman}">bise</a> soffia da nord-est, in modo regolare e spesso forte, e solleva un’onda lunga che corre sul lago. Per il foil, una bise di almeno 25 km/h dà il voto «Perfetto»: abbastanza per concatenare lunghe discese portate dalle onde. Sull’Haut-Lac gira a nord-nord-ovest (MeteoSvizzera).</p>
+<h2>Quali regole rispettare sull’acqua?</h2>
+<p>Secondo l’ordinanza federale sulla navigazione interna, come la riassume il Cantone di Ginevra, le tavole a vela (wingfoil e parawing compresi) e il kitesurf sono ammessi <strong>solo di giorno e con tempo chiaro, dalle 8 al più presto alle 21 al più tardi</strong>; per questo l’app dà «No» al kitesurf e al windsurf di notte. A più di 300 m dalla riva serve almeno un ausilio al galleggiamento per persona, e tavole e ali devono riportare, ben visibili, il nome e l’indirizzo del proprietario. A Ginevra il kitesurf è vietato a valle di una linea Vengeron–Tour-Carrée, le tavole a vela a valle di una linea Port-Noir–Perle-du-Lac, ed entrambi nei pressi degli imbarcaderi.</p>
 <h2>Dove noleggiare o imparare windsurf e wingfoil?</h2>
 ${h.listeLoc(['windsurf', 'wing'], L)}
 <p>Per il kitesurf non abbiamo ancora un noleggio verificato; gli spot si scelgono in base alla direzione del vento, visibile su ogni <a href="{plages}">pagina di spiaggia</a>.</p>
@@ -219,14 +223,14 @@ ${h.listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 's
 <ul class="liste">
   <li><strong>Con qualcuno</strong>: un compagno sulla riva o in acqua (SSS, UPI).</li>
   <li><strong>Lentamente</strong>, camminando, soffiando a lungo per mantenere un respiro regolare.</li>
-  <li><strong>Brevemente</strong>: le prime volte bastano da qualche decina di secondi a uno o due minuti; la SSS fissa il massimo in tanti minuti quanti sono i gradi.</li>
+  <li><strong>Brevemente</strong>: la SSS consiglia di cominciare con qualche secondo e di allungare a poco a poco; fissa il massimo in tanti minuti quanti sono i gradi.</li>
   <li><strong>Uscire</strong> al minimo malessere, in caso di brividi intensi o di dita intorpidite.</li>
 </ul>
 <h2>Cosa fare se si cade in acqua fredda?</h2>
 <p>La RNLI insegna il riflesso <strong>«Float to Live»</strong>: non dimenarsi, gettare la testa all’indietro con le orecchie in acqua, allargare braccia e gambe e respirare con calma finché lo shock passa, poi chiamare aiuto o raggiungere la riva. Uno studio dell’Università di Portsmouth ha mostrato che queste indicazioni aiutano a galleggiare in lago e in mare anche persone poco esperte.</p>
 <h2>Bisogna andare dal medico prima di cominciare?</h2>
-<p>Sì, è il primo riflesso: lo shock da freddo sollecita molto il cuore. In caso di problemi cardiaci o di pressione, si chiede un parere medico prima del primo bagno. Alcuni nuotatori si abituano anche terminando le docce con qualche decina di secondi di acqua fredda, allungandoli a poco a poco; non è una garanzia, solo un modo dolce di scoprire la sensazione.</p>
-<p>Per proseguire: <a href="{blog:materiel-bain-d-hiver}">l’attrezzatura per il bagno invernale</a> e <a href="{blog:afterdrop-se-rechauffer}">scaldarsi dopo il bagno</a>. L’acqua del giorno, spiaggia per spiaggia, è nell’<a href="{app}">app</a>.</p>`,
+<p>Sì, è il primo riflesso: lo shock da freddo sollecita molto il cuore. In caso di problemi cardiaci o di pressione, si chiede un parere medico prima del primo bagno. Per abituare il corpo, secondo la SSS l’ideale è entrare in acqua regolarmente già dalla fine dell’estate, seguendo il calo della temperatura. Alcuni nuotatori terminano anche le docce con qualche decina di secondi di acqua fredda; non è una garanzia, solo un modo dolce di scoprire la sensazione.</p>
+<p>Per proseguire: <a href="{blog:respiration-eau-froide}">la respirazione in acqua fredda</a>, <a href="{blog:programme-4-semaines-bain-d-hiver}">un programma di 4 settimane per cominciare</a>, <a href="{blog:materiel-bain-d-hiver}">l’attrezzatura per il bagno invernale</a> e <a href="{blog:afterdrop-se-rechauffer}">scaldarsi dopo il bagno</a>. L’acqua del giorno, spiaggia per spiaggia, è nell’<a href="{app}">app</a>.</p>`,
   },
   'materiel-bain-d-hiver': {
     titre: 'Attrezzatura per il bagno invernale: la lista completa prima di andare al Lemano',
