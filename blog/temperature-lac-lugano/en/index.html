@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-lugano/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-lugano/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-lugano-640.webp 640w, ../../../blog/img/min/portrait-lugano-1200.webp 1200w, ../../../blog/img/min/portrait-lugano-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-lugano.jpg" alt="Lugano’s lido and palm promenade, Monte San Salvatore" srcset="../../../blog/img/min/portrait-lugano-640.jpg 640w, ../../../blog/img/min/portrait-lugano-1200.jpg 1200w, ../../../blog/img/ia/portrait-lugano.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>My Lake shows Lake Lugano’s water temperature <strong>70 cm below the surface</strong>, updated every three hours from Eawag’s Alplakes model. The model is three-dimensional: the value is read <strong>in front of each of the 14 beaches we follow</strong>, so it can differ from one to the next.</p></section>
-  <p class="matin">On 15 November 2026, in the morning, the water ranged from 13.6 °C to 14.4 °C depending on the beach (70 cm below the surface, Alplakes model).</p>
+  <p class="matin">On 17 November 2026, in the morning, the water ranged from 13.3 °C to 14.1 °C depending on the beach (70 cm below the surface, Alplakes model).</p>
 <h2>Where does the Lake Lugano temperature come from?</h2>
 <p>The figures come from <strong>Alplakes</strong>, the platform run by Eawag (the Swiss Federal Institute of Aquatic Science and Technology). It combines numerical lake models with satellite data to calculate water temperature at different depths. The data is published under a CC BY 4.0 licence, and My Lake reads it every three hours.</p>
 <p>For Lake Lugano, Alplakes runs a <strong>three-dimensional model</strong>. My Lake reads the value at 70 cm depth, at the model point in front of each beach. For the large lakes, Eawag reports an error of about 1 °C at the surface.</p>

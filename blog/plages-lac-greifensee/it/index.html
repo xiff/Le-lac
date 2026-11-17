@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/plages-lac-greifensee/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/plages-lac-greifensee/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -55,11 +54,11 @@
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-greifensee-640.webp 640w, ../../../blog/img/min/plages-greifensee-1200.webp 1200w, ../../../blog/img/min/plages-greifensee-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/plages-greifensee.jpg" alt="Mappa del Greifensee con le 3 spiagge seguite" srcset="../../../blog/img/min/plages-greifensee-640.jpg 640w, ../../../blog/img/min/plages-greifensee-1200.jpg 1200w, ../../../blog/img/plages-greifensee.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Le spiagge seguite del Greifensee. Mappa Il mio lago, © <a href="https://www.openstreetmap.org/copyright">contributori di OpenStreetMap</a>.</figcaption></figure>
   <p>Il Greifensee copre circa 8,45 km², scende fino a 32 m e si trova a 435 m di altitudine.</p>
 <h2>Le 3 spiagge seguite del Greifensee</h2>
-<p>Tra parentesi: la temperatura del mattino del 15 novembre 2026, a 70 cm sotto la superficie (modello Alplakes).</p>
+<p>Tra parentesi: la temperatura del mattino del 17 novembre 2026, a 70 cm sotto la superficie (modello Alplakes).</p>
 <ul class="liste">
-  <li><a href="../../../plage/maur/it/">Maur</a> (11,2 °C)</li>
-  <li><a href="../../../plage/uster/it/">Uster</a> (11,2 °C)</li>
-  <li><a href="../../../plage/greifensee-furren/it/">Greifensee – Furren</a> (11,2 °C)</li>
+  <li><a href="../../../plage/maur/it/">Maur</a> (11,0 °C)</li>
+  <li><a href="../../../plage/uster/it/">Uster</a> (11,0 °C)</li>
+  <li><a href="../../../plage/greifensee-furren/it/">Greifensee – Furren</a> (11,0 °C)</li>
 </ul>
 <h2>Ingresso, stagione e accesso</h2>
 <p>Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.</p>

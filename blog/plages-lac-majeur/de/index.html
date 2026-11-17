@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wo baden am Lago Maggiore: alle 7 Badeplätze, mit dem Wasser vom Morgen · Mein See</title>
-<meta name="description" content="Die 7 erfassten Badeplätze am Lago Maggiore: vollständige Liste mit der Wassertemperatur vom Morgen, wo man isst und trinkt, wo man ein Boot oder Paddle mietet.">
+<title>Strände am Lago Maggiore: Zugang, Essen und Trinken, Boots- und Paddle-Miete · Mein See</title>
+<meta name="description" content="Die 7 erfassten Badeplätze am Lago Maggiore: wie man hinkommt, wo man isst und trinkt, wo man ein Boot oder Paddle mietet. Die Wassertemperatur hat einen eigenen Artikel.">
 <link rel="canonical" href="https://monlac.ch/blog/plages-lac-majeur/de/">
 <link rel="alternate" hreflang="fr" href="https://monlac.ch/blog/plages-lac-majeur/">
 <link rel="alternate" hreflang="en" href="https://monlac.ch/blog/plages-lac-majeur/en/">
@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/plages-lac-majeur/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/plages-lac-majeur/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -26,8 +25,8 @@
 } catch {} })();
 </script>
 <meta property="og:type" content="article">
-<meta property="og:title" content="Wo baden am Lago Maggiore: alle 7 Badeplätze, mit dem Wasser vom Morgen · Mein See">
-<meta property="og:description" content="Die 7 erfassten Badeplätze am Lago Maggiore: vollständige Liste mit der Wassertemperatur vom Morgen, wo man isst und trinkt, wo man ein Boot oder Paddle mietet.">
+<meta property="og:title" content="Strände am Lago Maggiore: Zugang, Essen und Trinken, Boots- und Paddle-Miete · Mein See">
+<meta property="og:description" content="Die 7 erfassten Badeplätze am Lago Maggiore: wie man hinkommt, wo man isst und trinkt, wo man ein Boot oder Paddle mietet. Die Wassertemperatur hat einen eigenen Artikel.">
 <meta property="og:url" content="https://monlac.ch/blog/plages-lac-majeur/de/">
 <meta property="og:image" content="https://monlac.ch/blog/img/ia/portrait-majeur.jpg">
 <meta property="og:locale" content="de_CH">
@@ -39,33 +38,31 @@
 <link rel="preload" href="../../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="modulepreload" href="../../../spots.js">
 <link rel="preload" href="../../../eau.json" as="fetch" crossorigin>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://monlac.ch/#org","name":"Mon Lac","alternateName":["My Lake","Mein See","Il mio lago"],"url":"https://monlac.ch/","logo":{"@type":"ImageObject","url":"https://monlac.ch/icons/icon-512.png","width":512,"height":512}},{"@type":"WebSite","@id":"https://monlac.ch/#site","name":"Mon Lac","url":"https://monlac.ch/","inLanguage":["fr-CH","en","de-CH","it-CH"],"publisher":{"@id":"https://monlac.ch/#org"}},{"@type":"BlogPosting","@id":"https://monlac.ch/blog/plages-lac-majeur/de/#article","mainEntityOfPage":"https://monlac.ch/blog/plages-lac-majeur/de/","url":"https://monlac.ch/blog/plages-lac-majeur/de/","headline":"Wo baden am Lago Maggiore: alle 7 Badeplätze, mit dem Wasser vom Morgen","description":"Die 7 erfassten Badeplätze am Lago Maggiore: vollständige Liste mit der Wassertemperatur vom Morgen, wo man isst und trinkt, wo man ein Boot oder Paddle mietet.","image":{"@type":"ImageObject","url":"https://monlac.ch/blog/img/ia/portrait-majeur.jpg","width":1600,"height":893,"creditText":"Mein See"},"datePublished":"2026-11-02","dateModified":"2026-11-13","inLanguage":"de-CH","author":{"@id":"https://monlac.ch/#org"},"publisher":{"@id":"https://monlac.ch/#org"},"isPartOf":{"@id":"https://monlac.ch/blog/de/#blog"},"about":{"@type":"LakeBodyOfWater","name":"Lac Léman","alternateName":"Lake Geneva","sameAs":"https://www.wikidata.org/wiki/Q6403"},"citation":["https://en.wikipedia.org/wiki/Lake_Maggiore","https://www.alplakes.eawag.ch","https://www.openstreetmap.org/copyright","https://www.lidolocarno.ch/media/502754/tarifs-summer-2026.pdf","https://www.lidolocarno.ch/it/news/news-detail/id/5827/orari-di-apertura-estate-2026"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mein See","item":"https://monlac.ch/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://monlac.ch/blog/de/"},{"@type":"ListItem","position":3,"name":"Wo baden am Lago Maggiore: alle Badeplätze","item":"https://monlac.ch/blog/plages-lac-majeur/de/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://monlac.ch/#org","name":"Mon Lac","alternateName":["My Lake","Mein See","Il mio lago"],"url":"https://monlac.ch/","logo":{"@type":"ImageObject","url":"https://monlac.ch/icons/icon-512.png","width":512,"height":512}},{"@type":"WebSite","@id":"https://monlac.ch/#site","name":"Mon Lac","url":"https://monlac.ch/","inLanguage":["fr-CH","en","de-CH","it-CH"],"publisher":{"@id":"https://monlac.ch/#org"}},{"@type":"BlogPosting","@id":"https://monlac.ch/blog/plages-lac-majeur/de/#article","mainEntityOfPage":"https://monlac.ch/blog/plages-lac-majeur/de/","url":"https://monlac.ch/blog/plages-lac-majeur/de/","headline":"Strände am Lago Maggiore: Zugang, Essen und Trinken, Boots- und Paddle-Miete","description":"Die 7 erfassten Badeplätze am Lago Maggiore: wie man hinkommt, wo man isst und trinkt, wo man ein Boot oder Paddle mietet. Die Wassertemperatur hat einen eigenen Artikel.","image":{"@type":"ImageObject","url":"https://monlac.ch/blog/img/ia/portrait-majeur.jpg","width":1600,"height":893,"creditText":"Mein See"},"datePublished":"2026-11-02","dateModified":"2026-11-13","inLanguage":"de-CH","author":{"@id":"https://monlac.ch/#org"},"publisher":{"@id":"https://monlac.ch/#org"},"isPartOf":{"@id":"https://monlac.ch/blog/de/#blog"},"about":{"@type":"LakeBodyOfWater","name":"Lac Léman","alternateName":"Lake Geneva","sameAs":"https://www.wikidata.org/wiki/Q6403"},"citation":["https://en.wikipedia.org/wiki/Lake_Maggiore","https://www.alplakes.eawag.ch","https://www.openstreetmap.org/copyright","https://www.lidolocarno.ch/media/502754/tarifs-summer-2026.pdf","https://www.lidolocarno.ch/it/news/news-detail/id/5827/orari-di-apertura-estate-2026"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mein See","item":"https://monlac.ch/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://monlac.ch/blog/de/"},{"@type":"ListItem","position":3,"name":"Badeplätze am Lago Maggiore: Zugang, Essen und Miete","item":"https://monlac.ch/blog/plages-lac-majeur/de/"}]}]}</script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
 </head>
 <body>
 <header>
   <div class="haut"><a class="marque" translate="no" href="../../../?lang=de"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>Mein See</a><nav class="langues" translate="no" aria-label="Sprache"><a href="../../../blog/plages-lac-majeur/" hreflang="fr" lang="fr" title="Français" aria-label="Français">FR</a><a href="../../../blog/plages-lac-majeur/en/" hreflang="en" lang="en" title="English" aria-label="English">EN</a><a href="../../../blog/plages-lac-majeur/it/" hreflang="it" lang="it" title="Italiano" aria-label="Italiano">IT</a></nav></div>
   <nav class="ariane" aria-label="Brotkrumennavigation"><a href="../../../?lang=de">Mein See</a> › <a href="../../../blog/de/">Blog</a></nav>
-  <h1>Wo baden am Lago Maggiore: alle Badeplätze</h1>
+  <h1>Badeplätze am Lago Maggiore: Zugang, Essen und Miete</h1>
   <p class="releve">Von der Redaktion von Mein See · veröffentlicht am <time datetime="2026-11-02">2. November 2026</time> · aktualisiert am <time datetime="2026-11-13">13. November 2026</time></p>
 </header>
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-majeur-640.webp 640w, ../../../blog/img/min/portrait-majeur-1200.webp 1200w, ../../../blog/img/min/portrait-majeur-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-majeur.jpg" alt="Die Seepromenade von Ascona, farbige Häuser und Kirchturm, der Lago Maggiore" srcset="../../../blog/img/min/portrait-majeur-640.jpg 640w, ../../../blog/img/min/portrait-majeur-1200.jpg 1200w, ../../../blog/img/ia/portrait-majeur.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
-  <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Mein See erfasst <strong>7 Badeplätze am Lago Maggiore</strong>, mit der Wassertemperatur in 70 cm Tiefe, wo sie berechnet wird. Hier die Liste, danach nützliche Adressen am Wasser.</p></section>
+  <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Mein See erfasst <strong>7 Badeplätze am Lago Maggiore</strong>. Dieser Artikel hilft bei der Planung: die Liste der Badeplätze, Zugang, nützliche Adressen am Wasser und Materialmiete. Die Wassertemperatur wird separat behandelt.</p></section>
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-majeur-640.webp 640w, ../../../blog/img/min/plages-majeur-1200.webp 1200w, ../../../blog/img/min/plages-majeur-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/plages-majeur.jpg" alt="Karte am Lago Maggiore mit den 7 erfassten Badeplätzen" srcset="../../../blog/img/min/plages-majeur-640.jpg 640w, ../../../blog/img/min/plages-majeur-1200.jpg 1200w, ../../../blog/img/plages-majeur.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Die erfassten Badeplätze am Lago Maggiore. Karte Mein See, © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.</figcaption></figure>
   <p>Der Lago Maggiore misst etwa 212.5 km², ist bis zu 372 m tief und liegt auf 193 m Höhe. Seine Ufer teilen sich der Schweiz und Italien.</p>
 <h2>Die 7 erfassten Badeplätze am Lago Maggiore</h2>
-<p>In Klammern: die Temperatur vom Morgen des 15. November 2026, in 70 cm Tiefe (Alplakes-Modell).</p>
 <ul class="liste">
-  <li><a href="../../../plage/brissago/de/">Brissago</a> (15.2 °C)</li>
-  <li><a href="../../../plage/ascona/de/">Ascona</a> (15.2 °C)</li>
-  <li><a href="../../../plage/gerra-gambarogno/de/">Gerra (Gambarogno)</a> (15.2 °C)</li>
-  <li><a href="../../../plage/lido-locarno/de/">Lido Locarno</a> (15.2 °C)</li>
-  <li><a href="../../../plage/locarno-bagno-pubblico/de/">Locarno – Bagno pubblico</a> (15.2 °C)</li>
-  <li><a href="../../../plage/tenero-lido-mappo/de/">Tenero – Lido Mappo</a> (15.2 °C)</li>
-  <li><a href="../../../plage/tenero/de/">Tenero</a> (15.2 °C)</li>
+  <li><a href="../../../plage/brissago/de/">Brissago</a></li>
+  <li><a href="../../../plage/ascona/de/">Ascona</a></li>
+  <li><a href="../../../plage/gerra-gambarogno/de/">Gerra (Gambarogno)</a></li>
+  <li><a href="../../../plage/lido-locarno/de/">Lido Locarno</a></li>
+  <li><a href="../../../plage/locarno-bagno-pubblico/de/">Locarno – Bagno pubblico</a></li>
+  <li><a href="../../../plage/tenero-lido-mappo/de/">Tenero – Lido Mappo</a></li>
+  <li><a href="../../../plage/tenero/de/">Tenero</a></li>
 </ul>
-<p>Für diesen See gibt es einen einzigen Wert für den ganzen See: Alle Badeplätze zeigen dieselbe Zahl.</p>
 <h2>Eintritt, Saison und Anreise</h2>
 <p>Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.</p>
 <ul class="liste">

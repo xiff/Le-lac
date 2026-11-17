@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-majeur/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-majeur/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-majeur-640.webp 640w, ../../../blog/img/min/portrait-majeur-1200.webp 1200w, ../../../blog/img/min/portrait-majeur-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-majeur.jpg" alt="Il lungolago di Ascona, case colorate e campanile, il lago Maggiore" srcset="../../../blog/img/min/portrait-majeur-640.jpg 640w, ../../../blog/img/min/portrait-majeur-1200.jpg 1200w, ../../../blog/img/ia/portrait-majeur.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Il mio lago mostra la temperatura dell’acqua del lago Maggiore <strong>a 70 cm sotto la superficie</strong>, aggiornata ogni tre ore dal modello Alplakes dell’Eawag. Per questo lago il modello fornisce <strong>un solo valore per tutto il lago</strong>: le 7 spiagge seguite mostrano la stessa cifra.</p></section>
-  <p class="matin">Il 15 novembre 2026, al mattino, l’acqua era a 15,2 °C per tutto il lago (70 cm sotto la superficie, modello Alplakes).</p>
+  <p class="matin">Il 17 novembre 2026, al mattino, l’acqua era a 15,0 °C per tutto il lago (70 cm sotto la superficie, modello Alplakes).</p>
 <h2>Da dove viene la temperatura del lago Maggiore?</h2>
 <p>I dati provengono da <strong>Alplakes</strong>, la piattaforma dell’Eawag (l’istituto di ricerca sull’acqua del settore dei politecnici federali). Combina modelli numerici dei laghi e dati satellitari per calcolare la temperatura dell’acqua a diverse profondità. I dati sono pubblicati con licenza CC BY 4.0 e Il mio lago li rilegge ogni tre ore.</p>
 <p>Per questo lago Alplakes fornisce un <strong>modello unidimensionale</strong> (Simstrat): calcola la temperatura secondo la profondità, ma non secondo il luogo. Il mio lago legge il valore a 70 cm di profondità e lo mostra per tutte le spiagge del lago.</p>
@@ -71,14 +70,6 @@
   <li><a href="../../../plage/locarno-bagno-pubblico/it/">Locarno – Bagno pubblico</a></li>
   <li><a href="../../../plage/tenero-lido-mappo/it/">Tenero – Lido Mappo</a></li>
   <li><a href="../../../plage/tenero/it/">Tenero</a></li>
-</ul>
-<h2>Noleggio sul lago Maggiore</h2>
-<p>Ogni scheda rimanda al sito del gestore, quando esiste. Orari e prezzi cambiano: da confermare con lui.</p>
-<ul class="liste">
-  <li><strong><a href="https://www.zuellig-boats.ch/">Züllig Boats</a></strong>, Ascona, vicino a <a href="../../../plage/ascona/it/">Ascona</a>: Sul lungolago di Ascona: barche a motore e pedalò per un massimo di 4 persone.</li>
-  <li><strong><a href="https://www.ascona-locarno.com/en/commons/details/Wilson-Sup-Center/136596">Wilson SUP Center</a></strong>, Locarno (da maggio a settembre), vicino a <a href="../../../plage/locarno-bagno-pubblico/it/">Locarno – Bagno pubblico</a>: Stand-up paddle a noleggio ai bagni pubblici di Locarno e Ascona, da maggio a settembre, con orari che variano secondo il periodo.</li>
-  <li><strong><a href="https://www.ascona-locarno.com/en/commons/details/Watersports-ch-Tenero/84149">Watersports.ch</a></strong>, Tenero, vicino a <a href="../../../plage/tenero-lido-mappo/it/">Tenero – Lido Mappo</a>: Al lido di Tenero: canoe e stand-up paddle a noleggio, gite in barca, wakeboard e banana boat.</li>
-  <li><strong><a href="https://www.tinoleggiobarche.ch/en/home">Tino Noleggio Barche</a></strong>, Muralto, vicino a <a href="../../../plage/lido-locarno/it/">Lido Locarno</a>: Stand-up paddle, pedalò, barche a motore e moto d’acqua a noleggio a Muralto, vicino a Locarno.</li>
 </ul>
 <h2>Dove vedere la temperatura del lago Maggiore in diretta?</h2>
 <p>Nell’<a href="../../../?lang=it">app Il mio lago</a>, gratuita e senza account. L’<a href="../../../plage/it/">elenco di tutte le spiagge</a> copre anche gli altri laghi svizzeri.</p>

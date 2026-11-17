@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-thoune/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-thoune/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-thoune-640.webp 640w, ../../../blog/img/min/portrait-thoune-1200.webp 1200w, ../../../blog/img/min/portrait-thoune-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-thoune.jpg" alt="Il lago di Thun dal lido di Thun, il Niesen e le Alpi innevate" srcset="../../../blog/img/min/portrait-thoune-640.jpg 640w, ../../../blog/img/min/portrait-thoune-1200.jpg 1200w, ../../../blog/img/ia/portrait-thoune.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Il mio lago mostra la temperatura dell’acqua del lago di Thun <strong>a 70 cm sotto la superficie</strong>, aggiornata ogni tre ore dal modello Alplakes dell’Eawag. Per questo lago il modello fornisce <strong>un solo valore per tutto il lago</strong>: le 8 spiagge seguite mostrano la stessa cifra.</p></section>
-  <p class="matin">Il 15 novembre 2026, al mattino, l’acqua era a 12,2 °C per tutto il lago (70 cm sotto la superficie, modello Alplakes).</p>
+  <p class="matin">Il 17 novembre 2026, al mattino, l’acqua era a 12,1 °C per tutto il lago (70 cm sotto la superficie, modello Alplakes).</p>
 <h2>Da dove viene la temperatura del lago di Thun?</h2>
 <p>I dati provengono da <strong>Alplakes</strong>, la piattaforma dell’Eawag (l’istituto di ricerca sull’acqua del settore dei politecnici federali). Combina modelli numerici dei laghi e dati satellitari per calcolare la temperatura dell’acqua a diverse profondità. I dati sono pubblicati con licenza CC BY 4.0 e Il mio lago li rilegge ogni tre ore.</p>
 <p>Per questo lago Alplakes fornisce un <strong>modello unidimensionale</strong> (Simstrat): calcola la temperatura secondo la profondità, ma non secondo il luogo. Il mio lago legge il valore a 70 cm di profondità e lo mostra per tutte le spiagge del lago.</p>

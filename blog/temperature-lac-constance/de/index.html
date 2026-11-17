@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-constance/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-constance/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-constance-640.webp 640w, ../../../blog/img/min/portrait-constance-1200.webp 1200w, ../../../blog/img/min/portrait-constance-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-constance.jpg" alt="Der Hafen Romanshorn, Segelboote und eine Fähre, der Bodensee bis zum Horizont" srcset="../../../blog/img/min/portrait-constance-640.jpg 640w, ../../../blog/img/min/portrait-constance-1200.jpg 1200w, ../../../blog/img/ia/portrait-constance.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Mein See zeigt die Wassertemperatur im Bodensee <strong>70 cm unter der Oberfläche</strong>, alle drei Stunden aktualisiert aus dem Alplakes-Modell der Eawag. Für diesen See liefert das Modell <strong>einen einzigen Wert für den ganzen See</strong>: Die 12 erfassten Badeplätze zeigen dieselbe Zahl.</p></section>
-  <p class="matin">Am 15. November 2026 lag das Wasser am Morgen bei 10.6 °C für den ganzen See (70 cm unter der Oberfläche, Alplakes-Modell).</p>
+  <p class="matin">Am 17. November 2026 lag das Wasser am Morgen bei 10.4 °C für den ganzen See (70 cm unter der Oberfläche, Alplakes-Modell).</p>
 <h2>Woher kommt die Wassertemperatur im Bodensee?</h2>
 <p>Die Werte stammen von <strong>Alplakes</strong>, der Plattform der Eawag (Wasserforschungsinstitut des ETH-Bereichs). Sie verbindet numerische Seemodelle mit Satellitendaten und berechnet die Wassertemperatur in verschiedenen Tiefen. Die Daten stehen unter der Lizenz CC BY 4.0, und Mein See liest sie alle drei Stunden neu ein.</p>
 <p>Für diesen See stellt Alplakes ein <strong>eindimensionales Modell</strong> (Simstrat) bereit: Es berechnet die Temperatur nach der Tiefe, aber nicht nach dem Ort. Mein See liest den Wert in 70 cm Tiefe und zeigt ihn für alle Badeplätze des Sees.</p>

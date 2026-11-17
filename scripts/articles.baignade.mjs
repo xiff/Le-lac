@@ -4,7 +4,7 @@
 import { SPOTS, LACS, lacDe, nomLac } from '../spots.js';
 import { LIEUX } from '../lieux.js';
 import { texteLieu, villeDe } from '../traductions.js';
-import { loueurs, duLac } from './articles.lacs.mjs';
+import { loueurs, duLac, PRATIQUE_LACS } from './articles.lacs.mjs';
 import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
 import { CONTOURS } from '../contours.js';
 
@@ -790,6 +790,13 @@ const LOCAUX = {
  }
 };
 const T_LOCAL = { fr: ['Entrée, saison et accès', 'Prix et dates relevés le 13 novembre 2026 sur les sources ci-dessous, pour la saison 2026 : à confirmer sur le site de chaque bain avant d’y aller.'], en: ['Entry, season and access', 'Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.'], de: ['Eintritt, Saison und Anreise', 'Preise und Daten vom 13. November 2026 aus den unten genannten Quellen, für die Saison 2026: vor dem Besuch auf der Website des Bads prüfen.'], it: ['Ingresso, stagione e accesso', 'Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.'] };
+// Lacs dont l'article « plages » est l'article pratique (accès, adresses, location) : la température est dans « temperature-lac-… », sans doublon.
+const PRATIQUE = {
+  fr: (F, n) => ({ titre: `Plages ${F.DU} : accès, où manger et où louer un bateau`, h1: `Plages ${F.DU} : accès, restauration et location`, desc: `${n > 1 ? 'Les ' + n + ' plages suivies' : 'La plage suivie'} ${F.DU} : comment y accéder, où manger et boire, où louer un bateau ou un paddle. La température de l’eau a son propre article.`, bref: `Mon Lac suit <strong>${n > 1 ? n + ' plages' : 'une plage'} ${F.DU}</strong>. Cet article sert à préparer la sortie : la liste des plages, l’accès, les adresses utiles autour de l’eau et la location de matériel. La température de l’eau est traitée à part.` }),
+  en: (F, n) => ({ titre: `Beaches ${F.DU}: access, food and drink, boat and paddle rental`, h1: `Beaches ${F.DU}: access, food and rental`, desc: `${n > 1 ? 'The ' + n + ' beaches' : 'The beach'} followed ${F.DU}: how to get there, where to eat and drink, where to rent a boat or paddleboard. Water temperature has its own article.`, bref: `My Lake follows <strong>${n > 1 ? n + ' beaches' : 'one beach'} ${F.DU}</strong>. This article is for planning the outing: the list of beaches, access, useful places around the water and equipment rental. Water temperature is covered separately.` }),
+  de: (F, n) => ({ titre: `Strände ${F.DU}: Zugang, Essen und Trinken, Boots- und Paddle-Miete`, h1: `Badeplätze ${F.DU}: Zugang, Essen und Miete`, desc: `${n > 1 ? 'Die ' + n + ' erfassten Badeplätze' : 'Der erfasste Badeplatz'} ${F.DU}: wie man hinkommt, wo man isst und trinkt, wo man ein Boot oder Paddle mietet. Die Wassertemperatur hat einen eigenen Artikel.`, bref: `Mein See erfasst <strong>${n > 1 ? n + ' Badeplätze' : 'einen Badeplatz'} ${F.DU}</strong>. Dieser Artikel hilft bei der Planung: die Liste der Badeplätze, Zugang, nützliche Adressen am Wasser und Materialmiete. Die Wassertemperatur wird separat behandelt.` }),
+  it: (F, n) => ({ titre: `Spiagge ${F.DU}: accesso, dove mangiare e dove noleggiare una barca`, h1: `Spiagge ${F.DU}: accesso, ristorazione e noleggio`, desc: `${n > 1 ? 'Le ' + n + ' spiagge seguite' : 'La spiaggia seguita'} ${F.DU}: come arrivarci, dove mangiare e bere, dove noleggiare una barca o un paddle. La temperatura dell’acqua ha un articolo a parte.`, bref: `Il mio lago segue <strong>${n > 1 ? n + ' spiagge' : 'una spiaggia'} ${F.DU}</strong>. Questo articolo serve a preparare l’uscita: l’elenco delle spiagge, l’accesso, gli indirizzi utili in riva all’acqua e il noleggio. La temperatura dell’acqua è trattata a parte.` }),
+};
 export const articlesBaignade = () => Object.keys(LACS).filter((c) => c !== 'leman').map((cle) => {
   const plages = SPOTS.filter((s) => lacDe(s) === cle), n = plages.length, [aire, prof, alt, src] = FAITS[cle], lieux = LIEUX.filter((x) => x.zone === cle);
   const a = { slug: `plages-lac-${cle}`, lac: cle, publie: '2026-11-12', modifie: '2026-11-12', image: `blog/img/plages-${cle}.jpg`, hauteur: 900, alt: {}, credit: {}, creditHtml: {},
@@ -803,14 +810,14 @@ export const articlesBaignade = () => Object.keys(LACS).filter((c) => c !== 'lem
     let intro = faits.length ? `${F.SUJET} ${faits.length > 1 ? faits.slice(0, -1).join(', ') + t.et + faits.at(-1) : faits[0]}.` : '';
     if (PARTAGE[cle]) intro += t.partage(PARTAGE[cle][IDX[L]]);
     if (cle === 'sion') intro = { fr: 'Le Domaine des Îles est un domaine de 53,5 hectares au bord du Rhône, avec un lac né d’une ancienne gravière.', en: 'The Domaine des Îles is a 53.5-hectare estate on the Rhône, with a lake that began as a former gravel pit.', de: 'Das Domaine des Îles ist ein 53,5 Hektar grosses Gelände an der Rhone, mit einem See, der aus einer ehemaligen Kiesgrube entstanden ist.', it: 'Il Domaine des Îles è una tenuta di 53,5 ettari sul Rodano, con un lago nato da un’ex cava di ghiaia.' }[L];
-    const valeurs = plages.map((s) => [s, valeurMatin(s.id)]), avecValeur = valeurs.some(([, v]) => v != null);
+    const prat = PRATIQUE_LACS.includes(cle), valeurs = plages.map((s) => [s, prat ? null : valeurMatin(s.id)]), avecValeur = valeurs.some(([, v]) => v != null);
     const liste = `<ul class="liste">\n${valeurs.map(([s, v]) => `  <li><a href="{plage:${s.id}}">${s.nom}</a>${v != null ? ` (${degMatin(v, L)})` : ''}</li>`).join('\n')}\n</ul>`;
-    const modele = LACS[cle].eau ? (LACS[cle].eau.modele === 'simstrat' ? t.un : '') : t.sans;
+    const modele = prat ? '' : LACS[cle].eau ? (LACS[cle].eau.modele === 'simstrat' ? t.un : '') : t.sans;
     const lieuxHtml = lieux.length ? `<h2>${t.hLieux(F)}</h2>\n<ul class="liste">\n${lieux.map((x) => `  <li><strong>${x.nom}</strong>, ${villeDe(x.ville, L)}${x.mois ? t.saison.replace('{a}', mois(x.mois[0], L)).replace('{b}', mois(x.mois[1], L)) : ''}${sep}${texteLieu(x, L)}</li>`).join('\n')}\n</ul>\n` : '';
     const aussi = [AVEC_TEMP.includes(cle) && `temperature-lac-${cle}`, ...(LIENS[cle] ?? [])].filter(Boolean);
     const aussiHtml = aussi.length ? `<h2>${t.hAussi}</h2>\n<ul class="liste">\n${aussi.map((sl) => `  <li><a href="{blog:${sl}}">${sl.startsWith('temperature') ? t.tempT(F) : `{titre:${sl}}`}</a></li>`).join('\n')}\n</ul>\n` : '';
     const html = `${intro ? `<p>${intro}</p>\n` : ''}<h2>${t.hPlages(F, n)}</h2>\n${avecValeur ? `<p>${t.valeurs(dateMatin(L))}</p>\n` : ''}${liste}\n${modele ? `<p>${modele}</p>\n` : ''}${LOCAUX[cle] ? `<h2>${T_LOCAL[L][0]}</h2>\n<p>${T_LOCAL[L][1]}</p>\n<ul class="liste">\n${LOCAUX[cle][L].map((x) => `  <li>${x}</li>`).join('\n')}\n</ul>\n` : ''}${lieuxHtml}${loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), duLac(cle, L))}${aussiHtml}`;
-    a[L] = { titre: t.titre(F, n), h1: t.h1(F), desc: t.desc(F, n), bref: t.bref(F, n, plages[0].nom), html: () => html };
+    a[L] = { titre: t.titre(F, n), h1: t.h1(F), desc: t.desc(F, n), bref: t.bref(F, n, plages[0].nom), ...(prat && PRATIQUE[L](F, n)), html: () => html };
     a.alt[L] = t.alt(F, n); a.credit[L] = t.credit(F);
     a.creditHtml[L] = t.credit(F) + (CONTOURS_OK.has(cle) ? `, © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.` : '.');
   }

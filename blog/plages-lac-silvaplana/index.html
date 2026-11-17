@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/plages-lac-silvaplana/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/plages-lac-silvaplana/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -55,9 +54,9 @@
   <figure class="seconde"><picture><source type="image/webp" srcset="../../blog/img/min/plages-silvaplana-640.webp 640w, ../../blog/img/min/plages-silvaplana-1200.webp 1200w, ../../blog/img/min/plages-silvaplana-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../blog/img/plages-silvaplana.jpg" alt="Carte du lac de Silvaplana avec la plage suivie" srcset="../../blog/img/min/plages-silvaplana-640.jpg 640w, ../../blog/img/min/plages-silvaplana-1200.jpg 1200w, ../../blog/img/plages-silvaplana.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Les plages suivies du lac de Silvaplana. Carte Mon Lac.</figcaption></figure>
   <p>Le lac de Silvaplana couvre environ 2,7 km², descend jusqu’à 77 m et se trouve à 1791 m d’altitude.</p>
 <h2>La plage suivie du lac de Silvaplana</h2>
-<p>Entre parenthèses : la température du matin du 15 novembre 2026, à 70 cm sous la surface (modèle Alplakes).</p>
+<p>Entre parenthèses : la température du matin du 17 novembre 2026, à 70 cm sous la surface (modèle Alplakes).</p>
 <ul class="liste">
-  <li><a href="../../plage/silvaplana/">Silvaplana</a> (6,3 °C)</li>
+  <li><a href="../../plage/silvaplana/">Silvaplana</a> (6,1 °C)</li>
 </ul>
 <p>Pour ce lac, l’eau est une seule valeur pour tout le lac : les plages affichent le même chiffre.</p>
 <h2>Entrée, saison et accès</h2>

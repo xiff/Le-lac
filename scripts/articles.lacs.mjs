@@ -8,6 +8,8 @@ import { texteLieu, villeDe } from '../traductions.js';
 const CLES = ['neuchatel', 'bienne', 'morat', 'gruyere', 'joux', 'zurich', 'lucerne', 'thoune', 'brienz', 'constance', 'lugano', 'majeur'];
 const SOURCES = [['Eawag, projet Alplakes', 'https://www.eawag.ch/fr/abteilung/surf/projekte/alplakes'], ['Alplakes, Eawag (CC BY 4.0)', 'https://www.alplakes.eawag.ch'],
   ['EGU 2026, précision des simulations des lacs suisses', 'https://meetingorganizer.copernicus.org/EGU26/EGU26-12579.html'], ['OpenStreetMap, contour du lac (ODbL)', 'https://www.openstreetmap.org/copyright']];
+// Lacs dont l'article « plages » porte l'accès, les adresses et la location : l'article température ne les répète pas.
+export const PRATIQUE_LACS = ['majeur', 'joux'];
 const min = (s) => s[0].toLowerCase() + s.slice(1);
 
 const TEXTES = {
@@ -180,7 +182,7 @@ export const articlesLacs = (listePlages) => CLES.map((cle) => {
     const carte = `<figure class="une"><img src="{racine}blog/img/carte-${cle}.jpg" alt="${alt}" width="1600" height="900" loading="lazy"><figcaption>${credit} © <a href="https://www.openstreetmap.org/copyright">${OSM[L]}</a>.</figcaption></figure>\n`;
     const i = html.lastIndexOf('<ul class="liste">'), avecCarte = html.slice(0, i) + carte + html.slice(i);
     const j = avecCarte.lastIndexOf('<h2>'), du = L === 'fr' ? 'du ' + nomLac(cle, L).replace(/^L/, 'l') : L === 'it' ? 'del ' + nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L);
-    const complet = avecCarte.slice(0, j) + loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), du) + avecCarte.slice(j);
+    const complet = avecCarte.slice(0, j) + (PRATIQUE_LACS.includes(cle) ? '' : loueurs(cle, L, L === 'it' ? nomLac(cle, L).replace(/^Lago/, 'lago') : nomLac(cle, L), du)) + avecCarte.slice(j);
     const k0 = complet.indexOf('<h2>'), avecMatin = complet.slice(0, k0) + matinLac(cle, L, d3) + complet.slice(k0);
     a[L] = { ...t, html: () => avecMatin }; a.alt[L] = a.credit[L] = legendes[LL.indexOf(L)];
   }

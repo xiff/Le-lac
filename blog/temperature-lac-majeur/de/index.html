@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-majeur/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-majeur/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-majeur-640.webp 640w, ../../../blog/img/min/portrait-majeur-1200.webp 1200w, ../../../blog/img/min/portrait-majeur-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-majeur.jpg" alt="Die Seepromenade von Ascona, farbige Häuser und Kirchturm, der Lago Maggiore" srcset="../../../blog/img/min/portrait-majeur-640.jpg 640w, ../../../blog/img/min/portrait-majeur-1200.jpg 1200w, ../../../blog/img/ia/portrait-majeur.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Mein See zeigt die Wassertemperatur im Lago Maggiore <strong>70 cm unter der Oberfläche</strong>, alle drei Stunden aktualisiert aus dem Alplakes-Modell der Eawag. Für diesen See liefert das Modell <strong>einen einzigen Wert für den ganzen See</strong>: Die 7 erfassten Badeplätze zeigen dieselbe Zahl.</p></section>
-  <p class="matin">Am 15. November 2026 lag das Wasser am Morgen bei 15.2 °C für den ganzen See (70 cm unter der Oberfläche, Alplakes-Modell).</p>
+  <p class="matin">Am 17. November 2026 lag das Wasser am Morgen bei 15.0 °C für den ganzen See (70 cm unter der Oberfläche, Alplakes-Modell).</p>
 <h2>Woher kommt die Wassertemperatur im Lago Maggiore?</h2>
 <p>Die Werte stammen von <strong>Alplakes</strong>, der Plattform der Eawag (Wasserforschungsinstitut des ETH-Bereichs). Sie verbindet numerische Seemodelle mit Satellitendaten und berechnet die Wassertemperatur in verschiedenen Tiefen. Die Daten stehen unter der Lizenz CC BY 4.0, und Mein See liest sie alle drei Stunden neu ein.</p>
 <p>Für diesen See stellt Alplakes ein <strong>eindimensionales Modell</strong> (Simstrat) bereit: Es berechnet die Temperatur nach der Tiefe, aber nicht nach dem Ort. Mein See liest den Wert in 70 cm Tiefe und zeigt ihn für alle Badeplätze des Sees.</p>
@@ -71,14 +70,6 @@
   <li><a href="../../../plage/locarno-bagno-pubblico/de/">Locarno – Bagno pubblico</a></li>
   <li><a href="../../../plage/tenero-lido-mappo/de/">Tenero – Lido Mappo</a></li>
   <li><a href="../../../plage/tenero/de/">Tenero</a></li>
-</ul>
-<h2>Mieten am Lago Maggiore</h2>
-<p>Jeder Eintrag führt auf die Website des Anbieters, wenn es eine gibt. Öffnungszeiten und Preise ändern sich: beim Anbieter nachfragen.</p>
-<ul class="liste">
-  <li><strong><a href="https://www.zuellig-boats.ch/">Züllig Boats</a></strong>, Ascona, bei <a href="../../../plage/ascona/de/">Ascona</a>: An der Seepromenade von Ascona: Motorboote und Tretboote für höchstens 4 Personen.</li>
-  <li><strong><a href="https://www.ascona-locarno.com/en/commons/details/Wilson-Sup-Center/136596">Wilson SUP Center</a></strong>, Locarno (von Mai bis September), bei <a href="../../../plage/locarno-bagno-pubblico/de/">Locarno – Bagno pubblico</a>: Stand-up-Paddles zu mieten in den öffentlichen Bädern von Locarno und Ascona, von Mai bis September, mit je nach Zeit wechselnden Öffnungszeiten.</li>
-  <li><strong><a href="https://www.ascona-locarno.com/en/commons/details/Watersports-ch-Tenero/84149">Watersports.ch</a></strong>, Tenero, bei <a href="../../../plage/tenero-lido-mappo/de/">Tenero – Lido Mappo</a>: Im Lido von Tenero: Kanus und Stand-up-Paddles zu mieten, Bootsfahrten, Wakeboard und Bananaboat.</li>
-  <li><strong><a href="https://www.tinoleggiobarche.ch/en/home">Tino Noleggio Barche</a></strong>, Muralto, bei <a href="../../../plage/lido-locarno/de/">Lido Locarno</a>: Stand-up-Paddles, Tretboote, Motorboote und Jetskis zu mieten in Muralto bei Locarno.</li>
 </ul>
 <h2>Wo sieht man die Wassertemperatur im Lago Maggiore live?</h2>
 <p>In der <a href="../../../?lang=de">App Mein See</a>, kostenlos und ohne Konto. Die <a href="../../../plage/de/">Liste aller Badeplätze</a> deckt auch die anderen Schweizer Seen ab.</p>

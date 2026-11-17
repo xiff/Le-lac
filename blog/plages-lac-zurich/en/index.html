@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/plages-lac-zurich/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/plages-lac-zurich/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -55,28 +54,28 @@
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-zurich-640.webp 640w, ../../../blog/img/min/plages-zurich-1200.webp 1200w, ../../../blog/img/min/plages-zurich-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/plages-zurich.jpg" alt="Map on Lake Zurich with the 20 beaches we follow" srcset="../../../blog/img/min/plages-zurich-640.jpg 640w, ../../../blog/img/min/plages-zurich-1200.jpg 1200w, ../../../blog/img/plages-zurich.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>The beaches we follow on Lake Zurich. Map by My Lake, © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</figcaption></figure>
   <p>Lake Zurich covers about 88.7 km², is up to 136 m deep and lies at 406 m above sea level.</p>
 <h2>The 20 beaches followed on Lake Zurich</h2>
-<p>In brackets: the morning temperature on 15 November 2026, 70 cm below the surface (Alplakes model).</p>
+<p>In brackets: the morning temperature on 17 November 2026, 70 cm below the surface (Alplakes model).</p>
 <ul class="liste">
-  <li><a href="../../../plage/zurich-mythenquai/en/">Zurich – Strandbad Mythenquai</a> (13.9 °C)</li>
-  <li><a href="../../../plage/zurich-seebad-enge/en/">Zurich – Seebad Enge</a> (14.0 °C)</li>
-  <li><a href="../../../plage/zurich-wollishofen/en/">Zurich – Strandbad Wollishofen</a> (13.9 °C)</li>
-  <li><a href="../../../plage/zurich-utoquai/en/">Zurich – Seebad Utoquai</a> (14.0 °C)</li>
-  <li><a href="../../../plage/zurich-tiefenbrunnen/en/">Zurich – Strandbad Tiefenbrunnen</a> (13.9 °C)</li>
-  <li><a href="../../../plage/kilchberg/en/">Kilchberg</a> (14.0 °C)</li>
-  <li><a href="../../../plage/rueschlikon/en/">Rüschlikon</a> (14.0 °C)</li>
-  <li><a href="../../../plage/thalwil/en/">Thalwil</a> (13.9 °C)</li>
-  <li><a href="../../../plage/zollikon/en/">Zollikon</a> (14.0 °C)</li>
-  <li><a href="../../../plage/kuesnacht/en/">Küsnacht</a> (13.9 °C)</li>
-  <li><a href="../../../plage/erlenbach/en/">Erlenbach</a> (13.8 °C)</li>
-  <li><a href="../../../plage/oberrieden/en/">Oberrieden</a> (13.8 °C)</li>
-  <li><a href="../../../plage/feldmeilen/en/">Feldmeilen</a> (13.7 °C)</li>
-  <li><a href="../../../plage/meilen/en/">Meilen</a> (13.8 °C)</li>
-  <li><a href="../../../plage/wadenswil-rietliau/en/">Wädenswil – Rietliau</a> (13.7 °C)</li>
-  <li><a href="../../../plage/uetikon/en/">Uetikon am See</a> (13.7 °C)</li>
-  <li><a href="../../../plage/richterswil/en/">Richterswil</a> (13.8 °C)</li>
-  <li><a href="../../../plage/baech/en/">Bäch</a> (13.8 °C)</li>
+  <li><a href="../../../plage/zurich-mythenquai/en/">Zurich – Strandbad Mythenquai</a> (13.7 °C)</li>
+  <li><a href="../../../plage/zurich-seebad-enge/en/">Zurich – Seebad Enge</a> (13.7 °C)</li>
+  <li><a href="../../../plage/zurich-wollishofen/en/">Zurich – Strandbad Wollishofen</a> (13.8 °C)</li>
+  <li><a href="../../../plage/zurich-utoquai/en/">Zurich – Seebad Utoquai</a> (13.7 °C)</li>
+  <li><a href="../../../plage/zurich-tiefenbrunnen/en/">Zurich – Strandbad Tiefenbrunnen</a> (13.8 °C)</li>
+  <li><a href="../../../plage/kilchberg/en/">Kilchberg</a> (13.8 °C)</li>
+  <li><a href="../../../plage/rueschlikon/en/">Rüschlikon</a> (13.8 °C)</li>
+  <li><a href="../../../plage/thalwil/en/">Thalwil</a> (13.7 °C)</li>
+  <li><a href="../../../plage/zollikon/en/">Zollikon</a> (13.8 °C)</li>
+  <li><a href="../../../plage/kuesnacht/en/">Küsnacht</a> (13.7 °C)</li>
+  <li><a href="../../../plage/erlenbach/en/">Erlenbach</a> (13.6 °C)</li>
+  <li><a href="../../../plage/oberrieden/en/">Oberrieden</a> (13.6 °C)</li>
+  <li><a href="../../../plage/feldmeilen/en/">Feldmeilen</a> (13.5 °C)</li>
+  <li><a href="../../../plage/meilen/en/">Meilen</a> (13.6 °C)</li>
+  <li><a href="../../../plage/wadenswil-rietliau/en/">Wädenswil – Rietliau</a> (13.6 °C)</li>
+  <li><a href="../../../plage/uetikon/en/">Uetikon am See</a> (13.6 °C)</li>
+  <li><a href="../../../plage/richterswil/en/">Richterswil</a> (13.6 °C)</li>
+  <li><a href="../../../plage/baech/en/">Bäch</a> (13.6 °C)</li>
   <li><a href="../../../plage/pfaeffikon-sz/en/">Pfäffikon SZ</a> (13.4 °C)</li>
-  <li><a href="../../../plage/rapperswil/en/">Rapperswil</a> (12.8 °C)</li>
+  <li><a href="../../../plage/rapperswil/en/">Rapperswil</a> (12.9 °C)</li>
 </ul>
 <h2>Entry, season and access</h2>
 <p>Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.</p>

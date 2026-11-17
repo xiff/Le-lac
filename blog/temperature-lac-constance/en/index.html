@@ -12,13 +12,12 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/temperature-lac-constance/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/temperature-lac-constance/">
 <script>
-// Arrivée sur le blog : on propose la langue mémorisée par l'app ou, à défaut, celle du navigateur, quand la page existe dans cette langue.
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
   const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
   addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
-  let voulue = localStorage.getItem('langue');
-  if (!L.includes(voulue)) voulue = (navigator.languages?.[0] ?? navigator.language ?? '').slice(0, 2).toLowerCase();
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
   if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
   sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
   const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
@@ -52,7 +51,7 @@
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/portrait-constance-640.webp 640w, ../../../blog/img/min/portrait-constance-1200.webp 1200w, ../../../blog/img/min/portrait-constance-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/portrait-constance.jpg" alt="Romanshorn harbour, sailboats and a ferry, Lake Constance stretching away" srcset="../../../blog/img/min/portrait-constance-640.jpg 640w, ../../../blog/img/min/portrait-constance-1200.jpg 1200w, ../../../blog/img/ia/portrait-constance.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>My Lake shows Lake Constance’s water temperature <strong>70 cm below the surface</strong>, updated every three hours from Eawag’s Alplakes model. For this lake the model gives <strong>a single value for the whole lake</strong>: the 12 beaches we follow all show the same figure.</p></section>
-  <p class="matin">On 15 November 2026, in the morning, the water was at 10.6 °C for the whole lake (70 cm below the surface, Alplakes model).</p>
+  <p class="matin">On 17 November 2026, in the morning, the water was at 10.4 °C for the whole lake (70 cm below the surface, Alplakes model).</p>
 <h2>Where does the Lake Constance temperature come from?</h2>
 <p>The figures come from <strong>Alplakes</strong>, the platform run by Eawag (the Swiss Federal Institute of Aquatic Science and Technology). It combines numerical lake models with satellite data to calculate water temperature at different depths. The data is published under a CC BY 4.0 licence, and My Lake reads it every three hours.</p>
 <p>For Lake Constance, Alplakes provides a <strong>one-dimensional model</strong> (Simstrat): it calculates temperature by depth, but not by location. My Lake reads the value at 70 cm depth and shows it for every beach on the lake.</p>
