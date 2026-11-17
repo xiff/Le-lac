@@ -32,3 +32,19 @@ test('publication programmée : aucun article daté d’un jour futur n’est pu
   const { AUJOURDHUI } = await import('./scripts/articles.mjs');
   assert.ok(ARTICLES.every((a) => a.publie <= AUJOURDHUI));
 });
+
+// Une miniature générée depuis une ancienne image du même nom (photo remplacée par une illustration) n'est jamais refaite : on la détecte ici.
+test('miniatures fidèles à leur image source (pas de reste d’une ancienne image du même nom)', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { existsSync } = await import('node:fs');
+  const px = (f) => execFileSync('convert', [f, '-resize', '16x9!', '-depth', '8', 'rgb:-']);
+  for (const image of new Set(ARTICLES.flatMap((a) => [a.image, a.seconde?.image].filter(Boolean)))) {
+    const src = px(image);
+    for (const ext of ['jpg', 'webp']) {
+      const m = `blog/img/min/${image.split('/').pop().replace('.jpg', `-640.${ext}`)}`;
+      if (!existsSync(m)) continue;
+      const d = px(m).reduce((s, v, i) => s + Math.abs(v - src[i]), 0) / src.length;
+      assert.ok(d < 20, `${m} ne correspond pas à ${image} (écart ${d.toFixed(0)}) : supprimer ses miniatures et relancer node scripts/miniatures.mjs`);
+    }
+  }
+});
