@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The winds of Lake Geneva: bise, vaudaire, joran and séchard · My Lake</title>
+<meta name="description" content="Four winds shape Lake Geneva: the bise, the vaudaire, the joran and the séchard. Where they blow from, how hard, when, and what they do to the water, according to Wikipedia.">
+<link rel="canonical" href="https://monlac.ch/blog/vents-du-leman/en/">
+<link rel="alternate" hreflang="fr" href="https://monlac.ch/blog/vents-du-leman/">
+<link rel="alternate" hreflang="en" href="https://monlac.ch/blog/vents-du-leman/en/">
+<link rel="alternate" hreflang="de" href="https://monlac.ch/blog/vents-du-leman/de/">
+<link rel="alternate" hreflang="it" href="https://monlac.ch/blog/vents-du-leman/it/">
+<link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/vents-du-leman/">
+<script>
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
+// Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
+(() => { try {
+  const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
+  addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
+  if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
+  sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
+  const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
+  if (autre) location.replace(new URL(autre.href).pathname + location.search + location.hash);
+} catch {} })();
+</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="The winds of Lake Geneva: bise, vaudaire, joran and séchard · My Lake">
+<meta property="og:description" content="Four winds shape Lake Geneva: the bise, the vaudaire, the joran and the séchard. Where they blow from, how hard, when, and what they do to the water, according to Wikipedia.">
+<meta property="og:url" content="https://monlac.ch/blog/vents-du-leman/en/">
+<meta property="og:image" content="https://monlac.ch/blog/img/ia/vents-leman.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d4a5c">
+<link rel="icon" href="../../../icon.svg">
+<link rel="stylesheet" href="../../../plage/plage.css">
+<link rel="preload" href="../../../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="../../../spots.js">
+<link rel="preload" href="../../../eau.json" as="fetch" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://monlac.ch/#org","name":"Mon Lac","alternateName":["My Lake","Mein See","Il mio lago"],"url":"https://monlac.ch/","logo":{"@type":"ImageObject","url":"https://monlac.ch/icons/icon-512.png","width":512,"height":512}},{"@type":"WebSite","@id":"https://monlac.ch/#site","name":"Mon Lac","url":"https://monlac.ch/","inLanguage":["fr-CH","en","de-CH","it-CH"],"publisher":{"@id":"https://monlac.ch/#org"}},{"@type":"BlogPosting","@id":"https://monlac.ch/blog/vents-du-leman/en/#article","mainEntityOfPage":"https://monlac.ch/blog/vents-du-leman/en/","url":"https://monlac.ch/blog/vents-du-leman/en/","headline":"The winds of Lake Geneva: bise, vaudaire, joran and séchard","description":"Four winds shape Lake Geneva: the bise, the vaudaire, the joran and the séchard. Where they blow from, how hard, when, and what they do to the water, according to Wikipedia.","image":{"@type":"ImageObject","url":"https://monlac.ch/blog/img/ia/vents-leman.jpg","width":1600,"height":893,"creditText":"My Lake"},"datePublished":"2026-11-16","dateModified":"2026-11-16","inLanguage":"en","author":{"@id":"https://monlac.ch/#org"},"publisher":{"@id":"https://monlac.ch/#org"},"isPartOf":{"@id":"https://monlac.ch/blog/en/#blog"},"about":{"@type":"LakeBodyOfWater","name":"Lac Léman","alternateName":"Lake Geneva","sameAs":"https://www.wikidata.org/wiki/Q6403"},"citation":["https://fr.wikipedia.org/wiki/L%C3%A9man","https://www.alplakes.eawag.ch"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"My Lake","item":"https://monlac.ch/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://monlac.ch/blog/en/"},{"@type":"ListItem","position":3,"name":"The winds of Lake Geneva: bise, vaudaire, joran, séchard","item":"https://monlac.ch/blog/vents-du-leman/en/"}]}]}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
+</head>
+<body>
+<header>
+  <div class="haut"><a class="marque" translate="no" href="../../../?lang=en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>My Lake</a><nav class="langues" translate="no" aria-label="Language"><a href="../../../blog/vents-du-leman/" hreflang="fr" lang="fr" title="Français" aria-label="Français">FR</a><a href="../../../blog/vents-du-leman/de/" hreflang="de" lang="de" title="Deutsch" aria-label="Deutsch">DE</a><a href="../../../blog/vents-du-leman/it/" hreflang="it" lang="it" title="Italiano" aria-label="Italiano">IT</a></nav></div>
+  <nav class="ariane" aria-label="Breadcrumb"><a href="../../../?lang=en">My Lake</a> › <a href="../../../blog/en/">Blog</a></nav>
+  <h1>The winds of Lake Geneva: bise, vaudaire, joran, séchard</h1>
+  <p class="releve">By the My Lake team · published <time datetime="2026-11-16">16 November 2026</time></p>
+</header>
+<main class="article">
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/vents-leman-640.webp 640w, ../../../blog/img/min/vents-leman-1200.webp 1200w, ../../../blog/img/min/vents-leman-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/vents-leman.jpg" alt="The Pâquis jetty, flags stretched by the wind, Lake Geneva’s waves" srcset="../../../blog/img/min/vents-leman-640.jpg 640w, ../../../blog/img/min/vents-leman-1200.jpg 1200w, ../../../blog/img/ia/vents-leman.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
+  <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>Lake Geneva has four main winds: the <strong>bise</strong> (north-east, cold and dry, 15 to 90 km/h), the <strong>vaudaire</strong> (south-east, over 50 km/h on the upper lake), the <strong>joran</strong> (north-west, often in spring, up to over 100 km/h) and the <strong>séchard</strong> (a light daytime breeze). More than anything, it is the winds that drive the lake’s currents.</p></section>
+  <h2>What are the winds of Lake Geneva?</h2>
+<ul class="liste">
+  <li><strong>The bise</strong>: a cold, dry fair-weather wind from the north-east. It usually forms between a high to the north and a low over the Gulf of Genoa. It blows unevenly, between 15 and 90 km/h, and settles in for 3 to 10 days. <a href="../../../blog/bise-leman/en/">Our article on the bise</a>.</li>
+  <li><strong>The vaudaire</strong>: a south-easterly that hits the upper lake, on the French and Swiss sides, blowing at over 50 km/h.</li>
+  <li><strong>The joran</strong>: a north-westerly on the Swiss north shore, frequent in spring; it can exceed 100 km/h.</li>
+  <li><strong>The séchard</strong>: a light breeze blowing by day over the Petit and Grand lac.</li>
+</ul>
+<h2>What do winds do to the water?</h2>
+<p>According to Wikipedia, the currents caused by the mechanical action of the wind are the most important in the lake: first at the surface, then, in response, currents at depth running the opposite way. The wind also keeps the <a href="../../../blog/seiches-leman/en/">seiches</a> going.</p>
+<h2>And for swimming and paddling?</h2>
+<p>A steady wind means waves and current: <a href="../../../blog/paddle-leman/en/">paddling</a> and swimming call for a look at the forecast. The app’s beach-by-beach verdict takes wind and gusts into account.</p>
+<p>The current wind, water temperature and bise, beach by beach, are in the <a href="../../../?lang=en">My Lake app</a>.</p>
+  <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">Lake Geneva’s water right now</h2>
+    <p id="eau-live">Each beach’s water temperature is in <a href="../../../?lang=en">the My Lake app</a>, updated every three hours.</p></section>
+  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">Sources</h2><ul>
+    <li><a href="https://fr.wikipedia.org/wiki/L%C3%A9man">Wikipédia, « Léman »</a></li>
+    <li><a href="https://www.alplakes.eawag.ch">Alplakes, Eawag (CC BY 4.0)</a></li>
+  </ul></section>
+  <a class="bouton" href="../../../?lang=en">See the lake today</a>
+</main>
+<footer class="pied">
+  <span>Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.<br>No account, no cookies. Audience measurement by Umami, cookie-free, data hosted in Europe.</span>
+  <div class="liens"><a href="../../../presentation/en/">About</a><a href="../../../plage/en/">All beaches</a><a href="../../../blog/en/">Blog</a><a href="../../../confidentialite/en/">Privacy</a></div>
+</footer>
+<script type="module">
+// Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
+import { SPOTS, valeurProche } from '../../../spots.js';
+const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
+// Les plages du lac dont parle l'article (le Léman par défaut).
+const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
+else if (v.length) {
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });
+  document.getElementById('eau-live').innerHTML = "Right now, the water ranges from <strong>§F</strong> at §FA to <strong>§C</strong> at §CA, 70 cm below the surface. Each beach’s details are in <a href=\"../../../?lang=en\">the app</a>."
+    .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
+}
+</script>
+</body>
+</html>
