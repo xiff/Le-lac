@@ -24,51 +24,51 @@ const LR = ['Lugano Region, « Traversata Lago di Lugano 2026 »', 'https://www.
 export const articlesTraversees = () => [
   art('seeueberquerung-zurich', 'seeueberquerung-zurich', 'zurich',
     ['Le lac de Zurich vu du Strandbad Mythenquai un matin d’été, des bouées alignées vers la rive d’en face', 'Lake Zurich from Strandbad Mythenquai on a summer morning, buoys lined up towards the far shore', 'Der Zürichsee vom Strandbad Mythenquai an einem Sommermorgen, Bojen bis zum anderen Ufer', 'Il lago di Zurigo dallo Strandbad Mythenquai in un mattino d’estate, boe allineate verso l’altra riva'],
-    [MS_ZH, ZKB, ZH_FORM], {
+    [MS_ZH, ZKB, ZH_FORM, ['badi-info.ch, « Zürich – die Badi-Metropole » (dates 2027)', 'https://www.badi-info.ch/zueri-badis.html']], {
     de: { titre: 'Seeüberquerung Zürich 2027: Datum, Tickets, Strecke', h1: 'Stadtzürcher Seeüberquerung 2027: was man schon weiss',
-      desc: 'Die Stadtzürcher Seeüberquerung: 1500 m vom Strandbad Mythenquai zum Strandbad Tiefenbrunnen, Tickets auf Ticketcorner, ab 21 °C Wassertemperatur. Datum 2027 noch nicht bekannt, die Eckdaten von 2026.',
-      bref: 'Die <strong>Seeüberquerung</strong> führt über <strong>1500 Meter</strong> vom Strandbad Mythenquai zum Strandbad Tiefenbrunnen, mit bis zu <strong>9000 Schwimmenden</strong>. Das <strong>Datum 2027 ist noch nicht angekündigt</strong> (Stand 18. November 2026); 2026 war ein Mittwoch Anfang Juli vorgesehen, mit zwei Ersatzdaten.',
+      desc: 'Die Stadtzürcher Seeüberquerung: 1500 m vom Strandbad Mythenquai zum Strandbad Tiefenbrunnen, Tickets auf Ticketcorner, ab 21 °C Wassertemperatur. 2027 am Mittwoch, 30. Juni geplant, Ersatzdaten 7. Juli und 18. August.',
+      bref: 'Die <strong>Seeüberquerung</strong> führt über <strong>1500 Meter</strong> vom Strandbad Mythenquai zum Strandbad Tiefenbrunnen, mit bis zu <strong>9000 Schwimmenden</strong>. 2027 ist sie am <strong>Mittwoch, 30. Juni</strong> geplant, mit den Ersatzdaten 7. Juli und 18. August (badi-info.ch, Stand 18. November 2026).',
       corps: `
 <h2>Wie läuft sie ab?</h2>
 <p>Die Strecke misst 1500 Meter zwischen den Strandbädern Mythenquai und Tiefenbrunnen. Es ist kein Wettkampf: Zeiten werden nicht gemessen (Zürcher Kantonalbank). Teilnehmen können geübte Schwimmerinnen und Schwimmer ab 12 Jahren (MySwitzerland).</p>
 <h2>Wann findet sie statt?</h2>
-<p>Das Datum 2027 ist noch nicht bekannt. 2026 war ein Mittwoch Anfang Juli geplant, mit zwei Ersatzdaten bei schlechtem Wetter oder zu kaltem Wasser: Voraussetzung ist eine Wassertemperatur von über 21 °C. Wir ergänzen diesen Artikel, sobald das Datum feststeht.</p>
+<p>2027 ist die Seeüberquerung am Mittwoch, 30. Juni geplant; Ersatzdaten sind der 7. Juli und der 18. August (badi-info.ch). Sie findet nur bei gutem Wetter und einer Wassertemperatur von über 21 °C statt.</p>
 <h2>Tickets</h2>
 ${UL('Verkauf auf Ticketcorner, ab dem Montag vor der Überquerung um 12 Uhr (MySwitzerland).', 'Gruppen ab 10 Personen melden sich bei der Stadtpolizei an und brauchen ein Begleitboot mit Schiffsführer, wegen des dichten Bootsverkehrs im Seebecken (Formular der Stadtpolizei).')}
 <h2>Vorbereitung</h2>
 <p>1500 Meter im offenen See sind etwas anderes als im Becken: vorher ein paar Mal im See schwimmen, die Distanz kennen, nie überschätzen. Die Wassertemperatur vom Mythenquai und vom Tiefenbrunnen zeigt unsere App jeden Morgen.</p>` },
     fr: { titre: 'Traversée du lac de Zurich 2027 (Seeüberquerung) : date, billets, parcours', h1: 'La traversée du lac de Zurich 2027 : ce que l’on sait déjà',
-      desc: 'La Stadtzürcher Seeüberquerung : 1500 m du Strandbad Mythenquai au Strandbad Tiefenbrunnen, billets sur Ticketcorner, eau à plus de 21 °C. Date 2027 pas encore annoncée, les repères de 2026.',
-      bref: 'La <strong>Seeüberquerung</strong> traverse le lac de Zurich sur <strong>1500 mètres</strong>, du Strandbad Mythenquai au Strandbad Tiefenbrunnen, avec jusqu’à <strong>9000 nageurs</strong>. La <strong>date 2027 n’est pas encore annoncée</strong> (au 18 novembre 2026) ; en 2026, elle était prévue un mercredi début juillet, avec deux dates de réserve.',
+      desc: 'La Stadtzürcher Seeüberquerung : 1500 m du Strandbad Mythenquai au Strandbad Tiefenbrunnen, billets sur Ticketcorner, eau à plus de 21 °C. Prévue le mercredi 30 juin 2027, dates de réserve les 7 juillet et 18 août.',
+      bref: 'La <strong>Seeüberquerung</strong> traverse le lac de Zurich sur <strong>1500 mètres</strong>, du Strandbad Mythenquai au Strandbad Tiefenbrunnen, avec jusqu’à <strong>9000 nageurs</strong>. En 2027, elle est prévue le <strong>mercredi 30 juin</strong>, avec les dates de réserve du 7 juillet et du 18 août (badi-info.ch, au 18 novembre 2026).',
       corps: `
 <h2>Comment ça se passe ?</h2>
 <p>Le parcours fait 1500 mètres entre les bains de Mythenquai et de Tiefenbrunnen. Ce n’est pas une course : aucun temps n’est mesuré (Banque cantonale de Zurich). Elle est ouverte aux nageurs entraînés dès 12 ans (MySwitzerland).</p>
 <h2>Quand ?</h2>
-<p>La date 2027 n’est pas encore connue. En 2026, elle était prévue un mercredi début juillet, avec deux dates de réserve si la météo ou l’eau ne suivent pas : il faut une eau à plus de 21 °C. Nous compléterons cet article dès l’annonce.</p>
+<p>En 2027, la traversée est prévue le mercredi 30 juin, avec des dates de réserve les 7 juillet et 18 août (badi-info.ch). Elle n’a lieu que par beau temps et avec une eau à plus de 21 °C.</p>
 <h2>Billets</h2>
 ${UL('Vente sur Ticketcorner, à partir du lundi précédant la traversée à midi (MySwitzerland).', 'Les groupes de 10 personnes et plus s’annoncent à la police municipale et doivent être suivis par un bateau avec un pilote, à cause du trafic dense dans le bassin (formulaire de la police).')}
 <h2>Se préparer</h2>
 <p>1500 mètres en lac, ce n’est pas la piscine : nager plusieurs fois en lac avant, connaître sa distance, ne pas se surestimer. L’eau du jour à Mythenquai et à Tiefenbrunnen est dans l’app chaque matin.</p>` },
     en: { titre: 'Lake Zurich crossing 2027 (Seeüberquerung): date, tickets, route', h1: 'The 2027 Lake Zurich crossing: what we already know',
-      desc: 'The Stadtzürcher Seeüberquerung: 1,500 m from Strandbad Mythenquai to Strandbad Tiefenbrunnen, tickets on Ticketcorner, water above 21 °C. 2027 date not yet announced; the 2026 pattern.',
-      bref: 'The <strong>Seeüberquerung</strong> crosses Lake Zurich over <strong>1,500 metres</strong>, from Strandbad Mythenquai to Strandbad Tiefenbrunnen, with up to <strong>9,000 swimmers</strong>. The <strong>2027 date is not yet announced</strong> (as of 18 November 2026); in 2026 it was planned for a Wednesday in early July, with two reserve dates.',
+      desc: 'The Stadtzürcher Seeüberquerung: 1,500 m from Strandbad Mythenquai to Strandbad Tiefenbrunnen, tickets on Ticketcorner, water above 21 °C. Planned for Wednesday 30 June 2027, reserve dates 7 July and 18 August.',
+      bref: 'The <strong>Seeüberquerung</strong> crosses Lake Zurich over <strong>1,500 metres</strong>, from Strandbad Mythenquai to Strandbad Tiefenbrunnen, with up to <strong>9,000 swimmers</strong>. In 2027 it is planned for <strong>Wednesday 30 June</strong>, with reserve dates on 7 July and 18 August (badi-info.ch, as of 18 November 2026).',
       corps: `
 <h2>How does it work?</h2>
 <p>The course is 1,500 metres between the Mythenquai and Tiefenbrunnen lidos. It is not a race: no times are taken (Zürcher Kantonalbank). It is open to trained swimmers aged 12 and over (MySwitzerland).</p>
 <h2>When?</h2>
-<p>The 2027 date is not yet known. In 2026 it was planned for a Wednesday in early July, with two reserve dates in case of bad weather or cold water: the water must be above 21 °C. We will update this article as soon as it is announced.</p>
+<p>In 2027 the crossing is planned for Wednesday 30 June, with reserve dates on 7 July and 18 August (badi-info.ch). It only goes ahead in good weather with water above 21 °C.</p>
 <h2>Tickets</h2>
 ${UL('Sold on Ticketcorner, from noon on the Monday before the crossing (MySwitzerland).', 'Groups of 10 or more register with the city police and need an escort boat with a licensed skipper, because of heavy boat traffic in the basin (police form).')}
 <h2>Getting ready</h2>
 <p>1,500 metres in open water is not a pool: swim in the lake a few times first, know your distance, do not overestimate yourself. Today’s water at Mythenquai and Tiefenbrunnen is in the app every morning.</p>` },
     it: { titre: 'Traversata del lago di Zurigo 2027 (Seeüberquerung): data, biglietti, percorso', h1: 'La traversata del lago di Zurigo 2027: cosa si sa già',
-      desc: 'La Stadtzürcher Seeüberquerung: 1500 m dallo Strandbad Mythenquai allo Strandbad Tiefenbrunnen, biglietti su Ticketcorner, acqua sopra i 21 °C. Data 2027 non ancora annunciata, i riferimenti del 2026.',
-      bref: 'La <strong>Seeüberquerung</strong> attraversa il lago di Zurigo per <strong>1500 metri</strong>, dallo Strandbad Mythenquai allo Strandbad Tiefenbrunnen, con fino a <strong>9000 nuotatori</strong>. La <strong>data 2027 non è ancora annunciata</strong> (al 18 novembre 2026); nel 2026 era prevista un mercoledì di inizio luglio, con due date di riserva.',
+      desc: 'La Stadtzürcher Seeüberquerung: 1500 m dallo Strandbad Mythenquai allo Strandbad Tiefenbrunnen, biglietti su Ticketcorner, acqua sopra i 21 °C. Prevista mercoledì 30 giugno 2027, date di riserva 7 luglio e 18 agosto.',
+      bref: 'La <strong>Seeüberquerung</strong> attraversa il lago di Zurigo per <strong>1500 metri</strong>, dallo Strandbad Mythenquai allo Strandbad Tiefenbrunnen, con fino a <strong>9000 nuotatori</strong>. Nel 2027 è prevista <strong>mercoledì 30 giugno</strong>, con date di riserva il 7 luglio e il 18 agosto (badi-info.ch, al 18 novembre 2026).',
       corps: `
 <h2>Come funziona?</h2>
 <p>Il percorso è di 1500 metri tra i lidi di Mythenquai e Tiefenbrunnen. Non è una gara: i tempi non vengono misurati (Zürcher Kantonalbank). È aperta ai nuotatori allenati dai 12 anni (MySwitzerland).</p>
 <h2>Quando?</h2>
-<p>La data 2027 non è ancora nota. Nel 2026 era prevista un mercoledì di inizio luglio, con due date di riserva in caso di maltempo o acqua fredda: l’acqua deve superare i 21 °C. Aggiorneremo l’articolo appena sarà annunciata.</p>
+<p>Nel 2027 la traversata è prevista mercoledì 30 giugno, con date di riserva il 7 luglio e il 18 agosto (badi-info.ch). Si svolge solo con bel tempo e acqua sopra i 21 °C.</p>
 <h2>Biglietti</h2>
 ${UL('In vendita su Ticketcorner, dal lunedì precedente la traversata a mezzogiorno (MySwitzerland).', 'I gruppi di 10 persone o più si annunciano alla polizia cittadina e devono essere accompagnati da una barca con conducente, per il traffico intenso nel bacino (modulo della polizia).')}
 <h2>Prepararsi</h2>

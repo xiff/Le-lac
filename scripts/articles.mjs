@@ -12,6 +12,7 @@ import { articlesHiver } from './articles.hiver.mjs';
 import { articlesNoel } from './articles.noel.mjs';
 import { articlesTraversees } from './articles.traversees.mjs';
 import { articlePilier } from './articles.pilier.mjs';
+import { articleBadis } from './articles.badis.mjs';
 import { articlesComprendre } from './articles.comprendre.mjs';
 import { articlesGuides } from './articles.guides.mjs';
 import { articlesSecurite } from './articles.securite.mjs';
@@ -710,7 +711,7 @@ ${listeLoc(['paddle', 'kayak', 'pedalo', 'bateau', 'wakeboard', 'wakesurf', 'ski
 // Traductions allemandes et italiennes (scripts/articles.de.mjs, articles.it.mjs) ; un article sans traduction n'existe pas dans cette langue.
 const TRAD = { de: creerDe({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }), it: creerIt({ listePlages, listeLieux, listeLoc, nbLieux: LIEUX.filter((x) => ZONES[x.zone]).length, nbRive: SPOTS.filter((s) => s.region === 'Rive française').length, SPOTS }) };
 for (const a of ARTICLES) for (const l of ['de', 'it']) if (TRAD[l][a.slug]) a[l] = TRAD[l][a.slug];
-ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver(), ...articlesNoel(), ...articlesTraversees(), articlePilier());
+ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...articlesBaignade(), ...articlesHiver(), ...articlesNoel(), ...articlesTraversees(), articlePilier(), articleBadis());
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
@@ -749,7 +750,7 @@ const DATES = {
   'temperature-lac-morat': ['2026-11-11'], 'plages-lac-untersee': ['2026-11-12', '2026-11-13'],
   'temperature-lac-brienz': ['2026-11-12'], 'plages-lac-baldegg': ['2026-11-12', '2026-11-13'],
   'coupe-de-noel-geneve': ['2026-11-15'],
-  'ou-se-baigner-en-suisse': ['2026-11-29'], 'seeueberquerung-zurich': ['2026-12-02'], 'limmatschwimmen-zurich': ['2026-12-09'], 'seeueberquerung-luzern': ['2026-12-16'], 'traversata-lago-di-lugano': ['2026-12-22'], 'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
+  'ou-se-baigner-en-suisse': ['2026-11-29'], 'badis-zurich': ['2026-12-04'], 'seeueberquerung-zurich': ['2026-12-02'], 'limmatschwimmen-zurich': ['2026-12-09'], 'seeueberquerung-luzern': ['2026-12-16'], 'traversata-lago-di-lugano': ['2026-12-22'], 'bienfaits-bain-froid': ['2026-11-15'], 'respiration-eau-froide': ['2026-11-15'], 'programme-4-semaines-bain-d-hiver': ['2026-11-15'],
   'neoprene-bain-d-hiver': ['2026-11-15'], 'bain-d-hiver-en-groupe-suisse': ['2026-11-15'],
   // « Comprendre le lac » : deux par jour, thèmes mélangés ; un article daté d'un jour futur n'est publié qu'à cette date (voir plus bas).
   'vents-du-leman': ['2026-11-16'], 'lacs-les-plus-chauds-et-les-plus-froids': ['2026-11-16'],
