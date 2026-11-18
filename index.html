@@ -235,10 +235,25 @@
   .panneau { transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
   @starting-style { .panneau { opacity: 0; transform: translateY(6px); } }
   nav { position: fixed; left: 0; right: 0; bottom: 0; background: var(--carte); border-top: 1px solid var(--trait); box-shadow: 0 -6px 20px #10292f12; padding: 8px 20px calc(8px + env(safe-area-inset-bottom)); z-index: 5; }
-  .onglets { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 460px; margin: 0 auto; }
-  .onglets::before { content: ""; position: absolute; inset: 0 66.666% 0 0; border-radius: 14px; background: var(--n3-bg); transition: transform 250ms var(--ease-in-out); }
+  .onglets { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); max-width: 520px; margin: 0 auto; }
+  .onglets::before { content: ""; position: absolute; inset: 0 75% 0 0; border-radius: 14px; background: var(--n3-bg); transition: transform 250ms var(--ease-in-out); }
   .onglets[data-actif="sortir"]::before { transform: translateX(100%); }
   .onglets[data-actif="louer"]::before { transform: translateX(200%); }
+  .onglets[data-actif="lire"]::before { transform: translateX(300%); }
+  /* Onglet Lire : un article à la une, puis la liste */
+  #filtres-lire { flex-wrap: wrap; }
+  #filtres-lire button { white-space: nowrap; }
+  .lire-une, .lire-ligne { display: flex; text-decoration: none; color: inherit; }
+  .lire-une { flex-direction: column; margin-top: 16px; background: var(--carte); border-radius: 18px; overflow: hidden; box-shadow: 0 1px 3px #10292f14; }
+  .lire-une img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .lire-une span { display: block; padding: 0 16px; }
+  .lire-une .meta { padding-top: 12px; }
+  .lire-une b { display: block; padding: 4px 16px 16px; font: 400 1.3rem/1.2 var(--display); }
+  .lire-ligne { gap: 12px; align-items: center; min-height: 64px; margin-top: 14px; }
+  .lire-ligne img { width: 96px; height: 64px; border-radius: 12px; object-fit: cover; flex: 0 0 auto; }
+  .lire-ligne b { display: block; font-weight: 500; line-height: 1.25; }
+  .lire-une .meta, .lire-ligne .meta { color: var(--doux); font-size: .8rem; font-weight: 600; }
+  .lire-tout { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; font-weight: 600; color: var(--lac-vif); }
   .onglets button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; border: 0; background: none; padding: 8px; min-height: 56px; color: var(--doux); font-weight: 600; font-size: .8rem; transition: transform 160ms var(--ease-out), color 150ms ease; }
   .onglets button[aria-selected="true"] { color: var(--n3); }
 
@@ -292,6 +307,7 @@
   <symbol id="i-meteo-orage" viewBox="0 0 24 24"><path d="M7 15.5h10.5a4 4 0 0 0 .5-7.97 6 6 0 0 0-11.5-1.1A4.6 4.6 0 0 0 7 15.5Z"/><path d="m12.8 13.5-2.3 4h3l-2.3 4"/></symbol>
   <symbol id="i-vagues" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
   <symbol id="i-paddle" viewBox="0 0 24 24"><path d="M5 19 15.5 8.5"/><path d="M14 4.5c1.6-1.6 4.4-1.4 5.7-.2 1.2 1.3 1.4 4.1-.2 5.7l-2.3 2.3-5.5-5.5Z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0"/></symbol>
+  <symbol id="i-livre" viewBox="0 0 24 24"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3Z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7Z"/></symbol>
   <symbol id="i-verre" viewBox="0 0 24 24"><path d="M8 22h8M12 11v11"/><path d="m19 3-7 8-7-8Z"/></symbol>
   <symbol id="i-couverts" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
   <symbol id="i-partage" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
@@ -393,6 +409,11 @@
     <div id="locations"></div>
     <p class="note" data-t="noteLoc">Prix, horaires et disponibilités : à vérifier auprès du loueur avant d’y aller.</p>
   </div>
+
+  <div id="p-lire" class="panneau" role="tabpanel" aria-labelledby="t-lire" hidden>
+    <div class="filtres" id="filtres-lire" role="group" data-ta="ongletLire" aria-label="Lire"></div>
+    <div id="lire"></div>
+  </div>
 </main>
 
 <nav data-ta="sections" aria-label="Sections">
@@ -400,6 +421,7 @@
     <button role="tab" id="t-lac" aria-selected="true" aria-controls="p-lac"><svg class="i" aria-hidden="true"><use href="#i-vagues"/></svg><span data-t="ongletLac">Le lac</span></button>
     <button role="tab" id="t-sortir" aria-selected="false" aria-controls="p-sortir"><svg class="i" aria-hidden="true"><use href="#i-verre"/></svg><span data-t="ongletSortir">Sortir</span></button>
     <button role="tab" id="t-louer" aria-selected="false" aria-controls="p-louer"><svg class="i" aria-hidden="true"><use href="#i-paddle"/></svg><span data-t="ongletLouer">Louer</span></button>
+    <button role="tab" id="t-lire" aria-selected="false" aria-controls="p-lire"><svg class="i" aria-hidden="true"><use href="#i-livre"/></svg><span data-t="ongletLire">Lire</span></button>
   </div>
 </nav>
 <div class="toast" id="toast" role="status"></div>
@@ -463,7 +485,7 @@ const spot = () => SPOTS[sel.value] ?? SPOTS[0];
 
 // Onglets : affichés tout de suite au toucher (Safari iOS ratait le changement quand il dépendait de l'historique).
 // L'historique ne sert qu'au bouton retour : une seule entrée d'onglet au plus, le retour revient au lac.
-const ONGLETS = ['lac', 'sortir', 'louer'];
+const ONGLETS = ['lac', 'sortir', 'louer', 'lire'];
 const ongletUrl = () => (ONGLETS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'lac');
 let actif = 'lac';
 const ongletActif = () => actif;
@@ -473,6 +495,7 @@ function ouvrir(o = ongletUrl()) {
   actif = o;
   $('onglets').dataset.actif = actif;
   for (const x of ONGLETS) { $('t-' + x).setAttribute('aria-selected', x === actif); $('t-' + x).tabIndex = x === actif ? 0 : -1; $('p-' + x).hidden = x !== actif; }
+  if (actif === 'lire') afficherLire();
 }
 function allerA(o) {
   if (o === actif) return;
@@ -491,7 +514,7 @@ addEventListener('popstate', () => ouvrir()); addEventListener('hashchange', () 
 // Flèches gauche/droite entre les onglets, comme le prévoit le motif ARIA des onglets.
 $('onglets').onkeydown = (e) => {
   if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-  const i = ONGLETS.indexOf(ongletActif()), cible = ONGLETS[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3];
+  const i = ONGLETS.indexOf(ongletActif()), cible = ONGLETS[(i + (e.key === 'ArrowRight' ? 1 : ONGLETS.length - 1)) % ONGLETS.length];
   allerA(cible); $('t-' + cible).focus(); e.preventDefault();
 };
 // Un lien /#louer ouvre cet onglet ; un rechargement ou un retour revient toujours sur le lac.
@@ -864,6 +887,23 @@ $('partager-bains').onclick = () => {
   const lignes = l.slice(-10).reverse().map((b) => `• ${dateBain(b.d, true)}${b.plage ? ` · ${b.plage}` : ''}${b.eau == null ? '' : ` · ${b.eau}°`}`);
   partager(`${T.partageBains(l.length, sa.replace('-', '–'))}\n${lignes.join('\n')}${l.length > 10 ? '\n…' : ''}\n${T.quiMeSuit}`);
 };
+
+// Onglet Lire : le flux des articles du blog (blog/flux.json, régénéré avec le blog), chargé au premier affichage.
+let fluxLire, filtreLire = '';
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+async function afficherLire() {
+  fluxLire ??= fetch('blog/flux.json').then((r) => r.json()).catch(() => null);
+  const f = (await fluxLire)?.[LANGUE] ?? (await fluxLire)?.fr;
+  if (!f) { $('lire').innerHTML = `<p class="note"><a class="lire-tout" href="blog/">${esc(T.ongletLire)} →</a></p>`; return; }
+  $('filtres-lire').innerHTML = ['', ...Object.keys(f.themes)].map((k) => `<button aria-pressed="${k === filtreLire}" data-theme="${k}">${esc(k ? f.themes[k] : f.tout)}</button>`).join('');
+  const l = f.articles.filter((a) => !filtreLire || a.theme === filtreLire);
+  const img = (a, w) => `<picture><source type="image/webp" srcset="${a.img}-${w}.webp"><img src="${a.img}-${w}.jpg" alt="" loading="lazy"></picture>`;
+  const meta = (a) => `<span class="meta">${esc(f.themes[a.theme])} · ${esc(a.date)}</span>`;
+  $('lire').innerHTML = (l[0] ? `<a class="lire-une" href="${l[0].url}">${img(l[0], 1000)}${meta(l[0])}<b>${esc(l[0].titre)}</b></a>` : '')
+    + l.slice(1, 12).map((a) => `<a class="lire-ligne" href="${a.url}">${img(a, 640)}<span>${meta(a)}<b>${esc(a.titre)}</b></span></a>`).join('')
+    + `<a class="lire-tout" href="${f.blog}">${esc(T.lireTout)} →</a>`;
+}
+$('filtres-lire').onclick = (e) => { const b = e.target.closest('button'); if (!b) return; filtreLire = b.dataset.theme; afficherLire(); };
 
 let minuterie;
 function toast(t) { $('toast').textContent = t; $('toast').classList.add('on'); clearTimeout(minuterie); minuterie = setTimeout(() => $('toast').classList.remove('on'), 2200); }

@@ -138,3 +138,12 @@ body.large footer { max-width: 1080px; }
 .legal ul { list-style: disc; padding-left: 20px; }
 .legal li { margin: 8px 0; }
 .legal .releve { margin-top: 32px; color: var(--doux); font-size: 14px; }
+
+/* Bloc « Sur ce lac » en bas des pages de plage */
+.sur-lac-une, .sur-lac-ligne { display: flex; color: inherit; text-decoration: none; }
+.sur-lac-une { flex-direction: column; margin-top: 12px; background: var(--carte); border-radius: 18px; overflow: hidden; box-shadow: 0 1px 3px #10292f14; }
+.sur-lac-une img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.sur-lac-une b { padding: 12px 16px 16px; font: 400 20px/1.25 var(--display, "Young Serif", Georgia, serif); }
+.sur-lac-ligne { gap: 12px; align-items: center; min-height: 56px; margin-top: 12px; }
+.sur-lac-ligne img { width: 88px; height: 56px; border-radius: 10px; object-fit: cover; display: block; flex: 0 0 auto; }
+.sur-lac-tout { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-weight: 600; }

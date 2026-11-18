@@ -189,6 +189,12 @@ ${pied(L, r)}
 `;
 }
 
+// Flux pour l'onglet « Lire » de l'app : articles publiés, du plus récent au plus ancien, chemins relatifs à la racine du site.
+export const flux = () => Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, {
+  themes: Object.fromEntries(Object.entries(THEMES).map(([k, v]) => [k, v[l]])), tout: TXT[l].tout, blog: `blog/${SUF[l]}`,
+  articles: [...articles(l)].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ url: `blog/${a.slug}/${SUF[l]}`, titre: a[l].titre, theme: theme(a), date: dateL(a.publie, l),
+    img: `blog/img/min/${a.image.split('/').pop().replace('.jpg', '')}` })) }]));
+
 export const URLS_BLOG = LANGUES.flatMap((l) => (articles(l).length ? [`blog/${SUF[l]}`, ...articles(l).map((a) => `blog/${a.slug}/${SUF[l]}`)] : []));
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -201,5 +207,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       await writeFile(`blog/${a.slug}/${SUF[l]}index.html`, article(a, l));
     }
   }
+  await writeFile('blog/flux.json', JSON.stringify(flux()));
   console.log(`Blog : ${LANGUES.map((l) => `${articles(l).length} articles en ${l}`).join(', ')}.`);
 }

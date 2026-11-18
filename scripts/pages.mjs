@@ -6,6 +6,7 @@ import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG } from './blog.mjs';
+import { ARTICLES } from './articles.mjs';
 import { pied, langues } from './pied.mjs';
 
 const BASE = 'https://monlac.ch/';
@@ -39,7 +40,7 @@ const TXT = {
     desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
     yAller: 'Y aller', attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
     releve: 'conditions mises à jour toutes les 3 heures', ouvrir: (n) => `Ouvrir ${n} dans l’app`, act: 'Sur l’eau aujourd’hui',
-    actsVide: 'Baignade, paddle, voile et bain d’hiver : la note de chaque activité s’affiche ici.', voisines: 'Les plages voisines',
+    actsVide: 'Baignade, paddle, voile et bain d’hiver : la note de chaque activité s’affiche ici.', surLac: 'Sur ce lac', tousArticles: 'Tous les articles du blog', voisines: 'Les plages voisines',
     lieux: 'Un verre ou un repas dans le coin', saison: ' · ouvert en saison', donnees: 'D’où viennent ces chiffres',
     texte: (n, l, m) => `${!m ? `Aucun modèle ne calcule encore la température de l’eau ici : l’app ne l’affiche donc pas, plutôt que d’inventer un chiffre.` : m === 'simstrat' ? `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le ${l} sur sa verticale : une seule valeur à 70 cm pour tout le lac, toutes les trois heures.` : `La température de l’eau à ${n} vient du modèle Alplakes de l’Eawag, qui calcule le ${l} en trois dimensions : on lit la valeur à 70 cm sous la surface, devant la plage, toutes les trois heures.`} Le vent et l’air viennent d’Open-Meteo. La qualité de l’eau de baignade n’est affichée que si une analyse de moins de 30 jours existe (canton de Genève pour les plages genevoises) ; sinon, vérifie-la à la source auprès du canton ou de la CIPEL, liens en bas de page. Le verdict est calculé par l’app Mon Lac à partir de ces données. Indicatif : le lac a toujours le dernier mot.`,
     app: 'Mon Lac',
@@ -54,7 +55,7 @@ const TXT = {
     desc: (n, r, l) => `Water temperature at 70 cm at ${n} (${r === l ? l : `${r}, ${l}`}), wind, bise and today’s verdict for swimming, paddle and sailing. Updated every 3 hours.`,
     yAller: 'Get there', attente: 'Checking the lake…', eau: 'water at 70 cm', air: 'air', vent: 'wind km/h',
     releve: 'conditions updated every 3 hours', ouvrir: (n) => `Open ${n} in the app`, act: 'On the water today',
-    actsVide: 'Swimming, paddle, sailing and winter swim: each activity’s rating appears here.', voisines: 'Nearby beaches',
+    actsVide: 'Swimming, paddle, sailing and winter swim: each activity’s rating appears here.', surLac: 'About this lake', tousArticles: 'All blog articles', voisines: 'Nearby beaches',
     lieux: 'A drink or a meal nearby', saison: ' · open in season', donnees: 'Where these figures come from',
     texte: (n, l, m) => `${!m ? `No model computes the water temperature here yet, so the app does not show one rather than make up a figure.` : m === 'simstrat' ? `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes ${l} along its depth: one value at 70 cm for the whole lake, every three hours.` : `The water temperature at ${n} comes from the Alplakes model by Eawag, which computes ${l} in three dimensions: we read the value 70 cm below the surface, in front of the beach, every three hours.`} Wind and air come from Open-Meteo. Bathing water quality is only shown when a test less than 30 days old exists (Canton of Geneva for Geneva beaches); otherwise check it at the source with the canton or CIPEL, links at the bottom of the page. The verdict is computed by the My Lake app from this data. For guidance only: the lake always has the last word.`,
     app: 'My Lake',
@@ -69,7 +70,7 @@ const TXT = {
     desc: (n, r, l) => `Wassertemperatur in 70 cm Tiefe in ${n} (${r === l ? l : `${r}, ${l}`}), Wind, Bise und Tagesurteil fürs Baden, Paddeln und Segeln. Alle 3 Stunden aktualisiert.`,
     yAller: 'Hinfahren', attente: 'Wir schauen auf den See…', eau: 'Wasser in 70 cm', air: 'Luft', vent: 'Wind km/h',
     releve: 'Bedingungen alle 3 Stunden aktualisiert', ouvrir: (n) => `${n} in der App öffnen`, act: 'Heute auf dem Wasser',
-    actsVide: 'Baden, Paddeln, Segeln und Winterbaden: Hier erscheint die Bewertung jeder Aktivität.', voisines: 'Badeplätze in der Nähe',
+    actsVide: 'Baden, Paddeln, Segeln und Winterbaden: Hier erscheint die Bewertung jeder Aktivität.', surLac: 'Rund um diesen See', tousArticles: 'Alle Blogartikel', voisines: 'Badeplätze in der Nähe',
     lieux: 'Ein Drink oder eine Mahlzeit in der Nähe', saison: ' · in der Saison geöffnet', donnees: 'Woher diese Zahlen kommen',
     texte: (n, l, m) => `${!m ? `Noch kein Modell berechnet hier die Wassertemperatur: Die App zeigt deshalb keine an, statt eine Zahl zu erfinden.` : m === 'simstrat' ? `Die Wassertemperatur in ${n} stammt aus dem Alplakes-Modell der Eawag, das ${l} entlang der Tiefe berechnet: ein einziger Wert in 70 cm für den ganzen See, alle drei Stunden.` : `Die Wassertemperatur in ${n} stammt aus dem Alplakes-Modell der Eawag, das ${l} dreidimensional berechnet: Wir lesen den Wert in 70 cm Tiefe vor dem Badeplatz ab, alle drei Stunden.`} Wind und Luft stammen von Open-Meteo. Die Badewasserqualität wird nur angezeigt, wenn eine weniger als 30 Tage alte Analyse vorliegt (Kanton Genf für Genfer Badeplätze); andernfalls prüfe sie direkt beim Kanton oder bei der CIPEL, Links am Seitenende. Das Urteil berechnet die App Mein See aus diesen Daten. Unverbindlich: Der See hat immer das letzte Wort.`,
     app: 'Mein See',
@@ -84,7 +85,7 @@ const TXT = {
     desc: (n, r, l) => `Temperatura dell’acqua a 70 cm a ${n} (${r === l ? l : `${r}, ${l}`}), vento, bise e verdetto del giorno per balneazione, paddle e vela. Aggiornata ogni 3 ore.`,
     yAller: 'Come arrivare', attente: 'Diamo un’occhiata al lago…', eau: 'acqua a 70 cm', air: 'aria', vent: 'vento km/h',
     releve: 'condizioni aggiornate ogni 3 ore', ouvrir: (n) => `Apri ${n} nell’app`, act: 'Sull’acqua oggi',
-    actsVide: 'Balneazione, paddle, vela e bagno invernale: qui compare il voto di ogni attività.', voisines: 'Spiagge vicine',
+    actsVide: 'Balneazione, paddle, vela e bagno invernale: qui compare il voto di ogni attività.', surLac: 'Su questo lago', tousArticles: 'Tutti gli articoli del blog', voisines: 'Spiagge vicine',
     lieux: 'Un drink o un pasto nei dintorni', saison: ' · aperto in stagione', donnees: 'Da dove vengono questi numeri',
     texte: (n, l, m) => `${!m ? `Nessun modello calcola ancora la temperatura dell’acqua qui: l’app quindi non la mostra, invece di inventare un numero.` : m === 'simstrat' ? `La temperatura dell’acqua a ${n} proviene dal modello Alplakes dell’Eawag, che calcola ${l} lungo la profondità: un solo valore a 70 cm per tutto il lago, ogni tre ore.` : `La temperatura dell’acqua a ${n} proviene dal modello Alplakes dell’Eawag, che calcola ${l} in tre dimensioni: leggiamo il valore a 70 cm sotto la superficie, davanti alla spiaggia, ogni tre ore.`} Vento e aria provengono da Open-Meteo. La qualità dell’acqua di balneazione è mostrata solo se esiste un’analisi di meno di 30 giorni (Cantone di Ginevra per le spiagge ginevrine); altrimenti verificala alla fonte presso il cantone o la CIPEL, link in fondo alla pagina. Il verdetto è calcolato dall’app Il mio lago a partire da questi dati. Solo a titolo indicativo: l’ultima parola spetta sempre al lago.`,
     app: 'Il mio lago',
@@ -95,6 +96,24 @@ const TXT = {
 };
 
 // Page d'une plage en français (plage/<id>/) ou en anglais (plage/<id>/en/, un niveau plus bas).
+// Bloc « Sur ce lac » en bas de page : le guide du lac d'abord, puis les deux articles les plus récents sur ce lac.
+function blocBlog(s, langue, t, root) {
+  const lac = lacDe(s), sfx = SUF[langue];
+  const l = ARTICLES.filter((a) => a[langue] && [a.lac ?? 'leman'].flat().includes(lac))
+    .sort((a, b) => (b.slug.startsWith('plages-lac-') - a.slug.startsWith('plages-lac-')) || b.publie.localeCompare(a.publie)).slice(0, 3);
+  if (!l.length) return '';
+  const lien = (a) => `${root}blog/${a.slug}/${sfx}`, img = (a, w) => `${root}blog/img/min/${a.image.split('/').pop().replace('.jpg', '')}-${w}`;
+  const vignette = (a, w) => `<picture><source type="image/webp" srcset="${img(a, w)}.webp"><img src="${img(a, w)}.jpg" alt="" loading="lazy" width="${w}" height="${Math.round(w * a.hauteur / 1600)}"></picture>`;
+  const [une, ...autres] = l;
+  return `  <section aria-labelledby="t-blog" class="sur-lac">
+    <h2 id="t-blog">${t.surLac}</h2>
+    <a class="sur-lac-une" href="${lien(une)}">${vignette(une, 640)}<b>${esc(une[langue].titre)}</b></a>
+${autres.map((a) => `    <a class="sur-lac-ligne" href="${lien(a)}">${vignette(a, 640)}<span>${esc(a[langue].titre)}</span></a>`).join('\n')}
+    <a class="sur-lac-tout" href="${root}blog/${sfx}">${t.tousArticles} →</a>
+  </section>
+`;
+}
+
 export function page(s, langue = 'fr') {
   const t = TXT[langue], sfx = SUF[langue], r = sfx ? '../' : '';
   const voisines = SPOTS.filter((x) => x !== s && lacDe(x) === lacDe(s)).sort((a, b) => dist(s, a) - dist(s, b)).slice(0, 4);
@@ -164,7 +183,7 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(villeDe(l.ville, l
     ${mat ? `<p class="matin">${esc(mat.texte)}</p>
     ` : ''}<p>${esc(t.texte(s.nom, lac, L.eau?.modele))}</p>
   </section>
-</main>
+${blocBlog(s, langue, t, r + '../../')}</main>
 ${pied(langue, r + '../../')}
 <script type="module" src="${r}../plage.js"></script>
 </body>
