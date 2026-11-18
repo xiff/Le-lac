@@ -98,7 +98,7 @@ ${FIN.de}` },
 ${FIN.it}` } }),
 
     A('lacs-les-plus-chauds-et-les-plus-froids', 'lacs-chauds-froids', ['Un thermomètre dans l’eau, d’un côté un lac bleu clair ensoleillé, de l’autre un lac de montagne sombre', 'A thermometer in the water, a sunny pale-blue lake on one side, a dark mountain lake on the other', 'Ein Thermometer im Wasser, auf der einen Seite ein sonniger hellblauer See, auf der anderen ein dunkler Bergsee', 'Un termometro nell’acqua, da un lato un lago azzurro e soleggiato, dall’altro un lago di montagna scuro'], [ALP], {
-      fr: { titre: 'Les lacs suisses les plus chauds et les plus froids ce matin', h1: 'Quels lacs suisses sont les plus chauds, et les plus froids ?',
+      fr: { titre: 'Température des lacs suisses aujourd’hui : le classement du matin', h1: 'Quels lacs suisses sont les plus chauds, et les plus froids ?',
         desc: 'Le classement du matin des lacs suivis par Mon Lac, d’après le modèle Alplakes de l’Eawag, mis à jour chaque jour, et comment lire ces écarts.',
         bref: 'Les 25 lacs de Mon Lac n’ont pas la même température au même moment : l’écart se lit chaque matin dans les données du modèle <strong>Alplakes (Eawag)</strong>. Cette page affiche le classement du jour, avec la date ; il change chaque jour.',
         html: () => `${rang('fr')}<h2>Comment lire ce classement ?</h2>
@@ -106,7 +106,7 @@ ${FIN.it}` } }),
 <h2>Pour chaque lac</h2>
 <p>La page de chaque lac donne ses plages, leur température du matin et les chiffres de base (surface, profondeur, altitude) : voir, par exemple, <a href="{blog:temperature-lac-leman}">la température du Léman</a>. La liste complète est dans <a href="{plages}">toutes les plages</a>.</p>
 ${FIN.fr}` },
-      en: { titre: 'The warmest and coldest Swiss lakes this morning', h1: 'Which Swiss lakes are the warmest, and the coldest?',
+      en: { titre: 'Swiss lake water temperatures today: this morning’s ranking', h1: 'Which Swiss lakes are the warmest, and the coldest?',
         desc: 'This morning’s ranking of the lakes My Lake follows, from Eawag’s Alplakes model, updated daily, and how to read the gaps.',
         bref: 'The 25 lakes in My Lake are not at the same temperature at the same time: the gap shows up each morning in the <strong>Alplakes (Eawag)</strong> model data. This page shows the day’s ranking, with its date; it changes every day.',
         html: () => `${rang('en')}<h2>How to read this ranking</h2>
@@ -114,7 +114,7 @@ ${FIN.fr}` },
 <h2>For each lake</h2>
 <p>Each lake’s page gives its beaches, their morning temperature and the basic figures (area, depth, altitude): see, for example, <a href="{blog:temperature-lac-leman}">the temperature of Lake Geneva</a>. The full list is in <a href="{plages}">all beaches</a>.</p>
 ${FIN.en}` },
-      de: { titre: 'Die wärmsten und kältesten Schweizer Seen heute Morgen', h1: 'Welche Schweizer Seen sind am wärmsten und am kältesten?',
+      de: { titre: 'Wassertemperatur der Schweizer Seen heute: die Rangliste vom Morgen', h1: 'Welche Schweizer Seen sind am wärmsten und am kältesten?',
         desc: 'Die Rangliste vom Morgen der Seen, die Mein See verfolgt, nach dem Alplakes-Modell der Eawag, täglich aktualisiert, und wie man die Unterschiede liest.',
         bref: 'Die 25 Seen von Mein See haben nicht zur selben Zeit dieselbe Temperatur: Der Unterschied zeigt sich jeden Morgen in den Daten des Modells <strong>Alplakes (Eawag)</strong>. Diese Seite zeigt die Rangliste des Tages mit Datum; sie ändert sich täglich.',
         html: () => `${rang('de')}<h2>Wie man diese Rangliste liest</h2>
@@ -122,7 +122,7 @@ ${FIN.en}` },
 <h2>Für jeden See</h2>
 <p>Die Seite jedes Sees nennt seine Badeplätze, ihre Morgentemperatur und die Grunddaten (Fläche, Tiefe, Höhe): siehe zum Beispiel <a href="{blog:temperature-lac-leman}">die Temperatur des Genfersees</a>. Die ganze Liste steht unter <a href="{plages}">alle Badeplätze</a>.</p>
 ${FIN.de}` },
-      it: { titre: 'I laghi svizzeri più caldi e più freddi stamattina', h1: 'Quali laghi svizzeri sono i più caldi e i più freddi?',
+      it: { titre: 'Temperatura dei laghi svizzeri oggi: la classifica del mattino', h1: 'Quali laghi svizzeri sono i più caldi e i più freddi?',
         desc: 'La classifica del mattino dei laghi seguiti da Il mio lago, dal modello Alplakes dell’Eawag, aggiornata ogni giorno, e come leggere le differenze.',
         bref: 'I 25 laghi de Il mio lago non hanno la stessa temperatura nello stesso momento: la differenza si legge ogni mattina nei dati del modello <strong>Alplakes (Eawag)</strong>. Questa pagina mostra la classifica del giorno, con la data; cambia ogni giorno.',
         html: () => `${rang('it')}<h2>Come leggere questa classifica</h2>

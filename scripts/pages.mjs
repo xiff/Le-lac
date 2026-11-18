@@ -40,7 +40,7 @@ const TXT = {
     matinListe: (d, a, na, b, nb) => `Le ${d}, au matin, l’eau allait de ${a} (${na}) à ${b} (${nb}), à 70 cm sous la surface, d’après le modèle Alplakes.`,
     matin: (d, v) => `Le ${d}, au matin : ${v} à 70 cm sous la surface, d’après le modèle Alplakes.`,
     titre: (n) => `Température de l’eau ${aFr(n)} aujourd’hui`, 
-    desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
+    desc: (n, r, l) => `Température de l’eau à 70 cm ${aFr(n)} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
     yAller: 'Y aller', attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
     releve: 'conditions mises à jour toutes les 3 heures', ouvrir: (n) => `Ouvrir ${n} dans l’app`, act: 'Sur l’eau aujourd’hui',
     actsVide: 'Baignade, paddle, voile et bain d’hiver : la note de chaque activité s’affiche ici.', surLac: 'Sur ce lac', tousArticles: 'Tous les articles du blog', voisines: 'Les plages voisines',
@@ -125,7 +125,7 @@ export function page(s, langue = 'fr') {
   const region = REGIONS[langue][s.region] ?? s.region;
   const urls = Object.fromEntries(LANGUES.map((l) => [l, `${BASE}plage/${s.id}/${SUF[l]}`])), url = urls[langue];
   const L = LACS[lacDe(s)], lac = nomLac(lacDe(s), langue);
-  const titre = t.titre(s.nom), mat = matin(s, langue), desc = t.desc(s.nom, region, lac) + (mat ? ` ${mat.texte}` : '');
+  const titre = t.titre(s.nom), mat = matin(s, langue), desc = (mat ? `${s.nom}${langue === 'fr' ? ' : ' : ': '}${mat.deg} ${{ fr: 'ce matin', en: 'this morning', de: 'heute Morgen', it: 'stamattina' }[langue]}. ` : '') + t.desc(s.nom, region, lac); // le chiffre du jour en tête de l'extrait Google
   const ld = { '@context': 'https://schema.org', '@type': 'Beach', name: s.nom, url, geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lon }, containedInPlace: { '@type': 'LakeBodyOfWater', name: lac } };
   const app = `${r}../../?lang=${langue}&plage=${s.id}`;
   return `<!doctype html>
