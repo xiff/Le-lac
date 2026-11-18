@@ -17,6 +17,7 @@ import { articlesSecurite } from './articles.securite.mjs';
 import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
+import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
 import { illustrer, ILLUSTRATIONS } from './illustrations.mjs';
 import { remplacerPhotos } from './photos-ia.mjs';
 
@@ -771,6 +772,12 @@ for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // t
 export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slice(0, 10); // BLOG_DATE : pour prévisualiser une date
 ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
 // Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
+// Température du Léman : l'eau du matin (plus froide et plus chaude des plages) en tête de l'article, chaque jour.
+{
+  const leman = ARTICLES.find((a) => a.slug === 'temperature-lac-leman'), vv = SPOTS.filter((x) => lacDe(x) === 'leman').map((x) => valeurMatin(x.id)).filter((v) => v != null);
+  const M = { fr: (d, a, b) => `Ce matin (${d}), l’eau du Léman allait de <strong>${a}</strong> à <strong>${b}</strong> selon la plage, à 70 cm sous la surface (modèle Alplakes).`, en: (d, a, b) => `This morning (${d}), Lake Geneva’s water ranged from <strong>${a}</strong> to <strong>${b}</strong> depending on the beach, 70 cm below the surface (Alplakes model).`, de: (d, a, b) => `Heute Morgen (${d}) lag das Wasser im Genfersee zwischen <strong>${a}</strong> und <strong>${b}</strong>, je nach Badeplatz, 70 cm unter der Oberfläche (Modell Alplakes).`, it: (d, a, b) => `Stamattina (${d}) l’acqua del Lemano andava da <strong>${a}</strong> a <strong>${b}</strong> secondo la spiaggia, a 70 cm sotto la superficie (modello Alplakes).` };
+  if (leman && vv.length) for (const L of Object.keys(M)) if (leman[L]) { const h = leman[L].html; leman[L] = { ...leman[L], html: (l) => `<p class="matin">${M[L](dateMatin(L), degMatin(Math.min(...vv), L), degMatin(Math.max(...vv), L))}</p>\n${h(l)}` }; }
+}
 // Un changement d'image ne compte pas comme une mise à jour : la date « mis à jour » reste celle du texte.
 ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = illustrer(a); });
 // Photos Creative Commons remplacées par une illustration au style du site dès qu'elle existe (scripts/photos-ia.mjs).

@@ -8,6 +8,10 @@ import { LIEUX } from '../lieux.js';
 import { URLS_BLOG, plagesCitees } from './blog.mjs';
 import { ARTICLES } from './articles.mjs';
 import { pied, langues } from './pied.mjs';
+import { readFileSync } from 'node:fs';
+// Arrêt de transport public le plus proche (plages suisses du Léman, voir scripts/arrets.mjs).
+const ARRETS = (() => { try { return JSON.parse(readFileSync(new URL('../arrets.json', import.meta.url), 'utf8')); } catch { return {}; } })();
+const ARRET = { fr: (a, m) => `Arrêt de transport public le plus proche : <b>${a}</b>, à ${m} m.`, en: (a, m) => `Nearest public transport stop: <b>${a}</b>, ${m} m away.`, de: (a, m) => `Nächste ÖV-Haltestelle: <b>${a}</b>, ${m} m entfernt.`, it: (a, m) => `Fermata dei mezzi pubblici più vicina: <b>${a}</b>, a ${m} m.` };
 
 const BASE = 'https://monlac.ch/';
 // Phrase du matin d'une plage (voir matin.mjs) ; null sans valeur récente.
@@ -187,6 +191,7 @@ ${lieux.map((l) => `      <li><b>${esc(l.nom)}</b><span>${esc(villeDe(l.ville, l
     <h2 id="t-don">${t.donnees}</h2>
     ${mat ? `<p class="matin">${esc(mat.texte)}</p>
     ` : ''}<p>${esc(t.texte(s.nom, lac, L.eau?.modele))}</p>
+    ${ARRETS[s.id] ? `<p class="arret">${ARRET[langue](esc(ARRETS[s.id].nom), ARRETS[s.id].m)}</p>` : ''}
   </section>
 ${blocBlog(s, langue, t, r + '../../')}</main>
 ${pied(langue, r + '../../')}
