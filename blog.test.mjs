@@ -48,3 +48,9 @@ test('miniatures fidèles à leur image source (pas de reste d’une ancienne im
     }
   }
 });
+
+test('chaque illustration a ses miniatures, même pour un article pas encore publié', async () => {
+  const { readdirSync, existsSync } = await import('node:fs');
+  for (const f of readdirSync('blog/img/ia').filter((x) => x.endsWith('.jpg'))) for (const s of ['640.jpg', '640.webp', '1000.jpg', '1000.webp', '1200.jpg', '1200.webp', '1600.webp'])
+    assert.ok(existsSync(`blog/img/min/${f.replace('.jpg', '')}-${s}`), `blog/img/min/${f.replace('.jpg', '')}-${s} manquant : lancer node scripts/miniatures.mjs`);
+});
