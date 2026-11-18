@@ -191,5 +191,625 @@
  "saint-gingolph": {
   "nom": "St-Gingolph (Suisse)",
   "m": 844
+ },
+ "yverdon-les-bains": {
+  "nom": "Yverdon-les-Bains, plage",
+  "m": 198
+ },
+ "grandson-corcelettes": {
+  "nom": "Grandson, Corcelettes",
+  "m": 1023
+ },
+ "yvonand": {
+  "nom": "Yvonand, Grand'Rue",
+  "m": 932
+ },
+ "concise": {
+  "nom": "Concise (bateau)",
+  "m": 177
+ },
+ "saint-aubin-ne": {
+  "nom": "St-Aubin NE (bateau)",
+  "m": 168
+ },
+ "cortaillod": {
+  "nom": "Cortaillod (bateau)",
+  "m": 227
+ },
+ "boudry": {
+  "nom": "Cortaillod, Câbles",
+  "m": 903
+ },
+ "colombier": {
+  "nom": "Colombier NE, Bas-des-Allées",
+  "m": 323
+ },
+ "neuchatel-jeunes-rives": {
+  "nom": "Neuchâtel, Université",
+  "m": 287
+ },
+ "hauterive": {
+  "nom": "Hauterive NE, Port",
+  "m": 251
+ },
+ "cudrefin": {
+  "nom": "Cudrefin",
+  "m": 99
+ },
+ "portalban": {
+  "nom": "Portalban",
+  "m": 442
+ },
+ "gletterens": {
+  "nom": "Gletterens, lac",
+  "m": 434
+ },
+ "forel": {
+  "nom": "Forel FR, village",
+  "m": 630
+ },
+ "estavayer-le-lac": {
+  "nom": "Estavayer-le-Lac, plage",
+  "m": 219
+ },
+ "cerlier": {
+  "nom": "Erlach (Schiff)",
+  "m": 250
+ },
+ "la-neuveville": {
+  "nom": "La Neuveville, Ruis de Vaux",
+  "m": 247
+ },
+ "strandbad-rostele": {
+  "nom": "Twann (Schiff)",
+  "m": 499
+ },
+ "tuscherz": {
+  "nom": "Tüscherz, Dorfweg",
+  "m": 81
+ },
+ "badewiese-funtelen": {
+  "nom": "Tüscherz, Alfermée",
+  "m": 472
+ },
+ "bienne-plage": {
+  "nom": "Biel/Bienne (Schiff/bateau)",
+  "m": 138
+ },
+ "nidau": {
+  "nom": "Nidau, Strandweg",
+  "m": 475
+ },
+ "morat": {
+  "nom": "Murten, Schwimmbad",
+  "m": 141
+ },
+ "faoug": {
+  "nom": "Faoug débarcadère",
+  "m": 218
+ },
+ "avenches": {
+  "nom": "Avenches, plage",
+  "m": 477
+ },
+ "salavaux": {
+  "nom": "Salavaux, école",
+  "m": 526
+ },
+ "pont-la-ville": {
+  "nom": "Pont-la-Ville, Sur-Momont",
+  "m": 468
+ },
+ "la-roche": {
+  "nom": "La Roche FR, Villaret",
+  "m": 580
+ },
+ "gumefens": {
+  "nom": "Gumefens, lac",
+  "m": 698
+ },
+ "corbieres": {
+  "nom": "Hauteville, Les Fourches",
+  "m": 416
+ },
+ "morlon": {
+  "nom": "Morlon, Eglise",
+  "m": 629
+ },
+ "domaine-des-iles": {
+  "nom": "Sion, Tennis Iles",
+  "m": 172
+ },
+ "caslano": {
+  "nom": "Caslano (lago)",
+  "m": 290
+ },
+ "magliaso": {
+  "nom": "Magliaso Paese",
+  "m": 508
+ },
+ "agno": {
+  "nom": "Agno, Stazione",
+  "m": 481
+ },
+ "lugano-riva-caccia": {
+  "nom": "Lugano, Malpensata",
+  "m": 43
+ },
+ "paradiso-conca-d-oro": {
+  "nom": "Paradiso, Piscina",
+  "m": 22
+ },
+ "lugano-parco-ciani": {
+  "nom": "Lugano, Palazzo Studi",
+  "m": 406
+ },
+ "lido-di-lugano": {
+  "nom": "Cassarate, Lido",
+  "m": 159
+ },
+ "castagnola-san-domenico": {
+  "nom": "Castagnola, Roncaccio",
+  "m": 292
+ },
+ "melide": {
+  "nom": "Melide, Stazione",
+  "m": 255
+ },
+ "bissone": {
+  "nom": "Bissone, autostrada",
+  "m": 132
+ },
+ "maroggia": {
+  "nom": "Maroggia-Melano, Stazione",
+  "m": 433
+ },
+ "melano": {
+  "nom": "Melano, Posta",
+  "m": 245
+ },
+ "capolago": {
+  "nom": "Capolago, Posta",
+  "m": 90
+ },
+ "riva-san-vitale": {
+  "nom": "Riva S. Vitale, Scuola Media",
+  "m": 139
+ },
+ "brissago": {
+  "nom": "Brissago, Piazza del Sole",
+  "m": 71
+ },
+ "ascona": {
+  "nom": "Ascona, Via Pancaldi Mola",
+  "m": 838
+ },
+ "gerra-gambarogno": {
+  "nom": "Gerra (Gambarogno), Stazione",
+  "m": 119
+ },
+ "lido-locarno": {
+  "nom": "Locarno, Lido",
+  "m": 74
+ },
+ "locarno-bagno-pubblico": {
+  "nom": "Locarno, Delta Maggia",
+  "m": 195
+ },
+ "tenero-lido-mappo": {
+  "nom": "Minusio, Lido Mappo",
+  "m": 419
+ },
+ "tenero": {
+  "nom": "Tenero, Brere",
+  "m": 575
+ },
+ "le-sentier-rocheray": {
+  "nom": "Le Rocheray, bif. gare",
+  "m": 637
+ },
+ "le-pont": {
+  "nom": "Le Pont, église",
+  "m": 215
+ },
+ "lac-de-bret": {
+  "nom": "Puidoux, En Botonnet",
+  "m": 1251
+ },
+ "les-brenets": {
+  "nom": "Les Brenets, centre village",
+  "m": 397
+ },
+ "zurich-mythenquai": {
+  "nom": "Zürich, Sukkulentensammlung",
+  "m": 173
+ },
+ "zurich-seebad-enge": {
+  "nom": "Zürich, Rentenanstalt",
+  "m": 186
+ },
+ "zurich-wollishofen": {
+  "nom": "Zürich, Seerose",
+  "m": 178
+ },
+ "zurich-utoquai": {
+  "nom": "Zürich, Kreuzstrasse",
+  "m": 147
+ },
+ "zurich-tiefenbrunnen": {
+  "nom": "Zürich, Wildbachstrasse",
+  "m": 223
+ },
+ "kilchberg": {
+  "nom": "Kilchberg ZH, Schooren",
+  "m": 67
+ },
+ "rueschlikon": {
+  "nom": "Rüschlikon, Schlossstrasse",
+  "m": 125
+ },
+ "thalwil": {
+  "nom": "Thalwil, Rainstrasse",
+  "m": 272
+ },
+ "zollikon": {
+  "nom": "Zollikon",
+  "m": 83
+ },
+ "kuesnacht": {
+  "nom": "Küsnacht ZH Heslibach",
+  "m": 191
+ },
+ "erlenbach": {
+  "nom": "Winkel am Zürichsee, Bahnhof",
+  "m": 103
+ },
+ "oberrieden": {
+  "nom": "Oberrieden (See)",
+  "m": 248
+ },
+ "feldmeilen": {
+  "nom": "Meilen, Schulhaus Feld",
+  "m": 187
+ },
+ "meilen": {
+  "nom": "Meilen, Beugen",
+  "m": 135
+ },
+ "wadenswil-rietliau": {
+  "nom": "Au ZH, Strandbad",
+  "m": 130
+ },
+ "uetikon": {
+  "nom": "Uetikon am See, Bahnhof",
+  "m": 154
+ },
+ "richterswil": {
+  "nom": "Richterswil, Wisli",
+  "m": 270
+ },
+ "baech": {
+  "nom": "Bäch SZ, Badi",
+  "m": 90
+ },
+ "pfaeffikon-sz": {
+  "nom": "Pfäffikon SZ (See)",
+  "m": 170
+ },
+ "rapperswil": {
+  "nom": "Rapperswil SG (See)",
+  "m": 215
+ },
+ "maur": {
+  "nom": "Maur, See",
+  "m": 619
+ },
+ "uster": {
+  "nom": "Uster, See",
+  "m": 261
+ },
+ "greifensee-furren": {
+  "nom": "Greifensee, Städtli",
+  "m": 510
+ },
+ "lucerne-seebad": {
+  "nom": "Luzern, Casino-Palace",
+  "m": 75
+ },
+ "lucerne-ufschuetti": {
+  "nom": "Luzern, Bahnhof",
+  "m": 319
+ },
+ "lucerne-tribschen": {
+  "nom": "Tribschen",
+  "m": 226
+ },
+ "lucerne-lido": {
+  "nom": "Verkehrshaus-Lido",
+  "m": 268
+ },
+ "horw-seebad": {
+  "nom": "Horw, Seefeld",
+  "m": 276
+ },
+ "horw-winkel": {
+  "nom": "Horw, Rank",
+  "m": 807
+ },
+ "hergiswil": {
+  "nom": "Hergiswil NW, Badi",
+  "m": 88
+ },
+ "stansstad": {
+  "nom": "Stansstad, Schule",
+  "m": 223
+ },
+ "meggen-benzeholz": {
+  "nom": "Meggen, Fischerdörfli",
+  "m": 30
+ },
+ "merlischachen": {
+  "nom": "Merlischachen (See)",
+  "m": 102
+ },
+ "greppen": {
+  "nom": "Greppen",
+  "m": 229
+ },
+ "buochs-ennetbuergen": {
+  "nom": "Ennetbürgen, Strandbad",
+  "m": 305
+ },
+ "beckenried": {
+  "nom": "Beckenried, Hungacher",
+  "m": 183
+ },
+ "vitznau-lido": {
+  "nom": "Vitznau, Unteraltdorf",
+  "m": 398
+ },
+ "cholplatz": {
+  "nom": "Gersau, Felsenegg",
+  "m": 188
+ },
+ "gersau-kindli": {
+  "nom": "Gersau, Kindli-Strandbad",
+  "m": 65
+ },
+ "brunnen": {
+  "nom": "Brunnen, Schiller",
+  "m": 64
+ },
+ "bauen": {
+  "nom": "Bauen, Dorf",
+  "m": 46
+ },
+ "oberaegeri": {
+  "nom": "Oberägeri, Station",
+  "m": 126
+ },
+ "boniswil": {
+  "nom": "Boniswil (See)",
+  "m": 23
+ },
+ "tennwil": {
+  "nom": "Tennwil, Strandbad",
+  "m": 360
+ },
+ "meisterschwanden": {
+  "nom": "Meisterschwanden Seerose",
+  "m": 188
+ },
+ "beinwil-am-see": {
+  "nom": "Beinwil am See (See)",
+  "m": 200
+ },
+ "huenenberg": {
+  "nom": "Hünenberg Chämleten",
+  "m": 214
+ },
+ "buonas": {
+  "nom": "Buonas (See)",
+  "m": 53
+ },
+ "zweiern": {
+  "nom": "Buonas (See)",
+  "m": 925
+ },
+ "cham-hirsgarten": {
+  "nom": "Cham (See)",
+  "m": 50
+ },
+ "cham": {
+  "nom": "Cham, Eich",
+  "m": 169
+ },
+ "immensee": {
+  "nom": "Immensee",
+  "m": 216
+ },
+ "zug-brueggli": {
+  "nom": "Zug, Lorzen",
+  "m": 247
+ },
+ "zug-strandbad": {
+  "nom": "Zug, Letzi",
+  "m": 126
+ },
+ "zug-maennerbadi": {
+  "nom": "Zug, Schützenmatt",
+  "m": 184
+ },
+ "zug-seeliken": {
+  "nom": "Zug, Theater Casino",
+  "m": 88
+ },
+ "oberwil-tellenoertli": {
+  "nom": "Oberwil b. Zug, Kreuz",
+  "m": 100
+ },
+ "oberwil-trubikon": {
+  "nom": "Oberwil b. Zug, Räbmatt",
+  "m": 17
+ },
+ "walchwil-lido": {
+  "nom": "Walchwil, Lido",
+  "m": 11
+ },
+ "walchwil": {
+  "nom": "Walchwil, St. Adrian",
+  "m": 48
+ },
+ "arth": {
+  "nom": "Arth, Aazopf",
+  "m": 76
+ },
+ "thoune-strandbad": {
+  "nom": "Thun, Strandbad",
+  "m": 318
+ },
+ "huenibach": {
+  "nom": "Ländte Hünibach",
+  "m": 64
+ },
+ "spiez": {
+  "nom": "Spiez, Rütti",
+  "m": 123
+ },
+ "faulensee": {
+  "nom": "Faulensee, Angernstrasse",
+  "m": 256
+ },
+ "krattigen-lido": {
+  "nom": "Krattigen, Tschuppen",
+  "m": 367
+ },
+ "leissigen": {
+  "nom": "Leissigen (See)",
+  "m": 144
+ },
+ "oberhofen-hirschen": {
+  "nom": "Gunten, Dorf",
+  "m": 81
+ },
+ "neuhaus": {
+  "nom": "Neuhaus (Unterseen) (See)",
+  "m": 47
+ },
+ "boenigen": {
+  "nom": "Bönigen",
+  "m": 240
+ },
+ "niederried": {
+  "nom": "Niederried",
+  "m": 165
+ },
+ "iseltwald": {
+  "nom": "Iseltwald, Dorfplatz",
+  "m": 650
+ },
+ "brienz": {
+  "nom": "Brienz BE, Lammbach",
+  "m": 162
+ },
+ "schenkon": {
+  "nom": "Schenkon, Dorf",
+  "m": 430
+ },
+ "nottwil": {
+  "nom": "Nottwil",
+  "m": 418
+ },
+ "eich": {
+  "nom": "Eich, Dorf",
+  "m": 188
+ },
+ "sempach": {
+  "nom": "Sempach Stadt, Vogelwarte",
+  "m": 272
+ },
+ "gelfingen": {
+  "nom": "Gelfingen",
+  "m": 146
+ },
+ "baldegg": {
+  "nom": "Baldegg",
+  "m": 254
+ },
+ "wilen-wilerbaedli": {
+  "nom": "Wilen (Sarnen), Wilerbad",
+  "m": 252
+ },
+ "sarnen": {
+  "nom": "Sachseln, Brünigstrasse",
+  "m": 615
+ },
+ "silvaplana": {
+  "nom": "Silvaplana, Camping",
+  "m": 227
+ },
+ "berlingen": {
+  "nom": "Berlingen",
+  "m": 795
+ },
+ "mannenbach": {
+  "nom": "Mannenbach (See)",
+  "m": 207
+ },
+ "ermatingen": {
+  "nom": "Ermatingen, Friedhof",
+  "m": 288
+ },
+ "triboltingen": {
+  "nom": "Triboltingen",
+  "m": 310
+ },
+ "muensterlingen": {
+  "nom": "Scherzingen, Scheidweg",
+  "m": 316
+ },
+ "landschlacht": {
+  "nom": "Landschlacht",
+  "m": 542
+ },
+ "altnau": {
+  "nom": "Altnau",
+  "m": 245
+ },
+ "guettingen": {
+  "nom": "Güttingen",
+  "m": 546
+ },
+ "kesswil": {
+  "nom": "Kesswil",
+  "m": 409
+ },
+ "uttwil": {
+  "nom": "Uttwil, Bahnhof",
+  "m": 539
+ },
+ "romanshorn": {
+  "nom": "Romanshorn, Blumenweg",
+  "m": 361
+ },
+ "egnach-wiedehorn": {
+  "nom": "Egnach, Wiedehorn",
+  "m": 506
+ },
+ "arbon": {
+  "nom": "Arbon Seemoosriet",
+  "m": 664
+ },
+ "steinach": {
+  "nom": "Steinach, Kirche",
+  "m": 330
+ },
+ "horn": {
+  "nom": "Horn",
+  "m": 366
+ },
+ "altenrhein": {
+  "nom": "Altenrhein, Dorf",
+  "m": 324
  }
 }

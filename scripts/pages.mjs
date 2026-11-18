@@ -11,7 +11,7 @@ import { pied, langues } from './pied.mjs';
 import { readFileSync } from 'node:fs';
 // Arrêt de transport public le plus proche (plages suisses du Léman, voir scripts/arrets.mjs).
 const ARRETS = (() => { try { return JSON.parse(readFileSync(new URL('../arrets.json', import.meta.url), 'utf8')); } catch { return {}; } })();
-const ARRET = { fr: (a, m) => `Arrêt de transport public le plus proche : <b>${a}</b>, à ${m} m.`, en: (a, m) => `Nearest public transport stop: <b>${a}</b>, ${m} m away.`, de: (a, m) => `Nächste ÖV-Haltestelle: <b>${a}</b>, ${m} m entfernt.`, it: (a, m) => `Fermata dei mezzi pubblici più vicina: <b>${a}</b>, a ${m} m.` };
+const ARRET = { fr: (a, m) => `Arrêt de transport public le plus proche : <b>${a}</b>, à ${m} m à vol d’oiseau.`, en: (a, m) => `Nearest public transport stop: <b>${a}</b>, ${m} m away as the crow flies.`, de: (a, m) => `Nächste ÖV-Haltestelle: <b>${a}</b>, ${m} m Luftlinie.`, it: (a, m) => `Fermata dei mezzi pubblici più vicina: <b>${a}</b>, a ${m} m in linea d’aria.` };
 
 const BASE = 'https://monlac.ch/';
 // Phrase du matin d'une plage (voir matin.mjs) ; null sans valeur récente.

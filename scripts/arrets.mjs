@@ -1,4 +1,4 @@
-// Arrêt de transport public le plus proche de chaque plage du Léman (arrets.json), d'après la couche « Arrêts tp » de l'Office fédéral des transports
+// Arrêt de transport public le plus proche de chaque plage suisse (arrets.json), d'après la couche « Arrêts tp » de l'Office fédéral des transports
 // (api3.geo.admin.ch, ch.bav.haltestellen-oev). La couche ne dit pas si l'arrêt est une gare, un arrêt de bus ou un débarcadère : on écrit seulement
 // « l'arrêt de transport public le plus proche » et sa distance à vol d'oiseau. À relancer quand des plages sont ajoutées : node scripts/arrets.mjs
 import { writeFile } from 'node:fs/promises';
@@ -9,7 +9,7 @@ const dist = (a, b) => 2 * R * Math.asin(Math.sqrt(Math.sin(rad(b.lat - a.lat) /
 const url = (s, d) => `https://api3.geo.admin.ch/rest/services/all/MapServer/identify?geometryType=esriGeometryPoint&geometry=${s.lon},${s.lat}&imageDisplay=2000,2000,96&mapExtent=${s.lon - d},${s.lat - d * 0.7},${s.lon + d},${s.lat + d * 0.7}&tolerance=900&layers=all:ch.bav.haltestellen-oev&sr=4326&returnGeometry=true&geometryFormat=geojson&lang=fr`;
 const out = {};
 // La couche ne couvre que la Suisse : les plages de la rive française n'ont pas de valeur.
-for (const s of SPOTS.filter((x) => lacDe(x) === 'leman' && x.zone !== 'evian')) {
+for (const s of SPOTS.filter((x) => x.zone !== 'evian')) { // toutes les plages suisses (la rive française du Léman n'est pas couverte)
   let proche = null;
   for (const d of [0.01, 0.03]) { // d'abord un petit rayon, puis un plus grand si rien
     const r = await fetch(url(s, d), { headers: { 'user-agent': 'lac-research/1.0 (monlac.ch)' } }).then((x) => x.json()).catch(() => null);
