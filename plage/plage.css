@@ -147,3 +147,8 @@ body.large footer { max-width: 1080px; }
 .sur-lac-ligne { gap: 12px; align-items: center; min-height: 56px; margin-top: 12px; }
 .sur-lac-ligne img { width: 88px; height: 56px; border-radius: 10px; object-fit: cover; display: block; flex: 0 0 auto; }
 .sur-lac-tout { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-weight: 600; }
+
+/* Tableau d'article (page « Où se baigner en Suisse ») : défile dans sa boîte sur téléphone */
+.tableau { display: block; overflow-x: auto; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
+.tableau th, .tableau td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--trait); white-space: nowrap; }
+.tableau th { font-weight: 600; color: var(--doux); font-size: 13px; }
