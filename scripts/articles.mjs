@@ -769,6 +769,7 @@ for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // t
 export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slice(0, 10); // BLOG_DATE : pour prévisualiser une date
 ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
 // Illustrations IA en tête (scripts/illustrations.mjs), ajoutées le 13 novembre 2026.
-ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = { ...illustrer(a), modifie: a.modifie > '2026-11-13' ? a.modifie : '2026-11-13' }; });
+// Un changement d'image ne compte pas comme une mise à jour : la date « mis à jour » reste celle du texte.
+ARTICLES.forEach((a, i) => { if (ILLUSTRATIONS[a.slug]) ARTICLES[i] = illustrer(a); });
 // Photos Creative Commons remplacées par une illustration au style du site dès qu'elle existe (scripts/photos-ia.mjs).
 remplacerPhotos(ARTICLES);
