@@ -19,6 +19,11 @@ jobs:
       - run: node scripts/qualite.mjs
       - run: node scripts/eau-jour.mjs
       - run: node scripts/pages.mjs
+      # Miniatures manquantes (illustration ajoutée sans elles) : sinon l'article programmé sort avec des images cassées.
+      # Ne convertit que ce qui manque ; ImageMagick n'est installé que s'il en faut et qu'il est absent. Un échec ici ne bloque pas la température.
+      - name: Miniatures du blog
+        continue-on-error: true
+        run: node scripts/miniatures.mjs || (sudo apt-get install -y -qq imagemagick > /dev/null && node scripts/miniatures.mjs)
       - run: node scripts/blog.mjs
       - name: Publier si changé
         run: |
