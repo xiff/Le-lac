@@ -3,7 +3,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
 import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
-import { texteLieu, villeDe } from '../traductions.js';
+import { texteLieu, villeDe, nomPlage } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
 import { URLS_BLOG, plagesCitees } from './blog.mjs';
 import { ARTICLES } from './articles.mjs';
@@ -115,6 +115,7 @@ ${autres.map((a) => `    <a class="sur-lac-ligne" href="${lien(a)}">${vignette(a
 }
 
 export function page(s, langue = 'fr') {
+  s = { ...s, nom: nomPlage(s.nom, langue) };
   const t = TXT[langue], sfx = SUF[langue], r = sfx ? '../' : '';
   const voisines = SPOTS.filter((x) => x !== s && lacDe(x) === lacDe(s)).sort((a, b) => dist(s, a) - dist(s, b)).slice(0, 4);
   const lieux = LIEUX.filter((l) => l.zone === s.zone);
@@ -169,7 +170,7 @@ ${AVIS[s.id] ? `  <p class="avertissement" role="note">${AVIS[s.id][langue]} <a 
   <section aria-labelledby="t-vois">
     <h2 id="t-vois">${t.voisines}</h2>
     <ul class="voisines">
-${voisines.map((v) => `      <li><a href="${sfx ? `../../${v.id}/${sfx}` : `../${v.id}/`}">${esc(v.nom)}</a><span data-eau="${v.id}">–</span></li>`).join('\n')}
+${voisines.map((v) => `      <li><a href="${sfx ? `../../${v.id}/${sfx}` : `../${v.id}/`}">${esc(nomPlage(v.nom, langue))}</a><span data-eau="${v.id}">–</span></li>`).join('\n')}
     </ul>
   </section>
 ${lieux.length ? `  <section aria-labelledby="t-lieux">
@@ -241,7 +242,7 @@ ${extremesMatin(langue) ? `  <p class="chapo matin">${esc(extremesMatin(langue))
 ${regions.map((reg) => `  <section aria-labelledby="r-${reg.replace(/[^a-z]/gi, '')}">
     <h2 id="r-${reg.replace(/[^a-z]/gi, '')}">${esc(REGIONS[langue][reg] ?? reg)}</h2>
     <ul class="rangs">
-${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${sfx ? `../${s.id}/${sfx}` : `${s.id}/`}" data-id="${s.id}"><i></i><span>${esc(s.nom)}</span><b>–</b></a></li>`).join('\n')}
+${SPOTS.filter((s) => s.region === reg).map((s) => `      <li><a href="${sfx ? `../${s.id}/${sfx}` : `${s.id}/`}" data-id="${s.id}"><i></i><span>${esc(nomPlage(s.nom, langue))}</span><b>–</b></a></li>`).join('\n')}
     </ul>
   </section>`).join('\n')}
 </main>

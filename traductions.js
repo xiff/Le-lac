@@ -191,6 +191,12 @@ const VILLES = {
   'Publier (Amphion)': { de: 'Publier (Amphion)', it: 'Publier (Amphion)' }, 'Évian': { it: 'Evian' },
 };
 export const villeDe = (v, langue) => VILLES[v]?.[langue] ?? v;
+// Ville en tête d'un nom de plage (« Zoug – Strandbad »), dans la langue de la page : c'est ce que les gens tapent (« Strandbad Zug »).
+const VILLES_PLAGE = {
+  'Zoug': { de: 'Zug', en: 'Zug', it: 'Zugo' }, 'Lucerne': { de: 'Luzern', it: 'Lucerna' }, 'Thoune': { de: 'Thun', en: 'Thun', it: 'Thun' },
+  'Bienne': { de: 'Biel', en: 'Biel' }, 'Morat': { de: 'Murten', en: 'Murten' }, 'Zurich': { de: 'Zürich', it: 'Zurigo' }, 'Genève': { de: 'Genf', en: 'Geneva', it: 'Ginevra' },
+};
+export const nomPlage = (nom, langue) => nom.replace(/^([^–]+?)(?= – |$)/, (v) => VILLES_PLAGE[v]?.[langue] ?? v);
 // Description d'un lieu (type 'lieu') ou d'un loueur (type 'loc') dans la langue donnée.
 export function texteLieu(l, langue, type = 'lieu') {
   if (langue === 'fr') return l.note;
