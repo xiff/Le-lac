@@ -29,6 +29,9 @@ const matin = (s, langue) => {
 };
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 // Dossier de chaque langue sous plage/<id>/ ('' = français) et langues du site.
+// Pages de plage : l'eau change chaque jour, d'où un lastmod du jour dans le sitemap pour inviter Google à revenir.
+// « à » devant un nom de plage : à la plage des Eaux-Vives, aux Bains des Pâquis, au Lido de Lugano, au Bouveret.
+const aFr = (n) => n.replace(/^Plage /, 'à la plage ').replace(/^Bains /, 'aux Bains ').replace(/^(Lido|Strandbad|Seebad|Port) /, 'au $1 ').replace(/^Le /, 'au ').replace(/^Les /, 'aux ').replace(/^(?!à |aux |au )/, 'à ');
 const SUF = { fr: '', en: 'en/', de: 'de/', it: 'it/' }, LANGUES = Object.keys(SUF);
 const dist = (a, b) => Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos((a.lat * Math.PI) / 180));
 
@@ -36,7 +39,7 @@ const TXT = {
   fr: {
     matinListe: (d, a, na, b, nb) => `Le ${d}, au matin, l’eau allait de ${a} (${na}) à ${b} (${nb}), à 70 cm sous la surface, d’après le modèle Alplakes.`,
     matin: (d, v) => `Le ${d}, au matin : ${v} à 70 cm sous la surface, d’après le modèle Alplakes.`,
-    titre: (n) => `Température de l’eau à ${n} aujourd’hui`, 
+    titre: (n) => `Température de l’eau ${aFr(n)} aujourd’hui`, 
     desc: (n, r, l) => `Température de l’eau à 70 cm à ${n} (${r === l ? l : `${r}, ${l}`}), vent, bise et verdict du jour pour la baignade, le paddle et la voile. Mis à jour toutes les 3 heures.`,
     yAller: 'Y aller', attente: 'On regarde le lac…', eau: 'eau à 70 cm', air: 'air', vent: 'vent km/h',
     releve: 'conditions mises à jour toutes les 3 heures', ouvrir: (n) => `Ouvrir ${n} dans l’app`, act: 'Sur l’eau aujourd’hui',
@@ -138,7 +141,8 @@ ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${urls[l]}">`)
 <meta property="og:title" content="${esc(titre)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta name="theme-color" content="#0d4a5c">
-<link rel="icon" href="${r}../../icon.svg">
+<link rel="icon" href="${r}../../favicon.ico" sizes="48x48">
+<link rel="icon" href="${r}../../icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${r}../plage.css">
 <link rel="preload" href="${r}../../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${r}../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -214,7 +218,8 @@ export function liste(langue = 'fr') {
 ${LANGUES.map((l) => `<link rel="alternate" hreflang="${l}" href="${BASE}plage/${SUF[l]}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${BASE}plage/">
 <meta name="theme-color" content="#0d4a5c">
-<link rel="icon" href="${r}../icon.svg">
+<link rel="icon" href="${r}../favicon.ico" sizes="48x48">
+<link rel="icon" href="${r}../icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${r}plage.css">
 <link rel="preload" href="${r}../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${r}../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -308,6 +313,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   // Présentation : quatre langues ; blog : français et anglais seulement pour l'instant.
   const urls = ['', ...LANGUES.map((l) => `presentation/${SUF[l]}`), ...LANGUES.map((l) => `plage/${SUF[l]}`), ...LANGUES.map((l) => `confidentialite/${SUF[l]}`), ...URLS_BLOG, ...SPOTS.flatMap((s) => LANGUES.map((l) => `plage/${s.id}/${SUF[l]}`))];
-  await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+  await writeFile('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc>${u.startsWith('plage/') ? `<lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
   console.log(`${SPOTS.length * LANGUES.length} pages de plage (${LANGUES.join(', ')}) et sitemap.xml générés.`);
 }

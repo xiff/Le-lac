@@ -88,7 +88,8 @@ ${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" hre
 <meta property="og:locale" content="${OG[L]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d4a5c">
-<link rel="icon" href="${r}icon.svg">
+<link rel="icon" href="${r}favicon.ico" sizes="48x48">
+<link rel="icon" href="${r}icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${r}plage/plage.css">
 <link rel="preload" href="${r}fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${r}fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
