@@ -5,7 +5,7 @@ import { valeurMatin, dateMatin, degMatin } from './matin.mjs';
 import { SPOTS, LACS, lacDe, REGIONS, nomLac } from '../spots.js';
 import { texteLieu, villeDe } from '../traductions.js';
 import { LIEUX } from '../lieux.js';
-import { URLS_BLOG } from './blog.mjs';
+import { URLS_BLOG, plagesCitees } from './blog.mjs';
 import { ARTICLES } from './articles.mjs';
 import { pied, langues } from './pied.mjs';
 
@@ -96,11 +96,11 @@ const TXT = {
 };
 
 // Page d'une plage en français (plage/<id>/) ou en anglais (plage/<id>/en/, un niveau plus bas).
-// Bloc « Sur ce lac » en bas de page : le guide du lac d'abord, puis les deux articles les plus récents sur ce lac.
+// Bloc « Sur ce lac » en bas de page : les articles qui citent cette plage d'abord (un guide de plages en tête), puis le guide du lac, puis les plus récents sur ce lac.
 function blocBlog(s, langue, t, root) {
   const lac = lacDe(s), sfx = SUF[langue];
   const l = ARTICLES.filter((a) => a[langue] && [a.lac ?? 'leman'].flat().includes(lac))
-    .sort((a, b) => (b.slug.startsWith('plages-lac-') - a.slug.startsWith('plages-lac-')) || b.publie.localeCompare(a.publie)).slice(0, 3);
+    .sort((a, b) => (plagesCitees(b).includes(s.id) - plagesCitees(a).includes(s.id)) || (b.slug.startsWith('plages-') - a.slug.startsWith('plages-')) || b.publie.localeCompare(a.publie)).slice(0, 3);
   if (!l.length) return '';
   const lien = (a) => `${root}blog/${a.slug}/${sfx}`, img = (a, w) => `${root}blog/img/min/${a.image.split('/').pop().replace('.jpg', '')}-${w}`;
   const vignette = (a, w) => `<picture><source type="image/webp" srcset="${img(a, w)}.webp"><img src="${img(a, w)}.jpg" alt="" loading="lazy" width="${w}" height="${Math.round(w * a.hauteur / 1600)}"></picture>`;

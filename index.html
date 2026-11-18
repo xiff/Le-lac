@@ -896,7 +896,10 @@ async function afficherLire() {
   const f = (await fluxLire)?.[LANGUE] ?? (await fluxLire)?.fr;
   if (!f) { $('lire').innerHTML = `<p class="note"><a class="lire-tout" href="blog/">${esc(T.ongletLire)} →</a></p>`; return; }
   $('filtres-lire').innerHTML = ['', ...Object.keys(f.themes)].map((k) => `<button aria-pressed="${k === filtreLire}" data-theme="${k}">${esc(k ? f.themes[k] : f.tout)}</button>`).join('');
-  const l = f.articles.filter((a) => !filtreLire || a.theme === filtreLire);
+  // D'abord les articles qui citent la plage affichée, puis ceux de son lac, puis le reste ; dans chaque groupe un guide de plages en tête, puis la date (tri stable).
+  const ici = spot(), guide = (a) => a.url.startsWith('blog/plages-'),
+    rang = (a) => (a.plages?.includes(ici.id) ? (guide(a) ? 0 : 1) : a.lacs?.includes(lacDe(ici)) ? (guide(a) ? 2 : 3) : 4);
+  const l = f.articles.filter((a) => !filtreLire || a.theme === filtreLire).sort((a, b) => rang(a) - rang(b));
   const img = (a, w) => `<picture><source type="image/webp" srcset="${a.img}-${w}.webp"><img src="${a.img}-${w}.jpg" alt="" loading="lazy"></picture>`;
   const meta = (a) => `<span class="meta">${esc(f.themes[a.theme])} · ${esc(a.date)}</span>`;
   $('lire').innerHTML = (l[0] ? `<a class="lire-une" href="${l[0].url}">${img(l[0], 1000)}${meta(l[0])}<b>${esc(l[0].titre)}</b></a>` : '')

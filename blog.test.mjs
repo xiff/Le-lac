@@ -54,3 +54,10 @@ test('chaque illustration a ses miniatures, même pour un article pas encore pub
   for (const f of readdirSync('blog/img/ia').filter((x) => x.endsWith('.jpg'))) for (const s of ['640.jpg', '640.webp', '1000.jpg', '1000.webp', '1200.jpg', '1200.webp', '1600.webp'])
     assert.ok(existsSync(`blog/img/min/${f.replace('.jpg', '')}-${s}`), `blog/img/min/${f.replace('.jpg', '')}-${s} manquant : lancer node scripts/miniatures.mjs`);
 });
+
+test('plages citées par un article (tri « en rapport avec la plage ») et flux de l’onglet Lire', async () => {
+  const { plagesCitees, flux } = await import('./scripts/blog.mjs');
+  assert.ok(plagesCitees(ARTICLES.find((a) => a.slug === 'plages-geneve')).includes('bains-des-paquis'));
+  const f = flux().fr;
+  assert.ok(f.articles.every((a) => Array.isArray(a.lacs) && Array.isArray(a.plages)), 'chaque article du flux a ses lacs et ses plages');
+});

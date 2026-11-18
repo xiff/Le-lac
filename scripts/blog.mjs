@@ -189,11 +189,14 @@ ${pied(L, r)}
 `;
 }
 
+// Plages citées par un article (liens {plage:id} du texte français, les mêmes dans toutes les langues).
+export const plagesCitees = (a) => [...new Set([...(typeof a.fr.html === 'function' ? a.fr.html('fr') : a.fr.html).matchAll(/\{plage:([a-z0-9-]+)\}/g)].map((m) => m[1]))];
+
 // Flux pour l'onglet « Lire » de l'app : articles publiés, du plus récent au plus ancien, chemins relatifs à la racine du site.
 export const flux = () => Object.fromEntries(LANGUES.filter((l) => articles(l).length).map((l) => [l, {
   themes: Object.fromEntries(Object.entries(THEMES).map(([k, v]) => [k, v[l]])), tout: TXT[l].tout, blog: `blog/${SUF[l]}`,
   articles: [...articles(l)].sort((x, y) => y.publie.localeCompare(x.publie)).map((a) => ({ url: `blog/${a.slug}/${SUF[l]}`, titre: a[l].titre, theme: theme(a), date: dateL(a.publie, l),
-    img: `blog/img/min/${a.image.split('/').pop().replace('.jpg', '')}` })) }]));
+    img: `blog/img/min/${a.image.split('/').pop().replace('.jpg', '')}`, lacs: [a.lac ?? 'leman'].flat(), plages: plagesCitees(a) })) }]));
 
 export const URLS_BLOG = LANGUES.flatMap((l) => (articles(l).length ? [`blog/${SUF[l]}`, ...articles(l).map((a) => `blog/${a.slug}/${SUF[l]}`)] : []));
 
