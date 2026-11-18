@@ -973,7 +973,7 @@ Article : `temperature-lac-lucerne` · repli déjà en place : `portrait-lucerne
 
 ```
 @generateur-image-le-lac
-SCÈNE : a blue lake with a small pedal boat, a wooded promontory with villas, layered blue mountains behind, a landing pier on the right.
+SCÈNE : calm deep blue-green lake water with a small pedal boat, a wooded promontory with a few villas on the left, layered soft blue-green mountains behind, a wooden landing pier on the right; no bright saturated blue.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
 FORMAT : 16:9.
 ```
@@ -986,7 +986,7 @@ Article : `temperature-lac-thoune` · repli déjà en place : `portrait-thoune.j
 
 ```
 @generateur-image-le-lac
-SCÈNE : a turquoise lake in a green valley seen from a high viewpoint through pine branches, snowy peaks at the end of the valley.
+SCÈNE : a broad lake several kilometres wide (not a river) seen from a high viewpoint, small villages on the far shore, green wooded slopes, the snowy Bernese Alps at the end, a few pine branches only in the top-left corner.
 STYLE : flat editorial gouache illustration on cream paper, NOT a photo, not photorealistic. No text, no letters, no logos, no signs with text anywhere. No faces, no recognisable people.
 FORMAT : 16:9.
 ```
