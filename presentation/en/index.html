@@ -213,6 +213,9 @@
   .entre { opacity: 1; transform: none; }
   .js .entre { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
   .js .entre.vu { opacity: 1; transform: none; }
+  /* Les photos attendent d’être chargées puis se posent doucement, au lieu de surgir après le cadre. */
+  .js figure.entre img { opacity: 0; clip-path: inset(5% 4% round 24px); transition: opacity 900ms ease, clip-path 1400ms var(--ease-out); }
+  .js figure.entre.vu img.ok { opacity: 1; clip-path: inset(0 round 24px); }
   .js .hero h1 .ligne > span { transform: translateY(105%); transition: transform 900ms var(--ease-out); }
   .js .hero h1 .ligne:nth-child(2) > span { transition-delay: 110ms; }
   .js .hero.pret h1 .ligne > span { transform: none; }
@@ -261,7 +264,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .bande img { animation: none; transform: none; }
-    .js .entre, .js .hero h1 .ligne > span { transform: none !important; transition: opacity 300ms ease; }
+    .js .entre, .js .hero h1 .ligne > span, .js figure.entre img { transform: none !important; clip-path: none !important; transition: opacity 300ms ease; }
     .defi-ui .compteur { transition: none; }
   }
 
@@ -549,6 +552,7 @@ const vus = new IntersectionObserver((es) => es.forEach((e) => {
   e.target.classList.add('vu'); vus.unobserve(e.target);
 }), { rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.entre').forEach((el) => vus.observe(el));
+document.querySelectorAll('figure.entre img').forEach((i) => { const ok = () => i.classList.add('ok'); if (i.complete) ok(); else { i.addEventListener('load', ok); i.addEventListener('error', ok); } });
 
 // Liste des plages pour les champs.
 $('plages').innerHTML = SPOTS.map((s) => `<option value="${s.nom}">`).join('');
