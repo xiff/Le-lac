@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/niveau-du-leman/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/niveau-du-leman/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">By the My Lake team · published <time datetime="2026-11-18">18 November 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/niveau-leman-640.webp 640w, ../../../blog/img/min/niveau-leman-1200.webp 1200w, ../../../blog/img/min/niveau-leman-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/niveau-leman.jpg" alt="A jetty, the lake level marked on a graduated post, wet pebbles" srcset="../../../blog/img/min/niveau-leman-640.jpg 640w, ../../../blog/img/min/niveau-leman-1200.jpg 1200w, ../../../blog/img/ia/niveau-leman.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/niveau-leman-640.webp 640w, ../../../blog/img/min/niveau-leman-1200.webp 1200w, ../../../blog/img/min/niveau-leman-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/niveau-leman.jpg" alt="A jetty, the lake level marked on a graduated post, wet pebbles" srcset="../../../blog/img/min/niveau-leman-640.jpg 640w, ../../../blog/img/min/niveau-leman-1200.jpg 1200w, ../../../blog/img/ia/niveau-leman.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>The level of Lake Geneva has been <strong>artificially regulated between 371.7 and 372.3 metres</strong> above sea level since 1884. Before the dam, Forel measured an average difference of <strong>1.54 m</strong> between summer and winter, because of the Rhône. The mean level measured between 1943 and 2008 is 372.05 m.</p></section>
   <h2>Who sets the level?</h2>
 <p>The level has been artificially regulated since 1884, by a movable-curtain dam at the Pont de la Machine in Geneva, following an inter-cantonal convention of 1884 and a federal regulation of 1892. The Rhône upstream controls the lake’s hydrography: its mean flow was 179.2 m³/s between 2005 and 2015, and its variations, mostly due to glaciers, made the level fluctuate by an average of 1.54 m between summer and winter, from François-Alphonse Forel’s measurements before the dam.</p>

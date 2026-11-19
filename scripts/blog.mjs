@@ -68,6 +68,7 @@ const tete = ({ L, titre, desc, url, alt, image, type, ld, r, donnees }) => `<!d
 ${Object.entries(alt).map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${alt.fr}">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -101,7 +102,7 @@ ${donnees ? `<link rel="modulepreload" href="${r}spots.js">
 
 // Image d'article : tête (prioritaire) ou image secondaire dans le corps (chargée plus tard).
 const mini = (image, w, ext, r) => `${r}blog/img/min/${image.split('/').pop().replace('.jpg', `-${w}.${ext}`)}`;
-const figure = (x, alt, legende, r, cls = 'seconde') => `<figure class="${cls}"><picture><source type="image/webp" srcset="${[640, 1200, 1600].map((w) => `${mini(x.image, w, 'webp', r)} ${w}w`).join(', ')}" sizes="(max-width: 700px) 100vw, 680px"><img src="${r}${x.image}" alt="${esc(alt)}" srcset="${[640, 1200].map((w) => `${mini(x.image, w, 'jpg', r)} ${w}w`).join(', ')}, ${r}${x.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${x.hauteur}"${cls === 'une' ? ' fetchpriority="high"' : ' loading="lazy"'}></picture><figcaption>${legende}</figcaption></figure>`;
+const figure = (x, alt, legende, r, cls = 'seconde') => `<figure class="${cls}"><picture><source type="image/webp" srcset="${[640, 1200, 1600].map((w) => `${mini(x.image, w, 'webp', r)} ${w}w`).join(', ')}" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="${r}${x.image}" alt="${esc(alt)}" srcset="${[640, 1200].map((w) => `${mini(x.image, w, 'jpg', r)} ${w}w`).join(', ')}, ${r}${x.image} 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="${x.hauteur}"${cls === 'une' ? ' fetchpriority="high"' : ' loading="lazy"'}></picture><figcaption>${legende}</figcaption></figure>`;
 
 export function article(a, L = 'fr') {
   const t = TXT[L], c = a[L], url = urlArticle(a.slug, L), image = BASE + a.image, r = SUF[L] ? '../../../' : '../../';

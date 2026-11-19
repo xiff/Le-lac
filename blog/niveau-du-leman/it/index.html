@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/niveau-du-leman/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/niveau-du-leman/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-18">18 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/niveau-leman-640.webp 640w, ../../../blog/img/min/niveau-leman-1200.webp 1200w, ../../../blog/img/min/niveau-leman-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/niveau-leman.jpg" alt="Un pontile, il livello del lago segnato su un palo graduato, ciottoli bagnati" srcset="../../../blog/img/min/niveau-leman-640.jpg 640w, ../../../blog/img/min/niveau-leman-1200.jpg 1200w, ../../../blog/img/ia/niveau-leman.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/niveau-leman-640.webp 640w, ../../../blog/img/min/niveau-leman-1200.webp 1200w, ../../../blog/img/min/niveau-leman-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/niveau-leman.jpg" alt="Un pontile, il livello del lago segnato su un palo graduato, ciottoli bagnati" srcset="../../../blog/img/min/niveau-leman-640.jpg 640w, ../../../blog/img/min/niveau-leman-1200.jpg 1200w, ../../../blog/img/ia/niveau-leman.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Il livello del Lemano è <strong>regolato artificialmente tra 371,7 e 372,3 metri</strong> di altitudine dal 1884. Prima della diga, Forel misurava in media <strong>1,54 m</strong> di differenza tra estate e inverno, a causa del Rodano. La quota media misurata tra il 1943 e il 2008 è 372,05 m.</p></section>
   <h2>Chi regola il livello?</h2>
 <p>Il livello è regolato artificialmente dal 1884, da una diga a tendine mobili al Pont de la Machine a Ginevra, in seguito a una convenzione intercantonale del 1884 e a un regolamento federale del 1892. Il Rodano a monte controlla l’idrografia del lago: la sua portata media era di 179,2 m³/s tra il 2005 e il 2015, e le sue variazioni, dovute soprattutto ai ghiacciai, facevano oscillare il livello in media di 1,54 m tra estate e inverno, secondo le misure di François-Alphonse Forel prima della diga.</p>

@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/coupe-de-noel-geneve/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/coupe-de-noel-geneve/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-15">15 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/coupe-de-noel-640.webp 640w, ../../../blog/img/min/coupe-de-noel-1200.webp 1200w, ../../../blog/img/min/coupe-de-noel-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/coupe-de-noel.jpg" alt="Il molo del Jardin Anglais a Ginevra in un mattino di dicembre, un battello ormeggiato, una vasca fumante e il Jet d’eau in lontananza" srcset="../../../blog/img/min/coupe-de-noel-640.jpg 640w, ../../../blog/img/min/coupe-de-noel-1200.jpg 1200w, ../../../blog/img/ia/coupe-de-noel.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/coupe-de-noel-640.webp 640w, ../../../blog/img/min/coupe-de-noel-1200.webp 1200w, ../../../blog/img/min/coupe-de-noel-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/coupe-de-noel.jpg" alt="Il molo del Jardin Anglais a Ginevra in un mattino di dicembre, un battello ormeggiato, una vasca fumante e il Jet d’eau in lontananza" srcset="../../../blog/img/min/coupe-de-noel-640.jpg 640w, ../../../blog/img/min/coupe-de-noel-1200.jpg 1200w, ../../../blog/img/ia/coupe-de-noel.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>La <strong>88ª Coupe de Noël</strong> si svolge il <strong>19 e 20 dicembre 2026</strong> nella rada di Ginevra: <strong>100 metri</strong> dal Jardin Anglais, in serie cronometrate o in costume. L’iscrizione costa <strong>CHF 45</strong> e il sito ufficiale annuncia l’edizione <strong>al completo</strong>. Per il pubblico l’ingresso è gratuito.</p></section>
   <h2>Che cos’è la Coupe de Noël?</h2>
 <p>Una gara di 100 metri nel lago, in pieno inverno, nel cuore di Ginevra. È nata nel 1934: un membro del Cercle des Nageurs de Genève, il signor Doria, la creò sul modello di una gara vista sulla Senna a Parigi, con meno di dieci nuotatori il primo anno. L’organizzatore la presenta come la più antica manifestazione sportiva del cantone, iscritta nel patrimonio immateriale svizzero nel 2023. Oggi è organizzata dall’Association CdN 1934, con il sostegno del Servizio dello sport della Città di Ginevra.</p>

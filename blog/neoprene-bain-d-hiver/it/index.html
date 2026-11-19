@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/neoprene-bain-d-hiver/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/neoprene-bain-d-hiver/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-15">15 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/neoprene-640.webp 640w, ../../../blog/img/min/neoprene-1200.webp 1200w, ../../../blog/img/min/neoprene-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/neoprene.jpg" alt="Una panchina di legno su un molo con guanti, scarpette e un berretto di lana, il lago all’alba" srcset="../../../blog/img/min/neoprene-640.jpg 640w, ../../../blog/img/min/neoprene-1200.jpg 1200w, ../../../blog/img/ia/neoprene.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/neoprene-640.webp 640w, ../../../blog/img/min/neoprene-1200.webp 1200w, ../../../blog/img/min/neoprene-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/neoprene.jpg" alt="Una panchina di legno su un molo con guanti, scarpette e un berretto di lana, il lago all’alba" srcset="../../../blog/img/min/neoprene-640.jpg 640w, ../../../blog/img/min/neoprene-1200.jpg 1200w, ../../../blog/img/ia/neoprene.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Una muta in neoprene aiuta a <strong>trattenere il calore</strong> e a galleggiare, soprattutto sotto i 18 °C, ma <strong>non impedisce né lo shock da freddo né l’ipotermia</strong>, e la RLSS sconsiglia ai principianti l’acqua sotto i 12 °C anche in muta. Per il bagno invernale classico, Helsana elenca berretto, boa di nuoto, asciugamano e vestiti caldi e, se serve, guanti e calze in neoprene.</p></section>
   <h2>Cosa fa una muta e cosa no</h2>
 <p>Secondo la RLSS, nuotare in muta in acque libere è in genere più sicuro, soprattutto con acqua a 18 °C o meno: aiuta a trattenere il calore e migliora la galleggiabilità. Ma si possono provare lo shock da freddo e l’ipotermia anche in muta, e la RLSS sconsiglia ai principianti di nuotare in acqua sotto i 12 °C. La muta non sostituisce quindi <a href="../../../blog/programme-4-semaines-bain-d-hiver/it/">l’abitudine graduale</a>.</p>

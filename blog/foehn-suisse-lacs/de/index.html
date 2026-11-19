@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/foehn-suisse-lacs/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/foehn-suisse-lacs/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Von der Redaktion von Mein See · veröffentlicht am <time datetime="2026-11-18">18. November 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/foehn-640.webp 640w, ../../../blog/img/min/foehn-1200.webp 1200w, ../../../blog/img/min/foehn-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/foehn.jpg" alt="Eine Wolkenwand auf den Alpenkämmen, klarer Himmel über einem See, gespannte Segel" srcset="../../../blog/img/min/foehn-640.jpg 640w, ../../../blog/img/min/foehn-1200.jpg 1200w, ../../../blog/img/ia/foehn.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/foehn-640.webp 640w, ../../../blog/img/min/foehn-1200.webp 1200w, ../../../blog/img/min/foehn-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/foehn.jpg" alt="Eine Wolkenwand auf den Alpenkämmen, klarer Himmel über einem See, gespannte Segel" srcset="../../../blog/img/min/foehn-640.jpg 640w, ../../../blog/img/min/foehn-1200.jpg 1200w, ../../../blog/img/ia/foehn.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Der <strong>Föhn</strong> ist ein <strong>trockener, warmer Südwind</strong>, der vor allem im Herbst und Spätwinter nördlich der Alpen weht. Er kann die Temperatur in wenigen Minuten um mehr als <strong>10 °C</strong> steigen lassen; am 7. und 8. November 1982 waren es 2 °C in der Poebene und 20 °C in Zürich.</p></section>
   <h2>Woher kommt der Föhn?</h2>
 <p>Das Wort stammt aus dem Schweizerdeutschen <em>Föhn</em>, vom lateinischen <em>favonius</em>, «sanfter Wind». Nördlich der Alpen weht er aus Süden, oft mit einem Tief über den Britischen Inseln und Nordfrankreich.</p>

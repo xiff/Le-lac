@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/lacs-les-plus-chauds-et-les-plus-froids/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/lacs-les-plus-chauds-et-les-plus-froids/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-16">16 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/lacs-chauds-froids-640.webp 640w, ../../../blog/img/min/lacs-chauds-froids-1200.webp 1200w, ../../../blog/img/min/lacs-chauds-froids-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/lacs-chauds-froids.jpg" alt="Un termometro nell’acqua, da un lato un lago azzurro e soleggiato, dall’altro un lago di montagna scuro" srcset="../../../blog/img/min/lacs-chauds-froids-640.jpg 640w, ../../../blog/img/min/lacs-chauds-froids-1200.jpg 1200w, ../../../blog/img/ia/lacs-chauds-froids.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/lacs-chauds-froids-640.webp 640w, ../../../blog/img/min/lacs-chauds-froids-1200.webp 1200w, ../../../blog/img/min/lacs-chauds-froids-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/lacs-chauds-froids.jpg" alt="Un termometro nell’acqua, da un lato un lago azzurro e soleggiato, dall’altro un lago di montagna scuro" srcset="../../../blog/img/min/lacs-chauds-froids-640.jpg 640w, ../../../blog/img/min/lacs-chauds-froids-1200.jpg 1200w, ../../../blog/img/ia/lacs-chauds-froids.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>I 25 laghi de Il mio lago non hanno la stessa temperatura nello stesso momento: la differenza si legge ogni mattina nei dati del modello <strong>Alplakes (Eawag)</strong>. Questa pagina mostra la classifica del giorno, con la data; cambia ogni giorno.</p></section>
   <h2>La classifica del mattino</h2>
 <p>Media delle spiagge di ogni lago, temperatura del mattino del 19 novembre 2026 (modello Alplakes, Eawag). Cambia ogni giorno.</p>

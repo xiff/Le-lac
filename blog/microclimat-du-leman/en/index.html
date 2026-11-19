@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/microclimat-du-leman/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/microclimat-du-leman/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">By the My Lake team · published <time datetime="2026-11-17">17 November 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/microclimat-640.webp 640w, ../../../blog/img/min/microclimat-1200.webp 1200w, ../../../blog/img/min/microclimat-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/microclimat.jpg" alt="Terraced vineyards by the lake, the shore bathed in soft light, palms at Montreux" srcset="../../../blog/img/min/microclimat-640.jpg 640w, ../../../blog/img/min/microclimat-1200.jpg 1200w, ../../../blog/img/ia/microclimat.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/microclimat-640.webp 640w, ../../../blog/img/min/microclimat-1200.webp 1200w, ../../../blog/img/min/microclimat-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/microclimat.jpg" alt="Terraced vineyards by the lake, the shore bathed in soft light, palms at Montreux" srcset="../../../blog/img/min/microclimat-640.jpg 640w, ../../../blog/img/min/microclimat-1200.jpg 1200w, ../../../blog/img/ia/microclimat.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>Through the mass of water it holds, Lake Geneva creates a <strong>microclimate</strong>: in winter, the lake gives back the heat stored over summer, which softens temperatures nearby; in summer, it <strong>cools</strong> its whole shoreline. Montreux and its surroundings are sheltered from the bise.</p></section>
   <h2>A great volume of water</h2>
 <p>Located on the north-western edge of the Alps, Lake Geneva holds an enormous mass of water, with a mean depth of 152.7 m. This mass changes temperature slowly, far more slowly than air.</p>

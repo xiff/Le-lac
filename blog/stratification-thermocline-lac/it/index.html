@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/stratification-thermocline-lac/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/stratification-thermocline-lac/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-19">19 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/stratification-640.webp 640w, ../../../blog/img/min/stratification-1200.webp 1200w, ../../../blog/img/min/stratification-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/stratification.jpg" alt="Un lago in sezione, tre fasce d’acqua dall’azzurro al blu scuro, un termometro a ogni livello" srcset="../../../blog/img/min/stratification-640.jpg 640w, ../../../blog/img/min/stratification-1200.jpg 1200w, ../../../blog/img/ia/stratification.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/stratification-640.webp 640w, ../../../blog/img/min/stratification-1200.webp 1200w, ../../../blog/img/min/stratification-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/stratification.jpg" alt="Un lago in sezione, tre fasce d’acqua dall’azzurro al blu scuro, un termometro a ogni livello" srcset="../../../blog/img/min/stratification-640.jpg 640w, ../../../blog/img/min/stratification-1200.jpg 1200w, ../../../blog/img/ia/stratification.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Con il caldo un lago si dispone in <strong>tre strati</strong>: l’<strong>epilimnio</strong> (caldo, in superficie), il <strong>termoclino</strong> (la zona di rapida transizione termica) e l’<strong>ipolimnio</strong> (più freddo, fino al fondo). Perché l’acqua calda è meno densa di quella fredda e galleggia sopra.</p></section>
   <h2>Perché gli strati?</h2>
 <p>La maggior parte dei fluidi ha una densità che diminuisce con la temperatura: la parte calda sale sopra quella fredda. L’acqua di superficie di un lago fermo è quindi più calda di quella un metro più sotto.</p>
