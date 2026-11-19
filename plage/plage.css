@@ -115,7 +115,7 @@ body.large footer { max-width: 1080px; }
 .grille .une p { font-size: 18px; }
 .lire { margin-top: 8px; font-weight: 700; color: var(--lac); }
 @media (max-width: 760px) { .grille .une a { display: flex; gap: 14px; } .grille .une h2 { font-size: 28px; } }
-@media (prefers-reduced-motion: reduce) { .vignette img, .themes button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .vignette img { transition: filter 300ms ease; } .grille a:hover img { transform: none; } .themes button { transition: none; } } /* sans mouvement : pas de zoom qui saute, seulement l’éclat */
 /* Liste des plages : recherche dans l'en-tête, régions en colonnes, eau en direct avec pastille de couleur. */
 .cherche { margin-top: 32px; max-width: 640px; }
 .cherche label { display: block; font: 400 21px/1.25 "Young Serif", Georgia, serif; margin-bottom: 12px; }
