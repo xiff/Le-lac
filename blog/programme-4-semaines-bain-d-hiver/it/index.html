@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/programme-4-semaines-bain-d-hiver/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Redazione: Il mio lago · pubblicato il <time datetime="2026-11-15">15 novembre 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/programme-4-semaines-640.webp 640w, ../../../blog/img/min/programme-4-semaines-1200.webp 1200w, ../../../blog/img/min/programme-4-semaines-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/programme-4-semaines.jpg" alt="Un molo di pietra con la scala di legno che scende in un lago blu, rive lontane" srcset="../../../blog/img/min/programme-4-semaines-640.jpg 640w, ../../../blog/img/min/programme-4-semaines-1200.jpg 1200w, ../../../blog/img/ia/programme-4-semaines.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/programme-4-semaines-640.webp 640w, ../../../blog/img/min/programme-4-semaines-1200.webp 1200w, ../../../blog/img/min/programme-4-semaines-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/programme-4-semaines.jpg" alt="Un molo di pietra con la scala di legno che scende in un lago blu, rive lontane" srcset="../../../blog/img/min/programme-4-semaines-640.jpg 640w, ../../../blog/img/min/programme-4-semaines-1200.jpg 1200w, ../../../blog/img/ia/programme-4-semaines.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Questa è <strong>la nostra proposta</strong> in quattro tappe, costruita sulle regole delle fonti: cominciare con pochi secondi (Helsana), entrare lentamente, non superare mai <strong>tanti minuti quanti gradi ha l’acqua</strong> (Società Svizzera di Salvataggio), andare in compagnia. È un quadro di prudenza, non un protocollo medico né una promessa di risultati: chi ha un problema di salute ne parla prima con il medico.</p></section>
   <h2>Le regole che fissano il quadro</h2>
 <ul class="liste">

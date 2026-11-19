@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/coupe-de-noel-geneve/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/coupe-de-noel-geneve/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">Von der Redaktion von Mein See · veröffentlicht am <time datetime="2026-11-15">15. November 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/coupe-de-noel-640.webp 640w, ../../../blog/img/min/coupe-de-noel-1200.webp 1200w, ../../../blog/img/min/coupe-de-noel-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/coupe-de-noel.jpg" alt="Der Quai beim Jardin Anglais in Genf an einem Dezembermorgen, ein vertäutes Schiff, ein dampfender Whirlpool, in der Ferne der Jet d’eau" srcset="../../../blog/img/min/coupe-de-noel-640.jpg 640w, ../../../blog/img/min/coupe-de-noel-1200.jpg 1200w, ../../../blog/img/ia/coupe-de-noel.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/coupe-de-noel-640.webp 640w, ../../../blog/img/min/coupe-de-noel-1200.webp 1200w, ../../../blog/img/min/coupe-de-noel-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/coupe-de-noel.jpg" alt="Der Quai beim Jardin Anglais in Genf an einem Dezembermorgen, ein vertäutes Schiff, ein dampfender Whirlpool, in der Ferne der Jet d’eau" srcset="../../../blog/img/min/coupe-de-noel-640.jpg 640w, ../../../blog/img/min/coupe-de-noel-1200.jpg 1200w, ../../../blog/img/ia/coupe-de-noel.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>KI-generierte Illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">Kurz gesagt</h2><p>Die <strong>88. Coupe de Noël</strong> findet am <strong>19. und 20. Dezember 2026</strong> in der Genfer Rade statt: <strong>100 Meter</strong> ab dem Jardin Anglais, in gezeiteten Serien oder verkleidet. Die Anmeldung kostet <strong>CHF 45</strong>, und laut offizieller Website ist die Ausgabe <strong>ausgebucht</strong>. Zuschauen ist gratis.</p></section>
   <h2>Was ist die Coupe de Noël?</h2>
 <p>Ein 100-Meter-Rennen im See, mitten im Winter, mitten in Genf. Es begann 1934: Herr Doria, Mitglied des Cercle des Nageurs de Genève, gründete es nach dem Vorbild eines Rennens auf der Seine in Paris, im ersten Jahr mit weniger als zehn Schwimmern. Der Veranstalter bezeichnet es als ältesten Sportanlass des Kantons, seit 2023 Teil des immateriellen Kulturerbes der Schweiz. Heute organisiert es die Association CdN 1934 mit Unterstützung des Sportamts der Stadt Genf.</p>

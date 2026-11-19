@@ -12,6 +12,7 @@
 <link rel="alternate" hreflang="it" href="https://monlac.ch/blog/seiches-leman/it/">
 <link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/seiches-leman/">
 <script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
 // Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
 // Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
 (() => { try {
@@ -50,7 +51,7 @@
   <p class="releve">By the My Lake team · published <time datetime="2026-11-17">17 November 2026</time></p>
 </header>
 <main class="article">
-  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/seiches-640.webp 640w, ../../../blog/img/min/seiches-1200.webp 1200w, ../../../blog/img/min/seiches-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img src="../../../blog/img/ia/seiches.jpg" alt="The calm lake at dusk, concentric ripples on the water near a jetty" srcset="../../../blog/img/min/seiches-640.jpg 640w, ../../../blog/img/min/seiches-1200.jpg 1200w, ../../../blog/img/ia/seiches.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/seiches-640.webp 640w, ../../../blog/img/min/seiches-1200.webp 1200w, ../../../blog/img/min/seiches-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/seiches.jpg" alt="The calm lake at dusk, concentric ripples on the water near a jetty" srcset="../../../blog/img/min/seiches-640.jpg 640w, ../../../blog/img/min/seiches-1200.jpg 1200w, ../../../blog/img/ia/seiches.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>A <strong>seiche</strong> is an oscillation of a lake’s water: the level falls on one side while it rises on the other. On Lake Geneva, longitudinal seiches reach <strong>30 centimetres</strong> at most, with a period of about <strong>73 minutes</strong>. They are caused by wind or by a low-pressure system.</p></section>
   <h2>What is a seiche?</h2>
 <p>The word “seiche” was used around Lake Geneva for the visible oscillations of the lake, before it took on a precise meaning in physics. It covers two kinds of standing waves: those of the <strong>free surface</strong>, between air and water, and those of the <strong>thermocline</strong>, between surface water and deep water (see internal seiches).</p>

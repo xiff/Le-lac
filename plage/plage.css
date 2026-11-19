@@ -65,6 +65,10 @@ footer .liens a { display: inline-flex; align-items: center; min-height: 44px; }
 .une { margin: 24px 0 0; }
 .seconde { margin: 28px 0 0; }
 .une img, .seconde img { width: 100%; height: auto; border-radius: 16px; display: block; }
+/* Photos d’article : elles attendent d’être chargées puis se dévoilent, au lieu de surgir. */
+.js .voile { clip-path: inset(0 round 16px); transition: opacity 900ms ease, clip-path 1400ms cubic-bezier(0.23, 1, 0.32, 1); }
+.js .voile:not(.ok) { opacity: 0; clip-path: inset(5% 4% round 16px); }
+@media (prefers-reduced-motion: reduce) { .js .voile { clip-path: none; transition: opacity 300ms ease; } }
 .une figcaption, .seconde figcaption, .sources li { color: var(--doux); font-size: 13px; }
 .une figcaption, .seconde figcaption { margin-top: 6px; }
 .bref { margin-top: 28px; padding: 18px 20px; border-radius: 18px; background: var(--carte); box-shadow: 0 1px 3px #10292f14; }
