@@ -38,7 +38,7 @@ const TXT = {
 // Thème de chaque article, pour la liste du blog et son filtre.
 const THEMES = { froid: { fr: 'Eau froide', en: 'Cold water', de: 'Kaltes Wasser', it: 'Acqua fredda' }, lac: { fr: 'Le lac', en: 'The lake', de: 'Der See', it: 'Il lago' }, plages: { fr: 'Plages', en: 'Beaches', de: 'Badeplätze', it: 'Spiagge' },
   sports: { fr: 'Sports nautiques', en: 'Water sports', de: 'Wassersport', it: 'Sport nautici' }, sortir: { fr: 'Sortir', en: 'Going out', de: 'Ausgehen', it: 'Uscire' } };
-const theme = (a) => (a.sante ? 'froid' : /plages/.test(a.slug) ? 'plages' : /paddle|kite|wake/.test(a.slug) ? 'sports' : /buvettes|saunas/.test(a.slug) ? 'sortir' : 'lac');
+const theme = (a) => (a.sante ? 'froid' : /plages/.test(a.slug) ? 'plages' : /paddle|kite|wake|kayak|bateau|pedalo|voile/.test(a.slug) ? 'sports' : /buvettes|saunas/.test(a.slug) ? 'sortir' : 'lac');
 const dateL = (d, L) => new Date(d + 'T12:00:00Z').toLocaleDateString(LOCALE[L], { day: 'numeric', month: 'long', year: 'numeric' });
 const urlArticle = (slug, L) => `${BASE}blog/${slug}/${SUF[L]}`;
 const urlBlog = (L) => `${BASE}blog/${SUF[L]}`;
