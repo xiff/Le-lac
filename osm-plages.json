@@ -453,5 +453,1090 @@
   "chiensNom": null,
   "jeux": true,
   "plongeoir": null
+ },
+ "yverdon-les-bains": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "grandson-corcelettes": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "yvonand": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "concise": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "saint-aubin-ne": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "cortaillod": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "boudry": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "colombier": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "neuchatel-jeunes-rives": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "hauterive": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "cudrefin": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "portalban": {
+  "sable": true,
+  "chiens": "no",
+  "chiensNom": "Plage de Portalban",
+  "jeux": true,
+  "plongeoir": null
+ },
+ "gletterens": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "forel": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "estavayer-le-lac": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "cerlier": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "la-neuveville": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "strandbad-rostele": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "tuscherz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "badewiese-funtelen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "bienne-plage": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "nidau": {
+  "sable": false,
+  "chiens": "yes",
+  "chiensNom": "Hundemätteli / Plage des pauvres",
+  "jeux": false,
+  "plongeoir": null
+ },
+ "morat": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "faoug": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "avenches": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "salavaux": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "pont-la-ville": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "la-roche": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "gumefens": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "corbieres": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "morlon": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "domaine-des-iles": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "caslano": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "magliaso": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "agno": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lugano-riva-caccia": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "paradiso-conca-d-oro": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lugano-parco-ciani": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lido-di-lugano": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "castagnola-san-domenico": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "melide": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "bissone": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "maroggia": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "melano": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "capolago": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "riva-san-vitale": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "brissago": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "ascona": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "gerra-gambarogno": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lido-locarno": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "locarno-bagno-pubblico": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "tenero-lido-mappo": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "tenero": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "le-sentier-rocheray": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "le-pont": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lac-de-bret": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "les-brenets": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zurich-mythenquai": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "zurich-seebad-enge": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zurich-wollishofen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "zurich-utoquai": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zurich-tiefenbrunnen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "kilchberg": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "rueschlikon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "thalwil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zollikon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "kuesnacht": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "erlenbach": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "oberrieden": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "feldmeilen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "meilen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "wadenswil-rietliau": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "uetikon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "richterswil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "baech": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "pfaeffikon-sz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "rapperswil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "maur": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "uster": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "greifensee-furren": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lucerne-seebad": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lucerne-ufschuetti": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lucerne-tribschen": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lucerne-lido": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "horw-seebad": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "horw-winkel": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "hergiswil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "stansstad": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "meggen-benzeholz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "merlischachen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "greppen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "buochs-ennetbuergen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "beckenried": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "vitznau-lido": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "cholplatz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "gersau-kindli": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "brunnen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "bauen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "oberaegeri": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "boniswil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "tennwil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "meisterschwanden": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": "Sprungturm 1.5m, 2m, 4m"
+ },
+ "beinwil-am-see": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "huenenberg": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "buonas": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "zweiern": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "cham-hirsgarten": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "cham": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "immensee": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zug-brueggli": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zug-strandbad": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "zug-maennerbadi": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "zug-seeliken": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "oberwil-tellenoertli": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "oberwil-trubikon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "walchwil-lido": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "walchwil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "arth": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "thoune-strandbad": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "huenibach": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "spiez": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "faulensee": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "krattigen-lido": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "leissigen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "oberhofen-hirschen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "neuhaus": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "boenigen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "niederried": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "iseltwald": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "brienz": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "schenkon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "nottwil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "eich": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "sempach": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "gelfingen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "baldegg": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "wilen-wilerbaedli": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "sarnen": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "silvaplana": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "berlingen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "mannenbach": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "ermatingen": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "triboltingen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "muensterlingen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "landschlacht": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "altnau": {
+  "sable": false,
+  "chiens": "yes",
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "guettingen": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "kesswil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "uttwil": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "romanshorn": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "egnach-wiedehorn": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "arbon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "steinach": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "horn": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "altenrhein": {
+  "sable": false,
+  "chiens": "yes",
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
  }
 }

@@ -1,11 +1,11 @@
-// Étiquettes OpenStreetMap autour de chaque plage du Léman (osm-plages.json) : nature du sol (surface), chiens (dog), aire de jeux, plongeoir.
+// Étiquettes OpenStreetMap autour de chaque plage (osm-plages.json) : nature du sol (surface), chiens (dog), aire de jeux, plongeoir.
 // On lit les objets à moins d'environ 150 m du point de la plage (API OpenStreetMap, données ODbL). Ce n'est pas un recensement officiel :
 // une étiquette absente ne veut pas dire « non ». À relancer quand des plages sont ajoutées : NODE_USE_ENV_PROXY=1 node scripts/osm-plages.mjs
 import { writeFile } from 'node:fs/promises';
 import { SPOTS, lacDe } from '../spots.js';
 
 const out = {};
-for (const s of SPOTS.filter((x) => lacDe(x) === 'leman')) {
+for (const s of SPOTS) {
   const d = 0.0015, bbox = [s.lon - d, s.lat - d, s.lon + d, s.lat + d].join(',');
   const j = await fetch(`https://www.openstreetmap.org/api/0.6/map.json?bbox=${bbox}`, { headers: { 'user-agent': 'lac-research/1.0 (monlac.ch)' } }).then((r) => r.json()).catch(() => null);
   if (!j) { console.warn(`${s.id} : pas de réponse`); continue; }

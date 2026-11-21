@@ -1,0 +1,636 @@
+{
+ "neuchatel": {
+  "yverdon-les-bains": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "grandson-corcelettes": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "yvonand": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "concise": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "saint-aubin-ne": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "cortaillod": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "boudry": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "colombier": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "neuchatel-jeunes-rives": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "hauterive": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "cudrefin": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "portalban": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "gletterens": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "forel": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "estavayer-le-lac": {
+   "ete": true,
+   "equinoxe": true
+  }
+ },
+ "bienne": {
+  "cerlier": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "la-neuveville": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "strandbad-rostele": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "tuscherz": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "badewiese-funtelen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "bienne-plage": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "nidau": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "morat": {
+  "morat": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "faoug": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "avenches": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "salavaux": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "gruyere": {
+  "pont-la-ville": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "la-roche": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "gumefens": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "corbieres": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "morlon": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "lugano": {
+  "caslano": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "magliaso": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "agno": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lugano-riva-caccia": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "paradiso-conca-d-oro": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lugano-parco-ciani": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lido-di-lugano": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "castagnola-san-domenico": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "melide": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "bissone": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "maroggia": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "melano": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "capolago": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "riva-san-vitale": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "majeur": {
+  "brissago": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "ascona": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "gerra-gambarogno": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "lido-locarno": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "locarno-bagno-pubblico": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "tenero-lido-mappo": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "tenero": {
+   "ete": true,
+   "equinoxe": true
+  }
+ },
+ "joux": {
+  "le-sentier-rocheray": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "le-pont": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "zurich": {
+  "zurich-mythenquai": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zurich-seebad-enge": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zurich-wollishofen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zurich-utoquai": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zurich-tiefenbrunnen": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "kilchberg": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "rueschlikon": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "thalwil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zollikon": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "kuesnacht": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "erlenbach": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "oberrieden": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "feldmeilen": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "meilen": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "wadenswil-rietliau": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "uetikon": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "richterswil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "baech": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "pfaeffikon-sz": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "rapperswil": {
+   "ete": true,
+   "equinoxe": true
+  }
+ },
+ "greifensee": {
+  "maur": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "uster": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "greifensee-furren": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "lucerne": {
+  "lucerne-seebad": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lucerne-ufschuetti": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lucerne-tribschen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "lucerne-lido": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "horw-seebad": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "horw-winkel": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "hergiswil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "stansstad": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "meggen-benzeholz": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "merlischachen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "greppen": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "buochs-ennetbuergen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "beckenried": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "vitznau-lido": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "cholplatz": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "gersau-kindli": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "brunnen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "bauen": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "zoug": {
+  "huenenberg": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "buonas": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zweiern": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "cham-hirsgarten": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "cham": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "immensee": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zug-brueggli": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "zug-strandbad": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "zug-maennerbadi": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "zug-seeliken": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "oberwil-tellenoertli": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "oberwil-trubikon": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "walchwil-lido": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "walchwil": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "arth": {
+   "ete": true,
+   "equinoxe": false
+  }
+ },
+ "aegeri": {
+  "oberaegeri": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "hallwil": {
+  "boniswil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "tennwil": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "meisterschwanden": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "beinwil-am-see": {
+   "ete": false,
+   "equinoxe": false
+  }
+ },
+ "thoune": {
+  "thoune-strandbad": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "huenibach": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "spiez": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "faulensee": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "krattigen-lido": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "leissigen": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "oberhofen-hirschen": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "neuhaus": {
+   "ete": false,
+   "equinoxe": true
+  }
+ },
+ "brienz": {
+  "boenigen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "niederried": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "iseltwald": {
+   "ete": true,
+   "equinoxe": true
+  },
+  "brienz": {
+   "ete": false,
+   "equinoxe": true
+  }
+ },
+ "sempach": {
+  "schenkon": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "nottwil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "eich": {
+   "ete": false,
+   "equinoxe": true
+  },
+  "sempach": {
+   "ete": true,
+   "equinoxe": true
+  }
+ },
+ "sarnen": {
+  "wilen-wilerbaedli": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "sarnen": {
+   "ete": false,
+   "equinoxe": true
+  }
+ },
+ "constance": {
+  "muensterlingen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "landschlacht": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "altnau": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "guettingen": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "kesswil": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "uttwil": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "romanshorn": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "egnach-wiedehorn": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "arbon": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "steinach": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "horn": {
+   "ete": true,
+   "equinoxe": false
+  },
+  "altenrhein": {
+   "ete": true,
+   "equinoxe": true
+  }
+ },
+ "untersee": {
+  "berlingen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "mannenbach": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "ermatingen": {
+   "ete": false,
+   "equinoxe": false
+  },
+  "triboltingen": {
+   "ete": false,
+   "equinoxe": false
+  }
+ }
+}

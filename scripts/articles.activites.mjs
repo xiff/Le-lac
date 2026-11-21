@@ -369,7 +369,8 @@ export const articleFluss = () => A('flussschwimmen-aare-rhein-limmat', 'fluss',
 const OSM_P = (() => { try { return JSON.parse(readFileSync(new URL('../osm-plages.json', import.meta.url), 'utf8')); } catch { return {}; } })();
 const S_OSM = ['OpenStreetMap, étiquettes des plages (ODbL)', 'https://www.openstreetmap.org/copyright'];
 const nomS = (id) => SPOTS.find((s) => s.id === id)?.nom ?? id;
-const ids = (f) => Object.entries(OSM_P).filter(([, v]) => f(v)).map(([id]) => id);
+const LEMAN_IDS = new Set(SPOTS.filter((x) => lacDe(x) === 'leman').map((x) => x.id));
+const ids = (f) => Object.entries(OSM_P).filter(([id, v]) => LEMAN_IDS.has(id) && f(v)).map(([id]) => id);
 const lst = (arr, extra = () => '') => UL(...arr.map((id) => `<a href="{plage:${id}}">${nomS(id)}</a>${extra(id)}`));
 const LIMITE = {
   fr: 'Ces informations viennent des contributeurs d’OpenStreetMap, autour du point de chaque plage dans l’app. Ce n’est pas une liste officielle : une plage absente peut très bien convenir, et les règles changent. Vérifiez sur place ou auprès de la commune.',
@@ -448,3 +449,45 @@ export const articleCouchant = () => {
   for (const L of LS) { const x = T[L]; t[L] = { titre: x[0], h1: x[1], desc: x[2], bref: x[2], s: [[x[3], lst(ete)], [x[4], lst(eq)], [x[5], P(lim[L])]] }; }
   return A('coucher-de-soleil-leman', 'guide-couchant', ['Le soleil couchant jaune au-dessus du Léman, une plage de galets au premier plan, le Jura en silhouette', 'The yellow setting sun over Lake Geneva, a pebble beach in the foreground, the Jura in silhouette', 'Die gelbe untergehende Sonne über dem Genfersee, ein Kiesstrand im Vordergrund, der Jura als Silhouette', 'Il sole giallo al tramonto sopra il Lemano, una spiaggia di ciottoli in primo piano, il Giura in controluce'], [S_LEMAN], false, t);
 };
+
+// Un guide par lac (hors Léman, déjà couvert) : sable, aire de jeux, chiens, plongeoir (osm-plages.json) et coucher de soleil (couchant-lacs.json).
+// Seulement les lacs d'au moins 4 plages avec au moins deux informations : sinon la page serait vide.
+const COUCH_L = (() => { try { return JSON.parse(readFileSync(new URL('../couchant-lacs.json', import.meta.url), 'utf8')); } catch { return {}; } })();
+const S_CONT = ['OpenStreetMap, contours des lacs (ODbL)', 'https://www.openstreetmap.org/copyright'];
+const TL = {
+  fr: { titre: (n) => `${n} : plages de sable, en famille et au coucher de soleil`, h1: (n) => `${n} : quelle plage pour quoi ?`, desc: (n, k) => `Sur ${k} plages suivies par Mon Lac : celles avec du sable, une aire de jeux, une règle pour les chiens, et celles qui regardent le coucher de soleil. ${n}.`,
+    bref: (n, a) => `${n} : parmi les plages suivies par Mon Lac, ${a.sable} ont du sable, ${a.jeux} une aire de jeux à côté, et ${a.couch} regardent le soleil couchant, d’après OpenStreetMap et nos calculs.`,
+    h: ['Plages de sable', 'Avec une aire de jeux', 'Chiens', 'Plongeoir signalé', 'Face au coucher de soleil', 'D’où viennent ces informations'], ok: 'admis', non: 'interdits', ete: 'en juin', eq: 'en mars et septembre',
+    lim: 'Sable, aires de jeux, chiens et plongeoirs viennent des étiquettes d’OpenStreetMap à environ 150 m de chaque plage ; le coucher de soleil est calculé sur le contour simplifié du lac, sans relief. Une plage absente d’une liste peut convenir : vérifiez sur place.' },
+  en: { titre: (n) => `${n}: sandy beaches, family beaches and sunset beaches`, h1: (n) => `${n}: which beach for what?`, desc: (n, k) => `Across ${k} beaches followed by My Lake: those with sand, a playground, a dog rule, and those facing the sunset. ${n}.`,
+    bref: (n, a) => `${n}: of the beaches followed by My Lake, ${a.sable} have sand, ${a.jeux} a playground nearby, and ${a.couch} face the setting sun, according to OpenStreetMap and our calculations.`,
+    h: ['Sandy beaches', 'With a playground', 'Dogs', 'Diving board listed', 'Facing the sunset', 'Where this information comes from'], ok: 'allowed', non: 'banned', ete: 'in June', eq: 'in March and September',
+    lim: 'Sand, playgrounds, dogs and diving boards come from OpenStreetMap tags within about 150 m of each beach; the sunset is calculated on the lake’s simplified outline, without relief. A beach missing from a list may still suit: check on site.' },
+  de: { titre: (n) => `${n}: Sandstrände, Familienstrände und Badeplätze mit Abendsonne`, h1: (n) => `${n}: welcher Badeplatz wofür?`, desc: (n, k) => `Unter ${k} Badeplätzen von Mein See: jene mit Sand, Spielplatz, Hunderegel und jene mit Blick auf den Sonnenuntergang. ${n}.`,
+    bref: (n, a) => `${n}: Von den Badeplätzen bei Mein See haben ${a.sable} Sand, ${a.jeux} einen Spielplatz in der Nähe, und ${a.couch} blicken in die Abendsonne, nach OpenStreetMap und unseren Berechnungen.`,
+    h: ['Sandstrände', 'Mit Spielplatz', 'Hunde', 'Erfasster Sprungturm', 'Blick auf den Sonnenuntergang', 'Woher diese Angaben stammen'], ok: 'erlaubt', non: 'verboten', ete: 'im Juni', eq: 'im März und September',
+    lim: 'Sand, Spielplätze, Hunde und Sprungtürme stammen aus OpenStreetMap-Angaben im Umkreis von etwa 150 m; der Sonnenuntergang ist auf dem vereinfachten Seeumriss berechnet, ohne Relief. Ein fehlender Badeplatz kann trotzdem passen: vor Ort prüfen.' },
+  it: { titre: (n) => `${n}: spiagge di sabbia, per famiglie e al tramonto`, h1: (n) => `${n}: quale spiaggia per cosa?`, desc: (n, k) => `Tra ${k} spiagge seguite da Il mio lago: quelle con sabbia, parco giochi, una regola per i cani, e quelle rivolte al tramonto. ${n}.`,
+    bref: (n, a) => `${n}: tra le spiagge seguite da Il mio lago, ${a.sable} hanno sabbia, ${a.jeux} un parco giochi vicino e ${a.couch} guardano il sole che tramonta, secondo OpenStreetMap e i nostri calcoli.`,
+    h: ['Spiagge di sabbia', 'Con parco giochi', 'Cani', 'Trampolino segnalato', 'Rivolte al tramonto', 'Da dove vengono queste informazioni'], ok: 'ammessi', non: 'vietati', ete: 'a giugno', eq: 'a marzo e settembre',
+    lim: 'Sabbia, parchi giochi, cani e trampolini vengono dai tag di OpenStreetMap entro circa 150 m da ogni spiaggia; il tramonto è calcolato sul contorno semplificato del lago, senza rilievo. Una spiaggia assente da un elenco può andare bene: verificate sul posto.' } };
+export const LACS_GUIDES = Object.keys(COUCH_L);
+export const articlesLacsPratique = () => Object.entries(COUCH_L).flatMap(([lac, couch]) => {
+  const pl = SPOTS.filter((s) => lacDe(s) === lac && OSM_P[s.id]);
+  const f = (g) => pl.filter((s) => g(OSM_P[s.id], s)).map((s) => s.id);
+  const sable = f((v) => v.sable), jeux = f((v) => v.jeux), chiens = f((v) => v.chiens), plong = f((v) => v.plongeoir), cou = pl.filter((s) => couch[s.id]?.ete || couch[s.id]?.equinoxe).map((s) => s.id);
+  if (pl.length < 4 || [sable, jeux, chiens, plong, cou].filter((x) => x.length).length < 2) return [];
+  const t = {};
+  for (const L of LS) {
+    const x = TL[L], n = nomLac(lac, L);
+    const s = [];
+    if (sable.length) s.push([x.h[0], lst(sable)]);
+    if (jeux.length) s.push([x.h[1], lst(jeux)]);
+    if (chiens.length) s.push([x.h[2], lst(chiens, (id) => ` : ${OSM_P[id].chiens === 'no' ? x.non : x.ok}`)]);
+    if (plong.length) s.push([x.h[3], lst(plong)]);
+    if (cou.length) s.push([x.h[4], lst(cou, (id) => ` (${[couch[id].ete && x.ete, couch[id].equinoxe && x.eq].filter(Boolean).join(', ')})`)]);
+    s.push([x.h[5], P(x.lim)]);
+    t[L] = { titre: x.titre(n), h1: x.h1(n), desc: x.desc(n, pl.length), bref: x.bref(n, { sable: sable.length, jeux: jeux.length, couch: cou.length }), s };
+  }
+  return [A(`lac-${lac}-sable-familles-coucher-de-soleil`, `pratique-${lac}`, LS.map((L) => ({ fr: `Une plage au bord du ${nomLac(lac, 'fr').replace(/^Lac de /, 'lac de ')}, une aire de jeux et le soleil bas sur l’eau`, en: `A beach on ${nomLac(lac, 'en')}, a playground and the low sun over the water`, de: `Ein Badeplatz am ${nomLac(lac, 'de')}, ein Spielplatz und die tiefe Sonne über dem Wasser`, it: `Una spiaggia sul ${nomLac(lac, 'it')}, un parco giochi e il sole basso sull’acqua` })[L]), [S_OSM, S_CONT], false, t)];
+});
