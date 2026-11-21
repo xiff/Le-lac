@@ -18,7 +18,7 @@ import { articlesComprendre } from './articles.comprendre.mjs';
 import { articlesGuides } from './articles.guides.mjs';
 import { articlesSecurite } from './articles.securite.mjs';
 import { etoffer } from './articles.ajouts.mjs';
-import { articlesActivites, articlesGuidesGe, articlesSecurite2, articleFluss, articlesGuidesOsm } from './articles.activites.mjs';
+import { articlesActivites, articlesGuidesGe, articlesSecurite2, articleFluss, articlesGuidesOsm, articleCouchant } from './articles.activites.mjs';
 import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
@@ -718,7 +718,7 @@ ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...a
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
-for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides(), ...articlesSecurite(), ...articlesActivites(), ...articlesGuidesGe(), ...articlesSecurite2(), articleFluss(), ...articlesGuidesOsm()]) {
+for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides(), ...articlesSecurite(), ...articlesActivites(), ...articlesGuidesGe(), ...articlesSecurite2(), articleFluss(), ...articlesGuidesOsm(), articleCouchant()]) {
   const propre = existsSync(new URL(`../blog/img/ia/${img}.jpg`, import.meta.url));
   ARTICLES.push({ ...a, image: `blog/img/ia/${propre ? img : 'og-image'}.jpg`, hauteur: propre ? 893 : 768,
     alt: propre ? { fr: altIA[0], en: altIA[1], de: altIA[2], it: altIA[3] } : NEUTRE_ALT, credit: {}, creditHtml: { ...LEGENDE_IA } });
@@ -778,7 +778,7 @@ const DATES = {
   'bouee-nage-eau-libre': ['2026-12-27'], 'kitesurf-silvaplana': ['2026-12-31'], 'canicule-baignade': ['2027-01-03'],
   'pedalo-lacs-suisses': ['2027-01-07'], 'voile-windsurf-wingfoil-lacs-suisses': ['2027-01-10'],
   // Guides tirés d'OpenStreetMap (osm-plages.json).
-  'plages-de-sable-leman': ['2027-01-14'], 'plages-familles-leman': ['2027-01-17'], 'plages-chiens-leman': ['2027-01-21'],
+  'plages-de-sable-leman': ['2027-01-14'], 'plages-familles-leman': ['2027-01-17'], 'plages-chiens-leman': ['2027-01-21'], 'coucher-de-soleil-leman': ['2027-01-24'],
 };
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 etoffer(ARTICLES); // compléments sourcés (scripts/articles.ajouts.mjs)

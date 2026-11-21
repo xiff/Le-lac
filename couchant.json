@@ -1,0 +1,262 @@
+{
+ "pregny-chambesy": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "bains-des-paquis": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "geneve-plage": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "tropical-corner": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "baby-plage": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "plage-des-eaux-vives": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "cologny": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "collonge-bellerive-la-savonniere": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "corsier-port": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "anieres": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "hermance": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "bellevue": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "genthod": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "versoix": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "celigny": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "mies": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "coppet": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "nyon": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "prangins": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "gland": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "dully": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "rolle": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "perroy": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "allaman": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "buchillon": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "saint-prex": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "tolochenaz": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "morges": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "preverenges": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "saint-sulpice": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "lausanne-vidy": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "lausanne-ouchy": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "lausanne-bellerive": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "pully": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "paudex": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "lutry": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "villette": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "cully-moratel": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "rivaz": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "saint-saphorin": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "corseaux": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "vevey": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "la-tour-de-peilz": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "montreux-clarens": {
+  "ete": false,
+  "equinoxe": true
+ },
+ "veytaux": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "villeneuve": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "noville": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "le-bouveret": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "saint-gingolph": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "meillerie": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "lugrin": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "maxilly": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "neuvecelle": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "evian": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "publier-amphion": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "thonon": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "thonon-saint-disdille": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "anthy-sur-leman": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "margencel": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "sciez": {
+  "ete": true,
+  "equinoxe": false
+ },
+ "excenevex": {
+  "ete": false,
+  "equinoxe": false
+ },
+ "yvoire": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "nernier": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "messery": {
+  "ete": true,
+  "equinoxe": true
+ },
+ "chens-sur-leman": {
+  "ete": true,
+  "equinoxe": true
+ }
+}
