@@ -76,7 +76,7 @@ export const articleComparatif = () => {
     const tri = (i) => [...lacs].sort((p, q) => S.lacs[q][i].moy - S.lacs[p][i].moy);
     const j = tri(6);
     const blocs = [5, 6, 7, 8].map((i) => `<h2>${mois(i, L)[0].toUpperCase() + mois(i, L).slice(1)}</h2>\n<ol class="liste">\n${tri(i).map((l) => `  <li><strong>${nomLac(l, L)}</strong> : ${deg(S.lacs[l][i].moy, L)}</li>`).join('\n')}\n</ol>`).join('\n');
-    a[L] = { titre: TC[L].titre, h1: TC[L].h1, desc: TC[L].desc, bref: TC[L].bref(nomLac(j[0], L), nomLac(j.at(-1), L), deg(S.lacs[j[0]][6].moy, L)), html: () => `${blocs}\n<p>${T[L].note(annees())}</p>` };
+    a[L] = { titre: TC[L].titre, h1: TC[L].h1, desc: TC[L].desc, bref: TC[L].bref(...[j[0], j.at(-1)].map((l) => nomLac(l, L).replace(/^(Lac|Lago)/, (x) => x.toLowerCase())), deg(S.lacs[j[0]][6].moy, L)), html: () => `${blocs}\n<p>${T[L].note(annees())}</p>` };
   }
   return [a];
 };
