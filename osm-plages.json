@@ -1,0 +1,457 @@
+{
+ "pregny-chambesy": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "bains-des-paquis": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "geneve-plage": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "tropical-corner": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "baby-plage": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "plage-des-eaux-vives": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "cologny": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "collonge-bellerive-la-savonniere": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "corsier-port": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "anieres": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "hermance": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "bellevue": {
+  "sable": false,
+  "chiens": "designated",
+  "chiensNom": "Plage pour chiens",
+  "jeux": false,
+  "plongeoir": null
+ },
+ "genthod": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "versoix": {
+  "sable": false,
+  "chiens": "no",
+  "chiensNom": "Plage de Port-Choiseul",
+  "jeux": false,
+  "plongeoir": null
+ },
+ "celigny": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "mies": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "coppet": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "nyon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "prangins": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "gland": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "dully": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "rolle": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "perroy": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "allaman": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "buchillon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "saint-prex": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": "Plongeoir de Saint-Prex"
+ },
+ "tolochenaz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "morges": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "preverenges": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "saint-sulpice": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lausanne-vidy": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lausanne-ouchy": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lausanne-bellerive": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "pully": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "paudex": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "lutry": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": "Plongeoir"
+ },
+ "villette": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "cully-moratel": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "rivaz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "saint-saphorin": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "corseaux": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "vevey": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "la-tour-de-peilz": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "montreux-clarens": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "veytaux": {
+  "sable": true,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "villeneuve": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "noville": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "le-bouveret": {
+  "sable": true,
+  "chiens": "no",
+  "chiensNom": "Plage du Bouveret",
+  "jeux": false,
+  "plongeoir": null
+ },
+ "saint-gingolph": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "meillerie": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "lugrin": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "maxilly": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "neuvecelle": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "evian": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "publier-amphion": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "thonon": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "thonon-saint-disdille": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "anthy-sur-leman": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "margencel": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "sciez": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ },
+ "excenevex": {
+  "sable": true,
+  "chiens": "no",
+  "chiensNom": "Plage municipale d'Excenevex",
+  "jeux": true,
+  "plongeoir": null
+ },
+ "yvoire": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "nernier": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "messery": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": false,
+  "plongeoir": null
+ },
+ "chens-sur-leman": {
+  "sable": false,
+  "chiens": null,
+  "chiensNom": null,
+  "jeux": true,
+  "plongeoir": null
+ }
+}

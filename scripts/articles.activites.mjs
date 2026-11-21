@@ -6,6 +6,7 @@
 import { SPOTS, lacDe, nomLac } from '../spots.js';
 import { LOCATIONS } from '../locations.js';
 import { ITEM } from './articles.lacs.mjs';
+import { readFileSync } from 'node:fs';
 
 const LS = ['fr', 'en', 'de', 'it'];
 const SSS = (p, t) => [`Société Suisse de Sauvetage SSS, « ${t} »`, `https://www.slrg.ch/fr/${p}`];
@@ -362,3 +363,68 @@ export const articleFluss = () => A('flussschwimmen-aare-rhein-limmat', 'fluss',
     s: [['Le app', UL('<strong>Aar</strong>: carta Thun – Berna.', '<strong>Reno a Basilea</strong>: «BachApp», livello, temperatura, portata, pericoli; carta «Bach-ab».', '<strong>Reno</strong>: carta Stein am Rhein – Sciaffusa.', '<strong>Limmat</strong>: «LimmatBuddy» per Zurigo e Baden, temperatura, livello, portata, luoghi di balneazione.', '<strong>Lago di Zurigo, canale della Linth, lago di Walenstadt</strong>: «Auf Kurs», carte, GPS, porti e segnali di navigazione.') + '\n' + P('La SSS cita anche un’app per il lago dei Quattro Cantoni e la Reuss.')],
       ['Le briglie', P('Sotto una briglia si forma un rullo con una forte risacca. L’acqua molto aerata non sostiene più: chi vi finisce spesso non riesce a liberarsi da solo. La SSS consiglia di ispezionare il percorso e individuare le uscite prima di ogni discesa.')],
       ['Prima di entrare', UL('Restare vicino alla riva: correnti, mulinelli e rami sono spesso invisibili da terra.', 'Scarpe leggere contro vetri e pietre appuntite.', 'Mai tuffarsi in acque torbide o sconosciute, né da un ponte.', 'Non legare drybag o boa al corpo, salvo con punto di rottura: <a href="{blog:bouee-nage-eau-libre}">gli strumenti della SSS</a>.')]] } });
+
+// Guides tirés des étiquettes OpenStreetMap (osm-plages.json, scripts/osm-plages.mjs) : sable et plongeoirs, chiens, familles (aire de jeux à côté).
+// Une étiquette absente ne veut pas dire « non » : chaque article le dit. Pas de guide « coucher de soleil » : l'app n'a pas le contour du Léman.
+const OSM_P = (() => { try { return JSON.parse(readFileSync(new URL('../osm-plages.json', import.meta.url), 'utf8')); } catch { return {}; } })();
+const S_OSM = ['OpenStreetMap, étiquettes des plages (ODbL)', 'https://www.openstreetmap.org/copyright'];
+const nomS = (id) => SPOTS.find((s) => s.id === id)?.nom ?? id;
+const ids = (f) => Object.entries(OSM_P).filter(([, v]) => f(v)).map(([id]) => id);
+const lst = (arr, extra = () => '') => UL(...arr.map((id) => `<a href="{plage:${id}}">${nomS(id)}</a>${extra(id)}`));
+const LIMITE = {
+  fr: 'Ces informations viennent des contributeurs d’OpenStreetMap, autour du point de chaque plage dans l’app. Ce n’est pas une liste officielle : une plage absente peut très bien convenir, et les règles changent. Vérifiez sur place ou auprès de la commune.',
+  en: 'This information comes from OpenStreetMap contributors, around each beach’s point in the app. It is not an official list: a beach not listed may well be suitable, and rules change. Check on site or with the municipality.',
+  de: 'Diese Angaben stammen von Mitwirkenden bei OpenStreetMap, rund um den Punkt jedes Badeplatzes in der App. Es ist keine offizielle Liste: Ein fehlender Badeplatz kann durchaus passen, und Regeln ändern sich. Vor Ort oder bei der Gemeinde nachfragen.',
+  it: 'Queste informazioni vengono dai contributori di OpenStreetMap, intorno al punto di ogni spiaggia nell’app. Non è un elenco ufficiale: una spiaggia assente può andare benissimo, e le regole cambiano. Verificate sul posto o presso il comune.' };
+const HLIM = { fr: 'D’où viennent ces informations', en: 'Where this information comes from', de: 'Woher diese Angaben stammen', it: 'Da dove vengono queste informazioni' };
+
+export const articlesGuidesOsm = () => {
+  const sable = ids((v) => v.sable), plong = ids((v) => v.plongeoir), jeux = ids((v) => v.jeux);
+  const chienOui = ids((v) => v.chiens === 'designated' || v.chiens === 'yes'), chienNon = ids((v) => v.chiens === 'no');
+  const nomChien = (id) => (OSM_P[id].chiensNom && OSM_P[id].chiensNom !== nomS(id) ? ` (${OSM_P[id].chiensNom})` : '');
+  const lim = (L) => [HLIM[L], P(LIMITE[L])];
+  return [
+    A('plages-de-sable-leman', 'guide-sable', ['Une petite plage de sable clair au bord du Léman, un plongeoir en bois au loin', 'A small pale sandy beach on Lake Geneva, a wooden diving board in the distance', 'Ein kleiner heller Sandstrand am Genfersee, in der Ferne ein hölzerner Sprungturm', 'Una piccola spiaggia di sabbia chiara sul Lemano, un trampolino di legno in lontananza'], [S_OSM], false, {
+      fr: { titre: `Plages de sable au Léman : les ${sable.length} plages signalées, et les plongeoirs`, h1: 'Les plages de sable du Léman', desc: `Les ${sable.length} plages du Léman où OpenStreetMap signale du sable, et les plongeoirs repérés, d’après les étiquettes des contributeurs.`,
+        bref: `Au Léman, la plupart des plages sont en galets ou en gravier. OpenStreetMap signale du <strong>sable</strong> sur <strong>${sable.length} plages</strong> suivies par Mon Lac, et un <strong>plongeoir</strong> près de ${plong.length}.`,
+        s: [['Les plages de sable', lst(sable)], ['Les plongeoirs signalés', lst(plong) + '\n' + P('Avant de sauter, vérifiez la profondeur : <a href="{blog:plonger-sauter-eau-inconnue}">ne jamais plonger dans l’inconnu</a>.')], lim('fr')] },
+      en: { titre: `Sandy beaches on Lake Geneva: the ${sable.length} beaches listed, and the diving boards`, h1: 'The sandy beaches of Lake Geneva', desc: `The ${sable.length} Lake Geneva beaches where OpenStreetMap shows sand, and the diving boards found, from contributors’ tags.`,
+        bref: `On Lake Geneva most beaches are pebbles or gravel. OpenStreetMap shows <strong>sand</strong> at <strong>${sable.length} beaches</strong> followed by My Lake, and a <strong>diving board</strong> near ${plong.length}.`,
+        s: [['The sandy beaches', lst(sable)], ['Diving boards listed', lst(plong) + '\n' + P('Before jumping, check the depth: <a href="{blog:plonger-sauter-eau-inconnue}">never dive into the unknown</a>.')], lim('en')] },
+      de: { titre: `Sandstrände am Genfersee: die ${sable.length} erfassten Badeplätze und die Sprungtürme`, h1: 'Die Sandstrände am Genfersee', desc: `Die ${sable.length} Badeplätze am Genfersee, an denen OpenStreetMap Sand verzeichnet, und die erfassten Sprungtürme, nach den Angaben der Mitwirkenden.`,
+        bref: `Am Genfersee sind die meisten Strände aus Kies oder Kieseln. OpenStreetMap verzeichnet <strong>Sand</strong> an <strong>${sable.length} Badeplätzen</strong> bei Mein See und einen <strong>Sprungturm</strong> bei ${plong.length}.`,
+        s: [['Die Sandstrände', lst(sable)], ['Erfasste Sprungtürme', lst(plong) + '\n' + P('Vor dem Sprung die Tiefe prüfen: <a href="{blog:plonger-sauter-eau-inconnue}">nie ins Unbekannte springen</a>.')], lim('de')] },
+      it: { titre: `Spiagge di sabbia sul Lemano: le ${sable.length} spiagge segnalate, e i trampolini`, h1: 'Le spiagge di sabbia del Lemano', desc: `Le ${sable.length} spiagge del Lemano dove OpenStreetMap segnala sabbia, e i trampolini individuati, dai tag dei contributori.`,
+        bref: `Sul Lemano la maggior parte delle spiagge è di ciottoli o ghiaia. OpenStreetMap segnala <strong>sabbia</strong> su <strong>${sable.length} spiagge</strong> seguite da Il mio lago, e un <strong>trampolino</strong> vicino a ${plong.length}.`,
+        s: [['Le spiagge di sabbia', lst(sable)], ['I trampolini segnalati', lst(plong) + '\n' + P('Prima di saltare, controllate la profondità: <a href="{blog:plonger-sauter-eau-inconnue}">mai tuffarsi nell’ignoto</a>.')], lim('it')] } }),
+
+    A('plages-chiens-leman', 'guide-chiens', ['Un chien qui court au bord de l’eau sur une plage de galets du Léman', 'A dog running along the water on a pebble beach of Lake Geneva', 'Ein Hund rennt am Wasser entlang über einen Kiesstrand am Genfersee', 'Un cane che corre lungo l’acqua su una spiaggia di ciottoli del Lemano'], [S_OSM], false, {
+      fr: { titre: 'Plages pour chiens au Léman : où ils sont admis, où ils sont interdits', h1: 'Se baigner avec son chien au Léman', desc: 'Les plages du Léman où OpenStreetMap signale un espace pour chiens, et celles où ils sont interdits, d’après les étiquettes des contributeurs.',
+        bref: `OpenStreetMap signale un <strong>espace pour chiens</strong> près de ${chienOui.length} plage suivie par Mon Lac, et une <strong>interdiction</strong> sur ${chienNon.length}. Pour toutes les autres, l’information manque : renseignez-vous auprès de la commune, et tenez votre chien en laisse en attendant.`,
+        s: [['Chiens admis', lst(chienOui, nomChien)], ['Chiens interdits', lst(chienNon, nomChien)], lim('fr')] },
+      en: { titre: 'Dog beaches on Lake Geneva: where dogs are allowed, where they are banned', h1: 'Swimming with your dog on Lake Geneva', desc: 'The Lake Geneva beaches where OpenStreetMap shows a dog area, and those where dogs are banned, from contributors’ tags.',
+        bref: `OpenStreetMap shows a <strong>dog area</strong> near ${chienOui.length} beach followed by My Lake, and a <strong>ban</strong> at ${chienNon.length}. For all the others the information is missing: ask the municipality, and keep your dog on a lead meanwhile.`,
+        s: [['Dogs allowed', lst(chienOui, nomChien)], ['Dogs banned', lst(chienNon, nomChien)], lim('en')] },
+      de: { titre: 'Hundestrände am Genfersee: wo Hunde erlaubt, wo verboten sind', h1: 'Mit dem Hund baden am Genfersee', desc: 'Die Badeplätze am Genfersee, an denen OpenStreetMap einen Hundebereich verzeichnet, und jene mit Hundeverbot, nach den Angaben der Mitwirkenden.',
+        bref: `OpenStreetMap verzeichnet einen <strong>Hundebereich</strong> bei ${chienOui.length} Badeplatz von Mein See und ein <strong>Verbot</strong> an ${chienNon.length}. Für alle anderen fehlt die Angabe: bei der Gemeinde nachfragen und den Hund bis dahin an der Leine führen.`,
+        s: [['Hunde erlaubt', lst(chienOui, nomChien)], ['Hunde verboten', lst(chienNon, nomChien)], lim('de')] },
+      it: { titre: 'Spiagge per cani sul Lemano: dove sono ammessi, dove sono vietati', h1: 'Fare il bagno con il cane sul Lemano', desc: 'Le spiagge del Lemano dove OpenStreetMap segnala uno spazio per cani, e quelle dove sono vietati, dai tag dei contributori.',
+        bref: `OpenStreetMap segnala uno <strong>spazio per cani</strong> vicino a ${chienOui.length} spiaggia seguita da Il mio lago, e un <strong>divieto</strong> su ${chienNon.length}. Per tutte le altre l’informazione manca: chiedete al comune e tenete il cane al guinzaglio nel frattempo.`,
+        s: [['Cani ammessi', lst(chienOui, nomChien)], ['Cani vietati', lst(chienNon, nomChien)], lim('it')] } }),
+
+    A('plages-familles-leman', 'guide-familles', ['Une aire de jeux en bois au bord d’une plage du Léman, seaux et pelles sur le sable', 'A wooden playground beside a Lake Geneva beach, buckets and spades on the sand', 'Ein Holzspielplatz neben einem Strand am Genfersee, Eimer und Schaufeln im Sand', 'Un parco giochi in legno accanto a una spiaggia del Lemano, secchielli e palette sulla sabbia'], [S_OSM, FAMILLES_SSS], true, {
+      fr: { titre: `Plages en famille au Léman : ${jeux.length} plages avec une aire de jeux à côté`, h1: 'Le Léman en famille : les plages avec aire de jeux', desc: `Les ${jeux.length} plages du Léman où OpenStreetMap signale une aire de jeux à moins de 150 mètres environ, et les règles de la SSS pour les enfants.`,
+        bref: `OpenStreetMap signale une <strong>aire de jeux à côté de ${jeux.length} plages</strong> suivies par Mon Lac. Au bord de l’eau, la règle de la Société Suisse de Sauvetage reste la même partout : <strong>les petits enfants à portée de main</strong>.`,
+        s: [['Les plages avec aire de jeux', lst(jeux, (id) => (OSM_P[id].sable ? ' (sable)' : ''))], ['Au bord de l’eau', P('Les petits enfants peuvent se noyer en moins de 20 secondes, sans bruit (SSS). Brassards et bouées ne protègent pas de la noyade. Voir <a href="{blog:enfants-au-bord-de-l-eau}">les enfants au bord de l’eau</a>.')], lim('fr')] },
+      en: { titre: `Family beaches on Lake Geneva: ${jeux.length} beaches with a playground nearby`, h1: 'Lake Geneva with children: beaches with a playground', desc: `The ${jeux.length} Lake Geneva beaches where OpenStreetMap shows a playground within about 150 metres, and the SLRG rules for children.`,
+        bref: `OpenStreetMap shows a <strong>playground next to ${jeux.length} beaches</strong> followed by My Lake. At the water’s edge the Swiss Lifesaving Society’s rule is the same everywhere: <strong>small children within arm’s reach</strong>.`,
+        s: [['Beaches with a playground', lst(jeux, (id) => (OSM_P[id].sable ? ' (sand)' : ''))], ['At the water’s edge', P('Small children can drown in under 20 seconds, silently (SLRG). Armbands and rings do not protect against drowning. See <a href="{blog:enfants-au-bord-de-l-eau}">children at the water’s edge</a>.')], lim('en')] },
+      de: { titre: `Familienstrände am Genfersee: ${jeux.length} Badeplätze mit Spielplatz in der Nähe`, h1: 'Der Genfersee mit Kindern: Badeplätze mit Spielplatz', desc: `Die ${jeux.length} Badeplätze am Genfersee, an denen OpenStreetMap einen Spielplatz im Umkreis von etwa 150 Metern verzeichnet, und die Regeln der SLRG für Kinder.`,
+        bref: `OpenStreetMap verzeichnet einen <strong>Spielplatz neben ${jeux.length} Badeplätzen</strong> von Mein See. Am Wasser gilt überall die Regel der Schweizerischen Lebensrettungs-Gesellschaft: <strong>kleine Kinder in Griffnähe</strong>.`,
+        s: [['Badeplätze mit Spielplatz', lst(jeux, (id) => (OSM_P[id].sable ? ' (Sand)' : ''))], ['Am Wasser', P('Kleine Kinder können in weniger als 20 Sekunden lautlos ertrinken (SLRG). Schwimmflügel und Ringe schützen nicht vor dem Ertrinken. Siehe <a href="{blog:enfants-au-bord-de-l-eau}">Kinder am Wasser</a>.')], lim('de')] },
+      it: { titre: `Spiagge per famiglie sul Lemano: ${jeux.length} spiagge con un parco giochi vicino`, h1: 'Il Lemano in famiglia: le spiagge con parco giochi', desc: `Le ${jeux.length} spiagge del Lemano dove OpenStreetMap segnala un parco giochi entro circa 150 metri, e le regole della SSS per i bambini.`,
+        bref: `OpenStreetMap segnala un <strong>parco giochi accanto a ${jeux.length} spiagge</strong> seguite da Il mio lago. In riva all’acqua la regola della Società Svizzera di Salvataggio è la stessa ovunque: <strong>i bambini piccoli a portata di mano</strong>.`,
+        s: [['Le spiagge con parco giochi', lst(jeux, (id) => (OSM_P[id].sable ? ' (sabbia)' : ''))], ['In riva all’acqua', P('I bambini piccoli possono annegare in meno di 20 secondi, in silenzio (SSS). Braccioli e ciambelle non proteggono dall’annegamento. Vedi <a href="{blog:enfants-au-bord-de-l-eau}">i bambini in riva all’acqua</a>.')], lim('it')] } }),
+  ];
+};
+const FAMILLES_SSS = ['Société Suisse de Sauvetage SSS, « Recommandations pour les familles »', 'https://www.slrg.ch/fr/prevention/recommandations/recommandations-pour-les-familles'];
