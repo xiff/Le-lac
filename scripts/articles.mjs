@@ -18,7 +18,8 @@ import { articlesComprendre } from './articles.comprendre.mjs';
 import { articlesGuides } from './articles.guides.mjs';
 import { articlesSecurite } from './articles.securite.mjs';
 import { etoffer } from './articles.ajouts.mjs';
-import { articlesActivites, articlesGuidesGe, articlesSecurite2, articleFluss, articlesGuidesOsm, articleCouchant, articlesLacsPratique, LACS_GUIDES } from './articles.activites.mjs';
+import { ajouterSaisons, articlesSaisons, articleComparatif, LACS_SAISONS, articlesHiverLacs, LACS_HIVER } from './articles.saisons.mjs';
+import { articlesActivites, articlesGuidesGe, articlesSecurite2, articleFluss, articlesGuidesOsm, articleCouchant, articlesLacsPratique, LACS_GUIDES, articlesComprendre2 } from './articles.activites.mjs';
 import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
@@ -718,7 +719,8 @@ ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...a
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
-for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides(), ...articlesSecurite(), ...articlesActivites(), ...articlesGuidesGe(), ...articlesSecurite2(), articleFluss(), ...articlesGuidesOsm(), articleCouchant(), ...articlesLacsPratique()]) {
+const DEJA = new Set(ARTICLES.map((a) => a.slug));
+for (const { img, altIA, ...a } of [...articlesSaisons(DEJA), ...articleComparatif(), ...articlesHiverLacs(), ...articlesComprendre(), ...articlesGuides(), ...articlesSecurite(), ...articlesActivites(), ...articlesGuidesGe(), ...articlesSecurite2(), articleFluss(), ...articlesGuidesOsm(), articleCouchant(), ...articlesLacsPratique(), ...articlesComprendre2()]) {
   const propre = existsSync(new URL(`../blog/img/ia/${img}.jpg`, import.meta.url));
   ARTICLES.push({ ...a, image: `blog/img/ia/${propre ? img : 'og-image'}.jpg`, hauteur: propre ? 893 : 768,
     alt: propre ? { fr: altIA[0], en: altIA[1], de: altIA[2], it: altIA[3] } : NEUTRE_ALT, credit: {}, creditHtml: { ...LEGENDE_IA } });
@@ -781,9 +783,17 @@ const DATES = {
   'plages-de-sable-leman': ['2027-01-14'], 'plages-familles-leman': ['2027-01-17'], 'plages-chiens-leman': ['2027-01-21'], 'coucher-de-soleil-leman': ['2027-01-24'],
 };
 // Guides pratiques par lac (articles.activites.mjs) : un tous les 3 jours à partir du 27 janvier 2027.
+// Température mois par mois : comparatif le 1er décembre, puis un lac tous les 3 jours après les guides pratiques.
+DATES['quel-lac-pour-quel-mois'] ??= ['2026-12-01'];
+// Comprendre le lac (suite) : en saison, les jours impairs de décembre et janvier.
+Object.assign(DATES, { 'lacs-qui-fument-brouillard-evaporation': ['2026-12-05'], 'gel-des-lacs-suisses-seegfroerni': ['2026-12-11'], 'brise-de-lac-sechard-oberwind': ['2027-01-15'] });
+// Bain d'hiver par lac : en pleine saison froide, un tous les 2 jours à partir du 2 décembre 2026 (jours pairs, en alternance avec le reste).
+LACS_HIVER().forEach((l, i) => { DATES[`bain-d-hiver-lac-${l}`] ??= [new Date(Date.UTC(2026, 11, 2 + 2 * i)).toISOString().slice(0, 10)]; });
+LACS_SAISONS().filter((l) => !DEJA.has(`temperature-lac-${l}`)).forEach((l, i) => { DATES[`temperature-lac-${l}`] ??= [new Date(Date.UTC(2027, 2, 25 + 3 * i)).toISOString().slice(0, 10)]; });
 LACS_GUIDES.forEach((l, i) => { DATES[`lac-${l}-sable-familles-coucher-de-soleil`] ??= [new Date(Date.UTC(2027, 0, 27 + 3 * i)).toISOString().slice(0, 10)]; });
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 etoffer(ARTICLES); // compléments sourcés (scripts/articles.ajouts.mjs)
+ajouterSaisons(ARTICLES); // température mois par mois (scripts/articles.saisons.mjs)
 // Publication programmée : les pages sont régénérées toutes les 3 h (eau.yml) ; un article ne sort qu'à partir de sa date (UTC).
 export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slice(0, 10); // BLOG_DATE : pour prévisualiser une date
 ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
