@@ -1,0 +1,301 @@
+[
+ {
+  "nom": "Plage d’Hermance - côté embouchure",
+  "lat": 46.3051654195834,
+  "lon": 6.2418370714055,
+  "texte": []
+ },
+ {
+  "nom": "Hermance Plage",
+  "lat": 46.3024560477388,
+  "lon": 6.24085833022488,
+  "texte": []
+ },
+ {
+  "nom": "Plage des Courbes (Anières)",
+  "lat": 46.2824532010295,
+  "lon": 6.2254036417658,
+  "texte": []
+ },
+ {
+  "nom": "Plage de la Savonnière",
+  "lat": 46.2645086923907,
+  "lon": 6.20089736336397,
+  "texte": []
+ },
+ {
+  "nom": "Port-Bleu",
+  "lat": 46.2558473617058,
+  "lon": 6.19461051814767,
+  "texte": []
+ },
+ {
+  "nom": "Plage de la Pointe-à-la-Bise",
+  "lat": 46.2454227082651,
+  "lon": 6.19160677847358,
+  "texte": []
+ },
+ {
+  "nom": "Genève-Plage",
+  "lat": 46.2142696725979,
+  "lon": 6.17327042239752,
+  "texte": []
+ },
+ {
+  "nom": "Baby Plage",
+  "lat": 46.2086244227855,
+  "lon": 6.16329414393237,
+  "texte": []
+ },
+ {
+  "nom": "Débarcadère du Pont-de-Sous-Terre",
+  "lat": 46.2027085276752,
+  "lon": 6.13112769380314,
+  "texte": []
+ },
+ {
+  "nom": "Plage de la Plaine",
+  "lat": 46.17763706493179,
+  "lon": 5.9960365122392645,
+  "texte": [
+   "Route de Challex, 1283 Dardagny",
+   "Ouverte toute l’année de 7h à 21h",
+   "Accès gratuit",
+   "Herbe, sable et béton",
+   "Baignade non-surveillée",
+   "Douches, toilettes, esplanade et bancs, zone de baignade pour les grands et les petits",
+   "Feux et grillades interdits sur tout le site",
+   "Chiens interdits sur tout l’espace plage"
+  ]
+ },
+ {
+  "nom": "Plage des Pâquis",
+  "lat": 46.2104117750518,
+  "lon": 6.15431160858534,
+  "texte": []
+ },
+ {
+  "nom": "Plage de l’ONU",
+  "lat": 46.2265022147801,
+  "lon": 6.14913495132423,
+  "texte": []
+ },
+ {
+  "nom": "Plage du Reposoir",
+  "lat": 46.230157255449,
+  "lon": 6.15015031147761,
+  "texte": []
+ },
+ {
+  "nom": "Plage de la Nymphe",
+  "lat": 46.2593239780412,
+  "lon": 6.1957627430895,
+  "texte": []
+ },
+ {
+  "nom": "Plage de Chambésy",
+  "lat": 46.2426124894447,
+  "lon": 6.153056677891,
+  "texte": []
+ },
+ {
+  "nom": "Plage du Vengeron - aval",
+  "lat": 46.2448494943748,
+  "lon": 6.15332833667982,
+  "texte": []
+ },
+ {
+  "nom": "Plage du Vengeron - centre",
+  "lat": 46.2465275984457,
+  "lon": 6.15364591140235,
+  "texte": []
+ },
+ {
+  "nom": "Plage Gitana",
+  "lat": 46.2532702702982,
+  "lon": 6.15443673396319,
+  "texte": []
+ },
+ {
+  "nom": "Bains du Saugy",
+  "lat": 46.2599492555048,
+  "lon": 6.1591063947173,
+  "texte": []
+ },
+ {
+  "nom": "Plage du Creux-de-Genthod",
+  "lat": 46.2631484532411,
+  "lon": 6.16357100802103,
+  "texte": []
+ },
+ {
+  "nom": "Plage de la Bécassine",
+  "lat": 46.2733555762793,
+  "lon": 6.17117905902225,
+  "texte": []
+ },
+ {
+  "nom": "Plage de Port-Choiseul",
+  "lat": 46.2917930024276,
+  "lon": 6.17061828780973,
+  "texte": []
+ },
+ {
+  "nom": "Plage de Céligny",
+  "lat": 46.3484475057643,
+  "lon": 6.20872645702467,
+  "texte": []
+ },
+ {
+  "nom": "Plage des Eaux-Vives",
+  "lat": 46.2107694315067,
+  "lon": 6.16590045605816,
+  "texte": []
+ },
+ {
+  "nom": "Pontons de Cologny",
+  "lat": 46.223716909968964,
+  "lon": 6.1817537548396695,
+  "texte": [
+   "Quai de Cologny 53, 1223 Cologny",
+   "Ouverture toute l’année 24h/24",
+   "Accès gratuit",
+   "Plateformes en béton ou bois",
+   "Baignade non-surveillée",
+   "Attention, présence de moules dans le fond, possibilité de se couper",
+   "Rampe de mise à l’eau",
+   "Toilettes",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Plage du Quai-WILSON",
+  "lat": 46.21396671520241,
+  "lon": 6.152591217292858,
+  "texte": [
+   "Quai Wilson 54, 1201 Genève",
+   "Ouverture du 15 avril au 15 octobre de 6h à 22h",
+   "Baignade interdite en dehors de cette période",
+   "Accès gratuit",
+   "Baignade non-surveillée",
+   "Rampe d’accès à l’eau",
+   "Buvette, toilette, casiers, vestiaires et douches"
+  ]
+ },
+ {
+  "nom": "Port-tunnel",
+  "lat": 46.2199853332603,
+  "lon": 6.178834310175172,
+  "texte": [
+   "Quai de Cologny 39, 1223 Cologny",
+   "Ouverture toute l’année 24h/24",
+   "Accès gratuit",
+   "Dalles en pierres",
+   "Baignade non-surveillée",
+   "Rampe de mise à l’eau",
+   "Pas d’infrastructures",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Ponton de la Cédille",
+  "lat": 46.21861885502997,
+  "lon": 6.178107261439436,
+  "texte": [
+   "Quai de Cologny 53, 1223 Cologny",
+   "Ouverture toute l’année 24h/24",
+   "Accès gratuit",
+   "Ponton en pierre",
+   "Baignade non-surveillée",
+   "Pas d’infrastructures",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Plage de la Gravière",
+  "lat": 46.289959998883766,
+  "lon": 6.236032282263069,
+  "texte": [
+   "Chemin de la Gravière 6, 1247 Anières",
+   "Ouverture toute l’année de 8h à 23h",
+   "Accès gratuit",
+   "Herbe et sable",
+   "Baignade non-surveillée",
+   "Pas d’infrastructures",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Anciens bains de Versoix",
+  "lat": 46.28019798109757,
+  "lon": 6.167475890308993,
+  "texte": [
+   "Route de Suisse 84, 1290 Versoix",
+   "Ouverture toute l’année de 7h00 à 22h00",
+   "Accès gratuit",
+   "Gradins, sable et pontons en bois",
+   "Baignade non-surveillée",
+   "Douche",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Dalles de Tour-Carrée",
+  "lat": 46.22689136486137,
+  "lon": 6.18427216195252,
+  "texte": [
+   "Quai de Cologny 72, 1223 Cologny",
+   "Ouverture toute l’année 24h/24",
+   "Accès gratuit",
+   "Dalles en pierre",
+   "Baignade non-surveillée",
+   "Toilettes au niveau du Yacht Club",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Bains des Pâquis - bassin femmes",
+  "lat": 46.21036467989831,
+  "lon": 6.153727769851685,
+  "texte": [
+   "Quai du Mont-Blanc 30, 1201 Genève",
+   "Ouverture dès les beaux jours, selon la météo, voir site internet",
+   "Accès payant",
+   "Zone réservée aux femmes",
+   "Béton et pontons en bois",
+   "Baignade surveillée dans certaines zones et non-surveillée dans d’autres",
+   "Accès handicapés, toilettes, douches, vestiaires, restaurations, autres activités (plongeoir, pétanque, paddle, tennis de table, massages…)",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Bains des Pâquis - bassin mixte",
+  "lat": 46.21007326790406,
+  "lon": 6.154299080371857,
+  "texte": [
+   "Quai du Mont-Blanc 30, 1201 Genève",
+   "Ouverture dès les beaux jours, selon la météo, voir site internet",
+   "Accès payant",
+   "Zone ouverte à tout le monde",
+   "Béton et pontons en bois",
+   "Baignade surveillée dans certaines zones et non-surveillée dans d’autres",
+   "Accès handicapés, toilettes, douches, vestiaires, restaurations, autres activités (plongeoir, pétanque, paddle, tennis de table, massages…)",
+   "Chiens interdits"
+  ]
+ },
+ {
+  "nom": "Ponton de Sous-Terre (Rhône)",
+  "lat": 46.20349524112251,
+  "lon": 6.1309316754341125,
+  "texte": [
+   "Sentier des Falaises 1, 1203 Genève",
+   "Ouverture toute l’année 24h/24",
+   "Accès gratuit",
+   "Ponton en bois",
+   "Baignade non surveillée",
+   "Toilettes",
+   "Chiens interdits",
+   "ATTENTION baignade dangereuse"
+  ]
+ }
+]
