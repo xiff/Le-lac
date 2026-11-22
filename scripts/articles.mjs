@@ -17,6 +17,9 @@ import { articlesVilles, articlesLacs2 } from './articles.villes.mjs';
 import { articlesComprendre } from './articles.comprendre.mjs';
 import { articlesGuides } from './articles.guides.mjs';
 import { articlesSecurite } from './articles.securite.mjs';
+import { etoffer } from './articles.ajouts.mjs';
+import { ajouterSaisons, articlesSaisons, articleComparatif, LACS_SAISONS, articlesHiverLacs, LACS_HIVER, articlesComparatifs2 } from './articles.saisons.mjs';
+import { articlesActivites, articlesGuidesGe, articlesSecurite2, articleFluss, articlesGuidesOsm, articleCouchant, articlesLacsPratique, LACS_GUIDES, articlesComprendre2, articlesComprendre3, articlesSecurite3, articleQuagga, articleSecheresse2026, articleChaleurLacs, articlesMeteoBlog, articlesFribourg, articleReglesGeneve, articlesGrisons, articleSupRegeln, articleBergseen, articlePromenades } from './articles.activites.mjs';
 import { existsSync } from 'node:fs';
 import { LIEUX } from '../lieux.js';
 import { LOCATIONS } from '../locations.js';
@@ -716,7 +719,8 @@ ARTICLES.push(...articlesLacs(listePlages), ...articlesSaunas(listePlages), ...a
 // Illustration propre à chaque article si blog/img/ia/<nom>.jpg existe (voir IMAGES-IA.md), sinon l'image neutre du site : rien à changer au code quand les images arrivent.
 const NEUTRE_ALT = { fr: 'Un ponton sur un lac calme au coucher du soleil', en: 'A jetty on a calm lake at sunset', de: 'Ein Steg an einem ruhigen See bei Sonnenuntergang', it: 'Un pontile su un lago calmo al tramonto' };
 const LEGENDE_IA = { fr: 'Illustration générée par IA', en: 'AI-generated illustration', de: 'KI-generierte Illustration', it: 'Illustrazione generata dall’IA' };
-for (const { img, altIA, ...a } of [...articlesComprendre(), ...articlesGuides(), ...articlesSecurite()]) {
+const DEJA = new Set(ARTICLES.map((a) => a.slug));
+for (const { img, altIA, ...a } of [...articlesSaisons(DEJA), ...articleComparatif(), ...articlesHiverLacs(), ...articlesComparatifs2(), ...articlesComprendre(), ...articlesGuides(), ...articlesSecurite(), ...articlesActivites(), ...articlesGuidesGe(), ...articlesSecurite2(), articleFluss(), ...articlesGuidesOsm(), articleCouchant(), ...articlesLacsPratique(), ...articlesComprendre2(), ...articlesComprendre3(), ...articlesSecurite3(), ...articleQuagga(), ...articleSecheresse2026(), ...articleChaleurLacs(), ...articlesMeteoBlog(), ...articlesFribourg(), ...articleReglesGeneve(), ...articlesGrisons(), ...articleSupRegeln(), ...articleBergseen(), ...articlePromenades()]) {
   const propre = existsSync(new URL(`../blog/img/ia/${img}.jpg`, import.meta.url));
   ARTICLES.push({ ...a, image: `blog/img/ia/${propre ? img : 'og-image'}.jpg`, hauteur: propre ? 893 : 768,
     alt: propre ? { fr: altIA[0], en: altIA[1], de: altIA[2], it: altIA[3] } : NEUTRE_ALT, credit: {}, creditHtml: { ...LEGENDE_IA } });
@@ -769,8 +773,27 @@ const DATES = {
   'enfants-au-bord-de-l-eau': ['2026-11-26'], 'feux-de-tempete-leman': ['2026-11-26'],
   'plonger-sauter-eau-inconnue': ['2026-11-27'], 'crampes-hypothermie-sejour-prolonge-eau-froide': ['2026-11-27'],
   'manger-boire-bronzer-avant-de-se-baigner': ['2026-11-28'],
+  // Activités, guides genevois, sécurité (articles.activites.mjs) : un tous les trois ou quatre jours, de fin novembre à mi-janvier, thèmes alternés.
+  'orage-sur-le-lac': ['2026-11-30'], 'paddle-lacs-suisses': ['2026-12-03'], 'baignade-rhone-geneve': ['2026-12-06'],
+  'noyade-que-faire': ['2026-12-08'], 'louer-bateau-sans-permis': ['2026-12-12'], 'gilet-de-sauvetage-choisir': ['2026-12-14'],
+  'kayak-lacs-suisses': ['2026-12-17'], 'flussschwimmen-aare-rhein-limmat': ['2026-12-20'], 'plages-gratuites-geneve': ['2026-12-23'],
+  'bouee-nage-eau-libre': ['2026-12-27'], 'kitesurf-silvaplana': ['2026-12-31'], 'canicule-baignade': ['2027-01-03'],
+  'pedalo-lacs-suisses': ['2027-01-07'], 'voile-windsurf-wingfoil-lacs-suisses': ['2027-01-10'],
+  // Guides tirés d'OpenStreetMap (osm-plages.json).
+  'plages-de-sable-leman': ['2027-01-14'], 'plages-familles-leman': ['2027-01-17'], 'plages-chiens-leman': ['2027-01-21'], 'coucher-de-soleil-leman': ['2027-01-24'],
 };
+// Guides pratiques par lac (articles.activites.mjs) : un tous les 3 jours à partir du 27 janvier 2027.
+// Température mois par mois : comparatif le 1er décembre, puis un lac tous les 3 jours après les guides pratiques.
+DATES['quel-lac-pour-quel-mois'] ??= ['2026-12-01'];
+// Comprendre le lac (suite) : en saison, les jours impairs de décembre et janvier.
+Object.assign(DATES, { 'lacs-les-plus-doux-en-hiver': ['2026-12-07'], 'saison-de-baignade-20-degres': ['2027-04-20'], 'lacs-qui-fument-brouillard-evaporation': ['2026-12-05'], 'gel-des-lacs-suisses-seegfroerni': ['2026-12-11'], 'brise-de-lac-sechard-oberwind': ['2027-01-15'], 'brouillard-mer-de-brouillard-lacs': ['2026-12-13'], 'glace-noire-lacs-engadine': ['2026-12-19'], 'alcool-et-baignade': ['2027-04-26'], 'apnee-plongee-libre-lac': ['2027-05-02'], 'moule-quagga-lacs-suisses': ['2027-04-08'], 'niveau-des-lacs-secheresse-2026': ['2026-11-23'], 'vagues-de-chaleur-et-lacs': ['2026-12-21'], 'ete-2026-le-plus-chaud': ['2026-11-25'], 'patiner-lac-gele-suisse': ['2026-12-28'], 'qualite-eau-baignade-fribourg': ['2027-05-08'], 'chiens-cyanobacteries-lacs': ['2027-05-14'], 'regles-paddle-kite-ski-nautique-geneve': ['2026-12-04'], 'eisbaden-graubuenden': ['2026-12-09'], 'badeseen-graubuenden': ['2027-05-20'], 'hundefreundliche-badeseen-graubuenden': ['2027-05-26'], 'regles-stand-up-paddle-suisse': ['2027-04-14'], 'bergseen-graubuenden-baden': ['2027-06-01'], 'seeuferpromenaden-graubuenden': ['2027-04-02'] });
+// Bain d'hiver par lac : en pleine saison froide, un tous les 2 jours à partir du 2 décembre 2026 (jours pairs, en alternance avec le reste).
+LACS_HIVER().forEach((l, i) => { DATES[`bain-d-hiver-lac-${l}`] ??= [new Date(Date.UTC(2026, 11, 2 + 2 * i)).toISOString().slice(0, 10)]; });
+LACS_SAISONS().filter((l) => !DEJA.has(`temperature-lac-${l}`)).forEach((l, i) => { DATES[`temperature-lac-${l}`] ??= [new Date(Date.UTC(2027, 2, 25 + 3 * i)).toISOString().slice(0, 10)]; });
+LACS_GUIDES.forEach((l, i) => { DATES[`lac-${l}-sable-familles-coucher-de-soleil`] ??= [new Date(Date.UTC(2027, 0, 27 + 3 * i)).toISOString().slice(0, 10)]; });
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
+etoffer(ARTICLES); // compléments sourcés (scripts/articles.ajouts.mjs)
+ajouterSaisons(ARTICLES); // température mois par mois (scripts/articles.saisons.mjs)
 // Publication programmée : les pages sont régénérées toutes les 3 h (eau.yml) ; un article ne sort qu'à partir de sa date (UTC).
 export const AUJOURDHUI = process.env.BLOG_DATE ?? new Date().toISOString().slice(0, 10); // BLOG_DATE : pour prévisualiser une date
 ARTICLES.splice(0, ARTICLES.length, ...ARTICLES.filter((a) => a.publie <= AUJOURDHUI));
