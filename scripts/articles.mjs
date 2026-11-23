@@ -791,6 +791,14 @@ Object.assign(DATES, { 'lacs-les-plus-doux-en-hiver': ['2026-12-07'], 'saison-de
 LACS_HIVER().forEach((l, i) => { DATES[`bain-d-hiver-lac-${l}`] ??= [new Date(Date.UTC(2026, 11, 2 + 2 * i)).toISOString().slice(0, 10)]; });
 LACS_SAISONS().filter((l) => !DEJA.has(`temperature-lac-${l}`)).forEach((l, i) => { DATES[`temperature-lac-${l}`] ??= [new Date(Date.UTC(2027, 2, 25 + 3 * i)).toISOString().slice(0, 10)]; });
 LACS_GUIDES.forEach((l, i) => { DATES[`lac-${l}-sable-familles-coucher-de-soleil`] ??= [new Date(Date.UTC(2027, 0, 27 + 3 * i)).toISOString().slice(0, 10)]; });
+// Replanification du 23 novembre 2026 (demande de l'éditeur) : bains d'hiver tout de suite, le reste réparti régulièrement jusqu'au 30 avril 2027, dans l'ordre prévu.
+{
+  const REPLAN = '2026-11-23', FIN = Date.UTC(2027, 3, 30), hiver = (s) => s.startsWith('bain-d-hiver-') || s === 'lacs-les-plus-doux-en-hiver' || s === 'eisbaden-graubuenden';
+  const futurs = ARTICLES.filter((a) => DATES[a.slug]?.[0] > REPLAN).sort((x, y) => DATES[x.slug][0].localeCompare(DATES[y.slug][0]));
+  const reste = futurs.filter((a) => !hiver(a.slug)), debut = Date.UTC(2026, 10, 24), pas = (FIN - debut) / Math.max(1, reste.length - 1);
+  for (const a of futurs) if (hiver(a.slug)) DATES[a.slug] = [REPLAN];
+  reste.forEach((a, i) => { DATES[a.slug] = [new Date(debut + Math.round(i * pas / 864e5) * 864e5).toISOString().slice(0, 10)]; });
+}
 for (const a of ARTICLES) [a.publie, a.modifie = a.publie] = DATES[a.slug]; // température de l'eau par lac, déjà en quatre langues
 etoffer(ARTICLES); // compléments sourcés (scripts/articles.ajouts.mjs)
 ajouterSaisons(ARTICLES); // température mois par mois (scripts/articles.saisons.mjs)
