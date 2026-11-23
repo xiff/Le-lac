@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Getting to the beach by public transport: the nearest stop to each Lake Geneva beach · My Lake</title>
+<meta name="description" content="For each Swiss beach on Lake Geneva, the name of the nearest public transport stop and the straight-line distance, from Federal Office of Transport data.">
+<link rel="canonical" href="https://monlac.ch/blog/plages-transports-publics-leman/en/">
+<link rel="alternate" hreflang="fr" href="https://monlac.ch/blog/plages-transports-publics-leman/">
+<link rel="alternate" hreflang="en" href="https://monlac.ch/blog/plages-transports-publics-leman/en/">
+<link rel="alternate" hreflang="de" href="https://monlac.ch/blog/plages-transports-publics-leman/de/">
+<link rel="alternate" hreflang="it" href="https://monlac.ch/blog/plages-transports-publics-leman/it/">
+<link rel="alternate" hreflang="x-default" href="https://monlac.ch/blog/plages-transports-publics-leman/">
+<script>
+document.documentElement.classList.add('js'); // les photos .voile attendent leur chargement (sans JS, elles restent visibles)
+// Arrivée sur le blog : on propose la langue choisie par le visiteur (mémorisée par l'app), quand la page existe dans cette langue.
+// Un clic sur le sélecteur de langue mémorise le choix (même clé que l'app) : on ne redirige plus ensuite.
+(() => { try {
+  const L = ['fr', 'en', 'de', 'it'], ici = document.documentElement.lang;
+  addEventListener('click', (e) => { const a = e.target.closest?.('.langues a'); if (a) localStorage.setItem('langue', a.hreflang); });
+  const voulue = localStorage.getItem('langue'); // pas de repli sur la langue du navigateur : les robots (en-US) seraient renvoyés vers la version anglaise
+  if (!L.includes(voulue) || voulue === ici || sessionStorage.getItem('langue-vue')) return;
+  sessionStorage.setItem('langue-vue', '1'); // une seule redirection par visite : le retour arrière ne boucle pas
+  const autre = document.querySelector('link[rel="alternate"][hreflang="' + voulue + '"]');
+  if (autre) location.replace(new URL(autre.href).pathname + location.search + location.hash);
+} catch {} })();
+</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting to the beach by public transport: the nearest stop to each Lake Geneva beach · My Lake">
+<meta property="og:description" content="For each Swiss beach on Lake Geneva, the name of the nearest public transport stop and the straight-line distance, from Federal Office of Transport data.">
+<meta property="og:url" content="https://monlac.ch/blog/plages-transports-publics-leman/en/">
+<meta property="og:image" content="https://monlac.ch/blog/img/ia/guide-transports.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d4a5c">
+<link rel="icon" href="../../../favicon.ico" sizes="48x48">
+<link rel="icon" href="../../../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../plage/plage.css">
+<link rel="preload" href="../../../fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="../../../spots.js">
+<link rel="preload" href="../../../eau.json" as="fetch" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://monlac.ch/#org","name":"Mon Lac","alternateName":["My Lake","Mein See","Il mio lago"],"url":"https://monlac.ch/","logo":{"@type":"ImageObject","url":"https://monlac.ch/icons/icon-512.png","width":512,"height":512}},{"@type":"WebSite","@id":"https://monlac.ch/#site","name":"Mon Lac","url":"https://monlac.ch/","inLanguage":["fr-CH","en","de-CH","it-CH"],"publisher":{"@id":"https://monlac.ch/#org"}},{"@type":"BlogPosting","@id":"https://monlac.ch/blog/plages-transports-publics-leman/en/#article","mainEntityOfPage":"https://monlac.ch/blog/plages-transports-publics-leman/en/","url":"https://monlac.ch/blog/plages-transports-publics-leman/en/","headline":"Getting to the beach by public transport: the nearest stop to each Lake Geneva beach","description":"For each Swiss beach on Lake Geneva, the name of the nearest public transport stop and the straight-line distance, from Federal Office of Transport data.","image":{"@type":"ImageObject","url":"https://monlac.ch/blog/img/ia/guide-transports.jpg","width":1600,"height":893,"creditText":"My Lake"},"datePublished":"2026-11-23","dateModified":"2026-11-23","inLanguage":"en","author":{"@id":"https://monlac.ch/#org"},"publisher":{"@id":"https://monlac.ch/#org"},"isPartOf":{"@id":"https://monlac.ch/blog/en/#blog"},"about":{"@type":"LakeBodyOfWater","name":"Lac Léman","alternateName":"Lake Geneva","sameAs":"https://www.wikidata.org/wiki/Q6403"},"citation":["https://map.geo.admin.ch/?layers=ch.bav.haltestellen-oev","https://www.openstreetmap.org/copyright"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"My Lake","item":"https://monlac.ch/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://monlac.ch/blog/en/"},{"@type":"ListItem","position":3,"name":"To the beach by public transport: the nearest stop, beach by beach","item":"https://monlac.ch/blog/plages-transports-publics-leman/en/"}]}]}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3fac0d48-00cf-403c-87f1-19e4a21bbe68"></script>
+</head>
+<body>
+<header>
+  <div class="haut"><a class="marque" translate="no" href="../../../?lang=en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>My Lake</a><nav class="langues" translate="no" aria-label="Language"><a href="../../../blog/plages-transports-publics-leman/" hreflang="fr" lang="fr" title="Français" aria-label="Français">FR</a><a href="../../../blog/plages-transports-publics-leman/de/" hreflang="de" lang="de" title="Deutsch" aria-label="Deutsch">DE</a><a href="../../../blog/plages-transports-publics-leman/it/" hreflang="it" lang="it" title="Italiano" aria-label="Italiano">IT</a></nav></div>
+  <nav class="ariane" aria-label="Breadcrumb"><a href="../../../?lang=en">My Lake</a> › <a href="../../../blog/en/">Blog</a></nav>
+  <h1>To the beach by public transport: the nearest stop, beach by beach</h1>
+  <p class="releve">By the My Lake team · published <time datetime="2026-11-23">23 November 2026</time></p>
+</header>
+<main class="article">
+  <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/guide-transports-640.webp 640w, ../../../blog/img/min/guide-transports-1200.webp 1200w, ../../../blog/img/min/guide-transports-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/guide-transports.jpg" alt="A small tram and a bus in front of a lake, a platform with a bench, nobody around" srcset="../../../blog/img/min/guide-transports-640.jpg 640w, ../../../blog/img/min/guide-transports-1200.jpg 1200w, ../../../blog/img/ia/guide-transports.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>AI-generated illustration</figcaption></figure>
+  <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>For <strong>203 Swiss beaches on Lake Geneva</strong>, here is the <strong>nearest public transport stop</strong> and its straight-line distance. The data does not say whether it is a train station, a bus stop or a boat landing: check the line and timetable before you set off.</p></section>
+  <p>Each line gives the beach, then the nearest stop and its distance in metres, as the crow flies: the walk is a little longer.</p>
+<h2>Within 200 m</h2>
+<ul class="liste">
+  <li><a href="../../../plage/walchwil-lido/en/">Walchwil – Lido</a> : Walchwil, Lido (11 m)</li>
+  <li><a href="../../../plage/oberwil-trubikon/en/">Oberwil – Trubikon</a> : Oberwil b. Zug, Räbmatt (17 m)</li>
+  <li><a href="../../../plage/paradiso-conca-d-oro/en/">Paradiso – Conca d’Oro</a> : Paradiso, Piscina (22 m)</li>
+  <li><a href="../../../plage/boniswil/en/">Boniswil</a> : Boniswil (See) (23 m)</li>
+  <li><a href="../../../plage/meggen-benzeholz/en/">Meggen – Benzeholz</a> : Meggen, Fischerdörfli (30 m)</li>
+  <li><a href="../../../plage/nyon/en/">Nyon</a> : Nyon, plage (33 m)</li>
+  <li><a href="../../../plage/lugano-riva-caccia/en/">Lugano – Riva Caccia</a> : Lugano, Malpensata (43 m)</li>
+  <li><a href="../../../plage/bauen/en/">Bauen</a> : Bauen, Dorf (46 m)</li>
+  <li><a href="../../../plage/neuhaus/en/">Neuhaus (Unterseen)</a> : Neuhaus (Unterseen) (See) (47 m)</li>
+  <li><a href="../../../plage/walchwil/en/">Walchwil</a> : Walchwil, St. Adrian (48 m)</li>
+  <li><a href="../../../plage/cham-hirsgarten/en/">Cham – Hirsgarten</a> : Cham (See) (50 m)</li>
+  <li><a href="../../../plage/buonas/en/">Buonas</a> : Buonas (See) (53 m)</li>
+  <li><a href="../../../plage/saint-saphorin/en/">Saint-Saphorin</a> : St-Saphorin (Lavaux), gare (56 m)</li>
+  <li><a href="../../../plage/brunnen/en/">Brunnen</a> : Brunnen, Schiller (64 m)</li>
+  <li><a href="../../../plage/huenibach/en/">Hünibach</a> : Ländte Hünibach (64 m)</li>
+  <li><a href="../../../plage/gersau-kindli/en/">Gersau – Kindli</a> : Gersau, Kindli-Strandbad (65 m)</li>
+  <li><a href="../../../plage/kilchberg/en/">Kilchberg</a> : Kilchberg ZH, Schooren (67 m)</li>
+  <li><a href="../../../plage/brissago/en/">Brissago</a> : Brissago, Piazza del Sole (71 m)</li>
+  <li><a href="../../../plage/lido-locarno/en/">Lido Locarno</a> : Locarno, Lido (74 m)</li>
+  <li><a href="../../../plage/lucerne-seebad/en/">Lucerne – Seebad</a> : Luzern, Casino-Palace (75 m)</li>
+  <li><a href="../../../plage/arth/en/">Arth</a> : Arth, Aazopf (76 m)</li>
+  <li><a href="../../../plage/tuscherz/en/">Tüscherz</a> : Tüscherz, Dorfweg (81 m)</li>
+  <li><a href="../../../plage/oberhofen-hirschen/en/">Strandbad Hirschen</a> : Gunten, Dorf (81 m)</li>
+  <li><a href="../../../plage/zollikon/en/">Zollikon</a> : Zollikon (83 m)</li>
+  <li><a href="../../../plage/vevey/en/">Vevey</a> : Vevey (84 m)</li>
+  <li><a href="../../../plage/hergiswil/en/">Hergiswil</a> : Hergiswil NW, Badi (88 m)</li>
+  <li><a href="../../../plage/zug-seeliken/en/">Zoug – Seeliken</a> : Zug, Theater Casino (88 m)</li>
+  <li><a href="../../../plage/capolago/en/">Capolago</a> : Capolago, Posta (90 m)</li>
+  <li><a href="../../../plage/baech/en/">Bäch</a> : Bäch SZ, Badi (90 m)</li>
+  <li><a href="../../../plage/cudrefin/en/">Cudrefin</a> : Cudrefin (99 m)</li>
+  <li><a href="../../../plage/oberwil-tellenoertli/en/">Oberwil – Tellenörtli</a> : Oberwil b. Zug, Kreuz (100 m)</li>
+  <li><a href="../../../plage/merlischachen/en/">Merlischachen</a> : Merlischachen (See) (102 m)</li>
+  <li><a href="../../../plage/erlenbach/en/">Erlenbach</a> : Winkel am Zürichsee, Bahnhof (103 m)</li>
+  <li><a href="../../../plage/villeneuve/en/">Villeneuve</a> : Villeneuve VD, La Plage (104 m)</li>
+  <li><a href="../../../plage/corseaux/en/">Corseaux</a> : Vevey, Corseaux-plage (110 m)</li>
+  <li><a href="../../../plage/gerra-gambarogno/en/">Gerra (Gambarogno)</a> : Gerra (Gambarogno), Stazione (119 m)</li>
+  <li><a href="../../../plage/spiez/en/">Spiez</a> : Spiez, Rütti (123 m)</li>
+  <li><a href="../../../plage/rueschlikon/en/">Rüschlikon</a> : Rüschlikon, Schlossstrasse (125 m)</li>
+  <li><a href="../../../plage/oberaegeri/en/">Oberägeri</a> : Oberägeri, Station (126 m)</li>
+  <li><a href="../../../plage/zug-strandbad/en/">Zoug – Strandbad</a> : Zug, Letzi (126 m)</li>
+  <li><a href="../../../plage/wadenswil-rietliau/en/">Wädenswil – Rietliau</a> : Au ZH, Strandbad (130 m)</li>
+  <li><a href="../../../plage/anieres/en/">Anières</a> : Anières (lac) (131 m)</li>
+  <li><a href="../../../plage/bissone/en/">Bissone</a> : Bissone, autostrada (132 m)</li>
+  <li><a href="../../../plage/meilen/en/">Meilen</a> : Meilen, Beugen (135 m)</li>
+  <li><a href="../../../plage/bienne-plage/en/">Bienne – Plage</a> : Biel/Bienne (Schiff/bateau) (138 m)</li>
+  <li><a href="../../../plage/riva-san-vitale/en/">Riva San Vitale</a> : Riva S. Vitale, Scuola Media (139 m)</li>
+  <li><a href="../../../plage/morat/en/">Morat</a> : Murten, Schwimmbad (141 m)</li>
+  <li><a href="../../../plage/leissigen/en/">Leissigen</a> : Leissigen (See) (144 m)</li>
+  <li><a href="../../../plage/gelfingen/en/">Gelfingen</a> : Gelfingen (146 m)</li>
+  <li><a href="../../../plage/zurich-utoquai/en/">Zurich – Seebad Utoquai</a> : Zürich, Kreuzstrasse (147 m)</li>
+  <li><a href="../../../plage/tropical-corner/en/">Tropical Corner</a> : Cologny, Righi (150 m)</li>
+  <li><a href="../../../plage/baby-plage/en/">Baby-Plage</a> : Genève-Eaux-Vives (lac) (150 m)</li>
+  <li><a href="../../../plage/uetikon/en/">Uetikon am See</a> : Uetikon am See, Bahnhof (154 m)</li>
+  <li><a href="../../../plage/lido-di-lugano/en/">Lido di Lugano</a> : Cassarate, Lido (159 m)</li>
+  <li><a href="../../../plage/brienz/en/">Brienz</a> : Brienz BE, Lammbach (162 m)</li>
+  <li><a href="../../../plage/niederried/en/">Niederried</a> : Niederried (165 m)</li>
+  <li><a href="../../../plage/cologny/en/">Cologny</a> : Cologny, Montalègre (167 m)</li>
+  <li><a href="../../../plage/saint-aubin-ne/en/">Saint-Aubin</a> : St-Aubin NE (bateau) (168 m)</li>
+  <li><a href="../../../plage/cham/en/">Cham</a> : Cham, Eich (169 m)</li>
+  <li><a href="../../../plage/pfaeffikon-sz/en/">Pfäffikon SZ</a> : Pfäffikon SZ (See) (170 m)</li>
+  <li><a href="../../../plage/domaine-des-iles/en/">Domaine des Îles</a> : Sion, Tennis Iles (172 m)</li>
+  <li><a href="../../../plage/zurich-mythenquai/en/">Zurich – Strandbad Mythenquai</a> : Zürich, Sukkulentensammlung (173 m)</li>
+  <li><a href="../../../plage/lausanne-vidy/en/">Lausanne – Vidy</a> : Lausanne, Parc Bourget (176 m)</li>
+  <li><a href="../../../plage/concise/en/">Concise</a> : Concise (bateau) (177 m)</li>
+  <li><a href="../../../plage/zurich-wollishofen/en/">Zurich – Strandbad Wollishofen</a> : Zürich, Seerose (178 m)</li>
+  <li><a href="../../../plage/montreux-clarens/en/">Montreux – Clarens</a> : Clarens, centre (180 m)</li>
+  <li><a href="../../../plage/beckenried/en/">Beckenried</a> : Beckenried, Hungacher (183 m)</li>
+  <li><a href="../../../plage/zug-maennerbadi/en/">Zoug – Männerbadi</a> : Zug, Schützenmatt (184 m)</li>
+  <li><a href="../../../plage/zurich-seebad-enge/en/">Zurich – Seebad Enge</a> : Zürich, Rentenanstalt (186 m)</li>
+  <li><a href="../../../plage/plage-des-eaux-vives/en/">Plage des Eaux-Vives</a> : Genève, Parc et Plage des Eaux-Vives (187 m)</li>
+  <li><a href="../../../plage/lutry/en/">Lutry</a> : Lutry, Corniche (187 m)</li>
+  <li><a href="../../../plage/feldmeilen/en/">Feldmeilen</a> : Meilen, Schulhaus Feld (187 m)</li>
+  <li><a href="../../../plage/cholplatz/en/">Strandbad Cholplatz</a> : Gersau, Felsenegg (188 m)</li>
+  <li><a href="../../../plage/meisterschwanden/en/">Meisterschwanden</a> : Meisterschwanden Seerose (188 m)</li>
+  <li><a href="../../../plage/eich/en/">Eich</a> : Eich, Dorf (188 m)</li>
+  <li><a href="../../../plage/veytaux/en/">Veytaux</a> : Veytaux-Chillon (190 m)</li>
+  <li><a href="../../../plage/kuesnacht/en/">Küsnacht</a> : Küsnacht ZH Heslibach (191 m)</li>
+  <li><a href="../../../plage/la-tour-de-peilz/en/">La Tour-de-Peilz</a> : La Tour-de-Peilz, centre (192 m)</li>
+  <li><a href="../../../plage/locarno-bagno-pubblico/en/">Locarno – Bagno pubblico</a> : Locarno, Delta Maggia (195 m)</li>
+  <li><a href="../../../plage/yverdon-les-bains/en/">Yverdon-les-Bains</a> : Yverdon-les-Bains, plage (198 m)</li>
+</ul>
+<h2>200 to 500 m</h2>
+<ul class="liste">
+  <li><a href="../../../plage/beinwil-am-see/en/">Beinwil am See</a> : Beinwil am See (See) (200 m)</li>
+  <li><a href="../../../plage/genthod/en/">Genthod</a> : Creux-de-Genthod, gare (205 m)</li>
+  <li><a href="../../../plage/mannenbach/en/">Mannenbach</a> : Mannenbach (See) (207 m)</li>
+  <li><a href="../../../plage/huenenberg/en/">Hünenberg</a> : Hünenberg Chämleten (214 m)</li>
+  <li><a href="../../../plage/le-pont/en/">Le Pont</a> : Le Pont, église (215 m)</li>
+  <li><a href="../../../plage/rapperswil/en/">Rapperswil</a> : Rapperswil SG (See) (215 m)</li>
+  <li><a href="../../../plage/paudex/en/">Paudex</a> : Paudex, Verrière (216 m)</li>
+  <li><a href="../../../plage/immensee/en/">Immensee</a> : Immensee (216 m)</li>
+  <li><a href="../../../plage/lausanne-ouchy/en/">Lausanne – Ouchy</a> : Lausanne, Ouchy-Olympique (218 m)</li>
+  <li><a href="../../../plage/faoug/en/">Faoug</a> : Faoug débarcadère (218 m)</li>
+  <li><a href="../../../plage/estavayer-le-lac/en/">Estavayer – Nouvelle Plage</a> : Estavayer-le-Lac, plage (219 m)</li>
+  <li><a href="../../../plage/zurich-tiefenbrunnen/en/">Zurich – Strandbad Tiefenbrunnen</a> : Zürich, Wildbachstrasse (223 m)</li>
+  <li><a href="../../../plage/stansstad/en/">Stansstad</a> : Stansstad, Schule (223 m)</li>
+  <li><a href="../../../plage/lucerne-tribschen/en/">Lucerne – Tribschen</a> : Tribschen (226 m)</li>
+  <li><a href="../../../plage/cortaillod/en/">Cortaillod</a> : Cortaillod (bateau) (227 m)</li>
+  <li><a href="../../../plage/silvaplana/en/">Silvaplana</a> : Silvaplana, Camping (227 m)</li>
+  <li><a href="../../../plage/greppen/en/">Greppen</a> : Greppen (229 m)</li>
+  <li><a href="../../../plage/hermance/en/">Hermance</a> : Hermance (lac) (234 m)</li>
+  <li><a href="../../../plage/boenigen/en/">Bönigen</a> : Bönigen (240 m)</li>
+  <li><a href="../../../plage/bains-des-paquis/en/">Bains des Pâquis</a> : Genève, Bains des Pâquis (244 m)</li>
+  <li><a href="../../../plage/melano/en/">Melano</a> : Melano, Posta (245 m)</li>
+  <li><a href="../../../plage/altnau/en/">Altnau</a> : Altnau (245 m)</li>
+  <li><a href="../../../plage/la-neuveville/en/">La Neuveville</a> : La Neuveville, Ruis de Vaux (247 m)</li>
+  <li><a href="../../../plage/zug-brueggli/en/">Zoug – Brüggli</a> : Zug, Lorzen (247 m)</li>
+  <li><a href="../../../plage/oberrieden/en/">Oberrieden</a> : Oberrieden (See) (248 m)</li>
+  <li><a href="../../../plage/cerlier/en/">Cerlier (Erlach)</a> : Erlach (Schiff) (250 m)</li>
+  <li><a href="../../../plage/hauterive/en/">Hauterive</a> : Hauterive NE, Port (251 m)</li>
+  <li><a href="../../../plage/wilen-wilerbaedli/en/">Wilen – Wilerbädli</a> : Wilen (Sarnen), Wilerbad (252 m)</li>
+  <li><a href="../../../plage/baldegg/en/">Baldegg</a> : Baldegg (254 m)</li>
+  <li><a href="../../../plage/melide/en/">Melide</a> : Melide, Stazione (255 m)</li>
+  <li><a href="../../../plage/faulensee/en/">Faulensee</a> : Faulensee, Angernstrasse (256 m)</li>
+  <li><a href="../../../plage/saint-prex/en/">Saint-Prex</a> : St-Prex, gare sud (261 m)</li>
+  <li><a href="../../../plage/uster/en/">Uster</a> : Uster, See (261 m)</li>
+  <li><a href="../../../plage/lucerne-lido/en/">Lucerne – Lido</a> : Verkehrshaus-Lido (268 m)</li>
+  <li><a href="../../../plage/richterswil/en/">Richterswil</a> : Richterswil, Wisli (270 m)</li>
+  <li><a href="../../../plage/thalwil/en/">Thalwil</a> : Thalwil, Rainstrasse (272 m)</li>
+  <li><a href="../../../plage/sempach/en/">Sempach</a> : Sempach Stadt, Vogelwarte (272 m)</li>
+  <li><a href="../../../plage/horw-seebad/en/">Horw – Seebad</a> : Horw, Seefeld (276 m)</li>
+  <li><a href="../../../plage/pully/en/">Pully</a> : Pully, Vignes (282 m)</li>
+  <li><a href="../../../plage/neuchatel-jeunes-rives/en/">Neuchâtel – Jeunes-Rives</a> : Neuchâtel, Université (287 m)</li>
+  <li><a href="../../../plage/ermatingen/en/">Ermatingen</a> : Ermatingen, Friedhof (288 m)</li>
+  <li><a href="../../../plage/geneve-plage/en/">Genève-Plage</a> : Genève, Plage (289 m)</li>
+  <li><a href="../../../plage/caslano/en/">Caslano</a> : Caslano (lago) (290 m)</li>
+  <li><a href="../../../plage/rolle/en/">Rolle</a> : Mont-sur-Rolle, Bellefontaine (292 m)</li>
+  <li><a href="../../../plage/castagnola-san-domenico/en/">Castagnola – San Domenico</a> : Castagnola, Roncaccio (292 m)</li>
+  <li><a href="../../../plage/cully-moratel/en/">Cully – Moratel</a> : Epesses, gare (297 m)</li>
+  <li><a href="../../../plage/buochs-ennetbuergen/en/">Buochs-Ennetbürgen</a> : Ennetbürgen, Strandbad (305 m)</li>
+  <li><a href="../../../plage/triboltingen/en/">Triboltingen</a> : Triboltingen (310 m)</li>
+  <li><a href="../../../plage/muensterlingen/en/">Münsterlingen</a> : Scherzingen, Scheidweg (316 m)</li>
+  <li><a href="../../../plage/villette/en/">Villette</a> : Villette VD (317 m)</li>
+  <li><a href="../../../plage/thoune-strandbad/en/">Thoune – Strandbad</a> : Thun, Strandbad (318 m)</li>
+  <li><a href="../../../plage/lucerne-ufschuetti/en/">Lucerne – Ufschötti</a> : Luzern, Bahnhof (319 m)</li>
+  <li><a href="../../../plage/colombier/en/">Colombier</a> : Colombier NE, Bas-des-Allées (323 m)</li>
+  <li><a href="../../../plage/altenrhein/en/">Altenrhein</a> : Altenrhein, Dorf (324 m)</li>
+  <li><a href="../../../plage/lausanne-bellerive/en/">Lausanne – Bellerive</a> : Lausanne, Bellerive (329 m)</li>
+  <li><a href="../../../plage/steinach/en/">Steinach</a> : Steinach, Kirche (330 m)</li>
+  <li><a href="../../../plage/buchillon/en/">Buchillon</a> : Buchillon, collège (352 m)</li>
+  <li><a href="../../../plage/pregny-chambesy/en/">Pregny-Chambésy</a> : Chambésy, Plage du Vengeron (356 m)</li>
+  <li><a href="../../../plage/rivaz/en/">Rivaz</a> : Rivaz, gare (358 m)</li>
+  <li><a href="../../../plage/tennwil/en/">Tennwil</a> : Tennwil, Strandbad (360 m)</li>
+  <li><a href="../../../plage/romanshorn/en/">Romanshorn</a> : Romanshorn, Blumenweg (361 m)</li>
+  <li><a href="../../../plage/horn/en/">Horn</a> : Horn (366 m)</li>
+  <li><a href="../../../plage/krattigen-lido/en/">Krattigen – Lido</a> : Krattigen, Tschuppen (367 m)</li>
+  <li><a href="../../../plage/saint-sulpice/en/">Saint-Sulpice</a> : St-Sulpice VD, Pâqueret (373 m)</li>
+  <li><a href="../../../plage/versoix/en/">Versoix</a> : Versoix, Port Choiseul (391 m)</li>
+  <li><a href="../../../plage/les-brenets/en/">Les Brenets</a> : Les Brenets, centre village (397 m)</li>
+  <li><a href="../../../plage/vitznau-lido/en/">Vitznau – Lido</a> : Vitznau, Unteraltdorf (398 m)</li>
+  <li><a href="../../../plage/morges/en/">Morges</a> : Morges, ch. du Bochet (400 m)</li>
+  <li><a href="../../../plage/lugano-parco-ciani/en/">Lugano – Parco Ciani</a> : Lugano, Palazzo Studi (406 m)</li>
+  <li><a href="../../../plage/kesswil/en/">Kesswil</a> : Kesswil (409 m)</li>
+  <li><a href="../../../plage/corbieres/en/">Corbières</a> : Hauteville, Les Fourches (416 m)</li>
+  <li><a href="../../../plage/nottwil/en/">Nottwil</a> : Nottwil (418 m)</li>
+  <li><a href="../../../plage/tenero-lido-mappo/en/">Tenero – Lido Mappo</a> : Minusio, Lido Mappo (419 m)</li>
+  <li><a href="../../../plage/schenkon/en/">Schenkon</a> : Schenkon, Dorf (430 m)</li>
+  <li><a href="../../../plage/maroggia/en/">Maroggia</a> : Maroggia-Melano, Stazione (433 m)</li>
+  <li><a href="../../../plage/gletterens/en/">Gletterens</a> : Gletterens, lac (434 m)</li>
+  <li><a href="../../../plage/portalban/en/">Portalban</a> : Portalban (442 m)</li>
+  <li><a href="../../../plage/preverenges/en/">Préverenges</a> : Préverenges, village (452 m)</li>
+  <li><a href="../../../plage/mies/en/">Mies</a> : Tannay (455 m)</li>
+  <li><a href="../../../plage/pont-la-ville/en/">Pont-la-Ville</a> : Pont-la-Ville, Sur-Momont (468 m)</li>
+  <li><a href="../../../plage/gland/en/">Gland</a> : Gland, La Falaise (471 m)</li>
+  <li><a href="../../../plage/badewiese-funtelen/en/">Badewiese Funtelen</a> : Tüscherz, Alfermée (472 m)</li>
+  <li><a href="../../../plage/bellevue/en/">Bellevue</a> : Creux-de-Genthod, gare (475 m)</li>
+  <li><a href="../../../plage/nidau/en/">Nidau</a> : Nidau, Strandweg (475 m)</li>
+  <li><a href="../../../plage/avenches/en/">Avenches</a> : Avenches, plage (477 m)</li>
+  <li><a href="../../../plage/agno/en/">Agno</a> : Agno, Stazione (481 m)</li>
+  <li><a href="../../../plage/strandbad-rostele/en/">Strandbad Rostele</a> : Twann (Schiff) (499 m)</li>
+</ul>
+<h2>Beyond 500 m</h2>
+<ul class="liste">
+  <li><a href="../../../plage/dully/en/">Dully</a> : Gland, Lignière-Dullive (502 m)</li>
+  <li><a href="../../../plage/egnach-wiedehorn/en/">Egnach – Wiedehorn</a> : Egnach, Wiedehorn (506 m)</li>
+  <li><a href="../../../plage/magliaso/en/">Magliaso</a> : Magliaso Paese (508 m)</li>
+  <li><a href="../../../plage/greifensee-furren/en/">Greifensee – Furren</a> : Greifensee, Städtli (510 m)</li>
+  <li><a href="../../../plage/salavaux/en/">Salavaux</a> : Salavaux, école (526 m)</li>
+  <li><a href="../../../plage/uttwil/en/">Uttwil</a> : Uttwil, Bahnhof (539 m)</li>
+  <li><a href="../../../plage/landschlacht/en/">Landschlacht</a> : Landschlacht (542 m)</li>
+  <li><a href="../../../plage/guettingen/en/">Güttingen</a> : Güttingen (546 m)</li>
+  <li><a href="../../../plage/tenero/en/">Tenero</a> : Tenero, Brere (575 m)</li>
+  <li><a href="../../../plage/la-roche/en/">La Roche</a> : La Roche FR, Villaret (580 m)</li>
+  <li><a href="../../../plage/corsier-port/en/">Corsier-Port</a> : Corsier GE (lac) (592 m)</li>
+  <li><a href="../../../plage/le-bouveret/en/">Le Bouveret</a> : Bouveret (604 m)</li>
+  <li><a href="../../../plage/sarnen/en/">Sarnen</a> : Sachseln, Brünigstrasse (615 m)</li>
+  <li><a href="../../../plage/maur/en/">Maur</a> : Maur, See (619 m)</li>
+  <li><a href="../../../plage/morlon/en/">Morlon</a> : Morlon, Eglise (629 m)</li>
+  <li><a href="../../../plage/forel/en/">Forel</a> : Forel FR, village (630 m)</li>
+  <li><a href="../../../plage/perroy/en/">Perroy</a> : Perroy, Couronnette (632 m)</li>
+  <li><a href="../../../plage/le-sentier-rocheray/en/">Le Sentier – Le Rocheray</a> : Le Rocheray, bif. gare (637 m)</li>
+  <li><a href="../../../plage/celigny/en/">Céligny</a> : Céligny (lac) (639 m)</li>
+  <li><a href="../../../plage/coppet/en/">Coppet</a> : Coppet (lac) (645 m)</li>
+  <li><a href="../../../plage/iseltwald/en/">Iseltwald</a> : Iseltwald, Dorfplatz (650 m)</li>
+  <li><a href="../../../plage/arbon/en/">Arbon</a> : Arbon Seemoosriet (664 m)</li>
+  <li><a href="../../../plage/gumefens/en/">Gumefens</a> : Gumefens, lac (698 m)</li>
+  <li><a href="../../../plage/prangins/en/">Prangins</a> : Prangins, hôpital (702 m)</li>
+  <li><a href="../../../plage/berlingen/en/">Berlingen</a> : Berlingen (795 m)</li>
+  <li><a href="../../../plage/horw-winkel/en/">Horw – Winkel</a> : Horw, Rank (807 m)</li>
+  <li><a href="../../../plage/ascona/en/">Ascona</a> : Ascona, Via Pancaldi Mola (838 m)</li>
+  <li><a href="../../../plage/saint-gingolph/en/">Saint-Gingolph</a> : St-Gingolph (Suisse) (844 m)</li>
+  <li><a href="../../../plage/tolochenaz/en/">Tolochenaz</a> : Tolochenaz, Les Noyers (896 m)</li>
+  <li><a href="../../../plage/boudry/en/">Boudry</a> : Cortaillod, Câbles (903 m)</li>
+  <li><a href="../../../plage/zweiern/en/">Risch – Zweiern</a> : Buonas (See) (925 m)</li>
+  <li><a href="../../../plage/yvonand/en/">Yvonand</a> : Yvonand, Grand'Rue (932 m)</li>
+  <li><a href="../../../plage/collonge-bellerive-la-savonniere/en/">Collonge-Bellerive – La Savonnière</a> : Collonge-Bellerive, Pré-d'Orsat (972 m)</li>
+  <li><a href="../../../plage/grandson-corcelettes/en/">Grandson – Corcelettes</a> : Grandson, Corcelettes (1023 m)</li>
+  <li><a href="../../../plage/allaman/en/">Allaman</a> : Féchy, En Burnens (1073 m)</li>
+  <li><a href="../../../plage/lac-de-bret/en/">Lac de Bret</a> : Puidoux, En Botonnet (1251 m)</li>
+</ul>
+<h2>What this page does not say</h2>
+<p>It does not say which line serves each stop, how often, or whether the stop is a station, a bus stop or a boat landing: the source does not specify. Beaches on the French shore are not covered, since the source only concerns Switzerland. Distances are measured from the beach’s point in the app.</p>
+<p>To pick a beach: <a href="../../../?lang=en">the My Lake app</a> gives the current water and wind. More guides: <a href="../../../blog/plages-lausanne/en/">Lausanne and Morges</a>, <a href="../../../blog/plages-riviera/en/">the Riviera</a>, <a href="../../../blog/plages-la-cote/en/">La Côte</a>, <a href="../../../blog/plages-geneve/en/">Geneva</a>.</p>
+  <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">Lake Geneva’s water right now</h2>
+    <p id="eau-live">Each beach’s water temperature is in <a href="../../../?lang=en">the My Lake app</a>, updated every three hours.</p></section>
+  <section class="sources" aria-labelledby="t-sources"><h2 id="t-sources">Sources</h2><ul>
+    <li><a href="https://map.geo.admin.ch/?layers=ch.bav.haltestellen-oev">Office fédéral des transports, « Arrêts tp » (via geo.admin.ch)</a></li>
+    <li><a href="https://www.openstreetmap.org/copyright">OpenStreetMap, contours et plages (ODbL)</a></li>
+  </ul></section>
+  <a class="bouton" href="../../../?lang=en">See the lake today</a>
+</main>
+<footer class="pied">
+  <span>Weather <a href="https://open-meteo.com">Open-Meteo</a> · water at 70 cm: <a href="https://www.alplakes.eawag.ch">Alplakes, Eawag</a> (CC BY 4.0), model updated every 3 h.<br>For guidance only: the lake always has the last word.<br>No account, no cookies. Audience measurement by Umami, cookie-free, data hosted in Europe.</span>
+  <div class="liens"><a href="../../../presentation/en/">About</a><a href="../../../plage/en/">All beaches</a><a href="../../../blog/en/">Blog</a><a href="../../../confidentialite/en/">Privacy</a></div>
+</footer>
+<script type="module">
+// Écart de température du moment, depuis le même fichier que l'app ; le texte de repli reste si le réseau manque.
+import { SPOTS, valeurProche } from '../../../spots.js';
+const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => null);
+// Les plages du lac dont parle l'article (le Léman par défaut).
+const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
+if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
+else if (v.length) {
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });
+  document.getElementById('eau-live').innerHTML = "Right now, the water ranges from <strong>§F</strong> at §FA to <strong>§C</strong> at §CA, 70 cm below the surface. Each beach’s details are in <a href=\"../../../?lang=en\">the app</a>."
+    .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
+}
+</script>
+</body>
+</html>
