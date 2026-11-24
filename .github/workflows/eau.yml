@@ -2,6 +2,10 @@ name: Température de l'eau
 on:
   schedule:
     - cron: '23 */3 * * *'  # toutes les 3 h, comme le modèle Alplakes
+    # Classement et températures « du matin » : figés une fois par jour à partir de 6 h UTC (eau-jour.mjs).
+    # GitHub retarde ou saute souvent les tâches programmées : deux passages dédiés après 6 h UTC.
+    - cron: '11 6 * * *'
+    - cron: '41 7 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -9,7 +13,7 @@ concurrency: eau
 jobs:
   eau:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20  # 10 min ne suffisaient plus (passage du 23 novembre annulé)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
