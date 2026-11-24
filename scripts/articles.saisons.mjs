@@ -1,10 +1,12 @@
 // Température de l'eau mois par mois (saisons.json, scripts/saisons.mjs : Alplakes, modèle Simstrat, 2023 à 2025).
 // 1) un tableau ajouté aux articles « température » existants ; 2) un article par lac qui n'en a pas ; 3) un comparatif « quel lac pour quel mois ».
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { SPOTS, lacDe, nomLac } from '../spots.js';
 import { LOCATIONS } from '../locations.js';
 import { ITEM } from './articles.lacs.mjs';
 
+// Image d'hiver propre au lac (blog/img/ia/hiver-<lac>.jpg), sinon l'image générique.
+const imgHiver = (nom) => (existsSync(new URL(`../blog/img/ia/hiver-${nom}.jpg`, import.meta.url)) ? `hiver-${nom}` : 'gen-hiver');
 const S = (() => { try { return JSON.parse(readFileSync(new URL('../saisons.json', import.meta.url), 'utf8')); } catch { return { lacs: {} }; } })();
 const SRC = ['Alplakes, Eawag (CC BY 4.0), modèle Simstrat', 'https://www.alplakes.eawag.ch'];
 const LS = ['fr', 'en', 'de', 'it'], LOC = { fr: 'fr-CH', en: 'en-GB', de: 'de-CH', it: 'it-CH' };
@@ -101,7 +103,7 @@ export const LACS_HIVER = () => Object.keys(S.lacs).filter((l) => !HIVER_DEJA.in
 export const articlesHiverLacs = () => LACS_HIVER().map((lac) => {
   const m = S.lacs[lac], iF = HIV.reduce((a, i) => (m[i].moy < m[a].moy ? i : a), HIV[0]);
   const ids = new Set(SPOTS.filter((s) => lacDe(s) === lac).map((s) => s.id)), saunas = LOCATIONS.filter((l) => ids.has(l.spot) && l.activites.includes('sauna'));
-  const a = { slug: `bain-d-hiver-lac-${lac}`, sante: true, img: 'gen-hiver', altIA: LS.map((L) => ({ fr: `Un ponton enneigé au bord du ${nomLac(lac, 'fr')}, la vapeur au-dessus de l’eau froide`, en: `A snowy jetty on ${nomLac(lac, 'en')}, mist above the cold water`, de: `Ein verschneiter Steg am ${nomLac(lac, 'de')}, Dampf über dem kalten Wasser`, it: `Un pontile innevato sul ${nomLac(lac, 'it')}, vapore sopra l’acqua fredda` })[L]), sources: [SRC] };
+  const a = { slug: `bain-d-hiver-lac-${lac}`, sante: true, img: imgHiver(lac), altIA: LS.map((L) => ({ fr: `Un ponton enneigé au bord du ${nomLac(lac, 'fr')}, la vapeur au-dessus de l’eau froide`, en: `A snowy jetty on ${nomLac(lac, 'en')}, mist above the cold water`, de: `Ein verschneiter Steg am ${nomLac(lac, 'de')}, Dampf über dem kalten Wasser`, it: `Un pontile innevato sul ${nomLac(lac, 'it')}, vapore sopra l’acqua fredda` })[L]), sources: [SRC] };
   for (const L of LS) {
     const n = nomLac(lac, L), x = TH[L];
     const tab = `<table class="tableau"><thead><tr>${T[L].cols.map((c) => `<th>${c}</th>`).join('')}</tr></thead><tbody>\n${HIV.map((i) => `<tr><td>${mois(i, L)}</td><td>${deg(m[i].moy, L)}</td><td>${deg(m[i].min, L)}</td><td>${deg(m[i].max, L)}</td></tr>`).join('\n')}\n</tbody></table>\n<p>${x.note(annees())}</p>`;
@@ -126,7 +128,7 @@ const TS = {
 export const articlesComparatifs2 = () => {
   const lacs = Object.keys(S.lacs);
   if (lacs.length < 5) return [];
-  const hiver = { slug: 'lacs-les-plus-doux-en-hiver', sante: true, img: 'gen-hiver', altIA: ['Un ponton enneigé au bord d’un lac suisse, la brume au-dessus de l’eau froide', 'A snowy jetty on a Swiss lake, mist above the cold water', 'Ein verschneiter Steg an einem Schweizer See, Nebel über dem kalten Wasser', 'Un pontile innevato su un lago svizzero, nebbia sopra l’acqua fredda'], sources: [SRC] };
+  const hiver = { slug: 'lacs-les-plus-doux-en-hiver', sante: true, img: imgHiver('lacs'), altIA: ['Un ponton enneigé au bord d’un lac suisse, la brume au-dessus de l’eau froide', 'A snowy jetty on a Swiss lake, mist above the cold water', 'Ein verschneiter Steg an einem Schweizer See, Nebel über dem kalten Wasser', 'Un pontile innevato su un lago svizzero, nebbia sopra l’acqua fredda'], sources: [SRC] };
   const saison = { slug: 'saison-de-baignade-20-degres', sante: false, img: 'comparatif-mois', altIA: ['Une rangée de thermomètres colorés devant plusieurs lacs suisses stylisés', 'A row of coloured thermometers in front of several stylised Swiss lakes', 'Eine Reihe bunter Thermometer vor mehreren stilisierten Schweizer Seen', 'Una fila di termometri colorati davanti a diversi laghi svizzeri stilizzati'], sources: [SRC] };
   const nb = (l) => S.lacs[l].filter((m) => m.moy >= 20).length;
   for (const L of LS) {
