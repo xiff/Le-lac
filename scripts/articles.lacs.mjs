@@ -26,7 +26,7 @@ const TEXTES = {
 <h2>D’où vient la température ${du} ?</h2>
 <p>Les chiffres viennent d’<strong>Alplakes</strong>, la plateforme de l’Eawag (l’institut de recherche sur l’eau du domaine des EPF). Elle combine des modèles numériques des lacs et des données satellitaires pour calculer la température de l’eau à différentes profondeurs. Les données sont publiées sous licence CC BY 4.0, et ${app} les relit toutes les trois heures.</p>
 ${d3
-  ? `<p>Pour le ${min(N)}, Alplakes fait tourner un <strong>modèle en trois dimensions</strong>. ${app} y lit la valeur à 70 cm de profondeur, au point du modèle situé devant chaque plage. L’Eawag indique, pour les grands lacs, une erreur d’environ 1 °C en surface.</p>`
+  ? `<p>Pour le ${min(N)}, Alplakes fait tourner un <strong>modèle en trois dimensions</strong>. ${app} y lit la valeur à 70 cm de profondeur, au point du modèle situé devant chaque plage. Le chiffre de précision publié par l’Eawag, une erreur d’environ 1 °C en surface pour les grands lacs (EGU 2026), concerne son modèle à une dimension (Simstrat), pas ce modèle 3D, dont la précision n’y est pas chiffrée.</p>`
   : `<p>Pour le ${min(N)}, Alplakes fournit un <strong>modèle à une dimension</strong> (Simstrat) : il calcule la température selon la profondeur, mais pas selon l’endroit. ${app} y lit la valeur à 70 cm de profondeur et l’affiche pour toutes les plages du lac.</p>`}
 <h2>La température est-elle la même sur toutes les plages ?</h2>
 ${d3
@@ -53,7 +53,7 @@ ${liste}
 <h2>Where does the ${N} temperature come from?</h2>
 <p>The figures come from <strong>Alplakes</strong>, the platform run by Eawag (the Swiss Federal Institute of Aquatic Science and Technology). It combines numerical lake models with satellite data to calculate water temperature at different depths. The data is published under a CC BY 4.0 licence, and ${app} reads it every three hours.</p>
 ${d3
-  ? `<p>For ${N}, Alplakes runs a <strong>three-dimensional model</strong>. ${app} reads the value at 70 cm depth, at the model point in front of each beach. For the large lakes, Eawag reports an error of about 1 °C at the surface.</p>`
+  ? `<p>For ${N}, Alplakes runs a <strong>three-dimensional model</strong>. ${app} reads the value at 70 cm depth, at the model point in front of each beach. The accuracy figure Eawag publishes, an error of about 1 °C at the surface for the large lakes (EGU 2026), applies to its one-dimensional model (Simstrat), not to this 3D model, whose accuracy it does not quantify.</p>`
   : `<p>For ${N}, Alplakes provides a <strong>one-dimensional model</strong> (Simstrat): it calculates temperature by depth, but not by location. ${app} reads the value at 70 cm depth and shows it for every beach on the lake.</p>`}
 <h2>Is the temperature the same at every beach?</h2>
 ${d3
@@ -80,7 +80,7 @@ ${liste}
 <h2>Woher kommt die Wassertemperatur im ${N}?</h2>
 <p>Die Werte stammen von <strong>Alplakes</strong>, der Plattform der Eawag (Wasserforschungsinstitut des ETH-Bereichs). Sie verbindet numerische Seemodelle mit Satellitendaten und berechnet die Wassertemperatur in verschiedenen Tiefen. Die Daten stehen unter der Lizenz CC BY 4.0, und ${app} liest sie alle drei Stunden neu ein.</p>
 ${d3
-  ? `<p>Für diesen See rechnet Alplakes ein <strong>dreidimensionales Modell</strong>. ${app} liest den Wert in 70 cm Tiefe am Modellpunkt vor jedem Badeplatz. Die Eawag nennt für die grossen Seen einen Fehler von rund 1 °C an der Oberfläche.</p>`
+  ? `<p>Für diesen See rechnet Alplakes ein <strong>dreidimensionales Modell</strong>. ${app} liest den Wert in 70 cm Tiefe am Modellpunkt vor jedem Badeplatz. Die Genauigkeit, die die Eawag veröffentlicht, ein Fehler von rund 1 °C an der Oberfläche für die grossen Seen (EGU 2026), gilt für ihr eindimensionales Modell (Simstrat), nicht für dieses 3D-Modell, dessen Genauigkeit dort nicht beziffert wird.</p>`
   : `<p>Für diesen See stellt Alplakes ein <strong>eindimensionales Modell</strong> (Simstrat) bereit: Es berechnet die Temperatur nach der Tiefe, aber nicht nach dem Ort. ${app} liest den Wert in 70 cm Tiefe und zeigt ihn für alle Badeplätze des Sees.</p>`}
 <h2>Ist das Wasser an allen Badeplätzen gleich warm?</h2>
 ${d3
@@ -107,7 +107,7 @@ ${liste}
 <h2>Da dove viene la temperatura ${del}?</h2>
 <p>I dati provengono da <strong>Alplakes</strong>, la piattaforma dell’Eawag (l’istituto di ricerca sull’acqua del settore dei politecnici federali). Combina modelli numerici dei laghi e dati satellitari per calcolare la temperatura dell’acqua a diverse profondità. I dati sono pubblicati con licenza CC BY 4.0 e ${app} li rilegge ogni tre ore.</p>
 ${d3
-  ? `<p>Per questo lago Alplakes fa girare un <strong>modello tridimensionale</strong>. ${app} legge il valore a 70 cm di profondità, nel punto del modello davanti a ogni spiaggia. Per i grandi laghi l’Eawag indica un errore di circa 1 °C in superficie.</p>`
+  ? `<p>Per questo lago Alplakes fa girare un <strong>modello tridimensionale</strong>. ${app} legge il valore a 70 cm di profondità, nel punto del modello davanti a ogni spiaggia. Il dato di precisione pubblicato dall’Eawag, un errore di circa 1 °C in superficie per i grandi laghi (EGU 2026), riguarda il suo modello unidimensionale (Simstrat), non questo modello 3D, la cui precisione non vi è quantificata.</p>`
   : `<p>Per questo lago Alplakes fornisce un <strong>modello unidimensionale</strong> (Simstrat): calcola la temperatura secondo la profondità, ma non secondo il luogo. ${app} legge il valore a 70 cm di profondità e lo mostra per tutte le spiagge del lago.</p>`}
 <h2>La temperatura è la stessa su tutte le spiagge?</h2>
 ${d3
