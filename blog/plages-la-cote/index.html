@@ -55,18 +55,17 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <section class="bref" aria-labelledby="bref"><h2 id="bref">En bref</h2><p>Entre Mies et Buchillon, en passant par Coppet, Nyon, Rolle et Gland, Mon Lac suit <strong>10 plages</strong> sur La Côte vaudoise. La page donne la température de l’eau du matin, les lieux au bord de l’eau et les loueurs.</p></section>
   <p>Voici les plages de La Côte suivies par l’app, du côté genevois de Mies à Buchillon.</p>
 <h2>Les plages</h2>
-<p class="matin">Température de l’eau au matin du 24 novembre 2026, d’après le modèle Alplakes : de 7,6 °C à 8,9 °C selon la plage. Elle change chaque jour.</p>
 <ul class="liste">
-  <li><a href="../../plage/mies/">Mies</a> (7,6 °C)</li>
-  <li><a href="../../plage/coppet/">Coppet</a> (8,2 °C)</li>
-  <li><a href="../../plage/nyon/">Nyon</a> (8,6 °C)</li>
-  <li><a href="../../plage/prangins/">Prangins</a> (8,8 °C)</li>
-  <li><a href="../../plage/gland/">Gland</a> (8,7 °C)</li>
-  <li><a href="../../plage/dully/">Dully</a> (8,8 °C)</li>
-  <li><a href="../../plage/rolle/">Rolle</a> (8,9 °C)</li>
-  <li><a href="../../plage/perroy/">Perroy</a> (8,9 °C)</li>
-  <li><a href="../../plage/allaman/">Allaman</a> (8,9 °C)</li>
-  <li><a href="../../plage/buchillon/">Buchillon</a> (8,9 °C)</li>
+  <li><a href="../../plage/mies/">Mies</a></li>
+  <li><a href="../../plage/coppet/">Coppet</a></li>
+  <li><a href="../../plage/nyon/">Nyon</a></li>
+  <li><a href="../../plage/prangins/">Prangins</a></li>
+  <li><a href="../../plage/gland/">Gland</a></li>
+  <li><a href="../../plage/dully/">Dully</a></li>
+  <li><a href="../../plage/rolle/">Rolle</a></li>
+  <li><a href="../../plage/perroy/">Perroy</a></li>
+  <li><a href="../../plage/allaman/">Allaman</a></li>
+  <li><a href="../../plage/buchillon/">Buchillon</a></li>
 </ul>
 <h2>Où boire un verre ou manger au bord de l’eau</h2>
 <ul class="liste">
@@ -104,7 +103,7 @@ const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: '<a href="../../plage/' + s.id + '/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

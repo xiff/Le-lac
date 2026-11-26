@@ -55,17 +55,16 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In short</h2><p>From Corseaux to Saint-Gingolph, via Vevey, La Tour-de-Peilz, Montreux, Villeneuve and Le Bouveret, My Lake follows <strong>9 beaches</strong>. The page gives the morning water temperature, places by the water and rental operators.</p></section>
   <p>These are the Riviera beaches followed by the app. The Lavaux beaches (Lutry, Villette, Cully, Rivaz, Saint-Saphorin) have <a href="../../../blog/plages-lavaux/en/">their own page</a>.</p>
 <h2>The beaches</h2>
-<p class="matin">Water temperature on the morning of 24 November 2026, from the Alplakes model: 9.8 °C to 10.2 °C depending on the beach. It changes every day.</p>
 <ul class="liste">
-  <li><a href="../../../plage/corseaux/en/">Corseaux</a> (9.8 °C)</li>
-  <li><a href="../../../plage/vevey/en/">Vevey</a> (10.0 °C)</li>
-  <li><a href="../../../plage/la-tour-de-peilz/en/">La Tour-de-Peilz</a> (10.1 °C)</li>
-  <li><a href="../../../plage/montreux-clarens/en/">Montreux – Clarens</a> (10.2 °C)</li>
-  <li><a href="../../../plage/veytaux/en/">Veytaux</a> (10.2 °C)</li>
-  <li><a href="../../../plage/villeneuve/en/">Villeneuve</a> (10.2 °C)</li>
-  <li><a href="../../../plage/noville/en/">Noville</a> (9.8 °C)</li>
-  <li><a href="../../../plage/le-bouveret/en/">Le Bouveret</a> (10.0 °C)</li>
-  <li><a href="../../../plage/saint-gingolph/en/">Saint-Gingolph</a> (10.2 °C)</li>
+  <li><a href="../../../plage/corseaux/en/">Corseaux</a></li>
+  <li><a href="../../../plage/vevey/en/">Vevey</a></li>
+  <li><a href="../../../plage/la-tour-de-peilz/en/">La Tour-de-Peilz</a></li>
+  <li><a href="../../../plage/montreux-clarens/en/">Montreux – Clarens</a></li>
+  <li><a href="../../../plage/veytaux/en/">Veytaux</a></li>
+  <li><a href="../../../plage/villeneuve/en/">Villeneuve</a></li>
+  <li><a href="../../../plage/noville/en/">Noville</a></li>
+  <li><a href="../../../plage/le-bouveret/en/">Le Bouveret</a></li>
+  <li><a href="../../../plage/saint-gingolph/en/">Saint-Gingolph</a></li>
 </ul>
 <h2>Where to have a drink or eat by the water</h2>
 <ul class="liste">
@@ -108,7 +107,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/en/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "Right now, the water ranges from <strong>§F</strong> at §FA to <strong>§C</strong> at §CA, 70 cm below the surface. Each beach’s details are in <a href=\"../../../?lang=en\">the app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

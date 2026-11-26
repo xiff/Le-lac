@@ -56,9 +56,8 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-aegeri-640.webp 640w, ../../../blog/img/min/plages-aegeri-1200.webp 1200w, ../../../blog/img/min/plages-aegeri-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/plages-aegeri.jpg" alt="Mappa del lago di Ägeri con la spiaggia seguita" srcset="../../../blog/img/min/plages-aegeri-640.jpg 640w, ../../../blog/img/min/plages-aegeri-1200.jpg 1200w, ../../../blog/img/plages-aegeri.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Le spiagge seguite del lago di Ägeri. Mappa Il mio lago, © <a href="https://www.openstreetmap.org/copyright">contributori di OpenStreetMap</a>.</figcaption></figure>
   <p>Il lago di Ägeri copre circa 7,3 km², scende fino a 83 m e si trova a 724 m di altitudine.</p>
 <h2>La spiaggia seguita del lago di Ägeri</h2>
-<p>Tra parentesi: la temperatura del mattino del 24 novembre 2026, a 70 cm sotto la superficie (modello Alplakes).</p>
 <ul class="liste">
-  <li><a href="../../../plage/oberaegeri/it/">Oberägeri</a> (9,0 °C)</li>
+  <li><a href="../../../plage/oberaegeri/it/">Oberägeri</a></li>
 </ul>
 <h2>Ingresso, stagione e accesso</h2>
 <p>Prezzi e date rilevati il 13 novembre 2026 dalle fonti qui sotto, per la stagione 2026: da verificare sul sito di ogni bagno prima di andare.</p>
@@ -100,7 +99,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["aegeri"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/it/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/it/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> (§FA) a <strong>§C</strong> (§CA), a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

@@ -56,12 +56,11 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <figure class="seconde"><picture><source type="image/webp" srcset="../../blog/img/min/plages-brienz-640.webp 640w, ../../blog/img/min/plages-brienz-1200.webp 1200w, ../../blog/img/min/plages-brienz-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../blog/img/plages-brienz.jpg" alt="Carte du lac de Brienz avec les 4 plages suivies" srcset="../../blog/img/min/plages-brienz-640.jpg 640w, ../../blog/img/min/plages-brienz-1200.jpg 1200w, ../../blog/img/plages-brienz.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Les plages suivies du lac de Brienz. Carte Mon Lac, © <a href="https://www.openstreetmap.org/copyright">contributeurs OpenStreetMap</a>.</figcaption></figure>
   <p>Le lac de Brienz couvre environ 29,8 km², descend jusqu’à 260 m et se trouve à 564 m d’altitude.</p>
 <h2>Les 4 plages suivies du lac de Brienz</h2>
-<p>Entre parenthèses : la température du matin du 24 novembre 2026, à 70 cm sous la surface (modèle Alplakes).</p>
 <ul class="liste">
-  <li><a href="../../plage/boenigen/">Bönigen</a> (9,8 °C)</li>
-  <li><a href="../../plage/niederried/">Niederried</a> (9,8 °C)</li>
-  <li><a href="../../plage/iseltwald/">Iseltwald</a> (9,8 °C)</li>
-  <li><a href="../../plage/brienz/">Brienz</a> (9,8 °C)</li>
+  <li><a href="../../plage/boenigen/">Bönigen</a></li>
+  <li><a href="../../plage/niederried/">Niederried</a></li>
+  <li><a href="../../plage/iseltwald/">Iseltwald</a></li>
+  <li><a href="../../plage/brienz/">Brienz</a></li>
 </ul>
 <p>Pour ce lac, l’eau est une seule valeur pour tout le lac : les plages affichent le même chiffre.</p>
 <h2>Entrée, saison et accès</h2>
@@ -104,7 +103,7 @@ const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.filter((s) => ["brienz"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: '<a href="../../plage/' + s.id + '/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

@@ -56,11 +56,10 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-greifensee-640.webp 640w, ../../../blog/img/min/plages-greifensee-1200.webp 1200w, ../../../blog/img/min/plages-greifensee-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/plages-greifensee.jpg" alt="Map on Lake Greifen with the 3 beaches we follow" srcset="../../../blog/img/min/plages-greifensee-640.jpg 640w, ../../../blog/img/min/plages-greifensee-1200.jpg 1200w, ../../../blog/img/plages-greifensee.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>The beaches we follow on Lake Greifen. Map by My Lake, © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</figcaption></figure>
   <p>Lake Greifen covers about 8.45 km², is up to 32 m deep and lies at 435 m above sea level.</p>
 <h2>The 3 beaches followed on Lake Greifen</h2>
-<p>In brackets: the morning temperature on 24 November 2026, 70 cm below the surface (Alplakes model).</p>
 <ul class="liste">
-  <li><a href="../../../plage/maur/en/">Maur</a> (9.9 °C)</li>
-  <li><a href="../../../plage/uster/en/">Uster</a> (9.9 °C)</li>
-  <li><a href="../../../plage/greifensee-furren/en/">Greifensee – Furren</a> (9.9 °C)</li>
+  <li><a href="../../../plage/maur/en/">Maur</a></li>
+  <li><a href="../../../plage/uster/en/">Uster</a></li>
+  <li><a href="../../../plage/greifensee-furren/en/">Greifensee – Furren</a></li>
 </ul>
 <h2>Entry, season and access</h2>
 <p>Prices and dates collected on 13 November 2026 from the sources below, for the 2026 season: check each baths’ website before you go.</p>
@@ -107,7 +106,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["greifensee"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/en/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/en/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "Right now, the water ranges from <strong>§F</strong> at §FA to <strong>§C</strong> at §CA, 70 cm below the surface. Each beach’s details are in <a href=\"../../../?lang=en\">the app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

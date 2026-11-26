@@ -119,7 +119,7 @@ const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.filter((s) => ["zurich","greifensee"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: '<a href="../../plage/' + s.id + '/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

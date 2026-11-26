@@ -55,13 +55,12 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Lavaux è una regione viticola del canton Vaud, nota per i vigneti a terrazze sul Lemano, iscritta al patrimonio mondiale UNESCO il 28 giugno 2007 (898 ettari). Il mio lago vi segue <strong>5 spiagge</strong>: Lutry, Villette, Cully, Rivaz e Saint-Saphorin.</p></section>
   <p>Lavaux si estende tra Lutry e Vevey. Le spiagge dell’app in questa regione:</p>
 <h2>Le spiagge</h2>
-<p class="matin">Temperatura dell’acqua al mattino del 24 novembre 2026, dal modello Alplakes: da 9,6 °C a 9,7 °C secondo la spiaggia. Cambia ogni giorno.</p>
 <ul class="liste">
-  <li><a href="../../../plage/lutry/it/">Lutry</a> (9,7 °C)</li>
-  <li><a href="../../../plage/villette/it/">Villette</a> (9,7 °C)</li>
-  <li><a href="../../../plage/cully-moratel/it/">Cully – Moratel</a> (9,6 °C)</li>
-  <li><a href="../../../plage/rivaz/it/">Rivaz</a> (9,6 °C)</li>
-  <li><a href="../../../plage/saint-saphorin/it/">Saint-Saphorin</a> (9,7 °C)</li>
+  <li><a href="../../../plage/lutry/it/">Lutry</a></li>
+  <li><a href="../../../plage/villette/it/">Villette</a></li>
+  <li><a href="../../../plage/cully-moratel/it/">Cully – Moratel</a></li>
+  <li><a href="../../../plage/rivaz/it/">Rivaz</a></li>
+  <li><a href="../../../plage/saint-saphorin/it/">Saint-Saphorin</a></li>
 </ul>
 <h2>Dove bere o mangiare in riva all’acqua</h2>
 <ul class="liste">
@@ -94,7 +93,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/it/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/it/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> (§FA) a <strong>§C</strong> (§CA), a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

@@ -64,7 +64,7 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
 </ul>
 <h2>Pourquoi ces six-là ?</h2>
 <p>La SSS explique chaque maxime sur sa page : les petits enfants peuvent se noyer en moins de 20 secondes, sans bruit, même dans une faible profondeur ; l’alcool altère la conscience et fait surestimer ses capacités ; le choc thermique après le soleil peut causer crampes, malaise, voire un évanouissement ; des dangers invisibles se cachent dans l’eau inconnue ; un matelas peut perdre son air ; même le corps le mieux entraîné peut avoir une défaillance.</p>
-<p>Nous détaillons chacune dans un article : les enfants, manger, boire et bronzer, plonger dans l’inconnu, matelas et bouées, nager seul.</p>
+<p>Nous détaillons chacune dans un article : les enfants, manger, boire et bronzer, plonger dans l’inconnu, <a href="../../blog/matelas-pneumatiques-bouees-eau-profonde/">matelas et bouées</a>, nager seul.</p>
 <p>Rien ici ne remplace un cours de secourisme ni l’avis d’un médecin. L’eau et le vent du moment, plage par plage, sont dans l’<a href="../../?lang=fr">app Mon Lac</a>.</p>
   <section class="eau-du-jour" id="eau-du-jour" aria-labelledby="t-eau"><h2 id="t-eau">L’eau du Léman en ce moment</h2>
     <p id="eau-live">La température de chaque plage est dans <a href="../../?lang=fr">l’app Mon Lac</a>, mise à jour toutes les trois heures.</p></section>
@@ -87,7 +87,7 @@ const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: '<a href="../../plage/' + s.id + '/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

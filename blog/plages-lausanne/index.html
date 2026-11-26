@@ -55,18 +55,17 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <section class="bref" aria-labelledby="bref"><h2 id="bref">En bref</h2><p>Entre Saint-Prex et Pully, Mon Lac suit <strong>10 plages</strong> : Morges, Préverenges, Vidy, Ouchy, Bellerive et plus. La page donne la température de l’eau du matin, les lieux au bord de l’eau et les loueurs.</p></section>
   <p>Voici les plages de la région de Lausanne et de Morges suivies par l’app, avec la température du matin quand le modèle en donne une.</p>
 <h2>Les plages</h2>
-<p class="matin">Température de l’eau au matin du 24 novembre 2026, d’après le modèle Alplakes : de 8,9 °C à 9,7 °C selon la plage. Elle change chaque jour.</p>
 <ul class="liste">
-  <li><a href="../../plage/saint-prex/">Saint-Prex</a> (8,9 °C)</li>
-  <li><a href="../../plage/tolochenaz/">Tolochenaz</a> (9,0 °C)</li>
-  <li><a href="../../plage/morges/">Morges</a> (9,2 °C)</li>
-  <li><a href="../../plage/preverenges/">Préverenges</a> (9,3 °C)</li>
-  <li><a href="../../plage/saint-sulpice/">Saint-Sulpice</a> (9,5 °C)</li>
-  <li><a href="../../plage/lausanne-vidy/">Lausanne – Vidy</a> (9,5 °C)</li>
-  <li><a href="../../plage/lausanne-ouchy/">Lausanne – Ouchy</a> (9,7 °C)</li>
-  <li><a href="../../plage/lausanne-bellerive/">Lausanne – Bellerive</a> (9,6 °C)</li>
-  <li><a href="../../plage/pully/">Pully</a> (9,7 °C)</li>
-  <li><a href="../../plage/paudex/">Paudex</a> (9,7 °C)</li>
+  <li><a href="../../plage/saint-prex/">Saint-Prex</a></li>
+  <li><a href="../../plage/tolochenaz/">Tolochenaz</a></li>
+  <li><a href="../../plage/morges/">Morges</a></li>
+  <li><a href="../../plage/preverenges/">Préverenges</a></li>
+  <li><a href="../../plage/saint-sulpice/">Saint-Sulpice</a></li>
+  <li><a href="../../plage/lausanne-vidy/">Lausanne – Vidy</a></li>
+  <li><a href="../../plage/lausanne-ouchy/">Lausanne – Ouchy</a></li>
+  <li><a href="../../plage/lausanne-bellerive/">Lausanne – Bellerive</a></li>
+  <li><a href="../../plage/pully/">Pully</a></li>
+  <li><a href="../../plage/paudex/">Paudex</a></li>
 </ul>
 <h2>Où boire un verre ou manger au bord de l’eau</h2>
 <ul class="liste">
@@ -110,7 +109,7 @@ const d = await fetch('../../eau.json').then((x) => x.json()).catch(() => null);
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1).replace('.', ',') + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: `<a href="../../plage/${s.id}/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1).replace('.', ',') + ' °C', a: '<a href="../../plage/' + s.id + '/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "En ce moment, l’eau va de <strong>§F</strong> (§FA) à <strong>§C</strong> (§CA), à 70 cm sous la surface. Le détail de chaque plage est dans <a href=\"../../?lang=fr\">l’app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

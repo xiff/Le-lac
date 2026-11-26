@@ -56,12 +56,11 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
   <figure class="seconde"><picture><source type="image/webp" srcset="../../../blog/img/min/plages-brienz-640.webp 640w, ../../../blog/img/min/plages-brienz-1200.webp 1200w, ../../../blog/img/min/plages-brienz-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/plages-brienz.jpg" alt="Karte am Brienzersee mit den 4 erfassten Badeplätzen" srcset="../../../blog/img/min/plages-brienz-640.jpg 640w, ../../../blog/img/min/plages-brienz-1200.jpg 1200w, ../../../blog/img/plages-brienz.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="900" loading="lazy"></picture><figcaption>Die erfassten Badeplätze am Brienzersee. Karte Mein See, © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.</figcaption></figure>
   <p>Der Brienzersee misst etwa 29.8 km², ist bis zu 260 m tief und liegt auf 564 m Höhe.</p>
 <h2>Die 4 erfassten Badeplätze am Brienzersee</h2>
-<p>In Klammern: die Temperatur vom Morgen des 24. November 2026, in 70 cm Tiefe (Alplakes-Modell).</p>
 <ul class="liste">
-  <li><a href="../../../plage/boenigen/de/">Bönigen</a> (9.8 °C)</li>
-  <li><a href="../../../plage/niederried/de/">Niederried</a> (9.8 °C)</li>
-  <li><a href="../../../plage/iseltwald/de/">Iseltwald</a> (9.8 °C)</li>
-  <li><a href="../../../plage/brienz/de/">Brienz</a> (9.8 °C)</li>
+  <li><a href="../../../plage/boenigen/de/">Bönigen</a></li>
+  <li><a href="../../../plage/niederried/de/">Niederried</a></li>
+  <li><a href="../../../plage/iseltwald/de/">Iseltwald</a></li>
+  <li><a href="../../../plage/brienz/de/">Brienz</a></li>
 </ul>
 <p>Für diesen See gibt es einen einzigen Wert für den ganzen See: Alle Badeplätze zeigen dieselbe Zahl.</p>
 <h2>Eintritt, Saison und Anreise</h2>
@@ -104,7 +103,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["brienz"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/de/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/de/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "Im Moment liegt das Wasser zwischen <strong>§F</strong> bei §FA und <strong>§C</strong> bei §CA, 70 cm unter der Oberfläche. Die Einzelheiten jedes Badeplatzes stehen in <a href=\"../../../?lang=de\">der App</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

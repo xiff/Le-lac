@@ -53,25 +53,7 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/lacs-chauds-froids-640.webp 640w, ../../../blog/img/min/lacs-chauds-froids-1200.webp 1200w, ../../../blog/img/min/lacs-chauds-froids-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/lacs-chauds-froids.jpg" alt="Un termometro nell’acqua, da un lato un lago azzurro e soleggiato, dall’altro un lago di montagna scuro" srcset="../../../blog/img/min/lacs-chauds-froids-640.jpg 640w, ../../../blog/img/min/lacs-chauds-froids-1200.jpg 1200w, ../../../blog/img/ia/lacs-chauds-froids.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>I 25 laghi de Il mio lago non hanno la stessa temperatura nello stesso momento: la differenza si legge ogni mattina nei dati del modello <strong>Alplakes (Eawag)</strong>. Questa pagina mostra la classifica del giorno, con la data; cambia ogni giorno.</p></section>
-  <h2>La classifica del mattino</h2>
-<p>Media delle spiagge di ogni lago, temperatura del mattino del 24 novembre 2026 (modello Alplakes, Eawag). Cambia ogni giorno.</p>
-<h3>I più caldi</h3>
-<ul class="liste">
-  <li><strong>Lago Maggiore</strong> : 14,0 °C</li>
-  <li><strong>Lago di Zurigo</strong> : 12,6 °C</li>
-  <li><strong>Lago di Lugano</strong> : 12,5 °C</li>
-  <li><strong>Lago della Gruyère</strong> : 11,4 °C</li>
-  <li><strong>Lago di Thun</strong> : 11,2 °C</li>
-</ul>
-<h3>I più freddi</h3>
-<ul class="liste">
-  <li><strong>Lago di Silvaplana</strong> : 5,3 °C</li>
-  <li><strong>Lac de Joux</strong> : 8,1 °C</li>
-  <li><strong>Lago di Sarnen</strong> : 8,7 °C</li>
-  <li><strong>Lago Lemano</strong> : 8,8 °C</li>
-  <li><strong>Lac de Bret</strong> : 9,0 °C</li>
-</ul>
-<h2>Come leggere questa classifica</h2>
+  <h2>Come leggere questa classifica</h2>
 <p>Ogni valore è la media, per un lago, della temperatura del modello alle sue spiagge, al mattino. È una stima del modello, a circa 70 cm sotto la superficie: può discostarsi da ciò che si sente in un pomeriggio di pieno sole. I laghi senza modello (Domaine des Îles a Sion) non compaiono.</p>
 <h2>Per ogni lago</h2>
 <p>La pagina di ogni lago dà le sue spiagge, la temperatura del mattino e i dati di base (superficie, profondità, altitudine): vedi, per esempio, <a href="../../../blog/temperature-lac-leman/it/">la temperatura del Lemano</a>. L’elenco completo è in <a href="../../../plage/it/">tutte le spiagge</a>.</p>
@@ -98,7 +80,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["leman"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && false) document.getElementById('eau-live').innerHTML = "".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/it/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/it/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> (§FA) a <strong>§C</strong> (§CA), a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }

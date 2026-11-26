@@ -53,8 +53,7 @@ document.documentElement.classList.add('js'); // les photos .voile attendent leu
 <main class="article">
   <figure class="une"><picture><source type="image/webp" srcset="../../../blog/img/min/temp-brienz-640.webp 640w, ../../../blog/img/min/temp-brienz-1200.webp 1200w, ../../../blog/img/min/temp-brienz-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 680px"><img class="voile" onload="this.classList.add('ok')" onerror="this.classList.add('ok')" src="../../../blog/img/ia/temp-brienz.jpg" alt="Un villaggio di chalet su una penisola del lago di Brienz, montagne innevate dietro" srcset="../../../blog/img/min/temp-brienz-640.jpg 640w, ../../../blog/img/min/temp-brienz-1200.jpg 1200w, ../../../blog/img/ia/temp-brienz.jpg 1600w" sizes="(max-width: 700px) 100vw, 680px" width="1600" height="893" fetchpriority="high"></picture><figcaption>Illustrazione generata dall’IA, da una foto di Nicojonesgodel, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Brienzersee_with_a_coastal_town.jpg">Wikimedia Commons</a>.</figcaption></figure>
   <section class="bref" aria-labelledby="bref"><h2 id="bref">In breve</h2><p>Il mio lago mostra la temperatura dell’acqua del lago di Brienz <strong>a 70 cm sotto la superficie</strong>, aggiornata ogni tre ore dal modello Alplakes dell’Eawag. Per questo lago il modello fornisce <strong>un solo valore per tutto il lago</strong>: le 4 spiagge seguite mostrano la stessa cifra.</p></section>
-  <p class="matin">Il 24 novembre 2026, al mattino, l’acqua era a 9,8 °C per tutto il lago (70 cm sotto la superficie, modello Alplakes).</p>
-<h2>Da dove viene la temperatura del lago di Brienz?</h2>
+  <h2>Da dove viene la temperatura del lago di Brienz?</h2>
 <p>I dati provengono da <strong>Alplakes</strong>, la piattaforma dell’Eawag (l’istituto di ricerca sull’acqua del settore dei politecnici federali). Combina modelli numerici dei laghi e dati satellitari per calcolare la temperatura dell’acqua a diverse profondità. I dati sono pubblicati con licenza CC BY 4.0 e Il mio lago li rilegge ogni tre ore.</p>
 <p>Per questo lago Alplakes fornisce un <strong>modello unidimensionale</strong> (Simstrat): calcola la temperatura secondo la profondità, ma non secondo il luogo. Il mio lago legge il valore a 70 cm di profondità e lo mostra per tutte le spiagge del lago.</p>
 <h2>La temperatura è la stessa su tutte le spiagge?</h2>
@@ -112,7 +111,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["brienz"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "In questo momento il modello indica <strong>§T</strong> a 70 cm sotto la superficie per l’insieme del lago di Brienz.".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/it/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/it/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "In questo momento l’acqua va da <strong>§F</strong> (§FA) a <strong>§C</strong> (§CA), a 70 cm sotto la superficie. I dettagli di ogni spiaggia sono nell’<a href=\"../../../?lang=it\">app</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }
