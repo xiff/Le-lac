@@ -42,7 +42,7 @@ export function generer(maitre, L) {
   s = s.replace(/href="\.\.\/icon\.svg"/g, 'href="../../icon.svg"').replace(/(href|src)="\.\.\/icons\//g, '$1="../../icons/')
     .replace(/url\(\.\.\/fonts\//g, 'url(../../fonts/').replace(/href="\.\.\/fonts\//g, 'href="../../fonts/')
     .replace("from '../spots.js'", "from '../../spots.js'").replace("from '../score.js'", "from '../../score.js'")
-    .replace("fetch('../eau.json'", "fetch('../../eau.json'").replace('href="../plage/${s.id}/"', `href="../../plage/\${s.id}/${SUF[L]}"`)
+    .replace("fetch('../eau.json'", "fetch('../../eau.json'").replace(`href="\${'../plage/' + s.id + '/'}"`, `href="\${'../../plage/' + s.id + '/${SUF[L]}'}"`)
     .replace(/src="img\//g, 'src="../img/').replace('<form action="../" method="get"', '<form action="../../" method="get"');
   return s;
 }

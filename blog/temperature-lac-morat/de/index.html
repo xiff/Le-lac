@@ -117,7 +117,7 @@ const d = await fetch('../../../eau.json').then((x) => x.json()).catch(() => nul
 const v = SPOTS.filter((s) => ["morat"].includes(s.lac ?? 'leman')).map((s) => [s, valeurProche(d?.spots?.[s.id])]).filter(([, t]) => t != null).sort((a, b) => a[1] - b[1]);
 if (v.length && v[0][1] === v.at(-1)[1] && true) document.getElementById('eau-live').innerHTML = "Im Moment ergibt das Modell <strong>§T</strong> in 70 cm Tiefe für den gesamten See (Murtensee).".replace('§T', v[0][1].toFixed(1) + ' °C');
 else if (v.length) {
-  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: `<a href="../../../plage/${s.id}/de/">${s.nom}</a>` });
+  const f = ([s, t]) => ({ t: t.toFixed(1) + ' °C', a: '<a href="../../../plage/' + s.id + '/de/">' + s.nom + '</a>' });
   document.getElementById('eau-live').innerHTML = "Im Moment liegt das Wasser zwischen <strong>§F</strong> bei §FA und <strong>§C</strong> bei §CA, 70 cm unter der Oberfläche. Die Einzelheiten jedes Badeplatzes stehen in <a href=\"../../../?lang=de\">der App</a>."
     .replace('§FA', f(v[0]).a).replace('§F', f(v[0]).t).replace('§CA', f(v.at(-1)).a).replace('§C', f(v.at(-1)).t);
 }
